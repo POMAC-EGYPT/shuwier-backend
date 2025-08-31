@@ -4,15 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Enum\ApprovalStatus;
 use App\Enum\UserType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Notification;
-use BackedEnum;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -27,20 +23,16 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'phone',
         'password',
         'type',
-        'linkedin_link',
-        'twitter_link',
-        'other_freelance_platform_links',
-        'portfolio_link',
-        'city_id',
-        'verification_type',
-        'verification_value',
-        'rate',
         'is_active',
-        'approval_status',
+        'about_me',
+        'profile_picture',
+        'company',
         'email_verified_at',
     ];
 
@@ -61,21 +53,20 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'other_freelance_platform_links' => 'array',
         'is_active' => 'boolean',
-        'approval_status' => ApprovalStatus::class,
+        'user_type' => UserType::class
     ];
 
     #[Scope]
     protected function freelancers(Builder $query): Builder
     {
-        return $query->where('type', UserType::FREELANCER->value);
+        return $query->where('type', UserType::FREELANCER);
     }
 
     #[Scope]
     protected function clients(Builder $query): Builder
     {
-        return $query->where('type', UserType::CLIENT->value);
+        return $query->where('type', UserType::CLIENT);
     }
 
     /**

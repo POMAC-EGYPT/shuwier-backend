@@ -16,6 +16,7 @@ use App\Http\Resources\ClientResource;
 use App\Http\Resources\FreelancerResource;
 use App\Models\User;
 use App\Rules\EmailRule;
+use App\Services\Contracts\AuthUserServiceInterface;
 use App\Services\Contracts\EmailVerificationServiceInterface;
 use App\Services\Contracts\LoginServiceInterface;
 use Illuminate\Http\Request;
@@ -31,11 +32,13 @@ class AuthController extends Controller
 
     protected $verifyService;
     protected $loginService;
+    protected $authUserService;
 
-    public function __construct(EmailVerificationServiceInterface $verifyService, LoginServiceInterface $loginService)
+    public function __construct(EmailVerificationServiceInterface $verifyService, LoginServiceInterface $loginService, AuthUserServiceInterface $authUserService)
     {
         $this->verifyService = $verifyService;
         $this->loginService = $loginService;
+        $this->authUserService = $authUserService;
     }
 
     /**
@@ -316,7 +319,7 @@ class AuthController extends Controller
      */
     public function loginClient(LoginRequest $request)
     {
-        $result = $this->loginService->login($request->email, $request->password, UserType::CLIENT->value . 's');
+        $result = $this->authUserService->login($request->email, $request->password, UserType::CLIENT->value);
 
 
         if (!$result['success'])
@@ -390,15 +393,15 @@ class AuthController extends Controller
      */
     public function loginFreelancer(LoginRequest $request)
     {
-        $result = $this->loginService->login($request->email, $request->password, UserType::FREELANCER->value . 's');
+        // $result = $this->loginService->login($request->email, $request->password, UserType::FREELANCER->value . 's');
 
-        if (!$result['success'])
-            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+        // if (!$result['success'])
+        //     return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
 
-        return Response::api(__('message.login_success'), 200, true, null, [
-            'user' => BaseResource::make(FreelancerResource::make($result['data']['user'])),
-            'token' => $result['data']['token'],
-        ]);
+        // return Response::api(__('message.login_success'), 200, true, null, [
+        //     'user' => BaseResource::make(FreelancerResource::make($result['data']['user'])),
+        //     'token' => $result['data']['token'],
+        // ]);
     }
 
     /**

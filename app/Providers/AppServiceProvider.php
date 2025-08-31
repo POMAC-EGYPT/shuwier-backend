@@ -2,12 +2,16 @@
 
 namespace App\Providers;
 
+use App\Repository\Contracts\UserRepositoryInterface;
+use App\Repository\Eloquent\UserRepository;
+use App\Services\Contracts\AuthUserServiceInterface;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 use App\Services\Contracts\EmailVerificationServiceInterface;
 use App\Services\Contracts\LoginServiceInterface;
-use App\Services\Implementation\EmailVerificationService;
-use App\Services\Implementation\LoginService;
+use App\Services\Implementations\AuthUserService;
+use App\Services\Implementations\EmailVerificationService;
+use App\Services\Implementations\LoginService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(EmailVerificationServiceInterface::class, EmailVerificationService::class);
         $this->app->bind(LoginServiceInterface::class, LoginService::class);
+        $this->app->bind(AuthUserServiceInterface::class, AuthUserService::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 
     /**

@@ -13,18 +13,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->nullable();
             $table->string('password');
             $table->enum('type', ['client', 'freelancer']);
-            $table->string('linkedin_link')->nullable();
-            $table->string('twitter_link')->nullable();
-            $table->json('other_freelance_platform_links')->nullable();
-            $table->string('portfolio_link')->nullable();
-            $table->integer('rate')->nullable();
             $table->boolean('is_active')->default(1);
-            $table->enum('approval_status', ['requested', 'approved', 'rejected'])->default('requested');
+            $table->text('about_me')->nullable();
+            $table->string('profile_picture')->nullable();
+            $table->string('company')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

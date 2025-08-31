@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Implementation;
+namespace App\Services\Implementations;
 
 use App\Mail\VerifyEmail;
 use App\Services\Contracts\EmailVerificationServiceInterface;
