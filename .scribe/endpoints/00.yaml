@@ -1,0 +1,1450 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User Registration.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'User full name. Must match the regex /^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u. Must not be greater than 255 characters.'
+        required: true
+        example: 'John Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'User email address (must be unique). Must be a valid email address. Must not be greater than 255 characters.'
+        required: true
+        example: user@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'User password (minimum 8 characters, must contain uppercase, lowercase, number, and special character). Must match the regex /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u. Must be at least 8 characters.'
+        required: true
+        example: Password123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      type:
+        name: type
+        description: 'User type (freelancer or client).'
+        required: true
+        example: freelancer
+        type: string
+        enumValues:
+          - freelancer
+          - client
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      linkedin_link:
+        name: linkedin_link
+        description: 'LinkedIn profile URL (required if type is freelancer). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        required: false
+        example: 'https://linkedin.com/in/johndoe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      twitter_link:
+        name: twitter_link
+        description: 'Twitter profile URL (required if type is freelancer). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        required: false
+        example: 'https://twitter.com/johndoe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      other_freelance_platform_links:
+        name: other_freelance_platform_links
+        description: 'Must be a valid URL.'
+        required: false
+        example:
+          - 'http://kunze.biz/iste-laborum-eius-est-dolor.html'
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      portfolio_link:
+        name: portfolio_link
+        description: 'Portfolio website URL (required if type is freelancer). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        required: false
+        example: 'https://johndoe.com'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'John Doe'
+      email: user@example.com
+      password: Password123!
+      type: freelancer
+      linkedin_link: 'https://linkedin.com/in/johndoe'
+      twitter_link: 'https://twitter.com/johndoe'
+      other_freelance_platform_links:
+        - 'http://kunze.biz/iste-laborum-eius-est-dolor.html'
+      portfolio_link: 'https://johndoe.com'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Verification code sent successfully",
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Email already exists"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/resend-code
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Resend Verification Code.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: qkunze@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: qkunze@example.com
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Verification code resent successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Email not found or already verified"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/verify-email
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Verify Email and Complete Registration.'
+      description: |-
+        This endpoint verifies the email OTP code sent during registration and completes the user account creation.
+        For freelancers, the account will be created with "requested" approval status and require admin approval.
+        For clients, the account will be immediately approved and ready to use.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'The email address to verify.'
+        required: true
+        example: user@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      otp:
+        name: otp
+        description: 'The 4-digit verification code sent to email.'
+        required: true
+        example: '1234'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: user@example.com
+      otp: '1234'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "User registered successfully",
+            "data": {
+              "user": {
+                "id": 1,
+                "name": "John Doe",
+                "email": "john@example.com",
+                "type": "freelancer",
+                "approval_status": "requested",
+                "is_active": 1,
+                "linkedin_link": "https://linkedin.com/in/johndoe",
+                "twitter_link": "https://twitter.com/johndoe",
+                "portfolio_link": "https://johndoe.com",
+                "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+                "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "created_at": "2025-08-24T10:30:00.000000Z",
+                "updated_at": "2025-08-24T10:30:00.000000Z"
+              },
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+            }
+          }
+        headers: []
+        description: 'Freelancer registration completed'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "User registered successfully",
+            "data": {
+              "user": {
+                "id": 2,
+                "name": "Jane Smith",
+                "email": "jane@example.com",
+                "type": "client",
+                "approval_status": "approved",
+                "is_active": 1,
+                "linkedin_link": null,
+                "twitter_link": null,
+                "portfolio_link": null,
+                "other_freelance_platform_links": null,
+                "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "created_at": "2025-08-24T10:30:00.000000Z",
+                "updated_at": "2025-08-24T10:30:00.000000Z"
+              },
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+            }
+          }
+        headers: []
+        description: 'Client registration completed'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Email verification successful"
+          }
+        headers: []
+        description: 'Password reset verification'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Invalid or expired verification code"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The otp field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/reset-email
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Reset Email Address.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      old_email:
+        name: old_email
+        description: 'Current email address. Must be a valid email address.'
+        required: true
+        example: old@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      new_email:
+        name: new_email
+        description: 'New email address (must be different from old email). The value and <code>old_email</code> must be different. Must be a valid email address.'
+        required: true
+        example: new@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      old_email: old@example.com
+      new_email: new@example.com
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Email reset successfully",
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Old email not found or new email already exists"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The old_email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/forget-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Forget Password - Send Reset Code.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address. The <code>email</code> of an existing record in the users table.'
+        required: true
+        example: qkunze@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: qkunze@example.com
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Verification code sent successfully",
+            "data": {
+              "token": "abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567890"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Email not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/reset-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Reset Password.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'User email address. Must be a valid email address. The <code>email</code> of an existing record in the users table.'
+        required: true
+        example: user@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      token:
+        name: token
+        description: 'Password reset token received from forget password request.'
+        required: true
+        example: abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567890
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'New password (minimum 8 characters, must contain uppercase, lowercase, number, and special character). Must match the regex /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u. Must be at least 8 characters.'
+        required: true
+        example: NewPassword123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: user@example.com
+      token: abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567890
+      password: NewPassword123!
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Password reset successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Verification session expired"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Verification code not verified"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Invalid token"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/logout
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User Logout.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Logout successful"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/refresh
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Refresh Token.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Token refreshed successfully",
+            "data": {
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/freelancers/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Freelancer Login.'
+      description: 'This endpoint authenticates freelancer users and returns a JWT token.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Freelancer email address.'
+        required: true
+        example: freelancer@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Freelancer password (minimum 6 characters).'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: freelancer@example.com
+      password: password123
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Login successful",
+            "user": {
+              "id": 1,
+              "name": "John Doe",
+              "email": "john@example.com",
+              "type": "freelancer",
+              "approval_status": "approved",
+              "is_active": 1,
+              "linkedin_link": "https://linkedin.com/in/johndoe",
+              "twitter_link": "https://twitter.com/johndoe",
+              "portfolio_link": "https://johndoe.com",
+              "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+              "email_verified_at": "2025-08-24T10:30:00.000000Z",
+              "created_at": "2025-08-24T10:30:00.000000Z",
+              "updated_at": "2025-08-24T10:30:00.000000Z"
+            },
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Invalid password"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Account is blocked"
+          }
+        headers: []
+        description: 'Account blocked'
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Email is not verified"
+          }
+        headers: []
+        description: 'Email not verified'
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Your account is pending admin approval"
+          }
+        headers: []
+        description: 'Freelancer not approved'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/clients/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Client Login.'
+      description: 'This endpoint authenticates client users and returns a JWT token.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Client email address.'
+        required: true
+        example: client@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Client password (minimum 6 characters).'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: client@example.com
+      password: password123
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Login successful",
+            "user": {
+              "id": 2,
+              "name": "Jane Smith",
+              "email": "jane@example.com",
+              "type": "client",
+              "approval_status": "approved",
+              "is_active": 1,
+              "email_verified_at": "2025-08-24T10:30:00.000000Z",
+              "created_at": "2025-08-24T10:30:00.000000Z",
+              "updated_at": "2025-08-24T10:30:00.000000Z"
+            },
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Invalid password"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Account is blocked"
+          }
+        headers: []
+        description: 'Account blocked'
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Email is not verified"
+          }
+        headers: []
+        description: 'Email not verified'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/auth/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Admin Login.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Admin email address. Must be a valid email address. The <code>email</code> of an existing record in the admins table.'
+        required: true
+        example: admin@admin.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Admin password (minimum 6 characters). Must be at least 6 characters.'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: admin@admin.com
+      password: password123
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Login successful",
+            "data": {
+              "admin": {
+                "id": 1,
+                "email": "admin@admin.com",
+                "permissions_with_role": {
+                  "permissions": [
+                    "admin.users.index",
+                    "admin.users.create",
+                    "admin.users.edit",
+                    "admin.users.delete",
+                  ],
+                  "role": "super-admin",
+                },
+                "created_at": "2025-08-21T07:43:34.000000Z",
+                "updated_at": "2025-08-21T07:43:34.000000Z"
+              },
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Invalid password"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "The Selected email was is invalid."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/admin/freelancers
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of freelancers with optional filters.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      approval_status:
+        name: approval_status
+        description: 'Optional filter by approval status (requested, approved).'
+        required: false
+        example: requested
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Optional filter by active status (0 or 1).'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      approval_status: requested
+      is_active: 1
+    bodyParameters:
+      approval_status:
+        name: approval_status
+        description: ''
+        required: false
+        example: requested
+        type: string
+        enumValues:
+          - requested
+          - approved
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: ''
+        required: false
+        example: '1'
+        type: string
+        enumValues:
+          - '0'
+          - '1'
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      approval_status: requested
+      is_active: '1'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Success",
+            "data": [
+              {
+                "id": 1,
+                "name": "John Doe",
+                "email": "john@example.com",
+                "type": "freelancer",
+                "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "linkedin_link": "https://linkedin.com/in/johndoe",
+                "twitter_link": "https://twitter.com/johndoe",
+                "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+                "portfolio_link": "https://johndoe.com",
+                "is_active": true,
+                "approval_status": "requested",
+                "rate": null,
+                "created_at": "2025-08-24T10:30:00.000000Z",
+                "updated_at": "2025-08-24T10:30:00.000000Z"
+              }
+            ],
+            "current_page": 1,
+            "from": 1,
+            "last_page": 5,
+            "per_page": 10,
+            "to": 10,
+            "total": 50,
+            "links": {
+              "first": "http://localhost/api/admin/freelancers?page=1",
+              "last": "http://localhost/api/admin/freelancers?page=5",
+              "prev": null,
+              "next": "http://localhost/api/admin/freelancers?page=2"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The approval_status field must be one of: requested, approved."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/admin/freelancers/approve-reject/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Approve or Reject a freelancer application.'
+      description: |-
+        This endpoint allows admins to approve or reject freelancer applications.
+        When approving, the freelancer receives an email notification and can start working.
+        When rejecting, the freelancer account is permanently deleted.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the freelancer to approve/reject.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      action:
+        name: action
+        description: 'The action to perform. Must be either "approve" or "reject".'
+        required: true
+        example: approve
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      action: approve
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer approved successfully",
+            "data": {
+              "id": 14,
+              "name": "احمد حسني",
+              "email": "abdelrahmanelghonemypomac@gmail.com",
+              "type": "freelancer",
+              "email_verified_at": "2025-08-26T09:09:53.000000Z",
+              "linkedin_link": "https://www.linkedin.com/in/muhammed-yousry96?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXWDAHlI8QB2HsM6PFNaclA%3D%3D",
+              "twitter_link": "https://www.facebook.com/ahmedhosni516",
+              "other_freelance_platform_links": [
+                "https://www.google.com",
+                "https://www.google.com"
+              ],
+              "portfolio_link": "https://www.facebook.com/ahmedhosni516",
+              "is_active": true,
+              "approval_status": "approved",
+              "rate": null,
+              "created_at": "2025-08-26T09:09:53.000000Z",
+              "updated_at": "2025-08-27T08:49:50.000000Z"
+            }
+          }
+        headers: []
+        description: 'Freelancer approved successfully'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer rejected successfully"
+          }
+        headers: []
+        description: 'Freelancer rejected successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Freelancer already approved"
+          }
+        headers: []
+        description: 'Freelancer already approved'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The action field is required."
+          }
+        headers: []
+        description: 'Invalid action parameter'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Freelancer not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
