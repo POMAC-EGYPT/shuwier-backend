@@ -315,7 +315,7 @@
         <div class="header" style="background-color: #1e3c72; color: white; padding: 40px 30px; text-align: center;">
             <div class="header-content">
                 <div class="company-logo" style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.2); border-radius: 30px; margin: 0 auto 15px; display: block; text-align: center; line-height: 60px;">
-                    <img src="{{ asset('assets/img/logo.svg') }}" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; display: inline-block;">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; display: inline-block;">
                 </div>
                 <h1 style="color: white; font-size: 32px; margin-bottom: 10px; font-weight: 700;">{{ config('app.name') }}</h1>
                 <h2 style="font-size: 18px; font-weight: 400; margin: 0;">{{ __('message.email_verification') }}</h2>
