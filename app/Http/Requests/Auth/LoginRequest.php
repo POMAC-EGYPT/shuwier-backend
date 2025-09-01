@@ -69,6 +69,10 @@ class LoginRequest extends FormRequest
                 'description' => 'User password (minimum 6 characters)',
                 'example' => 'password123',
             ],
+            'type' => [
+                'description' => 'User type (client or freelancer)',
+                'example' => 'client',
+            ],
         ];
     }
 }

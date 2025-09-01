@@ -37,17 +37,22 @@ class FreelancerController extends Controller
      *   "data": [
      *     {
      *       "id": 1,
-     *       "name": "John Doe",
+     *       "first_name": "John",
+     *       "last_name": "Doe",
      *       "email": "john@example.com",
      *       "type": "freelancer",
      *       "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *       "phone": null,
+     *       "is_active": true,
+     *       "about_me": null,
+     *       "profile_picture": null,
+     *       "approval_status": "requested",
      *       "linkedin_link": "https://linkedin.com/in/johndoe",
      *       "twitter_link": "https://twitter.com/johndoe",
      *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
      *       "portfolio_link": "https://johndoe.com",
-     *       "is_active": true,
-     *       "approval_status": "requested",
-     *       "rate": null,
+     *       "headline": null,
+     *       "description": null,
      *       "created_at": "2025-08-24T10:30:00.000000Z",
      *       "updated_at": "2025-08-24T10:30:00.000000Z"
      *     }
@@ -132,16 +137,22 @@ class FreelancerController extends Controller
      *   "message": "Success",
      *   "data": {
      *     "id": 1,
-     *     "name": "John Doe",
+     *     "first_name": "John",
+     *     "last_name": "Doe",
      *     "email": "john@example.com",
      *     "type": "freelancer",
+     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *     "phone": null,
+     *     "is_active": true,
+     *     "about_me": null,
+     *     "profile_picture": null,
      *     "approval_status": "requested",
-     *     "is_active": 1,
      *     "linkedin_link": "https://linkedin.com/in/johndoe",
      *     "twitter_link": "https://twitter.com/johndoe",
-     *     "portfolio_link": "https://johndoe.com",
      *     "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
-     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *     "portfolio_link": "https://johndoe.com",
+     *     "headline": null,
+     *     "description": null,
      *     "created_at": "2025-08-24T10:30:00.000000Z",
      *     "updated_at": "2025-08-24T10:30:00.000000Z"
      *   }
@@ -204,10 +215,16 @@ class FreelancerController extends Controller
      *   "message": "Freelancer approved successfully",
      *   "data": {
      *     "id": 14,
-     *     "name": "احمد حسني",
+     *     "first_name": "احمد",
+     *     "last_name": "حسني",
      *     "email": "abdelrahmanelghonemypomac@gmail.com",
      *     "type": "freelancer",
      *     "email_verified_at": "2025-08-26T09:09:53.000000Z",
+     *     "phone": null,
+     *     "is_active": true,
+     *     "about_me": null,
+     *     "profile_picture": null,
+     *     "approval_status": "approved",
      *     "linkedin_link": "https://www.linkedin.com/in/muhammed-yousry96?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXWDAHlI8QB2HsM6PFNaclA%3D%3D",
      *     "twitter_link": "https://www.facebook.com/ahmedhosni516",
      *     "other_freelance_platform_links": [
@@ -215,9 +232,8 @@ class FreelancerController extends Controller
      *       "https://www.google.com"
      *     ],
      *     "portfolio_link": "https://www.facebook.com/ahmedhosni516",
-     *     "is_active": true,
-     *     "approval_status": "approved",
-     *     "rate": null,
+     *     "headline": null,
+     *     "description": null,
      *     "created_at": "2025-08-26T09:09:53.000000Z",
      *     "updated_at": "2025-08-27T08:49:50.000000Z"
      *   }

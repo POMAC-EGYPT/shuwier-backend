@@ -83,6 +83,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-reset-email">
                                 <a href="#endpoints-POSTapi-auth-reset-email">Reset Email Address.</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-login">
+                                <a href="#endpoints-POSTapi-auth-login">Client Login.</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-forget-password">
                                 <a href="#endpoints-POSTapi-auth-forget-password">Forget Password - Send Reset Code.</a>
                             </li>
@@ -94,12 +97,6 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-refresh">
                                 <a href="#endpoints-POSTapi-auth-refresh">Refresh Token.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-freelancers-login">
-                                <a href="#endpoints-POSTapi-auth-freelancers-login">Freelancer Login.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-clients-login">
-                                <a href="#endpoints-POSTapi-auth-clients-login">Client Login.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-admin-auth-login">
                                 <a href="#endpoints-POSTapi-admin-auth-login">Admin Login.</a>
@@ -121,7 +118,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 31, 2025</li>
+        <li>Last updated: September 1, 2025</li>
     </ul>
 </div>
 
@@ -672,18 +669,24 @@ fetch(url, {
     &quot;data&quot;: {
         &quot;user&quot;: {
             &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;first_name&quot;: &quot;John&quot;,
+            &quot;last_name&quot;: &quot;Doe&quot;,
             &quot;email&quot;: &quot;john@example.com&quot;,
             &quot;type&quot;: &quot;freelancer&quot;,
+            &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+            &quot;phone&quot;: null,
+            &quot;is_active&quot;: true,
+            &quot;about_me&quot;: null,
+            &quot;profile_picture&quot;: null,
             &quot;approval_status&quot;: &quot;requested&quot;,
-            &quot;is_active&quot;: 1,
             &quot;linkedin_link&quot;: &quot;https://linkedin.com/in/johndoe&quot;,
             &quot;twitter_link&quot;: &quot;https://twitter.com/johndoe&quot;,
-            &quot;portfolio_link&quot;: &quot;https://johndoe.com&quot;,
             &quot;other_freelance_platform_links&quot;: [
                 &quot;https://upwork.com/freelancers/johndoe&quot;
             ],
-            &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+            &quot;portfolio_link&quot;: &quot;https://johndoe.com&quot;,
+            &quot;headline&quot;: null,
+            &quot;description&quot;: null,
             &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
         },
@@ -703,16 +706,16 @@ fetch(url, {
     &quot;data&quot;: {
         &quot;user&quot;: {
             &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;Jane Smith&quot;,
+            &quot;first_name&quot;: &quot;Jane&quot;,
+            &quot;last_name&quot;: &quot;Smith&quot;,
             &quot;email&quot;: &quot;jane@example.com&quot;,
-            &quot;type&quot;: &quot;client&quot;,
-            &quot;approval_status&quot;: &quot;approved&quot;,
-            &quot;is_active&quot;: 1,
-            &quot;linkedin_link&quot;: null,
-            &quot;twitter_link&quot;: null,
-            &quot;portfolio_link&quot;: null,
-            &quot;other_freelance_platform_links&quot;: null,
             &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+            &quot;phone&quot;: null,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;is_active&quot;: true,
+            &quot;about_me&quot;: null,
+            &quot;profile_picture&quot;: null,
+            &quot;company&quot;: null,
             &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
         },
@@ -1047,6 +1050,247 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                    <h2 id="endpoints-POSTapi-auth-login">Client Login.</h2>
+
+<p>
+</p>
+
+<p>This endpoint authenticates client users and returns a JWT token.</p>
+
+<span id="example-requests-POSTapi-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/auth/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"email\": \"client@example.com\",
+    \"password\": \"password123\",
+    \"type\": \"client\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "email": "client@example.com",
+    "password": "password123",
+    "type": "client"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-auth-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Login successful&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 2,
+        &quot;first_name&quot;: &quot;Jane&quot;,
+        &quot;last_name&quot;: &quot;Smith&quot;,
+        &quot;email&quot;: &quot;jane@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;phone&quot;: null,
+        &quot;type&quot;: &quot;client&quot;,
+        &quot;is_active&quot;: true,
+        &quot;about_me&quot;: null,
+        &quot;profile_picture&quot;: null,
+        &quot;company&quot;: null,
+        &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
+    },
+    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email field is required.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Invalid password&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Account blocked):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 403,
+    &quot;message&quot;: &quot;Account is blocked&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Email not verified):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 403,
+    &quot;message&quot;: &quot;Email is not verified&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-login"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-login">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-auth-login" data-method="POST"
+      data-path="api/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-login"
+                    onclick="tryItOut('POSTapi-auth-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-login"
+                    onclick="cancelTryOut('POSTapi-auth-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-login"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-auth-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-auth-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-auth-login"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-auth-login"
+               value="client@example.com"
+               data-component="body">
+    <br>
+<p>Client email address. Example: <code>client@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-auth-login"
+               value="password123"
+               data-component="body">
+    <br>
+<p>Client password (minimum 6 characters). Example: <code>password123</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="type"                data-endpoint="POSTapi-auth-login"
+               value="client"
+               data-component="body">
+    <br>
+<p>User type (client or freelancer). Example: <code>client</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>client</code></li> <li><code>freelancer</code></li></ul>
+        </div>
+        </form>
+
                     <h2 id="endpoints-POSTapi-auth-forget-password">Forget Password - Send Reset Code.</h2>
 
 <p>
@@ -1065,7 +1309,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"email\": \"qkunze@example.com\"
+    \"email\": \"qkunze@example.com\",
+    \"type\": \"freelancer\"
 }"
 </code></pre></div>
 
@@ -1082,7 +1327,8 @@ const headers = {
 };
 
 let body = {
-    "email": "qkunze@example.com"
+    "email": "qkunze@example.com",
+    "type": "freelancer"
 };
 
 fetch(url, {
@@ -1222,6 +1468,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid email address. The <code>email</code> of an existing record in the users table. Example: <code>qkunze@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="type"                data-endpoint="POSTapi-auth-forget-password"
+               value="freelancer"
+               data-component="body">
+    <br>
+<p>Example: <code>freelancer</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>client</code></li> <li><code>freelancer</code></li></ul>
         </div>
         </form>
 
@@ -1739,467 +1998,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-POSTapi-auth-freelancers-login">Freelancer Login.</h2>
-
-<p>
-</p>
-
-<p>This endpoint authenticates freelancer users and returns a JWT token.</p>
-
-<span id="example-requests-POSTapi-auth-freelancers-login">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/auth/freelancers/login" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"email\": \"freelancer@example.com\",
-    \"password\": \"password123\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/auth/freelancers/login"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-let body = {
-    "email": "freelancer@example.com",
-    "password": "password123"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-auth-freelancers-login">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;Login successful&quot;,
-    &quot;user&quot;: {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;John Doe&quot;,
-        &quot;email&quot;: &quot;john@example.com&quot;,
-        &quot;type&quot;: &quot;freelancer&quot;,
-        &quot;approval_status&quot;: &quot;approved&quot;,
-        &quot;is_active&quot;: 1,
-        &quot;linkedin_link&quot;: &quot;https://linkedin.com/in/johndoe&quot;,
-        &quot;twitter_link&quot;: &quot;https://twitter.com/johndoe&quot;,
-        &quot;portfolio_link&quot;: &quot;https://johndoe.com&quot;,
-        &quot;other_freelance_platform_links&quot;: [
-            &quot;https://upwork.com/freelancers/johndoe&quot;
-        ],
-        &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
-    },
-    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The email field is required.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Invalid password&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (403, Account blocked):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 403,
-    &quot;message&quot;: &quot;Account is blocked&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (403, Email not verified):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 403,
-    &quot;message&quot;: &quot;Email is not verified&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (403, Freelancer not approved):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 403,
-    &quot;message&quot;: &quot;Your account is pending admin approval&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-auth-freelancers-login" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-auth-freelancers-login"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-auth-freelancers-login"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-auth-freelancers-login" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-auth-freelancers-login">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-auth-freelancers-login" data-method="POST"
-      data-path="api/auth/freelancers/login"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-freelancers-login', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-auth-freelancers-login"
-                    onclick="tryItOut('POSTapi-auth-freelancers-login');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-auth-freelancers-login"
-                    onclick="cancelTryOut('POSTapi-auth-freelancers-login');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-auth-freelancers-login"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/auth/freelancers/login</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-auth-freelancers-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-auth-freelancers-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-auth-freelancers-login"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-auth-freelancers-login"
-               value="freelancer@example.com"
-               data-component="body">
-    <br>
-<p>Freelancer email address. Example: <code>freelancer@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="password"                data-endpoint="POSTapi-auth-freelancers-login"
-               value="password123"
-               data-component="body">
-    <br>
-<p>Freelancer password (minimum 6 characters). Example: <code>password123</code></p>
-        </div>
-        </form>
-
-                    <h2 id="endpoints-POSTapi-auth-clients-login">Client Login.</h2>
-
-<p>
-</p>
-
-<p>This endpoint authenticates client users and returns a JWT token.</p>
-
-<span id="example-requests-POSTapi-auth-clients-login">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/auth/clients/login" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"email\": \"client@example.com\",
-    \"password\": \"password123\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/auth/clients/login"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-let body = {
-    "email": "client@example.com",
-    "password": "password123"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-auth-clients-login">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;Login successful&quot;,
-    &quot;user&quot;: {
-        &quot;id&quot;: 2,
-        &quot;name&quot;: &quot;Jane Smith&quot;,
-        &quot;email&quot;: &quot;jane@example.com&quot;,
-        &quot;type&quot;: &quot;client&quot;,
-        &quot;approval_status&quot;: &quot;approved&quot;,
-        &quot;is_active&quot;: 1,
-        &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
-    },
-    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The email field is required.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Invalid password&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (403, Account blocked):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 403,
-    &quot;message&quot;: &quot;Account is blocked&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (403, Email not verified):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 403,
-    &quot;message&quot;: &quot;Email is not verified&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-auth-clients-login" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-auth-clients-login"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-auth-clients-login"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-auth-clients-login" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-auth-clients-login">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-auth-clients-login" data-method="POST"
-      data-path="api/auth/clients/login"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-clients-login', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-auth-clients-login"
-                    onclick="tryItOut('POSTapi-auth-clients-login');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-auth-clients-login"
-                    onclick="cancelTryOut('POSTapi-auth-clients-login');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-auth-clients-login"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/auth/clients/login</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-auth-clients-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-auth-clients-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-auth-clients-login"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-auth-clients-login"
-               value="client@example.com"
-               data-component="body">
-    <br>
-<p>Client email address. Example: <code>client@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="password"                data-endpoint="POSTapi-auth-clients-login"
-               value="password123"
-               data-component="body">
-    <br>
-<p>Client password (minimum 6 characters). Example: <code>password123</code></p>
-        </div>
-        </form>
-
                     <h2 id="endpoints-POSTapi-admin-auth-login">Admin Login.</h2>
 
 <p>
@@ -2475,19 +2273,24 @@ fetch(url, {
     &quot;data&quot;: [
         {
             &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;first_name&quot;: &quot;John&quot;,
+            &quot;last_name&quot;: &quot;Doe&quot;,
             &quot;email&quot;: &quot;john@example.com&quot;,
             &quot;type&quot;: &quot;freelancer&quot;,
             &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+            &quot;phone&quot;: null,
+            &quot;is_active&quot;: true,
+            &quot;about_me&quot;: null,
+            &quot;profile_picture&quot;: null,
+            &quot;approval_status&quot;: &quot;requested&quot;,
             &quot;linkedin_link&quot;: &quot;https://linkedin.com/in/johndoe&quot;,
             &quot;twitter_link&quot;: &quot;https://twitter.com/johndoe&quot;,
             &quot;other_freelance_platform_links&quot;: [
                 &quot;https://upwork.com/freelancers/johndoe&quot;
             ],
             &quot;portfolio_link&quot;: &quot;https://johndoe.com&quot;,
-            &quot;is_active&quot;: true,
-            &quot;approval_status&quot;: &quot;requested&quot;,
-            &quot;rate&quot;: null,
+            &quot;headline&quot;: null,
+            &quot;description&quot;: null,
             &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
         }
@@ -2733,10 +2536,16 @@ fetch(url, {
     &quot;message&quot;: &quot;Freelancer approved successfully&quot;,
     &quot;data&quot;: {
         &quot;id&quot;: 14,
-        &quot;name&quot;: &quot;احمد حسني&quot;,
+        &quot;first_name&quot;: &quot;احمد&quot;,
+        &quot;last_name&quot;: &quot;حسني&quot;,
         &quot;email&quot;: &quot;abdelrahmanelghonemypomac@gmail.com&quot;,
         &quot;type&quot;: &quot;freelancer&quot;,
         &quot;email_verified_at&quot;: &quot;2025-08-26T09:09:53.000000Z&quot;,
+        &quot;phone&quot;: null,
+        &quot;is_active&quot;: true,
+        &quot;about_me&quot;: null,
+        &quot;profile_picture&quot;: null,
+        &quot;approval_status&quot;: &quot;approved&quot;,
         &quot;linkedin_link&quot;: &quot;https://www.linkedin.com/in/muhammed-yousry96?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXWDAHlI8QB2HsM6PFNaclA%3D%3D&quot;,
         &quot;twitter_link&quot;: &quot;https://www.facebook.com/ahmedhosni516&quot;,
         &quot;other_freelance_platform_links&quot;: [
@@ -2744,9 +2553,8 @@ fetch(url, {
             &quot;https://www.google.com&quot;
         ],
         &quot;portfolio_link&quot;: &quot;https://www.facebook.com/ahmedhosni516&quot;,
-        &quot;is_active&quot;: true,
-        &quot;approval_status&quot;: &quot;approved&quot;,
-        &quot;rate&quot;: null,
+        &quot;headline&quot;: null,
+        &quot;description&quot;: null,
         &quot;created_at&quot;: &quot;2025-08-26T09:09:53.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-08-27T08:49:50.000000Z&quot;
     }

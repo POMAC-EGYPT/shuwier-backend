@@ -297,16 +297,22 @@ endpoints:
             "data": {
               "user": {
                 "id": 1,
-                "name": "John Doe",
+                "first_name": "John",
+                "last_name": "Doe",
                 "email": "john@example.com",
                 "type": "freelancer",
+                "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "phone": null,
+                "is_active": true,
+                "about_me": null,
+                "profile_picture": null,
                 "approval_status": "requested",
-                "is_active": 1,
                 "linkedin_link": "https://linkedin.com/in/johndoe",
                 "twitter_link": "https://twitter.com/johndoe",
-                "portfolio_link": "https://johndoe.com",
                 "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
-                "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "portfolio_link": "https://johndoe.com",
+                "headline": null,
+                "description": null,
                 "created_at": "2025-08-24T10:30:00.000000Z",
                 "updated_at": "2025-08-24T10:30:00.000000Z"
               },
@@ -326,16 +332,16 @@ endpoints:
             "data": {
               "user": {
                 "id": 2,
-                "name": "Jane Smith",
+                "first_name": "Jane",
+                "last_name": "Smith",
                 "email": "jane@example.com",
-                "type": "client",
-                "approval_status": "approved",
-                "is_active": 1,
-                "linkedin_link": null,
-                "twitter_link": null,
-                "portfolio_link": null,
-                "other_freelance_platform_links": null,
                 "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "phone": null,
+                "type": "client",
+                "is_active": true,
+                "about_me": null,
+                "profile_picture": null,
+                "company": null,
                 "created_at": "2025-08-24T10:30:00.000000Z",
                 "updated_at": "2025-08-24T10:30:00.000000Z"
               },
@@ -474,6 +480,144 @@ endpoints:
   -
     httpMethods:
       - POST
+    uri: api/auth/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Client Login.'
+      description: 'This endpoint authenticates client users and returns a JWT token.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Client email address.'
+        required: true
+        example: client@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Client password (minimum 6 characters).'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      type:
+        name: type
+        description: 'User type (client or freelancer).'
+        required: true
+        example: client
+        type: string
+        enumValues:
+          - client
+          - freelancer
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: client@example.com
+      password: password123
+      type: client
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Login successful",
+            "user": {
+              "id": 2,
+              "first_name": "Jane",
+              "last_name": "Smith",
+              "email": "jane@example.com",
+              "email_verified_at": "2025-08-24T10:30:00.000000Z",
+              "phone": null,
+              "type": "client",
+              "is_active": true,
+              "about_me": null,
+              "profile_picture": null,
+              "company": null,
+              "created_at": "2025-08-24T10:30:00.000000Z",
+              "updated_at": "2025-08-24T10:30:00.000000Z"
+            },
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Invalid password"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Account is blocked"
+          }
+        headers: []
+        description: 'Account blocked'
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Email is not verified"
+          }
+        headers: []
+        description: 'Email not verified'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
     uri: api/auth/forget-password
     metadata:
       groupName: Endpoints
@@ -504,8 +648,21 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      type:
+        name: type
+        description: ''
+        required: true
+        example: freelancer
+        type: string
+        enumValues:
+          - client
+          - freelancer
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     cleanBodyParameters:
       email: qkunze@example.com
+      type: freelancer
     fileParameters: []
     responses:
       -
@@ -784,263 +941,6 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/auth/freelancers/login
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Freelancer Login.'
-      description: 'This endpoint authenticates freelancer users and returns a JWT token.'
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Freelancer email address.'
-        required: true
-        example: freelancer@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: 'Freelancer password (minimum 6 characters).'
-        required: true
-        example: password123
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: freelancer@example.com
-      password: password123
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Login successful",
-            "user": {
-              "id": 1,
-              "name": "John Doe",
-              "email": "john@example.com",
-              "type": "freelancer",
-              "approval_status": "approved",
-              "is_active": 1,
-              "linkedin_link": "https://linkedin.com/in/johndoe",
-              "twitter_link": "https://twitter.com/johndoe",
-              "portfolio_link": "https://johndoe.com",
-              "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
-              "email_verified_at": "2025-08-24T10:30:00.000000Z",
-              "created_at": "2025-08-24T10:30:00.000000Z",
-              "updated_at": "2025-08-24T10:30:00.000000Z"
-            },
-            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The email field is required."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "status": false,
-            "error_num": 401,
-            "message": "Invalid password"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Account is blocked"
-          }
-        headers: []
-        description: 'Account blocked'
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Email is not verified"
-          }
-        headers: []
-        description: 'Email not verified'
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Your account is pending admin approval"
-          }
-        headers: []
-        description: 'Freelancer not approved'
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/auth/clients/login
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Client Login.'
-      description: 'This endpoint authenticates client users and returns a JWT token.'
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Client email address.'
-        required: true
-        example: client@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: 'Client password (minimum 6 characters).'
-        required: true
-        example: password123
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: client@example.com
-      password: password123
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Login successful",
-            "user": {
-              "id": 2,
-              "name": "Jane Smith",
-              "email": "jane@example.com",
-              "type": "client",
-              "approval_status": "approved",
-              "is_active": 1,
-              "email_verified_at": "2025-08-24T10:30:00.000000Z",
-              "created_at": "2025-08-24T10:30:00.000000Z",
-              "updated_at": "2025-08-24T10:30:00.000000Z"
-            },
-            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The email field is required."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "status": false,
-            "error_num": 401,
-            "message": "Invalid password"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Account is blocked"
-          }
-        headers: []
-        description: 'Account blocked'
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Email is not verified"
-          }
-        headers: []
-        description: 'Email not verified'
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
     uri: api/admin/auth/login
     metadata:
       groupName: Endpoints
@@ -1227,17 +1127,22 @@ endpoints:
             "data": [
               {
                 "id": 1,
-                "name": "John Doe",
+                "first_name": "John",
+                "last_name": "Doe",
                 "email": "john@example.com",
                 "type": "freelancer",
                 "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "phone": null,
+                "is_active": true,
+                "about_me": null,
+                "profile_picture": null,
+                "approval_status": "requested",
                 "linkedin_link": "https://linkedin.com/in/johndoe",
                 "twitter_link": "https://twitter.com/johndoe",
                 "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
                 "portfolio_link": "https://johndoe.com",
-                "is_active": true,
-                "approval_status": "requested",
-                "rate": null,
+                "headline": null,
+                "description": null,
                 "created_at": "2025-08-24T10:30:00.000000Z",
                 "updated_at": "2025-08-24T10:30:00.000000Z"
               }
@@ -1357,10 +1262,16 @@ endpoints:
             "message": "Freelancer approved successfully",
             "data": {
               "id": 14,
-              "name": "احمد حسني",
+              "first_name": "احمد",
+              "last_name": "حسني",
               "email": "abdelrahmanelghonemypomac@gmail.com",
               "type": "freelancer",
               "email_verified_at": "2025-08-26T09:09:53.000000Z",
+              "phone": null,
+              "is_active": true,
+              "about_me": null,
+              "profile_picture": null,
+              "approval_status": "approved",
               "linkedin_link": "https://www.linkedin.com/in/muhammed-yousry96?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXWDAHlI8QB2HsM6PFNaclA%3D%3D",
               "twitter_link": "https://www.facebook.com/ahmedhosni516",
               "other_freelance_platform_links": [
@@ -1368,9 +1279,8 @@ endpoints:
                 "https://www.google.com"
               ],
               "portfolio_link": "https://www.facebook.com/ahmedhosni516",
-              "is_active": true,
-              "approval_status": "approved",
-              "rate": null,
+              "headline": null,
+              "description": null,
               "created_at": "2025-08-26T09:09:53.000000Z",
               "updated_at": "2025-08-27T08:49:50.000000Z"
             }
