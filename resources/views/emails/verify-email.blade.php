@@ -361,13 +361,13 @@
 </head>
 <body>
     <div class="email-container">
-        <div class="header" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; color: #1e3c72; padding: 40px 30px; text-align: center;background-color: #f8f9fa; border: 2px solid #dee2e6; border-radius: 12px;">
+        <div class="header" style="background-color: #1e3c72; color: white; padding: 40px 30px; text-align: center;">
             <div class="header-content">
-                <div class="company-logo" style="width: 60px; height: 60px; border-radius: 30px; margin: 0 auto 15px; display: block; text-align: center; line-height: 60px;">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="width: 80px; height: 80px; vertical-align: middle; object-fit: contain;">
+                <div class="company-logo" style="width: 60px; height: 60px;  border-radius: 30px; margin: 0 auto 15px; display: block; text-align: center; line-height: 60px;">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="width: 60px; height: 60px; vertical-align: middle; object-fit: contain;filter: brightness(0) saturate(100%) invert(99%) sepia(53%) saturate(0%) hue-rotate(144deg) brightness(114%) contrast(100%);">
                 </div>
-                <h1 style="color: #5660ff; font-size: 32px; margin-bottom: 10px; font-weight: 700;">{{ config('app.name') }}</h1>
-                <h2 style="font-size: 18px; font-weight: 400; margin: 0;color: #5660ff;">{{ __('message.email_verification') }}</h2>
+                <h1 style="color: white; font-size: 32px; margin-bottom: 10px; font-weight: 700;">{{ config('app.name') }}</h1>
+                <h2 style="font-size: 18px; font-weight: 400; margin: 0;">{{ __('message.email_verification') }}</h2>
             </div>
         </div>
 
