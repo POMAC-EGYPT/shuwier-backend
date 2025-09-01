@@ -361,10 +361,12 @@
 </head>
 <body>
     <div class="email-container">
-        <div class="header" style=" color: #1e3c72; padding: 40px 30px; text-align: center;">
-            <div class="header-content">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="margin: 0 auto 15px; width: 80px; height: 80px; vertical-align: middle; object-fit: contain;">
+        <div class="header" style=" color: #1e3c72; padding: 40px 30px; text-align: center;background: #1e3b727e;">
 
+            <div class="header-content">
+                <div class="company-logo" style="width: 60px; height: 60px; border-radius: 30px; margin: 0 auto 15px; display: block; text-align: center; line-height: 60px;">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="width: 80px; height: 80px; vertical-align: middle; object-fit: contain;">
+                </div>
                 <h1 style="color: #5660ff; font-size: 32px; margin-bottom: 10px; font-weight: 700;">{{ config('app.name') }}</h1>
                 <h2 style="font-size: 18px; font-weight: 400; margin: 0;color: #5660ff;">{{ __('message.email_verification') }}</h2>
             </div>
