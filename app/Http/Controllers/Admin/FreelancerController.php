@@ -291,7 +291,7 @@ class FreelancerController extends Controller
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);
 
-        if ($result['data'])
+        if (isset($result['data']))
             return Response::api(
                 $result['message'],
                 200,
