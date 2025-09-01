@@ -261,13 +261,14 @@ class AuthController extends Controller
     }
 
     /**
-     * Client Login.
+     * Login.
      * 
-     * This endpoint authenticates client users and returns a JWT token.
-     * 
-     * @bodyParam email string required Client email address. Example: client@example.com
-     * @bodyParam password string required Client password (minimum 6 characters). Example: password123
-     * 
+     * This endpoint authenticates users and returns a JWT token.
+     *
+     * @bodyParam email string required User email address. Example: user@example.com
+     * @bodyParam password string required User password (minimum 6 characters). Example: password123
+     * @bodyParam type string required User type (client or freelancer). Example: client
+     *
      * @response 200 {
      *   "status": true,
      *   "error_num": null,

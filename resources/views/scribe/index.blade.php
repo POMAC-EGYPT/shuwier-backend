@@ -84,7 +84,7 @@
                                 <a href="#endpoints-POSTapi-auth-reset-email">Reset Email Address.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-login">
-                                <a href="#endpoints-POSTapi-auth-login">Client Login.</a>
+                                <a href="#endpoints-POSTapi-auth-login">Login.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-forget-password">
                                 <a href="#endpoints-POSTapi-auth-forget-password">Forget Password - Send Reset Code.</a>
@@ -1050,12 +1050,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-auth-login">Client Login.</h2>
+                    <h2 id="endpoints-POSTapi-auth-login">Login.</h2>
 
 <p>
 </p>
 
-<p>This endpoint authenticates client users and returns a JWT token.</p>
+<p>This endpoint authenticates users and returns a JWT token.</p>
 
 <span id="example-requests-POSTapi-auth-login">
 <blockquote>Example request:</blockquote>
@@ -1068,7 +1068,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"email\": \"client@example.com\",
+    \"email\": \"user@example.com\",
     \"password\": \"password123\",
     \"type\": \"client\"
 }"
@@ -1087,7 +1087,7 @@ const headers = {
 };
 
 let body = {
-    "email": "client@example.com",
+    "email": "user@example.com",
     "password": "password123",
     "type": "client"
 };
@@ -1260,10 +1260,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-login"
-               value="client@example.com"
+               value="user@example.com"
                data-component="body">
     <br>
-<p>Client email address. Example: <code>client@example.com</code></p>
+<p>User email address. Example: <code>user@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1274,7 +1274,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="password123"
                data-component="body">
     <br>
-<p>Client password (minimum 6 characters). Example: <code>password123</code></p>
+<p>User password (minimum 6 characters). Example: <code>password123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -1286,8 +1286,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>User type (client or freelancer). Example: <code>client</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>client</code></li> <li><code>freelancer</code></li></ul>
         </div>
         </form>
 
@@ -1310,7 +1308,7 @@ Must be one of:
     --header "Accept-Language: en" \
     --data "{
     \"email\": \"qkunze@example.com\",
-    \"type\": \"freelancer\"
+    \"type\": \"client\"
 }"
 </code></pre></div>
 
@@ -1328,7 +1326,7 @@ const headers = {
 
 let body = {
     "email": "qkunze@example.com",
-    "type": "freelancer"
+    "type": "client"
 };
 
 fetch(url, {
@@ -1475,10 +1473,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-auth-forget-password"
-               value="freelancer"
+               value="client"
                data-component="body">
     <br>
-<p>Example: <code>freelancer</code></p>
+<p>Example: <code>client</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>client</code></li> <li><code>freelancer</code></li></ul>
         </div>

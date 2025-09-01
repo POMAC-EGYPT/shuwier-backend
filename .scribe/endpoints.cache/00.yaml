@@ -486,8 +486,8 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Client Login.'
-      description: 'This endpoint authenticates client users and returns a JWT token.'
+      title: Login.
+      description: 'This endpoint authenticates users and returns a JWT token.'
       authenticated: false
       deprecated: false
       custom: []
@@ -502,9 +502,9 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'Client email address.'
+        description: 'User email address.'
         required: true
-        example: client@example.com
+        example: user@example.com
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -512,7 +512,7 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Client password (minimum 6 characters).'
+        description: 'User password (minimum 6 characters).'
         required: true
         example: password123
         type: string
@@ -526,14 +526,12 @@ endpoints:
         required: true
         example: client
         type: string
-        enumValues:
-          - client
-          - freelancer
-        exampleWasSpecified: false
+        enumValues: []
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: client@example.com
+      email: user@example.com
       password: password123
       type: client
     fileParameters: []
@@ -652,7 +650,7 @@ endpoints:
         name: type
         description: ''
         required: true
-        example: freelancer
+        example: client
         type: string
         enumValues:
           - client
@@ -662,7 +660,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       email: qkunze@example.com
-      type: freelancer
+      type: client
     fileParameters: []
     responses:
       -
