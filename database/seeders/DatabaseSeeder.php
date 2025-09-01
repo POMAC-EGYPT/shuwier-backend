@@ -13,9 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            AdminTableSeeder::class,
-            PermissionTableSeeder::class,
-        ]);
+        // $this->call([
+        //     AdminTableSeeder::class,
+        //     PermissionTableSeeder::class,
+        // ]);
+        User::factory()->count(30)->state([
+            'type' => 'freelancer',
+            'approval_status' => 'requested',
+        ])->create();
     }
 }
