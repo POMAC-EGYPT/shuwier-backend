@@ -361,8 +361,7 @@
 </head>
 <body>
     <div class="email-container">
-        <div class="header" style=" color: #1e3c72; padding: 40px 30px; text-align: center;background: #1e3b727e;">
-
+        <div class="header" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; color: #1e3c72; padding: 40px 30px; text-align: center;background-color: #f8f9fa; border: 2px solid #dee2e6; border-radius: 12px;">
             <div class="header-content">
                 <div class="company-logo" style="width: 60px; height: 60px; border-radius: 30px; margin: 0 auto 15px; display: block; text-align: center; line-height: 60px;">
                     <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="width: 80px; height: 80px; vertical-align: middle; object-fit: contain;">
