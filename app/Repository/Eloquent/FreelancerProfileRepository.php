@@ -8,14 +8,6 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class FreelancerProfileRepository implements FreelancerProfileRepositoryInterface
 {
-    public function getAll(?string $approvalStatus = null, ?string $isActive = null, int $perPage = 10): ?LengthAwarePaginator
-    {
-        return FreelancerProfile::query()
-            ->when($approvalStatus, fn($query) => $query->where('approval_status', $approvalStatus))
-            ->when(!is_null($isActive), fn($query) => $query->where('is_active', $isActive))
-            ->paginate($perPage);
-    }
-
     public function findOrFail(int $id): ?FreelancerProfile
     {
         return FreelancerProfile::findOrFail($id);

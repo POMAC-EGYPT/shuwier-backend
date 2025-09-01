@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('about_me')->nullable();
             $table->string('profile_picture')->nullable();
             $table->string('company')->nullable();
+            $table->enum('approval_status', ['requested', 'approved', 'rejected'])->default('requested');
             $table->rememberToken();
             $table->timestamps();
         });

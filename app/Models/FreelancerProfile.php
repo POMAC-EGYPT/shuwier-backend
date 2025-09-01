@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enum\ApprovalStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class FreelancerProfile extends Model
@@ -13,14 +12,11 @@ class FreelancerProfile extends Model
         'other_freelance_platform_links',
         'portfolio_link',
         'headline',
-        'description',
-        'approval_status',
         'user_id'
     ];
 
     protected $casts = [
         'other_freelance_platform_links' => 'array',
-        'approval_status' => ApprovalStatus::class
     ];
 
     public function user()

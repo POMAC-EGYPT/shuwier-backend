@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Enum\ApprovalStatus;
 use App\Enum\UserType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -33,6 +34,7 @@ class User extends Authenticatable implements JWTSubject
         'about_me',
         'profile_picture',
         'company',
+        'approval_status',
         'email_verified_at',
     ];
 
@@ -54,7 +56,8 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
         'is_active' => 'boolean',
-        'user_type' => UserType::class
+        'user_type' => UserType::class,
+        'approval_status' => ApprovalStatus::class
     ];
 
     #[Scope]

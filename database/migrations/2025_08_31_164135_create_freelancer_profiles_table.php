@@ -18,8 +18,6 @@ return new class extends Migration
             $table->json('other_freelance_platform_links')->nullable();
             $table->string('portfolio_link')->nullable();
             $table->string('headline')->nullable();
-            $table->text('description')->nullable();
-            $table->enum('approval_status', ['requested', 'approved', 'rejected'])->default('requested');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

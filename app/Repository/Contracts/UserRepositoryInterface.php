@@ -3,9 +3,12 @@
 namespace App\Repository\Contracts;
 
 use App\Models\User;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface UserRepositoryInterface
 {
+    public function getFreelancersWithFilter(?string $approvalStatus = null, ?string $isActive = null, int $perPage = 10): ?LengthAwarePaginator;
+
     public function findOrFail(int $id): ?User;
 
     public function findByEmail(string $email): ?User;
@@ -17,4 +20,6 @@ interface UserRepositoryInterface
     public function update(int $id, array $data): bool;
 
     public function delete(int $id): bool;
+
+    public function findFreelancer(int $id): ?User;
 }

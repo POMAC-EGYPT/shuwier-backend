@@ -87,6 +87,7 @@ class FreelancerController extends Controller
     public function index(Request $request)
     {
         $this->checkPermission('freelancer.viewAny');
+
         $validator = Validator::make($request->all(), [
             'approval_status' => 'nullable|in:requested,approved',
             'is_active' => 'nullable|in:0,1'

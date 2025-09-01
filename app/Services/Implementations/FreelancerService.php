@@ -22,30 +22,29 @@ class FreelancerService implements FreelancerServiceInterface
 
     public function list(?string $approvalStatus, ?string $isActive, int $perPage): array
     {
-        $freelancers = $this->freelancerProfileRepo->getAll($approvalStatus, $isActive, $perPage);
+        $freelancers = $this->userRepo->getFreelancersWithFilter($approvalStatus, $isActive, $perPage);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $freelancers];
     }
 
     public function approveOrReject(int $id, string $action): array
     {
-        $freelancer = $this->userRepo->findOrFail($id);
-        $freelancer->load('freelancerProfile');
-        if ($freelancer->freelancerProfile->approval_status === ApprovalStatus::APPROVED)
+        $freelancer = $this->userRepo->findFreelancer($id);
+
+        if ($freelancer->approval_status === ApprovalStatus::APPROVED)
             return ['status' => false, 'message' => __('message.freelancer_already_approved')];
 
         if ($action == 'reject') {
             $freelancer->delete();
             return ['status' => true, 'message' => __('message.freelancer_rejected_success')];
         } elseif ($action === 'approve') {
-            $this->freelancerProfileRepo->update(
-                $freelancer->freelancerProfile->id,
+            $this->userRepo->update(
+                $freelancer->id,
                 [
                     'approval_status' => ApprovalStatus::APPROVED
                 ]
             );
-
-            $freelancer->freelancerProfile->refresh();
+            $freelancer->load('freelancerProfile');
 
             Mail::to($freelancer->email)->send(new FreelanceApproveMail($freelancer));
             return [

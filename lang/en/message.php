@@ -65,4 +65,5 @@ return [
     'freelancer_management_department' => 'Freelancer Management Department',
     'user_not_found' => 'User not found',
     'email_verification_success' => 'Email verification successfully',
+    'invalid_action' => 'Invalid action',
 ];

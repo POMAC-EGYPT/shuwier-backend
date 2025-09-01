@@ -8,6 +8,7 @@ use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
 use App\Services\Contracts\Auth\AuthUserServiceInterface;
 use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -76,6 +77,7 @@ class AuthUserService implements AuthUserServiceInterface
                 'type'                            => $result['data']['type'],
                 'email_verified_at'               => now(),
                 'is_active'                       => 1,
+                'approval_status'                 => $result['data']['type'] == UserType::FREELANCER->value ? ApprovalStatus::REQUESTED : ApprovalStatus::APPROVED,
             ]);
 
             if ($result['data']['type'] == UserType::FREELANCER->value) {
@@ -85,7 +87,6 @@ class AuthUserService implements AuthUserServiceInterface
                     'twitter_link'                    => $result['data']['twitter_link'],
                     'other_freelance_platform_links'  => json_encode($result['data']['other_freelance_platform_links']),
                     'portfolio_link'                  => $result['data']['portfolio_link'],
-                    'approval_status'                 => ApprovalStatus::REQUESTED,
                 ]);
             }
 
