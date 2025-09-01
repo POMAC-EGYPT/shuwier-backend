@@ -8,6 +8,7 @@ use App\Http\Resources\BaseResource;
 use App\Http\Resources\FreelancerResource;
 use App\Mail\FreelanceApproveMail;
 use App\Models\User;
+use App\Services\Contracts\FreelancerServiceInterface;
 use App\Traits\AuthorizesAdminActions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,6 +18,12 @@ use Illuminate\Support\Facades\Validator;
 class FreelancerController extends Controller
 {
     use AuthorizesAdminActions;
+    protected $freelancerService;
+
+    public function __construct(FreelancerServiceInterface $freelancerService)
+    {
+        $this->freelancerService = $freelancerService;
+    }
 
     /**
      * Display a listing of freelancers with optional filters.
@@ -88,19 +95,18 @@ class FreelancerController extends Controller
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $freelancers = User::freelancers()
-            ->when($request->approval_status, function ($query) use ($request) {
-                return $query->where('approval_status', $request->approval_status);
-            })->when($request->has('is_active') && $request->is_active != '', function ($query) use ($request) {
-                return $query->where('is_active', $request->is_active);
-            })->paginate(10);
+        $result = $this->freelancerService->list(
+            $request->approval_status,
+            $request->is_active,
+            10
+        );
 
         return Response::api(
-            __('message.success'),
+            $result['message'],
             200,
             true,
             null,
-            BaseResource::make(FreelancerResource::collection($freelancers))
+            BaseResource::make(FreelancerResource::collection($result['data']))
         );
     }
 
@@ -263,27 +269,17 @@ class FreelancerController extends Controller
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $freelancer = User::freelancers()->findOrFail($id);
+        $result = $this->freelancerService->approveOrReject($id, $request->action);
 
-        if ($freelancer->approval_status === ApprovalStatus::APPROVED)
-            return Response::api(__('message.freelancer_already_approved'), 400, false);
+        if (!$result['status'])
+            return Response::api($result['message'], 400, false, 400);
 
-        if ($request->action == 'reject') {
-            $freelancer->delete();
-            return Response::api(__('message.freelancer_rejected_success'), 200, true, null);
-        } elseif ($request->action === 'approve') {
-            $freelancer->approval_status = ApprovalStatus::APPROVED;
-            $freelancer->save();
-
-            Mail::to($freelancer->email)->send(new FreelanceApproveMail($freelancer));
-
-            return Response::api(
-                __('message.freelancer_approved_success'),
-                200,
-                true,
-                null,
-                BaseResource::make(FreelancerResource::make($freelancer))
-            );
-        }
+        return Response::api(
+            $result['message'],
+            200,
+            true,
+            null,
+            BaseResource::make(FreelancerResource::make($result['data']))
+        );
     }
 }

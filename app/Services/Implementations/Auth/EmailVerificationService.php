@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\Implementations;
+namespace App\Services\Implementations\Auth;
 
 use App\Mail\VerifyEmail;
-use App\Services\Contracts\EmailVerificationServiceInterface;
+use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 

@@ -69,6 +69,11 @@ class User extends Authenticatable implements JWTSubject
         return $query->where('type', UserType::CLIENT);
     }
 
+    public function freelancerProfile()
+    {
+        return $this->hasOne(FreelancerProfile::class);
+    }
+
     /**
      * Get the identifier that will be stored in the JWT token.
      */

@@ -16,8 +16,8 @@ use App\Http\Resources\ClientResource;
 use App\Http\Resources\FreelancerResource;
 use App\Models\User;
 use App\Rules\EmailRule;
-use App\Services\Contracts\AuthUserServiceInterface;
-use App\Services\Contracts\EmailVerificationServiceInterface;
+use App\Services\Contracts\Auth\AuthUserServiceInterface;
+use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
 use App\Services\Contracts\LoginServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -31,13 +31,11 @@ class AuthController extends Controller
 {
 
     protected $verifyService;
-    protected $loginService;
     protected $authUserService;
 
-    public function __construct(EmailVerificationServiceInterface $verifyService, LoginServiceInterface $loginService, AuthUserServiceInterface $authUserService)
+    public function __construct(EmailVerificationServiceInterface $verifyService, AuthUserServiceInterface $authUserService)
     {
         $this->verifyService = $verifyService;
-        $this->loginService = $loginService;
         $this->authUserService = $authUserService;
     }
 
@@ -63,7 +61,7 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $result = $this->verifyService->sendVerificationCode([
+        $result = $this->authUserService->register([
             'name'                             => $request->name,
             'email'                            => $request->email,
             'password'                         => $request->password,
@@ -113,7 +111,7 @@ class AuthController extends Controller
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $result = $this->verifyService->resendVerificationCode($request->email);
+        $result = $this->authUserService->resendCode($request->email);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
@@ -199,42 +197,31 @@ class AuthController extends Controller
      */
     public function verifyEmail(VerifyEmailRequest $request)
     {
-        $result = $this->verifyService->verifyCode($request->email, $request->otp);
+        $result = $this->authUserService->verifyEmail($request->email, $request->otp);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
 
-        if ($result['data']['type'] != 'forget_password') {
-            if ($result['data']['type'] == 'freelancer')
-                $result['data']['other_freelance_platform_links'] = array_values($result['data']['other_freelance_platform_links']);
+        $user = $result['data']['user'] ?? null;
 
-            $user = User::create([
-                'name'                            => $result['data']['name'],
-                'email'                           => $result['data']['email'],
-                'password'                        => Hash::make($result['data']['password']),
-                'type'                            => $result['data']['type'],
-                'email_verified_at'               => now(),
-                'linkedin_link'                   => $result['data']['type'] == UserType::FREELANCER->value ? $result['data']['linkedin_link'] : null,
-                'twitter_link'                    => $result['data']['type'] == UserType::FREELANCER->value ? $result['data']['twitter_link'] : null,
-                'other_freelance_platform_links'  => $result['data']['type'] == UserType::FREELANCER->value ? json_encode($result['data']['other_freelance_platform_links']) : null,
-                'portfolio_link'                  => $result['data']['type'] == UserType::FREELANCER->value ? $result['data']['portfolio_link'] : null,
-                'is_active'                       => 1,
-                'approval_status'                 => $result['data']['type'] == UserType::FREELANCER->value ? ApprovalStatus::REQUESTED->value : ApprovalStatus::APPROVED->value,
-            ]);
+        if ($user) {
+            $resource = $user->type == UserType::FREELANCER->value
+                ? FreelancerResource::make($user)
+                : ClientResource::make($user);
 
-            if ($result['data']['type'] == UserType::FREELANCER->value)
-                return Response::api(__('message.user_registered'), 200, true, null, [
-                    'user' => BaseResource::make(FreelancerResource::make($user)),
-                    'token' => JWTAuth::fromUser($user),
-                ]);
-
-            return Response::api(__('message.user_registered'), 200, true, null, [
-                'user' => BaseResource::make(ClientResource::make($user)),
-                'token' => JWTAuth::fromUser($user),
-            ]);
-        } else {
-            return Response::api($result['message'], 200, true, null);
+            return Response::api(
+                $result['message'],
+                200,
+                true,
+                null,
+                [
+                    'user'  => $resource,
+                    'token' => $result['data']['token'],
+                ]
+            );
         }
+
+        return Response::api($result['message'], 200, true, null);
     }
 
     /**
@@ -259,7 +246,7 @@ class AuthController extends Controller
      */
     public function resetEmail(ResetEmail $request)
     {
-        $result = $this->verifyService->resetEmail($request->old_email, $request->new_email);
+        $result = $this->authUserService->resetEmail($request->old_email, $request->new_email);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
@@ -317,91 +304,23 @@ class AuthController extends Controller
      *   "message": "The email field is required."
      * }
      */
-    public function loginClient(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
-        $result = $this->authUserService->login($request->email, $request->password, UserType::CLIENT->value);
+        $result = $this->authUserService->login($request->email, $request->password, $request->type);
 
-
-        if (!$result['success'])
+        if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
 
-        return Response::api(__('message.login_success'), 200, true, null, [
+        if ($result['data']['user']['type'] == 'freelancer')
+            return Response::api($result['message'], 200, true, null, [
+                'user' => BaseResource::make(FreelancerResource::make($result['data']['user'])),
+                'token' => $result['data']['token'],
+            ]);
+
+        return Response::api($result['message'], 200, true, null, [
             'user' => BaseResource::make(ClientResource::make($result['data']['user'])),
             'token' => $result['data']['token'],
         ]);
-    }
-
-    /**
-     * Freelancer Login.
-     * 
-     * This endpoint authenticates freelancer users and returns a JWT token.
-     * 
-     * @bodyParam email string required Freelancer email address. Example: freelancer@example.com
-     * @bodyParam password string required Freelancer password (minimum 6 characters). Example: password123
-     * 
-     * @response 200 {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "Login successful",
-     *   "user": {
-     *     "id": 1,
-     *     "name": "John Doe",
-     *     "email": "john@example.com",
-     *     "type": "freelancer",
-     *     "approval_status": "approved",
-     *     "is_active": 1,
-     *     "linkedin_link": "https://linkedin.com/in/johndoe",
-     *     "twitter_link": "https://twitter.com/johndoe",
-     *     "portfolio_link": "https://johndoe.com",
-     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
-     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
-     *     "created_at": "2025-08-24T10:30:00.000000Z",
-     *     "updated_at": "2025-08-24T10:30:00.000000Z"
-     *   },
-     *   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-     * }
-     *
-     * @response 401 {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Invalid password"
-     * }
-     *
-     * @response 403 scenario="Account blocked" {
-     *   "status": false,
-     *   "error_num": 403,
-     *   "message": "Account is blocked"
-     * }
-     *
-     * @response 403 scenario="Email not verified" {
-     *   "status": false,
-     *   "error_num": 403,
-     *   "message": "Email is not verified"
-     * }
-     *
-     * @response 403 scenario="Freelancer not approved" {
-     *   "status": false,
-     *   "error_num": 403,
-     *   "message": "Your account is pending admin approval"
-     * }
-     *
-     * @response 400 {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "The email field is required."
-     * }
-     */
-    public function loginFreelancer(LoginRequest $request)
-    {
-        // $result = $this->loginService->login($request->email, $request->password, UserType::FREELANCER->value . 's');
-
-        // if (!$result['success'])
-        //     return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
-
-        // return Response::api(__('message.login_success'), 200, true, null, [
-        //     'user' => BaseResource::make(FreelancerResource::make($result['data']['user'])),
-        //     'token' => $result['data']['token'],
-        // ]);
     }
 
     /**
@@ -434,36 +353,19 @@ class AuthController extends Controller
                 'required',
                 'email:rfc,dns',
                 'exists:users,email',
-
             ],
+            'type' => 'required|string|in:client,freelancer',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $user = User::where('email', $request->email)->first();
-
-        $token = Str::random(60);
-
-        $result = $this->verifyService->sendVerificationCode([
-            'email'   => $user->email,
-            'type'    => 'forget_password',
-            'user_id' => $user->id,
-            'token'   => $token,
-        ]);
+        $result = $this->authUserService->forgetPassword($request->email, $request->type);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
 
-
-        Cache::put('forget_password_' . $user->email, [
-            'email'   => $user->email,
-            'type'    => 'forget_password',
-            'user_id' => $user->id,
-            'token'   => $token,
-        ]);
-
-        return Response::api($result['message'], 200, true, null, ['token' => $token]);
+        return Response::api($result['message'], 200, true, null, ['token' => $result['token']]);
     }
 
     /**
@@ -500,25 +402,12 @@ class AuthController extends Controller
      */
     public function resetPassword(ResetPasswordRequest $request)
     {
-        $cached = Cache::get('forget_password_' . $request->email);
+        $result = $this->authUserService->resetPassword($request->email, $request->password, $request->token);
 
-        if (!$cached)
-            return Response::api(__('message.verification_session_expired'), 400, false, 400);
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
 
-        if (!isset($cached['is_verified_forget_password']) || !$cached['is_verified_forget_password'])
-            return Response::api(__('message.verification_code_not_verified'), 400, false, 400);
-
-        if ($cached['token'] != $request->token)
-            return Response::api(__('message.invalid_token'), 400, false, 400);
-
-        $user = User::find($cached['user_id']);
-
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        Cache::forget('forget_password_' . $user->email);
-
-        return Response::api(__('message.password_reset_success'), 200, true, null);
+        return Response::api($result['message'], 200, true, null);
     }
 
     /**

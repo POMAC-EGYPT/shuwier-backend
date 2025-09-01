@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Services\Implementations;
+
+use App\Enum\ApprovalStatus;
+use App\Mail\FreelanceApproveMail;
+use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
+use App\Repository\Contracts\UserRepositoryInterface;
+use App\Services\Contracts\FreelancerServiceInterface;
+use Illuminate\Support\Facades\Mail;
+
+class FreelancerService implements FreelancerServiceInterface
+{
+    protected $freelancerProfileRepo;
+    protected $userRepo;
+
+    public function __construct(FreelancerProfileRepositoryInterface $freelancerProfileRepo, UserRepositoryInterface $userRepo)
+    {
+        $this->freelancerProfileRepo = $freelancerProfileRepo;
+        $this->userRepo = $userRepo;
+    }
+
+    public function list(?string $approvalStatus, ?string $isActive, int $perPage): array
+    {
+        $freelancers = $this->freelancerProfileRepo->getAll($approvalStatus, $isActive, $perPage);
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $freelancers];
+    }
+
+    public function approveOrReject(int $id, string $action): array
+    {
+        $freelancer = $this->userRepo->findOrFail($id);
+        $freelancer->load('freelancerProfile');
+        if ($freelancer->freelancerProfile->approval_status === ApprovalStatus::APPROVED)
+            return ['status' => false, 'message' => __('message.freelancer_already_approved')];
+
+        if ($action == 'reject') {
+            $freelancer->delete();
+            return ['status' => true, 'message' => __('message.freelancer_rejected_success')];
+        } elseif ($action === 'approve') {
+            $this->freelancerProfileRepo->update(
+                $freelancer->freelancerProfile->id,
+                [
+                    'approval_status' => ApprovalStatus::APPROVED
+                ]
+            );
+
+            $freelancer->freelancerProfile->refresh();
+
+            Mail::to($freelancer->email)->send(new FreelanceApproveMail($freelancer));
+            return [
+                'status' => true,
+                'message' => __('message.freelancer_approved_success'),
+                'data' => $freelancer
+            ];
+        }
+        return ['status' => false, 'message' => __('message.invalid_action')];
+    }
+}

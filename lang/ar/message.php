@@ -64,4 +64,5 @@ return [
     'welcome_aboard' => 'أهلاً وسهلاً بك',
     'freelancer_management_department' => 'قسم إدارة مقدمي الخدمات',
     'user_not_found' => 'لم يتم العثور على المستخدم',
+    'email_verification_success' => 'تم التحقق من البريد الإلكتروني بنجاح'
 ];

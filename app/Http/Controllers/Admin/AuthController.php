@@ -8,6 +8,7 @@ use App\Http\Resources\AdminResource;
 use App\Http\Resources\BaseResource;
 use App\Models\Admin;
 use App\Models\User;
+use App\Services\Contracts\Auth\AuthAdminServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
@@ -15,6 +16,13 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
+    protected $authAdminService;
+
+    public function __construct(AuthAdminServiceInterface $authAdminService)
+    {
+        $this->authAdminService = $authAdminService;
+    }
+
     /**
      * Admin Login.
      * @response 200 {
@@ -55,19 +63,15 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $admin = Admin::where('email', $request->email)->first();
+        $response = $this->authAdminService->login($request->email, $request->password);
 
-        if (!$admin)
-            return Response::api(__('message.email_not_found'), 404, false, 404);
-
-        if (!Hash::check($request->password, $admin->password))
-            return Response::api(__('message.invalid_password'), 400, false, 400);
-
-        $token = JWTAuth::fromUser($admin);
+        if (!$response['status']) {
+            return Response::api($response['message'], $response['error_num'], false, $response['error_num']);
+        }
 
         return Response::api(__('message.login_success'), 200, true, null, [
-            'admin' => BaseResource::make(AdminResource::make($admin)),
-            'token' => $token,
+            'admin' => BaseResource::make(AdminResource::make($response['data']['admin'])),
+            'token' => $response['data']['token'],
         ]);
     }
 }

@@ -13,9 +13,11 @@ use Illuminate\Contracts\Validation\Validator;
  * Handles the validation of login requests for users.
  * @param string $email
  * @param string $password
+ * @param string $type
  *
  * @property string $email
  * @property string $password
+ * @property string $type
  */
 class LoginRequest extends FormRequest
 {
@@ -49,6 +51,7 @@ class LoginRequest extends FormRequest
                 new EmailRule,
             ],
             'password' => 'required|string|min:6',
+            'type'     => 'required|in:client,freelancer',
         ];
     }
 
