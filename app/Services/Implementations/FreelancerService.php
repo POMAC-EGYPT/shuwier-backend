@@ -11,12 +11,10 @@ use Illuminate\Support\Facades\Mail;
 
 class FreelancerService implements FreelancerServiceInterface
 {
-    protected $freelancerProfileRepo;
     protected $userRepo;
 
-    public function __construct(FreelancerProfileRepositoryInterface $freelancerProfileRepo, UserRepositoryInterface $userRepo)
+    public function __construct(UserRepositoryInterface $userRepo)
     {
-        $this->freelancerProfileRepo = $freelancerProfileRepo;
         $this->userRepo = $userRepo;
     }
 
