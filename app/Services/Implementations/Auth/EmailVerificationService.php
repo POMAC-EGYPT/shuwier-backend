@@ -52,14 +52,14 @@ class EmailVerificationService implements EmailVerificationServiceInterface
                 ];
             }
 
-            $otp = 1234; // أو rand(1000, 9999);
+            $otp = rand(1000, 9999);
             $cached['otp'] = $otp;
             $cached['otp_time'] = $now;
             $cached['send_time'] = $now;
             $cached['attempts']++;
 
             Cache::put($key, $cached, $this->cacheTTL);
-            Mail::to($data['email'])->send(new VerifyEmail($otp));
+            Mail::to($data['email'])->queue(new VerifyEmail($otp));
 
             return [
                 'status' => true,
@@ -67,7 +67,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
             ];
         }
 
-        $otp = 1234; // أو rand(1000, 9999);
+        $otp = rand(1000, 9999);
 
         Cache::put($key, [
             'data'         => $data,
@@ -78,7 +78,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
             'window_start' => $now,
         ], $this->cacheTTL);
 
-        Mail::to($data['email'])->send(new VerifyEmail($otp));
+        Mail::to($data['email'])->queue(new VerifyEmail($otp));
 
         return [
             'status' => true,
@@ -131,7 +131,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
         }
 
         // Generate OTP
-        $otp = 1234; // أو rand(1000, 9999)
+        $otp = rand(1000, 9999);
 
         $cached['otp'] = $otp;
         $cached['otp_time'] = $now;
@@ -139,7 +139,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
         $cached['attempts']++;
 
         Cache::put($key, $cached, $this->cacheTTL);
-        Mail::to($email)->send(new VerifyEmail($otp));
+        Mail::to($email)->queue(new VerifyEmail($otp));
 
         return [
             'status' => true,
@@ -234,7 +234,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
         $data = $cached['data'];
         $data['email'] = $newEmail;
 
-        $otp = 1234; // أو rand(1000, 9999)
+        $otp = rand(1000, 9999);
 
         $newKey = "verify_{$newEmail}";
         Cache::put($newKey, [
@@ -248,7 +248,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
 
         Cache::forget($oldKey);
 
-        Mail::to($newEmail)->send(new VerifyEmail($otp));
+        Mail::to($newEmail)->queue(new VerifyEmail($otp));
 
         return [
             'status' => true,
