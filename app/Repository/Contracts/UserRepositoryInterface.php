@@ -7,9 +7,9 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface UserRepositoryInterface
 {
-    public function getFreelancersWithFilter(?string $approvalStatus = null, ?string $isActive = null, int $perPage = 10): ?LengthAwarePaginator;
+    public function getFreelancersWithFilter(?string $approvalStatus = null, ?string $isActive = null, ?string $name = null, int $perPage = 10): ?LengthAwarePaginator;
 
-    public function findOrFail(int $id): ?User;
+    public function find(int $id): ?User;
 
     public function findByEmail(string $email): ?User;
 

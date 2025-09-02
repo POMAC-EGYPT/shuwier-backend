@@ -9,16 +9,20 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function getFreelancersWithFilter(?string $approvalStatus = null, ?string $isActive = null, int $perPage = 10): ?LengthAwarePaginator
+    public function getFreelancersWithFilter(?string $approvalStatus = null, ?string $isActive = null, ?string $name = null, int $perPage = 10): ?LengthAwarePaginator
     {
         return User::with('freelancerProfile')
             ->freelancers()
             ->when($approvalStatus, fn($query) => $query->where('approval_status', $approvalStatus))
             ->when(!is_null($isActive), fn($query) => $query->where('is_active', $isActive))
+            ->when($name, function ($query) use ($name) {
+                $query->where('first_name', 'like', "%{$name}%")
+                    ->orWhere('last_name', 'like', "%{$name}%");
+            })
             ->paginate($perPage);
     }
 
-    public function findOrFail(int $id): ?User
+    public function find(int $id): ?User
     {
         return User::findOrFail($id);
     }
@@ -40,14 +44,14 @@ class UserRepository implements UserRepositoryInterface
 
     public function update(int $id, array $data): bool
     {
-        $user = $this->findOrFail($id);
+        $user = $this->find($id);
 
         return $user->update($data);
     }
 
     public function delete(int $id): bool
     {
-        $user = $this->findOrFail($id);
+        $user = $this->find($id);
 
         return $user->delete();
     }

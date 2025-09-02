@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enum\ApprovalStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Freelancer\StoreFreelancerRequest;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\FreelancerResource;
 use App\Mail\FreelanceApproveMail;
@@ -15,6 +16,13 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @group Admin Freelancer Management
+ * 
+ * APIs for managing freelancers in the admin panel.
+ * These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+ * including approving or rejecting freelancer applications.
+ */
 class FreelancerController extends Controller
 {
     use AuthorizesAdminActions;
@@ -27,9 +35,16 @@ class FreelancerController extends Controller
 
     /**
      * Display a listing of freelancers with optional filters.
+     * 
+     * This endpoint returns a paginated list of all freelancers in the system.
+     * Results can be filtered by approval status, active status, and name.
+     * The response includes pagination metadata for easy navigation.
+     * 
      * @authenticated
-     * @queryParam approval_status string Optional filter by approval status (requested, approved). Example: requested
-     * @queryParam is_active integer Optional filter by active status (0 or 1). Example: 1
+     * @queryParam approval_status string Optional filter by approval status. Must be "requested" or "approved". Example: requested
+     * @queryParam is_active integer Optional filter by active status. Must be 0 (inactive) or 1 (active). Example: 1
+     * @queryParam name string Optional filter by freelancer name (searches in first_name). Example: أحمد
+     * @queryParam page integer Optional page number for pagination (default: 1). Example: 2
      * @response 200 {
      *   "status": true,
      *   "error_num": null,
@@ -95,7 +110,8 @@ class FreelancerController extends Controller
 
         $validator = Validator::make($request->all(), [
             'approval_status' => 'nullable|in:requested,approved',
-            'is_active' => 'nullable|in:0,1'
+            'is_active'       => 'nullable|in:0,1',
+            'name'            => 'nullable|string|max:255'
         ]);
 
         if ($validator->fails())
@@ -104,6 +120,7 @@ class FreelancerController extends Controller
         $result = $this->freelancerService->list(
             $request->approval_status,
             $request->is_active,
+            $request->name,
             10
         );
 
@@ -116,13 +133,108 @@ class FreelancerController extends Controller
         );
     }
 
-    // /**
-    //  * Store a newly created resource in storage.
-    //  */
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
+    /**
+     * Create a new freelancer account.
+     * 
+     * This endpoint allows admins to create new freelancer accounts directly from the admin panel.
+     * The freelancer will be created with the specified approval status and can be marked as active/inactive.
+     * 
+     * @authenticated
+     * @bodyParam first_name string required The freelancer's first name. Example: أحمد
+     * @bodyParam last_name string The freelancer's last name. Example: محمد
+     * @bodyParam email string required The freelancer's email address (must be unique). Example: ahmed@example.com
+     * @bodyParam phone string The freelancer's phone number. Example: +201234567890
+     * @bodyParam password string The freelancer's password (if not provided, a random one will be generated). Example: Password123!
+     * @bodyParam is_active boolean required Whether the freelancer account is active (true) or inactive (false). Example: true
+     * @bodyParam about_me string A brief description about the freelancer. Example: خبير في تطوير المواقع الإلكترونية
+     * @bodyParam profile_picture file The freelancer's profile picture.
+     * @bodyParam approval_status string required The approval status. Must be "requested" or "approved". Example: approved
+     * @bodyParam linkedin_link string The freelancer's LinkedIn profile URL. Example: https://linkedin.com/in/ahmed
+     * @bodyParam twitter_link string The freelancer's Twitter profile URL. Example: https://twitter.com/ahmed
+     * @bodyParam other_freelance_platform_links array An array of other freelance platform URLs. Example: ["https://upwork.com/freelancers/ahmed"]
+     * @bodyParam portfolio_link string The freelancer's portfolio website URL. Example: https://ahmed-portfolio.com
+     * @bodyParam headline string A short professional headline. Example: Full Stack Developer
+     * 
+     * @response 200 scenario="Freelancer created successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Freelancer created successfully",
+     *   "data": {
+     *     "id": 15,
+     *     "first_name": "أحمد",
+     *     "last_name": "محمد",
+     *     "email": "ahmed@example.com",
+     *     "type": "freelancer",
+     *     "email_verified_at": "2025-09-02T10:30:00.000000Z",
+     *     "phone": "+201234567890",
+     *     "is_active": true,
+     *     "about_me": "خبير في تطوير المواقع الإلكترونية",
+     *     "profile_picture": null,
+     *     "approval_status": "approved",
+     *     "linkedin_link": "https://linkedin.com/in/ahmed",
+     *     "twitter_link": "https://twitter.com/ahmed",
+     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+     *     "portfolio_link": "https://ahmed-portfolio.com",
+     *     "headline": "Full Stack Developer",
+     *     "description": null,
+     *     "created_at": "2025-09-02T10:30:00.000000Z",
+     *     "updated_at": "2025-09-02T10:30:00.000000Z"
+     *   }
+     * }
+     *
+     * @response 400 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email field is required."
+     * }
+     *
+     * @response 400 scenario="Email already exists" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email has already been taken."
+     * }
+     *
+     * @response 403 {
+     *   "status": false,
+     *   "error_num": 403,
+     *   "message": "You don't have permission to access this resource"
+     * }
+     *
+     * @response 401 {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     */
+    public function store(StoreFreelancerRequest $request)
+    {
+        $this->checkPermission('freelancer.create');
+
+        $result = $this->freelancerService->create([
+            'first_name'                       => $request->first_name,
+            'last_name'                        => $request->last_name ?? null,
+            'email'                            => $request->email,
+            'phone'                            => $request->phone ?? null,
+            'password'                         => $request->password ?? null,
+            'is_active'                        => $request->is_active,
+            'about_me'                         => $request->about_me ?? null,
+            'profile_picture'                  => $request->profile_picture ?? null,
+            'approval_status'                  => $request->approval_status,
+            'linkedin_link'                    => $request->linkedin_link ?? null,
+            'twitter_link'                     => $request->twitter_link ?? null,
+            'other_freelance_platform_links'   => $request->other_freelance_platform_links ?? null,
+            'portfolio_link'                   => $request->portfolio_link ?? null,
+            'headline'                         => $request->headline ?? null,
+        ]);
+
+        return Response::api(
+            $result['message'],
+            200,
+            true,
+            null,
+            BaseResource::make(new FreelancerResource($result['data']))
+        );
+    }
 
     // /**
     //  * Display the specified resource.
@@ -176,26 +288,141 @@ class FreelancerController extends Controller
      *   "message": "Unauthenticated"
      * }
      */
-    // public function show(string $id)
-    // {
-    //     //
-    // }
+    public function show(string $id)
+    {
+        $this->checkPermission('freelancer.view');
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
+        $result = $this->freelancerService->getFreelancerById($id);
+
+        return Response::api(
+            $result['message'],
+            200,
+            true,
+            null,
+            BaseResource::make(new FreelancerResource($result['data']))
+        );
+    }
+
+    /**
+     * Update an existing freelancer account.
+     * 
+     * This endpoint allows admins to update freelancer account information.
+     * Only provided fields will be updated, other fields will remain unchanged.
+     * 
+     * @authenticated
+     * @urlParam id integer required The ID of the freelancer to update. Example: 1
+     * @bodyParam first_name string The freelancer's first name. Example: أحمد
+     * @bodyParam last_name string The freelancer's last name. Example: محمد  
+     * @bodyParam email string The freelancer's email address (must be unique). Example: ahmed@example.com
+     * @bodyParam phone string The freelancer's phone number. Example: +201234567890
+     * @bodyParam is_active boolean Whether the freelancer account is active. Example: true
+     * @bodyParam about_me string A brief description about the freelancer. Example: خبير في تطوير المواقع
+     * @bodyParam profile_picture file The freelancer's profile picture.
+     * @bodyParam approval_status string The approval status. Must be "requested" or "approved". Example: approved
+     * @bodyParam linkedin_link string The freelancer's LinkedIn profile URL. Example: https://linkedin.com/in/ahmed
+     * @bodyParam twitter_link string The freelancer's Twitter profile URL. Example: https://twitter.com/ahmed
+     * @bodyParam other_freelance_platform_links array An array of other freelance platform URLs. Example: ["https://upwork.com/freelancers/ahmed"]
+     * @bodyParam portfolio_link string The freelancer's portfolio website URL. Example: https://ahmed-portfolio.com
+     * @bodyParam headline string A short professional headline. Example: Full Stack Developer
+     * 
+     * @response 200 scenario="Freelancer updated successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Freelancer updated successfully",
+     *   "data": {
+     *     "id": 1,
+     *     "first_name": "أحمد",
+     *     "last_name": "محمد",
+     *     "email": "ahmed@example.com",
+     *     "type": "freelancer",
+     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *     "phone": "+201234567890",
+     *     "is_active": true,
+     *     "about_me": "خبير في تطوير المواقع الإلكترونية",
+     *     "profile_picture": null,
+     *     "approval_status": "approved",
+     *     "linkedin_link": "https://linkedin.com/in/ahmed",
+     *     "twitter_link": "https://twitter.com/ahmed",
+     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+     *     "portfolio_link": "https://ahmed-portfolio.com",
+     *     "headline": "Full Stack Developer",
+     *     "description": null,
+     *     "created_at": "2025-08-24T10:30:00.000000Z",
+     *     "updated_at": "2025-09-02T10:30:00.000000Z"
+     *   }
+     * }
+     *
+     * @response 400 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email field must be a valid email address."
+     * }
+     *
+     * @response 404 {
+     *   "status": false,
+     *   "error_num": 404,
+     *   "message": "Freelancer not found"
+     * }
+     *
+     * @response 403 {
+     *   "status": false,
+     *   "error_num": 403,
+     *   "message": "You don't have permission to access this resource"
+     * }
+     *
+     * @response 401 {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     */
     // public function update(Request $request, string $id)
     // {
     //     //
     // }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy(string $id)
-    // {
-    //     //
-    // }
+    /**
+     * Delete a freelancer account permanently.
+     * 
+     * This endpoint allows admins to permanently delete a freelancer account from the system.
+     * This action cannot be undone and will remove all associated data including profile information.
+     * Use with caution as this is a destructive operation.
+     * 
+     * @authenticated
+     * @urlParam id integer required The ID of the freelancer to delete. Example: 5
+     * 
+     * @response 200 scenario="Freelancer deleted successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Freelancer deleted successfully"
+     * }
+     *
+     * @response 404 {
+     *   "status": false,
+     *   "error_num": 404,
+     *   "message": "Freelancer not found"
+     * }
+     *
+     * @response 403 {
+     *   "status": false,
+     *   "error_num": 403,
+     *   "message": "You don't have permission to access this resource"
+     * }
+     *
+     * @response 401 {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     */
+    public function destroy(string $id)
+    {
+        $this->checkPermission('freelancer.delete');
+
+        $result = $this->freelancerService->delete($id);
+
+        return Response::api($result['message'], 200, true, null);
+    }
 
 
     /**

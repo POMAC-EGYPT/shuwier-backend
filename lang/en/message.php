@@ -66,4 +66,6 @@ return [
     'user_not_found' => 'User not found',
     'email_verification_success' => 'Email verification successfully',
     'invalid_action' => 'Invalid action',
+    'freelancer_created_successfully' => 'Freelancer created successfully',
+    'freelancer_deleted_successfully' => 'Freelancer deleted successfully',
 ];

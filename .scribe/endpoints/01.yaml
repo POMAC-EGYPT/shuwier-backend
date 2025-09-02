@@ -1,0 +1,132 @@
+name: 'Admin Authentication'
+description: |-
+
+  APIs for admin authentication and authorization.
+  These endpoints handle admin login and session management.
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/auth/login
+    metadata:
+      groupName: 'Admin Authentication'
+      groupDescription: |-
+
+        APIs for admin authentication and authorization.
+        These endpoints handle admin login and session management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Admin Login.'
+      description: |-
+        This endpoint authenticates administrators and returns a JWT token along with admin permissions.
+        Only users with admin privileges can access this endpoint.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Admin email address.'
+        required: true
+        example: admin@admin.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Admin password.'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: admin@admin.com
+      password: password123
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Login successful",
+            "data": {
+              "admin": {
+                "id": 1,
+                "email": "admin@admin.com",
+                "permissions_with_role": {
+                  "permissions": [
+                    "admin.users.index",
+                    "admin.users.create",
+                    "admin.users.edit",
+                    "admin.users.delete",
+                    "freelancer.viewAny",
+                    "freelancer.view",
+                    "freelancer.create",
+                    "freelancer.delete",
+                    "freelancer.approveAndReject"
+                  ],
+                  "role": "super-admin"
+                },
+                "created_at": "2025-08-21T07:43:34.000000Z",
+                "updated_at": "2025-08-21T07:43:34.000000Z"
+              },
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+            }
+          }
+        headers: []
+        description: 'Login successful'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Invalid password"
+          }
+        headers: []
+        description: 'Invalid password'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "The selected email is invalid."
+          }
+        headers: []
+        description: 'Invalid email'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: 'Validation error'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -66,4 +66,6 @@ return [
     'user_not_found' => 'لم يتم العثور على المستخدم',
     'email_verification_success' => 'تم التحقق من البريد الإلكتروني بنجاح',
     'invalid_action' => 'إجراء غير صالح',
+    'freelancer_created_successfully' => 'تم إنشاء مقدم الخدمة بنجاح',
+    'freelancer_deleted_successfully' => 'تم حذف مقدم الخدمة بنجاح',
 ];

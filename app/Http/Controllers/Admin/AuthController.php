@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
+/**
+ * @group Admin Authentication
+ * 
+ * APIs for admin authentication and authorization.
+ * These endpoints handle admin login and session management.
+ */
 class AuthController extends Controller
 {
     protected $authAdminService;
@@ -25,7 +31,14 @@ class AuthController extends Controller
 
     /**
      * Admin Login.
-     * @response 200 {
+     * 
+     * This endpoint authenticates administrators and returns a JWT token along with admin permissions.
+     * Only users with admin privileges can access this endpoint.
+     * 
+     * @bodyParam email string required Admin email address. Example: admin@admin.com
+     * @bodyParam password string required Admin password. Example: password123
+     * 
+     * @response 200 scenario="Login successful" {
      *   "status": true,
      *   "error_num": null,
      *   "message": "Login successful",
@@ -39,8 +52,13 @@ class AuthController extends Controller
      *           "admin.users.create",
      *           "admin.users.edit",
      *           "admin.users.delete",
+     *           "freelancer.viewAny",
+     *           "freelancer.view",
+     *           "freelancer.create",
+     *           "freelancer.delete",
+     *           "freelancer.approveAndReject"
      *         ],
-     *         "role": "super-admin",
+     *         "role": "super-admin"
      *       },
      *       "created_at": "2025-08-21T07:43:34.000000Z",
      *       "updated_at": "2025-08-21T07:43:34.000000Z"
@@ -49,16 +67,22 @@ class AuthController extends Controller
      *   }
      * }
      *
-     * @response 404 {
+     * @response 404 scenario="Invalid email" {
      *   "status": false,
      *   "error_num": 404,
-     *   "message": "The Selected email was is invalid."
+     *   "message": "The selected email is invalid."
      * }
      *
-     * @response 400 {
+     * @response 400 scenario="Invalid password" {
      *   "status": false,
      *   "error_num": 400,
      *   "message": "Invalid password"
+     * }
+     *
+     * @response 422 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email field is required."
      * }
      */
     public function login(LoginRequest $request)

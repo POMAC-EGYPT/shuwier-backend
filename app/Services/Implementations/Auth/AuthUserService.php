@@ -180,7 +180,7 @@ class AuthUserService implements AuthUserServiceInterface
         if ($cached['token'] != $token)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.invalid_token')];
 
-        $user = $this->userRepo->findOrFail($cached['user_id']);
+        $user = $this->userRepo->find($cached['user_id']);
 
         $this->userRepo->update($user->id, [
             'password' => Hash::make($password)
