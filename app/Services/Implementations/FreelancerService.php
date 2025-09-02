@@ -44,7 +44,7 @@ class FreelancerService implements FreelancerServiceInterface
             );
             $freelancer->load('freelancerProfile');
 
-            Mail::to($freelancer->email)->send(new FreelanceApproveMail($freelancer));
+            Mail::to($freelancer->email)->queue(new FreelanceApproveMail($freelancer));
             return [
                 'status' => true,
                 'message' => __('message.freelancer_approved_success'),
