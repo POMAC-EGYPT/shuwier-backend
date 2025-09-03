@@ -55,7 +55,7 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Optional filter by freelancer name (searches in first_name).'
+        description: 'Optional filter by freelancer name (searches in name).'
         required: false
         example: أحمد
         type: string
@@ -95,7 +95,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: '1'
+        example: '0'
         type: string
         enumValues:
           - '0'
@@ -115,7 +115,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       approval_status: approved
-      is_active: '1'
+      is_active: '0'
       name: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
@@ -129,8 +129,7 @@ endpoints:
             "data": [
               {
                 "id": 1,
-                "first_name": "John",
-                "last_name": "Doe",
+                "name": "John Doe",
                 "email": "john@example.com",
                 "type": "freelancer",
                 "email_verified_at": "2025-08-24T10:30:00.000000Z",
@@ -254,8 +253,7 @@ endpoints:
             "message": "Success",
             "data": {
               "id": 1,
-              "first_name": "John",
-              "last_name": "Doe",
+              "name": "John Doe",
               "email": "john@example.com",
               "type": "freelancer",
               "email_verified_at": "2025-08-24T10:30:00.000000Z",
@@ -474,8 +472,7 @@ endpoints:
             "message": "Freelancer approved successfully",
             "data": {
               "id": 14,
-              "first_name": "احمد",
-              "last_name": "حسني",
+              "name": "احمد حسني",
               "email": "abdelrahmanelghonemypomac@gmail.com",
               "type": "freelancer",
               "email_verified_at": "2025-08-26T09:09:53.000000Z",

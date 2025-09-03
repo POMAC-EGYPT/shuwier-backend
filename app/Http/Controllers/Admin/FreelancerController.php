@@ -38,7 +38,7 @@ class FreelancerController extends Controller
      * @authenticated
      * @queryParam approval_status string Optional filter by approval status. Must be "requested" or "approved". Example: requested
      * @queryParam is_active integer Optional filter by active status. Must be 0 (inactive) or 1 (active). Example: 1
-     * @queryParam name string Optional filter by freelancer name (searches in first_name). Example: أحمد
+     * @queryParam name string Optional filter by freelancer name (searches in name). Example: أحمد
      * @queryParam page integer Optional page number for pagination (default: 1). Example: 2
      * @response 200 {
      *   "status": true,
@@ -47,8 +47,7 @@ class FreelancerController extends Controller
      *   "data": [
      *     {
      *       "id": 1,
-     *       "first_name": "John",
-     *       "last_name": "Doe",
+     *       "name": "John Doe",
      *       "email": "john@example.com",
      *       "type": "freelancer",
      *       "email_verified_at": "2025-08-24T10:30:00.000000Z",
@@ -141,8 +140,7 @@ class FreelancerController extends Controller
      *   "message": "Success",
      *   "data": {
      *     "id": 1,
-     *     "first_name": "John",
-     *     "last_name": "Doe",
+     *     "name": "John Doe",
      *     "email": "john@example.com",
      *     "type": "freelancer",
      *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
@@ -184,7 +182,7 @@ class FreelancerController extends Controller
     {
         $this->checkPermission('freelancer.view');
 
-        $result = $this->freelancerService->getFreelancerById($id);
+        $result = $this->freelancerService->getFreelancerById((int)$id);
 
         return Response::api(
             $result['message'],
@@ -203,8 +201,7 @@ class FreelancerController extends Controller
      * 
      * @authenticated
      * @urlParam id integer required The ID of the freelancer to update. Example: 1
-     * @bodyParam first_name string The freelancer's first name. Example: أحمد
-     * @bodyParam last_name string The freelancer's last name. Example: محمد  
+     * @bodyParam name string The freelancer's full name. Example: أحمد محمد
      * @bodyParam email string The freelancer's email address (must be unique). Example: ahmed@example.com
      * @bodyParam phone string The freelancer's phone number. Example: +201234567890
      * @bodyParam is_active boolean Whether the freelancer account is active. Example: true
@@ -223,8 +220,7 @@ class FreelancerController extends Controller
      *   "message": "Freelancer updated successfully",
      *   "data": {
      *     "id": 1,
-     *     "first_name": "أحمد",
-     *     "last_name": "محمد",
+     *     "name": "أحمد محمد",
      *     "email": "ahmed@example.com",
      *     "type": "freelancer",
      *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
@@ -334,8 +330,7 @@ class FreelancerController extends Controller
      *   "message": "Freelancer approved successfully",
      *   "data": {
      *     "id": 14,
-     *     "first_name": "احمد",
-     *     "last_name": "حسني",
+     *     "name": "احمد حسني",
      *     "email": "abdelrahmanelghonemypomac@gmail.com",
      *     "type": "freelancer",
      *     "email_verified_at": "2025-08-26T09:09:53.000000Z",

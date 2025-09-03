@@ -183,8 +183,7 @@ class AuthController extends Controller
      *   "data": {
      *     "user": {
      *       "id": 1,
-     *       "first_name": "John",
-     *       "last_name": "Doe",
+     *       "name": "John Doe",
      *       "email": "john@example.com",
      *       "type": "freelancer",
      *       "email_verified_at": "2025-08-24T10:30:00.000000Z",
@@ -213,8 +212,7 @@ class AuthController extends Controller
      *   "data": {
      *     "user": {
      *       "id": 2,
-     *       "first_name": "Jane",
-     *       "last_name": "Smith",
+     *       "name": "Jane Smith",
      *       "email": "jane@example.com",
      *       "email_verified_at": "2025-08-24T10:30:00.000000Z",
      *       "phone": null,
@@ -342,8 +340,7 @@ class AuthController extends Controller
      *   "message": "Login successful",
      *   "user": {
      *     "id": 2,
-     *     "first_name": "Jane",
-     *     "last_name": "Smith",
+     *     "name": "Jane Smith",
      *     "email": "jane@example.com",
      *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
      *     "phone": null,

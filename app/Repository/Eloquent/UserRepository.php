@@ -15,22 +15,14 @@ class UserRepository implements UserRepositoryInterface
             ->freelancers()
             ->when($approvalStatus, fn($query) => $query->where('approval_status', $approvalStatus))
             ->when(!is_null($isActive), fn($query) => $query->where('is_active', $isActive))
-            ->when($name, function ($query) use ($name) {
-                $query->where('first_name', 'like', "%{$name}%")
-                    ->orWhere('last_name', 'like', "%{$name}%");
-            })
+            ->when($name, fn($query) => $query->where('name', 'like', "%{$name}%"))
             ->paginate($perPage);
     }
 
     public function getClientsWithFilter(?string $name = null, int $perPage = 10): ?LengthAwarePaginator
     {
         return User::clients()
-            ->when($name, function ($query) use ($name) {
-                $query->where(function ($q) use ($name) {
-                    $q->where('first_name', 'like', "%{$name}%")
-                        ->orWhere('last_name', 'like', "%{$name}%");
-                });
-            })
+            ->when($name, fn($query) => $query->where('name', 'like', "%{$name}%"))
             ->paginate($perPage);
     }
 

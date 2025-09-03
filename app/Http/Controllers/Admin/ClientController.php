@@ -36,7 +36,7 @@ class ClientController extends Controller
      * The response includes pagination metadata for easy navigation.
      * 
      * @authenticated
-     * @queryParam name string Optional filter by client name (searches in first_name). Example: سارة
+     * @queryParam name string Optional filter by client name (searches in name). Example: سارة
      * @queryParam page integer Optional page number for pagination (default: 1). Example: 2
      * 
      * @response 200 scenario="Clients retrieved successfully" {
@@ -46,8 +46,7 @@ class ClientController extends Controller
      *   "data": [
      *     {
      *       "id": 1,
-     *       "first_name": "سارة",
-     *       "last_name": "أحمد",
+     *       "name": "سارة",
      *       "email": "sara@example.com",
      *       "email_verified_at": "2025-08-24T10:30:00.000000Z",
      *       "phone": "+201234567890",
@@ -61,8 +60,7 @@ class ClientController extends Controller
      *     },
      *     {
      *       "id": 2,
-     *       "first_name": "محمد",
-     *       "last_name": "علي",
+     *       "name": "محمد",
      *       "email": "mohamed@example.com",
      *       "email_verified_at": "2025-08-25T10:30:00.000000Z",
      *       "phone": "+201987654321",
@@ -120,7 +118,7 @@ class ClientController extends Controller
             $request->name,
             10
         );
-        
+
         return Response::api(
             $result['message'],
             200,
@@ -145,8 +143,7 @@ class ClientController extends Controller
      *   "message": "Client retrieved successfully",
      *   "data": {
      *     "id": 1,
-     *     "first_name": "سارة",
-     *     "last_name": "أحمد",
+     *     "name": "سارة أحمد",
      *     "email": "sara@example.com",
      *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
      *     "phone": "+201234567890",
@@ -180,7 +177,8 @@ class ClientController extends Controller
      */
     public function show(string $id)
     {
-        $result = $this->clientService->getById($id);
+        $result = $this->clientService->getById((int) 
+        $id);
 
         return Response::api(
             $result['message'],

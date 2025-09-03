@@ -14,22 +14,21 @@ class UserTableSeeder extends Seeder
     {
         for ($i = 1; $i <= 30; $i++) {
             $user = \App\Models\User::create([
-            'first_name' => 'Freelancer' . $i,
-            'last_name' => 'User' . $i,
-            'email' => 'freelancer' . $i . '@example.com',
-            'phone' => '123456789' . $i,
-            'password' => bcrypt('password'),
-            'type' => 'freelancer',
-            'is_active' => 1,
-            'about_me' => 'Experienced freelancer with skills in various domains.',
-            'approval_status' => 'requested'
+                'name' => 'Freelancer' . $i,
+                'email' => 'freelancer' . $i . '@example.com',
+                'phone' => '123456789' . $i,
+                'password' => bcrypt('password'),
+                'type' => 'freelancer',
+                'is_active' => 1,
+                'about_me' => 'Experienced freelancer with skills in various domains.',
+                'approval_status' => 'requested'
             ]);
 
             \App\Models\FreelancerProfile::create([
-            'user_id' => $user->id,
-            'headline' => 'Professional Freelancer',
-            'linkedin_link' => 'https://linkedin.com/in/freelancer' . $i,
-            'portfolio_link' => 'https://portfolio.freelancer' . $i . '.com'
+                'user_id' => $user->id,
+                'headline' => 'Professional Freelancer',
+                'linkedin_link' => 'https://linkedin.com/in/freelancer' . $i,
+                'portfolio_link' => 'https://portfolio.freelancer' . $i . '.com'
             ]);
         }
     }

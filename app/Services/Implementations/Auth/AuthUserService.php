@@ -71,7 +71,7 @@ class AuthUserService implements AuthUserServiceInterface
                 $result['data']['other_freelance_platform_links'] = array_values($result['data']['other_freelance_platform_links']);
 
             $user = $this->userRepo->create([
-                'first_name'                      => $result['data']['name'],
+                'name'                            => $result['data']['name'],
                 'email'                           => $result['data']['email'],
                 'password'                        => Hash::make($result['data']['password']),
                 'type'                            => $result['data']['type'],

@@ -35,7 +35,7 @@ endpoints:
     queryParameters:
       name:
         name: name
-        description: 'Optional filter by client name (searches in first_name).'
+        description: 'Optional filter by client name (searches in name).'
         required: false
         example: سارة
         type: string
@@ -81,8 +81,7 @@ endpoints:
             "data": [
               {
                 "id": 1,
-                "first_name": "سارة",
-                "last_name": "أحمد",
+                "name": "سارة",
                 "email": "sara@example.com",
                 "email_verified_at": "2025-08-24T10:30:00.000000Z",
                 "phone": "+201234567890",
@@ -96,8 +95,7 @@ endpoints:
               },
               {
                 "id": 2,
-                "first_name": "محمد",
-                "last_name": "علي",
+                "name": "محمد",
                 "email": "mohamed@example.com",
                 "email_verified_at": "2025-08-25T10:30:00.000000Z",
                 "phone": "+201987654321",
@@ -217,8 +215,7 @@ endpoints:
             "message": "Client retrieved successfully",
             "data": {
               "id": 1,
-              "first_name": "سارة",
-              "last_name": "أحمد",
+              "name": "سارة أحمد",
               "email": "sara@example.com",
               "email_verified_at": "2025-08-24T10:30:00.000000Z",
               "phone": "+201234567890",

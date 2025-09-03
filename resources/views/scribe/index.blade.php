@@ -492,8 +492,7 @@ fetch(url, {
     &quot;data&quot;: [
         {
             &quot;id&quot;: 1,
-            &quot;first_name&quot;: &quot;سارة&quot;,
-            &quot;last_name&quot;: &quot;أحمد&quot;,
+            &quot;name&quot;: &quot;سارة&quot;,
             &quot;email&quot;: &quot;sara@example.com&quot;,
             &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
             &quot;phone&quot;: &quot;+201234567890&quot;,
@@ -507,8 +506,7 @@ fetch(url, {
         },
         {
             &quot;id&quot;: 2,
-            &quot;first_name&quot;: &quot;محمد&quot;,
-            &quot;last_name&quot;: &quot;علي&quot;,
+            &quot;name&quot;: &quot;محمد&quot;,
             &quot;email&quot;: &quot;mohamed@example.com&quot;,
             &quot;email_verified_at&quot;: &quot;2025-08-25T10:30:00.000000Z&quot;,
             &quot;phone&quot;: &quot;+201987654321&quot;,
@@ -659,7 +657,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="سارة"
                data-component="query">
     <br>
-<p>Optional filter by client name (searches in first_name). Example: <code>سارة</code></p>
+<p>Optional filter by client name (searches in name). Example: <code>سارة</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -737,8 +735,7 @@ fetch(url, {
     &quot;message&quot;: &quot;Client retrieved successfully&quot;,
     &quot;data&quot;: {
         &quot;id&quot;: 1,
-        &quot;first_name&quot;: &quot;سارة&quot;,
-        &quot;last_name&quot;: &quot;أحمد&quot;,
+        &quot;name&quot;: &quot;سارة أحمد&quot;,
         &quot;email&quot;: &quot;sara@example.com&quot;,
         &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
         &quot;phone&quot;: &quot;+201234567890&quot;,
@@ -908,7 +905,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"approved\",
-    \"is_active\": \"1\",
+    \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -936,7 +933,7 @@ const headers = {
 
 let body = {
     "approval_status": "approved",
-    "is_active": "1",
+    "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -961,8 +958,7 @@ fetch(url, {
     &quot;data&quot;: [
         {
             &quot;id&quot;: 1,
-            &quot;first_name&quot;: &quot;John&quot;,
-            &quot;last_name&quot;: &quot;Doe&quot;,
+            &quot;name&quot;: &quot;John Doe&quot;,
             &quot;email&quot;: &quot;john@example.com&quot;,
             &quot;type&quot;: &quot;freelancer&quot;,
             &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
@@ -1143,7 +1139,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="أحمد"
                data-component="query">
     <br>
-<p>Optional filter by freelancer name (searches in first_name). Example: <code>أحمد</code></p>
+<p>Optional filter by freelancer name (searches in name). Example: <code>أحمد</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -1176,10 +1172,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="1"
+               value="0"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>0</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -1246,8 +1242,7 @@ fetch(url, {
     &quot;message&quot;: &quot;Success&quot;,
     &quot;data&quot;: {
         &quot;id&quot;: 1,
-        &quot;first_name&quot;: &quot;John&quot;,
-        &quot;last_name&quot;: &quot;Doe&quot;,
+        &quot;name&quot;: &quot;John Doe&quot;,
         &quot;email&quot;: &quot;john@example.com&quot;,
         &quot;type&quot;: &quot;freelancer&quot;,
         &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
@@ -1638,8 +1633,7 @@ fetch(url, {
     &quot;message&quot;: &quot;Freelancer approved successfully&quot;,
     &quot;data&quot;: {
         &quot;id&quot;: 14,
-        &quot;first_name&quot;: &quot;احمد&quot;,
-        &quot;last_name&quot;: &quot;حسني&quot;,
+        &quot;name&quot;: &quot;احمد حسني&quot;,
         &quot;email&quot;: &quot;abdelrahmanelghonemypomac@gmail.com&quot;,
         &quot;type&quot;: &quot;freelancer&quot;,
         &quot;email_verified_at&quot;: &quot;2025-08-26T09:09:53.000000Z&quot;,
@@ -2612,8 +2606,7 @@ fetch(url, {
     &quot;data&quot;: {
         &quot;user&quot;: {
             &quot;id&quot;: 1,
-            &quot;first_name&quot;: &quot;John&quot;,
-            &quot;last_name&quot;: &quot;Doe&quot;,
+            &quot;name&quot;: &quot;John Doe&quot;,
             &quot;email&quot;: &quot;john@example.com&quot;,
             &quot;type&quot;: &quot;freelancer&quot;,
             &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
@@ -2649,8 +2642,7 @@ fetch(url, {
     &quot;data&quot;: {
         &quot;user&quot;: {
             &quot;id&quot;: 2,
-            &quot;first_name&quot;: &quot;Jane&quot;,
-            &quot;last_name&quot;: &quot;Smith&quot;,
+            &quot;name&quot;: &quot;Jane Smith&quot;,
             &quot;email&quot;: &quot;jane@example.com&quot;,
             &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
             &quot;phone&quot;: null,
@@ -3079,8 +3071,7 @@ fetch(url, {
     &quot;message&quot;: &quot;Login successful&quot;,
     &quot;user&quot;: {
         &quot;id&quot;: 2,
-        &quot;first_name&quot;: &quot;Jane&quot;,
-        &quot;last_name&quot;: &quot;Smith&quot;,
+        &quot;name&quot;: &quot;Jane Smith&quot;,
         &quot;email&quot;: &quot;jane@example.com&quot;,
         &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
         &quot;phone&quot;: null,
