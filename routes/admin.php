@@ -21,4 +21,8 @@ Route::group(['prefix' => 'freelancers', 'middleware' => 'auth:admin'], function
     Route::post('/block-unblock/{id}', [FreelancerController::class, 'blockAndUnblock']);
 });
 
+Route::group(['prefix' => 'clients', 'middleware' => 'auth:admin'], function () {
+    Route::post('/block-unblock/{id}', [ClientController::class, 'blockAndUnblock']);
+});
+
 Route::get('/freelancers-requested', [FreelancerController::class, 'requestedFreelancers']);

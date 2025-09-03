@@ -77,7 +77,7 @@ class FreelancerService implements FreelancerServiceInterface
 
         ImageHelpers::deleteImage($freelancer->profile_picture);
 
-        $freelancer->delete();
+        $this->userRepo->delete($freelancer->id);
 
         return ['status' => true, 'message' => __('message.freelancer_deleted_successfully')];
     }
@@ -85,15 +85,16 @@ class FreelancerService implements FreelancerServiceInterface
     public function blockAndUnblock(int $id): array
     {
         $freelancer = $this->userRepo->findByType($id, 'freelancers');
-        if($freelancer->approval_status !== ApprovalStatus::APPROVED) {
+
+        if ($freelancer->approval_status !== ApprovalStatus::APPROVED)
             return ['status' => false, 'message' => __('message.only_approved_freelancer_can_be_blocked')];
-        }
+
         $this->userRepo->update($id, ['is_active' => !$freelancer->is_active]);
 
-        $message = $freelancer->is_active 
-            ? __('message.freelancer_blocked_successfully') 
+        $message = $freelancer->is_active
+            ? __('message.freelancer_blocked_successfully')
             : __('message.freelancer_unblocked_successfully');
-            
+
         return ['status' => true, 'message' => $message];
     }
 }

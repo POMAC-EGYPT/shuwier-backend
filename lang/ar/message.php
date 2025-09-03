@@ -71,4 +71,7 @@ return [
     'freelancer_unblocked_successfully' => 'تم إلغاء حظر مقدم الخدمة بنجاح',
     'freelancer_blocked_successfully' => 'تم حظر مقدم الخدمة بنجاح',
     'only_approved_freelancer_can_be_blocked' => 'يمكن حظر مقدمي الخدمات المقبولين فقط',
+    'client_blocked_successfully' => 'تم حظر العميل بنجاح',
+    'client_unblocked_successfully' => 'تم إلغاء حظر العميل بنجاح',
+    'client_deleted_successfully' => 'تم حذف العميل بنجاح'
 ];

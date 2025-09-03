@@ -177,8 +177,7 @@ class ClientController extends Controller
      */
     public function show(string $id)
     {
-        $result = $this->clientService->getById((int) 
-        $id);
+        $result = $this->clientService->getById((int) $id);
 
         return Response::api(
             $result['message'],
@@ -229,12 +228,12 @@ class ClientController extends Controller
      *   "message": "Unauthenticated"
      * }
      */
-    // public function destroy(string $id)
-    // {
-    //     $this->checkPermission('client.delete');
-    //     $result = $this->clientService->delete($id);
-    //     return Response::api($result['message'], 200, true, null);
-    // }
+    public function destroy(string $id)
+    {
+        $result = $this->clientService->delete($id);
+
+        return Response::api($result['message'], 200, true, null);
+    }
 
     /**
      * Block or Unblock a client account.
@@ -277,10 +276,10 @@ class ClientController extends Controller
      *   "message": "Unauthenticated"
      * }
      */
-    // public function blockAndUnblock(string $id)
-    // {
-    //     $this->checkPermission('client.blockAndUnblock');
-    //     $result = $this->clientService->blockAndUnblock($id);
-    //     return Response::api($result['message'], 200, true, null);
-    // }
+    public function blockAndUnblock(string $id)
+    {
+        $result = $this->clientService->blockAndUnblock($id);
+
+        return Response::api($result['message'], 200, true, null);
+    }
 }

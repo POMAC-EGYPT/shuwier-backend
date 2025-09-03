@@ -24,9 +24,9 @@ class ImageHelpers
         return self::addImage($image, $path);
     }
 
-    public static function deleteImage(string $path): void
+    public static function deleteImage(?string $path): void
     {
-        if (File::exists($path))
+        if ($path && File::exists($path))
             File::delete($path);
     }
 }

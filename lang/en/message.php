@@ -70,5 +70,8 @@ return [
     'freelancer_deleted_successfully' => 'Freelancer deleted successfully',
     'freelancer_blocked_successfully' => 'Freelancer blocked successfully',
     'freelancer_unblocked_successfully' => 'Freelancer unblocked successfully',
-    'only_approved_freelancer_can_be_blocked' => 'Only approved freelancers can be blocked'
+    'only_approved_freelancer_can_be_blocked' => 'Only approved freelancers can be blocked',
+    'client_blocked_successfully' => 'Client blocked successfully',
+    'client_unblocked_successfully' => 'Client unblocked successfully',
+    'client_deleted_successfully' => 'Client deleted successfully'
 ];

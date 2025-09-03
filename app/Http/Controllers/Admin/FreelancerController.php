@@ -182,7 +182,7 @@ class FreelancerController extends Controller
     {
         $this->checkPermission('freelancer.view');
 
-        $result = $this->freelancerService->getFreelancerById((int)$id);
+        $result = $this->freelancerService->getFreelancerById((int) $id);
 
         return Response::api(
             $result['message'],
@@ -307,7 +307,7 @@ class FreelancerController extends Controller
     {
         $this->checkPermission('freelancer.delete');
 
-        $result = $this->freelancerService->delete($id);
+        $result = $this->freelancerService->delete((int) $id);
 
         return Response::api($result['message'], 200, true, null);
     }
