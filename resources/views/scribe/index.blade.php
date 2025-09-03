@@ -76,6 +76,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-admin-client-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="admin-client-management">
+                    <a href="#admin-client-management">Admin Client Management</a>
+                </li>
+                                    <ul id="tocify-subheader-admin-client-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="admin-client-management-GETapi-admin-clients">
+                                <a href="#admin-client-management-GETapi-admin-clients">Display a listing of clients with optional filters.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="admin-client-management-GETapi-admin-clients--id-">
+                                <a href="#admin-client-management-GETapi-admin-clients--id-">Display the specified client details.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-admin-freelancer-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="admin-freelancer-management">
                     <a href="#admin-freelancer-management">Admin Freelancer Management</a>
@@ -83,9 +96,6 @@
                                     <ul id="tocify-subheader-admin-freelancer-management" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="admin-freelancer-management-GETapi-admin-freelancers">
                                 <a href="#admin-freelancer-management-GETapi-admin-freelancers">Display a listing of freelancers with optional filters.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="admin-freelancer-management-POSTapi-admin-freelancers">
-                                <a href="#admin-freelancer-management-POSTapi-admin-freelancers">Create a new freelancer account.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="admin-freelancer-management-GETapi-admin-freelancers--id-">
                                 <a href="#admin-freelancer-management-GETapi-admin-freelancers--id-">Display the specified freelancer details.</a>
@@ -95,6 +105,9 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="admin-freelancer-management-POSTapi-admin-freelancers-approve-reject--id-">
                                 <a href="#admin-freelancer-management-POSTapi-admin-freelancers-approve-reject--id-">Approve or Reject a freelancer application.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="admin-freelancer-management-POSTapi-admin-freelancers-block-unblock--id-">
+                                <a href="#admin-freelancer-management-POSTapi-admin-freelancers-block-unblock--id-">Block or Unblock a freelancer account.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -141,7 +154,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 2, 2025</li>
+        <li>Last updated: September 3, 2025</li>
     </ul>
 </div>
 
@@ -404,6 +417,469 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                <h1 id="admin-client-management">Admin Client Management</h1>
+
+    <p>APIs for managing clients in the admin panel.
+These endpoints allow administrators to view and manage client accounts,
+including listing all clients and viewing individual client details.</p>
+
+                                <h2 id="admin-client-management-GETapi-admin-clients">Display a listing of clients with optional filters.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint returns a paginated list of all clients in the system.
+Results can be filtered by client name for easy searching.
+The response includes pagination metadata for easy navigation.</p>
+
+<span id="example-requests-GETapi-admin-clients">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/admin/clients?name=%D8%B3%D8%A7%D8%B1%D8%A9&amp;page=2" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"name\": \"vmqeopfuudtdsufvyvddq\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/clients"
+);
+
+const params = {
+    "name": "سارة",
+    "page": "2",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "name": "vmqeopfuudtdsufvyvddq"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-admin-clients">
+            <blockquote>
+            <p>Example response (200, Clients retrieved successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Clients retrieved successfully&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;first_name&quot;: &quot;سارة&quot;,
+            &quot;last_name&quot;: &quot;أحمد&quot;,
+            &quot;email&quot;: &quot;sara@example.com&quot;,
+            &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+            &quot;phone&quot;: &quot;+201234567890&quot;,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;is_active&quot;: true,
+            &quot;about_me&quot;: &quot;مديرة مشاريع تقنية&quot;,
+            &quot;profile_picture&quot;: null,
+            &quot;company&quot;: &quot;شركة التقنيات المتقدمة&quot;,
+            &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;first_name&quot;: &quot;محمد&quot;,
+            &quot;last_name&quot;: &quot;علي&quot;,
+            &quot;email&quot;: &quot;mohamed@example.com&quot;,
+            &quot;email_verified_at&quot;: &quot;2025-08-25T10:30:00.000000Z&quot;,
+            &quot;phone&quot;: &quot;+201987654321&quot;,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;is_active&quot;: true,
+            &quot;about_me&quot;: null,
+            &quot;profile_picture&quot;: null,
+            &quot;company&quot;: null,
+            &quot;created_at&quot;: &quot;2025-08-25T10:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-25T10:30:00.000000Z&quot;
+        }
+    ],
+    &quot;current_page&quot;: 1,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 3,
+    &quot;per_page&quot;: 10,
+    &quot;to&quot;: 10,
+    &quot;total&quot;: 25,
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://localhost/api/admin/clients?page=1&quot;,
+        &quot;last&quot;: &quot;http://localhost/api/admin/clients?page=3&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: &quot;http://localhost/api/admin/clients?page=2&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The name field must be a string.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 403,
+    &quot;message&quot;: &quot;You don&#039;t have permission to access this resource&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-admin-clients" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-admin-clients"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admin-clients"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-admin-clients" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admin-clients">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-admin-clients" data-method="GET"
+      data-path="api/admin/clients"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-clients', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-admin-clients"
+                    onclick="tryItOut('GETapi-admin-clients');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-admin-clients"
+                    onclick="cancelTryOut('GETapi-admin-clients');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-admin-clients"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/admin/clients</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-admin-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-admin-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-admin-clients"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="GETapi-admin-clients"
+               value="سارة"
+               data-component="query">
+    <br>
+<p>Optional filter by client name (searches in first_name). Example: <code>سارة</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-admin-clients"
+               value="2"
+               data-component="query">
+    <br>
+<p>Optional page number for pagination (default: 1). Example: <code>2</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="GETapi-admin-clients"
+               value="vmqeopfuudtdsufvyvddq"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>vmqeopfuudtdsufvyvddq</code></p>
+        </div>
+        </form>
+
+                    <h2 id="admin-client-management-GETapi-admin-clients--id-">Display the specified client details.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint returns detailed information about a specific client account.
+Includes all client profile information and account status.</p>
+
+<span id="example-requests-GETapi-admin-clients--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/admin/clients/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/clients/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-admin-clients--id-">
+            <blockquote>
+            <p>Example response (200, Client details retrieved successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Client retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;first_name&quot;: &quot;سارة&quot;,
+        &quot;last_name&quot;: &quot;أحمد&quot;,
+        &quot;email&quot;: &quot;sara@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;phone&quot;: &quot;+201234567890&quot;,
+        &quot;type&quot;: &quot;client&quot;,
+        &quot;is_active&quot;: true,
+        &quot;about_me&quot;: &quot;مديرة مشاريع تقنية مع خبرة 5 سنوات في إدارة فرق التطوير&quot;,
+        &quot;profile_picture&quot;: &quot;https://example.com/storage/profiles/sara.jpg&quot;,
+        &quot;company&quot;: &quot;شركة التقنيات المتقدمة&quot;,
+        &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-09-02T10:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 403,
+    &quot;message&quot;: &quot;You don&#039;t have permission to access this resource&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 404,
+    &quot;message&quot;: &quot;Client not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-admin-clients--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-admin-clients--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admin-clients--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-admin-clients--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admin-clients--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-admin-clients--id-" data-method="GET"
+      data-path="api/admin/clients/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-clients--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-admin-clients--id-"
+                    onclick="tryItOut('GETapi-admin-clients--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-admin-clients--id-"
+                    onclick="cancelTryOut('GETapi-admin-clients--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-admin-clients--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/admin/clients/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-admin-clients--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-admin-clients--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-admin-clients--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-admin-clients--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the client to view. Example: <code>1</code></p>
+            </div>
+                    </form>
+
                 <h1 id="admin-freelancer-management">Admin Freelancer Management</h1>
 
     <p>APIs for managing freelancers in the admin panel.
@@ -431,8 +907,8 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
-    \"is_active\": \"0\",
+    \"approval_status\": \"approved\",
+    \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -459,8 +935,8 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
-    "is_active": "0",
+    "approval_status": "approved",
+    "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -687,10 +1163,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -700,10 +1176,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -717,405 +1193,6 @@ Must be one of:
                data-component="body">
     <br>
 <p>Must not be greater than 255 characters. Example: <code>vmqeopfuudtdsufvyvddq</code></p>
-        </div>
-        </form>
-
-                    <h2 id="admin-freelancer-management-POSTapi-admin-freelancers">Create a new freelancer account.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>This endpoint allows admins to create new freelancer accounts directly from the admin panel.
-The freelancer will be created with the specified approval status and can be marked as active/inactive.</p>
-
-<span id="example-requests-POSTapi-admin-freelancers">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/admin/freelancers" \
-    --header "Content-Type: multipart/form-data" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --form "first_name=أحمد"\
-    --form "last_name=محمد"\
-    --form "email=ahmed@example.com"\
-    --form "phone=+201234567890"\
-    --form "password=Password123!"\
-    --form "is_active=1"\
-    --form "about_me=خبير في تطوير المواقع الإلكترونية"\
-    --form "approval_status=approved"\
-    --form "linkedin_link=https://linkedin.com/in/ahmed"\
-    --form "twitter_link=https://twitter.com/ahmed"\
-    --form "other_freelance_platform_links[]=https://upwork.com/freelancers/ahmed"\
-    --form "portfolio_link=https://ahmed-portfolio.com"\
-    --form "headline=Full Stack Developer"\
-    --form "profile_picture=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpnqDofP" </code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/freelancers"
-);
-
-const headers = {
-    "Content-Type": "multipart/form-data",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-const body = new FormData();
-body.append('first_name', 'أحمد');
-body.append('last_name', 'محمد');
-body.append('email', 'ahmed@example.com');
-body.append('phone', '+201234567890');
-body.append('password', 'Password123!');
-body.append('is_active', '1');
-body.append('about_me', 'خبير في تطوير المواقع الإلكترونية');
-body.append('approval_status', 'approved');
-body.append('linkedin_link', 'https://linkedin.com/in/ahmed');
-body.append('twitter_link', 'https://twitter.com/ahmed');
-body.append('other_freelance_platform_links[]', 'https://upwork.com/freelancers/ahmed');
-body.append('portfolio_link', 'https://ahmed-portfolio.com');
-body.append('headline', 'Full Stack Developer');
-body.append('profile_picture', document.querySelector('input[name="profile_picture"]').files[0]);
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-admin-freelancers">
-            <blockquote>
-            <p>Example response (200, Freelancer created successfully):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;Freelancer created successfully&quot;,
-    &quot;data&quot;: {
-        &quot;id&quot;: 15,
-        &quot;first_name&quot;: &quot;أحمد&quot;,
-        &quot;last_name&quot;: &quot;محمد&quot;,
-        &quot;email&quot;: &quot;ahmed@example.com&quot;,
-        &quot;type&quot;: &quot;freelancer&quot;,
-        &quot;email_verified_at&quot;: &quot;2025-09-02T10:30:00.000000Z&quot;,
-        &quot;phone&quot;: &quot;+201234567890&quot;,
-        &quot;is_active&quot;: true,
-        &quot;about_me&quot;: &quot;خبير في تطوير المواقع الإلكترونية&quot;,
-        &quot;profile_picture&quot;: null,
-        &quot;approval_status&quot;: &quot;approved&quot;,
-        &quot;linkedin_link&quot;: &quot;https://linkedin.com/in/ahmed&quot;,
-        &quot;twitter_link&quot;: &quot;https://twitter.com/ahmed&quot;,
-        &quot;other_freelance_platform_links&quot;: [
-            &quot;https://upwork.com/freelancers/ahmed&quot;
-        ],
-        &quot;portfolio_link&quot;: &quot;https://ahmed-portfolio.com&quot;,
-        &quot;headline&quot;: &quot;Full Stack Developer&quot;,
-        &quot;description&quot;: null,
-        &quot;created_at&quot;: &quot;2025-09-02T10:30:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-09-02T10:30:00.000000Z&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Validation error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The email field is required.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Email already exists):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The email has already been taken.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (403):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 403,
-    &quot;message&quot;: &quot;You don&#039;t have permission to access this resource&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-admin-freelancers" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-admin-freelancers"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-admin-freelancers"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-admin-freelancers" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-admin-freelancers">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-admin-freelancers" data-method="POST"
-      data-path="api/admin/freelancers"
-      data-authed="1"
-      data-hasfiles="1"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-freelancers', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-admin-freelancers"
-                    onclick="tryItOut('POSTapi-admin-freelancers');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-admin-freelancers"
-                    onclick="cancelTryOut('POSTapi-admin-freelancers');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-admin-freelancers"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/admin/freelancers</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-admin-freelancers"
-               value="multipart/form-data"
-               data-component="header">
-    <br>
-<p>Example: <code>multipart/form-data</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-admin-freelancers"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-admin-freelancers"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="first_name"                data-endpoint="POSTapi-admin-freelancers"
-               value="أحمد"
-               data-component="body">
-    <br>
-<p>The freelancer's first name. Example: <code>أحمد</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="last_name"                data-endpoint="POSTapi-admin-freelancers"
-               value="محمد"
-               data-component="body">
-    <br>
-<p>The freelancer's last name. Example: <code>محمد</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-admin-freelancers"
-               value="ahmed@example.com"
-               data-component="body">
-    <br>
-<p>The freelancer's email address (must be unique). Example: <code>ahmed@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="phone"                data-endpoint="POSTapi-admin-freelancers"
-               value="+201234567890"
-               data-component="body">
-    <br>
-<p>The freelancer's phone number. Example: <code>+201234567890</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="password"                data-endpoint="POSTapi-admin-freelancers"
-               value="Password123!"
-               data-component="body">
-    <br>
-<p>The freelancer's password (if not provided, a random one will be generated). Example: <code>Password123!</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
- &nbsp;
-                <label data-endpoint="POSTapi-admin-freelancers" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="POSTapi-admin-freelancers"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-admin-freelancers" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="POSTapi-admin-freelancers"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Whether the freelancer account is active (true) or inactive (false). Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>about_me</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="about_me"                data-endpoint="POSTapi-admin-freelancers"
-               value="خبير في تطوير المواقع الإلكترونية"
-               data-component="body">
-    <br>
-<p>A brief description about the freelancer. Example: <code>خبير في تطوير المواقع الإلكترونية</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>profile_picture</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="profile_picture"                data-endpoint="POSTapi-admin-freelancers"
-               value=""
-               data-component="body">
-    <br>
-<p>The freelancer's profile picture. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpnqDofP</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>approval_status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="approval_status"                data-endpoint="POSTapi-admin-freelancers"
-               value="approved"
-               data-component="body">
-    <br>
-<p>The approval status. Must be &quot;requested&quot; or &quot;approved&quot;. Example: <code>approved</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>linkedin_link</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="linkedin_link"                data-endpoint="POSTapi-admin-freelancers"
-               value="https://linkedin.com/in/ahmed"
-               data-component="body">
-    <br>
-<p>The freelancer's LinkedIn profile URL. Example: <code>https://linkedin.com/in/ahmed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>twitter_link</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="twitter_link"                data-endpoint="POSTapi-admin-freelancers"
-               value="https://twitter.com/ahmed"
-               data-component="body">
-    <br>
-<p>The freelancer's Twitter profile URL. Example: <code>https://twitter.com/ahmed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>other_freelance_platform_links</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="other_freelance_platform_links[0]"                data-endpoint="POSTapi-admin-freelancers"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="other_freelance_platform_links[1]"                data-endpoint="POSTapi-admin-freelancers"
-               data-component="body">
-    <br>
-<p>An array of other freelance platform URLs.</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>portfolio_link</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="portfolio_link"                data-endpoint="POSTapi-admin-freelancers"
-               value="https://ahmed-portfolio.com"
-               data-component="body">
-    <br>
-<p>The freelancer's portfolio website URL. Example: <code>https://ahmed-portfolio.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>headline</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="headline"                data-endpoint="POSTapi-admin-freelancers"
-               value="Full Stack Developer"
-               data-component="body">
-    <br>
-<p>A short professional headline. Example: <code>Full Stack Developer</code></p>
         </div>
         </form>
 
@@ -1757,6 +1834,209 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The action to perform. Must be either &quot;approve&quot; or &quot;reject&quot;. Example: <code>approve</code></p>
         </div>
         </form>
+
+                    <h2 id="admin-freelancer-management-POSTapi-admin-freelancers-block-unblock--id-">Block or Unblock a freelancer account.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint allows admins to toggle the active status of a freelancer account.
+When blocked (is_active = false), the freelancer cannot log in or access the platform.
+When unblocked (is_active = true), the freelancer can resume normal platform activities.
+This is a reversible action unlike deletion.</p>
+
+<span id="example-requests-POSTapi-admin-freelancers-block-unblock--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/admin/freelancers/block-unblock/3" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/freelancers/block-unblock/3"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-admin-freelancers-block-unblock--id-">
+            <blockquote>
+            <p>Example response (200, Freelancer blocked successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Freelancer blocked successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Freelancer unblocked successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Freelancer unblocked successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Freelancer not approved yet):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Cannot block/unblock unapproved freelancer&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 403,
+    &quot;message&quot;: &quot;You don&#039;t have permission to access this resource&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 404,
+    &quot;message&quot;: &quot;Freelancer not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-admin-freelancers-block-unblock--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-admin-freelancers-block-unblock--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-admin-freelancers-block-unblock--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-admin-freelancers-block-unblock--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-admin-freelancers-block-unblock--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-admin-freelancers-block-unblock--id-" data-method="POST"
+      data-path="api/admin/freelancers/block-unblock/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-freelancers-block-unblock--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-admin-freelancers-block-unblock--id-"
+                    onclick="tryItOut('POSTapi-admin-freelancers-block-unblock--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-admin-freelancers-block-unblock--id-"
+                    onclick="cancelTryOut('POSTapi-admin-freelancers-block-unblock--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-admin-freelancers-block-unblock--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/admin/freelancers/block-unblock/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
+               value="3"
+               data-component="url">
+    <br>
+<p>The ID of the freelancer to block/unblock. Example: <code>3</code></p>
+            </div>
+                    </form>
 
                 <h1 id="user-authentication">User Authentication</h1>
 

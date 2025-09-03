@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\FreelancerController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,12 +11,14 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::apiResources([
     'freelancers' => FreelancerController::class,
+    'clients' => ClientController::class
 ], [
     'middleware' => ['auth:admin']
 ]);
 
 Route::group(['prefix' => 'freelancers', 'middleware' => 'auth:admin'], function () {
     Route::post('/approve-reject/{id}', [FreelancerController::class, 'approveAndReject']);
+    Route::post('/block-unblock/{id}', [FreelancerController::class, 'blockAndUnblock']);
 });
 
 Route::get('/freelancers-requested', [FreelancerController::class, 'requestedFreelancers']);

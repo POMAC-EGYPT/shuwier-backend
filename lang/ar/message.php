@@ -68,4 +68,7 @@ return [
     'invalid_action' => 'إجراء غير صالح',
     'freelancer_created_successfully' => 'تم إنشاء مقدم الخدمة بنجاح',
     'freelancer_deleted_successfully' => 'تم حذف مقدم الخدمة بنجاح',
+    'freelancer_unblocked_successfully' => 'تم إلغاء حظر مقدم الخدمة بنجاح',
+    'freelancer_blocked_successfully' => 'تم حظر مقدم الخدمة بنجاح',
+    'only_approved_freelancer_can_be_blocked' => 'يمكن حظر مقدمي الخدمات المقبولين فقط',
 ];

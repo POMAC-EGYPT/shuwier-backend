@@ -9,6 +9,8 @@ interface UserRepositoryInterface
 {
     public function getFreelancersWithFilter(?string $approvalStatus = null, ?string $isActive = null, ?string $name = null, int $perPage = 10): ?LengthAwarePaginator;
 
+    public function getClientsWithFilter(?string $name = null, int $perPage = 10): ?LengthAwarePaginator;
+
     public function find(int $id): ?User;
 
     public function findByEmail(string $email): ?User;
@@ -21,5 +23,5 @@ interface UserRepositoryInterface
 
     public function delete(int $id): bool;
 
-    public function findFreelancer(int $id): ?User;
+    public function findByType(int $id, string $type): ?User;
 }

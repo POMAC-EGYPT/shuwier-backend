@@ -13,10 +13,12 @@ use App\Services\Contracts\Auth\AuthUserServiceInterface;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
+use App\Services\Contracts\ClientServiceInterface;
 use App\Services\Contracts\FreelancerServiceInterface;
 use App\Services\Implementations\Auth\AuthAdminService;
 use App\Services\Implementations\Auth\AuthUserService;
 use App\Services\Implementations\Auth\EmailVerificationService;
+use App\Services\Implementations\ClientService;
 use App\Services\Implementations\FreelancerService;
 
 class AppServiceProvider extends ServiceProvider
@@ -37,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(FreelancerProfileRepositoryInterface::class, FreelancerProfileRepository::class);
 
         $this->app->bind(FreelancerServiceInterface::class, FreelancerService::class);
+
+        $this->app->bind(ClientServiceInterface::class, ClientService::class);
     }
 
     /**

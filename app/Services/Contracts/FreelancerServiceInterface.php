@@ -10,7 +10,7 @@ interface FreelancerServiceInterface
 
     public function getFreelancerById(int $id): array;
 
-    public function create(array $data): array;
-
     public function delete(int $id): array;
+
+    public function blockAndUnblock(int $id): array;
 }

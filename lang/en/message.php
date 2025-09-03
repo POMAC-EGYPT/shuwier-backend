@@ -68,4 +68,7 @@ return [
     'invalid_action' => 'Invalid action',
     'freelancer_created_successfully' => 'Freelancer created successfully',
     'freelancer_deleted_successfully' => 'Freelancer deleted successfully',
+    'freelancer_blocked_successfully' => 'Freelancer blocked successfully',
+    'freelancer_unblocked_successfully' => 'Freelancer unblocked successfully',
+    'only_approved_freelancer_can_be_blocked' => 'Only approved freelancers can be blocked'
 ];

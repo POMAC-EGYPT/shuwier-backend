@@ -85,7 +85,7 @@ endpoints:
         name: approval_status
         description: ''
         required: false
-        example: requested
+        example: approved
         type: string
         enumValues:
           - requested
@@ -97,7 +97,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: '0'
+        example: '1'
         type: string
         enumValues:
           - '0'
@@ -116,8 +116,8 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      approval_status: requested
-      is_active: '0'
+      approval_status: approved
+      is_active: '1'
       name: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
@@ -177,276 +177,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "status": false,
-            "error_num": 401,
-            "message": "Unauthenticated"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "You don't have permission to access this resource"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/admin/freelancers
-    metadata:
-      groupName: 'Admin Freelancer Management'
-      groupDescription: |-
-
-        APIs for managing freelancers in the admin panel.
-        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
-        including approving or rejecting freelancer applications.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Create a new freelancer account.'
-      description: |-
-        This endpoint allows admins to create new freelancer accounts directly from the admin panel.
-        The freelancer will be created with the specified approval status and can be marked as active/inactive.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: multipart/form-data
-      Accept: application/json
-      Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      first_name:
-        name: first_name
-        description: "The freelancer's first name."
-        required: true
-        example: أحمد
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      last_name:
-        name: last_name
-        description: "The freelancer's last name."
-        required: false
-        example: محمد
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      email:
-        name: email
-        description: "The freelancer's email address (must be unique)."
-        required: true
-        example: ahmed@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      phone:
-        name: phone
-        description: "The freelancer's phone number."
-        required: false
-        example: '+201234567890'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      password:
-        name: password
-        description: "The freelancer's password (if not provided, a random one will be generated)."
-        required: false
-        example: Password123!
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      is_active:
-        name: is_active
-        description: 'Whether the freelancer account is active (true) or inactive (false).'
-        required: true
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      about_me:
-        name: about_me
-        description: 'A brief description about the freelancer.'
-        required: false
-        example: 'خبير في تطوير المواقع الإلكترونية'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      profile_picture:
-        name: profile_picture
-        description: "The freelancer's profile picture."
-        required: false
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      approval_status:
-        name: approval_status
-        description: 'The approval status. Must be "requested" or "approved".'
-        required: true
-        example: approved
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      linkedin_link:
-        name: linkedin_link
-        description: "The freelancer's LinkedIn profile URL."
-        required: false
-        example: 'https://linkedin.com/in/ahmed'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      twitter_link:
-        name: twitter_link
-        description: "The freelancer's Twitter profile URL."
-        required: false
-        example: 'https://twitter.com/ahmed'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      other_freelance_platform_links:
-        name: other_freelance_platform_links
-        description: 'An array of other freelance platform URLs.'
-        required: false
-        example:
-          - 'https://upwork.com/freelancers/ahmed'
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      portfolio_link:
-        name: portfolio_link
-        description: "The freelancer's portfolio website URL."
-        required: false
-        example: 'https://ahmed-portfolio.com'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      headline:
-        name: headline
-        description: 'A short professional headline.'
-        required: false
-        example: 'Full Stack Developer'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      first_name: أحمد
-      last_name: محمد
-      email: ahmed@example.com
-      phone: '+201234567890'
-      password: Password123!
-      is_active: true
-      about_me: 'خبير في تطوير المواقع الإلكترونية'
-      approval_status: approved
-      linkedin_link: 'https://linkedin.com/in/ahmed'
-      twitter_link: 'https://twitter.com/ahmed'
-      other_freelance_platform_links:
-        - 'https://upwork.com/freelancers/ahmed'
-      portfolio_link: 'https://ahmed-portfolio.com'
-      headline: 'Full Stack Developer'
-    fileParameters:
-      profile_picture: null
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Freelancer created successfully",
-            "data": {
-              "id": 15,
-              "first_name": "أحمد",
-              "last_name": "محمد",
-              "email": "ahmed@example.com",
-              "type": "freelancer",
-              "email_verified_at": "2025-09-02T10:30:00.000000Z",
-              "phone": "+201234567890",
-              "is_active": true,
-              "about_me": "خبير في تطوير المواقع الإلكترونية",
-              "profile_picture": null,
-              "approval_status": "approved",
-              "linkedin_link": "https://linkedin.com/in/ahmed",
-              "twitter_link": "https://twitter.com/ahmed",
-              "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
-              "portfolio_link": "https://ahmed-portfolio.com",
-              "headline": "Full Stack Developer",
-              "description": null,
-              "created_at": "2025-09-02T10:30:00.000000Z",
-              "updated_at": "2025-09-02T10:30:00.000000Z"
-            }
-          }
-        headers: []
-        description: 'Freelancer created successfully'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The email field is required."
-          }
-        headers: []
-        description: 'Validation error'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The email has already been taken."
-          }
-        headers: []
-        description: 'Email already exists'
         custom: []
       -
         status: 401
@@ -804,6 +534,123 @@ endpoints:
           }
         headers: []
         description: 'Invalid action parameter'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Freelancer not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/admin/freelancers/block-unblock/{id}'
+    metadata:
+      groupName: 'Admin Freelancer Management'
+      groupDescription: |-
+
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Block or Unblock a freelancer account.'
+      description: |-
+        This endpoint allows admins to toggle the active status of a freelancer account.
+        When blocked (is_active = false), the freelancer cannot log in or access the platform.
+        When unblocked (is_active = true), the freelancer can resume normal platform activities.
+        This is a reversible action unlike deletion.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the freelancer to block/unblock.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 3
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer blocked successfully"
+          }
+        headers: []
+        description: 'Freelancer blocked successfully'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer unblocked successfully"
+          }
+        headers: []
+        description: 'Freelancer unblocked successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Cannot block/unblock unapproved freelancer"
+          }
+        headers: []
+        description: 'Freelancer not approved yet'
         custom: []
       -
         status: 401

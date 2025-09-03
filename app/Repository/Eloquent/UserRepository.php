@@ -22,6 +22,18 @@ class UserRepository implements UserRepositoryInterface
             ->paginate($perPage);
     }
 
+    public function getClientsWithFilter(?string $name = null, int $perPage = 10): ?LengthAwarePaginator
+    {
+        return User::clients()
+            ->when($name, function ($query) use ($name) {
+                $query->where(function ($q) use ($name) {
+                    $q->where('first_name', 'like', "%{$name}%")
+                        ->orWhere('last_name', 'like', "%{$name}%");
+                });
+            })
+            ->paginate($perPage);
+    }
+
     public function find(int $id): ?User
     {
         return User::findOrFail($id);
@@ -56,8 +68,8 @@ class UserRepository implements UserRepositoryInterface
         return $user->delete();
     }
 
-    public function findFreelancer(int $id): ?User
+    public function findByType(int $id, string $type): ?User
     {
-        return User::freelancers()->findOrFail($id);
+        return User::{$type}()->findOrFail($id);
     }
 }
