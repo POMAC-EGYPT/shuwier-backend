@@ -17,28 +17,28 @@ class BaseResource extends JsonResource
     {
         if ($this->resource instanceof AnonymousResourceCollection) {
             $response = $this->resource->toResponse($request)->getData(true);
-            
+
             if (isset($response['meta'])) {
                 $meta = $response['meta'];
                 $links = $response['links'] ?? [];
-                
+
                 return [
-                    'data' => $response['data'],
-                    'current_page' => $meta['current_page'],
-                    'from' => $meta['from'],
-                    'last_page' => $meta['last_page'],
-                    'per_page' => $meta['per_page'],
-                    'to' => $meta['to'],
-                    'total' => $meta['total'],
-                    'links' => [
+                    'data'          => $response['data'],
+                    'current_page'  => $meta['current_page'],
+                    'from'          => $meta['from'],
+                    'last_page'     => $meta['last_page'],
+                    'per_page'      => $meta['per_page'],
+                    'to'            => $meta['to'],
+                    'total'         => $meta['total'],
+                    'links'         => [
                         'first' => $links['first'] ?? null,
-                        'last' => $links['last'] ?? null,
-                        'prev' => $links['prev'] ?? null,
-                        'next' => $links['next'] ?? null,
+                        'last'  => $links['last'] ?? null,
+                        'prev'  => $links['prev'] ?? null,
+                        'next'  => $links['next'] ?? null,
                     ]
                 ];
             }
-            
+
             return $response['data'] ?? $response;
         }
 

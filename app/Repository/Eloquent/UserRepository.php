@@ -16,6 +16,7 @@ class UserRepository implements UserRepositoryInterface
             ->when($approvalStatus, fn($query) => $query->where('approval_status', $approvalStatus))
             ->when(!is_null($isActive), fn($query) => $query->where('is_active', $isActive))
             ->when($name, fn($query) => $query->where('name', 'like', "%{$name}%"))
+            ->orderBy('created_at', 'desc')
             ->paginate($perPage);
     }
 
@@ -23,6 +24,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::clients()
             ->when($name, fn($query) => $query->where('name', 'like', "%{$name}%"))
+            ->orderBy('created_at', 'desc')
             ->paginate($perPage);
     }
 

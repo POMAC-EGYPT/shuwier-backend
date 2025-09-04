@@ -8,8 +8,6 @@ use App\Mail\FreelanceApproveMail;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
 use App\Services\Contracts\FreelancerServiceInterface;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class FreelancerService implements FreelancerServiceInterface

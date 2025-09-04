@@ -73,5 +73,8 @@ return [
     'only_approved_freelancer_can_be_blocked' => 'Only approved freelancers can be blocked',
     'client_blocked_successfully' => 'Client blocked successfully',
     'client_unblocked_successfully' => 'Client unblocked successfully',
-    'client_deleted_successfully' => 'Client deleted successfully'
+    'client_deleted_successfully' => 'Client deleted successfully',
+    'category_created_successfully' => 'Category created successfully',
+    'cannot_add_subcategory_to_child' => 'Cannot add a sub-category to a child category',
+    'categories_created_successfully' => 'Categories created successfully'
 ];

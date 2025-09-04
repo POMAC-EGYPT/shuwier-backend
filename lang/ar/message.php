@@ -73,5 +73,8 @@ return [
     'only_approved_freelancer_can_be_blocked' => 'يمكن حظر مقدمي الخدمات المقبولين فقط',
     'client_blocked_successfully' => 'تم حظر العميل بنجاح',
     'client_unblocked_successfully' => 'تم إلغاء حظر العميل بنجاح',
-    'client_deleted_successfully' => 'تم حذف العميل بنجاح'
+    'client_deleted_successfully' => 'تم حذف العميل بنجاح',
+    'category_created_successfully' => 'تم إنشاء الفئة بنجاح',
+    'cannot_add_subcategory_to_child' => 'لا يمكن إضافة فئة فرعية إلى فئة فرعية أخرى',
+    'categories_created_successfully' => 'تم إنشاء الفئات بنجاح',
 ];
