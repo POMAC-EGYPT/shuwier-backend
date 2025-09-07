@@ -43,4 +43,25 @@ class GetCategoryRequest extends FormRequest
             'type'     => 'nullable|in:parent,child'
         ];
     }
+
+    /**
+     * Get custom query parameters for API documentation.
+     */
+    public function queryParameters(): array
+    {
+        return [
+            'search' => [
+                'description' => 'Search term for filtering categories by name (Arabic or English)',
+                'example' => 'تصميم',
+            ],
+            'per_page' => [
+                'description' => 'Number of items per page for pagination (minimum 1, default 10)',
+                'example' => 20,
+            ],
+            'type' => [
+                'description' => 'Filter by category type: "parent" for main categories, "child" for subcategories',
+                'example' => 'parent',
+            ],
+        ];
+    }
 }

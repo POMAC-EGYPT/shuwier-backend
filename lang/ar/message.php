@@ -77,4 +77,6 @@ return [
     'category_created_successfully' => 'تم إنشاء الفئة بنجاح',
     'cannot_add_subcategory_to_child' => 'لا يمكن إضافة فئة فرعية إلى فئة فرعية أخرى',
     'categories_created_successfully' => 'تم إنشاء الفئات بنجاح',
+    'category_updated_successfully' => 'تم تحديث الفئة بنجاح',
+    'category_deleted_successfully' => 'تم حذف الفئة بنجاح',
 ];

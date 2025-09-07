@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\FreelancerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('login');
@@ -11,10 +12,13 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::apiResources([
     'freelancers' => FreelancerController::class,
-    'clients' => ClientController::class
+    'clients' => ClientController::class,
+    'categories' => CategoryController::class,
 ], [
     'middleware' => ['auth:admin']
 ]);
+Route::post('categories/store-all-with-childrens', [CategoryController::class, 'storeAllWithChildrens'])
+    ->middleware('auth:admin');
 
 Route::group(['prefix' => 'freelancers', 'middleware' => 'auth:admin'], function () {
     Route::post('/approve-reject/{id}', [FreelancerController::class, 'approveAndReject']);
@@ -24,5 +28,3 @@ Route::group(['prefix' => 'freelancers', 'middleware' => 'auth:admin'], function
 Route::group(['prefix' => 'clients', 'middleware' => 'auth:admin'], function () {
     Route::post('/block-unblock/{id}', [ClientController::class, 'blockAndUnblock']);
 });
-
-Route::get('/freelancers-requested', [FreelancerController::class, 'requestedFreelancers']);

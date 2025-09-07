@@ -73,15 +73,27 @@ class CategoryService implements CategoryServiceInterface
         ];
     }
 
-    public function update(int $id, array $data): bool
+    public function update(int $id, array $data): array
     {
-        // $category = $this->categoryRepo->find($id);
+        $this->categoryRepo->find($id, true);
 
-        // return $this->categoryRepo->update($id, [
-        //     'name_en' => $data['name_en'] ?? $category['name_en'],
-        //     'name_ar' => $data['name_ar'] ?? $category['name_ar'],
-        // ]);
-        return true;
+        if ($data['parent_id'] != null) {
+            $parent = $this->categoryRepo->find($data['parent_id'], true);
+
+            if ($parent->parent_id != null)
+                return ['status' => false, 'message' => __('message.cannot_add_subcategory_to_child')];
+        }
+
+        $this->categoryRepo->update($id, [
+            'name_en' => $data['name_en'],
+            'name_ar' => $data['name_ar'],
+            'parent_id' => $data['parent_id'],
+        ]);
+
+        return [
+            'status'  => true,
+            'message' => __('message.category_updated_successfully'),
+        ];
     }
 
     public function delete(int $id): bool

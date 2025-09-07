@@ -5,6 +5,7 @@ namespace App\Repository\Eloquent;
 use App\Models\Category;
 use App\Repository\Contracts\CategoryRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
@@ -18,21 +19,21 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function getAllPaginated(bool $withChildren = false, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator
     {
-        $categories = Category::query()
+        return Category::query()
             ->when($search, fn($query) => $this->search($query, $search))
+            ->when($withChildren, fn($query) => $query->with('children'))
+            ->orderBy('created_at', 'desc')
             ->paginate($perPage);
-
-        return $withChildren ? $categories->load('children') : $categories;
     }
 
     public function getParentsPaginated(bool $withChildren = false, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator
     {
-        $categories = Category::query()
+        return Category::query()
             ->parents()
             ->when($search, fn($query) => $this->search($query, $search))
+            ->when($withChildren, fn($query) => $query->with('children'))
+            ->orderBy('created_at', 'desc')
             ->paginate($perPage);
-
-        return $withChildren ? $categories->load('children') : $categories;
     }
 
     public function getChildrensPaginated(?string $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator
@@ -41,6 +42,7 @@ class CategoryRepository implements CategoryRepositoryInterface
             ->childrens()
             ->when($parent_id, fn($query) => $query->where('parent_id', $parent_id))
             ->when($search, fn($query) => $this->search($query, $search))
+            ->orderBy('created_at', 'desc')
             ->paginate($perPage);
     }
 

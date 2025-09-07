@@ -76,5 +76,7 @@ return [
     'client_deleted_successfully' => 'Client deleted successfully',
     'category_created_successfully' => 'Category created successfully',
     'cannot_add_subcategory_to_child' => 'Cannot add a sub-category to a child category',
-    'categories_created_successfully' => 'Categories created successfully'
+    'categories_created_successfully' => 'Categories created successfully',
+    'category_updated_successfully' => 'Category updated successfully',
+    'category_deleted_successfully' => 'Category deleted successfully',
 ];

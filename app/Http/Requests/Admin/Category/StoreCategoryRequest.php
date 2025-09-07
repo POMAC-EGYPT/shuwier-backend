@@ -43,4 +43,25 @@ class StoreCategoryRequest extends FormRequest
             'parent_id' => 'nullable|exists:categories,id',
         ];
     }
+
+    /**
+     * Get custom body parameters for API documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'name_en' => [
+                'description' => 'Category name in English (required, max 255 characters)',
+                'example' => 'Web Development',
+            ],
+            'name_ar' => [
+                'description' => 'Category name in Arabic (required, max 255 characters)',
+                'example' => 'تطوير المواقع',
+            ],
+            'parent_id' => [
+                'description' => 'Parent category ID for creating subcategories (optional)',
+                'example' => 1,
+            ],
+        ];
+    }
 }

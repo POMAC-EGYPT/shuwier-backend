@@ -47,4 +47,42 @@ class StoreAllCategoryWithChildrensRequest extends FormRequest
             'childrens.*.name_ar' => 'required|string|max:255',
         ];
     }
+
+    /**
+     * Get custom body parameters for API documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'name_en' => [
+                'description' => 'Parent category name in English (required, max 255 characters)',
+                'example' => 'Programming',
+            ],
+            'name_ar' => [
+                'description' => 'Parent category name in Arabic (required, max 255 characters)',
+                'example' => 'برمجة',
+            ],
+            'childrens' => [
+                'description' => 'Array of child categories (optional). Each child must have name_en and name_ar.',
+                'example' => [
+                    [
+                        'name_en' => 'Web Development',
+                        'name_ar' => 'تطوير المواقع'
+                    ],
+                    [
+                        'name_en' => 'Mobile Development',
+                        'name_ar' => 'تطوير الجوال'
+                    ]
+                ],
+            ],
+            'childrens.*.name_en' => [
+                'description' => 'Child category name in English (required if childrens array is provided)',
+                'example' => 'Web Development',
+            ],
+            'childrens.*.name_ar' => [
+                'description' => 'Child category name in Arabic (required if childrens array is provided)',
+                'example' => 'تطوير المواقع',
+            ],
+        ];
+    }
 }
