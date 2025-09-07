@@ -571,4 +571,24 @@ class AuthController extends Controller
             'token' => $token,
         ]);
     }
+
+    public function profile()
+    {
+        $result = $this->authUserService->getProfile();
+
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+
+        $user = $result['data'];
+
+        $resource = $user->type == UserType::FREELANCER->value
+            ? FreelancerResource::make($user)
+            : ClientResource::make($user);
+
+        return Response::api($result['message'], 200, true, null, $resource);
+    }
+
+    public function updateProfile(Request $request){
+        //
+    }
 }

@@ -17,4 +17,6 @@ interface AuthUserServiceInterface
     public function forgetPassword(string $email, string $type): array;
 
     public function resetPassword(string $email, string $password, string $token): array;
+
+    public function getProfile(): array;
 }

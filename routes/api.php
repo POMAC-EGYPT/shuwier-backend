@@ -19,3 +19,5 @@ Route::group(['middleware' => 'lang', 'prefix' => 'auth'], function () {
     Route::post('/refresh', [AuthController::class, 'refresh'])
         ->middleware('auth.any:api,admin')->name('refresh');
 });
+
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');

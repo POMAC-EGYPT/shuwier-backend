@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\Repository\Contracts\AdminRepositoryInterface;
 use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
+use App\Repository\Contracts\PortfolioRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
 use App\Repository\Eloquent\AdminRepository;
 use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\FreelancerProfileRepository;
+use App\Repository\Eloquent\PortfolioRepository;
 use App\Repository\Eloquent\UserRepository;
 use App\Services\Contracts\Auth\AuthAdminServiceInterface;
 use App\Services\Contracts\Auth\AuthUserServiceInterface;
@@ -48,6 +50,8 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(CategoryServiceInterface::class, CategoryService::class);
+
+        $this->app->bind(PortfolioRepositoryInterface::class, PortfolioRepository::class);
     }
 
     /**
