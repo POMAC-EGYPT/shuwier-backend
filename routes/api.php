@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Freelancer\PortfolioController;
 
-Route::group(['middleware' => 'lang', 'prefix' => 'auth'], function () {
+Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/resend-code', [AuthController::class, 'resendCode'])->name('resend-code');
     Route::post('/verify-email', [AuthController::class, 'verifyEmail'])->name('verify-email');
@@ -21,3 +21,12 @@ Route::group(['middleware' => 'lang', 'prefix' => 'auth'], function () {
 });
 
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');
+
+Route::apiResources(
+    [
+        'portfolios' => PortfolioController::class,
+    ],
+    [
+        'middleware' => 'checkUserType:freelancer',
+    ]
+);

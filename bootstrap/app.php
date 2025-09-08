@@ -16,14 +16,17 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
         then: function () {
-            Route::prefix('api/admin')->as('admin.')->middleware('lang')
+            Route::prefix('api/admin')->as('admin.')
                 ->group(base_path('routes/admin.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            'lang' => \App\Http\Middleware\Lang::class,
-            'auth.any' => \App\Http\Middleware\AuthenticateAnyGuard::class,
+            'auth.any'      => \App\Http\Middleware\AuthenticateAnyGuard::class,
+            'checkUserType' => \App\Http\Middleware\CheckUserType::class,
+        ]);
+        $middleware->append([
+            \App\Http\Middleware\Lang::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -20,15 +20,15 @@ class PortfolioResource extends JsonResource
             'description'        => $this->description,
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
-            'user'               => BaseResource::make(
-                FreelancerResource::make($this->whenLoaded('user'))
-            ),
-            'category'           => BaseResource::make(
-                CategoryResource::make($this->whenLoaded('category'))
-            ),
-            'subcategory'        => BaseResource::make(
-                CategoryResource::make($this->whenLoaded('subcategory'))
-            ),
+            'user'               => $this->when($this->relationLoaded('user') && $this->user, function () {
+                return BaseResource::make(FreelancerResource::make($this->user));
+            }),
+            'category'           => $this->when($this->relationLoaded('category') && $this->category, function () {
+                return BaseResource::make(CategoryResource::make($this->category));
+            }),
+            'subcategory'        => $this->when($this->relationLoaded('subcategory') && $this->subcategory, function () {
+                return BaseResource::make(CategoryResource::make($this->subcategory));
+            }),
             'hashtags'           => $this->hashtags ?? null,
             'attachments'        => $this->attachments ?? null,
         ];

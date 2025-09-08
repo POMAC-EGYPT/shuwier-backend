@@ -19,4 +19,31 @@ class PortfolioRepository implements PortfolioRepositoryInterface
     {
         return Portfolio::findOrFail($id);
     }
+
+    public function syncHashtags(Portfolio $portfolio, array $hashtags): void
+    {
+        $portfolio->hashtags()->sync($hashtags);
+    }
+
+    public function create(array $data): Portfolio
+    {
+        $portfolio = Portfolio::create($data);
+
+        $portfolio->hashtags()->sync($data['hashtags'] ?? []);
+
+        return $portfolio;
+    }
+
+    public function update(int $id, array $data): bool
+    {
+        $portfolio = $this->findById($id);
+
+        return $portfolio->update($data);
+    }
+    public function delete(int $id): bool
+    {
+        $portfolio = $this->findById($id);
+
+        return $portfolio->delete();
+    }
 }

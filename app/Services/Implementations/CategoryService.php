@@ -59,13 +59,13 @@ class CategoryService implements CategoryServiceInterface
             'parent_id' => null,
         ]);
 
-        foreach ($data['childrens'] as $child) {
-            $this->create([
-                'name_en'   => $child['name_en'],
-                'name_ar'   => $child['name_ar'],
-                'parent_id' => $parentCategory['data']->id,
-            ]);
-        }
+        if (isset($data['childrens']) && $data['childrens'] != null)
+            foreach ($data['childrens'] as $child)
+                $this->create([
+                    'name_en'   => $child['name_en'],
+                    'name_ar'   => $child['name_ar'],
+                    'parent_id' => $parentCategory['data']->id,
+                ]);
 
         return [
             'status' => true,

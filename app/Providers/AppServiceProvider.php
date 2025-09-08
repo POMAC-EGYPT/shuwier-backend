@@ -5,13 +5,17 @@ namespace App\Providers;
 use App\Repository\Contracts\AdminRepositoryInterface;
 use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
+use App\Repository\Contracts\HashtagRepositoryInterface;
+use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Repository\Contracts\PortfolioRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
 use App\Repository\Eloquent\AdminRepository;
 use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\FreelancerProfileRepository;
+use App\Repository\Eloquent\HashtagRepository;
 use App\Repository\Eloquent\PortfolioRepository;
 use App\Repository\Eloquent\UserRepository;
+use App\Repository\Eloquent\PortfolioAttachmentRepository;
 use App\Services\Contracts\Auth\AuthAdminServiceInterface;
 use App\Services\Contracts\Auth\AuthUserServiceInterface;
 use Illuminate\Support\Facades\Response;
@@ -20,12 +24,14 @@ use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
 use App\Services\Contracts\CategoryServiceInterface;
 use App\Services\Contracts\ClientServiceInterface;
 use App\Services\Contracts\FreelancerServiceInterface;
+use App\Services\Contracts\PortfolioServiceInterface;
 use App\Services\Implementations\Auth\AuthAdminService;
 use App\Services\Implementations\Auth\AuthUserService;
 use App\Services\Implementations\Auth\EmailVerificationService;
 use App\Services\Implementations\CategoryService;
 use App\Services\Implementations\ClientService;
 use App\Services\Implementations\FreelancerService;
+use App\Services\Implementations\PortfolioService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,6 +58,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CategoryServiceInterface::class, CategoryService::class);
 
         $this->app->bind(PortfolioRepositoryInterface::class, PortfolioRepository::class);
+        $this->app->bind(PortfolioServiceInterface::class, PortfolioService::class);
+
+        $this->app->bind(HashtagRepositoryInterface::class, HashtagRepository::class);
+        $this->app->bind(PortfolioAttachmentRepositoryInterface::class, PortfolioAttachmentRepository::class);
     }
 
     /**

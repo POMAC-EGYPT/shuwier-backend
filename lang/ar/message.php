@@ -79,4 +79,9 @@ return [
     'categories_created_successfully' => 'تم إنشاء الفئات بنجاح',
     'category_updated_successfully' => 'تم تحديث الفئة بنجاح',
     'category_deleted_successfully' => 'تم حذف الفئة بنجاح',
+    'this_category_is_not_a_parent_category' => 'هذه الفئة ليست فئة رئيسية',
+    'this_category_is_not_a_subcategory' => 'هذه الفئة ليست فئة فرعية',
+    'this_subcategory_does_not_belong_to_the_selected_category' => 'هذه الفئة الفرعية لا تنتمي إلى الفئة المحددة',
+    'portfolio_created_successfully' => 'تم إنشاء معرض الأعمال بنجاح',
+    'portfolio_updated_successfully' => 'تم تحديث معرض الأعمال بنجاح',
 ];

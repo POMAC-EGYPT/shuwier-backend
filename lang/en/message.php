@@ -79,4 +79,9 @@ return [
     'categories_created_successfully' => 'Categories created successfully',
     'category_updated_successfully' => 'Category updated successfully',
     'category_deleted_successfully' => 'Category deleted successfully',
+    'this_category_is_not_a_parent_category' => 'This category is not a parent category',
+    'this_category_is_not_a_subcategory' => 'This category is not a subcategory',
+    'this_subcategory_does_not_belong_to_the_selected_category' => 'This subcategory does not belong to the selected category',
+    'portfolio_created_successfully' => 'Portfolio created successfully',
+    'portfolio_updated_successfully' => 'Portfolio updated successfully',
 ];
