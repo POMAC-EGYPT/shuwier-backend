@@ -289,10 +289,10 @@ class PortfolioController extends Controller
      *   "data": null
      * }
      * 
-     * @response 400 {
+     * @response 404 {
      *   "message": "Portfolio not found",
      *   "status": false,
-     *   "error_code": 400
+     *   "error_code": 404
      * }
      * 
      * @authenticated

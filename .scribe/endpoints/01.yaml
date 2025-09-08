@@ -568,12 +568,12 @@ endpoints:
         description: ''
         custom: []
       -
-        status: 400
+        status: 404
         content: |-
           {
             "message": "Portfolio not found",
             "status": false,
-            "error_code": 400
+            "error_code": 404
           }
         headers: []
         description: ''

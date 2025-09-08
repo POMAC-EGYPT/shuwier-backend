@@ -4638,14 +4638,14 @@ fetch(url, {
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (400):</p>
+            <p>Example response (404):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Portfolio not found&quot;,
     &quot;status&quot;: false,
-    &quot;error_code&quot;: 400
+    &quot;error_code&quot;: 404
 }</code>
  </pre>
     </span>
