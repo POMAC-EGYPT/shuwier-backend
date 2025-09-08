@@ -147,20 +147,20 @@
                     <a href="#portfolio-management">Portfolio Management</a>
                 </li>
                                     <ul id="tocify-subheader-portfolio-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="portfolio-management-GETapi-portfolios">
-                                <a href="#portfolio-management-GETapi-portfolios">Get user portfolios</a>
+                                                    <li class="tocify-item level-2" data-unique="portfolio-management-GETapi-freelancers-portfolios">
+                                <a href="#portfolio-management-GETapi-freelancers-portfolios">Get user portfolios</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-POSTapi-portfolios">
-                                <a href="#portfolio-management-POSTapi-portfolios">Create new portfolio</a>
+                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-POSTapi-freelancers-portfolios">
+                                <a href="#portfolio-management-POSTapi-freelancers-portfolios">Create new portfolio</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-GETapi-portfolios--id-">
-                                <a href="#portfolio-management-GETapi-portfolios--id-">Get specific portfolio</a>
+                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-GETapi-freelancers-portfolios--id-">
+                                <a href="#portfolio-management-GETapi-freelancers-portfolios--id-">Get specific portfolio</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-PUTapi-portfolios--id-">
-                                <a href="#portfolio-management-PUTapi-portfolios--id-">Update portfolio</a>
+                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-PUTapi-freelancers-portfolios--id-">
+                                <a href="#portfolio-management-PUTapi-freelancers-portfolios--id-">Update portfolio</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-DELETEapi-portfolios--id-">
-                                <a href="#portfolio-management-DELETEapi-portfolios--id-">Delete portfolio</a>
+                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-DELETEapi-freelancers-portfolios--id-">
+                                <a href="#portfolio-management-DELETEapi-freelancers-portfolios--id-">Delete portfolio</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -3643,7 +3643,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     <p>APIs for managing freelancer portfolios</p>
 
-                                <h2 id="portfolio-management-GETapi-portfolios">Get user portfolios</h2>
+                                <h2 id="portfolio-management-GETapi-freelancers-portfolios">Get user portfolios</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -3651,13 +3651,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <p>Retrieve all portfolios for the authenticated freelancer with pagination.</p>
 
-<span id="example-requests-GETapi-portfolios">
+<span id="example-requests-GETapi-freelancers-portfolios">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/portfolios?per_page=15" \
+    --get "http://backend.shuwier.com/api/freelancers/portfolios?per_page=15" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en"</code></pre></div>
@@ -3665,7 +3665,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/portfolios"
+    "http://backend.shuwier.com/api/freelancers/portfolios"
 );
 
 const params = {
@@ -3687,7 +3687,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-portfolios">
+<span id="example-responses-GETapi-freelancers-portfolios">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -3729,43 +3729,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-portfolios" hidden>
+<span id="execution-results-GETapi-freelancers-portfolios" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-portfolios"></span>:
+                id="execution-response-status-GETapi-freelancers-portfolios"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-portfolios"
+    <pre class="json"><code id="execution-response-content-GETapi-freelancers-portfolios"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-portfolios" hidden>
+<span id="execution-error-GETapi-freelancers-portfolios" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-portfolios">
+    <pre><code id="execution-error-message-GETapi-freelancers-portfolios">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-portfolios" data-method="GET"
-      data-path="api/portfolios"
+<form id="form-GETapi-freelancers-portfolios" data-method="GET"
+      data-path="api/freelancers/portfolios"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-portfolios', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-freelancers-portfolios', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-portfolios"
-                    onclick="tryItOut('GETapi-portfolios');">Try it out ⚡
+                    id="btn-tryout-GETapi-freelancers-portfolios"
+                    onclick="tryItOut('GETapi-freelancers-portfolios');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-portfolios"
-                    onclick="cancelTryOut('GETapi-portfolios');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-freelancers-portfolios"
+                    onclick="cancelTryOut('GETapi-freelancers-portfolios');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-portfolios"
+                    id="btn-executetryout-GETapi-freelancers-portfolios"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -3773,7 +3773,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/portfolios</code></b>
+            <b><code>api/freelancers/portfolios</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -3781,7 +3781,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-portfolios"
+                              name="Content-Type"                data-endpoint="GETapi-freelancers-portfolios"
                value="application/json"
                data-component="header">
     <br>
@@ -3792,7 +3792,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-portfolios"
+                              name="Accept"                data-endpoint="GETapi-freelancers-portfolios"
                value="application/json"
                data-component="header">
     <br>
@@ -3803,7 +3803,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-portfolios"
+                              name="Accept-Language"                data-endpoint="GETapi-freelancers-portfolios"
                value="en"
                data-component="header">
     <br>
@@ -3815,7 +3815,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-portfolios"
+               step="any"               name="per_page"                data-endpoint="GETapi-freelancers-portfolios"
                value="15"
                data-component="query">
     <br>
@@ -3823,7 +3823,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="portfolio-management-POSTapi-portfolios">Create new portfolio</h2>
+                    <h2 id="portfolio-management-POSTapi-freelancers-portfolios">Create new portfolio</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -3831,13 +3831,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <p>Create a new portfolio for the authenticated freelancer.</p>
 
-<span id="example-requests-POSTapi-portfolios">
+<span id="example-requests-POSTapi-freelancers-portfolios">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/portfolios" \
+    "http://backend.shuwier.com/api/freelancers/portfolios" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
@@ -3858,7 +3858,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/portfolios"
+    "http://backend.shuwier.com/api/freelancers/portfolios"
 );
 
 const headers = {
@@ -3888,7 +3888,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-portfolios">
+<span id="example-responses-POSTapi-freelancers-portfolios">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -3945,43 +3945,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-portfolios" hidden>
+<span id="execution-results-POSTapi-freelancers-portfolios" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-portfolios"></span>:
+                id="execution-response-status-POSTapi-freelancers-portfolios"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-portfolios"
+    <pre class="json"><code id="execution-response-content-POSTapi-freelancers-portfolios"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-portfolios" hidden>
+<span id="execution-error-POSTapi-freelancers-portfolios" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-portfolios">
+    <pre><code id="execution-error-message-POSTapi-freelancers-portfolios">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-portfolios" data-method="POST"
-      data-path="api/portfolios"
+<form id="form-POSTapi-freelancers-portfolios" data-method="POST"
+      data-path="api/freelancers/portfolios"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-portfolios', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-freelancers-portfolios', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-portfolios"
-                    onclick="tryItOut('POSTapi-portfolios');">Try it out ⚡
+                    id="btn-tryout-POSTapi-freelancers-portfolios"
+                    onclick="tryItOut('POSTapi-freelancers-portfolios');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-portfolios"
-                    onclick="cancelTryOut('POSTapi-portfolios');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-freelancers-portfolios"
+                    onclick="cancelTryOut('POSTapi-freelancers-portfolios');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-portfolios"
+                    id="btn-executetryout-POSTapi-freelancers-portfolios"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -3989,7 +3989,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/portfolios</code></b>
+            <b><code>api/freelancers/portfolios</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -3997,7 +3997,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-portfolios"
+                              name="Content-Type"                data-endpoint="POSTapi-freelancers-portfolios"
                value="application/json"
                data-component="header">
     <br>
@@ -4008,7 +4008,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-portfolios"
+                              name="Accept"                data-endpoint="POSTapi-freelancers-portfolios"
                value="application/json"
                data-component="header">
     <br>
@@ -4019,7 +4019,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-portfolios"
+                              name="Accept-Language"                data-endpoint="POSTapi-freelancers-portfolios"
                value="en"
                data-component="header">
     <br>
@@ -4031,7 +4031,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="title"                data-endpoint="POSTapi-portfolios"
+                              name="title"                data-endpoint="POSTapi-freelancers-portfolios"
                value=""E-commerce Website""
                data-component="body">
     <br>
@@ -4042,7 +4042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="POSTapi-portfolios"
+                              name="description"                data-endpoint="POSTapi-freelancers-portfolios"
                value=""A modern responsive e-commerce website built with React and Laravel""
                data-component="body">
     <br>
@@ -4053,7 +4053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="category_id"                data-endpoint="POSTapi-portfolios"
+               step="any"               name="category_id"                data-endpoint="POSTapi-freelancers-portfolios"
                value="1"
                data-component="body">
     <br>
@@ -4064,7 +4064,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="subcategory_id"                data-endpoint="POSTapi-portfolios"
+               step="any"               name="subcategory_id"                data-endpoint="POSTapi-freelancers-portfolios"
                value="2"
                data-component="body">
     <br>
@@ -4075,10 +4075,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>file[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="attachments[0]"                data-endpoint="POSTapi-portfolios"
+                              name="attachments[0]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
         <input type="file" style="display: none"
-               name="attachments[1]"                data-endpoint="POSTapi-portfolios"
+               name="attachments[1]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
     <br>
 <p>optional Array of files (PDF, JPEG, JPG, PNG, GIF, max 5MB each).</p>
@@ -4088,17 +4088,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="hashtags[0]"                data-endpoint="POSTapi-portfolios"
+                              name="hashtags[0]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
         <input type="text" style="display: none"
-               name="hashtags[1]"                data-endpoint="POSTapi-portfolios"
+               name="hashtags[1]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
     <br>
 <p>optional Array of hashtag strings (max 255 characters each).</p>
         </div>
         </form>
 
-                    <h2 id="portfolio-management-GETapi-portfolios--id-">Get specific portfolio</h2>
+                    <h2 id="portfolio-management-GETapi-freelancers-portfolios--id-">Get specific portfolio</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4106,13 +4106,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <p>Retrieve a specific portfolio by its ID with all related data.</p>
 
-<span id="example-requests-GETapi-portfolios--id-">
+<span id="example-requests-GETapi-freelancers-portfolios--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/portfolios/1" \
+    --get "http://backend.shuwier.com/api/freelancers/portfolios/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en"</code></pre></div>
@@ -4120,7 +4120,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/portfolios/1"
+    "http://backend.shuwier.com/api/freelancers/portfolios/1"
 );
 
 const headers = {
@@ -4136,7 +4136,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-portfolios--id-">
+<span id="example-responses-GETapi-freelancers-portfolios--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -4182,43 +4182,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-portfolios--id-" hidden>
+<span id="execution-results-GETapi-freelancers-portfolios--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-portfolios--id-"></span>:
+                id="execution-response-status-GETapi-freelancers-portfolios--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-portfolios--id-"
+    <pre class="json"><code id="execution-response-content-GETapi-freelancers-portfolios--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-portfolios--id-" hidden>
+<span id="execution-error-GETapi-freelancers-portfolios--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-portfolios--id-">
+    <pre><code id="execution-error-message-GETapi-freelancers-portfolios--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-portfolios--id-" data-method="GET"
-      data-path="api/portfolios/{id}"
+<form id="form-GETapi-freelancers-portfolios--id-" data-method="GET"
+      data-path="api/freelancers/portfolios/{id}"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-portfolios--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-freelancers-portfolios--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-portfolios--id-"
-                    onclick="tryItOut('GETapi-portfolios--id-');">Try it out ⚡
+                    id="btn-tryout-GETapi-freelancers-portfolios--id-"
+                    onclick="tryItOut('GETapi-freelancers-portfolios--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-portfolios--id-"
-                    onclick="cancelTryOut('GETapi-portfolios--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-freelancers-portfolios--id-"
+                    onclick="cancelTryOut('GETapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-portfolios--id-"
+                    id="btn-executetryout-GETapi-freelancers-portfolios--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -4226,7 +4226,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/portfolios/{id}</code></b>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4234,7 +4234,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-portfolios--id-"
+                              name="Content-Type"                data-endpoint="GETapi-freelancers-portfolios--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -4245,7 +4245,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-portfolios--id-"
+                              name="Accept"                data-endpoint="GETapi-freelancers-portfolios--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -4256,7 +4256,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-portfolios--id-"
+                              name="Accept-Language"                data-endpoint="GETapi-freelancers-portfolios--id-"
                value="en"
                data-component="header">
     <br>
@@ -4268,7 +4268,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-portfolios--id-"
+               step="any"               name="id"                data-endpoint="GETapi-freelancers-portfolios--id-"
                value="1"
                data-component="url">
     <br>
@@ -4276,7 +4276,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="portfolio-management-PUTapi-portfolios--id-">Update portfolio</h2>
+                    <h2 id="portfolio-management-PUTapi-freelancers-portfolios--id-">Update portfolio</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4297,13 +4297,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <li>To remove all hashtags, send an empty array: <code>"hashtags": []</code></li>
 </ul>
 
-<span id="example-requests-PUTapi-portfolios--id-">
+<span id="example-requests-PUTapi-freelancers-portfolios--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://backend.shuwier.com/api/portfolios/1" \
+    "http://backend.shuwier.com/api/freelancers/portfolios/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
@@ -4327,7 +4327,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/portfolios/1"
+    "http://backend.shuwier.com/api/freelancers/portfolios/1"
 );
 
 const headers = {
@@ -4360,7 +4360,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-PUTapi-portfolios--id-">
+<span id="example-responses-PUTapi-freelancers-portfolios--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -4417,43 +4417,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-PUTapi-portfolios--id-" hidden>
+<span id="execution-results-PUTapi-freelancers-portfolios--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PUTapi-portfolios--id-"></span>:
+                id="execution-response-status-PUTapi-freelancers-portfolios--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-portfolios--id-"
+    <pre class="json"><code id="execution-response-content-PUTapi-freelancers-portfolios--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PUTapi-portfolios--id-" hidden>
+<span id="execution-error-PUTapi-freelancers-portfolios--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-portfolios--id-">
+    <pre><code id="execution-error-message-PUTapi-freelancers-portfolios--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PUTapi-portfolios--id-" data-method="PUT"
-      data-path="api/portfolios/{id}"
+<form id="form-PUTapi-freelancers-portfolios--id-" data-method="PUT"
+      data-path="api/freelancers/portfolios/{id}"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-portfolios--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-freelancers-portfolios--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-portfolios--id-"
-                    onclick="tryItOut('PUTapi-portfolios--id-');">Try it out ⚡
+                    id="btn-tryout-PUTapi-freelancers-portfolios--id-"
+                    onclick="tryItOut('PUTapi-freelancers-portfolios--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-portfolios--id-"
-                    onclick="cancelTryOut('PUTapi-portfolios--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-PUTapi-freelancers-portfolios--id-"
+                    onclick="cancelTryOut('PUTapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-portfolios--id-"
+                    id="btn-executetryout-PUTapi-freelancers-portfolios--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -4461,11 +4461,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/portfolios/{id}</code></b>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
         </p>
             <p>
             <small class="badge badge-purple">PATCH</small>
-            <b><code>api/portfolios/{id}</code></b>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4473,7 +4473,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-portfolios--id-"
+                              name="Content-Type"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -4484,7 +4484,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-portfolios--id-"
+                              name="Accept"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -4495,7 +4495,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="PUTapi-portfolios--id-"
+                              name="Accept-Language"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="en"
                data-component="header">
     <br>
@@ -4507,7 +4507,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-portfolios--id-"
+               step="any"               name="id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="1"
                data-component="url">
     <br>
@@ -4519,7 +4519,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="title"                data-endpoint="PUTapi-portfolios--id-"
+                              name="title"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value=""Updated E-commerce Website""
                data-component="body">
     <br>
@@ -4530,7 +4530,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="PUTapi-portfolios--id-"
+                              name="description"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value=""An updated modern responsive e-commerce website""
                data-component="body">
     <br>
@@ -4541,7 +4541,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="category_id"                data-endpoint="PUTapi-portfolios--id-"
+               step="any"               name="category_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="1"
                data-component="body">
     <br>
@@ -4552,7 +4552,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="subcategory_id"                data-endpoint="PUTapi-portfolios--id-"
+               step="any"               name="subcategory_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="2"
                data-component="body">
     <br>
@@ -4563,10 +4563,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="attachments[0]"                data-endpoint="PUTapi-portfolios--id-"
+                              name="attachments[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
         <input type="text" style="display: none"
-               name="attachments[1]"                data-endpoint="PUTapi-portfolios--id-"
+               name="attachments[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
     <br>
 <p>optional Array of files and/or existing file paths. <strong>CAUTION:</strong> If provided, ALL existing attachments will be deleted first. To keep existing files, include their file paths as strings.</p>
@@ -4576,17 +4576,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="hashtags[0]"                data-endpoint="PUTapi-portfolios--id-"
+                              name="hashtags[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
         <input type="text" style="display: none"
-               name="hashtags[1]"                data-endpoint="PUTapi-portfolios--id-"
+               name="hashtags[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
     <br>
 <p>optional Array of hashtag strings. <strong>CAUTION:</strong> If provided, ALL existing hashtags will be replaced.</p>
         </div>
         </form>
 
-                    <h2 id="portfolio-management-DELETEapi-portfolios--id-">Delete portfolio</h2>
+                    <h2 id="portfolio-management-DELETEapi-freelancers-portfolios--id-">Delete portfolio</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4595,13 +4595,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Permanently delete a portfolio and all its associated data including attachments and hashtag relationships.
 <strong>Warning:</strong> This action cannot be undone. All uploaded files will also be deleted from storage.</p>
 
-<span id="example-requests-DELETEapi-portfolios--id-">
+<span id="example-requests-DELETEapi-freelancers-portfolios--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://backend.shuwier.com/api/portfolios/1" \
+    "http://backend.shuwier.com/api/freelancers/portfolios/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en"</code></pre></div>
@@ -4609,7 +4609,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/portfolios/1"
+    "http://backend.shuwier.com/api/freelancers/portfolios/1"
 );
 
 const headers = {
@@ -4625,7 +4625,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-DELETEapi-portfolios--id-">
+<span id="example-responses-DELETEapi-freelancers-portfolios--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -4649,43 +4649,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-DELETEapi-portfolios--id-" hidden>
+<span id="execution-results-DELETEapi-freelancers-portfolios--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-portfolios--id-"></span>:
+                id="execution-response-status-DELETEapi-freelancers-portfolios--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-portfolios--id-"
+    <pre class="json"><code id="execution-response-content-DELETEapi-freelancers-portfolios--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-DELETEapi-portfolios--id-" hidden>
+<span id="execution-error-DELETEapi-freelancers-portfolios--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-portfolios--id-">
+    <pre><code id="execution-error-message-DELETEapi-freelancers-portfolios--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-DELETEapi-portfolios--id-" data-method="DELETE"
-      data-path="api/portfolios/{id}"
+<form id="form-DELETEapi-freelancers-portfolios--id-" data-method="DELETE"
+      data-path="api/freelancers/portfolios/{id}"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-portfolios--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-freelancers-portfolios--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-portfolios--id-"
-                    onclick="tryItOut('DELETEapi-portfolios--id-');">Try it out ⚡
+                    id="btn-tryout-DELETEapi-freelancers-portfolios--id-"
+                    onclick="tryItOut('DELETEapi-freelancers-portfolios--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-portfolios--id-"
-                    onclick="cancelTryOut('DELETEapi-portfolios--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-DELETEapi-freelancers-portfolios--id-"
+                    onclick="cancelTryOut('DELETEapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-portfolios--id-"
+                    id="btn-executetryout-DELETEapi-freelancers-portfolios--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -4693,7 +4693,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-red">DELETE</small>
-            <b><code>api/portfolios/{id}</code></b>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4701,7 +4701,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-portfolios--id-"
+                              name="Content-Type"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -4712,7 +4712,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-portfolios--id-"
+                              name="Accept"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -4723,7 +4723,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="DELETEapi-portfolios--id-"
+                              name="Accept-Language"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
                value="en"
                data-component="header">
     <br>
@@ -4735,7 +4735,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-portfolios--id-"
+               step="any"               name="id"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
                value="1"
                data-component="url">
     <br>

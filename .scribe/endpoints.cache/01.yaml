@@ -8,7 +8,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/portfolios
+    uri: api/freelancers/portfolios
     metadata:
       groupName: 'Portfolio Management'
       groupDescription: |-
@@ -90,7 +90,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/portfolios
+    uri: api/freelancers/portfolios
     metadata:
       groupName: 'Portfolio Management'
       groupDescription: |-
@@ -248,7 +248,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/portfolios/{id}'
+    uri: 'api/freelancers/portfolios/{id}'
     metadata:
       groupName: 'Portfolio Management'
       groupDescription: |-
@@ -335,7 +335,7 @@ endpoints:
     httpMethods:
       - PUT
       - PATCH
-    uri: 'api/portfolios/{id}'
+    uri: 'api/freelancers/portfolios/{id}'
     metadata:
       groupName: 'Portfolio Management'
       groupDescription: |-
@@ -520,7 +520,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/portfolios/{id}'
+    uri: 'api/freelancers/portfolios/{id}'
     metadata:
       groupName: 'Portfolio Management'
       groupDescription: |-

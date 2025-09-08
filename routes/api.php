@@ -22,11 +22,13 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');
 
-Route::apiResources(
-    [
-        'portfolios' => PortfolioController::class,
-    ],
-    [
-        'middleware' => 'checkUserType:freelancer',
-    ]
-);
+Route::group(['prefix' => 'freelancers'], function () {
+    Route::apiResources(
+        [
+            'portfolios' => PortfolioController::class,
+        ],
+        [
+            'middleware' => 'checkUserType:freelancer',
+        ]
+    );
+});
