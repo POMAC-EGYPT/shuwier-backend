@@ -219,4 +219,8 @@ return [
         // 'slug'                  => ' ',
     ],
 
+    // Custom validation messages for portfolio attachments
+    'file_path_too_long' => 'مسار الملف طويل جداً.',
+    'attachment_invalid_type' => 'يجب أن يكون المرفق إما ملف أو مسار ملف صالح.',
+
 ];

@@ -84,4 +84,6 @@ return [
     'this_subcategory_does_not_belong_to_the_selected_category' => 'هذه الفئة الفرعية لا تنتمي إلى الفئة المحددة',
     'portfolio_created_successfully' => 'تم إنشاء معرض الأعمال بنجاح',
     'portfolio_updated_successfully' => 'تم تحديث معرض الأعمال بنجاح',
+    'invalid_attachments' => 'المرفقات المقدمة غير صالحة',
+    'portfolio_deleted_successfully' => 'تم حذف معرض الأعمال بنجاح',
 ];

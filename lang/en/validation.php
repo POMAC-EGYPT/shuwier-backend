@@ -196,4 +196,8 @@ return [
 
     'attributes' => [],
 
+    // Custom validation messages for portfolio attachments
+    'file_path_too_long' => 'The file path is too long.',
+    'attachment_invalid_type' => 'The attachment must be either a file or a valid file path.',
+
 ];

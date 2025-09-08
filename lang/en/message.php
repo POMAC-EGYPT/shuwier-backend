@@ -84,4 +84,6 @@ return [
     'this_subcategory_does_not_belong_to_the_selected_category' => 'This subcategory does not belong to the selected category',
     'portfolio_created_successfully' => 'Portfolio created successfully',
     'portfolio_updated_successfully' => 'Portfolio updated successfully',
+    'invalid_attachments' => 'Invalid attachments provided',
+    'portfolio_deleted_successfully' => 'Portfolio deleted successfully',
 ];

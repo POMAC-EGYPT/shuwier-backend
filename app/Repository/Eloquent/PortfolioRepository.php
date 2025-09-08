@@ -44,6 +44,8 @@ class PortfolioRepository implements PortfolioRepositoryInterface
     {
         $portfolio = $this->findById($id);
 
+        $portfolio->hashtags()->detach();
+        
         return $portfolio->delete();
     }
 }

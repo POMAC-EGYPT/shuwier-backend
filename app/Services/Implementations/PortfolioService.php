@@ -86,7 +86,7 @@ class PortfolioService implements PortfolioServiceInterface
 
                     $this->portfolioAttachmentRepo->create([
                         'portfolio_id' => $portfolio->id,
-                        'file_path'    => $imagePath,
+                        'file_path' => $imagePath,
                     ]);
                 }
             }
@@ -106,7 +106,7 @@ class PortfolioService implements PortfolioServiceInterface
         if ($category->parent_id != null)
             return ['status' => false, 'message' => __('message.this_category_is_not_a_parent_category')];
 
-        if (isset($data['subcategory_id'])) {
+        if (isset($data['subcategory_id']) && $data['subcategory_id'] != null) {
             $subcategory = $this->categoryService->getById($data['subcategory_id']);
 
             if ($subcategory->parent_id == null)
@@ -115,12 +115,27 @@ class PortfolioService implements PortfolioServiceInterface
             if ($subcategory->parent_id != $data['category_id'])
                 return ['status' => false, 'message' => __('message.this_subcategory_does_not_belong_to_the_selected_category')];
         }
+
+        if (isset($data['attachments']) && $data['attachments'] != null) {
+            $oldAttachments = $portfolio->attachments->pluck('file_path')->toArray();
+
+            foreach ($data['attachments'] as $attachment) {
+                if (is_string($attachment) && !in_array($attachment, $oldAttachments, true)) {
+                    return ['status' => false, 'message' => __('message.invalid_attachments')];
+                }
+            }
+        }
+
         $portfolio = DB::transaction(function () use ($id, $data, $portfolio) {
             $hashtagIds = [];
 
-            if (isset($data['hashtags']))
-                foreach ($data['hashtags'] as $hashtag)
-                    $hashtagIds[] = $this->hashtagRepo->firstOrCreate(['name' => strtolower($hashtag)])->id;
+            if (isset($data['hashtags'])) {
+                foreach ($data['hashtags'] as $hashtag) {
+                    $hashtagIds[] = $this->hashtagRepo
+                        ->firstOrCreate(['name' => strtolower($hashtag)])
+                        ->id;
+                }
+            }
 
             $this->profileRepo->update($id, [
                 'title'          => $data['title'],
@@ -130,27 +145,54 @@ class PortfolioService implements PortfolioServiceInterface
                 'user_id'        => $data['user_id'],
             ]);
 
-            if (array_key_exists('hashtags', $data))
+            if (isset($data['hashtags'])) {
                 $this->profileRepo->syncHashtags($portfolio, $hashtagIds);
+            }
 
-            if (array_key_exists('attachments', $data)) {
+            if (isset($data['attachments'])) {
                 foreach ($portfolio->attachments as $attachment) {
                     ImageHelpers::deleteImage($attachment->file_path);
                     $this->portfolioAttachmentRepo->delete($attachment->id);
                 }
 
                 foreach ($data['attachments'] as $attachment) {
-                    $imagePath = ImageHelpers::addImage($attachment, 'portfolios');
-
-                    $this->portfolioAttachmentRepo->create([
-                        'portfolio_id' => $portfolio->id,
-                        'file_path'    => $imagePath,
-                    ]);
+                    if (is_string($attachment)) {
+                        $this->portfolioAttachmentRepo->create([
+                            'portfolio_id' => $portfolio->id,
+                            'file_path'    => $attachment,
+                        ]);
+                    } elseif ($attachment instanceof \Illuminate\Http\UploadedFile) {
+                        $imagePath = ImageHelpers::addImage($attachment, 'portfolios');
+                        $this->portfolioAttachmentRepo->create([
+                            'portfolio_id' => $portfolio->id,
+                            'file_path'    => $imagePath,
+                        ]);
+                    }
                 }
             }
+
             return $portfolio->load(['category', 'subcategory', 'hashtags', 'attachments']);
         });
 
-        return ['status' => true, 'message' => __('message.portfolio_updated_successfully'), 'data' => $portfolio];
+        return [
+            'status'  => true,
+            'message' => __('message.portfolio_updated_successfully'),
+            'data'    => $portfolio,
+        ];
+    }
+
+    public function delete(int $id): array
+    {
+        $portfolio = $this->profileRepo->findById($id);
+
+        foreach ($portfolio->attachments as $attachment) {
+            ImageHelpers::deleteImage($attachment->file_path);
+
+            $this->portfolioAttachmentRepo->delete($attachment->id);
+        }
+
+        $this->profileRepo->delete($id);
+
+        return ['status' => true, 'message' => __('message.portfolio_deleted_successfully')];
     }
 }

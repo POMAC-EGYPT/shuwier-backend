@@ -1,26 +1,104 @@
-name: 'Admin Authentication'
+name: 'Portfolio Management'
 description: |-
 
-  APIs for admin authentication and authorization.
-  These endpoints handle admin login and session management.
+  APIs for managing freelancer portfolios
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/admin/auth/login
+      - GET
+    uri: api/portfolios
     metadata:
-      groupName: 'Admin Authentication'
+      groupName: 'Portfolio Management'
       groupDescription: |-
 
-        APIs for admin authentication and authorization.
-        These endpoints handle admin login and session management.
+        APIs for managing freelancer portfolios
       subgroup: ''
       subgroupDescription: ''
-      title: 'Admin Login.'
-      description: |-
-        This endpoint authenticates administrators and returns a JWT token along with admin permissions.
-        Only users with admin privileges can access this endpoint.
-      authenticated: false
+      title: 'Get user portfolios'
+      description: 'Retrieve all portfolios for the authenticated freelancer with pagination.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Number of portfolios per page. Default is 10.'
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      per_page: 15
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Success",
+            "status": true,
+            "data": {
+              "data": [
+                {
+                  "id": 1,
+                  "title": "E-commerce Website",
+                  "description": "Modern responsive e-commerce website",
+                  "category": {
+                    "id": 1,
+                    "name": "Web Development"
+                  },
+                  "subcategory": {
+                    "id": 2,
+                    "name": "Frontend"
+                  },
+                  "hashtags": ["#react", "#ecommerce"],
+                  "attachments": [
+                    {
+                      "id": 1,
+                      "file_path": "storage/portfolios/image1.jpg"
+                    }
+                  ]
+                }
+              ],
+              "current_page": 1,
+              "per_page": 10,
+              "total": 25
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/portfolios
+    metadata:
+      groupName: 'Portfolio Management'
+      groupDescription: |-
+
+        APIs for managing freelancer portfolios
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create new portfolio'
+      description: 'Create a new portfolio for the authenticated freelancer.'
+      authenticated: true
       deprecated: false
       custom: []
     headers:
@@ -32,97 +110,473 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      email:
-        name: email
-        description: 'Admin email address.'
+      title:
+        name: title
+        description: 'The portfolio title (max 255 characters).'
         required: true
-        example: admin@admin.com
+        example: '"E-commerce Website"'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      password:
-        name: password
-        description: 'Admin password.'
+      description:
+        name: description
+        description: 'The portfolio description.'
         required: true
-        example: password123
+        example: '"A modern responsive e-commerce website built with React and Laravel"'
         type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: 'The main category ID (must be a parent category).'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      subcategory_id:
+        name: subcategory_id
+        description: 'optional The subcategory ID (must belong to the selected category).'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      attachments:
+        name: attachments
+        description: 'optional Array of files (PDF, JPEG, JPG, PNG, GIF, max 5MB each).'
+        required: false
+        example: []
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      hashtags:
+        name: hashtags
+        description: 'optional Array of hashtag strings (max 255 characters each).'
+        required: false
+        example:
+          - react
+          - ecommerce
+          - laravel
+        type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: admin@admin.com
-      password: password123
+      title: '"E-commerce Website"'
+      description: '"A modern responsive e-commerce website built with React and Laravel"'
+      category_id: 1
+      subcategory_id: 2
+      attachments: []
+      hashtags:
+        - react
+        - ecommerce
+        - laravel
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "message": "Portfolio created successfully",
             "status": true,
-            "error_num": null,
-            "message": "Login successful",
             "data": {
-              "admin": {
+              "id": 1,
+              "title": "E-commerce Website",
+              "description": "A modern responsive e-commerce website",
+              "category": {
                 "id": 1,
-                "email": "admin@admin.com",
-                "permissions_with_role": {
-                  "permissions": [
-                    "admin.users.index",
-                    "admin.users.create",
-                    "admin.users.edit",
-                    "admin.users.delete",
-                    "freelancer.viewAny",
-                    "freelancer.view",
-                    "freelancer.create",
-                    "freelancer.delete",
-                    "freelancer.approveAndReject"
-                  ],
-                  "role": "super-admin"
-                },
-                "created_at": "2025-08-21T07:43:34.000000Z",
-                "updated_at": "2025-08-21T07:43:34.000000Z"
+                "name": "Web Development"
               },
-              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+              "subcategory": {
+                "id": 2,
+                "name": "Frontend"
+              },
+              "hashtags": ["#react", "#ecommerce"],
+              "attachments": [
+                {
+                  "id": 1,
+                  "file_path": "storage/portfolios/image1.jpg"
+                }
+              ]
             }
           }
         headers: []
-        description: 'Login successful'
+        description: ''
         custom: []
       -
         status: 400
         content: |-
           {
+            "message": "This category is not a parent category",
             "status": false,
-            "error_num": 400,
-            "message": "Invalid password"
+            "error_code": 400
           }
         headers: []
-        description: 'Invalid password'
+        description: ''
         custom: []
       -
-        status: 404
+        status: 400
         content: |-
           {
+            "message": "This subcategory does not belong to the selected category",
             "status": false,
-            "error_num": 404,
-            "message": "The selected email is invalid."
+            "error_code": 400
           }
         headers: []
-        description: 'Invalid email'
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/portfolios/{id}'
+    metadata:
+      groupName: 'Portfolio Management'
+      groupDescription: |-
+
+        APIs for managing freelancer portfolios
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get specific portfolio'
+      description: 'Retrieve a specific portfolio by its ID with all related data.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The portfolio ID.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Success",
+            "status": true,
+            "data": {
+              "id": 1,
+              "title": "E-commerce Website",
+              "description": "A modern responsive e-commerce website",
+              "category": {
+                "id": 1,
+                "name": "Web Development"
+              },
+              "subcategory": {
+                "id": 2,
+                "name": "Frontend"
+              },
+              "hashtags": ["#react", "#ecommerce"],
+              "attachments": [
+                {
+                  "id": 1,
+                  "file_path": "storage/portfolios/image1.jpg"
+                }
+              ]
+            }
+          }
+        headers: []
+        description: ''
         custom: []
       -
-        status: 422
+        status: 400
         content: |-
           {
+            "message": "Portfolio not found",
             "status": false,
-            "error_num": 400,
-            "message": "The email field is required."
+            "error_code": 400
           }
         headers: []
-        description: 'Validation error'
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/portfolios/{id}'
+    metadata:
+      groupName: 'Portfolio Management'
+      groupDescription: |-
+
+        APIs for managing freelancer portfolios
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update portfolio'
+      description: |-
+        Update an existing portfolio. **Important behavior notes:**
+
+        **For Attachments:**
+        - If you send `attachments` parameter (even as empty array), ALL existing attachments will be deleted and replaced with the new ones
+        - If you don't send `attachments` parameter at all, existing attachments will remain unchanged
+        - You can send existing file paths (strings) to keep them, or upload new files
+        - Example: To keep some files and add new ones, send both existing file paths and new files in the attachments array
+
+        **For Hashtags:**
+        - If you send `hashtags` parameter (even as empty array), ALL existing hashtags will be replaced with the new ones
+        - If you don't send `hashtags` parameter at all, existing hashtags will remain unchanged
+        - To remove all hashtags, send an empty array: `"hashtags": []`
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The portfolio ID to update.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'The portfolio title (max 255 characters).'
+        required: true
+        example: '"Updated E-commerce Website"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'The portfolio description.'
+        required: true
+        example: '"An updated modern responsive e-commerce website"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: 'The main category ID (must be a parent category).'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      subcategory_id:
+        name: subcategory_id
+        description: 'optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      attachments:
+        name: attachments
+        description: 'optional Array of files and/or existing file paths. **CAUTION:** If provided, ALL existing attachments will be deleted first. To keep existing files, include their file paths as strings.'
+        required: false
+        example:
+          - storage/portfolios/existing1.jpg
+          - new_file.jpg
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      hashtags:
+        name: hashtags
+        description: 'optional Array of hashtag strings. **CAUTION:** If provided, ALL existing hashtags will be replaced.'
+        required: false
+        example:
+          - react
+          - updated
+          - laravel
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      title: '"Updated E-commerce Website"'
+      description: '"An updated modern responsive e-commerce website"'
+      category_id: 1
+      subcategory_id: 2
+      attachments:
+        - storage/portfolios/existing1.jpg
+        - new_file.jpg
+      hashtags:
+        - react
+        - updated
+        - laravel
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Portfolio updated successfully",
+            "status": true,
+            "data": {
+              "id": 1,
+              "title": "Updated E-commerce Website",
+              "description": "An updated modern responsive e-commerce website",
+              "category": {
+                "id": 1,
+                "name": "Web Development"
+              },
+              "subcategory": {
+                "id": 2,
+                "name": "Frontend"
+              },
+              "hashtags": ["#react", "#updated"],
+              "attachments": [
+                {
+                  "id": 2,
+                  "file_path": "storage/portfolios/new_image.jpg"
+                }
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "This category is not a parent category",
+            "status": false,
+            "error_code": 400
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Invalid attachments",
+            "status": false,
+            "error_code": 400
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/portfolios/{id}'
+    metadata:
+      groupName: 'Portfolio Management'
+      groupDescription: |-
+
+        APIs for managing freelancer portfolios
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete portfolio'
+      description: |-
+        Permanently delete a portfolio and all its associated data including attachments and hashtag relationships.
+        **Warning:** This action cannot be undone. All uploaded files will also be deleted from storage.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The portfolio ID to delete.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Portfolio deleted successfully",
+            "status": true,
+            "data": null
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Portfolio not found",
+            "status": false,
+            "error_code": 400
+          }
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth: []

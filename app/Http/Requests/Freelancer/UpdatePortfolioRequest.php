@@ -15,7 +15,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property array|null $attachments
  * @property array|null $hashtags
  */
-class PortfolioRequest extends FormRequest
+class UpdatePortfolioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -45,7 +45,26 @@ class PortfolioRequest extends FormRequest
             'category_id'    => 'required|integer|exists:categories,id',
             'subcategory_id' => 'nullable|integer|exists:categories,id',
             'attachments'    => 'nullable|array',
-            'attachments.*'  => 'file|mimes:pdf,jpeg,jpg,png,gif|max:5120',
+            'attachments.*'  => function ($attribute, $value, $fail) {
+                if (is_string($value)) {
+                    if (strlen($value) > 255) {
+                        $fail(__('validation.file_path_too_long'));
+                    }
+                } elseif ($value instanceof \Illuminate\Http\UploadedFile) {
+                    $allowedMimes = ['pdf', 'jpeg', 'jpg', 'png', 'gif'];
+                    $maxSize = 5120;
+
+                    if (!in_array($value->getClientOriginalExtension(), $allowedMimes)) {
+                        $fail(__('validation.mimes', ['values' => 'pdf, jpeg, jpg, png, gif']));
+                    }
+
+                    if ($value->getSize() > ($maxSize * 1024)) { 
+                        $fail(__('validation.max.file', ['max' => '5MB']));
+                    }
+                } else {
+                    $fail(__('validation.attachment_invalid_type'));
+                }
+            },
             'hashtags'       => 'nullable|array',
             'hashtags.*'     => 'string|max:255',
         ];
