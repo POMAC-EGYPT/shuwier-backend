@@ -15,10 +15,11 @@ class PortfolioRepository implements PortfolioRepositoryInterface
             ->paginate($perPage);
     }
 
-    public function findById(int $id): Portfolio
+    public function findByUserIdAndPortfolioId(int $userId, int $portfolioId): Portfolio
     {
-        return Portfolio::with(['category', 'subcategory', 'hashtags', 'attachments'])
-            ->findOrFail($id);
+        return Portfolio::where('user_id', $userId)
+            ->with(['category', 'subcategory', 'hashtags', 'attachments'])
+            ->findOrFail($portfolioId);
     }
 
     public function syncHashtags(Portfolio $portfolio, array $hashtags): void
@@ -35,15 +36,15 @@ class PortfolioRepository implements PortfolioRepositoryInterface
         return $portfolio;
     }
 
-    public function update(int $id, array $data): bool
+    public function update(int $userId, int $id, array $data): bool
     {
-        $portfolio = $this->findById($id);
+        $portfolio = $this->findByUserIdAndPortfolioId($userId, $id);
 
         return $portfolio->update($data);
     }
-    public function delete(int $id): bool
+    public function delete(int $userId, int $id): bool
     {
-        $portfolio = $this->findById($id);
+        $portfolio = $this->findByUserIdAndPortfolioId($userId, $id);
 
         $portfolio->hashtags()->detach();
 

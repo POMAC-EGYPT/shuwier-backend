@@ -186,7 +186,7 @@ class PortfolioController extends Controller
      */
     public function show(string $id)
     {
-        $result = $this->portfolioService->getPortfolioById((int) $id);
+        $result = $this->portfolioService->getPortfolioByUserIdAndPortfolioId(auth('api')->id(), (int) $id);
 
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);
@@ -259,7 +259,7 @@ class PortfolioController extends Controller
      */
     public function update(UpdatePortfolioRequest $request, string $id)
     {
-        $result = $this->portfolioService->update((int) $id, [
+        $result = $this->portfolioService->update(auth('api')->id(), (int) $id, [
             'title'          => $request->title,
             'description'    => $request->description,
             'category_id'    => $request->category_id,
@@ -299,7 +299,7 @@ class PortfolioController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = $this->portfolioService->delete((int) $id);
+        $result = $this->portfolioService->delete(auth('api')->id(), (int) $id);
 
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);

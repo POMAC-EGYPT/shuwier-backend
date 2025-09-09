@@ -38,9 +38,9 @@ class PortfolioService implements PortfolioServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $portfolios];
     }
 
-    public function getPortfolioById(int $id): array
+    public function getPortfolioByUserIdAndPortfolioId(int $userId, int $portfolioId): array
     {
-        $portfolio = $this->profileRepo->findById($id);
+        $portfolio = $this->profileRepo->findByUserIdAndPortfolioId($userId, $portfolioId);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $portfolio];
     }
@@ -95,9 +95,9 @@ class PortfolioService implements PortfolioServiceInterface
         return ['status' => true, 'message' => __('message.portfolio_created_successfully'), 'data' => $portfolio];
     }
 
-    public function update(int $id, array $data): array
+    public function update(int $userId, int $id, array $data): array
     {
-        $portfolio = $this->profileRepo->findById($id);
+        $portfolio = $this->profileRepo->findByUserIdAndPortfolioId($userId, $id);
 
         $category = $this->categoryService->getById($data['category_id']);
 
@@ -135,7 +135,7 @@ class PortfolioService implements PortfolioServiceInterface
                 }
             }
 
-            $this->profileRepo->update($id, [
+            $this->profileRepo->update($data['user_id'], $id, [
                 'title'          => $data['title'],
                 'description'    => $data['description'],
                 'category_id'    => $data['category_id'],
@@ -179,9 +179,9 @@ class PortfolioService implements PortfolioServiceInterface
         ];
     }
 
-    public function delete(int $id): array
+    public function delete(int $userId, int $id): array
     {
-        $portfolio = $this->profileRepo->findById($id);
+        $portfolio = $this->profileRepo->findByUserIdAndPortfolioId($userId, $id);
 
         foreach ($portfolio->attachments as $attachment) {
             ImageHelpers::deleteImage($attachment->file_path);
@@ -189,7 +189,7 @@ class PortfolioService implements PortfolioServiceInterface
             $this->portfolioAttachmentRepo->delete($attachment->id);
         }
 
-        $this->profileRepo->delete($id);
+        $this->profileRepo->delete($userId, $id);
 
         return ['status' => true, 'message' => __('message.portfolio_deleted_successfully')];
     }
