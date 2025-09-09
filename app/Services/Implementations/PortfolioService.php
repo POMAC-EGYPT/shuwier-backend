@@ -42,8 +42,6 @@ class PortfolioService implements PortfolioServiceInterface
     {
         $portfolio = $this->profileRepo->findById($id);
 
-        $portfolio->load(['category', 'subcategory', 'hashtags', 'attachments']);
-
         return ['status' => true, 'message' => __('message.success'), 'data' => $portfolio];
     }
 

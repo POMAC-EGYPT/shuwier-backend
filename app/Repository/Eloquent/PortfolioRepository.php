@@ -17,7 +17,8 @@ class PortfolioRepository implements PortfolioRepositoryInterface
 
     public function findById(int $id): Portfolio
     {
-        return Portfolio::findOrFail($id);
+        return Portfolio::with(['category', 'subcategory', 'hashtags', 'attachments'])
+            ->findOrFail($id);
     }
 
     public function syncHashtags(Portfolio $portfolio, array $hashtags): void
@@ -45,7 +46,7 @@ class PortfolioRepository implements PortfolioRepositoryInterface
         $portfolio = $this->findById($id);
 
         $portfolio->hashtags()->detach();
-        
+
         return $portfolio->delete();
     }
 }
