@@ -44,7 +44,7 @@ class StorePortfolioRequest extends FormRequest
             'description'    => 'required|string',
             'category_id'    => 'required|integer|exists:categories,id',
             'subcategory_id' => 'nullable|integer|exists:categories,id',
-            'attachments'    => 'nullable|array',
+            'attachments'    => 'nullable|array|max:8',
             'attachments.*'  => 'file|mimes:pdf,jpeg,jpg,png,gif,doc,docx,xls,xlsx|max:5120',
             'hashtags'       => 'nullable|array',
             'hashtags.*'     => 'string|max:255',

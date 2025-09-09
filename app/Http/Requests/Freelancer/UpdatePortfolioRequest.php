@@ -44,7 +44,7 @@ class UpdatePortfolioRequest extends FormRequest
             'description'    => 'required|string',
             'category_id'    => 'required|integer|exists:categories,id',
             'subcategory_id' => 'nullable|integer|exists:categories,id',
-            'attachments'    => 'nullable|array',
+            'attachments'    => 'nullable|array|max:8',
             'attachments.*'  => function ($attribute, $value, $fail) {
                 if (is_string($value)) {
                     if (strlen($value) > 255) {
