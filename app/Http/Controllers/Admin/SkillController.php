@@ -313,13 +313,7 @@ class SkillController extends Controller
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);
 
-        return Response::api(
-            $result['message'],
-            200,
-            true,
-            null,
-            BaseResource::make(SkillResource::make($result['data']))
-        );
+        return Response::api($result['message'], 200, true, null);
     }
 
     /**
