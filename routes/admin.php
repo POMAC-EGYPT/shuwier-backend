@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\FreelancerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SkillController;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('login');
@@ -12,8 +13,9 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::apiResources([
     'freelancers' => FreelancerController::class,
-    'clients' => ClientController::class,
-    'categories' => CategoryController::class,
+    'clients'     => ClientController::class,
+    'categories'  => CategoryController::class,
+    'skills'      => SkillController::class,
 ], [
     'middleware' => ['auth:admin']
 ]);

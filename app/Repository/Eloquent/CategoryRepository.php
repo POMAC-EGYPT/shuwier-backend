@@ -41,9 +41,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         return Category::query()
             ->when(
                 $parent_id,
-                // If specific parent_id is provided, get its children
                 fn($query) => $query->where('parent_id', $parent_id),
-                // If no parent_id specified, get all children (use childrens scope)
                 fn($query) => $query->childrens()
             )
             ->when($search, fn($query) => $this->search($query, $search))

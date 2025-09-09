@@ -86,4 +86,7 @@ return [
     'portfolio_updated_successfully' => 'تم تحديث معرض الأعمال بنجاح',
     'invalid_attachments' => 'المرفقات المقدمة غير صالحة',
     'portfolio_deleted_successfully' => 'تم حذف معرض الأعمال بنجاح',
+    'skill_created_successfully' => 'تم إنشاء المهارة بنجاح',
+    'skill_updated_successfully' => 'تم تحديث المهارة بنجاح',
+    'skill_deleted_successfully' => 'تم حذف المهارة بنجاح',
 ];

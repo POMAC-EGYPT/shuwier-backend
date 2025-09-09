@@ -86,4 +86,7 @@ return [
     'portfolio_updated_successfully' => 'Portfolio updated successfully',
     'invalid_attachments' => 'Invalid attachments provided',
     'portfolio_deleted_successfully' => 'Portfolio deleted successfully',
+    'skill_created_successfully' => 'Skill created successfully',
+    'skill_updated_successfully' => 'Skill updated successfully',
+    'skill_deleted_successfully' => 'Skill deleted successfully',
 ];

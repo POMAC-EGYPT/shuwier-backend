@@ -23,6 +23,12 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
+
     #[Scope]
     protected function parents(Builder $query): Builder
     {
@@ -33,6 +39,5 @@ class Category extends Model
     protected function childrens(Builder $query): Builder
     {
         return $query->whereNotNull('parent_id');
-        
     }
 }

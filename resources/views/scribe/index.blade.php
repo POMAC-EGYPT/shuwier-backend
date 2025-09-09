@@ -164,6 +164,28 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-skills-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="skills-management">
+                    <a href="#skills-management">Skills Management</a>
+                </li>
+                                    <ul id="tocify-subheader-skills-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="skills-management-GETapi-admin-skills">
+                                <a href="#skills-management-GETapi-admin-skills">Get All Skills</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="skills-management-POSTapi-admin-skills">
+                                <a href="#skills-management-POSTapi-admin-skills">Create New Skill</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="skills-management-GETapi-admin-skills--id-">
+                                <a href="#skills-management-GETapi-admin-skills--id-">Get Skill Details</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="skills-management-PUTapi-admin-skills--id-">
+                                <a href="#skills-management-PUTapi-admin-skills--id-">Update Skill</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="skills-management-DELETEapi-admin-skills--id-">
+                                <a href="#skills-management-DELETEapi-admin-skills--id-">Delete Skill</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-user-authentication" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="user-authentication">
                     <a href="#user-authentication">User Authentication</a>
@@ -2524,7 +2546,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"requested\",
-    \"is_active\": \"1\",
+    \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -2552,7 +2574,7 @@ const headers = {
 
 let body = {
     "approval_status": "requested",
-    "is_active": "1",
+    "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -2791,10 +2813,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="1"
+               value="0"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>0</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -4752,6 +4774,1102 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The portfolio ID to delete. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                <h1 id="skills-management">Skills Management</h1>
+
+    <p>APIs for managing skills in the system. Skills are used to categorize freelancer capabilities
+and can be associated with categories for better organization.</p>
+
+                                <h2 id="skills-management-GETapi-admin-skills">Get All Skills</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retrieve a paginated list of all skills in the system.
+This endpoint supports search functionality and pagination.</p>
+
+<span id="example-requests-GETapi-admin-skills">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/admin/skills?search=%22PHP%22&amp;per_page=15" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"search\": \"vmqeopfuudtdsufvyvddq\",
+    \"per_page\": 1
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/skills"
+);
+
+const params = {
+    "search": ""PHP"",
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "search": "vmqeopfuudtdsufvyvddq",
+    "per_page": 1
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-admin-skills">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Skills retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;name_ar&quot;: &quot;برمجة PHP&quot;,
+                &quot;name_en&quot;: &quot;PHP Programming&quot;,
+                &quot;category_id&quot;: 2,
+                &quot;category&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name_ar&quot;: &quot;برمجة&quot;,
+                    &quot;name_en&quot;: &quot;Programming&quot;
+                },
+                &quot;created_at&quot;: &quot;2024-01-15T10:30:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2024-01-15T10:30:00.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name_ar&quot;: &quot;تصميم جرافيك&quot;,
+                &quot;name_en&quot;: &quot;Graphic Design&quot;,
+                &quot;category_id&quot;: 3,
+                &quot;category&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name_ar&quot;: &quot;تصميم&quot;,
+                    &quot;name_en&quot;: &quot;Design&quot;
+                },
+                &quot;created_at&quot;: &quot;2024-01-16T14:20:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2024-01-16T14:20:00.000000Z&quot;
+            }
+        ],
+        &quot;current_page&quot;: 1,
+        &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/admin/skills?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 5,
+        &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/admin/skills?page=5&quot;,
+        &quot;next_page_url&quot;: &quot;http://127.0.0.1:8000/api/admin/skills?page=2&quot;,
+        &quot;path&quot;: &quot;http://127.0.0.1:8000/api/admin/skills&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 10,
+        &quot;total&quot;: 50
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+  &quot;message&quot;: &quot;Search term must not exceed 255 characters&quot;,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Unauthenticated&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 401,
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-admin-skills" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-admin-skills"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admin-skills"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-admin-skills" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admin-skills">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-admin-skills" data-method="GET"
+      data-path="api/admin/skills"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-skills', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-admin-skills"
+                    onclick="tryItOut('GETapi-admin-skills');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-admin-skills"
+                    onclick="cancelTryOut('GETapi-admin-skills');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-admin-skills"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/admin/skills</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-admin-skills"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-admin-skills"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-admin-skills"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-admin-skills"
+               value=""PHP""
+               data-component="query">
+    <br>
+<p>optional Search term to filter skills by name (Arabic or English). Example: <code>"PHP"</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-admin-skills"
+               value="15"
+               data-component="query">
+    <br>
+<p>optional Number of items per page (1-100). Defaults to 10. Example: <code>15</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-admin-skills"
+               value="vmqeopfuudtdsufvyvddq"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>vmqeopfuudtdsufvyvddq</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-admin-skills"
+               value="1"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 100. Example: <code>1</code></p>
+        </div>
+        </form>
+
+                    <h2 id="skills-management-POSTapi-admin-skills">Create New Skill</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Create a new skill in the system. Skills must have names in both Arabic and English
+and must be associated with a valid category.</p>
+
+<span id="example-requests-POSTapi-admin-skills">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/admin/skills" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"name_ar\": \"\\\"برمجة PHP\\\"\",
+    \"name_en\": \"\\\"PHP Programming\\\"\",
+    \"category_id\": 2
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/skills"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "name_ar": "\"برمجة PHP\"",
+    "name_en": "\"PHP Programming\"",
+    "category_id": 2
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-admin-skills">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Skill created successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 15,
+        &quot;name_ar&quot;: &quot;برمجة PHP&quot;,
+        &quot;name_en&quot;: &quot;PHP Programming&quot;,
+        &quot;category_id&quot;: 2,
+        &quot;category&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name_ar&quot;: &quot;برمجة&quot;,
+            &quot;name_en&quot;: &quot;Programming&quot;
+        },
+        &quot;created_at&quot;: &quot;2024-01-20T09:15:30.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-20T09:15:30.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+  &quot;message&quot;: &quot;The Arabic name has already been taken&quot;,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+  &quot;message&quot;: &quot;The name ar field is required&quot;,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;This category is not a parent category&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Unauthenticated&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 401,
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-admin-skills" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-admin-skills"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-admin-skills"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-admin-skills" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-admin-skills">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-admin-skills" data-method="POST"
+      data-path="api/admin/skills"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-skills', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-admin-skills"
+                    onclick="tryItOut('POSTapi-admin-skills');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-admin-skills"
+                    onclick="cancelTryOut('POSTapi-admin-skills');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-admin-skills"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/admin/skills</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-admin-skills"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-admin-skills"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-admin-skills"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name_ar"                data-endpoint="POSTapi-admin-skills"
+               value=""برمجة PHP""
+               data-component="body">
+    <br>
+<p>The Arabic name of the skill. Must be unique and between 2-100 characters. Example: <code>"برمجة PHP"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name_en"                data-endpoint="POSTapi-admin-skills"
+               value=""PHP Programming""
+               data-component="body">
+    <br>
+<p>The English name of the skill. Must be unique and between 2-100 characters. Example: <code>"PHP Programming"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_id"                data-endpoint="POSTapi-admin-skills"
+               value="2"
+               data-component="body">
+    <br>
+<p>The ID of the category this skill belongs to. Must exist in categories table. Example: <code>2</code></p>
+        </div>
+        </form>
+
+                    <h2 id="skills-management-GETapi-admin-skills--id-">Get Skill Details</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retrieve detailed information about a specific skill by its ID.
+Returns the skill data including its associated category information.</p>
+
+<span id="example-requests-GETapi-admin-skills--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/admin/skills/5" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/skills/5"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-admin-skills--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 5,
+        &quot;name_ar&quot;: &quot;تصميم واجهات المستخدم&quot;,
+        &quot;name_en&quot;: &quot;UI Design&quot;,
+        &quot;category_id&quot;: 3,
+        &quot;category&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name_ar&quot;: &quot;تصميم&quot;,
+            &quot;name_en&quot;: &quot;Design&quot;
+        },
+        &quot;created_at&quot;: &quot;2024-01-18T16:45:22.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-19T10:30:15.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Skill not found&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Unauthenticated&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 401,
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-admin-skills--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-admin-skills--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admin-skills--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-admin-skills--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admin-skills--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-admin-skills--id-" data-method="GET"
+      data-path="api/admin/skills/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-skills--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-admin-skills--id-"
+                    onclick="tryItOut('GETapi-admin-skills--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-admin-skills--id-"
+                    onclick="cancelTryOut('GETapi-admin-skills--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-admin-skills--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/admin/skills/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-admin-skills--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-admin-skills--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-admin-skills--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-admin-skills--id-"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of the skill to retrieve. Example: <code>5</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="skills-management-PUTapi-admin-skills--id-">Update Skill</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update an existing skill's information. You can modify the skill names (Arabic/English)
+and change its category association. All fields are required for update.</p>
+
+<span id="example-requests-PUTapi-admin-skills--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://backend.shuwier.com/api/admin/skills/5" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"name_ar\": \"\\\"تطوير تطبيقات PHP\\\"\",
+    \"name_en\": \"\\\"PHP Application Development\\\"\",
+    \"category_id\": 2
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/skills/5"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "name_ar": "\"تطوير تطبيقات PHP\"",
+    "name_en": "\"PHP Application Development\"",
+    "category_id": 2
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-admin-skills--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Skill updated successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 5,
+        &quot;name_ar&quot;: &quot;تطوير تطبيقات PHP&quot;,
+        &quot;name_en&quot;: &quot;PHP Application Development&quot;,
+        &quot;category_id&quot;: 2,
+        &quot;category&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name_ar&quot;: &quot;برمجة&quot;,
+            &quot;name_en&quot;: &quot;Programming&quot;
+        },
+        &quot;created_at&quot;: &quot;2024-01-18T16:45:22.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-20T11:22:45.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Skill not found&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;This category is not a parent category&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Unauthenticated&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 401,
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-admin-skills--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-admin-skills--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-admin-skills--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-admin-skills--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-admin-skills--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-admin-skills--id-" data-method="PUT"
+      data-path="api/admin/skills/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-admin-skills--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-admin-skills--id-"
+                    onclick="tryItOut('PUTapi-admin-skills--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-admin-skills--id-"
+                    onclick="cancelTryOut('PUTapi-admin-skills--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-admin-skills--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/admin/skills/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/admin/skills/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-admin-skills--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-admin-skills--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="PUTapi-admin-skills--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-admin-skills--id-"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of the skill to update. Example: <code>5</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name_ar"                data-endpoint="PUTapi-admin-skills--id-"
+               value=""تطوير تطبيقات PHP""
+               data-component="body">
+    <br>
+<p>The updated Arabic name of the skill. Must be unique and between 2-100 characters. Example: <code>"تطوير تطبيقات PHP"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name_en"                data-endpoint="PUTapi-admin-skills--id-"
+               value=""PHP Application Development""
+               data-component="body">
+    <br>
+<p>The updated English name of the skill. Must be unique and between 2-100 characters. Example: <code>"PHP Application Development"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_id"                data-endpoint="PUTapi-admin-skills--id-"
+               value="2"
+               data-component="body">
+    <br>
+<p>The ID of the category this skill should belong to. Must exist in categories table. Example: <code>2</code></p>
+        </div>
+        </form>
+
+                    <h2 id="skills-management-DELETEapi-admin-skills--id-">Delete Skill</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Permanently delete a skill from the system. This action cannot be undone.
+Make sure the skill is not being used by any freelancers before deletion.</p>
+
+<span id="example-requests-DELETEapi-admin-skills--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://backend.shuwier.com/api/admin/skills/8" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/skills/8"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-admin-skills--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;status&quot;: true,
+  &quot;error_num&quot;: null,
+  &quot;message&quot;: &quot;Skill deleted successfully&quot;,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Skill not found&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 400,
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;message&quot;: &quot;Unauthenticated&quot;,
+  &quot;status&quot;: false,
+  &quot;error_num&quot;: 401,
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-admin-skills--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-admin-skills--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-admin-skills--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-admin-skills--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-admin-skills--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-admin-skills--id-" data-method="DELETE"
+      data-path="api/admin/skills/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-admin-skills--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-admin-skills--id-"
+                    onclick="tryItOut('DELETEapi-admin-skills--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-admin-skills--id-"
+                    onclick="cancelTryOut('DELETEapi-admin-skills--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-admin-skills--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/admin/skills/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-admin-skills--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-admin-skills--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="DELETEapi-admin-skills--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-admin-skills--id-"
+               value="8"
+               data-component="url">
+    <br>
+<p>The ID of the skill to delete. Example: <code>8</code></p>
             </div>
                     </form>
 
