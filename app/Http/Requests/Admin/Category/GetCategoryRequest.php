@@ -12,6 +12,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property string|null $search
  * @property int|null $per_page
  * @property string|null $type
+ * @property int|null $parent_id
  */
 class GetCategoryRequest extends FormRequest
 {
@@ -40,7 +41,8 @@ class GetCategoryRequest extends FormRequest
         return [
             'search'   => 'nullable|string|max:255',
             'per_page' => 'nullable|integer|min:1',
-            'type'     => 'nullable|in:parent,child'
+            'type'     => 'nullable|in:parent,child',
+            'parent_id' => 'nullable|integer|exists:categories,id',
         ];
     }
 

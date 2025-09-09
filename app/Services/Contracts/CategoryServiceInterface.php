@@ -7,7 +7,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface CategoryServiceInterface
 {
-    public function getAllPaginated(?string $type = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator;
+    public function getAllPaginated(?string $type = null, ?int $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator;
 
     public function getById(int $id): null | Category;
 

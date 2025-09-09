@@ -51,14 +51,14 @@ class UpdatePortfolioRequest extends FormRequest
                         $fail(__('validation.file_path_too_long'));
                     }
                 } elseif ($value instanceof \Illuminate\Http\UploadedFile) {
-                    $allowedMimes = ['pdf', 'jpeg', 'jpg', 'png', 'gif'];
+                    $allowedMimes = ['pdf', 'jpeg', 'jpg', 'png', 'gif', 'doc', 'docx', 'xls', 'xlsx'];
                     $maxSize = 5120;
 
                     if (!in_array($value->getClientOriginalExtension(), $allowedMimes)) {
-                        $fail(__('validation.mimes', ['values' => 'pdf, jpeg, jpg, png, gif']));
+                        $fail(__('validation.mimes', ['values' => 'pdf, jpeg, jpg, png, gif, doc, docx, xls, xlsx']));
                     }
 
-                    if ($value->getSize() > ($maxSize * 1024)) { 
+                    if ($value->getSize() > ($maxSize * 1024)) {
                         $fail(__('validation.max.file', ['max' => '5MB']));
                     }
                 } else {

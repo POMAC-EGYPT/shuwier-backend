@@ -37,6 +37,7 @@ class CategoryController extends Controller
      * @queryParam search string Optional search by category name (Arabic or English). Example: تصميم
      * @queryParam per_page integer Number of items per page (default: 10). Example: 20
      * @queryParam page integer Page number for pagination (default: 1). Example: 2
+     * @queryParam parent_id integer The parent category ID to filter by (only used when type is 'child'). Example: 2
      *
      * @response 200 scenario="Categories retrieved successfully" {
      *   "status": true,
@@ -62,6 +63,7 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryService->getAllPaginated(
             $request->type,
+            (int) $request->parent_id,
             $request->search,
             $request->per_page ?? 10
         );

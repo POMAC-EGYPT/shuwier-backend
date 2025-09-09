@@ -11,7 +11,7 @@ interface CategoryRepositoryInterface
 
     public function getParentsPaginated(bool $withChildren = false, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator;
 
-    public function getChildrensPaginated(?string $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator;
+    public function getChildrensPaginated(?int $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator;
 
     public function find(int $id, bool $withChildren = false): ?Category;
 

@@ -16,12 +16,12 @@ class CategoryService implements CategoryServiceInterface
         $this->categoryRepo = $categoryRepo;
     }
 
-    public function getAllPaginated(?string $type = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator
+    public function getAllPaginated(?string $type = null, ?int $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator
     {
         $categories = $type === 'parent'
             ? $this->categoryRepo->getParentsPaginated(true, $search, $perPage)
             : ($type === 'child'
-                ? $this->categoryRepo->getChildrensPaginated($search, $perPage)
+                ? $this->categoryRepo->getChildrensPaginated($parent_id, $search, $perPage)
                 : $this->categoryRepo->getAllPaginated(true, $search, $perPage)
             );
 

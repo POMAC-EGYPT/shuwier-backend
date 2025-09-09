@@ -36,11 +36,16 @@ class CategoryRepository implements CategoryRepositoryInterface
             ->paginate($perPage);
     }
 
-    public function getChildrensPaginated(?string $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator
+    public function getChildrensPaginated(?int $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator
     {
         return Category::query()
-            ->childrens()
-            ->when($parent_id, fn($query) => $query->where('parent_id', $parent_id))
+            ->when(
+                $parent_id,
+                // If specific parent_id is provided, get its children
+                fn($query) => $query->where('parent_id', $parent_id),
+                // If no parent_id specified, get all children (use childrens scope)
+                fn($query) => $query->childrens()
+            )
             ->when($search, fn($query) => $this->search($query, $search))
             ->orderBy('created_at', 'desc')
             ->paginate($perPage);

@@ -210,7 +210,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 8, 2025</li>
+        <li>Last updated: September 9, 2025</li>
     </ul>
 </div>
 
@@ -493,7 +493,7 @@ including bulk creation with children and searching/filtering.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/admin/categories?search=%D8%AA%D8%B5%D9%85%D9%8A%D9%85&amp;per_page=20&amp;type=parent.+Possible+values%3A+parent%2C+child&amp;page=2" \
+    --get "http://backend.shuwier.com/api/admin/categories?search=%D8%AA%D8%B5%D9%85%D9%8A%D9%85&amp;per_page=20&amp;type=parent.+Possible+values%3A+parent%2C+child&amp;parent_id=2&amp;page=2" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en"</code></pre></div>
@@ -508,6 +508,7 @@ const params = {
     "search": "تصميم",
     "per_page": "20",
     "type": "parent. Possible values: parent, child",
+    "parent_id": "2",
     "page": "2",
 };
 Object.keys(params)
@@ -666,6 +667,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="query">
     <br>
 <p>Optional filter by category type. Example: <code>parent. Possible values: parent, child</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="parent_id"                data-endpoint="GETapi-admin-categories"
+               value="2"
+               data-component="query">
+    <br>
+<p>The parent category ID to filter by (only used when type is 'child'). Example: <code>2</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;

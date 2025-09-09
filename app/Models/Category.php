@@ -33,5 +33,6 @@ class Category extends Model
     protected function childrens(Builder $query): Builder
     {
         return $query->whereNotNull('parent_id');
+        
     }
 }
