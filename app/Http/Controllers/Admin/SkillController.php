@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SkillRequest;
+use App\Http\Requests\Admin\SkillRequest;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\SkillResource;
 use App\Services\Contracts\SkillServiceInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -39,7 +39,7 @@ class SkillRequest extends FormRequest
         return [
             'name_ar'     => 'required|string|max:255',
             'name_en'     => 'required|string|max:255',
-            'category_id' => 'required|integer|exists:categories,id',
+            'category_id' => 'nullable|integer|exists:categories,id',
         ];
     }
 
