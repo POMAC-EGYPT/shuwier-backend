@@ -18,6 +18,16 @@ class PortfolioAttachmentRepository implements PortfolioAttachmentRepositoryInte
         return PortfolioAttachment::where('portfolio_id', $portfolioId)->get();
     }
 
+    public function findById(int $id): PortfolioAttachment
+    {
+        return PortfolioAttachment::findOrFail($id);
+    }
+    public function update(int $id, array $data): bool
+    {
+        $attachment = PortfolioAttachment::findOrFail($id);
+
+        return $attachment->update($data);
+    }
     public function delete(int $id): bool
     {
         $attachment = PortfolioAttachment::findOrFail($id);

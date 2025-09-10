@@ -90,4 +90,6 @@ return [
     'skill_updated_successfully' => 'Skill updated successfully',
     'skill_deleted_successfully' => 'Skill deleted successfully',
     'file_uploaded_successfully' => 'File uploaded successfully',
+    'this_attachment_is_already_used' => 'This attachment is already used',
+    'this_attachment_does_not_belong_to_the_user' => 'This attachment does not belong to the user',
 ];

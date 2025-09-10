@@ -12,10 +12,10 @@ use Illuminate\Contracts\Validation\Validator;
  * @property string $description
  * @property int $category_id
  * @property int|null $subcategory_id
- * @property array|null $attachments
+ * @property array $attachment_ids
  * @property array|null $hashtags
  */
-class StorePortfolioRequest extends FormRequest
+class PortfolioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,14 +40,14 @@ class StorePortfolioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'          => 'required|string|max:255',
-            'description'    => 'required|string',
-            'category_id'    => 'required|integer|exists:categories,id',
-            'subcategory_id' => 'nullable|integer|exists:categories,id',
-            'attachments'    => 'nullable|array|max:8',
-            'attachments.*'  => 'file|mimes:pdf,jpeg,jpg,png,gif,doc,docx,xls,xlsx|max:5120',
-            'hashtags'       => 'nullable|array',
-            'hashtags.*'     => 'string|max:255',
+            'title'             => 'required|string|max:255',
+            'description'       => 'required|string',
+            'category_id'       => 'required|integer|exists:categories,id',
+            'subcategory_id'    => 'nullable|integer|exists:categories,id',
+            'attachment_ids'    => 'required|array|max:8',
+            'attachment_ids.*'  => 'required|integer|exists:portfolio_attachments,id',
+            'hashtags'          => 'nullable|array',
+            'hashtags.*'        => 'string|max:255',
         ];
     }
 }

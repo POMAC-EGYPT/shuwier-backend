@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Freelancer;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Freelancer\StorePortfolioRequest;
-use App\Http\Requests\Freelancer\UpdatePortfolioRequest;
+use App\Http\Requests\Freelancer\PortfolioRequest;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\PortfolioResource;
 use App\Services\Contracts\PortfolioServiceInterface;
@@ -126,16 +125,16 @@ class PortfolioController extends Controller
      * 
      * @authenticated
      */
-    public function store(StorePortfolioRequest $request)
+    public function store(PortfolioRequest $request)
     {
         $result = $this->portfolioService->create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id ?? null,
-            'attachments' => $request->attachments ?? null,
-            'hashtags' => $request->hashtags ?? null,
-            'user_id' => auth('api')->id(),
+            'title'             => $request->title,
+            'description'       => $request->description,
+            'category_id'       => $request->category_id,
+            'subcategory_id'    => $request->subcategory_id ?? null,
+            'attachment_ids'    => $request->attachment_ids,
+            'hashtags'          => $request->hashtags ?? null,
+            'user_id'           => auth('api')->id(),
         ]);
 
         if (!$result['status'])
@@ -257,16 +256,16 @@ class PortfolioController extends Controller
      * 
      * @authenticated
      */
-    public function update(UpdatePortfolioRequest $request, string $id)
+    public function update(PortfolioRequest $request, string $id)
     {
         $result = $this->portfolioService->update(auth('api')->id(), (int) $id, [
-            'title'          => $request->title,
-            'description'    => $request->description,
-            'category_id'    => $request->category_id,
-            'subcategory_id' => $request->subcategory_id ?? null,
-            'attachments'    => $request->attachments ?? [],
-            'hashtags'       => $request->hashtags ?? [],
-            'user_id'        => auth('api')->id(),
+            'title'             => $request->title,
+            'description'       => $request->description,
+            'category_id'       => $request->category_id,
+            'subcategory_id'    => $request->subcategory_id ?? null,
+            'attachment_ids'    => $request->attachment_ids ?? [],
+            'hashtags'          => $request->hashtags ?? [],
+            'user_id'           => auth('api')->id(),
         ]);
 
         if (!$result['status'])

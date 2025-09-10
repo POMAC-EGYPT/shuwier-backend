@@ -62,6 +62,16 @@ class PortfolioService implements PortfolioServiceInterface
                 return ['status' => false, 'message' => __('message.this_subcategory_does_not_belong_to_the_selected_category')];
         }
 
+        foreach ($data['attachment_ids'] as $attachment_id) {
+            $attachment = $this->portfolioAttachmentRepo->findById($attachment_id);
+
+            if ($attachment->portfolio_id != null)
+                return ['status' => false, 'message' => __('message.this_attachment_is_already_used')];
+
+            if ($attachment->user_id != $data['user_id'])
+                return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
+        }
+
         $portfolio = DB::transaction(function () use ($data) {
             $hashtagIds = [];
 
@@ -78,15 +88,10 @@ class PortfolioService implements PortfolioServiceInterface
                 'hashtags'       => $hashtagIds ?? null,
             ]);
 
-            if (isset($data['attachments'])) {
-                foreach ($data['attachments'] as $attachment) {
-                    $imagePath = ImageHelpers::addImage($attachment, 'portfolios');
-
-                    $this->portfolioAttachmentRepo->create([
-                        'portfolio_id' => $portfolio->id,
-                        'file_path' => $imagePath,
-                    ]);
-                }
+            foreach ($data['attachment_ids'] as $attachment_id) {
+                $this->portfolioAttachmentRepo->update($attachment_id, [
+                    'portfolio_id' => $portfolio->id
+                ]);
             }
 
             return $portfolio->load(['category', 'subcategory', 'hashtags', 'attachments']);
@@ -114,15 +119,13 @@ class PortfolioService implements PortfolioServiceInterface
                 return ['status' => false, 'message' => __('message.this_subcategory_does_not_belong_to_the_selected_category')];
         }
 
-        if (isset($data['attachments']) && $data['attachments'] != null) {
-            $oldAttachments = $portfolio->attachments->pluck('file_path')->toArray();
+        foreach ($data['attachment_ids'] as $attachment_id) {
+            $attachment = $this->portfolioAttachmentRepo->findById($attachment_id);
 
-            foreach ($data['attachments'] as $attachment) {
-                if (is_string($attachment) && !in_array($attachment, $oldAttachments, true)) {
-                    return ['status' => false, 'message' => __('message.invalid_attachments')];
-                }
-            }
+            if ($attachment->user_id != $userId)
+                return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
         }
+
 
         $portfolio = DB::transaction(function () use ($id, $data, $portfolio) {
             $hashtagIds = [];
@@ -146,28 +149,23 @@ class PortfolioService implements PortfolioServiceInterface
             if (isset($data['hashtags'])) {
                 $this->profileRepo->syncHashtags($portfolio, $hashtagIds);
             }
+            $oldAttachments = $this->portfolioAttachmentRepo->getByPortfolioId($id);
 
-            if (isset($data['attachments'])) {
-                foreach ($portfolio->attachments as $attachment) {
-                    ImageHelpers::deleteImage($attachment->file_path);
-                    $this->portfolioAttachmentRepo->delete($attachment->id);
-                }
-
-                foreach ($data['attachments'] as $attachment) {
-                    if (is_string($attachment)) {
-                        $this->portfolioAttachmentRepo->create([
-                            'portfolio_id' => $portfolio->id,
-                            'file_path'    => $attachment,
-                        ]);
-                    } elseif ($attachment instanceof \Illuminate\Http\UploadedFile) {
-                        $imagePath = ImageHelpers::addImage($attachment, 'portfolios');
-                        $this->portfolioAttachmentRepo->create([
-                            'portfolio_id' => $portfolio->id,
-                            'file_path'    => $imagePath,
-                        ]);
+            if (count($oldAttachments) > 0) {
+                foreach ($oldAttachments as $oldAttachment) {
+                    if (!in_array($oldAttachment->id, $data['attachment_ids'])) {
+                        ImageHelpers::deleteImage($oldAttachment->file_path);
+                        $this->portfolioAttachmentRepo->delete($oldAttachment->id);
                     }
                 }
             }
+
+            foreach ($data['attachment_ids'] as $attachment_id) {
+                $this->portfolioAttachmentRepo->update($attachment_id, [
+                    'portfolio_id' => $portfolio->id
+                ]);
+            }
+
 
             return $portfolio->load(['category', 'subcategory', 'hashtags', 'attachments']);
         });

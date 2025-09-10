@@ -26,9 +26,9 @@ class PortfolioUpload implements UploadStrategyInterface
         $path = ImageHelpers::addImage($file, 'portfolios');
 
         $attachment = $this->portfolioAttachmentRepo->create([
-            'file_path' => $path,
+            'file_path'    => $path,
             'portfolio_id' => null,
-            'user_id' => $userId,
+            'user_id'      => $userId,
         ]);
 
         return $attachment;
