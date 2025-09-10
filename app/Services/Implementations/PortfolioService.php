@@ -40,7 +40,7 @@ class PortfolioService implements PortfolioServiceInterface
 
     public function getPortfolioByUserIdAndPortfolioId(int $userId, int $portfolioId): array
     {
-        $portfolio = true;
+        $portfolio = $this->profileRepo->findByUserIdAndPortfolioId($userId, $portfolioId);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $portfolio];
     }
