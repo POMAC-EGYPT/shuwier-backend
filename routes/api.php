@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Freelancer\PortfolioController;
+use App\Http\Controllers\UploadFileController;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -32,3 +33,6 @@ Route::group(['prefix' => 'freelancers'], function () {
         ]
     );
 });
+
+Route::post('/upload', [UploadFileController::class, 'upload'])
+    ->middleware('auth:api')->name('file.upload');

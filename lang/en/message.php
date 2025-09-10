@@ -89,4 +89,5 @@ return [
     'skill_created_successfully' => 'Skill created successfully',
     'skill_updated_successfully' => 'Skill updated successfully',
     'skill_deleted_successfully' => 'Skill deleted successfully',
+    'file_uploaded_successfully' => 'File uploaded successfully',
 ];

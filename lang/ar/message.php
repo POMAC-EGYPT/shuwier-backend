@@ -89,4 +89,5 @@ return [
     'skill_created_successfully' => 'تم إنشاء المهارة بنجاح',
     'skill_updated_successfully' => 'تم تحديث المهارة بنجاح',
     'skill_deleted_successfully' => 'تم حذف المهارة بنجاح',
+    'file_uploaded_successfully' => 'تم رفع الملف بنجاح',
 ];

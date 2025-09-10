@@ -37,6 +37,9 @@ use App\Services\Implementations\ClientService;
 use App\Services\Implementations\FreelancerService;
 use App\Services\Implementations\PortfolioService;
 use App\Services\Implementations\SkillService;
+use App\Services\Upload\Contracts\UploadStrategyInterface;
+use App\Services\Upload\Factory\UploadStrategyFactory;
+use App\Services\Upload\Strategies\PortfolioUpload;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -70,6 +73,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(SkillRepositoryInterface::class, SkillRepository::class);
         $this->app->bind(SkillServiceInterface::class, SkillService::class);
+
+        $this->app->bind(UploadStrategyInterface::class . '_portfolio', PortfolioUpload::class);
+
+        $this->app->bind(UploadStrategyFactory::class, function ($app) {
+            return new UploadStrategyFactory(
+                $app->make(UploadStrategyInterface::class . '_portfolio'),
+            );
+        });
     }
 
     /**
