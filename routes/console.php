@@ -9,3 +9,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('queue:work --stop-when-empty')->everyMinute();
+Schedule::command('attachments:clean portfolio')->weekly();

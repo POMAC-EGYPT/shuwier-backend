@@ -92,4 +92,5 @@ return [
     'file_uploaded_successfully' => 'File uploaded successfully',
     'this_attachment_is_already_used' => 'This attachment is already used',
     'this_attachment_does_not_belong_to_the_user' => 'This attachment does not belong to the user',
+    'this_attachment_belongs_to_another_portfolio' => 'This attachment belongs to another portfolio',
 ];

@@ -92,4 +92,5 @@ return [
     'file_uploaded_successfully' => 'تم رفع الملف بنجاح',
     'this_attachment_is_already_used' => 'هذا المرفق مستخدم بالفعل',
     'this_attachment_does_not_belong_to_the_user' => 'هذا المرفق لا ينتمي إلى المستخدم',
+    'this_attachment_belongs_to_another_portfolio' => 'هذا المرفق ينتمي إلى معرض أعمال آخر',
 ];

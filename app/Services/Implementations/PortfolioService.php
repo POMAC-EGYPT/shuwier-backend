@@ -124,8 +124,10 @@ class PortfolioService implements PortfolioServiceInterface
 
             if ($attachment->user_id != $userId)
                 return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
-        }
 
+            if ($attachment->portfolio_id != null && $attachment->portfolio_id != $id)
+                return ['status' => false, 'message' => __('message.this_attachment_belongs_to_another_portfolio')];
+        }
 
         $portfolio = DB::transaction(function () use ($id, $data, $portfolio) {
             $hashtagIds = [];
