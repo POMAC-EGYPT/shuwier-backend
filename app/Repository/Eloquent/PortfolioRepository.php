@@ -18,6 +18,7 @@ class PortfolioRepository implements PortfolioRepositoryInterface
     public function findByUserIdAndPortfolioId(int $userId, int $portfolioId): Portfolio
     {
         return Portfolio::where('user_id', $userId)
+            ->with(['category', 'subcategory', 'hashtags', 'attachments'])
             ->findOrFail($portfolioId);
     }
 
