@@ -168,6 +168,7 @@ class PortfolioService implements PortfolioServiceInterface
                 ]);
             }
 
+            $portfolio->refresh();
 
             return $portfolio->load(['category', 'subcategory', 'hashtags', 'attachments']);
         });
