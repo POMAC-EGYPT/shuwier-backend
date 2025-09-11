@@ -1,30 +1,28 @@
-name: 'Admin Authentication'
+name: 'File Upload'
 description: |-
 
-  APIs for admin authentication and authorization.
-  These endpoints handle admin login and session management.
+  APIs for handling file uploads
 endpoints:
   -
     httpMethods:
       - POST
-    uri: api/admin/auth/login
+    uri: api/upload
     metadata:
-      groupName: 'Admin Authentication'
+      groupName: 'File Upload'
       groupDescription: |-
 
-        APIs for admin authentication and authorization.
-        These endpoints handle admin login and session management.
+        APIs for handling file uploads
       subgroup: ''
       subgroupDescription: ''
-      title: 'Admin Login.'
+      title: 'Upload file'
       description: |-
-        This endpoint authenticates administrators and returns a JWT token along with admin permissions.
-        Only users with admin privileges can access this endpoint.
-      authenticated: false
+        Upload files for different purposes like portfolios, profile pictures, etc.
+        The uploaded file will be stored and return file information including the file path and attachment ID.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters: []
@@ -32,97 +30,81 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      email:
-        name: email
-        description: 'Admin email address.'
+      file:
+        name: file
+        description: 'The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example:'
         required: true
-        example: admin@admin.com
-        type: string
+        example: null
+        type: file
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
-      password:
-        name: password
-        description: 'Admin password.'
+      type:
+        name: type
+        description: 'The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate.'
         required: true
-        example: password123
+        example: portfolio
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: admin@admin.com
-      password: password123
-    fileParameters: []
+      type: portfolio
+    fileParameters:
+      file: null
     responses:
       -
         status: 200
         content: |-
           {
+            "message": "File uploaded successfully",
             "status": true,
-            "error_num": null,
-            "message": "Login successful",
             "data": {
-              "admin": {
-                "id": 1,
-                "email": "admin@admin.com",
-                "permissions_with_role": {
-                  "permissions": [
-                    "admin.users.index",
-                    "admin.users.create",
-                    "admin.users.edit",
-                    "admin.users.delete",
-                    "freelancer.viewAny",
-                    "freelancer.view",
-                    "freelancer.create",
-                    "freelancer.delete",
-                    "freelancer.approveAndReject"
-                  ],
-                  "role": "super-admin"
-                },
-                "created_at": "2025-08-21T07:43:34.000000Z",
-                "updated_at": "2025-08-21T07:43:34.000000Z"
-              },
-              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+              "id": 15,
+              "file_path": "storage/portfolios/66e1a5c4e8b47.jpg",
+              "user_id": 1,
+              "portfolio_id": null,
+              "created_at": "2024-09-11T10:30:00.000000Z",
+              "updated_at": "2024-09-11T10:30:00.000000Z"
             }
           }
         headers: []
-        description: 'Login successful'
+        description: ''
         custom: []
       -
         status: 400
         content: |-
           {
+            "message": "The file field is required.",
             "status": false,
-            "error_num": 400,
-            "message": "Invalid password"
+            "error_code": 400
           }
         headers: []
-        description: 'Invalid password'
+        description: ''
         custom: []
       -
-        status: 404
+        status: 400
         content: |-
           {
+            "message": "The selected type is invalid.",
             "status": false,
-            "error_num": 404,
-            "message": "The selected email is invalid."
+            "error_code": 400
           }
         headers: []
-        description: 'Invalid email'
+        description: ''
         custom: []
       -
-        status: 422
+        status: 400
         content: |-
           {
+            "message": "The file may not be greater than 5120 kilobytes.",
             "status": false,
-            "error_num": 400,
-            "message": "The email field is required."
+            "error_code": 400
           }
         headers: []
-        description: 'Validation error'
+        description: ''
         custom: []
     responseFields: []
     auth: []

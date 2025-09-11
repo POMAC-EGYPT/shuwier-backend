@@ -50,4 +50,37 @@ class PortfolioRequest extends FormRequest
             'hashtags.*'        => 'string|max:255',
         ];
     }
+
+    /**
+     * Get the body parameters for Scribe documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'title' => [
+                'description' => 'The portfolio title (max 255 characters)',
+                'example' => 'E-commerce Website'
+            ],
+            'description' => [
+                'description' => 'The portfolio description',
+                'example' => 'A modern responsive e-commerce website built with React and Laravel'
+            ],
+            'category_id' => [
+                'description' => 'The main category ID (must be a parent category)',
+                'example' => 1
+            ],
+            'subcategory_id' => [
+                'description' => 'The subcategory ID (must belong to the selected category)',
+                'example' => 2
+            ],
+            'attachment_ids' => [
+                'description' => 'Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.',
+                'example' => [15, 16, 17]
+            ],
+            'hashtags' => [
+                'description' => 'Array of hashtag strings (max 255 characters each)',
+                'example' => ['react', 'ecommerce', 'laravel']
+            ]
+        ];
+    }
 }

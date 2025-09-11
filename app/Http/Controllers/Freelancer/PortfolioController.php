@@ -83,7 +83,7 @@ class PortfolioController extends Controller
      * @bodyParam description string required The portfolio description. Example: "A modern responsive e-commerce website built with React and Laravel"
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Example: 2
-     * @bodyParam attachment_ids integer[] required Array of attachment IDs from uploaded files (max 8 files). Use /api/upload-file endpoint first to upload files and get IDs. Example: [15, 16, 17]
+     * @bodyParam attachment_ids integer[] required Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs. Example: [15, 16, 17]
      * @bodyParam hashtags string[] optional Array of hashtag strings (max 255 characters each). Example: ["react", "ecommerce", "laravel"]
      * 
      * @response 200 {
@@ -201,7 +201,7 @@ class PortfolioController extends Controller
      * **For Attachments:**
      * - If you send `attachment_ids` parameter (even as empty array), ALL existing attachments will be detached and replaced with the new ones
      * - If you don't send `attachment_ids` parameter at all, existing attachments will remain unchanged
-     * - You need to upload files first using /api/upload-file endpoint to get attachment IDs
+     * - You need to upload files first using /api/upload endpoint to get attachment IDs
      * - Example: To change attachments, send new attachment IDs: `"attachment_ids": [20, 21, 22]`
      * 
      * **For Hashtags:**

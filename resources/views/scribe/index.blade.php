@@ -142,6 +142,16 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-file-upload" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="file-upload">
+                    <a href="#file-upload">File Upload</a>
+                </li>
+                                    <ul id="tocify-subheader-file-upload" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="file-upload-POSTapi-upload">
+                                <a href="#file-upload-POSTapi-upload">Upload file</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-portfolio-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="portfolio-management">
                     <a href="#portfolio-management">Portfolio Management</a>
@@ -232,7 +242,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 9, 2025</li>
+        <li>Last updated: September 11, 2025</li>
     </ul>
 </div>
 
@@ -2545,7 +2555,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
+    \"approval_status\": \"approved\",
     \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -2573,7 +2583,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
+    "approval_status": "approved",
     "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -2800,10 +2810,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -3673,6 +3683,214 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="file-upload">File Upload</h1>
+
+    <p>APIs for handling file uploads</p>
+
+                                <h2 id="file-upload-POSTapi-upload">Upload file</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Upload files for different purposes like portfolios, profile pictures, etc.
+The uploaded file will be stored and return file information including the file path and attachment ID.</p>
+
+<span id="example-requests-POSTapi-upload">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/upload" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --form "type=portfolio"\
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbbOHQf" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/upload"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+const body = new FormData();
+body.append('type', 'portfolio');
+body.append('file', document.querySelector('input[name="file"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-upload">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;File uploaded successfully&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: {
+        &quot;id&quot;: 15,
+        &quot;file_path&quot;: &quot;storage/portfolios/66e1a5c4e8b47.jpg&quot;,
+        &quot;user_id&quot;: 1,
+        &quot;portfolio_id&quot;: null,
+        &quot;created_at&quot;: &quot;2024-09-11T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-09-11T10:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The file field is required.&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The selected type is invalid.&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The file may not be greater than 5120 kilobytes.&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-upload" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-upload"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-upload"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-upload" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-upload">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-upload" data-method="POST"
+      data-path="api/upload"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-upload', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-upload"
+                    onclick="tryItOut('POSTapi-upload');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-upload"
+                    onclick="cancelTryOut('POSTapi-upload');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-upload"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/upload</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-upload"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-upload"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-upload"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="file"                data-endpoint="POSTapi-upload"
+               value=""
+               data-component="body">
+    <br>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbbOHQf</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="type"                data-endpoint="POSTapi-upload"
+               value="portfolio"
+               data-component="body">
+    <br>
+<p>The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate. Example: <code>portfolio</code></p>
+        </div>
+        </form>
+
                 <h1 id="portfolio-management">Portfolio Management</h1>
 
     <p>APIs for managing freelancer portfolios</p>
@@ -3880,7 +4098,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"description\": \"\\\"A modern responsive e-commerce website built with React and Laravel\\\"\",
     \"category_id\": 1,
     \"subcategory_id\": 2,
-    \"attachments\": [],
+    \"attachment_ids\": [
+        15,
+        16,
+        17
+    ],
     \"hashtags\": [
         \"react\",
         \"ecommerce\",
@@ -3906,7 +4128,11 @@ let body = {
     "description": "\"A modern responsive e-commerce website built with React and Laravel\"",
     "category_id": 1,
     "subcategory_id": 2,
-    "attachments": [],
+    "attachment_ids": [
+        15,
+        16,
+        17
+    ],
     "hashtags": [
         "react",
         "ecommerce",
@@ -4105,17 +4331,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>optional The subcategory ID (must belong to the selected category). Example: <code>2</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>attachments</code></b>&nbsp;&nbsp;
-<small>file[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="attachments[0]"                data-endpoint="POSTapi-freelancers-portfolios"
+            <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
-        <input type="file" style="display: none"
-               name="attachments[1]"                data-endpoint="POSTapi-freelancers-portfolios"
+        <input type="number" style="display: none"
+               name="attachment_ids[1]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
     <br>
-<p>optional Array of files (PDF, JPEG, JPG, PNG, GIF, max 5MB each).</p>
+<p>Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -4319,10 +4545,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Update an existing portfolio. <strong>Important behavior notes:</strong></p>
 <p><strong>For Attachments:</strong></p>
 <ul>
-<li>If you send <code>attachments</code> parameter (even as empty array), ALL existing attachments will be deleted and replaced with the new ones</li>
-<li>If you don't send <code>attachments</code> parameter at all, existing attachments will remain unchanged</li>
-<li>You can send existing file paths (strings) to keep them, or upload new files</li>
-<li>Example: To keep some files and add new ones, send both existing file paths and new files in the attachments array</li>
+<li>If you send <code>attachment_ids</code> parameter (even as empty array), ALL existing attachments will be detached and replaced with the new ones</li>
+<li>If you don't send <code>attachment_ids</code> parameter at all, existing attachments will remain unchanged</li>
+<li>You need to upload files first using /api/upload endpoint to get attachment IDs</li>
+<li>Example: To change attachments, send new attachment IDs: <code>"attachment_ids": [20, 21, 22]</code></li>
 </ul>
 <p><strong>For Hashtags:</strong></p>
 <ul>
@@ -4346,9 +4572,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"description\": \"\\\"An updated modern responsive e-commerce website\\\"\",
     \"category_id\": 1,
     \"subcategory_id\": 2,
-    \"attachments\": [
-        \"storage\\/portfolios\\/existing1.jpg\",
-        \"new_file.jpg\"
+    \"attachment_ids\": [
+        20,
+        21,
+        22
     ],
     \"hashtags\": [
         \"react\",
@@ -4375,9 +4602,10 @@ let body = {
     "description": "\"An updated modern responsive e-commerce website\"",
     "category_id": 1,
     "subcategory_id": 2,
-    "attachments": [
-        "storage\/portfolios\/existing1.jpg",
-        "new_file.jpg"
+    "attachment_ids": [
+        20,
+        21,
+        22
     ],
     "hashtags": [
         "react",
@@ -4445,7 +4673,18 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Invalid attachments&quot;,
+    &quot;message&quot;: &quot;This attachment is already used&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This attachment does not belong to the user&quot;,
     &quot;status&quot;: false,
     &quot;error_code&quot;: 400
 }</code>
@@ -4593,17 +4832,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory. Example: <code>2</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>attachments</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
+            <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="attachments[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+                <input type="number" style="display: none"
+               step="any"               name="attachment_ids[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
-        <input type="text" style="display: none"
-               name="attachments[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+        <input type="number" style="display: none"
+               name="attachment_ids[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
     <br>
-<p>optional Array of files and/or existing file paths. <strong>CAUTION:</strong> If provided, ALL existing attachments will be deleted first. To keep existing files, include their file paths as strings.</p>
+<p>optional Array of attachment IDs from uploaded files (max 8 files). <strong>CAUTION:</strong> If provided, ALL existing attachments will be detached first.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;

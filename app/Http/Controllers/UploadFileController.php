@@ -26,7 +26,7 @@ class UploadFileController extends Controller
      * Upload files for different purposes like portfolios, profile pictures, etc.
      * The uploaded file will be stored and return file information including the file path and attachment ID.
      * 
-     * @bodyParam file file required The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: file.jpg
+     * @bodyParam file file required The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: No-example
      * @bodyParam type string required The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate. Example: portfolio
      * 
      * @response 200 {

@@ -41,4 +41,21 @@ class UploadFileRequest extends FormRequest
             'type' => 'required|string|in:portfolio,profile_picture,document,cv,certificate',
         ];
     }
+
+    /**
+     * Get the body parameters for Scribe documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'file' => [
+                'description' => 'The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB)',
+                'example' => 'No-example'  // This tells Scribe not to generate an example
+            ],
+            'type' => [
+                'description' => 'The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate',
+                'example' => 'portfolio'
+            ]
+        ];
+    }
 }
