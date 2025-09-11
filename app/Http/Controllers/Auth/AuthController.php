@@ -9,6 +9,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\ResetEmail;
 use App\Http\Requests\Auth\ResetPasswordRequest;
+use App\Http\Requests\Auth\UpdateProfileRequest;
 use App\Http\Requests\Auth\VerifyEmailRequest;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\ClientResource;
@@ -572,6 +573,84 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Get User Profile.
+     * 
+     * This endpoint retrieves the authenticated user's profile information.
+     * Returns different data structures based on user type (freelancer or client).
+     * Freelancers will get additional fields like skills, category, portfolio links, etc.
+     * Clients will get basic profile information along with company details.
+     * 
+     * @authenticated
+     * 
+     * @response 200 scenario="Freelancer profile" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Profile retrieved successfully",
+     *   "data": {
+     *     "id": 1,
+     *     "name": "أحمد محمد",
+     *     "email": "ahmed@example.com",
+     *     "type": "freelancer",
+     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *     "phone": null,
+     *     "is_active": true,
+     *     "about_me": "مطور ويب محترف مع خبرة 5 سنوات",
+     *     "profile_picture": "storage/profiles/ahmed_profile.jpg",
+     *     "approval_status": "approved",
+     *     "linkedin_link": "https://linkedin.com/in/ahmed",
+     *     "twitter_link": "https://twitter.com/ahmed",
+     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+     *     "portfolio_link": "https://ahmed-portfolio.com",
+     *     "headline": "Full Stack Developer & UI/UX Designer",
+     *     "description": "Experienced developer specializing in Laravel and React",
+     *     "category": {
+     *       "id": 1,
+     *       "name": "Web Development"
+     *     },
+     *     "skills": [
+     *       {"id": 1, "name": "PHP"},
+     *       {"id": 2, "name": "Laravel"},
+     *       {"id": 3, "name": "React"}
+     *     ],
+     *     "portfolios": [],
+     *     "created_at": "2025-08-24T10:30:00.000000Z",
+     *     "updated_at": "2025-08-24T10:30:00.000000Z"
+     *   }
+     * }
+     *
+     * @response 200 scenario="Client profile" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Profile retrieved successfully",
+     *   "data": {
+     *     "id": 2,
+     *     "name": "Jane Smith",
+     *     "email": "jane@example.com",
+     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *     "phone": "+1234567890",
+     *     "type": "client",
+     *     "is_active": true,
+     *     "about_me": "Business owner looking for quality freelance services",
+     *     "profile_picture": "storage/profiles/jane_profile.jpg",
+     *     "company": "Tech Solutions Inc",
+     *     "created_at": "2025-08-24T10:30:00.000000Z",
+     *     "updated_at": "2025-08-24T10:30:00.000000Z"
+     *   }
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     *
+     * @response 400 scenario="Profile retrieval failed" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Unable to retrieve profile information"
+     * }
+     */
     public function profile()
     {
         $result = $this->authUserService->getProfile();
@@ -588,7 +667,85 @@ class AuthController extends Controller
         return Response::api($result['message'], 200, true, null, $resource);
     }
 
-    public function updateProfile(Request $request){
-        //
+    /**
+     * Update User Profile
+     * 
+     * Update the authenticated user's profile information. This endpoint supports both freelancers and clients
+     * with different required fields based on user type. Freelancers cannot change their type to client.
+     * 
+     * **For Freelancers:**
+     * - Required: type, name, about_me, headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link
+     * - Optional: profile_picture
+     * - Prohibited: company, phone
+     * 
+     * **For Clients:**
+     * - Required: type, name, about_me, phone
+     * - Optional: profile_picture, company
+     * - Prohibited: headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link
+     * 
+     * @response 200 {
+     *   "message": "Profile updated successfully",
+     *   "status": true,
+     *   "data": {
+     *     "id": 1,
+     *     "name": "أحمد محمد",
+     *     "email": "ahmed@example.com",
+     *     "type": "freelancer",
+     *     "profile_picture": "storage/profiles/new_image.jpg",
+     *     "about_me": "مطور ويب محترف",
+     *     "headline": "Full Stack Developer",
+     *     "category": {
+     *       "id": 1,
+     *       "name": "Web Development"
+     *     },
+     *     "skills": [
+     *       {"id": 1, "name": "PHP"},
+     *       {"id": 2, "name": "Laravel"}
+     *     ]
+     *   }
+     * }
+     * 
+     * @response 400 {
+     *   "message": "Cannot change user type from freelancer to client",
+     *   "status": false,
+     *   "error_code": 400
+     * }
+     * 
+     * @response 400 {
+     *   "message": "This category is not a parent category",
+     *   "status": false,
+     *   "error_code": 400
+     * }
+     * 
+     * @authenticated
+     */
+    public function updateProfile(UpdateProfileRequest $request)
+    {
+        $result = $this->authUserService->updateProfile([
+            'type'                             => $request->type,
+            'name'                             => $request->name,
+            'profile_picture'                  => $request->profile_picture,
+            'about_me'                         => $request->about_me,
+            'headline'                         => $request->headline,
+            'category_id'                      => $request->category_id,
+            'skill_ids'                        => $request->skill_ids ?? [],
+            'company'                          => $request->company,
+            'phone'                            => $request->phone,
+            'linkedin_link'                    => $request->linkedin_link,
+            'twitter_link'                     => $request->twitter_link,
+            'other_freelance_platform_links'   => $request->other_freelance_platform_links ?? [],
+            'portfolio_link'                   => $request->portfolio_link,
+        ]);
+
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+
+        $user = $result['data'];
+
+        $resource = $user->type == UserType::FREELANCER->value
+            ? FreelancerResource::make($user)
+            : ClientResource::make($user);
+
+        return Response::api($result['message'], 200, true, null, $resource);
     }
 }

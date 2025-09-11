@@ -93,4 +93,9 @@ return [
     'this_attachment_is_already_used' => 'هذا المرفق مستخدم بالفعل',
     'this_attachment_does_not_belong_to_the_user' => 'هذا المرفق لا ينتمي إلى المستخدم',
     'this_attachment_belongs_to_another_portfolio' => 'هذا المرفق ينتمي إلى معرض أعمال آخر',
+    'you_are_not_approved_freelancer' => 'أنت لست مقدم خدمة معتمد',
+    'you_are_not_a_freelancer' => 'أنت لست مقدم خدمة',
+    'cannot_change_user_type_from_freelancer_to_client' => 'لا يمكنك تغيير نوع المستخدم من مقدم خدمة إلى عميل',
+    'profile_updated_successfully' => 'تم تحديث الملف الشخصي بنجاح',
+    'cannot_change_user_type_from_freelancer_to_client_or_vice_versa' => 'لا يمكنك تغيير نوع المستخدم من مقدم خدمة إلى عميل أو العكس',
 ];

@@ -229,7 +229,10 @@
                                 <a href="#user-authentication-POSTapi-auth-refresh">Refresh Token.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-authentication-GETapi-profile">
-                                <a href="#user-authentication-GETapi-profile">GET api/profile</a>
+                                <a href="#user-authentication-GETapi-profile">Get User Profile.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-profile">
+                                <a href="#user-authentication-POSTapi-profile">Update User Profile</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -3707,7 +3710,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbbOHQf" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpcgulhJ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3876,7 +3879,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbbOHQf</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpcgulhJ</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8071,12 +8074,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="user-authentication-GETapi-profile">GET api/profile</h2>
+                    <h2 id="user-authentication-GETapi-profile">Get User Profile.</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>This endpoint retrieves the authenticated user's profile information.
+Returns different data structures based on user type (freelancer or client).
+Freelancers will get additional fields like skills, category, portfolio links, etc.
+Clients will get basic profile information along with company details.</p>
 
 <span id="example-requests-GETapi-profile">
 <blockquote>Example request:</blockquote>
@@ -8110,16 +8117,97 @@ fetch(url, {
 
 <span id="example-responses-GETapi-profile">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200, Freelancer profile):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Profile retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;أحمد محمد&quot;,
+        &quot;email&quot;: &quot;ahmed@example.com&quot;,
+        &quot;type&quot;: &quot;freelancer&quot;,
+        &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;phone&quot;: null,
+        &quot;is_active&quot;: true,
+        &quot;about_me&quot;: &quot;مطور ويب محترف مع خبرة 5 سنوات&quot;,
+        &quot;profile_picture&quot;: &quot;storage/profiles/ahmed_profile.jpg&quot;,
+        &quot;approval_status&quot;: &quot;approved&quot;,
+        &quot;linkedin_link&quot;: &quot;https://linkedin.com/in/ahmed&quot;,
+        &quot;twitter_link&quot;: &quot;https://twitter.com/ahmed&quot;,
+        &quot;other_freelance_platform_links&quot;: [
+            &quot;https://upwork.com/freelancers/ahmed&quot;
+        ],
+        &quot;portfolio_link&quot;: &quot;https://ahmed-portfolio.com&quot;,
+        &quot;headline&quot;: &quot;Full Stack Developer &amp; UI/UX Designer&quot;,
+        &quot;description&quot;: &quot;Experienced developer specializing in Laravel and React&quot;,
+        &quot;category&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Web Development&quot;
+        },
+        &quot;skills&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;PHP&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Laravel&quot;
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;React&quot;
+            }
+        ],
+        &quot;portfolios&quot;: [],
+        &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Client profile):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Profile retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Jane Smith&quot;,
+        &quot;email&quot;: &quot;jane@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;phone&quot;: &quot;+1234567890&quot;,
+        &quot;type&quot;: &quot;client&quot;,
+        &quot;is_active&quot;: true,
+        &quot;about_me&quot;: &quot;Business owner looking for quality freelance services&quot;,
+        &quot;profile_picture&quot;: &quot;storage/profiles/jane_profile.jpg&quot;,
+        &quot;company&quot;: &quot;Tech Solutions Inc&quot;,
+        &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Profile retrieval failed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Unable to retrieve profile information&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Unauthenticated):</p>
+        </blockquote>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: false,
@@ -8145,7 +8233,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-profile" data-method="GET"
       data-path="api/profile"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -8209,6 +8297,385 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>en</code></p>
             </div>
                         </form>
+
+                    <h2 id="user-authentication-POSTapi-profile">Update User Profile</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update the authenticated user's profile information. This endpoint supports both freelancers and clients
+with different required fields based on user type. Freelancers cannot change their type to client.</p>
+<p><strong>For Freelancers:</strong></p>
+<ul>
+<li>Required: type, name, about_me, headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link</li>
+<li>Optional: profile_picture</li>
+<li>Prohibited: company, phone</li>
+</ul>
+<p><strong>For Clients:</strong></p>
+<ul>
+<li>Required: type, name, about_me, phone</li>
+<li>Optional: profile_picture, company</li>
+<li>Prohibited: headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link</li>
+</ul>
+
+<span id="example-requests-POSTapi-profile">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/profile" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"type\": \"freelancer\",
+    \"name\": \"أحمد محمد\",
+    \"about_me\": \"مطور ويب محترف مع خبرة 5 سنوات\",
+    \"headline\": \"Full Stack Developer\",
+    \"category_id\": 1,
+    \"skill_ids\": [
+        \"consequatur\"
+    ],
+    \"company\": \"Tech Solutions Inc.\",
+    \"phone\": \"+966501234567\",
+    \"linkedin_link\": \"https:\\/\\/linkedin.com\\/in\\/ahmed-mohamed\",
+    \"twitter_link\": \"https:\\/\\/twitter.com\\/ahmed_mohamed\",
+    \"other_freelance_platform_links\": [
+        \"https:\\/\\/www.mueller.com\\/laborum-eius-est-dolor-dolores-minus-voluptatem\"
+    ],
+    \"portfolio_link\": \"https:\\/\\/ahmed-portfolio.com\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/profile"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "type": "freelancer",
+    "name": "أحمد محمد",
+    "about_me": "مطور ويب محترف مع خبرة 5 سنوات",
+    "headline": "Full Stack Developer",
+    "category_id": 1,
+    "skill_ids": [
+        "consequatur"
+    ],
+    "company": "Tech Solutions Inc.",
+    "phone": "+966501234567",
+    "linkedin_link": "https:\/\/linkedin.com\/in\/ahmed-mohamed",
+    "twitter_link": "https:\/\/twitter.com\/ahmed_mohamed",
+    "other_freelance_platform_links": [
+        "https:\/\/www.mueller.com\/laborum-eius-est-dolor-dolores-minus-voluptatem"
+    ],
+    "portfolio_link": "https:\/\/ahmed-portfolio.com"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-profile">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Profile updated successfully&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;أحمد محمد&quot;,
+        &quot;email&quot;: &quot;ahmed@example.com&quot;,
+        &quot;type&quot;: &quot;freelancer&quot;,
+        &quot;profile_picture&quot;: &quot;storage/profiles/new_image.jpg&quot;,
+        &quot;about_me&quot;: &quot;مطور ويب محترف&quot;,
+        &quot;headline&quot;: &quot;Full Stack Developer&quot;,
+        &quot;category&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Web Development&quot;
+        },
+        &quot;skills&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;PHP&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Laravel&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Cannot change user type from freelancer to client&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This category is not a parent category&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-profile" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-profile"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-profile"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-profile" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-profile">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-profile" data-method="POST"
+      data-path="api/profile"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-profile', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-profile"
+                    onclick="tryItOut('POSTapi-profile');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-profile"
+                    onclick="cancelTryOut('POSTapi-profile');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-profile"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/profile</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-profile"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-profile"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-profile"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="type"                data-endpoint="POSTapi-profile"
+               value="freelancer"
+               data-component="body">
+    <br>
+<p>User type (cannot change from freelancer to client). Example: <code>freelancer</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>freelancer</code></li> <li><code>client</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-profile"
+               value="أحمد محمد"
+               data-component="body">
+    <br>
+<p>User full name (Arabic or English). Must match the regex /^([ء-ي\s]+|[a-zA-Z\s]+)$/u. Must not be greater than 255 characters. Example: <code>أحمد محمد</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>profile_picture</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="profile_picture"                data-endpoint="POSTapi-profile"
+               value=""
+               data-component="body">
+    <br>
+<p>Profile picture image file (optional, max 2MB). Must be an image. Must not be greater than 2048 kilobytes.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>about_me</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="about_me"                data-endpoint="POSTapi-profile"
+               value="مطور ويب محترف مع خبرة 5 سنوات"
+               data-component="body">
+    <br>
+<p>About me description (max 500 characters). Must not be greater than 500 characters. Example: <code>مطور ويب محترف مع خبرة 5 سنوات</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>headline</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="headline"                data-endpoint="POSTapi-profile"
+               value="Full Stack Developer"
+               data-component="body">
+    <br>
+<p>Professional headline (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must not be greater than 255 characters. Example: <code>Full Stack Developer</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="category_id"                data-endpoint="POSTapi-profile"
+               value="1"
+               data-component="body">
+    <br>
+<p>Main category ID (required for freelancers, must be parent category). This field is required when <code>type</code> is <code>freelancer</code>. The <code>id</code> of an existing record in the categories table. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>skill_ids</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="skill_ids[0]"                data-endpoint="POSTapi-profile"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="skill_ids[1]"                data-endpoint="POSTapi-profile"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the skills table.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>company</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="company"                data-endpoint="POSTapi-profile"
+               value="Tech Solutions Inc."
+               data-component="body">
+    <br>
+<p>Company name (for clients only). Must not be greater than 255 characters. Example: <code>Tech Solutions Inc.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="POSTapi-profile"
+               value="+966501234567"
+               data-component="body">
+    <br>
+<p>Phone number (required for clients, Saudi format). This field is required when <code>type</code> is <code>client</code>. Must match the regex /^(+966|00966|966)?[5][0-9]{8}$/. Example: <code>+966501234567</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>linkedin_link</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="linkedin_link"                data-endpoint="POSTapi-profile"
+               value="https://linkedin.com/in/ahmed-mohamed"
+               data-component="body">
+    <br>
+<p>LinkedIn profile URL (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL. Example: <code>https://linkedin.com/in/ahmed-mohamed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>twitter_link</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="twitter_link"                data-endpoint="POSTapi-profile"
+               value="https://twitter.com/ahmed_mohamed"
+               data-component="body">
+    <br>
+<p>Twitter profile URL (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL. Example: <code>https://twitter.com/ahmed_mohamed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>other_freelance_platform_links</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="other_freelance_platform_links[0]"                data-endpoint="POSTapi-profile"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="other_freelance_platform_links[1]"                data-endpoint="POSTapi-profile"
+               data-component="body">
+    <br>
+<p>Must be a valid URL.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>portfolio_link</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="portfolio_link"                data-endpoint="POSTapi-profile"
+               value="https://ahmed-portfolio.com"
+               data-component="body">
+    <br>
+<p>Portfolio website URL (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL. Example: <code>https://ahmed-portfolio.com</code></p>
+        </div>
+        </form>
 
             
 

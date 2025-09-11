@@ -1107,9 +1107,13 @@ endpoints:
         and other authentication-related functionality for both clients and freelancers.
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
+      title: 'Get User Profile.'
+      description: |-
+        This endpoint retrieves the authenticated user's profile information.
+        Returns different data structures based on user type (freelancer or client).
+        Freelancers will get additional fields like skills, category, portfolio links, etc.
+        Clients will get basic profile information along with company details.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
@@ -1125,13 +1129,337 @@ endpoints:
     fileParameters: []
     responses:
       -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Profile retrieved successfully",
+            "data": {
+              "id": 1,
+              "name": "أحمد محمد",
+              "email": "ahmed@example.com",
+              "type": "freelancer",
+              "email_verified_at": "2025-08-24T10:30:00.000000Z",
+              "phone": null,
+              "is_active": true,
+              "about_me": "مطور ويب محترف مع خبرة 5 سنوات",
+              "profile_picture": "storage/profiles/ahmed_profile.jpg",
+              "approval_status": "approved",
+              "linkedin_link": "https://linkedin.com/in/ahmed",
+              "twitter_link": "https://twitter.com/ahmed",
+              "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+              "portfolio_link": "https://ahmed-portfolio.com",
+              "headline": "Full Stack Developer & UI/UX Designer",
+              "description": "Experienced developer specializing in Laravel and React",
+              "category": {
+                "id": 1,
+                "name": "Web Development"
+              },
+              "skills": [
+                {"id": 1, "name": "PHP"},
+                {"id": 2, "name": "Laravel"},
+                {"id": 3, "name": "React"}
+              ],
+              "portfolios": [],
+              "created_at": "2025-08-24T10:30:00.000000Z",
+              "updated_at": "2025-08-24T10:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: 'Freelancer profile'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Profile retrieved successfully",
+            "data": {
+              "id": 2,
+              "name": "Jane Smith",
+              "email": "jane@example.com",
+              "email_verified_at": "2025-08-24T10:30:00.000000Z",
+              "phone": "+1234567890",
+              "type": "client",
+              "is_active": true,
+              "about_me": "Business owner looking for quality freelance services",
+              "profile_picture": "storage/profiles/jane_profile.jpg",
+              "company": "Tech Solutions Inc",
+              "created_at": "2025-08-24T10:30:00.000000Z",
+              "updated_at": "2025-08-24T10:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: 'Client profile'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Unable to retrieve profile information"
+          }
+        headers: []
+        description: 'Profile retrieval failed'
+        custom: []
+      -
         status: 401
-        content: '{"status":false,"error_num":401,"message":"Unauthenticated"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/profile
+    metadata:
+      groupName: 'User Authentication'
+      groupDescription: |-
+
+        APIs for user registration, authentication, and account management.
+        These endpoints handle user registration with email verification, login, password reset,
+        and other authentication-related functionality for both clients and freelancers.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update User Profile'
+      description: |-
+        Update the authenticated user's profile information. This endpoint supports both freelancers and clients
+        with different required fields based on user type. Freelancers cannot change their type to client.
+
+        **For Freelancers:**
+        - Required: type, name, about_me, headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link
+        - Optional: profile_picture
+        - Prohibited: company, phone
+
+        **For Clients:**
+        - Required: type, name, about_me, phone
+        - Optional: profile_picture, company
+        - Prohibited: headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      type:
+        name: type
+        description: 'User type (cannot change from freelancer to client).'
+        required: true
+        example: freelancer
+        type: string
+        enumValues:
+          - freelancer
+          - client
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: 'User full name (Arabic or English). Must match the regex /^([ء-ي\s]+|[a-zA-Z\s]+)$/u. Must not be greater than 255 characters.'
+        required: true
+        example: 'أحمد محمد'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      profile_picture:
+        name: profile_picture
+        description: 'Profile picture image file (optional, max 2MB). Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      about_me:
+        name: about_me
+        description: 'About me description (max 500 characters). Must not be greater than 500 characters.'
+        required: true
+        example: 'مطور ويب محترف مع خبرة 5 سنوات'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      headline:
+        name: headline
+        description: 'Professional headline (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must not be greater than 255 characters.'
+        required: false
+        example: 'Full Stack Developer'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: 'Main category ID (required for freelancers, must be parent category). This field is required when <code>type</code> is <code>freelancer</code>. The <code>id</code> of an existing record in the categories table.'
+        required: false
+        example: 1
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      skill_ids:
+        name: skill_ids
+        description: 'The <code>id</code> of an existing record in the skills table.'
+        required: true
+        example:
+          - consequatur
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      company:
+        name: company
+        description: 'Company name (for clients only). Must not be greater than 255 characters.'
+        required: false
+        example: 'Tech Solutions Inc.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      phone:
+        name: phone
+        description: 'Phone number (required for clients, Saudi format). This field is required when <code>type</code> is <code>client</code>. Must match the regex /^(\+966|00966|966)?[5][0-9]{8}$/.'
+        required: false
+        example: '+966501234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      linkedin_link:
+        name: linkedin_link
+        description: 'LinkedIn profile URL (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        required: false
+        example: 'https://linkedin.com/in/ahmed-mohamed'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      twitter_link:
+        name: twitter_link
+        description: 'Twitter profile URL (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        required: false
+        example: 'https://twitter.com/ahmed_mohamed'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      other_freelance_platform_links:
+        name: other_freelance_platform_links
+        description: 'Must be a valid URL.'
+        required: false
+        example:
+          - 'https://www.mueller.com/laborum-eius-est-dolor-dolores-minus-voluptatem'
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      portfolio_link:
+        name: portfolio_link
+        description: 'Portfolio website URL (required for freelancers). This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        required: false
+        example: 'https://ahmed-portfolio.com'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      type: freelancer
+      name: 'أحمد محمد'
+      about_me: 'مطور ويب محترف مع خبرة 5 سنوات'
+      headline: 'Full Stack Developer'
+      category_id: 1
+      skill_ids:
+        - consequatur
+      company: 'Tech Solutions Inc.'
+      phone: '+966501234567'
+      linkedin_link: 'https://linkedin.com/in/ahmed-mohamed'
+      twitter_link: 'https://twitter.com/ahmed_mohamed'
+      other_freelance_platform_links:
+        - 'https://www.mueller.com/laborum-eius-est-dolor-dolores-minus-voluptatem'
+      portfolio_link: 'https://ahmed-portfolio.com'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Profile updated successfully",
+            "status": true,
+            "data": {
+              "id": 1,
+              "name": "أحمد محمد",
+              "email": "ahmed@example.com",
+              "type": "freelancer",
+              "profile_picture": "storage/profiles/new_image.jpg",
+              "about_me": "مطور ويب محترف",
+              "headline": "Full Stack Developer",
+              "category": {
+                "id": 1,
+                "name": "Web Development"
+              },
+              "skills": [
+                {"id": 1, "name": "PHP"},
+                {"id": 2, "name": "Laravel"}
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Cannot change user type from freelancer to client",
+            "status": false,
+            "error_code": 400
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "This category is not a parent category",
+            "status": false,
+            "error_code": 400
+          }
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth: []

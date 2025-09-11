@@ -30,6 +30,13 @@ class FreelancerProfileRepository implements FreelancerProfileRepositoryInterfac
         return $profile->update($data);
     }
 
+    public function updateByUserId(int $userId, array $data): bool
+    {
+        $profile = FreelancerProfile::where('user_id', $userId)->firstOrFail();
+
+        return $profile->update($data);
+    }
+
     public function delete(int $id): bool
     {
         $profile = $this->findOrFail($id);

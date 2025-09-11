@@ -76,6 +76,16 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(FreelancerProfile::class);
     }
 
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'user_skills', 'user_id', 'skill_id');
+    }
+
+    public function portfolios()
+    {
+        return $this->hasMany(Portfolio::class);
+    }
+
     /**
      * Get the identifier that will be stored in the JWT token.
      */

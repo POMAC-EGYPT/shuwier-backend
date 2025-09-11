@@ -12,7 +12,8 @@ class FreelancerProfile extends Model
         'other_freelance_platform_links',
         'portfolio_link',
         'headline',
-        'user_id'
+        'user_id',
+        'category_id'
     ];
 
     protected $casts = [
@@ -22,5 +23,10 @@ class FreelancerProfile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

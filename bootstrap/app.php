@@ -22,8 +22,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            'auth.any'      => \App\Http\Middleware\AuthenticateAnyGuard::class,
-            'checkUserType' => \App\Http\Middleware\CheckUserType::class,
+            'auth.any'                => \App\Http\Middleware\AuthenticateAnyGuard::class,
+            'checkUserType'           => \App\Http\Middleware\CheckUserType::class,
+            'checkFreelancerApproval' => \App\Http\Middleware\CheckFreelancerApproval::class,
         ]);
         $middleware->append([
             \App\Http\Middleware\Lang::class,

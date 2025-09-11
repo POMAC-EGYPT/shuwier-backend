@@ -22,6 +22,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');
+Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
 
 Route::group(['prefix' => 'freelancers'], function () {
     Route::apiResources(
@@ -29,7 +30,7 @@ Route::group(['prefix' => 'freelancers'], function () {
             'portfolios' => PortfolioController::class,
         ],
         [
-            'middleware' => 'checkUserType:freelancer',
+            'middleware' => ['checkUserType:freelancer', 'checkFreelancerApproval'],
         ]
     );
 });

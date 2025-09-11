@@ -93,4 +93,9 @@ return [
     'this_attachment_is_already_used' => 'This attachment is already used',
     'this_attachment_does_not_belong_to_the_user' => 'This attachment does not belong to the user',
     'this_attachment_belongs_to_another_portfolio' => 'This attachment belongs to another portfolio',
+    'you_are_not_approved_freelancer' => 'You are not an approved freelancer',
+    'you_are_not_a_freelancer' => 'You are not a freelancer',
+    'cannot_change_user_type_from_freelancer_to_client' => 'You cannot change user type from freelancer to client',
+    'profile_updated_successfully' => 'Profile updated successfully',
+    'cannot_change_user_type_from_freelancer_to_client_or_vice_versa' => 'You cannot change user type from freelancer to client or vice versa',
 ];

@@ -4,13 +4,16 @@ namespace App\Services\Implementations\Auth;
 
 use App\Enum\ApprovalStatus;
 use App\Enum\UserType;
+use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
 use App\Services\Contracts\Auth\AuthUserServiceInterface;
 use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\ImageHelpers;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -19,28 +22,32 @@ class AuthUserService implements AuthUserServiceInterface
     protected $userRepo;
     protected $verifyService;
     protected $freelancerRepo;
+    protected $categoryRepo;
 
     public function __construct(
         UserRepositoryInterface $userRepo,
         EmailVerificationServiceInterface $verifyService,
-        FreelancerProfileRepositoryInterface $freelancerRepo
+        FreelancerProfileRepositoryInterface $freelancerRepo,
+        CategoryRepositoryInterface $categoryRepo
+
     ) {
         $this->userRepo = $userRepo;
         $this->verifyService = $verifyService;
         $this->freelancerRepo = $freelancerRepo;
+        $this->categoryRepo = $categoryRepo;
     }
 
     public function register(array $data): array
     {
         $result = $this->verifyService->sendVerificationCode([
-            'name'                             => $data['name'],
-            'email'                            => $data['email'],
-            'password'                         => $data['password'],
-            'type'                             => $data['type'],
-            'linkedin_link'                    => $data['linkedin_link'],
-            'twitter_link'                     => $data['twitter_link'],
-            'other_freelance_platform_links'   => $data['other_freelance_platform_links'],
-            'portfolio_link'                   => $data['portfolio_link'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'type' => $data['type'],
+            'linkedin_link' => $data['linkedin_link'],
+            'twitter_link' => $data['twitter_link'],
+            'other_freelance_platform_links' => $data['other_freelance_platform_links'],
+            'portfolio_link' => $data['portfolio_link'],
         ]);
 
         if (!$result['status'])
@@ -71,31 +78,35 @@ class AuthUserService implements AuthUserServiceInterface
                 $result['data']['other_freelance_platform_links'] = array_values($result['data']['other_freelance_platform_links']);
 
             $user = $this->userRepo->create([
-                'name'                            => $result['data']['name'],
-                'email'                           => $result['data']['email'],
-                'password'                        => Hash::make($result['data']['password']),
-                'type'                            => $result['data']['type'],
-                'email_verified_at'               => now(),
-                'is_active'                       => 1,
-                'approval_status'                 => $result['data']['type'] == UserType::FREELANCER->value ? ApprovalStatus::REQUESTED : ApprovalStatus::APPROVED,
+                'name' => $result['data']['name'],
+                'email' => $result['data']['email'],
+                'password' => Hash::make($result['data']['password']),
+                'type' => $result['data']['type'],
+                'email_verified_at' => now(),
+                'is_active' => 1,
+                'approval_status' => $result['data']['type'] == UserType::FREELANCER->value ? ApprovalStatus::REQUESTED : ApprovalStatus::APPROVED,
             ]);
 
             if ($result['data']['type'] == UserType::FREELANCER->value) {
                 $this->freelancerRepo->create([
-                    'user_id'                         => $user->id,
-                    'linkedin_link'                   => $result['data']['linkedin_link'],
-                    'twitter_link'                    => $result['data']['twitter_link'],
-                    'other_freelance_platform_links'  => json_encode($result['data']['other_freelance_platform_links']),
-                    'portfolio_link'                  => $result['data']['portfolio_link'],
+                    'user_id' => $user->id,
+                    'linkedin_link' => $result['data']['linkedin_link'],
+                    'twitter_link' => $result['data']['twitter_link'],
+                    'other_freelance_platform_links' => json_encode($result['data']['other_freelance_platform_links']),
+                    'portfolio_link' => $result['data']['portfolio_link'],
                 ]);
             }
 
             $user->load('freelancerProfile');
 
-            return ['status' => true, 'message' => __('message.user_registered'), 'data' => [
-                'user' => $user,
-                'token' => JWTAuth::fromUser($user),
-            ]];
+            return [
+                'status' => true,
+                'message' => __('message.user_registered'),
+                'data' => [
+                    'user' => $user,
+                    'token' => JWTAuth::fromUser($user),
+                ]
+            ];
         } else {
             return ['status' => true, 'message' => __('message.email_verification_success'), 'data' => null];
         }
@@ -132,10 +143,14 @@ class AuthUserService implements AuthUserServiceInterface
         if ($user->type == UserType::FREELANCER)
             $user->load(['freelancerProfile']);
 
-        return ['status' => true, 'message' => __('message.login_success'), 'data' => [
-            'user' => $user,
-            'token' => $token,
-        ]];
+        return [
+            'status' => true,
+            'message' => __('message.login_success'),
+            'data' => [
+                'user' => $user,
+                'token' => $token,
+            ]
+        ];
     }
 
     public function forgetPassword(string $email, string $type): array
@@ -148,20 +163,20 @@ class AuthUserService implements AuthUserServiceInterface
         $token = Str::random(60);
 
         $result = $this->verifyService->sendVerificationCode([
-            'email'   => $user->email,
-            'type'    => 'forget_password',
+            'email' => $user->email,
+            'type' => 'forget_password',
             'user_id' => $user->id,
-            'token'   => $token,
+            'token' => $token,
         ]);
 
         if (!$result['status'])
             return ['status' => false, 'error_num' => $result['error_num'], 'message' => $result['message']];
 
         Cache::put('forget_password_' . $user->email, [
-            'email'   => $user->email,
-            'type'    => 'forget_password',
+            'email' => $user->email,
+            'type' => 'forget_password',
             'user_id' => $user->id,
-            'token'   => $token,
+            'token' => $token,
         ]);
 
         return ['status' => true, 'message' => $result['message'], 'token' => $token];
@@ -196,8 +211,79 @@ class AuthUserService implements AuthUserServiceInterface
         $user = auth('api')->user();
 
         if ($user->type == UserType::FREELANCER)
-            $user->load(['freelancerProfile']);
+            $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios']);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $user];
+    }
+
+    public function updateProfile(array $data): array
+    {
+        $user = auth('api')->user();
+
+        if ($user->type == UserType::FREELANCER->value && $user->approval_status != ApprovalStatus::APPROVED)
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.you_are_not_approved_freelancer')];
+
+        if (($user->type == UserType::FREELANCER->value && $data['type'] != UserType::FREELANCER->value) || ($user->type == UserType::CLIENT->value && $data['type'] != UserType::CLIENT->value))
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.cannot_change_user_type_from_freelancer_to_client_or_vice_versa')];
+
+        $profilePicturePath = null;
+        if (isset($data['profile_picture']) && $data['profile_picture'] instanceof \Illuminate\Http\UploadedFile) {
+            $profilePicturePath = $user->profile_picture ?
+                ImageHelpers::updateImage($data['profile_picture'], $user->profile_picture, 'profiles')
+                : ImageHelpers::addImage($data['profile_picture'], 'profiles');
+        }
+
+        if ($data['type'] == UserType::FREELANCER->value) {
+            $category = $this->categoryRepo->find($data['category_id']);
+
+            if ($category->parent_id != null)
+                return ['status' => false, 'error_num' => 400, 'message' => __('message.this_category_is_not_a_parent_category')];
+
+            $userTransaction = DB::transaction(function () use ($user, $data, $profilePicturePath) {
+
+                $this->userRepo->update($user->id, [
+                    'name'            => $data['name'],
+                    'profile_picture' => $profilePicturePath ?? $user->profile_picture,
+                    'about_me'        => $data['about_me'],
+                    'category_id'     => $data['category_id'],
+                ]);
+
+                $data['other_freelance_platform_links'] = array_values($data['other_freelance_platform_links']);
+
+                $this->freelancerRepo->updateByUserId($user->id, [
+                    'linkedin_link'                  => $data['linkedin_link'],
+                    'twitter_link'                   => $data['twitter_link'],
+                    'other_freelance_platform_links' => json_encode($data['other_freelance_platform_links']),
+                    'portfolio_link'                 => $data['portfolio_link'],
+                    'headline'                       => $data['headline'],
+                    'category_id'                    => $data['category_id'],
+                ]);
+
+                $user->skills()->sync($data['skill_ids'] ?? []);
+
+                $user->refresh();
+                $user->load(['freelancerProfile', 'skills', 'freelancerProfile.category', 'portfolios']);
+
+                return $user;
+            });
+        } elseif ($data['type'] == UserType::CLIENT->value) {
+
+            $userTransaction = DB::transaction(function () use ($user, $data) {
+
+                $this->userRepo->update($user->id, [
+                    'name'            => $data['name'],
+                    'profile_picture' => $profilePicturePath ?? $user->profile_picture,
+                    'about_me'        => $data['about_me'],
+                    'company'         => $data['company'] ?? null,
+                    'phone'           => $data['phone'],
+                ]);
+
+                $user->refresh();
+
+                return $user;
+            });
+        }
+
+        return ['status' => true, 'message' => __('message.profile_updated_successfully'), 'data' => $userTransaction];
     }
 }
