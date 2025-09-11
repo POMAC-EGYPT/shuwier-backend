@@ -83,7 +83,7 @@ class PortfolioController extends Controller
      * @bodyParam description string required The portfolio description. Example: "A modern responsive e-commerce website built with React and Laravel"
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Example: 2
-     * @bodyParam attachments file[] optional Array of files (PDF, JPEG, JPG, PNG, GIF, max 5MB each). Example: []
+     * @bodyParam attachment_ids integer[] required Array of attachment IDs from uploaded files (max 8 files). Use /api/upload-file endpoint first to upload files and get IDs. Example: [15, 16, 17]
      * @bodyParam hashtags string[] optional Array of hashtag strings (max 255 characters each). Example: ["react", "ecommerce", "laravel"]
      * 
      * @response 200 {
@@ -199,10 +199,10 @@ class PortfolioController extends Controller
      * Update an existing portfolio. **Important behavior notes:**
      * 
      * **For Attachments:**
-     * - If you send `attachments` parameter (even as empty array), ALL existing attachments will be deleted and replaced with the new ones
-     * - If you don't send `attachments` parameter at all, existing attachments will remain unchanged
-     * - You can send existing file paths (strings) to keep them, or upload new files
-     * - Example: To keep some files and add new ones, send both existing file paths and new files in the attachments array
+     * - If you send `attachment_ids` parameter (even as empty array), ALL existing attachments will be detached and replaced with the new ones
+     * - If you don't send `attachment_ids` parameter at all, existing attachments will remain unchanged
+     * - You need to upload files first using /api/upload-file endpoint to get attachment IDs
+     * - Example: To change attachments, send new attachment IDs: `"attachment_ids": [20, 21, 22]`
      * 
      * **For Hashtags:**
      * - If you send `hashtags` parameter (even as empty array), ALL existing hashtags will be replaced with the new ones
@@ -214,7 +214,7 @@ class PortfolioController extends Controller
      * @bodyParam description string required The portfolio description. Example: "An updated modern responsive e-commerce website"
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory. Example: 2
-     * @bodyParam attachments array optional Array of files and/or existing file paths. **CAUTION:** If provided, ALL existing attachments will be deleted first. To keep existing files, include their file paths as strings. Example: ["storage/portfolios/existing1.jpg", "new_file.jpg"]
+     * @bodyParam attachment_ids integer[] optional Array of attachment IDs from uploaded files (max 8 files). **CAUTION:** If provided, ALL existing attachments will be detached first. Example: [20, 21, 22]
      * @bodyParam hashtags string[] optional Array of hashtag strings. **CAUTION:** If provided, ALL existing hashtags will be replaced. Example: ["react", "updated", "laravel"]
      * 
      * @response 200 {
@@ -249,7 +249,13 @@ class PortfolioController extends Controller
      * }
      * 
      * @response 400 {
-     *   "message": "Invalid attachments",
+     *   "message": "This attachment is already used",
+     *   "status": false,
+     *   "error_code": 400
+     * }
+     * 
+     * @response 400 {
+     *   "message": "This attachment does not belong to the user",
      *   "status": false,
      *   "error_code": 400
      * }
