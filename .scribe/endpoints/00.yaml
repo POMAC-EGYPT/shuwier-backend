@@ -961,7 +961,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/auth/logout
+    uri: api/auth/change-password
     metadata:
       groupName: 'User Authentication'
       groupDescription: |-
@@ -971,10 +971,11 @@ endpoints:
         and other authentication-related functionality for both clients and freelancers.
       subgroup: ''
       subgroupDescription: ''
-      title: 'User Logout.'
+      title: 'Change User Password.'
       description: |-
-        This endpoint logs out the authenticated user by invalidating their JWT token.
-        After logout, the token cannot be used for authentication.
+        This endpoint allows authenticated users to change their password by providing their current password
+        and a new password. The current password must be verified before the new password is set.
+        This is a secure way for users to update their passwords while logged in.
       authenticated: true
       deprecated: false
       custom: []
@@ -986,8 +987,41 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      current_password:
+        name: current_password
+        description: "User's current password for verification."
+        required: true
+        example: CurrentPassword123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      new_password:
+        name: new_password
+        description: 'New password (min 8 chars, must contain uppercase, lowercase, number, and special character).'
+        required: true
+        example: NewPassword123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      new_password_confirmation:
+        name: new_password_confirmation
+        description: 'Password confirmation (must match new_password).'
+        required: true
+        example: NewPassword123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      current_password: CurrentPassword123!
+      new_password: NewPassword123!
+      new_password_confirmation: NewPassword123!
     fileParameters: []
     responses:
       -
@@ -996,84 +1030,65 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "Logout successful"
+            "message": "Password changed successfully"
           }
         headers: []
-        description: 'Logout successful'
+        description: 'Password changed successfully'
         custom: []
       -
-        status: 401
+        status: 400
         content: |-
           {
             "status": false,
-            "error_num": 401,
-            "message": "Unauthenticated"
+            "error_num": 400,
+            "message": "Current password is incorrect"
           }
         headers: []
-        description: Unauthenticated
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/auth/refresh
-    metadata:
-      groupName: 'User Authentication'
-      groupDescription: |-
-
-        APIs for user registration, authentication, and account management.
-        These endpoints handle user registration with email verification, login, password reset,
-        and other authentication-related functionality for both clients and freelancers.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Refresh Token.'
-      description: |-
-        This endpoint refreshes the user's JWT token, providing a new token with extended expiration time.
-        Use this endpoint to maintain user sessions without requiring re-authentication.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Token refreshed successfully",
-            "data": {
-              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-            }
-          }
-        headers: []
-        description: 'Token refreshed successfully'
+        description: 'Current password incorrect'
         custom: []
       -
-        status: 401
+        status: 400
         content: |-
           {
             "status": false,
-            "error_num": 401,
-            "message": "Token could not be refreshed"
+            "error_num": 400,
+            "message": "Failed to change password. Please try again."
           }
         headers: []
-        description: 'Token invalid or expired'
+        description: 'Password change failed'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The current_password field is required."
+          }
+        headers: []
+        description: 'Validation error'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The new_password confirmation does not match."
+          }
+        headers: []
+        description: 'Password confirmation mismatch'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The new_password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+          }
+        headers: []
+        description: 'Password too weak'
         custom: []
       -
         status: 401
@@ -1095,7 +1110,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/profile
+    uri: api/auth/profile
     metadata:
       groupName: 'User Authentication'
       groupDescription: |-
@@ -1223,7 +1238,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/profile
+    uri: api/auth/profile
     metadata:
       groupName: 'User Authentication'
       groupDescription: |-
@@ -1458,6 +1473,140 @@ endpoints:
           }
         headers: []
         description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/logout
+    metadata:
+      groupName: 'User Authentication'
+      groupDescription: |-
+
+        APIs for user registration, authentication, and account management.
+        These endpoints handle user registration with email verification, login, password reset,
+        and other authentication-related functionality for both clients and freelancers.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User Logout.'
+      description: |-
+        This endpoint logs out the authenticated user by invalidating their JWT token.
+        After logout, the token cannot be used for authentication.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Logout successful"
+          }
+        headers: []
+        description: 'Logout successful'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/refresh
+    metadata:
+      groupName: 'User Authentication'
+      groupDescription: |-
+
+        APIs for user registration, authentication, and account management.
+        These endpoints handle user registration with email verification, login, password reset,
+        and other authentication-related functionality for both clients and freelancers.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Refresh Token.'
+      description: |-
+        This endpoint refreshes the user's JWT token, providing a new token with extended expiration time.
+        Use this endpoint to maintain user sessions without requiring re-authentication.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Token refreshed successfully",
+            "data": {
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+            }
+          }
+        headers: []
+        description: 'Token refreshed successfully'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Token could not be refreshed"
+          }
+        headers: []
+        description: 'Token invalid or expired'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
         custom: []
     responseFields: []
     auth: []

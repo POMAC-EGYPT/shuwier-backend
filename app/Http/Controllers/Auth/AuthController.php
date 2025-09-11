@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Enum\ApprovalStatus;
 use App\Enum\UserType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\ResetEmail;
@@ -747,5 +748,70 @@ class AuthController extends Controller
             : ClientResource::make($user);
 
         return Response::api($result['message'], 200, true, null, $resource);
+    }
+
+    /**
+     * Change User Password.
+     * 
+     * This endpoint allows authenticated users to change their password by providing their current password
+     * and a new password. The current password must be verified before the new password is set.
+     * This is a secure way for users to update their passwords while logged in.
+     * 
+     * @authenticated
+     * 
+     * @bodyParam current_password string required User's current password for verification. Example: CurrentPassword123!
+     * @bodyParam new_password string required New password (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: NewPassword123!
+     * @bodyParam new_password_confirmation string required Password confirmation (must match new_password). Example: NewPassword123!
+     * 
+     * @response 200 scenario="Password changed successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Password changed successfully"
+     * }
+     *
+     * @response 400 scenario="Current password incorrect" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Current password is incorrect"
+     * }
+     *
+     * @response 400 scenario="Password change failed" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Failed to change password. Please try again."
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     *
+     * @response 400 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The current_password field is required."
+     * }
+     *
+     * @response 400 scenario="Password confirmation mismatch" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The new_password confirmation does not match."
+     * }
+     *
+     * @response 400 scenario="Password too weak" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The new_password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+     * }
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $result = $this->authUserService->changePassword($request->current_password, $request->new_password);
+
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+
+        return Response::api($result['message'], 200, true);
     }
 }

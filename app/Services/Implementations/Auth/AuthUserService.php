@@ -286,4 +286,18 @@ class AuthUserService implements AuthUserServiceInterface
 
         return ['status' => true, 'message' => __('message.profile_updated_successfully'), 'data' => $userTransaction];
     }
+
+    public function changePassword(string $currentPassword, string $newPassword): array
+    {
+        $user = auth('api')->user();
+
+        if (!Hash::check($currentPassword, $user->password))
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.invalid_current_password')];
+
+        $this->userRepo->update($user->id, [
+            'password' => Hash::make($newPassword)
+        ]);
+
+        return ['status' => true, 'message' => __('message.password_changed_successfully')];
+    }
 }

@@ -21,4 +21,6 @@ interface AuthUserServiceInterface
     public function getProfile(): array;
 
     public function updateProfile(array $data): array;
+
+    public function changePassword(string $currentPassword, string $newPassword): array;
 }

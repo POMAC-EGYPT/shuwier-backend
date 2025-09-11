@@ -13,16 +13,13 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password');
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password');
-
-    Route::post('/logout', [AuthController::class, 'logout'])
-        ->middleware('auth.any:api,admin')->name('logout');
-
-    Route::post('/refresh', [AuthController::class, 'refresh'])
-        ->middleware('auth.any:api,admin')->name('refresh');
+    Route::post('/change-password', [AuthController::class, 'changePassword'])->name('change-password')->middleware('auth:api');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');
+    Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth.any:api,admin')->name('logout');
+    Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth.any:api,admin')->name('refresh');
 });
 
-Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');
-Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
 
 Route::group(['prefix' => 'freelancers'], function () {
     Route::apiResources(

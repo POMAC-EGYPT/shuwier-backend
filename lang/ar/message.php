@@ -98,4 +98,6 @@ return [
     'cannot_change_user_type_from_freelancer_to_client' => 'لا يمكنك تغيير نوع المستخدم من مقدم خدمة إلى عميل',
     'profile_updated_successfully' => 'تم تحديث الملف الشخصي بنجاح',
     'cannot_change_user_type_from_freelancer_to_client_or_vice_versa' => 'لا يمكنك تغيير نوع المستخدم من مقدم خدمة إلى عميل أو العكس',
+    'invalid_current_password' => 'كلمة المرور الحالية غير صحيحة',
+    'password_changed_successfully' => 'تم تغيير كلمة المرور بنجاح',
 ];

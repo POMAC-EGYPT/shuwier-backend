@@ -98,4 +98,6 @@ return [
     'cannot_change_user_type_from_freelancer_to_client' => 'You cannot change user type from freelancer to client',
     'profile_updated_successfully' => 'Profile updated successfully',
     'cannot_change_user_type_from_freelancer_to_client_or_vice_versa' => 'You cannot change user type from freelancer to client or vice versa',
+    'invalid_current_password' => 'Invalid current password',
+    'password_changed_successfully' => 'Password changed successfully',
 ];
