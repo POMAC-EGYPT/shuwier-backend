@@ -28,7 +28,7 @@ class FreelancerResource extends JsonResource
             'approval_status'                => $this->approval_status,
             'linkedin_link'                  => $this->freelancerProfile->linkedin_link ?? null,
             'twitter_link'                   => $this->freelancerProfile->twitter_link ?? null,
-            'other_freelance_platform_links' => $this->freelancerProfile->other_freelance_platform_links ?? [],
+            'other_freelance_platform_links' => json_decode($this->freelancerProfile->other_freelance_platform_links) ?? [],
             'portfolio_link'                 => $this->freelancerProfile->portfolio_link ?? null,
             'headline'                       => $this->freelancerProfile->headline ?? null,
             'created_at'                     => $this->created_at,
