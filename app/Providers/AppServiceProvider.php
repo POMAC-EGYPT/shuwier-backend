@@ -10,6 +10,7 @@ use App\Repository\Contracts\HashtagRepositoryInterface;
 use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Repository\Contracts\PortfolioRepositoryInterface;
 use App\Repository\Contracts\SkillRepositoryInterface;
+use App\Repository\Contracts\UserLanguageRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
 use App\Repository\Eloquent\AdminRepository;
 use App\Repository\Eloquent\CategoryRepository;
@@ -19,6 +20,7 @@ use App\Repository\Eloquent\PortfolioRepository;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\PortfolioAttachmentRepository;
 use App\Repository\Eloquent\SkillRepository;
+use App\Repository\Eloquent\UserLanguageRepository;
 use App\Services\Contracts\Auth\AuthAdminServiceInterface;
 use App\Services\Contracts\Auth\AuthUserServiceInterface;
 use Illuminate\Support\Facades\Response;
@@ -81,6 +83,8 @@ class AppServiceProvider extends ServiceProvider
                 $app->make(UploadStrategyInterface::class . '_portfolio'),
             );
         });
+
+        $this->app->bind(UserLanguageRepositoryInterface::class, UserLanguageRepository::class);
     }
 
     /**

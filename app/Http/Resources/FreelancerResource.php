@@ -47,6 +47,10 @@ class FreelancerResource extends JsonResource
                 $this->skills && $this->skills->count() > 0,
                 BaseResource::make(SkillResource::collection($this->skills))
             ),
+            'languages'                      => $this->when(
+                $this->languages && $this->languages->count() > 0,
+                BaseResource::make(LanguageResource::collection($this->languages))
+            ),
         ];
     }
 }

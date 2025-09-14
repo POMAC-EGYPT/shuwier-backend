@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\ImageHelpers;
+use App\Repository\Contracts\UserLanguageRepositoryInterface;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -23,18 +24,21 @@ class AuthUserService implements AuthUserServiceInterface
     protected $verifyService;
     protected $freelancerRepo;
     protected $categoryRepo;
+    protected $userLanguageRepo;
 
     public function __construct(
         UserRepositoryInterface $userRepo,
         EmailVerificationServiceInterface $verifyService,
         FreelancerProfileRepositoryInterface $freelancerRepo,
-        CategoryRepositoryInterface $categoryRepo
+        CategoryRepositoryInterface $categoryRepo,
+        UserLanguageRepositoryInterface $userLanguageRepo,
 
     ) {
         $this->userRepo = $userRepo;
         $this->verifyService = $verifyService;
         $this->freelancerRepo = $freelancerRepo;
         $this->categoryRepo = $categoryRepo;
+        $this->userLanguageRepo = $userLanguageRepo;
     }
 
     public function register(array $data): array
@@ -211,7 +215,7 @@ class AuthUserService implements AuthUserServiceInterface
         $user = auth('api')->user();
 
         if ($user->type == UserType::FREELANCER)
-            $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios']);
+            $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages']);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $user];
     }
@@ -223,60 +227,90 @@ class AuthUserService implements AuthUserServiceInterface
         if ($user->type == UserType::FREELANCER->value && $user->approval_status != ApprovalStatus::APPROVED)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.you_are_not_approved_freelancer')];
 
-        if (($user->type == UserType::FREELANCER->value && $data['type'] != UserType::FREELANCER->value) || ($user->type == UserType::CLIENT->value && $data['type'] != UserType::CLIENT->value))
-            return ['status' => false, 'error_num' => 400, 'message' => __('message.cannot_change_user_type_from_freelancer_to_client_or_vice_versa')];
-
         $profilePicturePath = null;
-        if (isset($data['profile_picture']) && $data['profile_picture'] instanceof \Illuminate\Http\UploadedFile) {
+        if (isset($data['profile_picture']) && $data['profile_picture'] instanceof \Illuminate\Http\UploadedFile)
             $profilePicturePath = $user->profile_picture ?
                 ImageHelpers::updateImage($data['profile_picture'], $user->profile_picture, 'profiles')
                 : ImageHelpers::addImage($data['profile_picture'], 'profiles');
-        }
 
-        if ($data['type'] == UserType::FREELANCER->value) {
-            $category = $this->categoryRepo->find($data['category_id']);
+        if ($user->type == UserType::FREELANCER->value) {
+            if (isset($data['category_id'])) {
+                $category = $this->categoryRepo->find($data['category_id']);
 
-            if ($category->parent_id != null)
-                return ['status' => false, 'error_num' => 400, 'message' => __('message.this_category_is_not_a_parent_category')];
+                if ($category->parent_id != null)
+                    return ['status' => false, 'error_num' => 400, 'message' => __('message.this_category_is_not_a_parent_category')];
+            }
 
             $userTransaction = DB::transaction(function () use ($user, $data, $profilePicturePath) {
+                $userData = [];
+                $freelancerData = [];
 
-                $this->userRepo->update($user->id, [
-                    'name'            => $data['name'],
-                    'profile_picture' => $profilePicturePath ?? $user->profile_picture,
-                    'about_me'        => $data['about_me'],
-                    'category_id'     => $data['category_id'],
-                ]);
+                if (array_key_exists('name', $data))
+                    $userData['name'] = $data['name'];
 
-                $data['other_freelance_platform_links'] = array_values($data['other_freelance_platform_links']);
+                if (array_key_exists('about_me', $data))
+                    $userData['about_me'] = $data['about_me'];
 
-                $this->freelancerRepo->updateByUserId($user->id, [
-                    'linkedin_link'                  => $data['linkedin_link'],
-                    'twitter_link'                   => $data['twitter_link'],
-                    'other_freelance_platform_links' => json_encode($data['other_freelance_platform_links']),
-                    'portfolio_link'                 => $data['portfolio_link'],
-                    'headline'                       => $data['headline'],
-                    'category_id'                    => $data['category_id'],
-                ]);
+                if (array_key_exists('profile_picture', $data))
+                    $userData['profile_picture'] = $profilePicturePath ?? $user->profile_picture;
 
-                $user->skills()->sync($data['skill_ids'] ?? []);
+                if (array_key_exists('country', $data))
+                    $userData['country'] = $data['country'];
+
+                if (array_key_exists('city', $data))
+                    $userData['city'] = $data['city'];
+
+                $this->userRepo->update($user->id, $userData);
+
+                if (array_key_exists('headline', $data))
+                    $freelancerData['headline'] = $data['headline'];
+
+                if (array_key_exists('category_id', $data))
+                    $freelancerData['category_id'] = $data['category_id'];
+
+                $this->freelancerRepo->updateByUserId($user->id, $freelancerData);
+
+                if (array_key_exists('skill_ids', $data))
+                    $user->skills()->sync($data['skill_ids']);
+
+                if (array_key_exists('languages', $data))
+                    $this->userLanguageRepo->syncUserLanguages($user->id, $data['languages']);
 
                 $user->refresh();
-                $user->load(['freelancerProfile', 'skills', 'freelancerProfile.category', 'portfolios']);
+
+                $user->load(['freelancerProfile', 'skills', 'freelancerProfile.category', 'portfolios', 'languages']);
 
                 return $user;
             });
-        } elseif ($data['type'] == UserType::CLIENT->value) {
-
+        } elseif ($user->type == UserType::CLIENT->value) {
             $userTransaction = DB::transaction(function () use ($user, $data) {
+                $userData = [];
 
-                $this->userRepo->update($user->id, [
-                    'name'            => $data['name'],
-                    'profile_picture' => $profilePicturePath ?? $user->profile_picture,
-                    'about_me'        => $data['about_me'],
-                    'company'         => $data['company'] ?? null,
-                    'phone'           => $data['phone'],
-                ]);
+                if (array_key_exists('name', $data))
+                    $userData['name'] = $data['name'];
+
+                if (array_key_exists('about_me', $data))
+                    $userData['about_me'] = $data['about_me'];
+
+                if (array_key_exists('company', $data))
+                    $userData['company'] = $data['company'];
+
+                if (array_key_exists('phone', $data))
+                    $userData['phone'] = $data['phone'];
+
+                if (array_key_exists('profile_picture', $data))
+                    $userData['profile_picture'] = $profilePicturePath ?? $user->profile_picture;
+
+                if (array_key_exists('country', $data))
+                    $userData['country'] = $data['country'];
+
+                if (array_key_exists('city', $data))
+                    $userData['city'] = $data['city'];
+
+                if (array_key_exists('languages', $data))
+                    $this->userLanguageRepo->syncUserLanguages($user->id, $data['languages']);
+
+                $this->userRepo->update($user->id, $userData);
 
                 $user->refresh();
 

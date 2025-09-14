@@ -35,6 +35,8 @@ class User extends Authenticatable implements JWTSubject
         'company',
         'approval_status',
         'email_verified_at',
+        'country',
+        'city',
     ];
 
     /**
@@ -84,6 +86,13 @@ class User extends Authenticatable implements JWTSubject
     public function portfolios()
     {
         return $this->hasMany(Portfolio::class);
+    }
+
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class, 'user_languages')
+            ->withPivot('language_level')
+            ->withTimestamps();
     }
 
     /**

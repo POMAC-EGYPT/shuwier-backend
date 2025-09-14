@@ -669,74 +669,148 @@ class AuthController extends Controller
     }
 
     /**
-     * Update User Profile
+     * Update User Profile.
      * 
-     * Update the authenticated user's profile information. This endpoint supports both freelancers and clients
-     * with different required fields based on user type. Freelancers cannot change their type to client.
+     * This endpoint allows authenticated users to update their profile information.
+     * The endpoint supports both freelancers and clients with different validation rules based on user type.
+     * Uses request filtering to only accept valid fields for each user type.
      * 
      * **For Freelancers:**
-     * - Required: type, name, about_me, headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link
-     * - Optional: profile_picture
-     * - Prohibited: company, phone
+     * - Allowed fields: name, profile_picture, about_me, headline, category_id, skill_ids
+     * - Optional fields: name, profile_picture, about_me, headline, category_id, skill_ids
+     * - Prohibited fields: company, phone
      * 
      * **For Clients:**
-     * - Required: type, name, about_me, phone
-     * - Optional: profile_picture, company
-     * - Prohibited: headline, category_id, skill_ids, linkedin_link, twitter_link, other_freelance_platform_links, portfolio_link
+     * - Allowed fields: name, profile_picture, about_me, company, phone
+     * - Optional fields: name, profile_picture, about_me, company, phone
+     * - Prohibited fields: headline, category_id, skill_ids
      * 
-     * @response 200 {
-     *   "message": "Profile updated successfully",
+     * @authenticated
+     * 
+     * @bodyParam name string sometimes User's full name (Arabic or English characters only). Example: أحمد محمد
+     * @bodyParam profile_picture file sometimes Profile picture image file (max 2MB). Example: No-example
+     * @bodyParam about_me string sometimes About me description (max 500 characters, optional). Example: مطور ويب محترف مع خبرة 5 سنوات
+     * @bodyParam headline string sometimes Professional headline (for freelancers only, optional). Example: Full Stack Developer
+     * @bodyParam category_id integer sometimes Main category ID (for freelancers only, optional, must exist in categories). Example: 1
+     * @bodyParam skill_ids array sometimes Array of skill IDs (for freelancers only, optional). Example: [1, 2, 3]
+     * @bodyParam skill_ids.* integer Each skill ID must exist in skills table. Example: 1
+     * @bodyParam company string sometimes Company name (for clients only, optional, max 255 characters). Example: Tech Solutions Inc
+     * @bodyParam phone string sometimes Phone number in Saudi format (for clients only, optional). Example: +966501234567
+     * 
+     * @response 200 scenario="Freelancer profile updated" {
      *   "status": true,
+     *   "error_num": null,
+     *   "message": "Profile updated successfully",
      *   "data": {
      *     "id": 1,
      *     "name": "أحمد محمد",
      *     "email": "ahmed@example.com",
      *     "type": "freelancer",
-     *     "profile_picture": "storage/profiles/new_image.jpg",
-     *     "about_me": "مطور ويب محترف",
+     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *     "phone": null,
+     *     "is_active": true,
+     *     "about_me": "مطور ويب محترف مع خبرة 5 سنوات",
+     *     "profile_picture": "storage/profiles/ahmed_profile.jpg",
+     *     "approval_status": "approved",
+     *     "linkedin_link": "https://linkedin.com/in/ahmed",
+     *     "twitter_link": "https://twitter.com/ahmed",
+     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+     *     "portfolio_link": "https://ahmed-portfolio.com",
      *     "headline": "Full Stack Developer",
+     *     "description": "Experienced developer specializing in Laravel and React",
      *     "category": {
      *       "id": 1,
      *       "name": "Web Development"
      *     },
      *     "skills": [
      *       {"id": 1, "name": "PHP"},
-     *       {"id": 2, "name": "Laravel"}
-     *     ]
+     *       {"id": 2, "name": "Laravel"},
+     *       {"id": 3, "name": "React"}
+     *     ],
+     *     "portfolios": [],
+     *     "created_at": "2025-08-24T10:30:00.000000Z",
+     *     "updated_at": "2025-08-24T10:30:00.000000Z"
      *   }
      * }
-     * 
-     * @response 400 {
-     *   "message": "Cannot change user type from freelancer to client",
-     *   "status": false,
-     *   "error_code": 400
+     *
+     * @response 200 scenario="Client profile updated" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Profile updated successfully",
+     *   "data": {
+     *     "id": 2,
+     *     "name": "Jane Smith",
+     *     "email": "jane@example.com",
+     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *     "phone": "+966501234567",
+     *     "type": "client",
+     *     "is_active": true,
+     *     "about_me": "Business owner looking for quality freelance services",
+     *     "profile_picture": "storage/profiles/jane_profile.jpg",
+     *     "company": "Tech Solutions Inc",
+     *     "created_at": "2025-08-24T10:30:00.000000Z",
+     *     "updated_at": "2025-08-24T10:30:00.000000Z"
+     *   }
      * }
-     * 
-     * @response 400 {
-     *   "message": "This category is not a parent category",
+     *
+     * @response 400 scenario="Freelancer not approved" {
      *   "status": false,
-     *   "error_code": 400
+     *   "error_num": 400,
+     *   "message": "You are not an approved freelancer"
      * }
-     * 
-     * @authenticated
+     *
+     * @response 400 scenario="Invalid category" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "This category is not a parent category"
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     *
+     * @response 400 scenario="Validation error - Name format" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The name format is invalid."
+     * }
+     *
+     * @response 400 scenario="Validation error - Prohibited field" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The company field is prohibited."
+     * }
+     *
+     * @response 400 scenario="Validation error - File too large" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The profile picture may not be greater than 2048 kilobytes."
+     * }
+     *
+     * @response 400 scenario="Validation error - Invalid skill" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The selected skill_ids.0 is invalid."
+     * }
      */
     public function updateProfile(UpdateProfileRequest $request)
     {
-        $result = $this->authUserService->updateProfile([
-            'type'                             => $request->type,
-            'name'                             => $request->name,
-            'profile_picture'                  => $request->profile_picture,
-            'about_me'                         => $request->about_me,
-            'headline'                         => $request->headline,
-            'category_id'                      => $request->category_id,
-            'skill_ids'                        => $request->skill_ids ?? [],
-            'company'                          => $request->company,
-            'phone'                            => $request->phone,
-            'linkedin_link'                    => $request->linkedin_link,
-            'twitter_link'                     => $request->twitter_link,
-            'other_freelance_platform_links'   => $request->other_freelance_platform_links ?? [],
-            'portfolio_link'                   => $request->portfolio_link,
-        ]);
+        $result = $this->authUserService->updateProfile($request->only([
+            'name',
+            'profile_picture',
+            'about_me',
+            'headline',
+            'category_id',
+            'skill_ids',
+            'company',
+            'phone',
+            'country',
+            'city',
+            'languages',
+        ]));
+
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);

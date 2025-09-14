@@ -18,10 +18,6 @@ use Illuminate\Contracts\Validation\Validator;
  * @property array $skill_ids
  * @property string|null $company
  * @property string|null $phone
- * @property string|null $linkedin_link
- * @property string|null $twitter_link
- * @property array|null $other_freelance_platform_links
- * @property string|null $portfolio_link
  */
 class UpdateProfileRequest extends FormRequest
 {
@@ -47,30 +43,46 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'type'                             => 'required|string|in:freelancer,client',
-            'name'                             => [
+        $type = auth('api')->user()->type;
+
+        $rules = [
+            'name'                         => [
+                'sometimes',
                 'required',
                 'max:255',
                 'regex:/^([ء-ي\s]+|[a-zA-Z\s]+)$/u'
             ],
-            'profile_picture'                  => 'nullable|image|max:2048',
-            'about_me'                         => 'required|string|max:500',
-            'headline'                         => 'required_if:type,freelancer|string|max:255',
-            'category_id'                      => 'required_if:type,freelancer|exists:categories,id',
-            'skill_ids'                        => 'required_if:type,freelancer|array',
-            'skill_ids.*'                      => 'required|exists:skills,id',
-            'company'                          => 'prohibitedIf:type,freelancer|nullable|string|max:255',
-            'phone'                            => [
-                'required_if:type,client',
-                'regex:/^(\+966|00966|966)?[5][0-9]{8}$/'
-            ],
-            'linkedin_link'                    => 'required_if:type,freelancer|url',
-            'twitter_link'                     => 'required_if:type,freelancer|url',
-            'other_freelance_platform_links'   => 'required_if:type,freelancer|array|min:1|max:3',
-            'other_freelance_platform_links.*' => 'url',
-            'portfolio_link'                   => 'required_if:type,freelancer|url',
+            'profile_picture'               => 'sometimes|nullable|image|max:2048',
+            'about_me'                      => 'sometimes|nullable|string|max:500',
+            'country'                       => 'sometimes|nullable|string|max:100',
+            'city'                          => 'sometimes|nullable|string|max:100',
+            'languages'                  => 'sometimes|array',
+            'languages.*.language_id'    => 'required|exists:languages,id',
+            'languages.*.language_level' => 'required|in:beginner,intermediate,advanced,native',
         ];
+
+        if ($type === 'freelancer') {
+            $rules = array_merge($rules, [
+                'headline'    => 'sometimes|nullable|string|max:255',
+                'category_id' => 'sometimes|nullable|exists:categories,id',
+                'skill_ids'   => 'sometimes|nullable|array',
+                'skill_ids.*' => 'exists:skills,id',
+                'company'     => 'prohibited',
+                'phone'       => 'prohibited',
+            ]);
+        }
+
+        if ($type === 'client') {
+            $rules = array_merge($rules, [
+                'company'     => 'sometimes|nullable|string|max:255',
+                'phone'       => 'sometimes|nullable|regex:/^(\+966|00966|966)?[5][0-9]{8}$/',
+                'headline'    => 'prohibited',
+                'category_id' => 'prohibited',
+                'skill_ids'   => 'prohibited',
+            ]);
+        }
+
+        return $rules;
     }
 
     /**
@@ -79,12 +91,8 @@ class UpdateProfileRequest extends FormRequest
     public function bodyParameters(): array
     {
         return [
-            'type' => [
-                'description' => 'User type (cannot change from freelancer to client)',
-                'example' => 'freelancer'
-            ],
             'name' => [
-                'description' => 'User full name (Arabic or English)',
+                'description' => 'User full name (Arabic or English characters only, max 255 characters, optional)',
                 'example' => 'أحمد محمد'
             ],
             'profile_picture' => [
@@ -92,44 +100,28 @@ class UpdateProfileRequest extends FormRequest
                 'example' => 'No-example'
             ],
             'about_me' => [
-                'description' => 'About me description (max 500 characters)',
+                'description' => 'About me description (optional, max 500 characters)',
                 'example' => 'مطور ويب محترف مع خبرة 5 سنوات'
             ],
             'headline' => [
-                'description' => 'Professional headline (required for freelancers)',
+                'description' => 'Professional headline (for freelancers only, optional, max 255 characters)',
                 'example' => 'Full Stack Developer'
             ],
             'category_id' => [
-                'description' => 'Main category ID (required for freelancers, must be parent category)',
+                'description' => 'Main category ID (for freelancers only, optional, must exist in categories table)',
                 'example' => 1
             ],
             'skill_ids' => [
-                'description' => 'Array of skill IDs (required for freelancers)',
+                'description' => 'Array of skill IDs (for freelancers only, optional, each ID must exist in skills table)',
                 'example' => [1, 2, 3]
             ],
             'company' => [
-                'description' => 'Company name (for clients only)',
+                'description' => 'Company name (for clients only, optional, max 255 characters)',
                 'example' => 'Tech Solutions Inc.'
             ],
             'phone' => [
-                'description' => 'Phone number (required for clients, Saudi format)',
+                'description' => 'Phone number in Saudi format (for clients only, optional)',
                 'example' => '+966501234567'
-            ],
-            'linkedin_link' => [
-                'description' => 'LinkedIn profile URL (required for freelancers)',
-                'example' => 'https://linkedin.com/in/ahmed-mohamed'
-            ],
-            'twitter_link' => [
-                'description' => 'Twitter profile URL (required for freelancers)',
-                'example' => 'https://twitter.com/ahmed_mohamed'
-            ],
-            'other_freelance_platform_links' => [
-                'description' => 'Array of other freelance platform URLs (required for freelancers, 1-3 links)',
-                'example' => ['https://upwork.com/freelancers/ahmed', 'https://freelancer.com/u/ahmed']
-            ],
-            'portfolio_link' => [
-                'description' => 'Portfolio website URL (required for freelancers)',
-                'example' => 'https://ahmed-portfolio.com'
             ]
         ];
     }
