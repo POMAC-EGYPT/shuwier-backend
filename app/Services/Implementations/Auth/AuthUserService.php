@@ -144,9 +144,6 @@ class AuthUserService implements AuthUserServiceInterface
 
         $token = JWTAuth::fromUser($user);
 
-        if ($user->type == UserType::FREELANCER)
-            $user->load(['freelancerProfile']);
-
         return [
             'status' => true,
             'message' => __('message.login_success'),
@@ -214,8 +211,7 @@ class AuthUserService implements AuthUserServiceInterface
     {
         $user = auth('api')->user();
 
-        if ($user->type == UserType::FREELANCER)
-            $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages']);
+        $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages']);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $user];
     }
@@ -278,7 +274,7 @@ class AuthUserService implements AuthUserServiceInterface
 
                 $user->refresh();
 
-                $user->load(['freelancerProfile', 'skills', 'freelancerProfile.category', 'portfolios', 'languages']);
+                $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages']);
 
                 return $user;
             });
@@ -313,6 +309,8 @@ class AuthUserService implements AuthUserServiceInterface
                 $this->userRepo->update($user->id, $userData);
 
                 $user->refresh();
+
+                $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages']);
 
                 return $user;
             });
