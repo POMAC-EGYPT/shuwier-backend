@@ -100,4 +100,5 @@ return [
     'cannot_change_user_type_from_freelancer_to_client_or_vice_versa' => 'You cannot change user type from freelancer to client or vice versa',
     'invalid_current_password' => 'Invalid current password',
     'password_changed_successfully' => 'Password changed successfully',
+    'you_must_provide_at_least_one_field_to_update' => 'You must provide at least one field to update',
 ];

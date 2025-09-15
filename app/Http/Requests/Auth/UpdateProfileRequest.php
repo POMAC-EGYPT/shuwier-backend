@@ -87,6 +87,27 @@ class UpdateProfileRequest extends FormRequest
         return $rules;
     }
 
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if (!$this->hasAny([
+                'name',
+                'profile_picture',
+                'about_me',
+                'country',
+                'city',
+                'languages',
+                'headline',
+                'category_id',
+                'skill_ids',
+                'company',
+                'phone',
+            ])) {
+                $validator->errors()->add('update_profile', __('message.you_must_provide_at_least_one_field_to_update'));
+            }
+        });
+    }
+
     /**
      * Get the body parameters for Scribe documentation.
      */
