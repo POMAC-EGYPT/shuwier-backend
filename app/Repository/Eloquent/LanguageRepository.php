@@ -8,21 +8,19 @@ use Illuminate\Database\Eloquent\Collection;
 
 class LanguageRepository implements LanguageRepositoryInterface
 {
-   public function getAll(): array
-   {
-       // Implementation to retrieve all languages
-       return [];
-   }
-
-   public function getById(int $id): ?Language
+    public function getAll(): Collection
     {
-         // Implementation to retrieve a language by its ID
-         return null;
+        return Language::all();
+    }
+
+    public function getById(int $id): ?Language
+    {
+        // Implementation to retrieve a language by its ID
+        return null;
     }
 
     public function getByUserId(int $userId): ?Collection
     {
         return Language::where('user_id', $userId)->get();
     }
-    
 }

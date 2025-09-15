@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface LanguageRepositoryInterface
 {
-    public function getAll(): array;
+    public function getAll(): Collection;
 
     public function getById(int $id): ?Language;
 

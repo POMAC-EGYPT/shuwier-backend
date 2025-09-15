@@ -7,6 +7,7 @@ use App\Repository\Contracts\AdminRepositoryInterface;
 use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
 use App\Repository\Contracts\HashtagRepositoryInterface;
+use App\Repository\Contracts\LanguageRepositoryInterface;
 use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Repository\Contracts\PortfolioRepositoryInterface;
 use App\Repository\Contracts\SkillRepositoryInterface;
@@ -16,6 +17,7 @@ use App\Repository\Eloquent\AdminRepository;
 use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\FreelancerProfileRepository;
 use App\Repository\Eloquent\HashtagRepository;
+use App\Repository\Eloquent\LanguageRepository;
 use App\Repository\Eloquent\PortfolioRepository;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\PortfolioAttachmentRepository;
@@ -29,6 +31,7 @@ use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
 use App\Services\Contracts\CategoryServiceInterface;
 use App\Services\Contracts\ClientServiceInterface;
 use App\Services\Contracts\FreelancerServiceInterface;
+use App\Services\Contracts\LanguageServiceInterface;
 use App\Services\Contracts\PortfolioServiceInterface;
 use App\Services\Contracts\SkillServiceInterface;
 use App\Services\Implementations\Auth\AuthAdminService;
@@ -37,6 +40,7 @@ use App\Services\Implementations\Auth\EmailVerificationService;
 use App\Services\Implementations\CategoryService;
 use App\Services\Implementations\ClientService;
 use App\Services\Implementations\FreelancerService;
+use App\Services\Implementations\LanguageService;
 use App\Services\Implementations\PortfolioService;
 use App\Services\Implementations\SkillService;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
@@ -85,6 +89,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(UserLanguageRepositoryInterface::class, UserLanguageRepository::class);
+
+        $this->app->bind(LanguageServiceInterface::class, LanguageService::class);
+        $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
     }
 
     /**
