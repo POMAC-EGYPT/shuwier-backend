@@ -19,6 +19,13 @@ class UserLanguageRepository implements UserLanguageRepositoryInterface
         foreach ($userLanguages as $userLanguage)
             $userLanguage->delete();
 
+        $languageDatas = array_filter($languageDatas, function ($item) {
+            return is_array($item) && isset($item['language_id'], $item['language_level']);
+        });
+
+        if (empty($languageDatas)) 
+            return true;
+
         foreach ($languageDatas as $languageData)
             UserLanguage::create([
                 'user_id'        => $userId,

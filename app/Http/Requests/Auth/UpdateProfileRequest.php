@@ -43,9 +43,8 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules(): array
     {
-        // Handle case when user is not authenticated (e.g., during documentation generation)
         $user = auth('api')->user();
-        $type = $user ? $user->type : 'freelancer'; // Default to freelancer for documentation
+        $type = $user ? $user->type : 'freelancer';
 
         $rules = [
             'name'                         => [
