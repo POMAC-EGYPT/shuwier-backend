@@ -40,4 +40,25 @@ class ChangePasswordRequest extends FormRequest
             'new_password'     => 'required|string|min:8|confirmed|different:current_password|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
         ];
     }
+
+    /**
+     * Get the body parameters for Scribe documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'current_password' => [
+                'description' => 'User\'s current password for verification (minimum 8 characters)',
+                'example' => 'CurrentPassword123!'
+            ],
+            'new_password' => [
+                'description' => 'New password (min 8 chars, must contain uppercase, lowercase, number, and special character, must be different from current password)',
+                'example' => 'NewPassword123!'
+            ],
+            'new_password_confirmation' => [
+                'description' => 'Password confirmation (must match new_password)',
+                'example' => 'NewPassword123!'
+            ]
+        ];
+    }
 }

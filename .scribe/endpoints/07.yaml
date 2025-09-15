@@ -1,4 +1,4 @@
-name: 'Skills Management'
+name: 'Admin Skills Management'
 description: |-
 
   APIs for managing skills in the system. Skills are used to categorize freelancer capabilities
@@ -9,7 +9,7 @@ endpoints:
       - GET
     uri: api/admin/skills
     metadata:
-      groupName: 'Skills Management'
+      groupName: 'Admin Skills Management'
       groupDescription: |-
 
         APIs for managing skills in the system. Skills are used to categorize freelancer capabilities
@@ -164,7 +164,7 @@ endpoints:
       - POST
     uri: api/admin/skills
     metadata:
-      groupName: 'Skills Management'
+      groupName: 'Admin Skills Management'
       groupDescription: |-
 
         APIs for managing skills in the system. Skills are used to categorize freelancer capabilities
@@ -302,7 +302,7 @@ endpoints:
       - GET
     uri: 'api/admin/skills/{id}'
     metadata:
-      groupName: 'Skills Management'
+      groupName: 'Admin Skills Management'
       groupDescription: |-
 
         APIs for managing skills in the system. Skills are used to categorize freelancer capabilities
@@ -397,7 +397,7 @@ endpoints:
       - PATCH
     uri: 'api/admin/skills/{id}'
     metadata:
-      groupName: 'Skills Management'
+      groupName: 'Admin Skills Management'
       groupDescription: |-
 
         APIs for managing skills in the system. Skills are used to categorize freelancer capabilities
@@ -535,7 +535,7 @@ endpoints:
       - DELETE
     uri: 'api/admin/skills/{id}'
     metadata:
-      groupName: 'Skills Management'
+      groupName: 'Admin Skills Management'
       groupDescription: |-
 
         APIs for managing skills in the system. Skills are used to categorize freelancer capabilities

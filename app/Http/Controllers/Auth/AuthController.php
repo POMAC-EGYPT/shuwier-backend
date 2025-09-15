@@ -676,13 +676,13 @@ class AuthController extends Controller
      * Uses request filtering to only accept valid fields for each user type.
      * 
      * **For Freelancers:**
-     * - Allowed fields: name, profile_picture, about_me, headline, category_id, skill_ids
-     * - Optional fields: name, profile_picture, about_me, headline, category_id, skill_ids
+     * - Allowed fields: name, profile_picture, about_me, country, city, languages, headline, category_id, skill_ids
+     * - Optional fields: name, profile_picture, about_me, country, city, languages, headline, category_id, skill_ids
      * - Prohibited fields: company, phone
      * 
      * **For Clients:**
-     * - Allowed fields: name, profile_picture, about_me, company, phone
-     * - Optional fields: name, profile_picture, about_me, company, phone
+     * - Allowed fields: name, profile_picture, about_me, country, city, languages, company, phone
+     * - Optional fields: name, profile_picture, about_me, country, city, languages, company, phone
      * - Prohibited fields: headline, category_id, skill_ids
      * 
      * @authenticated
@@ -690,6 +690,11 @@ class AuthController extends Controller
      * @bodyParam name string sometimes User's full name (Arabic or English characters only). Example: أحمد محمد
      * @bodyParam profile_picture file sometimes Profile picture image file (max 2MB). Example: No-example
      * @bodyParam about_me string sometimes About me description (max 500 characters, optional). Example: مطور ويب محترف مع خبرة 5 سنوات
+     * @bodyParam country string sometimes User country (max 100 characters, optional). Example: Saudi Arabia
+     * @bodyParam city string sometimes User city (max 100 characters, optional). Example: Riyadh
+     * @bodyParam languages array sometimes Array of user languages (optional). Example: [{"language_id": 1, "language_level": "native"}, {"language_id": 2, "language_level": "advanced"}]
+     * @bodyParam languages.*.language_id integer Language ID (must exist in languages table). Example: 1
+     * @bodyParam languages.*.language_level string Language proficiency level (beginner, intermediate, advanced, native). Example: advanced
      * @bodyParam headline string sometimes Professional headline (for freelancers only, optional). Example: Full Stack Developer
      * @bodyParam category_id integer sometimes Main category ID (for freelancers only, optional, must exist in categories). Example: 1
      * @bodyParam skill_ids array sometimes Array of skill IDs (for freelancers only, optional). Example: [1, 2, 3]

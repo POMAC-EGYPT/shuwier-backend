@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * @group Skills Management
+ * @group Admin Skills Management
  * 
  * APIs for managing skills in the system. Skills are used to categorize freelancer capabilities
  * and can be associated with categories for better organization.

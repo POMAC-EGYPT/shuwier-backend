@@ -43,7 +43,9 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules(): array
     {
-        $type = auth('api')->user()->type;
+        // Handle case when user is not authenticated (e.g., during documentation generation)
+        $user = auth('api')->user();
+        $type = $user ? $user->type : 'freelancer'; // Default to freelancer for documentation
 
         $rules = [
             'name'                         => [
@@ -56,9 +58,9 @@ class UpdateProfileRequest extends FormRequest
             'about_me'                      => 'sometimes|nullable|string|max:500',
             'country'                       => 'sometimes|nullable|string|max:100',
             'city'                          => 'sometimes|nullable|string|max:100',
-            'languages'                  => 'sometimes|array',
-            'languages.*.language_id'    => 'required|exists:languages,id',
-            'languages.*.language_level' => 'required|in:beginner,intermediate,advanced,native',
+            'languages'                     => 'sometimes|array',
+            'languages.*.language_id'       => 'required|exists:languages,id',
+            'languages.*.language_level'    => 'required|in:beginner,intermediate,advanced,native',
         ];
 
         if ($type === 'freelancer') {
@@ -102,6 +104,29 @@ class UpdateProfileRequest extends FormRequest
             'about_me' => [
                 'description' => 'About me description (optional, max 500 characters)',
                 'example' => 'مطور ويب محترف مع خبرة 5 سنوات'
+            ],
+            'country' => [
+                'description' => 'User country (optional, max 100 characters)',
+                'example' => 'Saudi Arabia'
+            ],
+            'city' => [
+                'description' => 'User city (optional, max 100 characters)',
+                'example' => 'Riyadh'
+            ],
+            'languages' => [
+                'description' => 'Array of user languages (optional)',
+                'example' => [
+                    ['language_id' => 1, 'language_level' => 'native'],
+                    ['language_id' => 2, 'language_level' => 'advanced']
+                ]
+            ],
+            'languages.*.language_id' => [
+                'description' => 'Language ID (must exist in languages table)',
+                'example' => 1
+            ],
+            'languages.*.language_level' => [
+                'description' => 'Language proficiency level',
+                'example' => 'advanced'
             ],
             'headline' => [
                 'description' => 'Professional headline (for freelancers only, optional, max 255 characters)',
