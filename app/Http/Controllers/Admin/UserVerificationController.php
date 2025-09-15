@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class UserVerificationController extends Controller
+{
+    public function index()
+    {
+        // $user = auth()->user();
+    }
+}

@@ -75,7 +75,7 @@ class CategoryService implements CategoryServiceInterface
 
     public function update(int $id, array $data): array
     {
-        $this->categoryRepo->find($id, true);
+        $category = $this->categoryRepo->find($id, true);
 
         if ($data['parent_id'] != null) {
             $parent = $this->categoryRepo->find($data['parent_id'], true);
@@ -89,10 +89,13 @@ class CategoryService implements CategoryServiceInterface
             'name_ar' => $data['name_ar'],
             'parent_id' => $data['parent_id'],
         ]);
-
+        
+        $category->refresh();
+        
         return [
             'status'  => true,
             'message' => __('message.category_updated_successfully'),
+            'data'    => $category,
         ];
     }
 

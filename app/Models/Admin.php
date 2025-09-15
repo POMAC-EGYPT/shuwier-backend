@@ -21,6 +21,11 @@ class Admin extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password'
     ];
+
+    public function verifications()
+    {
+        return $this->hasMany(UserVerification::class, 'reviewed_by');
+    }
     /**
      * Get the identifier that will be stored in the JWT subject claim.
      */

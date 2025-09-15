@@ -31,6 +31,10 @@ class ClientResource extends JsonResource
                 $this->languages && $this->languages->count() > 0,
                 BaseResource::make(UserLanguageResource::collection($this->languages))
             ),
+            'user_verification'            => $this->when(
+                $this->verification,
+                BaseResource::make(UserVerificationResource::make($this->verification))
+            ),
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
         ];

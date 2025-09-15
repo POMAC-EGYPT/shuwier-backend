@@ -53,6 +53,10 @@ class FreelancerResource extends JsonResource
                 $this->languages && $this->languages->count() > 0,
                 BaseResource::make(UserLanguageResource::collection($this->languages))
             ),
+            'user_verification'            => $this->when(
+                $this->verification,
+                BaseResource::make(UserVerificationResource::make($this->verification))
+            ),
         ];
     }
 }

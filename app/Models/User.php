@@ -95,6 +95,11 @@ class User extends Authenticatable implements JWTSubject
             ->withTimestamps();
     }
 
+    public function verification()
+    {
+        return $this->hasOne(UserVerification::class);
+    }
+
     /**
      * Get the identifier that will be stored in the JWT token.
      */

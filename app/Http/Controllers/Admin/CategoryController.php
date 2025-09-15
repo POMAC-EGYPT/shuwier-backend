@@ -241,7 +241,7 @@ class CategoryController extends Controller
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);
 
-        return Response::api($result['message'], 200, true, null);
+        return Response::api($result['message'], 200, true, null, $result['data']);
     }
 
     /**
