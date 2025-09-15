@@ -29,7 +29,7 @@ class ClientResource extends JsonResource
             'city'                           => $this->city,
             'languages'                      => $this->when(
                 $this->languages && $this->languages->count() > 0,
-                BaseResource::make(LanguageResource::collection($this->languages))
+                BaseResource::make(UserLanguageResource::collection($this->languages))
             ),
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
