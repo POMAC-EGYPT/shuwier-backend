@@ -1315,7 +1315,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       city:
         name: city
@@ -1325,7 +1325,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       languages:
         name: languages
@@ -1398,8 +1398,8 @@ endpoints:
         custom: []
       'languages[].language_id':
         name: 'languages[].language_id'
-        description: 'Language ID (must exist in languages table). The <code>id</code> of an existing record in the languages table.'
-        required: true
+        description: 'Language ID (must exist in languages table). This field is required when <code>languages.*</code> is present. The <code>id</code> of an existing record in the languages table.'
+        required: false
         example: 1
         type: string
         enumValues: []
@@ -1408,8 +1408,8 @@ endpoints:
         custom: []
       'languages[].language_level':
         name: 'languages[].language_level'
-        description: 'Language proficiency level.'
-        required: true
+        description: 'Language proficiency level. This field is required when <code>languages.*</code> is present.'
+        required: false
         example: advanced
         type: string
         enumValues:

@@ -16,6 +16,36 @@ class UserVerificationController extends Controller
         $this->userVerificationService = $userVerificationService;
     }
 
+    /**
+     * Submit User Verification Request
+     * 
+     * Submit documents for user verification. Users can upload one or two verification documents.
+     * 
+     * @group User Verification
+     * @authenticated
+     * @bodyParam document_one file required The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: No-example
+     * @bodyParam document_two file optional The second verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: No-example
+     * @response 200 {
+     *   "message": "Verification request submitted successfully",
+     *   "status": true,
+     *   "error_num": null
+     * }
+     * @response 400 {
+     *   "message": "The document one field is required.",
+     *   "status": false,
+     *   "error_num": 400
+     * }
+     * @response 400 {
+     *   "message": "File size must not exceed 2MB",
+     *   "status": false,
+     *   "error_num": 400
+     * }
+     * @response 401 {
+     *   "message": "Unauthenticated",
+     *   "status": false,
+     *   "error_num": 401
+     * }
+     */
     public function sendRequest(Request $request)
     {
         $validator = Validator::make($request->all(), [

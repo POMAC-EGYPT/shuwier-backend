@@ -13,6 +13,7 @@ use App\Repository\Contracts\PortfolioRepositoryInterface;
 use App\Repository\Contracts\SkillRepositoryInterface;
 use App\Repository\Contracts\UserLanguageRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
+use App\Repository\Contracts\UserVerificationRepositoryInterface;
 use App\Repository\Eloquent\AdminRepository;
 use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\FreelancerProfileRepository;
@@ -34,6 +35,7 @@ use App\Services\Contracts\FreelancerServiceInterface;
 use App\Services\Contracts\LanguageServiceInterface;
 use App\Services\Contracts\PortfolioServiceInterface;
 use App\Services\Contracts\SkillServiceInterface;
+use App\Services\Contracts\UserVerificationServiceInterface;
 use App\Services\Implementations\Auth\AuthAdminService;
 use App\Services\Implementations\Auth\AuthUserService;
 use App\Services\Implementations\Auth\EmailVerificationService;
@@ -43,6 +45,8 @@ use App\Services\Implementations\FreelancerService;
 use App\Services\Implementations\LanguageService;
 use App\Services\Implementations\PortfolioService;
 use App\Services\Implementations\SkillService;
+use App\Repository\Eloquent\UserVerificationRepository;
+use App\Services\Implementations\UserVerificationService;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
 use App\Services\Upload\Factory\UploadStrategyFactory;
 use App\Services\Upload\Strategies\PortfolioUpload;
@@ -92,6 +96,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(LanguageServiceInterface::class, LanguageService::class);
         $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
+
+        $this->app->bind(UserVerificationRepositoryInterface::class, UserVerificationRepository::class);
+        
+        $this->app->bind(UserVerificationServiceInterface::class, UserVerificationService::class);
     }
 
     /**

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\Implementations;
+namespace App\Repository\Eloquent;
 
 use App\Models\UserVerification;
-use App\Services\Contracts\UserVerificationRepositoryInterface;
+use App\Repository\Contracts\UserVerificationRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class UserVerificationRepository implements UserVerificationRepositoryInterface
@@ -18,8 +18,27 @@ class UserVerificationRepository implements UserVerificationRepositoryInterface
         return UserVerification::findOrFail($id);
     }
 
+    public function getByUserId(int $userId): ?UserVerification
+    {
+        return UserVerification::where('user_id', $userId)->first();
+    }
+
     public function create(array $userVerification): UserVerification
     {
         return UserVerification::create($userVerification);
+    }
+
+    public function update(int $id, array $data): bool
+    {
+        $verification = $this->getById($id);
+
+        return $verification->update($data);
+    }
+
+    public function delete(int $id): bool
+    {
+        $verification = $this->getById($id);
+
+        return $verification->delete();
     }
 }

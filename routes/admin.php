@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\FreelancerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\UserVerificationController;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('login');
@@ -29,4 +30,9 @@ Route::group(['prefix' => 'freelancers', 'middleware' => 'auth:admin'], function
 
 Route::group(['prefix' => 'clients', 'middleware' => 'auth:admin'], function () {
     Route::post('/block-unblock/{id}', [ClientController::class, 'blockAndUnblock']);
+});
+
+Route::group(['prefix' => 'verifications', 'middleware' => 'auth:admin'], function () {
+    Route::get('/', [UserVerificationController::class, 'index'])->name('admin.user-verifications.index');
+    Route::post('/{id}', [UserVerificationController::class, 'acceptAndReject'])->name('admin.user-verifications.send');
 });

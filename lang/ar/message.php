@@ -101,4 +101,9 @@ return [
     'invalid_current_password' => 'كلمة المرور الحالية غير صحيحة',
     'password_changed_successfully' => 'تم تغيير كلمة المرور بنجاح',
     'you_must_provide_at_least_one_field_to_update' => 'يجب عليك تقديم حقل واحد على الأقل للتحديث',
+    'verification_request_sent_successfully' => 'تم إرسال طلب التحقق بنجاح',
+    'verification_request_already_sent' => 'تم إرسال طلب التحقق بالفعل',
+    'verification_request_already_approved' => 'تمت الموافقة على طلب التحقق بالفعل',
+    'verification_request_rejected_success' => 'تم رفض طلب التحقق بنجاح',
+    'verification_request_approved_success' => 'تمت الموافقة على طلب التحقق بنجاح',
 ];

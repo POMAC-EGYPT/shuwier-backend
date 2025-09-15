@@ -24,4 +24,6 @@ interface UserRepositoryInterface
     public function delete(int $id): bool;
 
     public function findByType(int $id, string $type): ?User;
+
+    public function getRequestVerifications(?string $status = null, ?int $perPage = 10): ?LengthAwarePaginator;
 }

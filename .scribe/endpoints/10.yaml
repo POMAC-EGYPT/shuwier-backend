@@ -1,0 +1,170 @@
+name: 'Admin - User Verification'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/admin/verifications
+    metadata:
+      groupName: 'Admin - User Verification'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get User Verification Requests'
+      description: 'Retrieve a paginated list of user verification requests with optional status filtering.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      status:
+        name: status
+        description: 'Filter by verification status. Allowed values: pending, approved.'
+        required: false
+        example: pending
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      status: pending
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "User verification requests retrieved successfully",
+            "status": true,
+            "error_num": null,
+            "data": {
+              "current_page": 1,
+              "data": [
+                {
+                  "id": 1,
+                  "user_id": 1,
+                  "document_one": "path/to/document1.pdf",
+                  "document_two": "path/to/document2.pdf",
+                  "status": "pending",
+                  "created_at": "2025-09-15T10:00:00.000000Z"
+                }
+              ],
+              "per_page": 10,
+              "total": 1
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Invalid status parameter",
+            "status": false,
+            "error_num": 400
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/admin/verifications/{id}'
+    metadata:
+      groupName: 'Admin - User Verification'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Accept or Reject User Verification'
+      description: 'Approve or reject a user verification request by ID.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user verification request.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      action:
+        name: action
+        description: 'The action to perform. Allowed values: approved, rejected.'
+        required: true
+        example: approved
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      action: approved
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "User verification request updated successfully",
+            "status": true,
+            "error_num": null
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Invalid action parameter",
+            "status": false,
+            "error_num": 400
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "not found",
+            "status": false,
+            "error_num": 404
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

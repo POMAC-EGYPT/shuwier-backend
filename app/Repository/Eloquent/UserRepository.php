@@ -66,4 +66,14 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::{$type}()->findOrFail($id);
     }
+
+    public function getRequestVerifications(?string $status = null, ?int $perPage = 10): ?LengthAwarePaginator
+    {
+        return User::whereRelation('verification', 'status', 'pending')
+            ->with(['verification' => function ($query) use ($status) {
+                $query->when($status, fn($q) => $q->where('status', $status));
+            }])
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+    }
 }

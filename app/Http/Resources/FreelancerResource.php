@@ -33,6 +33,7 @@ class FreelancerResource extends JsonResource
             'other_freelance_platform_links' => json_decode($this->freelancerProfile->other_freelance_platform_links) ?? [],
             'portfolio_link'                 => $this->freelancerProfile->portfolio_link ?? null,
             'headline'                       => $this->freelancerProfile->headline ?? null,
+            'is_verified'                    => $this->is_verified,
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
             'portfolios'                      => $this->when(
@@ -52,10 +53,6 @@ class FreelancerResource extends JsonResource
             'languages'                      => $this->when(
                 $this->languages && $this->languages->count() > 0,
                 BaseResource::make(UserLanguageResource::collection($this->languages))
-            ),
-            'user_verification'            => $this->when(
-                $this->verification,
-                BaseResource::make(UserVerificationResource::make($this->verification))
             ),
         ];
     }

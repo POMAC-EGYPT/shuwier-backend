@@ -101,4 +101,9 @@ return [
     'invalid_current_password' => 'Invalid current password',
     'password_changed_successfully' => 'Password changed successfully',
     'you_must_provide_at_least_one_field_to_update' => 'You must provide at least one field to update',
+    'verification_request_sent_successfully' => 'Verification request sent successfully',
+    'verification_request_already_sent' => 'Verification request already sent',
+    'verification_request_already_approved' => 'Verification request already approved',
+    'verification_request_rejected_success' => 'Verification request rejected successfully',
+    'verification_request_approved_success' => 'Verification request approved successfully',
 ];

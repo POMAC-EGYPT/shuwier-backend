@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Freelancer\PortfolioController;
@@ -38,3 +39,6 @@ Route::post('/upload', [UploadFileController::class, 'upload'])
 
 Route::get('/languages', [LanguageController::class, 'index'])
     ->name('languages.index');
+
+Route::post('/verifications', [UserVerificationController::class, 'sendRequest'])
+    ->middleware('auth:api')->name('user.verification.sendRequest');

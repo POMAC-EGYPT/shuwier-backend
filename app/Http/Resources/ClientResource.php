@@ -27,16 +27,13 @@ class ClientResource extends JsonResource
             'company'                        => $this->company,
             'country'                        => $this->country,
             'city'                           => $this->city,
+            'is_verified'                    => $this->is_verified,
+            'created_at'                     => $this->created_at,
+            'updated_at'                     => $this->updated_at,
             'languages'                      => $this->when(
                 $this->languages && $this->languages->count() > 0,
                 BaseResource::make(UserLanguageResource::collection($this->languages))
             ),
-            'user_verification'            => $this->when(
-                $this->verification,
-                BaseResource::make(UserVerificationResource::make($this->verification))
-            ),
-            'created_at'                     => $this->created_at,
-            'updated_at'                     => $this->updated_at,
         ];
     }
 }
