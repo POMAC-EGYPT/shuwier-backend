@@ -372,7 +372,7 @@
             <p style="text-align: center; margin: 30px 0;">Ready to take your freelancing career to the next level?</p>
 
             <div style="text-align: center;">
-                <a href="{{ config('app.frontend_url') }}/register?email={{ $email }}" class="cta-button" style="display: inline-block; background-color: #28a745; color: white; font-size: 18px; font-weight: 600; padding: 15px 35px; text-decoration: none; border-radius: 8px; margin: 20px 0;">Join {{ config('app.name') }} Now</a>
+                <a href="{{ config('app.frontend_url') }}/auth/user-signup?email={{ $email }}" class="cta-button" style="display: inline-block; background-color: #28a745; color: white; font-size: 18px; font-weight: 600; padding: 15px 35px; text-decoration: none; border-radius: 8px; margin: 20px 0;">Join {{ config('app.name') }} Now</a>
             </div>
 
             <div style="background-color: #fff3cd; border: 2px solid #ffeaa7; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
