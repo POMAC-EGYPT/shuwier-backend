@@ -349,6 +349,11 @@
                 <div class="invitation-message" style="background-color: #007bff; color: white; font-size: 24px; font-weight: 700; padding: 25px 50px; border-radius: 12px; display: inline-block; min-width: 280px; border: 3px solid #ffffff;">Join Our Elite Community</div>
             </div>
 
+            <div style="background-color: #d4edda; border: 2px solid #c3e6cb; border-radius: 12px; padding: 25px; margin: 30px 0; text-align: center;">
+                <div style="font-size: 18px; color: #155724; font-weight: 700; margin-bottom: 10px;">🎯 Pre-Approved Access</div>
+                <p style="color: #155724; font-size: 16px; font-weight: 600; margin: 0;">Your email is already approved! You can register immediately without waiting for admin approval.</p>
+            </div>
+
             <p>{{ config('app.name') }} is a premier freelancing platform where talented professionals like you can showcase their skills, connect with high-quality clients, and build successful careers. We believe you would be a valuable addition to our growing community of experts.</p>
 
             <div class="benefits-section" style="background-color: #f8f9fa; border: 2px solid #dee2e6; border-left: 6px solid #28a745; color: #000000; padding: 20px; border-radius: 8px; margin: 30px 0;">
@@ -360,13 +365,18 @@
                     <li style="margin-bottom: 8px; font-size: 15px; font-weight: 500; color: #000000;">🌐 Build your professional network and reputation</li>
                     <li style="margin-bottom: 8px; font-size: 15px; font-weight: 500; color: #000000;">⏰ Flexible work opportunities that fit your schedule</li>
                     <li style="margin-bottom: 8px; font-size: 15px; font-weight: 500; color: #000000;">📈 Access to growth tools and career development resources</li>
+                    <li style="margin-bottom: 8px; font-size: 15px; font-weight: 500; color: #000000;">⚡ <strong>Instant Access - No waiting for approval!</strong></li>
                 </ul>
             </div>
 
             <p style="text-align: center; margin: 30px 0;">Ready to take your freelancing career to the next level?</p>
 
             <div style="text-align: center;">
-                <a href="{{ config('app.frontend_url') }}/register" class="cta-button" style="display: inline-block; background-color: #28a745; color: white; font-size: 18px; font-weight: 600; padding: 15px 35px; text-decoration: none; border-radius: 8px; margin: 20px 0;">Join {{ config('app.name') }} Now</a>
+                <a href="{{ config('app.frontend_url') }}/register?email={{ $email }}" class="cta-button" style="display: inline-block; background-color: #28a745; color: white; font-size: 18px; font-weight: 600; padding: 15px 35px; text-decoration: none; border-radius: 8px; margin: 20px 0;">Join {{ config('app.name') }} Now</a>
+            </div>
+
+            <div style="background-color: #fff3cd; border: 2px solid #ffeaa7; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                <p style="color: #856404; font-size: 15px; font-weight: 600; margin: 0;">💡 <strong>Important:</strong> This is a special invitation with pre-approved status. You can start working immediately after registration!</p>
             </div>
 
             <p>If you have any questions about the platform or need assistance with registration, our dedicated support team is here to help you every step of the way.</p>
