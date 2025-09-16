@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Validator;
 
 class InvitationFreelancerController extends Controller
 {
-    /**
-     * @group Admin Freelancer Invitations
-     * APIs for managing freelancer invitations.
-     */
-
     protected $invitationService;
     public function __construct(InvitationFreelancerServiceInterface $invitationService)
     {
@@ -28,6 +23,7 @@ class InvitationFreelancerController extends Controller
      * 
      * Retrieve a paginated list of all freelancer invitations sent by the admin.
      * 
+     * @group Admin Freelancer Invitations
      * @authenticated
      * @queryParam per_page integer optional Number of items per page. Minimum: 1. Example: 15
      * @response 200 {
@@ -77,6 +73,7 @@ class InvitationFreelancerController extends Controller
      * 
      * Send an invitation email to a potential freelancer. The email must be unique and not already registered.
      * 
+     * @group Admin Freelancer Invitations
      * @authenticated
      * @bodyParam email string required A valid email address for the freelancer invitation. Must be unique and not already registered. Example: freelancer@example.com
      * @response 200 {

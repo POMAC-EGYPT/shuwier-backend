@@ -29,7 +29,7 @@ class UserVerificationController extends Controller
      * 
      * Retrieve a paginated list of user verification requests with optional status filtering.
      * 
-     * @group Admin - User Verification
+     * @group Admin User Verification
      * @queryParam status string Filter by verification status. Allowed values: pending, approved. Example: pending
      * @response 200 {
      *   "message": "User verification requests retrieved successfully",
@@ -86,7 +86,7 @@ class UserVerificationController extends Controller
      * 
      * Approve or reject a user verification request by ID.
      * 
-     * @group Admin - User Verification
+     * @group Admin User Verification
      * @urlParam id integer required The ID of the user verification request. Example: 1
      * @bodyParam action string required The action to perform. Allowed values: approved, rejected. Example: approved
      * @response 200 {

@@ -66,19 +66,6 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
-                    <ul id="tocify-header-admin-user-verification" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="admin-user-verification">
-                    <a href="#admin-user-verification">Admin - User Verification</a>
-                </li>
-                                    <ul id="tocify-subheader-admin-user-verification" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="admin-user-verification-GETapi-admin-verifications">
-                                <a href="#admin-user-verification-GETapi-admin-verifications">Get User Verification Requests</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="admin-user-verification-POSTapi-admin-verifications--id-">
-                                <a href="#admin-user-verification-POSTapi-admin-verifications--id-">Accept or Reject User Verification</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
                     <ul id="tocify-header-admin-authentication" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="admin-authentication">
                     <a href="#admin-authentication">Admin Authentication</a>
@@ -133,6 +120,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-admin-freelancer-invitations" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="admin-freelancer-invitations">
+                    <a href="#admin-freelancer-invitations">Admin Freelancer Invitations</a>
+                </li>
+                                    <ul id="tocify-subheader-admin-freelancer-invitations" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="admin-freelancer-invitations-GETapi-admin-invitations">
+                                <a href="#admin-freelancer-invitations-GETapi-admin-invitations">Get All Freelancer Invitations</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="admin-freelancer-invitations-POSTapi-admin-invitations">
+                                <a href="#admin-freelancer-invitations-POSTapi-admin-invitations">Send Freelancer Invitation</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-admin-freelancer-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="admin-freelancer-management">
                     <a href="#admin-freelancer-management">Admin Freelancer Management</a>
@@ -177,16 +177,16 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                    <ul id="tocify-header-admin-user-verification" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="admin-user-verification">
+                    <a href="#admin-user-verification">Admin User Verification</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-admin-invitations">
-                                <a href="#endpoints-GETapi-admin-invitations">Get All Freelancer Invitations</a>
+                                    <ul id="tocify-subheader-admin-user-verification" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="admin-user-verification-GETapi-admin-verifications">
+                                <a href="#admin-user-verification-GETapi-admin-verifications">Get User Verification Requests</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-admin-invitations">
-                                <a href="#endpoints-POSTapi-admin-invitations">Send Freelancer Invitation</a>
+                                                                                <li class="tocify-item level-2" data-unique="admin-user-verification-POSTapi-admin-verifications--id-">
+                                <a href="#admin-user-verification-POSTapi-admin-verifications--id-">Accept or Reject User Verification</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -329,374 +329,7 @@ curl -X POST "http://backend.shuwier.com/api/auth/login" \
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="admin-user-verification">Admin - User Verification</h1>
-
-    
-
-                                <h2 id="admin-user-verification-GETapi-admin-verifications">Get User Verification Requests</h2>
-
-<p>
-</p>
-
-<p>Retrieve a paginated list of user verification requests with optional status filtering.</p>
-
-<span id="example-requests-GETapi-admin-verifications">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/admin/verifications?status=pending" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/verifications"
-);
-
-const params = {
-    "status": "pending",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-admin-verifications">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;User verification requests retrieved successfully&quot;,
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;data&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;data&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;user_id&quot;: 1,
-                &quot;document_one&quot;: &quot;path/to/document1.pdf&quot;,
-                &quot;document_two&quot;: &quot;path/to/document2.pdf&quot;,
-                &quot;status&quot;: &quot;pending&quot;,
-                &quot;created_at&quot;: &quot;2025-09-15T10:00:00.000000Z&quot;
-            }
-        ],
-        &quot;per_page&quot;: 10,
-        &quot;total&quot;: 1
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Invalid status parameter&quot;,
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-admin-verifications" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-admin-verifications"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-admin-verifications"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-admin-verifications" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-admin-verifications">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-admin-verifications" data-method="GET"
-      data-path="api/admin/verifications"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-verifications', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-admin-verifications"
-                    onclick="tryItOut('GETapi-admin-verifications');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-admin-verifications"
-                    onclick="cancelTryOut('GETapi-admin-verifications');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-admin-verifications"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/admin/verifications</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-admin-verifications"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-admin-verifications"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-admin-verifications"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-admin-verifications"
-               value="pending"
-               data-component="query">
-    <br>
-<p>Filter by verification status. Allowed values: pending, approved. Example: <code>pending</code></p>
-            </div>
-                </form>
-
-                    <h2 id="admin-user-verification-POSTapi-admin-verifications--id-">Accept or Reject User Verification</h2>
-
-<p>
-</p>
-
-<p>Approve or reject a user verification request by ID.</p>
-
-<span id="example-requests-POSTapi-admin-verifications--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/admin/verifications/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"action\": \"approved\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/verifications/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-let body = {
-    "action": "approved"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-admin-verifications--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;User verification request updated successfully&quot;,
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Invalid action parameter&quot;,
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;not found&quot;,
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 404
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-admin-verifications--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-admin-verifications--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-admin-verifications--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-admin-verifications--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-admin-verifications--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-admin-verifications--id-" data-method="POST"
-      data-path="api/admin/verifications/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-verifications--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-admin-verifications--id-"
-                    onclick="tryItOut('POSTapi-admin-verifications--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-admin-verifications--id-"
-                    onclick="cancelTryOut('POSTapi-admin-verifications--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-admin-verifications--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/admin/verifications/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-admin-verifications--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-admin-verifications--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-admin-verifications--id-"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="POSTapi-admin-verifications--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the user verification request. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>action</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="action"                data-endpoint="POSTapi-admin-verifications--id-"
-               value="approved"
-               data-component="body">
-    <br>
-<p>The action to perform. Allowed values: approved, rejected. Example: <code>approved</code></p>
-        </div>
-        </form>
-
-                <h1 id="admin-authentication">Admin Authentication</h1>
+        <h1 id="admin-authentication">Admin Authentication</h1>
 
     <p>APIs for admin authentication and authorization.
 These endpoints handle admin login and session management.</p>
@@ -2947,6 +2580,394 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="admin-freelancer-invitations">Admin Freelancer Invitations</h1>
+
+    
+
+                                <h2 id="admin-freelancer-invitations-GETapi-admin-invitations">Get All Freelancer Invitations</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retrieve a paginated list of all freelancer invitations sent by the admin.</p>
+
+<span id="example-requests-GETapi-admin-invitations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/admin/invitations?per_page=15" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"per_page\": 73
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/invitations"
+);
+
+const params = {
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "per_page": 73
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-admin-invitations">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;email&quot;: &quot;freelancer@example.com&quot;,
+                &quot;expired_at&quot;: &quot;2025-09-23T10:00:00.000000Z&quot;,
+                &quot;created_at&quot;: &quot;2025-09-16T10:00:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-16T10:00:00.000000Z&quot;
+            }
+        ],
+        &quot;per_page&quot;: 10,
+        &quot;total&quot;: 1
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Validation error&quot;,
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-admin-invitations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-admin-invitations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admin-invitations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-admin-invitations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admin-invitations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-admin-invitations" data-method="GET"
+      data-path="api/admin/invitations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-invitations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-admin-invitations"
+                    onclick="tryItOut('GETapi-admin-invitations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-admin-invitations"
+                    onclick="cancelTryOut('GETapi-admin-invitations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-admin-invitations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/admin/invitations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-admin-invitations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-admin-invitations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-admin-invitations"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-admin-invitations"
+               value="15"
+               data-component="query">
+    <br>
+<p>optional Number of items per page. Minimum: 1. Example: <code>15</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-admin-invitations"
+               value="73"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>73</code></p>
+        </div>
+        </form>
+
+                    <h2 id="admin-freelancer-invitations-POSTapi-admin-invitations">Send Freelancer Invitation</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Send an invitation email to a potential freelancer. The email must be unique and not already registered.</p>
+
+<span id="example-requests-POSTapi-admin-invitations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/admin/invitations" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"email\": \"freelancer@example.com\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/admin/invitations"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "email": "freelancer@example.com"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-admin-invitations">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Invitation sent successfully&quot;,
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The email field is required.&quot;,
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The email has already been taken.&quot;,
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;User already registered&quot;,
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-admin-invitations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-admin-invitations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-admin-invitations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-admin-invitations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-admin-invitations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-admin-invitations" data-method="POST"
+      data-path="api/admin/invitations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-invitations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-admin-invitations"
+                    onclick="tryItOut('POSTapi-admin-invitations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-admin-invitations"
+                    onclick="cancelTryOut('POSTapi-admin-invitations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-admin-invitations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/admin/invitations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-admin-invitations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-admin-invitations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-admin-invitations"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-admin-invitations"
+               value="freelancer@example.com"
+               data-component="body">
+    <br>
+<p>A valid email address for the freelancer invitation. Must be unique and not already registered. Example: <code>freelancer@example.com</code></p>
+        </div>
+        </form>
+
                 <h1 id="admin-freelancer-management">Admin Freelancer Management</h1>
 
     <p>APIs for managing freelancers in the admin panel.
@@ -2974,8 +2995,8 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"approved\",
-    \"is_active\": \"1\",
+    \"approval_status\": \"requested\",
+    \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3002,8 +3023,8 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "approved",
-    "is_active": "1",
+    "approval_status": "requested",
+    "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3229,10 +3250,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="approved"
+               value="requested"
                data-component="body">
     <br>
-<p>Example: <code>approved</code></p>
+<p>Example: <code>requested</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -3242,10 +3263,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="1"
+               value="0"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>0</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -5198,41 +5219,36 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                <h1 id="endpoints">Endpoints</h1>
+                <h1 id="admin-user-verification">Admin User Verification</h1>
 
     
 
-                                <h2 id="endpoints-GETapi-admin-invitations">Get All Freelancer Invitations</h2>
+                                <h2 id="admin-user-verification-GETapi-admin-verifications">Get User Verification Requests</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Retrieve a paginated list of all freelancer invitations sent by the admin.</p>
+<p>Retrieve a paginated list of user verification requests with optional status filtering.</p>
 
-<span id="example-requests-GETapi-admin-invitations">
+<span id="example-requests-GETapi-admin-verifications">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/admin/invitations?per_page=15" \
+    --get "http://backend.shuwier.com/api/admin/verifications?status=pending" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"per_page\": 73
-}"
-</code></pre></div>
+    --header "Accept-Language: en"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/invitations"
+    "http://backend.shuwier.com/api/admin/verifications"
 );
 
 const params = {
-    "per_page": "15",
+    "status": "pending",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -5243,26 +5259,21 @@ const headers = {
     "Accept-Language": "en",
 };
 
-let body = {
-    "per_page": 73
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-GETapi-admin-invitations">
+<span id="example-responses-GETapi-admin-verifications">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Success&quot;,
+    &quot;message&quot;: &quot;User verification requests retrieved successfully&quot;,
     &quot;status&quot;: true,
     &quot;error_num&quot;: null,
     &quot;data&quot;: {
@@ -5270,10 +5281,11 @@ fetch(url, {
         &quot;data&quot;: [
             {
                 &quot;id&quot;: 1,
-                &quot;email&quot;: &quot;freelancer@example.com&quot;,
-                &quot;expired_at&quot;: &quot;2025-09-23T10:00:00.000000Z&quot;,
-                &quot;created_at&quot;: &quot;2025-09-16T10:00:00.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2025-09-16T10:00:00.000000Z&quot;
+                &quot;user_id&quot;: 1,
+                &quot;document_one&quot;: &quot;path/to/document1.pdf&quot;,
+                &quot;document_two&quot;: &quot;path/to/document2.pdf&quot;,
+                &quot;status&quot;: &quot;pending&quot;,
+                &quot;created_at&quot;: &quot;2025-09-15T10:00:00.000000Z&quot;
             }
         ],
         &quot;per_page&quot;: 10,
@@ -5287,49 +5299,49 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Validation error&quot;,
+    &quot;message&quot;: &quot;Invalid status parameter&quot;,
     &quot;status&quot;: false,
     &quot;error_num&quot;: 400
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-admin-invitations" hidden>
+<span id="execution-results-GETapi-admin-verifications" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-admin-invitations"></span>:
+                id="execution-response-status-GETapi-admin-verifications"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-admin-invitations"
+    <pre class="json"><code id="execution-response-content-GETapi-admin-verifications"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-admin-invitations" hidden>
+<span id="execution-error-GETapi-admin-verifications" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-admin-invitations">
+    <pre><code id="execution-error-message-GETapi-admin-verifications">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-admin-invitations" data-method="GET"
-      data-path="api/admin/invitations"
-      data-authed="1"
+<form id="form-GETapi-admin-verifications" data-method="GET"
+      data-path="api/admin/verifications"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-invitations', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-verifications', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-admin-invitations"
-                    onclick="tryItOut('GETapi-admin-invitations');">Try it out ⚡
+                    id="btn-tryout-GETapi-admin-verifications"
+                    onclick="tryItOut('GETapi-admin-verifications');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-admin-invitations"
-                    onclick="cancelTryOut('GETapi-admin-invitations');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-admin-verifications"
+                    onclick="cancelTryOut('GETapi-admin-verifications');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-admin-invitations"
+                    id="btn-executetryout-GETapi-admin-verifications"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -5337,7 +5349,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/admin/invitations</code></b>
+            <b><code>api/admin/verifications</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -5345,7 +5357,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-admin-invitations"
+                              name="Content-Type"                data-endpoint="GETapi-admin-verifications"
                value="application/json"
                data-component="header">
     <br>
@@ -5356,7 +5368,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-admin-invitations"
+                              name="Accept"                data-endpoint="GETapi-admin-verifications"
                value="application/json"
                data-component="header">
     <br>
@@ -5367,7 +5379,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-admin-invitations"
+                              name="Accept-Language"                data-endpoint="GETapi-admin-verifications"
                value="en"
                data-component="header">
     <br>
@@ -5375,57 +5387,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                             <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-admin-invitations"
-               value="15"
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-admin-verifications"
+               value="pending"
                data-component="query">
     <br>
-<p>optional Number of items per page. Minimum: 1. Example: <code>15</code></p>
+<p>Filter by verification status. Allowed values: pending, approved. Example: <code>pending</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-admin-invitations"
-               value="73"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Example: <code>73</code></p>
-        </div>
-        </form>
+                </form>
 
-                    <h2 id="endpoints-POSTapi-admin-invitations">Send Freelancer Invitation</h2>
+                    <h2 id="admin-user-verification-POSTapi-admin-verifications--id-">Accept or Reject User Verification</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Send an invitation email to a potential freelancer. The email must be unique and not already registered.</p>
+<p>Approve or reject a user verification request by ID.</p>
 
-<span id="example-requests-POSTapi-admin-invitations">
+<span id="example-requests-POSTapi-admin-verifications--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/admin/invitations" \
+    "http://backend.shuwier.com/api/admin/verifications/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"email\": \"freelancer@example.com\"
+    \"action\": \"approved\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/invitations"
+    "http://backend.shuwier.com/api/admin/verifications/1"
 );
 
 const headers = {
@@ -5435,7 +5434,7 @@ const headers = {
 };
 
 let body = {
-    "email": "freelancer@example.com"
+    "action": "approved"
 };
 
 fetch(url, {
@@ -5446,14 +5445,14 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-admin-invitations">
+<span id="example-responses-POSTapi-admin-verifications--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Invitation sent successfully&quot;,
+    &quot;message&quot;: &quot;User verification request updated successfully&quot;,
     &quot;status&quot;: true,
     &quot;error_num&quot;: null
 }</code>
@@ -5464,71 +5463,60 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;The email field is required.&quot;,
+    &quot;message&quot;: &quot;Invalid action parameter&quot;,
     &quot;status&quot;: false,
     &quot;error_num&quot;: 400
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (400):</p>
+            <p>Example response (404):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;The email has already been taken.&quot;,
+    &quot;message&quot;: &quot;not found&quot;,
     &quot;status&quot;: false,
-    &quot;error_num&quot;: 400
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;User already registered&quot;,
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400
+    &quot;error_num&quot;: 404
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-admin-invitations" hidden>
+<span id="execution-results-POSTapi-admin-verifications--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-admin-invitations"></span>:
+                id="execution-response-status-POSTapi-admin-verifications--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-admin-invitations"
+    <pre class="json"><code id="execution-response-content-POSTapi-admin-verifications--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-admin-invitations" hidden>
+<span id="execution-error-POSTapi-admin-verifications--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-admin-invitations">
+    <pre><code id="execution-error-message-POSTapi-admin-verifications--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-admin-invitations" data-method="POST"
-      data-path="api/admin/invitations"
-      data-authed="1"
+<form id="form-POSTapi-admin-verifications--id-" data-method="POST"
+      data-path="api/admin/verifications/{id}"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-invitations', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-verifications--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-admin-invitations"
-                    onclick="tryItOut('POSTapi-admin-invitations');">Try it out ⚡
+                    id="btn-tryout-POSTapi-admin-verifications--id-"
+                    onclick="tryItOut('POSTapi-admin-verifications--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-admin-invitations"
-                    onclick="cancelTryOut('POSTapi-admin-invitations');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-admin-verifications--id-"
+                    onclick="cancelTryOut('POSTapi-admin-verifications--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-admin-invitations"
+                    id="btn-executetryout-POSTapi-admin-verifications--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -5536,7 +5524,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/admin/invitations</code></b>
+            <b><code>api/admin/verifications/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -5544,7 +5532,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-admin-invitations"
+                              name="Content-Type"                data-endpoint="POSTapi-admin-verifications--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -5555,7 +5543,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-admin-invitations"
+                              name="Accept"                data-endpoint="POSTapi-admin-verifications--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -5566,23 +5554,35 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-admin-invitations"
+                              name="Accept-Language"                data-endpoint="POSTapi-admin-verifications--id-"
                value="en"
                data-component="header">
     <br>
 <p>Example: <code>en</code></p>
             </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-admin-verifications--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the user verification request. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+            <b style="line-height: 2;"><code>action</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-admin-invitations"
-               value="freelancer@example.com"
+                              name="action"                data-endpoint="POSTapi-admin-verifications--id-"
+               value="approved"
                data-component="body">
     <br>
-<p>A valid email address for the freelancer invitation. Must be unique and not already registered. Example: <code>freelancer@example.com</code></p>
+<p>The action to perform. Allowed values: approved, rejected. Example: <code>approved</code></p>
         </div>
         </form>
 
@@ -5610,7 +5610,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2EAp7n" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM8vMaD" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5779,7 +5779,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2EAp7n</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM8vMaD</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -10057,7 +10057,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpHX2YWR" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgrMFb4" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10218,7 +10218,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpHX2YWR</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgrMFb4</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

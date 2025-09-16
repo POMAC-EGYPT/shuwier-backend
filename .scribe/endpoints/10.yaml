@@ -1,4 +1,4 @@
-name: 'Admin - User Verification'
+name: 'Admin User Verification'
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - GET
     uri: api/admin/verifications
     metadata:
-      groupName: 'Admin - User Verification'
+      groupName: 'Admin User Verification'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -86,7 +86,7 @@ endpoints:
       - POST
     uri: 'api/admin/verifications/{id}'
     metadata:
-      groupName: 'Admin - User Verification'
+      groupName: 'Admin User Verification'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''

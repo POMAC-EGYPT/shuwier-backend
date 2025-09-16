@@ -1,4 +1,4 @@
-name: Endpoints
+name: 'Admin Freelancer Invitations'
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - GET
     uri: api/admin/invitations
     metadata:
-      groupName: Endpoints
+      groupName: 'Admin Freelancer Invitations'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -96,7 +96,7 @@ endpoints:
       - POST
     uri: api/admin/invitations
     metadata:
-      groupName: Endpoints
+      groupName: 'Admin Freelancer Invitations'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
