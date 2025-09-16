@@ -56,6 +56,9 @@ class UserVerificationController extends Controller
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
+        if (count($request->all()) > 2)
+            return Response::api(__('message.invalid_fields_provided'), 400, false, 400);
+
         $result = $this->userVerificationService->create([
             'user_id'      => auth('api')->id(),
             'document_one' => $request->document_one,

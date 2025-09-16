@@ -106,4 +106,7 @@ return [
     'verification_request_already_approved' => 'Verification request already approved',
     'verification_request_rejected_success' => 'Verification request rejected successfully',
     'verification_request_approved_success' => 'Verification request approved successfully',
+    'invalid_fields_provided' => 'Invalid fields provided',
+    'user_already_registered' => 'User is already registered',
+    'invitation_sent_successfully' => 'Invitation sent successfully',
 ];

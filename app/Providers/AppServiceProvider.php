@@ -7,6 +7,7 @@ use App\Repository\Contracts\AdminRepositoryInterface;
 use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
 use App\Repository\Contracts\HashtagRepositoryInterface;
+use App\Repository\Contracts\InvitationFreelancerRepositoryInterface;
 use App\Repository\Contracts\LanguageRepositoryInterface;
 use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Repository\Contracts\PortfolioRepositoryInterface;
@@ -18,6 +19,7 @@ use App\Repository\Eloquent\AdminRepository;
 use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\FreelancerProfileRepository;
 use App\Repository\Eloquent\HashtagRepository;
+use App\Repository\Eloquent\InvitationFreelancerRepository;
 use App\Repository\Eloquent\LanguageRepository;
 use App\Repository\Eloquent\PortfolioRepository;
 use App\Repository\Eloquent\UserRepository;
@@ -50,6 +52,8 @@ use App\Services\Implementations\UserVerificationService;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
 use App\Services\Upload\Factory\UploadStrategyFactory;
 use App\Services\Upload\Strategies\PortfolioUpload;
+use App\Services\Contracts\InvitationFreelancerServiceInterface;
+use App\Services\Implementations\InvitationFreelancerService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -95,11 +99,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserLanguageRepositoryInterface::class, UserLanguageRepository::class);
 
         $this->app->bind(LanguageServiceInterface::class, LanguageService::class);
-        $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
-
         $this->app->bind(UserVerificationRepositoryInterface::class, UserVerificationRepository::class);
-        
+
         $this->app->bind(UserVerificationServiceInterface::class, UserVerificationService::class);
+
+        $this->app->bind(InvitationFreelancerRepositoryInterface::class, InvitationFreelancerRepository::class);
+        $this->app->bind(InvitationFreelancerServiceInterface::class, InvitationFreelancerService::class);
     }
 
     /**

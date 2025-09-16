@@ -106,4 +106,7 @@ return [
     'verification_request_already_approved' => 'تمت الموافقة على طلب التحقق بالفعل',
     'verification_request_rejected_success' => 'تم رفض طلب التحقق بنجاح',
     'verification_request_approved_success' => 'تمت الموافقة على طلب التحقق بنجاح',
+    'invalid_fields_provided' => 'تم تقديم حقول غير صالحة',
+    'user_already_registered' => 'المستخدم مسجل بالفعل',
+    'invitation_sent_successfully' => 'تم إرسال الدعوة بنجاح',
 ];
