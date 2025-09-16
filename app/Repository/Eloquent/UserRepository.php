@@ -69,7 +69,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function getRequestVerifications(?string $status = null, ?int $perPage = 10): ?LengthAwarePaginator
     {
-        return User::whereRelation('verification', 'status', 'pending')
+        return User::whereRelation('verification', 'status', $status ?? 'pending')
             ->with(['verification' => function ($query) use ($status) {
                 $query->when($status, fn($q) => $q->where('status', $status));
             }])
