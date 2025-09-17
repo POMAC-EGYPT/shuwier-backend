@@ -98,7 +98,11 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserLanguageRepositoryInterface::class, UserLanguageRepository::class);
 
+
+        $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
         $this->app->bind(LanguageServiceInterface::class, LanguageService::class);
+
+        
         $this->app->bind(UserVerificationRepositoryInterface::class, UserVerificationRepository::class);
 
         $this->app->bind(UserVerificationServiceInterface::class, UserVerificationService::class);
