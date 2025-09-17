@@ -64,10 +64,15 @@ class PortfolioService implements PortfolioServiceInterface
 
         if (isset($data['cover_id'])) {
             $cover = $this->portfolioAttachmentRepo->findById($data['cover_id']);
+
             if ($cover->user_id != $data['user_id'])
                 return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
+
             if ($cover->portfolio_id != null)
                 return ['status' => false, 'message' => __('message.this_attachment_is_already_used')];
+
+            if (!in_array(strtolower(pathinfo($cover->file_path, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp']))
+                return ['status' => false, 'message' => __('message.cover_must_be_an_image')];
         }
 
         foreach ($data['attachment_ids'] as $attachment_id) {
@@ -134,12 +139,17 @@ class PortfolioService implements PortfolioServiceInterface
                 return ['status' => false, 'message' => __('message.this_subcategory_does_not_belong_to_the_selected_category')];
         }
 
-        if (isset($data['cover_id'])) {
+        if (isset($data['cover_id']) && $data['cover_id'] != null) {
             $cover = $this->portfolioAttachmentRepo->findById($data['cover_id']);
+
             if ($cover->user_id != $userId)
                 return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
+
             if ($cover->portfolio_id != null && $cover->portfolio_id != $id)
                 return ['status' => false, 'message' => __('message.this_attachment_is_already_used')];
+
+            if (!in_array(strtolower(pathinfo($cover->file_path, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp']))
+                return ['status' => false, 'message' => __('message.cover_must_be_an_image')];
         }
 
         if (isset($data['attachment_ids']) && count($data['attachment_ids']) > 0) {
@@ -180,10 +190,10 @@ class PortfolioService implements PortfolioServiceInterface
 
             if (count($oldAttachments) > 0) {
                 foreach ($oldAttachments as $oldAttachment) {
-                    if (isset($data['cover_id']) && $oldAttachment->is_cover) {
-                        ImageHelpers::deleteImage($oldAttachment->file_path);
-                        $this->portfolioAttachmentRepo->delete($oldAttachment->id);
-                    } else if (isset($data['attachment_ids']) && !in_array($oldAttachment->id, $data['attachment_ids'])) {
+                    if (isset($data['attachment_ids']) && !in_array($oldAttachment->id, $data['attachment_ids'])) {
+                        if ($oldAttachment->is_cover)
+                            continue;
+
                         ImageHelpers::deleteImage($oldAttachment->file_path);
                         $this->portfolioAttachmentRepo->delete($oldAttachment->id);
                     }
@@ -196,12 +206,22 @@ class PortfolioService implements PortfolioServiceInterface
                     ]);
                 }
             }
-            if (isset($data['cover_id'])) {
+
+            if (isset($data['cover_id']) && $data['cover_id'] != null) {
+                foreach ($oldAttachments as $oldAttachment) {
+                    if ($oldAttachment->is_cover && ($data['cover_id'] == null || $oldAttachment->id != $data['cover_id'])) {
+                        $this->portfolioAttachmentRepo->update($oldAttachment->id, [
+                            'is_cover' => false,
+                        ]);
+                    }
+                }
+
                 $this->portfolioAttachmentRepo->update($data['cover_id'], [
                     'portfolio_id' => $portfolio->id,
                     'is_cover'     => true,
                 ]);
             }
+
 
             $portfolio->refresh();
 

@@ -109,4 +109,5 @@ return [
     'invalid_fields_provided' => 'تم تقديم حقول غير صالحة',
     'user_already_registered' => 'المستخدم مسجل بالفعل',
     'invitation_sent_successfully' => 'تم إرسال الدعوة بنجاح',
+    'cover_must_be_an_image' => 'يجب أن تكون صورة الغلاف من نوع (jpg, jpeg, png, webp)',
 ];
