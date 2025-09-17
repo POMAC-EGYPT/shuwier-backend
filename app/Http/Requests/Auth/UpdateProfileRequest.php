@@ -80,7 +80,7 @@ class UpdateProfileRequest extends FormRequest
                 'phone'       => [
                     'sometimes',
                     'nullable',
-                    'regex:/^(\+966|00966|966)?(5)([0-9]{8})$/'
+                    'regex:/^(\+966|00966|966)(5)([0-9]{8})$/'
                 ],
                 'headline'    => 'prohibited',
                 'category_id' => 'prohibited',
