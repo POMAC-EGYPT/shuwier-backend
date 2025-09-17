@@ -83,7 +83,8 @@ class PortfolioController extends Controller
      * @bodyParam description string required The portfolio description. Example: "A modern responsive e-commerce website built with React and Laravel"
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Example: 2
-     * @bodyParam attachment_ids integer[] required Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs. Example: [15, 16, 17]
+     * @bodyParam attachment_ids integer[] optional Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs. Example: [15, 16, 17]
+     * @bodyParam cover_id integer required The attachment ID to set as the cover image. Example: 20
      * @bodyParam hashtags string[] optional Array of hashtag strings (max 255 characters each). Example: ["react", "ecommerce", "laravel"]
      * 
      * @response 200 {
@@ -133,6 +134,7 @@ class PortfolioController extends Controller
             'category_id'       => $request->category_id,
             'subcategory_id'    => $request->subcategory_id ?? null,
             'attachment_ids'    => $request->attachment_ids,
+            'cover_id'          => $request->cover_id ?? null,
             'hashtags'          => $request->hashtags ?? null,
             'user_id'           => auth('api')->id(),
         ]);
@@ -215,6 +217,7 @@ class PortfolioController extends Controller
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory. Example: 2
      * @bodyParam attachment_ids integer[] optional Array of attachment IDs from uploaded files (max 8 files). **CAUTION:** If provided, ALL existing attachments will be detached first. Example: [20, 21, 22]
+     * @bodyParam cover_id integer optional The attachment ID to set as the cover image. Example: 20
      * @bodyParam hashtags string[] optional Array of hashtag strings. **CAUTION:** If provided, ALL existing hashtags will be replaced. Example: ["react", "updated", "laravel"]
      * 
      * @response 200 {
@@ -270,6 +273,7 @@ class PortfolioController extends Controller
             'category_id'       => $request->category_id,
             'subcategory_id'    => $request->subcategory_id ?? null,
             'attachment_ids'    => $request->attachment_ids ?? [],
+            'cover_id'          => $request->cover_id ?? null,
             'hashtags'          => $request->hashtags ?? [],
             'user_id'           => auth('api')->id(),
         ]);

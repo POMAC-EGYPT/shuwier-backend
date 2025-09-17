@@ -152,8 +152,8 @@ endpoints:
         custom: []
       attachment_ids:
         name: attachment_ids
-        description: 'Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.'
-        required: true
+        description: 'optional Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.'
+        required: false
         example:
           - 15
           - 16
@@ -161,7 +161,17 @@ endpoints:
         type: 'integer[]'
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
+        custom: []
+      cover_id:
+        name: cover_id
+        description: 'The attachment ID to set as the cover image.'
+        required: true
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
         custom: []
       hashtags:
         name: hashtags
@@ -185,6 +195,7 @@ endpoints:
         - 15
         - 16
         - 17
+      cover_id: 20
       hashtags:
         - react
         - ecommerce
@@ -435,7 +446,17 @@ endpoints:
         type: 'integer[]'
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
+        custom: []
+      cover_id:
+        name: cover_id
+        description: 'optional The attachment ID to set as the cover image.'
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
         custom: []
       hashtags:
         name: hashtags
@@ -459,6 +480,7 @@ endpoints:
         - 20
         - 21
         - 22
+      cover_id: 20
       hashtags:
         - react
         - updated

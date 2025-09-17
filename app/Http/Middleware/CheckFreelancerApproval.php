@@ -18,7 +18,7 @@ class CheckFreelancerApproval
     public function handle(Request $request, Closure $next): Response
     {
         $user = auth('api')->user();
-        
+
         if (!$user || $user->type !== 'freelancer' || $user->approval_status != ApprovalStatus::APPROVED)
             return FacadesResponse::api(__('message.you_are_not_approved_freelancer'), 403, false, 403);
 

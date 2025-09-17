@@ -78,6 +78,12 @@ class AuthController extends Controller
      *   "message": "The email has already been taken."
      * }
      *
+     * @response 400 scenario="Email in invitation list" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email is already in the invitation list."
+     * }
+     *
      * @response 429 scenario="Too many attempts" {
      *   "status": false,
      *   "error_num": 429,
@@ -172,8 +178,11 @@ class AuthController extends Controller
      * Verify Email and Complete Registration.
      * 
      * This endpoint verifies the email OTP code sent during registration and completes the user account creation.
-     * For freelancers, the account will be created with "requested" approval status and require admin approval.
-     * For clients, the account will be immediately approved and ready to use.
+     * 
+     * **Approval Status Logic:**
+     * - **Clients**: Always approved immediately and ready to use
+     * - **Freelancers with invitation**: If the email has a pending invitation from admin, the freelancer will be approved immediately without admin review
+     * - **Regular freelancers**: Account created with "requested" approval status and requires admin approval
      * 
      * @bodyParam email string required The email address to verify. Example: user@example.com
      * @bodyParam otp string required The 4-digit verification code sent to email. Example: 1234
@@ -198,6 +207,43 @@ class AuthController extends Controller
      *       "twitter_link": "https://twitter.com/johndoe",
      *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
      *       "portfolio_link": "https://johndoe.com",
+     *       "headline": null,
+     *       "description": null,
+     *       "created_at": "2025-08-24T10:30:00.000000Z",
+     *       "updated_at": "2025-08-24T10:30:00.000000Z"
+     *     },
+     *     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+     *   }
+     * }
+     *
+     * @response 200 scenario="Invited freelancer registration completed (pre-approved)" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "User registered successfully",
+     *   "data": {
+     *     "user": {
+     *       "id": 1,
+     *       "name": "John Doe",
+     *       "email": "john@example.com",
+     *       "type": "freelancer",
+     *       "email_verified_at": "2025-08-24T10:30:00.000000Z",
+     *       "phone": null,
+     *       "is_active": true,
+     *       "about_me": null,
+     *       "profile_picture": null,
+     *       "approval_status": "approved",
+     *       "linkedin_link": "https://linkedin.com/in/johndoe",
+     *       "twitter_link": "https://twitter.com/johndoe",
+     *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+     *       "portfolio_link": "https://johndoe.com",
+     *       "headline": null,
+     *       "description": null,
+     *       "created_at": "2025-08-24T10:30:00.000000Z",
+     *       "updated_at": "2025-08-24T10:30:00.000000Z"
+     *     },
+     *     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+     *   }
+     * }
      *       "headline": null,
      *       "description": null,
      *       "created_at": "2025-08-24T10:30:00.000000Z",
@@ -285,7 +331,7 @@ class AuthController extends Controller
      * to the new email address.
      * 
      * @bodyParam old_email string required The current email address that needs to be changed. Example: oldemail@example.com
-     * @bodyParam new_email string required The new email address (must be unique and valid). Example: newemail@example.com
+     * @bodyParam new_email string required The new email address (must be unique in both users and invitations, and valid). Example: newemail@example.com
      * 
      * @response 200 scenario="Email reset successfully" {
      *   "status": true,
@@ -309,6 +355,12 @@ class AuthController extends Controller
      *   "status": false,
      *   "error_num": 400,
      *   "message": "The new email has already been taken."
+     * }
+     *
+     * @response 400 scenario="New email in invitation list" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The new email is already in the invitation list."
      * }
      *
      * @response 422 scenario="Validation error" {

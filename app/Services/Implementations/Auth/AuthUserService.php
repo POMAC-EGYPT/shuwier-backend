@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\ImageHelpers;
+use App\Repository\Contracts\InvitationFreelancerRepositoryInterface;
 use App\Repository\Contracts\UserLanguageRepositoryInterface;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -25,6 +26,7 @@ class AuthUserService implements AuthUserServiceInterface
     protected $freelancerRepo;
     protected $categoryRepo;
     protected $userLanguageRepo;
+    protected $invitationUserRepo;
 
     public function __construct(
         UserRepositoryInterface $userRepo,
@@ -32,6 +34,7 @@ class AuthUserService implements AuthUserServiceInterface
         FreelancerProfileRepositoryInterface $freelancerRepo,
         CategoryRepositoryInterface $categoryRepo,
         UserLanguageRepositoryInterface $userLanguageRepo,
+        InvitationFreelancerRepositoryInterface $invitationUserRepo
 
     ) {
         $this->userRepo = $userRepo;
@@ -39,6 +42,7 @@ class AuthUserService implements AuthUserServiceInterface
         $this->freelancerRepo = $freelancerRepo;
         $this->categoryRepo = $categoryRepo;
         $this->userLanguageRepo = $userLanguageRepo;
+        $this->invitationUserRepo = $invitationUserRepo;
     }
 
     public function register(array $data): array
@@ -81,6 +85,8 @@ class AuthUserService implements AuthUserServiceInterface
             if ($result['data']['type'] == 'freelancer')
                 $result['data']['other_freelance_platform_links'] = array_values($result['data']['other_freelance_platform_links']);
 
+            $invitation = $this->invitationUserRepo->getByEmail($result['data']['email']);
+
             $user = $this->userRepo->create([
                 'name' => $result['data']['name'],
                 'email' => $result['data']['email'],
@@ -88,7 +94,12 @@ class AuthUserService implements AuthUserServiceInterface
                 'type' => $result['data']['type'],
                 'email_verified_at' => now(),
                 'is_active' => 1,
-                'approval_status' => $result['data']['type'] == UserType::FREELANCER->value ? ApprovalStatus::REQUESTED : ApprovalStatus::APPROVED,
+                'approval_status' => (
+                    $result['data']['type'] == UserType::CLIENT->value
+                    || (
+                        $invitation != null && $invitation->status == 'pending' && $result['data']['type'] == UserType::FREELANCER->value
+                    )
+                ) ? ApprovalStatus::APPROVED : ApprovalStatus::REQUESTED,
             ]);
 
             if ($result['data']['type'] == UserType::FREELANCER->value) {
@@ -100,6 +111,8 @@ class AuthUserService implements AuthUserServiceInterface
                     'portfolio_link' => $result['data']['portfolio_link'],
                 ]);
             }
+            if ($invitation != null && $invitation->status == 'pending' && $result['data']['type'] == UserType::FREELANCER->value)
+                $this->invitationUserRepo->delete($invitation->id);
 
             $user->load('freelancerProfile');
 

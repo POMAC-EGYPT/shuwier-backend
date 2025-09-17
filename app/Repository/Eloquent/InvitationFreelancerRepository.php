@@ -18,7 +18,7 @@ class InvitationFreelancerRepository implements InvitationFreelancerRepositoryIn
         return InvitationUser::findOrFail($id);
     }
 
-    public function getByEmail(string $email): InvitationUser
+    public function getByEmail(string $email): ?InvitationUser
     {
         return InvitationUser::where("email", $email)->first();
     }

@@ -10,3 +10,4 @@ Artisan::command('inspire', function () {
 
 Schedule::command('queue:work --stop-when-empty')->everyMinute();
 Schedule::command('attachments:clean portfolio')->weekly();
+Schedule::command('invitations:cleanup')->daily();

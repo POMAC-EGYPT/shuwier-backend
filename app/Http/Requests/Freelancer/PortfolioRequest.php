@@ -13,6 +13,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property int $category_id
  * @property int|null $subcategory_id
  * @property array $attachment_ids
+ * @property int $cover_id
  * @property array|null $hashtags
  */
 class PortfolioRequest extends FormRequest
@@ -44,8 +45,9 @@ class PortfolioRequest extends FormRequest
             'description'       => 'required|string',
             'category_id'       => 'required|integer|exists:categories,id',
             'subcategory_id'    => 'nullable|integer|exists:categories,id',
-            'attachment_ids'    => 'required|array|max:8',
-            'attachment_ids.*'  => 'required|integer|exists:portfolio_attachments,id',
+            'attachment_ids'    => 'nullable|array|max:8',
+            'attachment_ids.*'  => 'nullable|integer|exists:portfolio_attachments,id',
+            'cover_id'          => request()->routeIs('portfolios.store') ? 'required|integer|exists:portfolio_attachments,id' : 'nullable|integer|exists:portfolio_attachments,id',
             'hashtags'          => 'nullable|array',
             'hashtags.*'        => 'string|max:255',
         ];
@@ -76,6 +78,10 @@ class PortfolioRequest extends FormRequest
             'attachment_ids' => [
                 'description' => 'Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.',
                 'example' => [15, 16, 17]
+            ],
+            'cover_id' => [
+                'description' => 'The attachment ID to set as the cover image. Must be one of the uploaded attachments.',
+                'example' => 20
             ],
             'hashtags' => [
                 'description' => 'Array of hashtag strings (max 255 characters each)',

@@ -294,7 +294,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 16, 2025</li>
+        <li>Last updated: September 17, 2025</li>
     </ul>
 </div>
 
@@ -2995,7 +2995,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
+    \"approval_status\": \"approved\",
     \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3023,7 +3023,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
+    "approval_status": "approved",
     "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3250,10 +3250,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -5610,7 +5610,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM8vMaD" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpzduFrM" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5779,7 +5779,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM8vMaD</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpzduFrM</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -6158,6 +6158,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         16,
         17
     ],
+    \"cover_id\": 20,
     \"hashtags\": [
         \"react\",
         \"ecommerce\",
@@ -6188,6 +6189,7 @@ let body = {
         16,
         17
     ],
+    "cover_id": 20,
     "hashtags": [
         "react",
         "ecommerce",
@@ -6388,7 +6390,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
@@ -6396,7 +6398,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
                name="attachment_ids[1]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
     <br>
-<p>Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.</p>
+<p>optional Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="cover_id"                data-endpoint="POSTapi-freelancers-portfolios"
+               value="20"
+               data-component="body">
+    <br>
+<p>The attachment ID to set as the cover image. Example: <code>20</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -6632,6 +6645,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         21,
         22
     ],
+    \"cover_id\": 20,
     \"hashtags\": [
         \"react\",
         \"updated\",
@@ -6662,6 +6676,7 @@ let body = {
         21,
         22
     ],
+    "cover_id": 20,
     "hashtags": [
         "react",
         "updated",
@@ -6898,6 +6913,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>optional Array of attachment IDs from uploaded files (max 8 files). <strong>CAUTION:</strong> If provided, ALL existing attachments will be detached first.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="cover_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value="20"
+               data-component="body">
+    <br>
+<p>optional The attachment ID to set as the cover image. Example: <code>20</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -7166,6 +7192,17 @@ fetch(url, {
     &quot;status&quot;: false,
     &quot;error_num&quot;: 400,
     &quot;message&quot;: &quot;The email has already been taken.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Email in invitation list):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email is already in the invitation list.&quot;
 }</code>
  </pre>
             <blockquote>
@@ -7587,9 +7624,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>This endpoint verifies the email OTP code sent during registration and completes the user account creation.
-For freelancers, the account will be created with &quot;requested&quot; approval status and require admin approval.
-For clients, the account will be immediately approved and ready to use.</p>
+<p>This endpoint verifies the email OTP code sent during registration and completes the user account creation.</p>
+<p><strong>Approval Status Logic:</strong></p>
+<ul>
+<li><strong>Clients</strong>: Always approved immediately and ready to use</li>
+<li><strong>Freelancers with invitation</strong>: If the email has a pending invitation from admin, the freelancer will be approved immediately without admin review</li>
+<li><strong>Regular freelancers</strong>: Account created with &quot;requested&quot; approval status and requires admin approval</li>
+</ul>
 
 <span id="example-requests-POSTapi-auth-verify-email">
 <blockquote>Example request:</blockquote>
@@ -7667,6 +7708,48 @@ fetch(url, {
         },
         &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...&quot;
     }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Invited freelancer registration completed (pre-approved)):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;status&quot;: true,
+  &quot;error_num&quot;: null,
+  &quot;message&quot;: &quot;User registered successfully&quot;,
+  &quot;data&quot;: {
+    &quot;user&quot;: {
+      &quot;id&quot;: 1,
+      &quot;name&quot;: &quot;John Doe&quot;,
+      &quot;email&quot;: &quot;john@example.com&quot;,
+      &quot;type&quot;: &quot;freelancer&quot;,
+      &quot;email_verified_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+      &quot;phone&quot;: null,
+      &quot;is_active&quot;: true,
+      &quot;about_me&quot;: null,
+      &quot;profile_picture&quot;: null,
+      &quot;approval_status&quot;: &quot;approved&quot;,
+      &quot;linkedin_link&quot;: &quot;https://linkedin.com/in/johndoe&quot;,
+      &quot;twitter_link&quot;: &quot;https://twitter.com/johndoe&quot;,
+      &quot;other_freelance_platform_links&quot;: [&quot;https://upwork.com/freelancers/johndoe&quot;],
+      &quot;portfolio_link&quot;: &quot;https://johndoe.com&quot;,
+      &quot;headline&quot;: null,
+      &quot;description&quot;: null,
+      &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+      &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
+    },
+    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...&quot;
+  }
+}
+      &quot;headline&quot;: null,
+      &quot;description&quot;: null,
+      &quot;created_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;,
+      &quot;updated_at&quot;: &quot;2025-08-24T10:30:00.000000Z&quot;
+    },
+    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...&quot;
+  }
 }</code>
  </pre>
             <blockquote>
@@ -7932,6 +8015,17 @@ fetch(url, {
 }</code>
  </pre>
             <blockquote>
+            <p>Example response (400, New email in invitation list):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The new email is already in the invitation list.&quot;
+}</code>
+ </pre>
+            <blockquote>
             <p>Example response (422, Validation error):</p>
         </blockquote>
                 <pre>
@@ -8044,7 +8138,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="newemail@example.com"
                data-component="body">
     <br>
-<p>The new email address (must be unique and valid). Example: <code>newemail@example.com</code></p>
+<p>The new email address (must be unique in both users and invitations, and valid). Example: <code>newemail@example.com</code></p>
         </div>
         </form>
 
@@ -10057,7 +10151,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgrMFb4" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphgzfxL" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10218,7 +10312,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgrMFb4</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphgzfxL</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

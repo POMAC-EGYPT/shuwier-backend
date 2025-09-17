@@ -53,7 +53,7 @@ class UpdateProfileRequest extends FormRequest
                 'max:255',
                 'regex:/^([ء-ي\s]+|[a-zA-Z\s]+)$/u'
             ],
-            'profile_picture'               => 'sometimes|nullable|image|max:2048',
+            'profile_picture'               => 'sometimes|nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
             'about_me'                      => 'sometimes|nullable|string|max:500',
             'country'                       => 'sometimes|required_with:city|string|max:100',
             'city'                          => 'sometimes|required_with:country|string|max:100',

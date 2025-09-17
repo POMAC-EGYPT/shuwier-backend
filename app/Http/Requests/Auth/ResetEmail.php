@@ -51,6 +51,8 @@ class ResetEmail extends FormRequest
                 'required',
                 'email:rfc,dns',
                 'different:old_email',
+                'unique:users,email',
+                'unique:invitation_users,email',
                 new EmailRule
             ],
         ];
