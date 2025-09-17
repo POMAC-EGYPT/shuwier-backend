@@ -24,6 +24,13 @@ class SkillService implements SkillServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $skills];
     }
 
+    public function getAll(): array
+    {
+        $skills = $this->skillRepo->getAll();
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $skills];
+    }
+
     public function getById(int $id): array
     {
         $skill = $this->skillRepo->findById($id);

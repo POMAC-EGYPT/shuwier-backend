@@ -1,25 +1,24 @@
-name: 'Admin Authentication'
+name: Skills
 description: |-
 
-  APIs for admin authentication and authorization.
-  These endpoints handle admin login and session management.
+  APIs for managing skills and retrieving skill data
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/admin/auth/login
+      - GET
+    uri: api/skills
     metadata:
-      groupName: 'Admin Authentication'
+      groupName: Skills
       groupDescription: |-
 
-        APIs for admin authentication and authorization.
-        These endpoints handle admin login and session management.
+        APIs for managing skills and retrieving skill data
       subgroup: ''
       subgroupDescription: ''
-      title: 'Admin Login.'
+      title: 'Get all skills'
       description: |-
-        This endpoint authenticates administrators and returns a JWT token along with admin permissions.
-        Only users with admin privileges can access this endpoint.
+        Retrieve all available skills in the system. Skills are used by freelancers
+        to indicate their expertise and by clients to find suitable freelancers.
+        Use this endpoint to populate skill selection lists in user profiles or search filters.
       authenticated: false
       deprecated: false
       custom: []
@@ -31,98 +30,54 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Admin email address.'
-        required: true
-        example: admin@admin.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: 'Admin password.'
-        required: true
-        example: password123
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: admin@admin.com
-      password: password123
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "message": "Success",
             "status": true,
-            "error_num": null,
-            "message": "Login successful",
             "data": {
-              "admin": {
-                "id": 1,
-                "email": "admin@admin.com",
-                "permissions_with_role": {
-                  "permissions": [
-                    "admin.users.index",
-                    "admin.users.create",
-                    "admin.users.edit",
-                    "admin.users.delete",
-                    "freelancer.viewAny",
-                    "freelancer.view",
-                    "freelancer.create",
-                    "freelancer.delete",
-                    "freelancer.approveAndReject"
-                  ],
-                  "role": "super-admin"
+              "data": [
+                {
+                  "id": 1,
+                  "name": "JavaScript"
                 },
-                "created_at": "2025-08-21T07:43:34.000000Z",
-                "updated_at": "2025-08-21T07:43:34.000000Z"
-              },
-              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+                {
+                  "id": 2,
+                  "name": "React"
+                },
+                {
+                  "id": 3,
+                  "name": "Laravel"
+                },
+                {
+                  "id": 4,
+                  "name": "Adobe Photoshop"
+                },
+                {
+                  "id": 5,
+                  "name": "Node.js"
+                }
+              ]
             }
           }
         headers: []
-        description: 'Login successful'
+        description: ''
         custom: []
       -
         status: 400
         content: |-
           {
+            "message": "An error occurred while retrieving skills",
             "status": false,
-            "error_num": 400,
-            "message": "Invalid password"
+            "error_num": 400
           }
         headers: []
-        description: 'Invalid password'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "status": false,
-            "error_num": 404,
-            "message": "The selected email is invalid."
-          }
-        headers: []
-        description: 'Invalid email'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The email field is required."
-          }
-        headers: []
-        description: 'Validation error'
+        description: ''
         custom: []
     responseFields: []
     auth: []

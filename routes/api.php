@@ -3,8 +3,10 @@
 use App\Http\Controllers\UserVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Freelancer\PortfolioController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
 
 Route::group(['prefix' => 'auth'], function () {
@@ -39,6 +41,12 @@ Route::post('/upload', [UploadFileController::class, 'upload'])
 
 Route::get('/languages', [LanguageController::class, 'index'])
     ->name('languages.index');
+
+Route::get('/categories', [CategoryController::class, 'index'])
+    ->name('categories.index');
+
+Route::get('/skills', [SkillController::class, 'index'])
+    ->name('skills.index');
 
 Route::post('/verifications', [UserVerificationController::class, 'sendRequest'])
     ->middleware('auth:api')->name('user.verification.sendRequest');

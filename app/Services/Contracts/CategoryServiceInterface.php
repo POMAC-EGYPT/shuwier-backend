@@ -9,6 +9,8 @@ interface CategoryServiceInterface
 {
     public function getAllPaginated(?string $type = null, ?int $parent_id = null, ?string $search = null, ?int $perPage = 10): LengthAwarePaginator;
 
+    public function getParentCategories(): array;
+
     public function getById(int $id): null | Category;
 
     public function create(array $data): array;

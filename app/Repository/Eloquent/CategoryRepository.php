@@ -49,6 +49,11 @@ class CategoryRepository implements CategoryRepositoryInterface
             ->paginate($perPage);
     }
 
+    public function getParents(): ?Collection
+    {
+        return Category::parents()->get();
+    }
+
     public function find(int $id, bool $withChildren = false): ?Category
     {
         $category = Category::findOrFail($id);

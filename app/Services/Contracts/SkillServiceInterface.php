@@ -6,6 +6,8 @@ interface SkillServiceInterface
 {
     public function getAllPaginated(?string $search = null, ?int $perPage = 10): array;
 
+    public function getAll(): array;
+
     public function getById(int $id): array;
 
     public function create(array $data): array;

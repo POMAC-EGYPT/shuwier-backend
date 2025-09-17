@@ -1,18 +1,26 @@
-name: 'Admin User Verification'
-description: ''
+name: 'Admin Category Management'
+description: |-
+
+  APIs for managing categories in the admin panel.
+  These endpoints allow administrators to view, create, update, and delete categories,
+  including bulk creation with children and searching/filtering.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/verifications
+    uri: api/admin/categories
     metadata:
-      groupName: 'Admin User Verification'
-      groupDescription: ''
+      groupName: 'Admin Category Management'
+      groupDescription: |-
+
+        APIs for managing categories in the admin panel.
+        These endpoints allow administrators to view, create, update, and delete categories,
+        including bulk creation with children and searching/filtering.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get User Verification Requests'
-      description: 'Retrieve a paginated list of user verification requests with optional status filtering.'
-      authenticated: false
+      title: 'List categories with optional filters and pagination.'
+      description: 'This endpoint returns a paginated list of categories. You can filter by type and search by name.'
+      authenticated: true
       deprecated: false
       custom: []
     headers:
@@ -22,18 +30,62 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      status:
-        name: status
-        description: 'Filter by verification status. Allowed values: pending, approved.'
+      search:
+        name: search
+        description: 'Optional search by category name (Arabic or English).'
         required: false
-        example: pending
+        example: تصميم
         type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Number of items per page (default: 10).'
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      type:
+        name: type
+        description: 'Optional filter by category type.'
+        required: false
+        example: 'parent. Possible values: parent, child'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      parent_id:
+        name: parent_id
+        description: "The parent category ID to filter by (only used when type is 'child')."
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      page:
+        name: page
+        description: 'Page number for pagination (default: 1).'
+        required: false
+        example: 2
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanQueryParameters:
-      status: pending
+      search: تصميم
+      per_page: 20
+      type: 'parent. Possible values: parent, child'
+      parent_id: 2
+      page: 2
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -42,38 +94,26 @@ endpoints:
         status: 200
         content: |-
           {
-            "message": "User verification requests retrieved successfully",
             "status": true,
             "error_num": null,
-            "data": {
-              "current_page": 1,
-              "data": [
-                {
-                  "id": 1,
-                  "user_id": 1,
-                  "document_one": "path/to/document1.pdf",
-                  "document_two": "path/to/document2.pdf",
-                  "status": "pending",
-                  "created_at": "2025-09-15T10:00:00.000000Z"
-                }
-              ],
-              "per_page": 10,
-              "total": 1
-            }
+            "message": "Success",
+            "data": [
+              {
+                "id": 1,
+                "name_en": "Design",
+                "name_ar": "تصميم",
+                "parent_id": null,
+                "created_at": "2025-09-07T10:30:00.000000Z",
+                "updated_at": "2025-09-07T10:30:00.000000Z"
+              }
+            ],
+            "current_page": 1,
+            "last_page": 3,
+            "per_page": 10,
+            "total": 25
           }
         headers: []
-        description: ''
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "message": "Invalid status parameter",
-            "status": false,
-            "error_num": 400
-          }
-        headers: []
-        description: ''
+        description: 'Categories retrieved successfully'
         custom: []
     responseFields: []
     auth: []
@@ -84,15 +124,118 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/admin/verifications/{id}'
+    uri: api/admin/categories
     metadata:
-      groupName: 'Admin User Verification'
-      groupDescription: ''
+      groupName: 'Admin Category Management'
+      groupDescription: |-
+
+        APIs for managing categories in the admin panel.
+        These endpoints allow administrators to view, create, update, and delete categories,
+        including bulk creation with children and searching/filtering.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Accept or Reject User Verification'
-      description: 'Approve or reject a user verification request by ID.'
-      authenticated: false
+      title: 'Create a new category.'
+      description: 'This endpoint allows admins to create a new category. You can specify parent_id to create a subcategory.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name_en:
+        name: name_en
+        description: 'Category name in English.'
+        required: true
+        example: Design
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      name_ar:
+        name: name_ar
+        description: 'Category name in Arabic.'
+        required: true
+        example: تصميم
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'The parent category ID (for subcategories).'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name_en: Design
+      name_ar: تصميم
+      parent_id: 2
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Category created successfully",
+            "data": {
+              "id": 5,
+              "name_en": "Development",
+              "name_ar": "تطوير",
+              "parent_id": null,
+              "created_at": "2025-09-07T10:30:00.000000Z",
+              "updated_at": "2025-09-07T10:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: 'Category created successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The name_en field is required."
+          }
+        headers: []
+        description: 'Validation error'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/admin/categories/{id}'
+    metadata:
+      groupName: 'Admin Category Management'
+      groupDescription: |-
+
+        APIs for managing categories in the admin panel.
+        These endpoints allow administrators to view, create, update, and delete categories,
+        including bulk creation with children and searching/filtering.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show category details by ID.'
+      description: 'This endpoint returns details for a specific category by its ID.'
+      authenticated: true
       deprecated: false
       custom: []
     headers:
@@ -102,7 +245,85 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the user verification request.'
+        description: 'The ID of the category to view.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Success",
+            "data": {
+              "id": 1,
+              "name_en": "Design",
+              "name_ar": "تصميم",
+              "parent_id": null,
+              "created_at": "2025-09-07T10:30:00.000000Z",
+              "updated_at": "2025-09-07T10:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: 'Category details retrieved successfully'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Category not found"
+          }
+        headers: []
+        description: 'Category not found'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/admin/categories/{id}'
+    metadata:
+      groupName: 'Admin Category Management'
+      groupDescription: |-
+
+        APIs for managing categories in the admin panel.
+        These endpoints allow administrators to view, create, update, and delete categories,
+        including bulk creation with children and searching/filtering.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a category by ID.'
+      description: 'This endpoint allows admins to update the name of a category (English/Arabic).'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category to update.'
         required: true
         example: 1
         type: integer
@@ -115,52 +336,262 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      action:
-        name: action
-        description: 'The action to perform. Allowed values: approved, rejected.'
-        required: true
-        example: approved
+      name_en:
+        name: name_en
+        description: 'Category name in English.'
+        required: false
+        example: Design
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      name_ar:
+        name: name_ar
+        description: 'Category name in Arabic.'
+        required: false
+        example: تصميم
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'Parent category ID for creating subcategories (optional). The <code>id</code> of an existing record in the categories table.'
+        required: false
+        example: 1
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      action: approved
+      name_en: Design
+      name_ar: تصميم
+      parent_id: 1
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "User verification request updated successfully",
             "status": true,
-            "error_num": null
+            "error_num": null,
+            "message": "Category updated successfully",
           }
         headers: []
-        description: ''
+        description: 'Category updated successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "Invalid action parameter",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "The name_en field is required."
           }
         headers: []
-        description: ''
+        description: 'Validation error'
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "not found",
             "status": false,
-            "error_num": 404
+            "error_num": 404,
+            "message": "Category not found"
           }
         headers: []
-        description: ''
+        description: 'Category not found'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/categories/{id}'
+    metadata:
+      groupName: 'Admin Category Management'
+      groupDescription: |-
+
+        APIs for managing categories in the admin panel.
+        These endpoints allow administrators to view, create, update, and delete categories,
+        including bulk creation with children and searching/filtering.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a category by ID.'
+      description: 'This endpoint allows admins to delete a category by its ID.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category to delete.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Category deleted successfully"
+          }
+        headers: []
+        description: 'Category deleted successfully'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Category not found"
+          }
+        headers: []
+        description: 'Category not found'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/categories/store-all-with-childrens
+    metadata:
+      groupName: 'Admin Category Management'
+      groupDescription: |-
+
+        APIs for managing categories in the admin panel.
+        These endpoints allow administrators to view, create, update, and delete categories,
+        including bulk creation with children and searching/filtering.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Bulk create categories with children.'
+      description: |-
+        This endpoint allows admins to create a category and its children in one request.
+        Useful for importing category trees.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name_en:
+        name: name_en
+        description: 'Parent category name in English.'
+        required: true
+        example: Programming
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      name_ar:
+        name: name_ar
+        description: 'Parent category name in Arabic.'
+        required: true
+        example: برمجة
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      childrens:
+        name: childrens
+        description: 'Array of child categories (each with name_en, name_ar).'
+        required: false
+        example:
+          -
+            name_en: Web
+            name_ar: ويب
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      'childrens[].name_en':
+        name: 'childrens[].name_en'
+        description: 'Child category name in English (required if childrens array is provided). Must not be greater than 255 characters.'
+        required: true
+        example: 'Web Development'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'childrens[].name_ar':
+        name: 'childrens[].name_ar'
+        description: 'Child category name in Arabic (required if childrens array is provided). Must not be greater than 255 characters.'
+        required: true
+        example: 'تطوير المواقع'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name_en: Programming
+      name_ar: برمجة
+      childrens:
+        -
+          name_en: Web
+          name_ar: ويب
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Categories created successfully"
+          }
+        headers: []
+        description: 'Categories created successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The childrens field must be an array."
+          }
+        headers: []
+        description: 'Validation error'
         custom: []
     responseFields: []
     auth: []

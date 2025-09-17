@@ -5,6 +5,7 @@ namespace App\Repository\Eloquent;
 use App\Models\Skill;
 use App\Repository\Contracts\SkillRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 
 class SkillRepository implements SkillRepositoryInterface
 {
@@ -14,6 +15,11 @@ class SkillRepository implements SkillRepositoryInterface
             $query->where('name_ar', 'like', '%' . $search . '%')
                 ->orWhere('name_en', 'like', '%' . $search . '%');
         })->paginate($perPage);
+    }
+
+    public function getAll(): ?Collection
+    {
+        return Skill::all();
     }
 
     public function findById($id): ?Skill

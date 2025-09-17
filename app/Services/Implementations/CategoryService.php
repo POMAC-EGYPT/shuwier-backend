@@ -28,6 +28,13 @@ class CategoryService implements CategoryServiceInterface
         return $categories;
     }
 
+    public function getParentCategories(): array
+    {
+        $categories = $this->categoryRepo->getParents();
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $categories];
+    }
+
     public function getById(int $id): null | Category
     {
         return $this->categoryRepo->find($id, true);
