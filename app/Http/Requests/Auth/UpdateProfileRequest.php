@@ -77,7 +77,11 @@ class UpdateProfileRequest extends FormRequest
         if ($type === 'client') {
             $rules = array_merge($rules, [
                 'company'     => 'sometimes|nullable|string|max:255',
-                'phone'       => 'sometimes|nullable|regex:/^(\+966|00966|966)?[5][0-9]{8}$/',
+                'phone'       => [
+                    'sometimes',
+                    'nullable',
+                    'regex:/^(\+966|00966|966)?(5)([0-9]{8})$/'
+                ],
                 'headline'    => 'prohibited',
                 'category_id' => 'prohibited',
                 'skill_ids'   => 'prohibited',
