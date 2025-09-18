@@ -942,4 +942,139 @@ class AuthController extends Controller
 
         return Response::api($result['message'], 200, true);
     }
+
+    /**
+     * Change Email (after login).
+     *
+     * This endpoint allows logged-in users to change their email.
+     * A verification code will be sent to the new email.
+     *
+     * @authenticated
+     *
+     * @bodyParam new_email string required The new email address (must be unique). Example: newemail@example.com
+     *
+     * @response 200 scenario="Email change initiated" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Verification code sent to new email address"
+     * }
+     *
+     * @response 400 scenario="Verification session expired" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Verification session expired"
+     * }
+     *
+     * @response 400 scenario="New email already taken" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The new email has already been taken."
+     * }
+     */
+    public function changeEmail(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => [
+                'required',
+                'email:rfc,dns',
+                'unique:users,email',
+                'unique:invitation_users,email',
+            ],
+        ]);
+
+        if ($validator->fails())
+            return Response::api($validator->errors()->first(), 400, false, 400);
+
+        $user = auth('api')->user();
+
+        $result = $this->authUserService->changeEmail($request->email);
+
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+
+        return Response::api($result['message'], 200, true, null);
+    }
+
+    /**
+     * Verify Email Change.
+     * 
+     * This endpoint verifies the OTP code sent to the new email address during the email change process.
+     * Users must first initiate an email change using the changeEmail endpoint, then use this endpoint
+     * to verify the new email address with the 4-digit OTP code sent to the new email.
+     * 
+     * @authenticated
+     * 
+     * @bodyParam email string required The new email address to verify (must be the same email used in changeEmail). Example: newemail@example.com
+     * @bodyParam otp string required The 4-digit verification code sent to the new email address. Example: 1234
+     * 
+     * @response 200 scenario="Email change verified successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Email changed successfully"
+     * }
+     *
+     * @response 400 scenario="Invalid or expired OTP" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Invalid or expired verification code"
+     * }
+     *
+     * @response 400 scenario="Email change session expired" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Email change session expired or not found"
+     * }
+     *
+     * @response 400 scenario="Email verification not initiated" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "No email change request found for this email"
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     *
+     * @response 400 scenario="Validation error - Invalid email format" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email must be a valid email address."
+     * }
+     *
+     * @response 400 scenario="Validation error - Invalid OTP format" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The otp must be 4 digits."
+     * }
+     *
+     * @response 400 scenario="Validation error - Missing fields" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email field is required."
+     * }
+     */
+
+    public function verifyChangeEmail(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => [
+                'required',
+                'email:rfc,dns',
+                new EmailRule
+            ],
+            'otp'   => 'required|digits:4',
+        ]);
+
+        if ($validator->fails())
+            return Response::api($validator->errors()->first(), 400, false, 400);
+
+        $result = $this->authUserService->verifyChangeEmail($request->email, $request->otp);
+
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+
+        return Response::api($result['message'], 200, true);
+    }
 }

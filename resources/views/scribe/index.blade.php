@@ -281,6 +281,12 @@
                                                                                 <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-auth-change-password">
                                 <a href="#user-authentication-POSTapi-auth-change-password">Change User Password.</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-auth-change-email">
+                                <a href="#user-authentication-POSTapi-auth-change-email">Change Email (after login).</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-auth-verify-change-email">
+                                <a href="#user-authentication-POSTapi-auth-verify-change-email">Verify Email Change.</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-authentication-GETapi-auth-profile">
                                 <a href="#user-authentication-GETapi-auth-profile">Get User Profile.</a>
                             </li>
@@ -3016,7 +3022,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"requested\",
-    \"is_active\": \"1\",
+    \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3044,7 +3050,7 @@ const headers = {
 
 let body = {
     "approval_status": "requested",
-    "is_active": "1",
+    "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3283,10 +3289,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="1"
+               value="0"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>0</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -5803,7 +5809,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpv2NDwg" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSp0Px8" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5972,7 +5978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpv2NDwg</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSp0Px8</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9407,6 +9413,442 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                    <h2 id="user-authentication-POSTapi-auth-change-email">Change Email (after login).</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint allows logged-in users to change their email.
+A verification code will be sent to the new email.</p>
+
+<span id="example-requests-POSTapi-auth-change-email">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/auth/change-email" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"email\": \"qkunze@example.com\",
+    \"new_email\": \"newemail@example.com\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/auth/change-email"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "email": "qkunze@example.com",
+    "new_email": "newemail@example.com"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-auth-change-email">
+            <blockquote>
+            <p>Example response (200, Email change initiated):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Verification code sent to new email address&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Verification session expired):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Verification session expired&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, New email already taken):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The new email has already been taken.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-change-email" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-change-email"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-change-email"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-change-email" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-change-email">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-auth-change-email" data-method="POST"
+      data-path="api/auth/change-email"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-change-email', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-change-email"
+                    onclick="tryItOut('POSTapi-auth-change-email');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-change-email"
+                    onclick="cancelTryOut('POSTapi-auth-change-email');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-change-email"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/change-email</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-auth-change-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-auth-change-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-auth-change-email"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-auth-change-email"
+               value="qkunze@example.com"
+               data-component="body">
+    <br>
+<p>Must be a valid email address. Example: <code>qkunze@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>new_email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="new_email"                data-endpoint="POSTapi-auth-change-email"
+               value="newemail@example.com"
+               data-component="body">
+    <br>
+<p>The new email address (must be unique). Example: <code>newemail@example.com</code></p>
+        </div>
+        </form>
+
+                    <h2 id="user-authentication-POSTapi-auth-verify-change-email">Verify Email Change.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint verifies the OTP code sent to the new email address during the email change process.
+Users must first initiate an email change using the changeEmail endpoint, then use this endpoint
+to verify the new email address with the 4-digit OTP code sent to the new email.</p>
+
+<span id="example-requests-POSTapi-auth-verify-change-email">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/auth/verify-change-email" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"email\": \"newemail@example.com\",
+    \"otp\": \"1234\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/auth/verify-change-email"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "email": "newemail@example.com",
+    "otp": "1234"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-auth-verify-change-email">
+            <blockquote>
+            <p>Example response (200, Email change verified successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Email changed successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid or expired OTP):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Invalid or expired verification code&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Email change session expired):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Email change session expired or not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Email verification not initiated):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;No email change request found for this email&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error - Invalid email format):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email must be a valid email address.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error - Invalid OTP format):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The otp must be 4 digits.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error - Missing fields):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email field is required.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Unauthenticated):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-verify-change-email" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-verify-change-email"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-verify-change-email"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-verify-change-email" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-verify-change-email">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-auth-verify-change-email" data-method="POST"
+      data-path="api/auth/verify-change-email"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-verify-change-email', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-verify-change-email"
+                    onclick="tryItOut('POSTapi-auth-verify-change-email');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-verify-change-email"
+                    onclick="cancelTryOut('POSTapi-auth-verify-change-email');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-verify-change-email"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/verify-change-email</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-auth-verify-change-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-auth-verify-change-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-auth-verify-change-email"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-auth-verify-change-email"
+               value="newemail@example.com"
+               data-component="body">
+    <br>
+<p>The new email address to verify (must be the same email used in changeEmail). Example: <code>newemail@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>otp</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="otp"                data-endpoint="POSTapi-auth-verify-change-email"
+               value="1234"
+               data-component="body">
+    <br>
+<p>The 4-digit verification code sent to the new email address. Example: <code>1234</code></p>
+        </div>
+        </form>
+
                     <h2 id="user-authentication-GETapi-auth-profile">Get User Profile.</h2>
 
 <p>
@@ -10490,7 +10932,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpj2xwnl" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpz5fh0u" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10651,7 +11093,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpj2xwnl</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpz5fh0u</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

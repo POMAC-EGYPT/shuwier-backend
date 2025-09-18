@@ -186,6 +186,7 @@ class PortfolioService implements PortfolioServiceInterface
             if (isset($data['hashtags'])) {
                 $this->profileRepo->syncHashtags($portfolio, $hashtagIds);
             }
+
             $oldAttachments = $this->portfolioAttachmentRepo->getByPortfolioId($id);
 
             if (count($oldAttachments) > 0) {
@@ -199,6 +200,7 @@ class PortfolioService implements PortfolioServiceInterface
                     }
                 }
             }
+
             if (!empty($data['attachment_ids'])) {
                 foreach ($data['attachment_ids'] as $attachment_id) {
                     $this->portfolioAttachmentRepo->update($attachment_id, [

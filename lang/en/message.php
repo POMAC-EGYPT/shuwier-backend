@@ -110,4 +110,6 @@ return [
     'user_already_registered' => 'User is already registered',
     'invitation_sent_successfully' => 'Invitation sent successfully',
     'cover_must_be_an_image' => 'Cover must be an image (jpg, jpeg, png, webp)',
+    'new_email_must_be_different' => 'New email must be different',
+    'email_changed_successfully' => 'Email changed successfully',
 ];

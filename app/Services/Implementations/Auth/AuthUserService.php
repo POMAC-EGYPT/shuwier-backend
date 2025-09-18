@@ -345,4 +345,40 @@ class AuthUserService implements AuthUserServiceInterface
 
         return ['status' => true, 'message' => __('message.password_changed_successfully')];
     }
+
+    public function changeEmail(string $email): array
+    {
+        $user = auth('api')->user();
+
+        if ($user->email == $email)
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.new_email_must_be_different')];
+
+        $result = $this->verifyService->sendVerificationCode([
+            'email' => $email,
+            'type' => 'change_email',
+            'old_email' => $user->email,
+        ]);
+
+        if (!$result['status'])
+            return ['status' => false, 'error_num' => $result['error_num'], 'message' => $result['message']];
+
+        return ['status' => true, 'message' => $result['message']];
+    }
+
+    public function verifyChangeEmail(string $email, string $otp): array
+    {
+        $user = auth('api')->user();
+
+        $result = $this->verifyService->verifyCode($email, $otp);
+
+        if (!$result['status'])
+            return ['status' => false, 'error_num' => $result['error_num'], 'message' => $result['message']];
+
+        $this->userRepo->update($user->id, [
+            'email' => $email,
+            'email_verified_at' => now(),
+        ]);
+
+        return ['status' => true, 'message' => __('message.email_changed_successfully')];
+    }
 }
