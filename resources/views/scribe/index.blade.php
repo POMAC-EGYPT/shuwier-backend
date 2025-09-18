@@ -282,7 +282,7 @@
                                 <a href="#user-authentication-POSTapi-auth-change-password">Change User Password.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-auth-change-email">
-                                <a href="#user-authentication-POSTapi-auth-change-email">Change Email (after login).</a>
+                                <a href="#user-authentication-POSTapi-auth-change-email">Change Email Address.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-auth-verify-change-email">
                                 <a href="#user-authentication-POSTapi-auth-verify-change-email">Verify Email Change.</a>
@@ -3021,7 +3021,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"approved\",
+    \"approval_status\": \"requested\",
     \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3049,7 +3049,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "approved",
+    "approval_status": "requested",
     "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3276,10 +3276,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="approved"
+               value="requested"
                data-component="body">
     <br>
-<p>Example: <code>approved</code></p>
+<p>Example: <code>requested</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -5809,7 +5809,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxhhzzn" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php40Gnje" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5978,7 +5978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxhhzzn</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php40Gnje</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9413,14 +9413,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="user-authentication-POSTapi-auth-change-email">Change Email (after login).</h2>
+                    <h2 id="user-authentication-POSTapi-auth-change-email">Change Email Address.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>This endpoint allows logged-in users to change their email.
-A verification code will be sent to the new email.</p>
+<p>This endpoint allows authenticated users to change their email address by providing a new email
+and confirming their current password. A verification code will be sent to the new email address
+for verification. The user must then use the verifyChangeEmail endpoint to complete the email change.</p>
 
 <span id="example-requests-POSTapi-auth-change-email">
 <blockquote>Example request:</blockquote>
@@ -9433,8 +9434,9 @@ A verification code will be sent to the new email.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"email\": \"qkunze@example.com\",
-    \"new_email\": \"newemail@example.com\"
+    \"email\": \"newemail@example.com\",
+    \"password\": \"CurrentPassword123!\",
+    \"password_confirmation\": \"CurrentPassword123!\"
 }"
 </code></pre></div>
 
@@ -9451,8 +9453,9 @@ const headers = {
 };
 
 let body = {
-    "email": "qkunze@example.com",
-    "new_email": "newemail@example.com"
+    "email": "newemail@example.com",
+    "password": "CurrentPassword123!",
+    "password_confirmation": "CurrentPassword123!"
 };
 
 fetch(url, {
@@ -9465,7 +9468,7 @@ fetch(url, {
 
 <span id="example-responses-POSTapi-auth-change-email">
             <blockquote>
-            <p>Example response (200, Email change initiated):</p>
+            <p>Example response (200, Email change initiated successfully):</p>
         </blockquote>
                 <pre>
 
@@ -9476,25 +9479,80 @@ fetch(url, {
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (400, Verification session expired):</p>
+            <p>Example response (400, Current password incorrect):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: false,
     &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;Verification session expired&quot;
+    &quot;message&quot;: &quot;Current password is incorrect&quot;
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (400, New email already taken):</p>
+            <p>Example response (400, New email already exists):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: false,
     &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The new email has already been taken.&quot;
+    &quot;message&quot;: &quot;The email has already been taken.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, New email in invitation list):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email is already in the invitation list.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error - Password confirmation mismatch):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The password confirmation does not match.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error - Invalid email format):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email must be a valid email address.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error - Missing fields):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email field is required.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Unauthenticated):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
 }</code>
  </pre>
     </span>
@@ -9585,21 +9643,32 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-change-email"
-               value="qkunze@example.com"
-               data-component="body">
-    <br>
-<p>Must be a valid email address. Example: <code>qkunze@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>new_email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="new_email"                data-endpoint="POSTapi-auth-change-email"
                value="newemail@example.com"
                data-component="body">
     <br>
-<p>The new email address (must be unique). Example: <code>newemail@example.com</code></p>
+<p>The new email address (must be unique and valid). Example: <code>newemail@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-auth-change-email"
+               value="CurrentPassword123!"
+               data-component="body">
+    <br>
+<p>Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: <code>CurrentPassword123!</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-auth-change-email"
+               value="CurrentPassword123!"
+               data-component="body">
+    <br>
+<p>Password confirmation (must match password). Example: <code>CurrentPassword123!</code></p>
         </div>
         </form>
 
@@ -10932,7 +11001,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpVEdjkI" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphEoi0W" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11093,7 +11162,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpVEdjkI</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphEoi0W</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

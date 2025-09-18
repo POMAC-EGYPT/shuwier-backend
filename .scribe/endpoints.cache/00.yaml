@@ -1167,10 +1167,11 @@ endpoints:
         and other authentication-related functionality for both clients and freelancers.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Change Email (after login).'
+      title: 'Change Email Address.'
       description: |-
-        This endpoint allows logged-in users to change their email.
-        A verification code will be sent to the new email.
+        This endpoint allows authenticated users to change their email address by providing a new email
+        and confirming their current password. A verification code will be sent to the new email address
+        for verification. The user must then use the verifyChangeEmail endpoint to complete the email change.
       authenticated: true
       deprecated: false
       custom: []
@@ -1185,17 +1186,7 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'Must be a valid email address.'
-        required: true
-        example: qkunze@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      new_email:
-        name: new_email
-        description: 'The new email address (must be unique).'
+        description: 'The new email address (must be unique and valid).'
         required: true
         example: newemail@example.com
         type: string
@@ -1203,9 +1194,30 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      password:
+        name: password
+        description: 'Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character).'
+        required: true
+        example: CurrentPassword123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Password confirmation (must match password).'
+        required: true
+        example: CurrentPassword123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
     cleanBodyParameters:
-      email: qkunze@example.com
-      new_email: newemail@example.com
+      email: newemail@example.com
+      password: CurrentPassword123!
+      password_confirmation: CurrentPassword123!
     fileParameters: []
     responses:
       -
@@ -1217,7 +1229,7 @@ endpoints:
             "message": "Verification code sent to new email address"
           }
         headers: []
-        description: 'Email change initiated'
+        description: 'Email change initiated successfully'
         custom: []
       -
         status: 400
@@ -1225,10 +1237,10 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "Verification session expired"
+            "message": "Current password is incorrect"
           }
         headers: []
-        description: 'Verification session expired'
+        description: 'Current password incorrect'
         custom: []
       -
         status: 400
@@ -1236,10 +1248,65 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The new email has already been taken."
+            "message": "The email has already been taken."
           }
         headers: []
-        description: 'New email already taken'
+        description: 'New email already exists'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email is already in the invitation list."
+          }
+        headers: []
+        description: 'New email in invitation list'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The password confirmation does not match."
+          }
+        headers: []
+        description: 'Validation error - Password confirmation mismatch'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email must be a valid email address."
+          }
+        headers: []
+        description: 'Validation error - Invalid email format'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email field is required."
+          }
+        headers: []
+        description: 'Validation error - Missing fields'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
         custom: []
     responseFields: []
     auth: []
