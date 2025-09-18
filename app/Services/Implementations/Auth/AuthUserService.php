@@ -103,7 +103,7 @@ class AuthUserService implements AuthUserServiceInterface
                 'approval_status' => (
                     $result['data']['type'] == UserType::CLIENT->value
                     || (
-                        $invitation != null && $invitation->status == 'pending' && $result['data']['type'] == UserType::FREELANCER->value
+                        $invitation && $result['data']['type'] == UserType::FREELANCER->value
                     )
                 ) ? ApprovalStatus::APPROVED : ApprovalStatus::REQUESTED,
             ]);
@@ -117,7 +117,7 @@ class AuthUserService implements AuthUserServiceInterface
                     'portfolio_link' => $result['data']['portfolio_link'],
                 ]);
             }
-            if ($invitation && $invitation->status == 'pending')
+            if ($invitation && $result['data']['type'] == UserType::FREELANCER->value)
                 $this->invitationUserRepo->delete($invitation->id);
 
             $user->load('freelancerProfile');
