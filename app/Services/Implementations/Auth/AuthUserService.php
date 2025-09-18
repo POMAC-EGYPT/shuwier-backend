@@ -117,7 +117,7 @@ class AuthUserService implements AuthUserServiceInterface
                     'portfolio_link' => $result['data']['portfolio_link'],
                 ]);
             }
-            if ($invitation != null && $invitation->status == 'pending' && $result['data']['type'] == UserType::FREELANCER->value)
+            if ($invitation && $invitation->status == 'pending')
                 $this->invitationUserRepo->delete($invitation->id);
 
             $user->load('freelancerProfile');
