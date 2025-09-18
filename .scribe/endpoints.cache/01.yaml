@@ -173,7 +173,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       hashtags:
         name: hashtags
@@ -452,13 +452,13 @@ endpoints:
         custom: []
       cover_id:
         name: cover_id
-        description: 'optional The attachment ID to set as the cover image.'
-        required: false
+        description: 'The attachment ID to set as the cover image.'
+        required: true
         example: 20
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       hashtags:
         name: hashtags

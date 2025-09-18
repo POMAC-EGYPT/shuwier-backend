@@ -47,7 +47,7 @@ class PortfolioRequest extends FormRequest
             'subcategory_id'    => 'nullable|integer|exists:categories,id',
             'attachment_ids'    => 'nullable|array|max:8',
             'attachment_ids.*'  => 'nullable|integer|exists:portfolio_attachments,id',
-            'cover_id'          => request()->routeIs('portfolios.store') ? 'required|integer|exists:portfolio_attachments,id' : 'nullable|integer|exists:portfolio_attachments,id',
+            'cover_id'          => 'required|integer|exists:portfolio_attachments,id',
             'hashtags'          => 'nullable|array',
             'hashtags.*'        => 'string|max:255',
         ];

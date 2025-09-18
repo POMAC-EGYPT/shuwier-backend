@@ -217,7 +217,7 @@ class PortfolioController extends Controller
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory. Example: 2
      * @bodyParam attachment_ids integer[] optional Array of attachment IDs from uploaded files (max 8 files). **CAUTION:** If provided, ALL existing attachments will be detached first. Example: [20, 21, 22]
-     * @bodyParam cover_id integer optional The attachment ID to set as the cover image. Example: 20
+     * @bodyParam cover_id integer required The attachment ID to set as the cover image. Example: 20
      * @bodyParam hashtags string[] optional Array of hashtag strings. **CAUTION:** If provided, ALL existing hashtags will be replaced. Example: ["react", "updated", "laravel"]
      * 
      * @response 200 {
