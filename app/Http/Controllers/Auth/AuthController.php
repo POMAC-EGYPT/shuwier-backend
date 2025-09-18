@@ -1013,7 +1013,7 @@ class AuthController extends Controller
                 'unique:users,email',
                 'unique:invitation_users,email',
             ],
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8',
         ]);
 
         if ($validator->fails())
