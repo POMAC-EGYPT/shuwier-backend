@@ -212,9 +212,7 @@ class PortfolioService implements PortfolioServiceInterface
             if (isset($data['cover_id']) && $data['cover_id'] != null) {
                 foreach ($oldAttachments as $oldAttachment) {
                     if ($oldAttachment->is_cover && ($data['cover_id'] == null || $oldAttachment->id != $data['cover_id'])) {
-                        $this->portfolioAttachmentRepo->update($oldAttachment->id, [
-                            'is_cover' => false,
-                        ]);
+                        $this->portfolioAttachmentRepo->delete($oldAttachment->id);
                     }
                 }
 
