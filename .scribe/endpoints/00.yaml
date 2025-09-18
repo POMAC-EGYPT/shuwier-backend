@@ -689,20 +689,9 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      type:
-        name: type
-        description: 'User type (client or freelancer).'
-        required: true
-        example: client
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanBodyParameters:
       email: user@example.com
       password: password123
-      type: client
     fileParameters: []
     responses:
       -
@@ -820,19 +809,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      type:
-        name: type
-        description: 'User type. Must be either "client" or "freelancer".'
-        required: true
-        example: client
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanBodyParameters:
       email: user@example.com
-      type: client
     fileParameters: []
     responses:
       -

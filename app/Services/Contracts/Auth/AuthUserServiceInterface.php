@@ -12,9 +12,9 @@ interface AuthUserServiceInterface
 
     public function resetEmail(string $oldEmail, string $newEmail): array;
 
-    public function login(string $email, string $password, string $type): array;
+    public function login(string $email, string $password): array;
 
-    public function forgetPassword(string $email, string $type): array;
+    public function forgetPassword(string $email): array;
 
     public function resetPassword(string $email, string $password, string $token): array;
 

@@ -314,7 +314,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 17, 2025</li>
+        <li>Last updated: September 18, 2025</li>
     </ul>
 </div>
 
@@ -5803,7 +5803,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptBSkYU" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpv2NDwg" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5972,7 +5972,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptBSkYU</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpv2NDwg</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8526,8 +8526,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept-Language: en" \
     --data "{
     \"email\": \"user@example.com\",
-    \"password\": \"password123\",
-    \"type\": \"client\"
+    \"password\": \"password123\"
 }"
 </code></pre></div>
 
@@ -8545,8 +8544,7 @@ const headers = {
 
 let body = {
     "email": "user@example.com",
-    "password": "password123",
-    "type": "client"
+    "password": "password123"
 };
 
 fetch(url, {
@@ -8732,17 +8730,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>User password (minimum 6 characters). Example: <code>password123</code></p>
         </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="type"                data-endpoint="POSTapi-auth-login"
-               value="client"
-               data-component="body">
-    <br>
-<p>User type (client or freelancer). Example: <code>client</code></p>
-        </div>
         </form>
 
                     <h2 id="user-authentication-POSTapi-auth-forget-password">Forget Password - Send Reset Code.</h2>
@@ -8764,8 +8751,7 @@ A reset token is also generated and returned for use in the password reset proce
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"email\": \"user@example.com\",
-    \"type\": \"client\"
+    \"email\": \"user@example.com\"
 }"
 </code></pre></div>
 
@@ -8782,8 +8768,7 @@ const headers = {
 };
 
 let body = {
-    "email": "user@example.com",
-    "type": "client"
+    "email": "user@example.com"
 };
 
 fetch(url, {
@@ -8934,17 +8919,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>User's email address (must exist in the system). Example: <code>user@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="type"                data-endpoint="POSTapi-auth-forget-password"
-               value="client"
-               data-component="body">
-    <br>
-<p>User type. Must be either &quot;client&quot; or &quot;freelancer&quot;. Example: <code>client</code></p>
         </div>
         </form>
 
@@ -10516,7 +10490,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpQ4oWiy" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpj2xwnl" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10677,7 +10651,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpQ4oWiy</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpj2xwnl</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

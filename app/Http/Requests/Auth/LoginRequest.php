@@ -51,7 +51,6 @@ class LoginRequest extends FormRequest
                 new EmailRule,
             ],
             'password' => 'required|string|min:6',
-            'type'     => 'required|in:client,freelancer',
         ];
     }
 

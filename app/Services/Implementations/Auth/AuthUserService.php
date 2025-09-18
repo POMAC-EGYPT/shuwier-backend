@@ -139,9 +139,9 @@ class AuthUserService implements AuthUserServiceInterface
         return ['status' => true, 'message' => $result['message']];
     }
 
-    public function login(string $email, string $password, string $type): array
+    public function login(string $email, string $password): array
     {
-        $user = $this->userRepo->findByEmailAndType($email, $type . 's');
+        $user = $this->userRepo->findByEmail($email);
 
         if (!$user)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.user_not_found')];
@@ -167,9 +167,9 @@ class AuthUserService implements AuthUserServiceInterface
         ];
     }
 
-    public function forgetPassword(string $email, string $type): array
+    public function forgetPassword(string $email): array
     {
-        $user = $this->userRepo->findByEmailAndType($email, $type . 's');
+        $user = $this->userRepo->findByEmail($email);
 
         if (!$user)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.user_not_found')];

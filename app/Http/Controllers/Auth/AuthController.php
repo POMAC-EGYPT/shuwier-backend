@@ -386,7 +386,6 @@ class AuthController extends Controller
      *
      * @bodyParam email string required User email address. Example: user@example.com
      * @bodyParam password string required User password (minimum 6 characters). Example: password123
-     * @bodyParam type string required User type (client or freelancer). Example: client
      *
      * @response 200 {
      *   "status": true,
@@ -435,7 +434,7 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $result = $this->authUserService->login($request->email, $request->password, $request->type);
+        $result = $this->authUserService->login($request->email, $request->password);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
@@ -459,7 +458,6 @@ class AuthController extends Controller
      * A reset token is also generated and returned for use in the password reset process.
      * 
      * @bodyParam email string required User's email address (must exist in the system). Example: user@example.com
-     * @bodyParam type string required User type. Must be either "client" or "freelancer". Example: client
      * 
      * @response 200 scenario="Reset code sent successfully" {
      *   "status": true,
@@ -496,13 +494,12 @@ class AuthController extends Controller
                 'email:rfc,dns',
                 'exists:users,email',
             ],
-            'type' => 'required|string|in:client,freelancer',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $result = $this->authUserService->forgetPassword($request->email, $request->type);
+        $result = $this->authUserService->forgetPassword($request->email);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
