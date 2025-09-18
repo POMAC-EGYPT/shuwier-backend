@@ -346,12 +346,15 @@ class AuthUserService implements AuthUserServiceInterface
         return ['status' => true, 'message' => __('message.password_changed_successfully')];
     }
 
-    public function changeEmail(string $email): array
+    public function changeEmail(string $email, string $password): array
     {
         $user = auth('api')->user();
 
         if ($user->email == $email)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.new_email_must_be_different')];
+
+        if (!Hash::check($user->password, $password))
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.invalid_password')];
 
         $result = $this->verifyService->sendVerificationCode([
             'email' => $email,

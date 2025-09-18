@@ -24,7 +24,7 @@ interface AuthUserServiceInterface
 
     public function changePassword(string $currentPassword, string $newPassword): array;
 
-    public function changeEmail(string $email): array;
+    public function changeEmail(string $email, string $password): array;
 
     public function verifyChangeEmail(string $email, string $otp): array;
 }

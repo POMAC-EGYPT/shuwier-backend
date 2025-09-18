@@ -944,31 +944,64 @@ class AuthController extends Controller
     }
 
     /**
-     * Change Email (after login).
-     *
-     * This endpoint allows logged-in users to change their email.
-     * A verification code will be sent to the new email.
-     *
+     * Change Email Address.
+     * 
+     * This endpoint allows authenticated users to change their email address by providing a new email 
+     * and confirming their current password. A verification code will be sent to the new email address 
+     * for verification. The user must then use the verifyChangeEmail endpoint to complete the email change.
+     * 
      * @authenticated
-     *
-     * @bodyParam new_email string required The new email address (must be unique). Example: newemail@example.com
-     *
-     * @response 200 scenario="Email change initiated" {
+     * 
+     * @bodyParam email string required The new email address (must be unique and valid). Example: newemail@example.com
+     * @bodyParam password string required Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: CurrentPassword123!
+     * @bodyParam password_confirmation string required Password confirmation (must match password). Example: CurrentPassword123!
+     * 
+     * @response 200 scenario="Email change initiated successfully" {
      *   "status": true,
      *   "error_num": null,
      *   "message": "Verification code sent to new email address"
      * }
      *
-     * @response 400 scenario="Verification session expired" {
+     * @response 400 scenario="Current password incorrect" {
      *   "status": false,
      *   "error_num": 400,
-     *   "message": "Verification session expired"
+     *   "message": "Current password is incorrect"
      * }
      *
-     * @response 400 scenario="New email already taken" {
+     * @response 400 scenario="New email already exists" {
      *   "status": false,
      *   "error_num": 400,
-     *   "message": "The new email has already been taken."
+     *   "message": "The email has already been taken."
+     * }
+     *
+     * @response 400 scenario="New email in invitation list" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email is already in the invitation list."
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     *
+     * @response 400 scenario="Validation error - Password confirmation mismatch" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The password confirmation does not match."
+     * }
+     *
+     * @response 400 scenario="Validation error - Invalid email format" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email must be a valid email address."
+     * }
+     *
+     * @response 400 scenario="Validation error - Missing fields" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email field is required."
      * }
      */
     public function changeEmail(Request $request)
@@ -980,14 +1013,13 @@ class AuthController extends Controller
                 'unique:users,email',
                 'unique:invitation_users,email',
             ],
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $user = auth('api')->user();
-
-        $result = $this->authUserService->changeEmail($request->email);
+        $result = $this->authUserService->changeEmail($request->email, $request->password);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
