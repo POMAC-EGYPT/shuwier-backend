@@ -63,7 +63,6 @@ class RegisterRequest extends FormRequest
                 'email:rfc,dns',
                 'max:255',
                 'unique:users',
-                'unique:invitation_users,email',
                 new EmailRule,
             ],
             'password'                         => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',

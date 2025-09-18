@@ -47,6 +47,12 @@ class AuthUserService implements AuthUserServiceInterface
 
     public function register(array $data): array
     {
+        // Check if user already exists in invitation users table and user registered as client
+        $user = $this->invitationUserRepo->getByEmail($data['email']);
+
+        if ($user && $data['type'] == UserType::CLIENT->value)
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.user_already_registered')];
+
         $result = $this->verifyService->sendVerificationCode([
             'name' => $data['name'],
             'email' => $data['email'],
