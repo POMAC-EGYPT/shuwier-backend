@@ -38,7 +38,7 @@ class InvitationFreelancerService implements InvitationFreelancerServiceInterfac
             'expired_at' => now()->addDays(7),
         ]);
 
-        Mail::to($email)->send(new InvitationFreelancerMail($email));
+        Mail::to($email)->queue(new InvitationFreelancerMail($email));
 
         return ['status' => true, 'message' => __('message.invitation_sent_successfully')];
     }
