@@ -1198,17 +1198,19 @@ endpoints:
         name: password
         description: 'Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character).'
         required: true
-        example: CurrentPassword123!
+        example: |-
+          CurrentPassword123!
+          **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      password_confirmation:
-        name: password_confirmation
-        description: 'Password confirmation (must match password).'
+      email_confirmation:
+        name: email_confirmation
+        description: 'Email confirmation (must match email).'
         required: true
-        example: CurrentPassword123!
+        example: newemail@example.com
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -1216,8 +1218,10 @@ endpoints:
         custom: []
     cleanBodyParameters:
       email: newemail@example.com
-      password: CurrentPassword123!
-      password_confirmation: CurrentPassword123!
+      password: |-
+        CurrentPassword123!
+        **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.
+      email_confirmation: newemail@example.com
     fileParameters: []
     responses:
       -

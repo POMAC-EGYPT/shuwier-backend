@@ -953,9 +953,10 @@ class AuthController extends Controller
      * @authenticated
      * 
      * @bodyParam email string required The new email address (must be unique and valid). Example: newemail@example.com
+     * @bodyParam email_confirmation string required Email confirmation (must match email). Example: newemail@example.com
      * @bodyParam password string required Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: CurrentPassword123!
-     * @bodyParam password_confirmation string required Password confirmation (must match password). Example: CurrentPassword123!
-     * 
+     * **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.
+     *
      * @response 200 scenario="Email change initiated successfully" {
      *   "status": true,
      *   "error_num": null,
@@ -1012,6 +1013,8 @@ class AuthController extends Controller
                 'email:rfc,dns',
                 'unique:users,email',
                 'unique:invitation_users,email',
+                'confirmed',
+                new EmailRule
             ],
             'password' => 'required|string|min:8',
         ]);

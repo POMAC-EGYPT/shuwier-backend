@@ -320,7 +320,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 18, 2025</li>
+        <li>Last updated: September 21, 2025</li>
     </ul>
 </div>
 
@@ -3021,7 +3021,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"approved\",
+    \"approval_status\": \"requested\",
     \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3049,7 +3049,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "approved",
+    "approval_status": "requested",
     "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3276,10 +3276,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="approved"
+               value="requested"
                data-component="body">
     <br>
-<p>Example: <code>approved</code></p>
+<p>Example: <code>requested</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -5809,7 +5809,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiqsgrM" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5BTvmN" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5978,7 +5978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiqsgrM</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5BTvmN</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9435,8 +9435,8 @@ for verification. The user must then use the verifyChangeEmail endpoint to compl
     --header "Accept-Language: en" \
     --data "{
     \"email\": \"newemail@example.com\",
-    \"password\": \"CurrentPassword123!\",
-    \"password_confirmation\": \"CurrentPassword123!\"
+    \"password\": \"CurrentPassword123!\\n**Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.\",
+    \"email_confirmation\": \"newemail@example.com\"
 }"
 </code></pre></div>
 
@@ -9454,8 +9454,8 @@ const headers = {
 
 let body = {
     "email": "newemail@example.com",
-    "password": "CurrentPassword123!",
-    "password_confirmation": "CurrentPassword123!"
+    "password": "CurrentPassword123!\n**Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.",
+    "email_confirmation": "newemail@example.com"
 };
 
 fetch(url, {
@@ -9654,21 +9654,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-change-email"
-               value="CurrentPassword123!"
+               value="CurrentPassword123!
+**Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse."
                data-component="body">
     <br>
-<p>Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: <code>CurrentPassword123!</code></p>
+<p>Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: <code>CurrentPassword123! **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+            <b style="line-height: 2;"><code>email_confirmation</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="password_confirmation"                data-endpoint="POSTapi-auth-change-email"
-               value="CurrentPassword123!"
+                              name="email_confirmation"                data-endpoint="POSTapi-auth-change-email"
+               value="newemail@example.com"
                data-component="body">
     <br>
-<p>Password confirmation (must match password). Example: <code>CurrentPassword123!</code></p>
+<p>Email confirmation (must match email). Example: <code>newemail@example.com</code></p>
         </div>
         </form>
 
@@ -11001,7 +11002,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpo7sBwa" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaEeArh" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11162,7 +11163,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpo7sBwa</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaEeArh</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
