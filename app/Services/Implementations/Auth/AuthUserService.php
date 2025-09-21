@@ -359,7 +359,8 @@ class AuthUserService implements AuthUserServiceInterface
         if ($user->email == $email)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.new_email_must_be_different')];
 
-        if (!Hash::check($user->password, $password))
+        if (!Hash::check($password, $user->password))
+            
             return ['status' => false, 'error_num' => 400, 'message' => __('message.invalid_password')];
 
         $result = $this->verifyService->sendVerificationCode([
