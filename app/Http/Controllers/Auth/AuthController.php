@@ -949,13 +949,13 @@ class AuthController extends Controller
      * This endpoint allows authenticated users to change their email address by providing a new email 
      * and confirming their current password. A verification code will be sent to the new email address 
      * for verification. The user must then use the verifyChangeEmail endpoint to complete the email change.
+     * **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.
      * 
      * @authenticated
      * 
      * @bodyParam email string required The new email address (must be unique and valid). Example: newemail@example.com
      * @bodyParam email_confirmation string required Email confirmation (must match email). Example: newemail@example.com
      * @bodyParam password string required Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: CurrentPassword123!
-     * **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.
      *
      * @response 200 scenario="Email change initiated successfully" {
      *   "status": true,

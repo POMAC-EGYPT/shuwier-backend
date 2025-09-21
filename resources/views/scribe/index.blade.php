@@ -3021,7 +3021,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
+    \"approval_status\": \"approved\",
     \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3049,7 +3049,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
+    "approval_status": "approved",
     "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3276,10 +3276,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -5809,7 +5809,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5BTvmN" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php4tuHrd" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5978,7 +5978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5BTvmN</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php4tuHrd</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9421,7 +9421,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <p>This endpoint allows authenticated users to change their email address by providing a new email
 and confirming their current password. A verification code will be sent to the new email address
-for verification. The user must then use the verifyChangeEmail endpoint to complete the email change.</p>
+for verification. The user must then use the verifyChangeEmail endpoint to complete the email change.
+<strong>Rate Limiting:</strong> This endpoint is limited to 3 attempts per week per user to prevent abuse.</p>
 
 <span id="example-requests-POSTapi-auth-change-email">
 <blockquote>Example request:</blockquote>
@@ -9435,7 +9436,7 @@ for verification. The user must then use the verifyChangeEmail endpoint to compl
     --header "Accept-Language: en" \
     --data "{
     \"email\": \"newemail@example.com\",
-    \"password\": \"CurrentPassword123!\\n**Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.\",
+    \"password\": \"CurrentPassword123!\",
     \"email_confirmation\": \"newemail@example.com\"
 }"
 </code></pre></div>
@@ -9454,7 +9455,7 @@ const headers = {
 
 let body = {
     "email": "newemail@example.com",
-    "password": "CurrentPassword123!\n**Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.",
+    "password": "CurrentPassword123!",
     "email_confirmation": "newemail@example.com"
 };
 
@@ -9654,11 +9655,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-change-email"
-               value="CurrentPassword123!
-**Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse."
+               value="CurrentPassword123!"
                data-component="body">
     <br>
-<p>Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: <code>CurrentPassword123! **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.</code></p>
+<p>Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: <code>CurrentPassword123!</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email_confirmation</code></b>&nbsp;&nbsp;
@@ -11002,7 +11002,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaEeArh" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0iYNL7" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11163,7 +11163,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaEeArh</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0iYNL7</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
