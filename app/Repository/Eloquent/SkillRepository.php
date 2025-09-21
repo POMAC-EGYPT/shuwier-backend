@@ -14,7 +14,9 @@ class SkillRepository implements SkillRepositoryInterface
         return Skill::with('category')->when($search, function ($query) use ($search) {
             $query->where('name_ar', 'like', '%' . $search . '%')
                 ->orWhere('name_en', 'like', '%' . $search . '%');
-        })->paginate($perPage);
+        })
+            ->orderByDesc('created_at')
+            ->paginate($perPage);
     }
 
     public function getAll(): ?Collection
