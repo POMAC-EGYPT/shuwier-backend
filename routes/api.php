@@ -18,7 +18,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password');
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password');
     Route::post('/change-password', [AuthController::class, 'changePassword'])->name('change-password')->middleware('auth:api');
-    Route::post('/change-email', [AuthController::class, 'changeEmail'])->name('change-email')->middleware(['auth:api', 'throttle:3,10080']);
+    Route::post('/change-email', [AuthController::class, 'changeEmail'])->name('change-email')->middleware(['auth:api']);
     Route::post('/verify-change-email', [AuthController::class, 'verifyChangeEmail'])->name('verify-change-email')->middleware('auth:api');
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');
     Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
