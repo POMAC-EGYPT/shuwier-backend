@@ -66,11 +66,13 @@ class SkillService implements SkillServiceInterface
 
         $skill = $this->skillRepo->findById($id);
 
-        $skill = $this->skillRepo->update($id, [
+        $this->skillRepo->update($id, [
             'name_ar'     => $data['name_ar'],
             'name_en'     => $data['name_en'],
             'category_id' => $data['category_id'] ?? null,
         ]);
+
+        $skill->refresh();
 
         return ['status' => true, 'message' => __('message.skill_updated_successfully'), 'data' => $skill];
     }
