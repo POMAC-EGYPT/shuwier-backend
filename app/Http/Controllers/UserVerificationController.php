@@ -49,8 +49,8 @@ class UserVerificationController extends Controller
     public function sendRequest(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'document_one' => 'required|file|mimes:png,jpg,jpeg,webp,pdf|max:2048',
-            'document_two' => 'sometimes|nullable|file|mimes:png,jpg,jpeg,webp,pdf|max:2048',
+            'document_one' => 'required|file|mimes:png,jpg,jpeg,webp|max:2048',
+            'document_two' => 'sometimes|nullable|file|mimes:png,jpg,jpeg,webp|max:2048',
         ]);
 
         if ($validator->fails())
