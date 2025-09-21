@@ -112,4 +112,5 @@ return [
     'cover_must_be_an_image' => 'Cover must be an image (jpg, jpeg, png, webp)',
     'new_email_must_be_different' => 'New email must be different',
     'email_changed_successfully' => 'Email changed successfully',
+    'too_many_requests' => 'Too many requests. Please try again later.',
 ];
