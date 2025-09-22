@@ -113,8 +113,6 @@ class InvitationFreelancerController extends Controller
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        // Logic to send invitation email goes here.
-        // This could involve creating a record in the database and sending an email.
         $result = $this->invitationService->sendInvitation($request->email);
 
         if (!$result['status'])

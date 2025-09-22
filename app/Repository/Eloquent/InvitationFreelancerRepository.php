@@ -10,7 +10,7 @@ class InvitationFreelancerRepository implements InvitationFreelancerRepositoryIn
 {
     public function getAllPaginated(?int $perPage = 10): LengthAwarePaginator
     {
-        return InvitationUser::paginate($perPage);
+        return InvitationUser::orderByDesc('created_at')->paginate($perPage);
     }
 
     public function getById(int $id): InvitationUser
