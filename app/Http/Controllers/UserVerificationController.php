@@ -22,7 +22,9 @@ class UserVerificationController extends Controller
      * Submit documents for user verification. Users can upload one or two verification documents.
      * 
      * @group User Verification
+    
      * @authenticated
+     
      * @bodyParam document_one file required The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: No-example
      * @bodyParam document_two file optional The second verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: No-example
      * @response 200 {

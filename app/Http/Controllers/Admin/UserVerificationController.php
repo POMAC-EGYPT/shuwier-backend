@@ -30,7 +30,10 @@ class UserVerificationController extends Controller
      * Retrieve a paginated list of user verification requests with optional status filtering.
      * 
      * @group Admin User Verification
+     * 
      * @queryParam status string Filter by verification status. Allowed values: pending, approved. Example: pending
+     * @queryParam search string Optional search term to filter requests by user name or email. Example: john
+     * 
      * @response 200 {
      *   "message": "User verification requests retrieved successfully",
      *   "status": true,
@@ -61,12 +64,13 @@ class UserVerificationController extends Controller
     {
         $validator = validator($request->all(), [
             'status' => 'sometimes|nullable|in:pending,approved',
+            'search' => 'sometimes|nullable|string',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $result = $this->userVerificationService->getAllWithFilterPaginated($request->status, 10);
+        $result = $this->userVerificationService->getAllWithFilterPaginated($request->status, 10, $request->search);
 
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);

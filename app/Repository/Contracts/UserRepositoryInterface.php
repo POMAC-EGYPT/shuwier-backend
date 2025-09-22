@@ -25,5 +25,5 @@ interface UserRepositoryInterface
 
     public function findByType(int $id, string $type): ?User;
 
-    public function getRequestVerifications(?string $status = null, ?int $perPage = 10): ?LengthAwarePaginator;
+    public function getRequestVerifications(?string $status = null, ?int $perPage = 10, ?string $search = null): ?LengthAwarePaginator;
 }

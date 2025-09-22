@@ -34,8 +34,19 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      search:
+        name: search
+        description: 'Optional search term to filter requests by user name or email.'
+        required: false
+        example: john
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
     cleanQueryParameters:
       status: pending
+      search: john
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []

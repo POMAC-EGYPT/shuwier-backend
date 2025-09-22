@@ -39,9 +39,9 @@ class UserVerificationService implements UserVerificationServiceInterface
         return ['status' => true, 'message' => __('message.verification_request_sent_successfully'), 'data' => $data];
     }
 
-    public function getAllWithFilterPaginated(?string $status = null, ?int $perPage = 10): array
+    public function getAllWithFilterPaginated(?string $status = null, ?int $perPage = 10, ?string $search = null): array
     {
-        $users = $this->userRepo->getRequestVerifications($status, $perPage);
+        $users = $this->userRepo->getRequestVerifications($status, $perPage, $search);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $users];
     }
