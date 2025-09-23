@@ -50,11 +50,13 @@ use App\Services\Implementations\LanguageService;
 use App\Services\Implementations\PortfolioService;
 use App\Services\Implementations\SkillService;
 use App\Repository\Eloquent\UserVerificationRepository;
+use App\Services\Contracts\HashtagServiceInterface;
 use App\Services\Implementations\UserVerificationService;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
 use App\Services\Upload\Factory\UploadStrategyFactory;
 use App\Services\Upload\Strategies\PortfolioUpload;
 use App\Services\Contracts\InvitationFreelancerServiceInterface;
+use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\InvitationFreelancerService;
 
 class AppServiceProvider extends ServiceProvider
@@ -85,6 +87,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PortfolioServiceInterface::class, PortfolioService::class);
 
         $this->app->bind(HashtagRepositoryInterface::class, HashtagRepository::class);
+        $this->app->bind(HashtagServiceInterface::class, HashtagService::class);
+        
         $this->app->bind(PortfolioAttachmentRepositoryInterface::class, PortfolioAttachmentRepository::class);
 
         $this->app->bind(SkillRepositoryInterface::class, SkillRepository::class);

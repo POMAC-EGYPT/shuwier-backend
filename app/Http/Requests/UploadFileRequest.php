@@ -38,7 +38,7 @@ class UploadFileRequest extends FormRequest
     {
         return [
             'file' => 'required|file|mimes:pdf,jpeg,jpg,png,webp,doc,docx,xls,xlsx|max:5120',
-            'type' => 'required|string|in:portfolio',
+            'type' => 'required|string|in:portfolio,service',
         ];
     }
 

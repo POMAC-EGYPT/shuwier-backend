@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Freelancer\PortfolioController;
+use App\Http\Controllers\HashtagController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
@@ -49,6 +50,9 @@ Route::get('/categories', [CategoryController::class, 'index'])
 
 Route::get('/skills', [SkillController::class, 'index'])
     ->name('skills.index');
+
+Route::get('/hashtags', [HashtagController::class, 'index'])
+    ->name('hashtags.index');
 
 Route::post('/verifications', [UserVerificationController::class, 'sendRequest'])
     ->middleware('auth:api')->name('user.verification.sendRequest');

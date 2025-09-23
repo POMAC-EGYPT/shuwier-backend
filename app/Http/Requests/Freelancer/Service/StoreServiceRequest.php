@@ -22,22 +22,22 @@ class StoreServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'title' => 'required|string|max:255',
-            // 'description' => 'required|string|min:200|max:2000',
-            // 'category_id' => 'required|exists:categories,id',
-            // 'subcategory_id' => 'nullable|exists:categories,id',
-            // 'hashtags' => 'nullable|array',
-            // 'hashtags.*' => 'string|max:255',
-            // 'delivery_time_unit' => 'required|in:hours,days,months',
-            // 'delivery_time' => 'required|integer|min:1',
-            // 'service_fees_type' => 'required|in:fixed,hourly',
-            // 'price' => 'required|numeric|min:0',
-            // 'cover_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            // 'attachments' => 'nullable|array',
-            // 'attachments.*' => 'file|mimes:jpeg,png,jpg,gif,pdf|max:5120',
-            // 'faqs' => 'nullable|array',
-            // 'faqs.*.question' => 'required_with:faqs|string|max:255',
-            // 'faqs.*.answer' => 'required_with:faqs|string|max:1000',
+            'title'              => 'required|string|max:255',
+            'description'        => 'required|string|min:200|max:2000',
+            'category_id'        => 'required|exists:categories,id',
+            'subcategory_id'     => 'nullable|exists:categories,id',
+            'delivery_time_unit' => 'required|in:hours,days,months',
+            'delivery_time'      => 'required|integer|min:1',
+            'fees_type'          => 'required|in:fixed,hourly',
+            'price'              => 'required|numeric|min:0',
+            'cover_photo'        => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'hashtags'           => 'nullable|array',
+            'hashtags.*'         => 'string|max:255',
+            'attachment_ids'     => 'nullable|array',
+            'attachment_ids.*'   => 'exists:service_attachments,id',
+            'faqs'               => 'nullable|array',
+            'faqs.*.question'    => 'required_with:faqs|string|max:255',
+            'faqs.*.answer'      => 'required_with:faqs|string|max:1000',
         ];
     }
 }
