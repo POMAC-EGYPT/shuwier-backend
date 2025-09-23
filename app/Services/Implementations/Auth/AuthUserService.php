@@ -310,8 +310,11 @@ class AuthUserService implements AuthUserServiceInterface
                 if (array_key_exists('company', $data))
                     $userData['company'] = $data['company'];
 
-                if (array_key_exists('phone', $data))
+                if (array_key_exists('phone', $data)) {
                     $userData['phone'] = $data['phone'];
+                    $userData['country_code'] = $data['country_code'];
+                    $userData['phone_number'] = $data['phone_number'];
+                }
 
                 if (array_key_exists('profile_picture', $data))
                     $userData['profile_picture'] = $profilePicturePath ?? $user->profile_picture;

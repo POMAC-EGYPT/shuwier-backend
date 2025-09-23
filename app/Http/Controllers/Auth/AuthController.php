@@ -860,6 +860,8 @@ class AuthController extends Controller
             'skill_ids',
             'company',
             'phone',
+            'country_code',
+            'phone_number',
             'country',
             'city',
             'languages',

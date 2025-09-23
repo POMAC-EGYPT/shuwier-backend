@@ -113,4 +113,6 @@ return [
     'new_email_must_be_different' => 'New email must be different',
     'email_changed_successfully' => 'Email changed successfully',
     'too_many_requests' => 'Too many requests. Please try again later.',
+    'invalid_phone_number_format' => 'Invalid phone number format',
+    'invalid_phone_number' => 'Invalid phone number',
 ];

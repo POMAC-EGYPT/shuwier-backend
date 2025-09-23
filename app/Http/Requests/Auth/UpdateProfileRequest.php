@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Contracts\Validation\Validator;
+use libphonenumber\PhoneNumberUtil;
 
 /**
  * @property string $type
@@ -78,9 +79,8 @@ class UpdateProfileRequest extends FormRequest
             $rules = array_merge($rules, [
                 'company'     => 'sometimes|nullable|string|max:255',
                 'phone'       => [
-                    'sometimes',
-                    'nullable',
-                    'regex:/^\+9665[0-9]{8}$/'
+                    'required',
+                    'regex:/^\+[1-9][0-9]{7,14}$/',
                 ],
                 'headline'    => 'prohibited',
                 'category_id' => 'prohibited',
@@ -108,6 +108,25 @@ class UpdateProfileRequest extends FormRequest
                 'phone',
             ])) {
                 $validator->errors()->add('update_profile', __('message.you_must_provide_at_least_one_field_to_update'));
+            }
+            if ($this->filled('phone')) {
+                $phoneUtil = PhoneNumberUtil::getInstance();
+
+                try {
+                    $number = $phoneUtil->parse($this->phone, null);
+
+                    if (!$phoneUtil->isValidNumber($number)) {
+                        $validator->errors()->add('phone', __('message.invalid_phone_number'));
+                        return;
+                    }
+
+                    $this->merge([
+                        'country_code' => '+' . $number->getCountryCode(),
+                        'phone_number' => $number->getNationalNumber(),
+                    ]);
+                } catch (\Exception $e) {
+                    $validator->errors()->add('phone', __('message.invalid_phone_number_format'));
+                }
             }
         });
     }
@@ -170,7 +189,7 @@ class UpdateProfileRequest extends FormRequest
                 'example' => 'Tech Solutions Inc.'
             ],
             'phone' => [
-                'description' => 'Phone number in Saudi format (for clients only, optional)',
+                'description' => 'Phone number in E.164 format (for clients only, required, e.g. +966501234567)',
                 'example' => '+966501234567'
             ]
         ];
