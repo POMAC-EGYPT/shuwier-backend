@@ -11,6 +11,7 @@ use App\Repository\Contracts\InvitationFreelancerRepositoryInterface;
 use App\Repository\Contracts\LanguageRepositoryInterface;
 use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Repository\Contracts\PortfolioRepositoryInterface;
+use App\Repository\Contracts\ServiceRepositoryInterface;
 use App\Repository\Contracts\SkillRepositoryInterface;
 use App\Repository\Contracts\UserLanguageRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
@@ -24,6 +25,7 @@ use App\Repository\Eloquent\LanguageRepository;
 use App\Repository\Eloquent\PortfolioRepository;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\PortfolioAttachmentRepository;
+use App\Repository\Eloquent\ServiceRepository;
 use App\Repository\Eloquent\SkillRepository;
 use App\Repository\Eloquent\UserLanguageRepository;
 use App\Services\Contracts\Auth\AuthAdminServiceInterface;
@@ -102,13 +104,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
         $this->app->bind(LanguageServiceInterface::class, LanguageService::class);
 
-        
+
         $this->app->bind(UserVerificationRepositoryInterface::class, UserVerificationRepository::class);
 
         $this->app->bind(UserVerificationServiceInterface::class, UserVerificationService::class);
 
         $this->app->bind(InvitationFreelancerRepositoryInterface::class, InvitationFreelancerRepository::class);
         $this->app->bind(InvitationFreelancerServiceInterface::class, InvitationFreelancerService::class);
+
+        $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
+        // $this->app->bind(ServiceServiceInterface::class, ServiceService::class);
     }
 
     /**

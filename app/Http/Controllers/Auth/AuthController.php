@@ -743,7 +743,7 @@ class AuthController extends Controller
      * @bodyParam city string sometimes User city (max 100 characters, optional). Example: Riyadh
      * @bodyParam languages array sometimes Array of user languages (optional). Example: [{"language_id": 1, "language_level": "native"}, {"language_id": 2, "language_level": "advanced"}]
      * @bodyParam languages.*.language_id integer Language ID (must exist in languages table). Example: 1
-     * @bodyParam languages.*.language_level string Language proficiency level (beginner, intermediate, advanced, native). Example: advanced
+     * @bodyParam languages.*.language_level string Language proficiency level (basic, intermediate, advanced, native). Example: advanced
      * @bodyParam headline string sometimes Professional headline (for freelancers only, optional). Example: Full Stack Developer
      * @bodyParam category_id integer sometimes Main category ID (for freelancers only, optional, must exist in categories). Example: 1
      * @bodyParam skill_ids array sometimes Array of skill IDs (for freelancers only, optional). Example: [1, 2, 3]

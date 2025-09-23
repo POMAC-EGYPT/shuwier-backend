@@ -14,4 +14,9 @@ class Hashtag extends Model
     {
         return $this->belongsToMany(Portfolio::class, 'portfolio_hashtags', 'hashtag_id', 'portfolio_id');
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'service_hashtags', 'hashtag_id', 'service_id');
+    }
 }

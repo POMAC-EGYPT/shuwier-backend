@@ -59,7 +59,7 @@ class UpdateProfileRequest extends FormRequest
             'city'                          => 'sometimes|required_with:country|string|max:100',
             'languages'                     => 'sometimes|array',
             'languages.*.language_id'       => 'required_with:languages.*|exists:languages,id',
-            'languages.*.language_level'    => 'required_with:languages.*|in:beginner,intermediate,advanced,native',
+            'languages.*.language_level'    => 'required_with:languages.*|in:basic,intermediate,advanced,native',
 
         ];
 
