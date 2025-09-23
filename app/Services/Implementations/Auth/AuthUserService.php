@@ -298,7 +298,7 @@ class AuthUserService implements AuthUserServiceInterface
                 return $user;
             });
         } elseif ($user->type == UserType::CLIENT->value) {
-            $userTransaction = DB::transaction(function () use ($user, $data) {
+            $userTransaction = DB::transaction(function () use ($user, $data, $profilePicturePath) {
                 $userData = [];
 
                 if (array_key_exists('name', $data))
@@ -360,7 +360,7 @@ class AuthUserService implements AuthUserServiceInterface
             return ['status' => false, 'error_num' => 400, 'message' => __('message.new_email_must_be_different')];
 
         if (!Hash::check($password, $user->password))
-            
+
             return ['status' => false, 'error_num' => 400, 'message' => __('message.invalid_password')];
 
         $result = $this->verifyService->sendVerificationCode([
