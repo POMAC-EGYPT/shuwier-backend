@@ -20,6 +20,8 @@ class ClientResource extends JsonResource
             'email'                          => $this->email,
             'email_verified_at'              => $this->email_verified_at,
             'phone'                          => $this->phone,
+            'country_code'                   => $this->country_code,
+            'phone_number'                   => $this->phone_number,
             'type'                           => $this->type,
             'is_active'                      => $this->is_active,
             'about_me'                       => $this->about_me,
