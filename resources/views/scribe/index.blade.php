@@ -320,7 +320,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 22, 2025</li>
+        <li>Last updated: September 23, 2025</li>
     </ul>
 </div>
 
@@ -3021,7 +3021,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
+    \"approval_status\": \"approved\",
     \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3049,7 +3049,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
+    "approval_status": "approved",
     "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3276,10 +3276,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -5821,7 +5821,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpdE7jjs" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWDHh7K" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5990,7 +5990,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpdE7jjs</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWDHh7K</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -10583,7 +10583,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Language proficiency level. This field is required when <code>languages.*</code> is present. Example: <code>advanced</code></p>
 Must be one of:
-<ul style="list-style-type: square;"><li><code>beginner</code></li> <li><code>intermediate</code></li> <li><code>advanced</code></li> <li><code>native</code></li></ul>
+<ul style="list-style-type: square;"><li><code>basic</code></li> <li><code>intermediate</code></li> <li><code>advanced</code></li> <li><code>native</code></li></ul>
                     </div>
                                                                 <div style=" margin-left: 14px; clear: unset;">
         <details>
@@ -10614,7 +10614,7 @@ Must be one of:
                value="advanced"
                data-component="body">
     <br>
-<p>Language proficiency level (beginner, intermediate, advanced, native). Example: <code>advanced</code></p>
+<p>Language proficiency level (basic, intermediate, advanced, native). Example: <code>advanced</code></p>
                     </div>
                                     </details>
         </div>
@@ -11014,7 +11014,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpRn9493" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWeCAZq" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11175,7 +11175,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpRn9493</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWeCAZq</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

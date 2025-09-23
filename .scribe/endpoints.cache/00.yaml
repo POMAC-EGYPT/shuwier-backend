@@ -1768,7 +1768,7 @@ endpoints:
         example: advanced
         type: string
         enumValues:
-          - beginner
+          - basic
           - intermediate
           - advanced
           - native
@@ -1787,7 +1787,7 @@ endpoints:
         custom: []
       'languages.*.language_level':
         name: 'languages.*.language_level'
-        description: 'Language proficiency level (beginner, intermediate, advanced, native).'
+        description: 'Language proficiency level (basic, intermediate, advanced, native).'
         required: false
         example: advanced
         type: string
