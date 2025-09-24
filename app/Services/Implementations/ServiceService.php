@@ -114,9 +114,12 @@ class ServiceService implements ServiceServiceInterface
             }
 
             $service->refresh();
+
             $service->load(['faqs', 'attachments', 'hashtags']);
+
+            return $service;
         });
-        
+
         return ['status' => 'success', 'message' => __('message.success'), 'data' => $service];
     }
 
