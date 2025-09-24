@@ -52,7 +52,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
                 ];
             }
 
-            $otp = rand(1000, 9999);
+            $otp = 5555; //rand(1000, 9999);
             $cached['otp'] = $otp;
             $cached['otp_time'] = $now;
             $cached['send_time'] = $now;
@@ -67,7 +67,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
             ];
         }
 
-        $otp = rand(1000, 9999);
+        $otp = 5555; //rand(1000, 9999);
 
         Cache::put($key, [
             'data'         => $data,
@@ -131,7 +131,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
         }
 
         // Generate OTP
-        $otp = rand(1000, 9999);
+        $otp = 5555; //rand(1000, 9999);
 
         $cached['otp'] = $otp;
         $cached['otp_time'] = $now;
@@ -234,7 +234,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
         $data = $cached['data'];
         $data['email'] = $newEmail;
 
-        $otp = rand(1000, 9999);
+        $otp = 5555; //rand(1000, 9999);
 
         $newKey = "verify_{$newEmail}";
         Cache::put($newKey, [
