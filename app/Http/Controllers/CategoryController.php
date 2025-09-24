@@ -98,13 +98,11 @@ class CategoryController extends Controller
      *       {
      *         "id": 5,
      *         "name": "Backend Development",
-     *         "description": "Server-side development and API creation",
      *         "parent_id": 1,
      *       },
      *       {
      *         "id": 6,
      *         "name": "Full Stack Development",
-     *         "description": "Complete web application development",
      *         "parent_id": 1,
      *       }
      *     ]
