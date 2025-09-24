@@ -3,6 +3,9 @@
 namespace App\Http\Requests\Freelancer\Service;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Contracts\Validation\Validator;
 
 /**
  * StoreServiceRequest handles the validation for storing a new service by a freelancer.
@@ -28,6 +31,13 @@ class StoreServiceRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            Response::api($validator->errors()->first(), 400, false, 400)
+        );
     }
 
     /**

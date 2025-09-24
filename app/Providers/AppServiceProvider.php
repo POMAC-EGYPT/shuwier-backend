@@ -11,6 +11,8 @@ use App\Repository\Contracts\InvitationFreelancerRepositoryInterface;
 use App\Repository\Contracts\LanguageRepositoryInterface;
 use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Repository\Contracts\PortfolioRepositoryInterface;
+use App\Repository\Contracts\ServiceAttachmentRepositoryInterface;
+use App\Repository\Contracts\ServiceFaqRepositoryInterface;
 use App\Repository\Contracts\ServiceRepositoryInterface;
 use App\Repository\Contracts\SkillRepositoryInterface;
 use App\Repository\Contracts\UserLanguageRepositoryInterface;
@@ -25,6 +27,8 @@ use App\Repository\Eloquent\LanguageRepository;
 use App\Repository\Eloquent\PortfolioRepository;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\PortfolioAttachmentRepository;
+use App\Repository\Eloquent\ServiceAttachmentRepository;
+use App\Repository\Eloquent\ServiceFaqRepository;
 use App\Repository\Eloquent\ServiceRepository;
 use App\Repository\Eloquent\SkillRepository;
 use App\Repository\Eloquent\UserLanguageRepository;
@@ -56,8 +60,11 @@ use App\Services\Upload\Contracts\UploadStrategyInterface;
 use App\Services\Upload\Factory\UploadStrategyFactory;
 use App\Services\Upload\Strategies\PortfolioUpload;
 use App\Services\Contracts\InvitationFreelancerServiceInterface;
+use App\Services\Contracts\ServiceServiceInterface;
 use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\InvitationFreelancerService;
+use App\Services\Implementations\ServiceService;
+use App\Services\Upload\Strategies\ServiceUpload;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -88,17 +95,20 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(HashtagRepositoryInterface::class, HashtagRepository::class);
         $this->app->bind(HashtagServiceInterface::class, HashtagService::class);
-        
+
         $this->app->bind(PortfolioAttachmentRepositoryInterface::class, PortfolioAttachmentRepository::class);
+        $this->app->bind(ServiceAttachmentRepositoryInterface::class, ServiceAttachmentRepository::class);
 
         $this->app->bind(SkillRepositoryInterface::class, SkillRepository::class);
         $this->app->bind(SkillServiceInterface::class, SkillService::class);
 
         $this->app->bind(UploadStrategyInterface::class . '_portfolio', PortfolioUpload::class);
+        $this->app->bind(UploadStrategyInterface::class . '_service', ServiceUpload::class);
 
         $this->app->bind(UploadStrategyFactory::class, function ($app) {
             return new UploadStrategyFactory(
                 $app->make(UploadStrategyInterface::class . '_portfolio'),
+                $app->make(UploadStrategyInterface::class . '_service')
             );
         });
 
@@ -117,7 +127,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(InvitationFreelancerServiceInterface::class, InvitationFreelancerService::class);
 
         $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
-        // $this->app->bind(ServiceServiceInterface::class, ServiceService::class);
+        $this->app->bind(ServiceServiceInterface::class, ServiceService::class);
+
+        $this->app->bind(ServiceFaqRepositoryInterface::class, ServiceFaqRepository::class);
     }
 
     /**

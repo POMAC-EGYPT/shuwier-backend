@@ -15,7 +15,8 @@ class Service extends Model
         'delivery_time_unit',
         'service_fees_type',
         'price',
-        'cover_photo'
+        'cover_photo',
+        'user_id'
     ];
 
     public function category()

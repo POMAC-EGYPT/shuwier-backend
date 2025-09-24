@@ -8,6 +8,8 @@ class ServiceAttachment extends Model
 {
     protected $fillable = [
         'file_path',
+        'user_id',
+        
         'service_id'
     ];
 

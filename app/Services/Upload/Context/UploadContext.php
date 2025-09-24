@@ -15,7 +15,7 @@ class UploadContext
         $this->factory = $factory;
     }
 
-    public function upload(string $type, UploadedFile $file, int $userId): PortfolioAttachment
+    public function upload(string $type, UploadedFile $file, int $userId)
     {
         $strategy = $this->factory->getStrategy($type);
 

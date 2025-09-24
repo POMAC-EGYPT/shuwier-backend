@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('service_fees_type', ['fixed', 'hourly']);
             $table->decimal('price', 10, 2);
             $table->string('cover_photo');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

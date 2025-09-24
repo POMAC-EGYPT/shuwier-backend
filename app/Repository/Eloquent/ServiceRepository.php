@@ -10,7 +10,7 @@ class ServiceRepository implements ServiceRepositoryInterface
 {
     public function getByFreelancerIdPaginated(int $freelancerId, int $perPage = 10): LengthAwarePaginator
     {
-        return Service::where('freelancer_id', $freelancerId)
+        return Service::where('user_id', $freelancerId)
             ->orderByDesc('created_at')
             ->paginate($perPage);
     }

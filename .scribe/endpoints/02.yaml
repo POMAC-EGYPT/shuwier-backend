@@ -1,23 +1,160 @@
-name: 'File Upload'
+name: 'Service Management'
 description: |-
 
-  APIs for handling file uploads
+  APIs for managing freelancer services - creating, listing, updating and managing service offerings
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/upload
+      - GET
+    uri: api/freelancers/services
     metadata:
-      groupName: 'File Upload'
+      groupName: 'Service Management'
       groupDescription: |-
 
-        APIs for handling file uploads
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
       subgroup: ''
       subgroupDescription: ''
-      title: 'Upload file'
+      title: 'Get freelancer services'
       description: |-
-        Upload files for different purposes like portfolios, profile pictures, etc.
-        The uploaded file will be stored and return file information including the file path and attachment ID.
+        Retrieve all services created by the authenticated freelancer with pagination.
+        This endpoint returns a paginated list of the freelancer's service offerings including
+        title, description, pricing, delivery time, and other service details.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Number of services per page (minimum 1). Default is 10.'
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      per_page: 15
+    bodyParameters:
+      per_page:
+        name: per_page
+        description: 'Must be at least 1.'
+        required: false
+        example: 73
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      per_page: 73
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Success",
+            "status": true,
+            "data": {
+              "data": [
+                {
+                  "id": 1,
+                  "title": "WordPress Website Development",
+                  "description": "I will create a professional WordPress website for your business",
+                  "category": {
+                    "id": 1,
+                    "name": "Web Development"
+                  },
+                  "subcategory": {
+                    "id": 4,
+                    "name": "WordPress"
+                  },
+                  "delivery_time": 7,
+                  "delivery_time_unit": "days",
+                  "fees_type": "fixed",
+                  "price": 500.00,
+                  "cover_photo": "storage/services/cover_1.jpg",
+                  "hashtags": ["wordpress", "website", "development"],
+                  "created_at": "2025-09-24T10:00:00.000000Z"
+                }
+              ],
+              "current_page": 1,
+              "per_page": 10,
+              "total": 25,
+              "last_page": 3
+            }
+          }
+        headers: []
+        description: 'Services retrieved successfully'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Success",
+            "status": true,
+            "data": {
+              "data": [],
+              "current_page": 1,
+              "per_page": 10,
+              "total": 0,
+              "last_page": 1
+            }
+          }
+        headers: []
+        description: 'No services found'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The per page must be at least 1."
+          }
+        headers: []
+        description: 'Invalid per_page parameter'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/freelancers/services
+    metadata:
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create new service'
+      description: |-
+        Create a new service offering for the authenticated freelancer. This endpoint allows
+        freelancers to add new services to their profile with detailed information including
+        pricing, delivery time, cover photo, attachments, FAQs, and hashtags.
       authenticated: true
       deprecated: false
       custom: []
@@ -30,9 +167,89 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      file:
-        name: file
-        description: 'The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example:'
+      title:
+        name: title
+        description: 'Service title (max 255 characters).'
+        required: true
+        example: 'WordPress Website Development'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Detailed service description.'
+        required: true
+        example: 'I will create a professional WordPress website with custom design and functionality'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: 'Main category ID (must be a parent category).'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      subcategory_id:
+        name: subcategory_id
+        description: 'optional Subcategory ID (must belong to the selected category).'
+        required: false
+        example: 4
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      delivery_time_unit:
+        name: delivery_time_unit
+        description: 'Time unit for delivery. Must be one of: hours, days, weeks.'
+        required: true
+        example: days
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      delivery_time:
+        name: delivery_time
+        description: 'Delivery time in the specified unit.'
+        required: true
+        example: 7
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      fees_type:
+        name: fees_type
+        description: 'Pricing type. Must be one of: fixed, hourly.'
+        required: true
+        example: fixed
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      price:
+        name: price
+        description: 'Service price (minimum 0).'
+        required: true
+        example: 500.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      cover_photo:
+        name: cover_photo
+        description: 'Cover photo for the service (image file, max 2MB). Example:'
         required: true
         example: null
         type: file
@@ -40,72 +257,339 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
-      type:
-        name: type
-        description: 'The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate.'
-        required: true
-        example: portfolio
+      hashtags:
+        name: hashtags
+        description: 'optional Array of hashtag strings (max 255 characters each).'
+        required: false
+        example:
+          - wordpress
+          - website
+          - development
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      attachment_ids:
+        name: attachment_ids
+        description: 'optional Array of attachment IDs from uploaded files. Upload files first using /api/upload endpoint.'
+        required: false
+        example:
+          - 15
+          - 16
+          - 17
+        type: 'integer[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      faqs:
+        name: faqs
+        description: 'optional Array of FAQ objects with question and answer. Example:'
+        required: false
+        example: null
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      'faqs[].question':
+        name: 'faqs[].question'
+        description: 'This field is required when <code>faqs</code> is present. Must not be greater than 255 characters.'
+        required: false
+        example: iihfqcoynlazghdtqtqxb
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'faqs[].answer':
+        name: 'faqs[].answer'
+        description: 'This field is required when <code>faqs</code> is present. Must not be greater than 1000 characters.'
+        required: false
+        example: ajwbpilpmufinllwloauy
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'faqs.*.question':
+        name: 'faqs.*.question'
+        description: 'required_with:faqs FAQ question (max 500 characters).'
+        required: false
+        example: 'Do you provide hosting?'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'faqs.*.answer':
+        name: 'faqs.*.answer'
+        description: 'required_with:faqs FAQ answer (max 1000 characters).'
+        required: false
+        example: 'No, you need to provide your own hosting.'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      type: portfolio
+      title: 'WordPress Website Development'
+      description: 'I will create a professional WordPress website with custom design and functionality'
+      category_id: 1
+      subcategory_id: 4
+      delivery_time_unit: days
+      delivery_time: 7
+      fees_type: fixed
+      price: 500.0
+      hashtags:
+        - wordpress
+        - website
+        - development
+      attachment_ids:
+        - 15
+        - 16
+        - 17
+      faqs:
+        -
+          question: iihfqcoynlazghdtqtqxb
+          answer: ajwbpilpmufinllwloauy
     fileParameters:
-      file: null
+      cover_photo: null
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "File uploaded successfully",
+            "message": "Service created successfully",
             "status": true,
             "data": {
-              "id": 15,
-              "file_path": "storage/portfolios/66e1a5c4e8b47.jpg",
-              "user_id": 1,
-              "portfolio_id": null,
-              "created_at": "2024-09-11T10:30:00.000000Z",
-              "updated_at": "2024-09-11T10:30:00.000000Z"
+              "data": {
+                "id": 1,
+                "title": "WordPress Website Development",
+                "description": "I will create a professional WordPress website with custom design and functionality",
+                "category": {
+                  "id": 1,
+                  "name": "Web Development"
+                },
+                "subcategory": {
+                  "id": 4,
+                  "name": "WordPress"
+                },
+                "delivery_time": 7,
+                "delivery_time_unit": "days",
+                "fees_type": "fixed",
+                "price": 500.00,
+                "cover_photo": "storage/services/cover_1.jpg",
+                "hashtags": ["wordpress", "website", "development"],
+                "attachments": [
+                  {
+                    "id": 15,
+                    "file_path": "storage/services/attachment_15.pdf"
+                  }
+                ],
+                "faqs": [
+                  {
+                    "question": "Do you provide hosting?",
+                    "answer": "No, you need to provide your own hosting."
+                  }
+                ],
+                "created_at": "2025-09-24T10:00:00.000000Z"
+              }
             }
           }
         headers: []
-        description: ''
+        description: 'Service created successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "The file field is required.",
             "status": false,
-            "error_code": 400
+            "error_num": 400,
+            "message": "This category is not a parent category"
           }
         headers: []
-        description: ''
+        description: 'Invalid category'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "The selected type is invalid.",
             "status": false,
-            "error_code": 400
+            "error_num": 400,
+            "message": "This subcategory does not belong to the selected category"
           }
         headers: []
-        description: ''
+        description: 'Invalid subcategory'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "The file may not be greater than 5120 kilobytes.",
             "status": false,
-            "error_code": 400
+            "error_num": 400,
+            "message": "The title field is required."
           }
         headers: []
-        description: ''
+        description: 'Validation error'
         custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/freelancers/services/{id}'
+    metadata:
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the service.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"status":false,"error_num":401,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/freelancers/services/{id}'
+    metadata:
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the service.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/freelancers/services/{id}'
+    metadata:
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the service.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null

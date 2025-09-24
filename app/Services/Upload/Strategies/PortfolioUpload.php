@@ -6,7 +6,6 @@ use App\Helpers\ImageHelpers;
 use App\Models\PortfolioAttachment;
 use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
-use Illuminate\Http\UploadedFile;
 
 class PortfolioUpload implements UploadStrategyInterface
 {

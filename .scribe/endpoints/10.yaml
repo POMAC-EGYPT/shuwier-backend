@@ -1,27 +1,27 @@
-name: 'Admin Client Management'
+name: 'Admin Freelancer Management'
 description: |-
 
-  APIs for managing clients in the admin panel.
-  These endpoints allow administrators to view and manage client accounts,
-  including listing all clients and viewing individual client details.
+  APIs for managing freelancers in the admin panel.
+  These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+  including approving or rejecting freelancer applications.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/clients
+    uri: api/admin/freelancers
     metadata:
-      groupName: 'Admin Client Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing clients in the admin panel.
-        These endpoints allow administrators to view and manage client accounts,
-        including listing all clients and viewing individual client details.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display a listing of clients with optional filters.'
+      title: 'Display a listing of freelancers with optional filters.'
       description: |-
-        This endpoint returns a paginated list of all clients in the system.
-        Results can be filtered by client name for easy searching.
+        This endpoint returns a paginated list of all freelancers in the system.
+        Results can be filtered by approval status, active status, and name.
         The response includes pagination metadata for easy navigation.
       authenticated: true
       deprecated: false
@@ -33,11 +33,31 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
+      approval_status:
+        name: approval_status
+        description: 'Optional filter by approval status. Must be "requested" or "approved".'
+        required: false
+        example: requested
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Optional filter by active status. Must be 0 (inactive) or 1 (active).'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       name:
         name: name
-        description: 'Optional filter by client name (searches in name).'
+        description: 'Optional filter by freelancer name (searches in name).'
         required: false
-        example: سارة
+        example: أحمد
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -54,9 +74,35 @@ endpoints:
         nullable: false
         custom: []
     cleanQueryParameters:
-      name: سارة
+      approval_status: requested
+      is_active: 1
+      name: أحمد
       page: 2
     bodyParameters:
+      approval_status:
+        name: approval_status
+        description: ''
+        required: false
+        example: requested
+        type: string
+        enumValues:
+          - requested
+          - approved
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: ''
+        required: false
+        example: '1'
+        type: string
+        enumValues:
+          - '0'
+          - '1'
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
       name:
         name: name
         description: 'Must not be greater than 255 characters.'
@@ -68,6 +114,8 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
+      approval_status: requested
+      is_active: '1'
       name: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
@@ -77,52 +125,44 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "Clients retrieved successfully",
+            "message": "Success",
             "data": [
               {
                 "id": 1,
-                "name": "سارة",
-                "email": "sara@example.com",
+                "name": "John Doe",
+                "email": "john@example.com",
+                "type": "freelancer",
                 "email_verified_at": "2025-08-24T10:30:00.000000Z",
-                "phone": "+201234567890",
-                "type": "client",
-                "is_active": true,
-                "about_me": "مديرة مشاريع تقنية",
-                "profile_picture": null,
-                "company": "شركة التقنيات المتقدمة",
-                "created_at": "2025-08-24T10:30:00.000000Z",
-                "updated_at": "2025-08-24T10:30:00.000000Z"
-              },
-              {
-                "id": 2,
-                "name": "محمد",
-                "email": "mohamed@example.com",
-                "email_verified_at": "2025-08-25T10:30:00.000000Z",
-                "phone": "+201987654321",
-                "type": "client",
+                "phone": null,
                 "is_active": true,
                 "about_me": null,
                 "profile_picture": null,
-                "company": null,
-                "created_at": "2025-08-25T10:30:00.000000Z",
-                "updated_at": "2025-08-25T10:30:00.000000Z"
+                "approval_status": "requested",
+                "linkedin_link": "https://linkedin.com/in/johndoe",
+                "twitter_link": "https://twitter.com/johndoe",
+                "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+                "portfolio_link": "https://johndoe.com",
+                "headline": null,
+                "description": null,
+                "created_at": "2025-08-24T10:30:00.000000Z",
+                "updated_at": "2025-08-24T10:30:00.000000Z"
               }
             ],
             "current_page": 1,
             "from": 1,
-            "last_page": 3,
+            "last_page": 5,
             "per_page": 10,
             "to": 10,
-            "total": 25,
+            "total": 50,
             "links": {
-              "first": "http://localhost/api/admin/clients?page=1",
-              "last": "http://localhost/api/admin/clients?page=3",
+              "first": "http://localhost/api/admin/freelancers?page=1",
+              "last": "http://localhost/api/admin/freelancers?page=5",
               "prev": null,
-              "next": "http://localhost/api/admin/clients?page=2"
+              "next": "http://localhost/api/admin/freelancers?page=2"
             }
           }
         headers: []
-        description: 'Clients retrieved successfully'
+        description: ''
         custom: []
       -
         status: 400
@@ -130,10 +170,10 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The name field must be a string."
+            "message": "The approval_status field must be one of: requested, approved."
           }
         headers: []
-        description: 'Validation error'
+        description: ''
         custom: []
       -
         status: 401
@@ -166,20 +206,18 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/admin/clients/{id}'
+    uri: 'api/admin/freelancers/{id}'
     metadata:
-      groupName: 'Admin Client Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing clients in the admin panel.
-        These endpoints allow administrators to view and manage client accounts,
-        including listing all clients and viewing individual client details.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display the specified client details.'
-      description: |-
-        This endpoint returns detailed information about a specific client account.
-        Includes all client profile information and account status.
+      title: 'Display the specified freelancer details.'
+      description: ''
       authenticated: true
       deprecated: false
       custom: []
@@ -190,7 +228,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the client to view.'
+        description: 'The ID of the freelancer to view.'
         required: true
         example: 1
         type: integer
@@ -212,24 +250,30 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "Client retrieved successfully",
+            "message": "Success",
             "data": {
               "id": 1,
-              "name": "سارة أحمد",
-              "email": "sara@example.com",
+              "name": "John Doe",
+              "email": "john@example.com",
+              "type": "freelancer",
               "email_verified_at": "2025-08-24T10:30:00.000000Z",
-              "phone": "+201234567890",
-              "type": "client",
+              "phone": null,
               "is_active": true,
-              "about_me": "مديرة مشاريع تقنية مع خبرة 5 سنوات في إدارة فرق التطوير",
-              "profile_picture": "https://example.com/storage/profiles/sara.jpg",
-              "company": "شركة التقنيات المتقدمة",
+              "about_me": null,
+              "profile_picture": null,
+              "approval_status": "requested",
+              "linkedin_link": "https://linkedin.com/in/johndoe",
+              "twitter_link": "https://twitter.com/johndoe",
+              "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+              "portfolio_link": "https://johndoe.com",
+              "headline": null,
+              "description": null,
               "created_at": "2025-08-24T10:30:00.000000Z",
-              "updated_at": "2025-09-02T10:30:00.000000Z"
+              "updated_at": "2025-08-24T10:30:00.000000Z"
             }
           }
         headers: []
-        description: 'Client details retrieved successfully'
+        description: ''
         custom: []
       -
         status: 401
@@ -259,7 +303,7 @@ endpoints:
           {
             "status": false,
             "error_num": 404,
-            "message": "Client not found"
+            "message": "Freelancer not found"
           }
         headers: []
         description: ''
@@ -273,21 +317,21 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/clients/{id}'
+    uri: 'api/admin/freelancers/{id}'
     metadata:
-      groupName: 'Admin Client Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing clients in the admin panel.
-        These endpoints allow administrators to view and manage client accounts,
-        including listing all clients and viewing individual client details.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Delete a client account permanently.'
+      title: 'Delete a freelancer account permanently.'
       description: |-
-        This endpoint allows admins to permanently delete a client account from the system.
-        This action cannot be undone and will remove all associated data including profile information
-        and any project history. Use with caution as this is a destructive operation.
+        This endpoint allows admins to permanently delete a freelancer account from the system.
+        This action cannot be undone and will remove all associated data including profile information.
+        Use with caution as this is a destructive operation.
       authenticated: true
       deprecated: false
       custom: []
@@ -298,7 +342,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the client to delete.'
+        description: 'The ID of the freelancer to delete.'
         required: true
         example: 5
         type: integer
@@ -320,21 +364,10 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "Client deleted successfully"
+            "message": "Freelancer deleted successfully"
           }
         headers: []
-        description: 'Client deleted successfully'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "Cannot delete client with active projects"
-          }
-        headers: []
-        description: 'Client has active projects'
+        description: 'Freelancer deleted successfully'
         custom: []
       -
         status: 401
@@ -364,7 +397,7 @@ endpoints:
           {
             "status": false,
             "error_num": 404,
-            "message": "Client not found"
+            "message": "Freelancer not found"
           }
         headers: []
         description: ''
@@ -378,21 +411,182 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/admin/clients/block-unblock/{id}'
+    uri: 'api/admin/freelancers/approve-reject/{id}'
     metadata:
-      groupName: 'Admin Client Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing clients in the admin panel.
-        These endpoints allow administrators to view and manage client accounts,
-        including listing all clients and viewing individual client details.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Block or Unblock a client account.'
+      title: 'Approve or Reject a freelancer application.'
       description: |-
-        This endpoint allows admins to toggle the active status of a client account.
-        When blocked (is_active = false), the client cannot log in or access the platform.
-        When unblocked (is_active = true), the client can resume normal platform activities.
+        This endpoint allows admins to approve or reject freelancer applications.
+        When approving, the freelancer receives an email notification and can start working.
+        When rejecting, the freelancer account is permanently deleted.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the freelancer to approve/reject.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      action:
+        name: action
+        description: 'The action to perform. Must be either "approve" or "reject".'
+        required: true
+        example: approve
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      action: approve
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer approved successfully",
+            "data": {
+              "id": 14,
+              "name": "احمد حسني",
+              "email": "abdelrahmanelghonemypomac@gmail.com",
+              "type": "freelancer",
+              "email_verified_at": "2025-08-26T09:09:53.000000Z",
+              "phone": null,
+              "is_active": true,
+              "about_me": null,
+              "profile_picture": null,
+              "approval_status": "approved",
+              "linkedin_link": "https://www.linkedin.com/in/muhammed-yousry96?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXWDAHlI8QB2HsM6PFNaclA%3D%3D",
+              "twitter_link": "https://www.facebook.com/ahmedhosni516",
+              "other_freelance_platform_links": [
+                "https://www.google.com",
+                "https://www.google.com"
+              ],
+              "portfolio_link": "https://www.facebook.com/ahmedhosni516",
+              "headline": null,
+              "description": null,
+              "created_at": "2025-08-26T09:09:53.000000Z",
+              "updated_at": "2025-08-27T08:49:50.000000Z"
+            }
+          }
+        headers: []
+        description: 'Freelancer approved successfully'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer rejected successfully"
+          }
+        headers: []
+        description: 'Freelancer rejected successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Freelancer already approved"
+          }
+        headers: []
+        description: 'Freelancer already approved'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The action field is required."
+          }
+        headers: []
+        description: 'Invalid action parameter'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Freelancer not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/admin/freelancers/block-unblock/{id}'
+    metadata:
+      groupName: 'Admin Freelancer Management'
+      groupDescription: |-
+
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Block or Unblock a freelancer account.'
+      description: |-
+        This endpoint allows admins to toggle the active status of a freelancer account.
+        When blocked (is_active = false), the freelancer cannot log in or access the platform.
+        When unblocked (is_active = true), the freelancer can resume normal platform activities.
         This is a reversible action unlike deletion.
       authenticated: true
       deprecated: false
@@ -404,7 +598,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the client to block/unblock.'
+        description: 'The ID of the freelancer to block/unblock.'
         required: true
         example: 3
         type: integer
@@ -426,10 +620,10 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "Client blocked successfully"
+            "message": "Freelancer blocked successfully"
           }
         headers: []
-        description: 'Client blocked successfully'
+        description: 'Freelancer blocked successfully'
         custom: []
       -
         status: 200
@@ -437,10 +631,21 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "Client unblocked successfully"
+            "message": "Freelancer unblocked successfully"
           }
         headers: []
-        description: 'Client unblocked successfully'
+        description: 'Freelancer unblocked successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Cannot block/unblock unapproved freelancer"
+          }
+        headers: []
+        description: 'Freelancer not approved yet'
         custom: []
       -
         status: 401
@@ -470,7 +675,7 @@ endpoints:
           {
             "status": false,
             "error_num": 404,
-            "message": "Client not found"
+            "message": "Freelancer not found"
           }
         headers: []
         description: ''

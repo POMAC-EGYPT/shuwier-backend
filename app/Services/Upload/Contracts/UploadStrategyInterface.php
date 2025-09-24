@@ -8,5 +8,5 @@ interface UploadStrategyInterface
 {
     public function supports(string $type): bool;
 
-    public function store($file, int $userId): PortfolioAttachment;
+    public function store($file, int $userId);
 }

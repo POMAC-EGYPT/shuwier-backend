@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Freelancer\PortfolioController;
+use App\Http\Controllers\Freelancer\ServiceController;
 use App\Http\Controllers\HashtagController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SkillController;
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'freelancers'], function () {
     Route::apiResources(
         [
             'portfolios' => PortfolioController::class,
+            'services'   => ServiceController::class,
         ],
         [
             'middleware' => ['checkUserType:freelancer', 'checkFreelancerApproval'],
