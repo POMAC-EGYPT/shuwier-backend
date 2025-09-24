@@ -3056,8 +3056,8 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
-    \"is_active\": \"0\",
+    \"approval_status\": \"approved\",
+    \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3084,8 +3084,8 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
-    "is_active": "0",
+    "approval_status": "approved",
+    "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3311,10 +3311,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -3324,10 +3324,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -6055,7 +6055,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuBr83K" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5mnsaI" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6224,7 +6224,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuBr83K</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5mnsaI</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8095,9 +8095,9 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "price=500"\
     --form "hashtags[]=wordpress"\
     --form "attachment_ids[]=15"\
-    --form "faqs[][question]=iihfqcoynlazghdtqtqxb"\
-    --form "faqs[][answer]=ajwbpilpmufinllwloauy"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL4WLaz" </code></pre></div>
+    --form "faqs[][question]=amniihfqcoynlazghdtqt"\
+    --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxuX0k2" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -8122,8 +8122,8 @@ body.append('fees_type', 'fixed');
 body.append('price', '500');
 body.append('hashtags[]', 'wordpress');
 body.append('attachment_ids[]', '15');
-body.append('faqs[][question]', 'iihfqcoynlazghdtqtqxb');
-body.append('faqs[][answer]', 'ajwbpilpmufinllwloauy');
+body.append('faqs[][question]', 'amniihfqcoynlazghdtqt');
+body.append('faqs[][answer]', 'qxbajwbpilpmufinllwlo');
 body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
 
 fetch(url, {
@@ -8430,7 +8430,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL4WLaz</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxuX0k2</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -8473,10 +8473,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.0.question"                data-endpoint="POSTapi-freelancers-services"
-               value="iihfqcoynlazghdtqtqxb"
+               value="amniihfqcoynlazghdtqt"
                data-component="body">
     <br>
-<p>This field is required when <code>faqs</code> is present. Must not be greater than 255 characters. Example: <code>iihfqcoynlazghdtqtqxb</code></p>
+<p>This field is required when <code>faqs</code> is present. Must not be greater than 255 characters. Example: <code>amniihfqcoynlazghdtqt</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>answer</code></b>&nbsp;&nbsp;
@@ -8484,10 +8484,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.0.answer"                data-endpoint="POSTapi-freelancers-services"
-               value="ajwbpilpmufinllwloauy"
+               value="qxbajwbpilpmufinllwlo"
                data-component="body">
     <br>
-<p>This field is required when <code>faqs</code> is present. Must not be greater than 1000 characters. Example: <code>ajwbpilpmufinllwloauy</code></p>
+<p>This field is required when <code>faqs</code> is present. Must not be greater than 1000 characters. Example: <code>qxbajwbpilpmufinllwlo</code></p>
                     </div>
                                                                 <div style=" margin-left: 14px; clear: unset;">
         <details>
@@ -12751,7 +12751,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpH37a4i" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYsTQ5o" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -12912,7 +12912,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpH37a4i</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYsTQ5o</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
