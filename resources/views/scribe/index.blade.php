@@ -267,7 +267,7 @@
                                 <a href="#service-management-POSTapi-freelancers-services">Create new service</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="service-management-GETapi-freelancers-services--id-">
-                                <a href="#service-management-GETapi-freelancers-services--id-">Display the specified resource.</a>
+                                <a href="#service-management-GETapi-freelancers-services--id-">Get specific service</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="service-management-PUTapi-freelancers-services--id-">
                                 <a href="#service-management-PUTapi-freelancers-services--id-">Update the specified resource in storage.</a>
@@ -3057,7 +3057,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"requested\",
-    \"is_active\": \"1\",
+    \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3085,7 +3085,7 @@ const headers = {
 
 let body = {
     "approval_status": "requested",
-    "is_active": "1",
+    "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3324,10 +3324,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="1"
+               value="0"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>0</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -6055,7 +6055,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL1VRnR" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuBr83K" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6224,7 +6224,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL1VRnR</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuBr83K</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -7846,39 +7846,69 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Success&quot;,
     &quot;status&quot;: true,
-    &quot;data&quot;: {
-        &quot;data&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;title&quot;: &quot;WordPress Website Development&quot;,
-                &quot;description&quot;: &quot;I will create a professional WordPress website for your business&quot;,
-                &quot;category&quot;: {
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;WordPress Website Development&quot;,
+            &quot;description&quot;: &quot;I will create a professional WordPress website with custom design and functionality&quot;,
+            &quot;category_id&quot;: 4,
+            &quot;subcategory_id&quot;: 5,
+            &quot;delivery_time&quot;: 7,
+            &quot;delivery_time_unit&quot;: &quot;days&quot;,
+            &quot;service_fees_type&quot;: &quot;fixed&quot;,
+            &quot;price&quot;: &quot;500.00&quot;,
+            &quot;cover_photo&quot;: &quot;storage/services/68d3dfbf590a6.PNG&quot;,
+            &quot;faqs&quot;: [
+                {
                     &quot;id&quot;: 1,
-                    &quot;name&quot;: &quot;Web Development&quot;
-                },
-                &quot;subcategory&quot;: {
-                    &quot;id&quot;: 4,
-                    &quot;name&quot;: &quot;WordPress&quot;
-                },
-                &quot;delivery_time&quot;: 7,
-                &quot;delivery_time_unit&quot;: &quot;days&quot;,
-                &quot;fees_type&quot;: &quot;fixed&quot;,
-                &quot;price&quot;: 500,
-                &quot;cover_photo&quot;: &quot;storage/services/cover_1.jpg&quot;,
-                &quot;hashtags&quot;: [
-                    &quot;wordpress&quot;,
-                    &quot;website&quot;,
-                    &quot;development&quot;
-                ],
-                &quot;created_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;
-            }
-        ],
-        &quot;current_page&quot;: 1,
-        &quot;per_page&quot;: 10,
-        &quot;total&quot;: 25,
-        &quot;last_page&quot;: 3
+                    &quot;question&quot;: &quot;Do you provide hosting?&quot;,
+                    &quot;answer&quot;: &quot;No, you need to provide your own hosting.&quot;,
+                    &quot;service_id&quot;: 1,
+                    &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;
+                }
+            ],
+            &quot;attachments&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;file_path&quot;: &quot;storage/services/68d3df744e841.PNG&quot;,
+                    &quot;user_id&quot;: 3,
+                    &quot;service_id&quot;: 1,
+                    &quot;created_at&quot;: &quot;2025-09-24T12:09:24.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;
+                }
+            ],
+            &quot;hashtags&quot;: [
+                {
+                    &quot;id&quot;: 11,
+                    &quot;name&quot;: &quot;wordpress&quot;,
+                    &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+                    &quot;pivot&quot;: {
+                        &quot;service_id&quot;: 1,
+                        &quot;hashtag_id&quot;: 11
+                    }
+                }
+            ],
+            &quot;user_id&quot;: 3,
+            &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;
+        }
+    ],
+    &quot;current_page&quot;: 1,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 1,
+    &quot;per_page&quot;: 10,
+    &quot;to&quot;: 4,
+    &quot;total&quot;: 4,
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://127.0.0.1:8000/api/freelancers/services?page=1&quot;,
+        &quot;last&quot;: &quot;http://127.0.0.1:8000/api/freelancers/services?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
     }
 }</code>
  </pre>
@@ -7888,14 +7918,21 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Success&quot;,
     &quot;status&quot;: true,
-    &quot;data&quot;: {
-        &quot;data&quot;: [],
-        &quot;current_page&quot;: 1,
-        &quot;per_page&quot;: 10,
-        &quot;total&quot;: 0,
-        &quot;last_page&quot;: 1
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: [],
+    &quot;current_page&quot;: 1,
+    &quot;from&quot;: null,
+    &quot;last_page&quot;: 1,
+    &quot;per_page&quot;: 10,
+    &quot;to&quot;: null,
+    &quot;total&quot;: 0,
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://127.0.0.1:8000/api/freelancers/services?page=1&quot;,
+        &quot;last&quot;: &quot;http://127.0.0.1:8000/api/freelancers/services?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
     }
 }</code>
  </pre>
@@ -8060,7 +8097,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=iihfqcoynlazghdtqtqxb"\
     --form "faqs[][answer]=ajwbpilpmufinllwloauy"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbOKRei" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL4WLaz" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -8104,45 +8141,69 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Service created successfully&quot;,
     &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Service created successfully&quot;,
     &quot;data&quot;: {
-        &quot;data&quot;: {
-            &quot;id&quot;: 1,
-            &quot;title&quot;: &quot;WordPress Website Development&quot;,
-            &quot;description&quot;: &quot;I will create a professional WordPress website with custom design and functionality&quot;,
-            &quot;category&quot;: {
-                &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;Web Development&quot;
-            },
-            &quot;subcategory&quot;: {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;WordPress&quot;
-            },
-            &quot;delivery_time&quot;: 7,
-            &quot;delivery_time_unit&quot;: &quot;days&quot;,
-            &quot;fees_type&quot;: &quot;fixed&quot;,
-            &quot;price&quot;: 500,
-            &quot;cover_photo&quot;: &quot;storage/services/cover_1.jpg&quot;,
-            &quot;hashtags&quot;: [
-                &quot;wordpress&quot;,
-                &quot;website&quot;,
-                &quot;development&quot;
-            ],
-            &quot;attachments&quot;: [
-                {
-                    &quot;id&quot;: 15,
-                    &quot;file_path&quot;: &quot;storage/services/attachment_15.pdf&quot;
+        &quot;id&quot;: 29,
+        &quot;title&quot;: &quot;WordPress Website Development&quot;,
+        &quot;description&quot;: &quot;I will create a professional WordPress website with custom design and functionality&quot;,
+        &quot;category_id&quot;: 4,
+        &quot;subcategory_id&quot;: 5,
+        &quot;category&quot;: {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Programming&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+        },
+        &quot;subcategory&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Web&quot;,
+            &quot;parent_id&quot;: 4,
+            &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+        },
+        &quot;delivery_time&quot;: 7,
+        &quot;delivery_time_unit&quot;: &quot;days&quot;,
+        &quot;service_fees_type&quot;: &quot;fixed&quot;,
+        &quot;price&quot;: &quot;500.00&quot;,
+        &quot;cover_photo&quot;: &quot;storage/services/68d3dfbf590a6.PNG&quot;,
+        &quot;faqs&quot;: [
+            {
+                &quot;id&quot;: 15,
+                &quot;question&quot;: &quot;Do you provide hosting?&quot;,
+                &quot;answer&quot;: &quot;No, you need to provide your own hosting.&quot;,
+                &quot;service_id&quot;: 29,
+                &quot;created_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;
+            }
+        ],
+        &quot;attachments&quot;: [
+            {
+                &quot;id&quot;: 15,
+                &quot;file_path&quot;: &quot;storage/services/68d3df744e841.PNG&quot;,
+                &quot;user_id&quot;: 3,
+                &quot;service_id&quot;: 29,
+                &quot;created_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;
+            }
+        ],
+        &quot;hashtags&quot;: [
+            {
+                &quot;id&quot;: 11,
+                &quot;name&quot;: &quot;wordpress&quot;,
+                &quot;created_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;,
+                &quot;pivot&quot;: {
+                    &quot;service_id&quot;: 29,
+                    &quot;hashtag_id&quot;: 11
                 }
-            ],
-            &quot;faqs&quot;: [
-                {
-                    &quot;question&quot;: &quot;Do you provide hosting?&quot;,
-                    &quot;answer&quot;: &quot;No, you need to provide your own hosting.&quot;
-                }
-            ],
-            &quot;created_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;
-        }
+            }
+        ],
+        &quot;user_id&quot;: 3,
+        &quot;created_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-09-24T10:00:00.000000Z&quot;
     }
 }</code>
  </pre>
@@ -8369,7 +8430,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbOKRei</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL4WLaz</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -8465,12 +8526,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="service-management-GETapi-freelancers-services--id-">Display the specified resource.</h2>
+                    <h2 id="service-management-GETapi-freelancers-services--id-">Get specific service</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Retrieve detailed information about a specific service by its ID. This endpoint returns
+comprehensive service details including all related data like category, subcategory,
+attachments, FAQs, hashtags, and pricing information.</p>
 
 <span id="example-requests-GETapi-freelancers-services--id-">
 <blockquote>Example request:</blockquote>
@@ -8478,7 +8542,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/freelancers/services/consequatur" \
+    --get "http://backend.shuwier.com/api/freelancers/services/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en"</code></pre></div>
@@ -8486,7 +8550,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/services/consequatur"
+    "http://backend.shuwier.com/api/freelancers/services/1"
 );
 
 const headers = {
@@ -8504,21 +8568,116 @@ fetch(url, {
 
 <span id="example-responses-GETapi-freelancers-services--id-">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200, Service retrieved successfully):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;WordPress Website Development&quot;,
+        &quot;description&quot;: &quot;I will create a professional WordPress website with custom design and functionality tailored to your business needs&quot;,
+        &quot;category_id&quot;: 4,
+        &quot;subcategory_id&quot;: 5,
+        &quot;category&quot;: {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Programming&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+        },
+        &quot;subcategory&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Web&quot;,
+            &quot;parent_id&quot;: 4,
+            &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+        },
+        &quot;delivery_time&quot;: 7,
+        &quot;delivery_time_unit&quot;: &quot;days&quot;,
+        &quot;service_fees_type&quot;: &quot;fixed&quot;,
+        &quot;price&quot;: &quot;500.00&quot;,
+        &quot;cover_photo&quot;: &quot;storage/services/68d3dfbf590a6.PNG&quot;,
+        &quot;faqs&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;question&quot;: &quot;Do you provide hosting?&quot;,
+                &quot;answer&quot;: &quot;No, you need to provide your own hosting. However, I can recommend reliable hosting providers.&quot;,
+                &quot;service_id&quot;: 1,
+                &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;question&quot;: &quot;How many revisions are included?&quot;,
+                &quot;answer&quot;: &quot;I provide up to 3 revisions to ensure you&#039;re completely satisfied with the final result.&quot;,
+                &quot;service_id&quot;: 1,
+                &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;
+            }
+        ],
+        &quot;attachments&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;file_path&quot;: &quot;storage/services/68d3df744e841.PNG&quot;,
+                &quot;user_id&quot;: 3,
+                &quot;service_id&quot;: 1,
+                &quot;created_at&quot;: &quot;2025-09-24T12:09:24.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;
+            }
+        ],
+        &quot;hashtags&quot;: [
+            {
+                &quot;id&quot;: 11,
+                &quot;name&quot;: &quot;wordpress&quot;,
+                &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+                &quot;pivot&quot;: {
+                    &quot;service_id&quot;: 1,
+                    &quot;hashtag_id&quot;: 11
+                }
+            }
+        ],
+        &quot;user_id&quot;: 3,
+        &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Service not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Service not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Unauthenticated):</p>
+        </blockquote>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: false,
     &quot;error_num&quot;: 401,
     &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Access denied - Not your service):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 403,
+    &quot;message&quot;: &quot;You don&#039;t have permission to access this service&quot;
 }</code>
  </pre>
     </span>
@@ -8539,7 +8698,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-freelancers-services--id-" data-method="GET"
       data-path="api/freelancers/services/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -8605,14 +8764,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-freelancers-services--id-"
-               value="consequatur"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-freelancers-services--id-"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the service. Example: <code>consequatur</code></p>
+<p>The service ID to retrieve. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -12592,7 +12751,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOVYKNk" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpH37a4i" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -12753,7 +12912,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOVYKNk</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpH37a4i</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

@@ -37,47 +37,88 @@ class ServiceController extends Controller
      * @queryParam per_page integer Number of services per page (minimum 1). Default is 10. Example: 15
      * 
      * @response 200 scenario="Services retrieved successfully" {
-     *   "message": "Success",
      *   "status": true,
-     *   "data": {
-     *     "data": [
-     *       {
-     *         "id": 1,
-     *         "title": "WordPress Website Development",
-     *         "description": "I will create a professional WordPress website for your business",
-     *         "category": {
+     *   "error_num": null,
+     *   "message": "Success",
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "title": "WordPress Website Development",
+     *       "description": "I will create a professional WordPress website with custom design and functionality",
+     *       "category_id": 4,
+     *       "subcategory_id": 5,
+     *       "delivery_time": 7,
+     *       "delivery_time_unit": "days",
+     *       "service_fees_type": "fixed",
+     *       "price": "500.00",
+     *       "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+     *       "faqs": [
+     *         {
      *           "id": 1,
-     *           "name": "Web Development"
-     *         },
-     *         "subcategory": {
-     *           "id": 4,
-     *           "name": "WordPress"
-     *         },
-     *         "delivery_time": 7,
-     *         "delivery_time_unit": "days",
-     *         "fees_type": "fixed",
-     *         "price": 500.00,
-     *         "cover_photo": "storage/services/cover_1.jpg",
-     *         "hashtags": ["wordpress", "website", "development"],
-     *         "created_at": "2025-09-24T10:00:00.000000Z"
-     *       }
-     *     ],
-     *     "current_page": 1,
-     *     "per_page": 10,
-     *     "total": 25,
-     *     "last_page": 3
+     *           "question": "Do you provide hosting?",
+     *           "answer": "No, you need to provide your own hosting.",
+     *           "service_id": 1,
+     *           "created_at": "2025-09-24T12:10:39.000000Z",
+     *           "updated_at": "2025-09-24T12:10:39.000000Z"
+     *         }
+     *       ],
+     *       "attachments": [
+     *         {
+     *           "id": 1,
+     *           "file_path": "storage/services/68d3df744e841.PNG",
+     *           "user_id": 3,
+     *           "service_id": 1,
+     *           "created_at": "2025-09-24T12:09:24.000000Z",
+     *           "updated_at": "2025-09-24T12:10:39.000000Z"
+     *         }
+     *       ],
+     *       "hashtags": [
+     *         {
+     *           "id": 11,
+     *           "name": "wordpress",
+     *           "created_at": "2025-09-24T12:10:39.000000Z",
+     *           "updated_at": "2025-09-24T12:10:39.000000Z",
+     *           "pivot": {
+     *             "service_id": 1,
+     *             "hashtag_id": 11
+     *           }
+     *         }
+     *       ],
+     *       "user_id": 3,
+     *       "created_at": "2025-09-24T12:10:39.000000Z",
+     *       "updated_at": "2025-09-24T12:10:39.000000Z"
+     *     }
+     *   ],
+     *   "current_page": 1,
+     *   "from": 1,
+     *   "last_page": 1,
+     *   "per_page": 10,
+     *   "to": 4,
+     *   "total": 4,
+     *   "links": {
+     *     "first": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+     *     "last": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+     *     "prev": null,
+     *     "next": null
      *   }
      * }
      * 
      * @response 200 scenario="No services found" {
-     *   "message": "Success",
      *   "status": true,
-     *   "data": {
-     *     "data": [],
-     *     "current_page": 1,
-     *     "per_page": 10,
-     *     "total": 0,
-     *     "last_page": 1
+     *   "error_num": null,
+     *   "message": "Success",
+     *   "data": [],
+     *   "current_page": 1,
+     *   "from": null,
+     *   "last_page": 1,
+     *   "per_page": 10,
+     *   "to": null,
+     *   "total": 0,
+     *   "links": {
+     *     "first": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+     *     "last": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+     *     "prev": null,
+     *     "next": null
      *   }
      * }
      * 
@@ -136,41 +177,69 @@ class ServiceController extends Controller
      * @bodyParam faqs.*.answer string required_with:faqs FAQ answer (max 1000 characters). Example: No, you need to provide your own hosting.
      * 
      * @response 200 scenario="Service created successfully" {
-     *   "message": "Service created successfully",
      *   "status": true,
+     *   "error_num": null,
+     *   "message": "Service created successfully",
      *   "data": {
-     *     "data": {
-     *       "id": 1,
-     *       "title": "WordPress Website Development",
-     *       "description": "I will create a professional WordPress website with custom design and functionality",
-     *       "category": {
-     *         "id": 1,
-     *         "name": "Web Development"
-     *       },
-     *       "subcategory": {
-     *         "id": 4,
-     *         "name": "WordPress"
-     *       },
-     *       "delivery_time": 7,
-     *       "delivery_time_unit": "days",
-     *       "fees_type": "fixed",
-     *       "price": 500.00,
-     *       "cover_photo": "storage/services/cover_1.jpg",
-     *       "hashtags": ["wordpress", "website", "development"],
-     *       "attachments": [
-     *         {
-     *           "id": 15,
-     *           "file_path": "storage/services/attachment_15.pdf"
+     *     "id": 29,
+     *     "title": "WordPress Website Development",
+     *     "description": "I will create a professional WordPress website with custom design and functionality",
+     *     "category_id": 4,
+     *     "subcategory_id": 5,
+     *     "category": {
+     *       "id": 4,
+     *       "name": "Programming",
+     *       "parent_id": null,
+     *       "created_at": "2025-09-07T08:44:46.000000Z",
+     *       "updated_at": "2025-09-07T08:44:46.000000Z"
+     *     },
+     *     "subcategory": {
+     *       "id": 5,
+     *       "name": "Web",
+     *       "parent_id": 4,
+     *       "created_at": "2025-09-07T08:44:46.000000Z",
+     *       "updated_at": "2025-09-07T08:44:46.000000Z"
+     *     },
+     *     "delivery_time": 7,
+     *     "delivery_time_unit": "days",
+     *     "service_fees_type": "fixed",
+     *     "price": "500.00",
+     *     "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+     *     "faqs": [
+     *       {
+     *         "id": 15,
+     *         "question": "Do you provide hosting?",
+     *         "answer": "No, you need to provide your own hosting.",
+     *         "service_id": 29,
+     *         "created_at": "2025-09-24T10:00:00.000000Z",
+     *         "updated_at": "2025-09-24T10:00:00.000000Z"
+     *       }
+     *     ],
+     *     "attachments": [
+     *       {
+     *         "id": 15,
+     *         "file_path": "storage/services/68d3df744e841.PNG",
+     *         "user_id": 3,
+     *         "service_id": 29,
+     *         "created_at": "2025-09-24T10:00:00.000000Z",
+     *         "updated_at": "2025-09-24T10:00:00.000000Z"
+     *       }
+     *     ],
+     *     "hashtags": [
+     *       {
+     *         "id": 11,
+     *         "name": "wordpress",
+     *         "created_at": "2025-09-24T10:00:00.000000Z",
+     *         "updated_at": "2025-09-24T10:00:00.000000Z",
+     *         "pivot": {
+     *           "service_id": 29,
+     *           "hashtag_id": 11
      *         }
-     *       ],
-     *       "faqs": [
-     *         {
-     *           "question": "Do you provide hosting?",
-     *           "answer": "No, you need to provide your own hosting."
-     *         }
-     *       ],
-     *       "created_at": "2025-09-24T10:00:00.000000Z"
-     *     }
+     *       }
+     *     ],
+     *     "user_id": 3,
+     *     "created_at": "2025-09-24T10:00:00.000000Z",
+     *     "updated_at": "2025-09-24T10:00:00.000000Z"
      *   }
      * }
      * 
@@ -223,11 +292,117 @@ class ServiceController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get specific service
+     * 
+     * Retrieve detailed information about a specific service by its ID. This endpoint returns
+     * comprehensive service details including all related data like category, subcategory,
+     * attachments, FAQs, hashtags, and pricing information.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id integer required The service ID to retrieve. Example: 1
+     * 
+     * @response 200 scenario="Service retrieved successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Success",
+     *   "data": {
+     *     "id": 1,
+     *     "title": "WordPress Website Development",
+     *     "description": "I will create a professional WordPress website with custom design and functionality tailored to your business needs",
+     *     "category_id": 4,
+     *     "subcategory_id": 5,
+     *     "category": {
+     *       "id": 4,
+     *       "name": "Programming",
+     *       "parent_id": null,
+     *       "created_at": "2025-09-07T08:44:46.000000Z",
+     *       "updated_at": "2025-09-07T08:44:46.000000Z"
+     *     },
+     *     "subcategory": {
+     *       "id": 5,
+     *       "name": "Web",
+     *       "parent_id": 4,
+     *       "created_at": "2025-09-07T08:44:46.000000Z",
+     *       "updated_at": "2025-09-07T08:44:46.000000Z"
+     *     },
+     *     "delivery_time": 7,
+     *     "delivery_time_unit": "days",
+     *     "service_fees_type": "fixed",
+     *     "price": "500.00",
+     *     "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+     *     "faqs": [
+     *       {
+     *         "id": 1,
+     *         "question": "Do you provide hosting?",
+     *         "answer": "No, you need to provide your own hosting. However, I can recommend reliable hosting providers.",
+     *         "service_id": 1,
+     *         "created_at": "2025-09-24T12:10:39.000000Z",
+     *         "updated_at": "2025-09-24T12:10:39.000000Z"
+     *       },
+     *       {
+     *         "id": 2,
+     *         "question": "How many revisions are included?",
+     *         "answer": "I provide up to 3 revisions to ensure you're completely satisfied with the final result.",
+     *         "service_id": 1,
+     *         "created_at": "2025-09-24T12:10:39.000000Z",
+     *         "updated_at": "2025-09-24T12:10:39.000000Z"
+     *       }
+     *     ],
+     *     "attachments": [
+     *       {
+     *         "id": 1,
+     *         "file_path": "storage/services/68d3df744e841.PNG",
+     *         "user_id": 3,
+     *         "service_id": 1,
+     *         "created_at": "2025-09-24T12:09:24.000000Z",
+     *         "updated_at": "2025-09-24T12:10:39.000000Z"
+     *       }
+     *     ],
+     *     "hashtags": [
+     *       {
+     *         "id": 11,
+     *         "name": "wordpress",
+     *         "created_at": "2025-09-24T12:10:39.000000Z",
+     *         "updated_at": "2025-09-24T12:10:39.000000Z",
+     *         "pivot": {
+     *           "service_id": 1,
+     *           "hashtag_id": 11
+     *         }
+     *       }
+     *     ],
+     *     "user_id": 3,
+     *     "created_at": "2025-09-24T12:10:39.000000Z",
+     *     "updated_at": "2025-09-24T12:10:39.000000Z"
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Service not found" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Service not found"
+     * }
+     * 
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     * 
+     * @response 403 scenario="Access denied - Not your service" {
+     *   "status": false,
+     *   "error_num": 403,
+     *   "message": "You don't have permission to access this service"
+     * }
      */
     public function show(string $id)
     {
-        //
+        $result = $this->serviceService->getById($id);
+
+        if (!$result['status'])
+            return Response::api($result['message'], 400, false, 400);
+
+        return Response::api($result['message'], 200, true, null, BaseResource::make(ServiceResource::make($result['data'])));
     }
 
     /**

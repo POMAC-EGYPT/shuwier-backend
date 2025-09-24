@@ -34,6 +34,8 @@ class ServiceResource extends JsonResource
             'faqs'               => $this->faqs ?? null,
             'attachments'        => $this->attachments ?? null,
             'hashtags'           => $this->hashtags ?? null,
+            'user_id'            => $this->user_id,
+            
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
         ];

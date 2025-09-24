@@ -37,14 +37,16 @@ class ServiceService implements ServiceServiceInterface
     {
         $services = $this->serviceRepo->getByFreelancerIdPaginated($freelancerId, $perPage);
 
-        return ['status' => 'success', 'message' => __('message.success'), 'data' => $services];
+        return ['status' => true, 'message' => __('message.success'), 'data' => $services];
     }
 
     public function getById(int $id): array
     {
         $service = $this->serviceRepo->findById($id);
 
-        return ['status' => 'success', 'message' => __('message.success'), 'data' => $service];
+        $service->load(['faqs', 'attachments', 'hashtags', 'category', 'subcategory']);
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $service];
     }
 
     public function create(array $data): array
@@ -120,7 +122,7 @@ class ServiceService implements ServiceServiceInterface
             return $service;
         });
 
-        return ['status' => 'success', 'message' => __('message.success'), 'data' => $service];
+        return ['status' => true, 'message' => __('message.success'), 'data' => $service];
     }
 
     public function update(int $id, array $data): array
