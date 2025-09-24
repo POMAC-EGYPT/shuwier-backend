@@ -74,4 +74,72 @@ class CategoryController extends Controller
 
         return Response::api($result['message'], 200, true, null, BaseResource::make(CategoryResource::collection($result['data'])));
     }
+
+
+    /**
+     * Get subcategories
+     * 
+     * Retrieve all subcategories that belong to a specific parent category. This endpoint is used
+     * to get the child categories when a user selects a main category, allowing for hierarchical
+     * category selection in forms and filters.
+     * 
+     * @urlParam id integer required The parent category ID to get subcategories for. Example: 1
+     * 
+     * @response 200 scenario="Subcategories found successfully" {
+     *   "message": "Success",
+     *   "status": true,
+     *   "data": {
+     *     "data": [
+     *       {
+     *         "id": 4,
+     *         "name": "Frontend Development",
+     *         "parent_id": 1,
+     *       },
+     *       {
+     *         "id": 5,
+     *         "name": "Backend Development",
+     *         "description": "Server-side development and API creation",
+     *         "parent_id": 1,
+     *       },
+     *       {
+     *         "id": 6,
+     *         "name": "Full Stack Development",
+     *         "description": "Complete web application development",
+     *         "parent_id": 1,
+     *       }
+     *     ]
+     *   }
+     * }
+     * 
+     * @response 200 scenario="No subcategories found" {
+     *   "message": "Success",
+     *   "status": true,
+     *   "data": {
+     *     "data": []
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Invalid parent category ID" {
+     *   "message": "Category not found",
+     *   "status": false,
+     *   "error_num": 400
+     * }
+     * 
+     * @response 400 scenario="Server error" {
+     *   "message": "An error occurred while retrieving subcategories",
+     *   "status": false,
+     *   "error_num": 400
+     * }
+     */
+    public function getChildCategories($id)
+    {
+        $result = $this->categoryService->getAllPaginated(
+            'child',
+            (int) $id,
+            null,
+            50
+        );
+
+        return Response::api($result['message'], 200, true, null, BaseResource::make(CategoryResource::collection($result)));
+    }
 }

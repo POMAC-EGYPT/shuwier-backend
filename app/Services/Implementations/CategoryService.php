@@ -35,6 +35,13 @@ class CategoryService implements CategoryServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $categories];
     }
 
+    public function getChildCategories(): array
+    {
+        $categories = $this->categoryRepo->getChildrens();
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $categories];
+    }
+
     public function getById(int $id): null | Category
     {
         return $this->categoryRepo->find($id, true);
@@ -96,9 +103,9 @@ class CategoryService implements CategoryServiceInterface
             'name_ar' => $data['name_ar'],
             'parent_id' => $data['parent_id'],
         ]);
-        
+
         $category->refresh();
-        
+
         return [
             'status'  => true,
             'message' => __('message.category_updated_successfully'),

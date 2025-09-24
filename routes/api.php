@@ -45,8 +45,13 @@ Route::post('/upload', [UploadFileController::class, 'upload'])
 Route::get('/languages', [LanguageController::class, 'index'])
     ->name('languages.index');
 
-Route::get('/categories', [CategoryController::class, 'index'])
-    ->name('categories.index');
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/', [CategoryController::class, 'index'])
+        ->name('categories.index');
+
+    Route::get('/child/{id}', [CategoryController::class, 'getChildCategories'])
+        ->name('categories.child.index');
+});
 
 Route::get('/skills', [SkillController::class, 'index'])
     ->name('skills.index');

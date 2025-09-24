@@ -11,6 +11,8 @@ interface CategoryServiceInterface
 
     public function getParentCategories(): array;
 
+    public function getChildCategories(): array;
+
     public function getById(int $id): null | Category;
 
     public function create(array $data): array;

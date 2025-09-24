@@ -4,6 +4,22 @@ namespace App\Http\Requests\Freelancer\Service;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * StoreServiceRequest handles the validation for storing a new service by a freelancer.
+ * It ensures that all required fields are present and correctly formatted.
+ * @property string $title
+ * @property string $description
+ * @property int $category_id
+ * @property int|null $subcategory_id
+ * @property string $delivery_time_unit
+ * @property int $delivery_time
+ * @property string $fees_type
+ * @property float $price   
+ * @property \Illuminate\Http\UploadedFile $cover_photo
+ * @property array|null $hashtags
+ * @property array|null $attachment_ids
+ * @property array|null $faqs
+ */
 class StoreServiceRequest extends FormRequest
 {
     /**

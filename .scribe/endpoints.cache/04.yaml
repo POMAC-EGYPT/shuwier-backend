@@ -88,3 +88,117 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/categories/child/{id}'
+    metadata:
+      groupName: Categories
+      groupDescription: |-
+
+        APIs for managing categories and retrieving category data
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get subcategories'
+      description: |-
+        Retrieve all subcategories that belong to a specific parent category. This endpoint is used
+        to get the child categories when a user selects a main category, allowing for hierarchical
+        category selection in forms and filters.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The parent category ID to get subcategories for.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Success",
+            "status": true,
+            "data": {
+              "data": [
+                {
+                  "id": 4,
+                  "name": "Frontend Development",
+                  "parent_id": 1,
+                },
+                {
+                  "id": 5,
+                  "name": "Backend Development",
+                  "description": "Server-side development and API creation",
+                  "parent_id": 1,
+                },
+                {
+                  "id": 6,
+                  "name": "Full Stack Development",
+                  "description": "Complete web application development",
+                  "parent_id": 1,
+                }
+              ]
+            }
+          }
+        headers: []
+        description: 'Subcategories found successfully'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Success",
+            "status": true,
+            "data": {
+              "data": []
+            }
+          }
+        headers: []
+        description: 'No subcategories found'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Category not found",
+            "status": false,
+            "error_num": 400
+          }
+        headers: []
+        description: 'Invalid parent category ID'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "An error occurred while retrieving subcategories",
+            "status": false,
+            "error_num": 400
+          }
+        headers: []
+        description: 'Server error'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
