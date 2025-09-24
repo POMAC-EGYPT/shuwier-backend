@@ -79,6 +79,7 @@ class UpdateProfileRequest extends FormRequest
             $rules = array_merge($rules, [
                 'company'     => 'sometimes|nullable|string|max:255',
                 'phone'       => [
+                    'sometimes',
                     'required',
                     'regex:/^\+[1-9][0-9]{7,14}$/',
                 ],
@@ -109,6 +110,7 @@ class UpdateProfileRequest extends FormRequest
             ])) {
                 $validator->errors()->add('update_profile', __('message.you_must_provide_at_least_one_field_to_update'));
             }
+
             if ($this->filled('phone')) {
                 $phoneUtil = PhoneNumberUtil::getInstance();
 
