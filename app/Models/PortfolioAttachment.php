@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Number;
 
 class PortfolioAttachment extends Model
 {
@@ -16,6 +19,15 @@ class PortfolioAttachment extends Model
     protected $casts = [
         'is_cover'     => 'boolean',
     ];
+
+    protected $appends = [
+        'size'
+    ];
+
+    public function getSizeAttribute()
+    {
+        return Number::fileSize(File::size($this->file_path));
+    }
 
     public function portfolio()
     {
