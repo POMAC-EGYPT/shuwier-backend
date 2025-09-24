@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Contracts\Validation\Validator;
 
 /**
- * StoreServiceRequest handles the validation for storing a new service by a freelancer.
+ * UpdateServiceRequest handles the validation for updating an existing service by a freelancer.
  * It ensures that all required fields are present and correctly formatted.
  * @property string $title
  * @property string $description
@@ -17,13 +17,13 @@ use Illuminate\Contracts\Validation\Validator;
  * @property string $delivery_time_unit
  * @property int $delivery_time
  * @property string $fees_type
- * @property float $price   
- * @property \Illuminate\Http\UploadedFile $cover_photo
+ * @property float $price
+ * @property \Illuminate\Http\UploadedFile|null $cover_photo
  * @property array|null $hashtags
  * @property array|null $attachment_ids
  * @property array|null $faqs
  */
-class StoreServiceRequest extends FormRequest
+class UpdateServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -56,9 +56,9 @@ class StoreServiceRequest extends FormRequest
             'delivery_time'      => 'required|integer|min:1',
             'fees_type'          => 'required|in:fixed,hourly',
             'price'              => 'required|numeric|min:0',
-            'cover_photo'        => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'cover_photo'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'hashtags'           => 'nullable|array',
-            'hashtags.*'         => 'string|max:255',
+            'hashtags.*'         => 'string |max:255',
             'attachment_ids'     => 'nullable|array|max:10',
             'attachment_ids.*'   => 'exists:service_attachments,id',
             'faqs'               => 'nullable|array',
@@ -76,15 +76,15 @@ class StoreServiceRequest extends FormRequest
     {
         return [
             'title' => [
-                'description' => 'Service title - A clear and descriptive name for your service offering',
-                'example' => 'WordPress Website Development',
+                'description' => 'Service title - A clear and descriptive name for your service offering (optional for updates)',
+                'example' => 'Updated WordPress Website Development',
             ],
             'description' => [
-                'description' => 'Detailed service description - Explain what you will deliver and how you will do it (minimum 200 characters)',
-                'example' => 'I will create a professional WordPress website with custom design and functionality tailored to your business needs. This includes responsive design, SEO optimization, contact forms, and basic e-commerce functionality if needed.',
+                'description' => 'Detailed service description - Explain what you will deliver and how you will do it (minimum 200 characters, optional for updates)',
+                'example' => 'I will create a professional WordPress website with advanced features and custom functionality tailored to your business needs. This includes responsive design, SEO optimization, contact forms, and advanced e-commerce functionality.',
             ],
             'category_id' => [
-                'description' => 'Main category ID - Must be a parent category (not a subcategory)',
+                'description' => 'Main category ID - Must be a parent category (not a subcategory, optional for updates)',
                 'example' => 4,
             ],
             'subcategory_id' => [
@@ -92,43 +92,43 @@ class StoreServiceRequest extends FormRequest
                 'example' => 5,
             ],
             'delivery_time_unit' => [
-                'description' => 'Time unit for delivery - The unit of measurement for delivery time',
+                'description' => 'Time unit for delivery - The unit of measurement for delivery time (optional for updates)',
                 'example' => 'days',
             ],
             'delivery_time' => [
-                'description' => 'Delivery time - Number of units (hours/days/months) required to complete the service',
-                'example' => 7,
+                'description' => 'Delivery time - Number of units (hours/days/months) required to complete the service (optional for updates)',
+                'example' => 10,
             ],
             'fees_type' => [
-                'description' => 'Pricing model - How you charge for this service',
+                'description' => 'Pricing model - How you charge for this service (optional for updates)',
                 'example' => 'fixed',
             ],
             'price' => [
-                'description' => 'Service price - The cost for this service (minimum 0)',
-                'example' => 500.00,
+                'description' => 'Service price - The cost for this service (minimum 0, optional for updates)',
+                'example' => 750.00,
             ],
             'cover_photo' => [
-                'description' => 'Cover photo - Main image representing your service (JPEG, PNG, JPG, WEBP, max 2MB)',
+                'description' => 'Cover photo - New main image representing your service (JPEG, PNG, JPG, WEBP, max 2MB, optional)',
                 'example' => 'No-example',
             ],
             'hashtags' => [
-                'description' => 'Hashtags array - Optional tags to help users find your service',
-                'example' => ['wordpress', 'website', 'development', 'responsive'],
+                'description' => 'Hashtags array - Optional tags to help users find your service (replaces existing hashtags)',
+                'example' => ['wordpress', 'website', 'ecommerce', 'responsive'],
             ],
             'attachment_ids' => [
-                'description' => 'Attachment IDs array - Optional file attachments (must be uploaded first using upload endpoint)',
-                'example' => [15, 16, 17],
+                'description' => 'Attachment IDs array - Optional file attachments (must be uploaded first using upload endpoint, replaces existing attachments, max 10)',
+                'example' => [18, 19, 20],
             ],
             'faqs' => [
-                'description' => 'FAQs array - Optional frequently asked questions and answers about your service',
+                'description' => 'FAQs array - Optional frequently asked questions and answers about your service (replaces existing FAQs)',
                 'example' => [
                     [
-                        'question' => 'Do you provide hosting?',
-                        'answer' => 'No, you need to provide your own hosting. However, I can recommend reliable hosting providers.'
+                        'question' => 'Do you provide SSL certificates?',
+                        'answer' => 'Yes, I can help you install SSL certificates for enhanced security at no additional cost.'
                     ],
                     [
-                        'question' => 'How many revisions are included?',
-                        'answer' => 'I provide up to 3 revisions to ensure you are completely satisfied with the final result.'
+                        'question' => 'Can you integrate payment gateways?',
+                        'answer' => 'Absolutely! I can integrate popular payment gateways like PayPal, Stripe, and local payment methods.'
                     ]
                 ],
             ],

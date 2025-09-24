@@ -115,4 +115,7 @@ return [
     'too_many_requests' => 'Too many requests. Please try again later.',
     'invalid_phone_number_format' => 'Invalid phone number format',
     'invalid_phone_number' => 'Invalid phone number',
+    'service_updated_successfully' => 'Service updated successfully',
+    'service_deleted_successfully' => 'Service deleted successfully',
+    'service_created_successfully' => 'Service created successfully',
 ];

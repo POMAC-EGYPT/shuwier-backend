@@ -11,4 +11,9 @@ class ServiceFaqRepository implements ServiceFaqRepositoryInterface
     {
         return ServiceFaq::create($data);
     }
+
+    public function deleteByServiceId(int $serviceId): bool
+    {
+        return ServiceFaq::where('service_id', $serviceId)->delete();
+    }
 }

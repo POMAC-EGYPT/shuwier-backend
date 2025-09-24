@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Freelancer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Freelancer\Service\StoreServiceRequest;
+use App\Http\Requests\Freelancer\Service\UpdateServiceRequest;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\ServiceResource;
 use App\Services\Contracts\ServiceServiceInterface;
@@ -406,18 +407,200 @@ class ServiceController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update service
+     * 
+     * Update an existing service offering for the authenticated freelancer. This endpoint allows
+     * freelancers to modify their service information including pricing, delivery time, cover photo,
+     * attachments, FAQs, and hashtags. All fields are optional except the service ID in the URL.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id integer required Service ID to update. Example: 1
+     * 
+     * @bodyParam title string optional Service title (max 255 characters). Example: Updated WordPress Website Development
+     * @bodyParam description string optional Detailed service description (min 200 characters). Example: I will create a professional WordPress website with advanced features and custom functionality
+     * @bodyParam category_id integer optional Main category ID (must be a parent category). Example: 4
+     * @bodyParam subcategory_id integer optional Subcategory ID (must belong to the selected category). Example: 5
+     * @bodyParam delivery_time_unit string optional Time unit for delivery. Must be one of: hours, days, weeks. Example: days
+     * @bodyParam delivery_time integer optional Delivery time in the specified unit. Example: 10
+     * @bodyParam fees_type string optional Pricing type. Must be one of: fixed, hourly. Example: fixed
+     * @bodyParam price number optional Service price (minimum 0). Example: 750.00
+     * @bodyParam cover_photo file optional New cover photo for the service (image file, max 2MB). Example: No-example
+     * @bodyParam hashtags string[] optional Array of hashtag strings (max 255 characters each). Example: ["wordpress", "website", "ecommerce", "responsive"]
+     * @bodyParam attachment_ids integer[] optional Array of attachment IDs from uploaded files. Upload files first using /api/upload endpoint. Example: [18, 19, 20]
+     * @bodyParam faqs object[] optional Array of FAQ objects with question and answer. Example: No-example
+     * @bodyParam faqs.*.question string required_with:faqs FAQ question (max 500 characters). Example: Do you provide SSL certificates?
+     * @bodyParam faqs.*.answer string required_with:faqs FAQ answer (max 1000 characters). Example: Yes, I can help you install SSL certificates for enhanced security.
+     * 
+     * @response 200 scenario="Service updated successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Service updated successfully",
+     *   "data": {
+     *     "id": 1,
+     *     "title": "Updated WordPress Website Development",
+     *     "description": "I will create a professional WordPress website with advanced features and custom functionality tailored to your business needs",
+     *     "category_id": 4,
+     *     "subcategory_id": 5,
+     *     "category": {
+     *       "id": 4,
+     *       "name": "Programming",
+     *       "parent_id": null,
+     *       "created_at": "2025-09-07T08:44:46.000000Z",
+     *       "updated_at": "2025-09-07T08:44:46.000000Z"
+     *     },
+     *     "subcategory": {
+     *       "id": 5,
+     *       "name": "Web",
+     *       "parent_id": 4,
+     *       "created_at": "2025-09-07T08:44:46.000000Z",
+     *       "updated_at": "2025-09-07T08:44:46.000000Z"
+     *     },
+     *     "delivery_time": 10,
+     *     "delivery_time_unit": "days",
+     *     "service_fees_type": "fixed",
+     *     "price": "750.00",
+     *     "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+     *     "faqs": [
+     *       {
+     *         "id": 1,
+     *         "question": "Do you provide SSL certificates?",
+     *         "answer": "Yes, I can help you install SSL certificates for enhanced security.",
+     *         "service_id": 1,
+     *         "created_at": "2025-09-24T15:30:00.000000Z",
+     *         "updated_at": "2025-09-24T15:30:00.000000Z"
+     *       }
+     *     ],
+     *     "attachments": [
+     *       {
+     *         "id": 18,
+     *         "file_path": "storage/services/68d3df744e841.PNG",
+     *         "user_id": 3,
+     *         "service_id": 1,
+     *         "created_at": "2025-09-24T15:30:00.000000Z",
+     *         "updated_at": "2025-09-24T15:30:00.000000Z"
+     *       }
+     *     ],
+     *     "hashtags": [
+     *       {
+     *         "id": 11,
+     *         "name": "wordpress",
+     *         "created_at": "2025-09-24T15:30:00.000000Z",
+     *         "updated_at": "2025-09-24T15:30:00.000000Z",
+     *         "pivot": {
+     *           "service_id": 1,
+     *           "hashtag_id": 11
+     *         }
+     *       }
+     *     ],
+     *     "user_id": 3,
+     *     "created_at": "2025-09-24T12:10:39.000000Z",
+     *     "updated_at": "2025-09-24T15:30:00.000000Z"
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Invalid category" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "This category is not a parent category"
+     * }
+     * 
+     * @response 400 scenario="Invalid subcategory" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "This subcategory does not belong to the selected category"
+     * }
+     * 
+     * @response 400 scenario="Attachment already used" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "This attachment is already used"
+     * }
+     * 
+     * @response 404 scenario="Service not found" {
+     *   "status": false,
+     *   "error_num": 404,
+     *   "message": "Service not found"
+     * }
+     * 
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     * 
+     * @response 400 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The title field must not be greater than 255 characters."
+     * }
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateServiceRequest $request, string $id)
     {
-        //
+        $result = $this->serviceService->update($id, [
+            'title'              => $request->title,
+            'description'        => $request->description,
+            'category_id'        => $request->category_id,
+            'subcategory_id'     => $request->subcategory_id ?? null,
+            'delivery_time_unit' => $request->delivery_time_unit,
+            'delivery_time'      => $request->delivery_time,
+            'fees_type'          => $request->fees_type,
+            'price'              => $request->price,
+            'cover_photo'        => $request->cover_photo ?? null,
+            'hashtags'           => $request->hashtags ?? null,
+            'attachment_ids'     => $request->attachment_ids ?? null,
+            'faqs'               => $request->faqs ?? null,
+        ]);
+
+        if (!$result['status'])
+            return Response::api($result['message'], 400, false, 400);
+
+        return Response::api($result['message'], 200, true, null, BaseResource::make(ServiceResource::make($result['data'])));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete service
+     * 
+     * Delete an existing service offering for the authenticated freelancer. This endpoint
+     * permanently removes the service and all associated data including FAQs, hashtag
+     * associations, and attachment references. The service attachments files will also
+     * be deleted from storage.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id integer required Service ID to delete. Example: 1
+     * 
+     * @response 200 scenario="Service deleted successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Service deleted successfully"
+     * }
+     * 
+     * @response 404 scenario="Service not found" {
+     *   "status": false,
+     *   "error_num": 404,
+     *   "message": "Service not found"
+     * }
+     * 
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     * 
+     * @response 403 scenario="Unauthorized access" {
+     *   "status": false,
+     *   "error_num": 403,
+     *   "message": "You are not authorized to delete this service"
+     * }
      */
     public function destroy(string $id)
     {
-        //
+        $result = $this->serviceService->delete($id);
+
+        if (!$result['status'])
+            return Response::api($result['message'], 400, false, 400);
+
+        return Response::api($result['message'], 200, true);
     }
 }

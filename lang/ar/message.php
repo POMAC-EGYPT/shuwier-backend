@@ -115,4 +115,7 @@ return [
     'too_many_requests' => 'طلبات كثيرة جداً. يرجى المحاولة لاحقاً.',
     'invalid_phone_number_format' => 'تنسيق رقم الهاتف غير صالح',
     'invalid_phone_number' => 'رقم الهاتف غير صالح',
+    'service_updated_successfully' => 'تم تحديث الخدمة بنجاح',
+    'service_deleted_successfully' => 'تم حذف الخدمة بنجاح',
+    'service_created_successfully' => 'تم إنشاء الخدمة بنجاح',
 ];

@@ -270,10 +270,10 @@
                                 <a href="#service-management-GETapi-freelancers-services--id-">Get specific service</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="service-management-PUTapi-freelancers-services--id-">
-                                <a href="#service-management-PUTapi-freelancers-services--id-">Update the specified resource in storage.</a>
+                                <a href="#service-management-PUTapi-freelancers-services--id-">Update service</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="service-management-DELETEapi-freelancers-services--id-">
-                                <a href="#service-management-DELETEapi-freelancers-services--id-">Remove the specified resource from storage.</a>
+                                <a href="#service-management-DELETEapi-freelancers-services--id-">Delete service</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -3056,7 +3056,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"approved\",
+    \"approval_status\": \"requested\",
     \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3084,7 +3084,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "approved",
+    "approval_status": "requested",
     "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3311,10 +3311,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="approved"
+               value="requested"
                data-component="body">
     <br>
-<p>Example: <code>approved</code></p>
+<p>Example: <code>requested</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -6055,7 +6055,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5mnsaI" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpw19zy3" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6224,7 +6224,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5mnsaI</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpw19zy3</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8097,7 +8097,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxuX0k2" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpya8bGB" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -8430,7 +8430,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxuX0k2</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpya8bGB</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -8775,12 +8775,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="service-management-PUTapi-freelancers-services--id-">Update the specified resource in storage.</h2>
+                    <h2 id="service-management-PUTapi-freelancers-services--id-">Update service</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Update an existing service offering for the authenticated freelancer. This endpoint allows
+freelancers to modify their service information including pricing, delivery time, cover photo,
+attachments, FAQs, and hashtags. All fields are optional except the service ID in the URL.</p>
 
 <span id="example-requests-PUTapi-freelancers-services--id-">
 <blockquote>Example request:</blockquote>
@@ -8788,15 +8791,43 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://backend.shuwier.com/api/freelancers/services/consequatur" \
+    "http://backend.shuwier.com/api/freelancers/services/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
+    --header "Accept-Language: en" \
+    --data "{
+    \"title\": \"Updated WordPress Website Development\",
+    \"description\": \"I will create a professional WordPress website with advanced features and custom functionality\",
+    \"category_id\": 4,
+    \"subcategory_id\": 5,
+    \"delivery_time_unit\": \"days\",
+    \"delivery_time\": 10,
+    \"fees_type\": \"fixed\",
+    \"price\": 750,
+    \"hashtags\": [
+        \"wordpress\",
+        \"website\",
+        \"ecommerce\",
+        \"responsive\"
+    ],
+    \"attachment_ids\": [
+        18,
+        19,
+        20
+    ],
+    \"faqs\": [
+        {
+            \"question\": \"amniihfqcoynlazghdtqt\",
+            \"answer\": \"qxbajwbpilpmufinllwlo\"
+        }
+    ]
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/services/consequatur"
+    "http://backend.shuwier.com/api/freelancers/services/1"
 );
 
 const headers = {
@@ -8805,15 +8836,182 @@ const headers = {
     "Accept-Language": "en",
 };
 
+let body = {
+    "title": "Updated WordPress Website Development",
+    "description": "I will create a professional WordPress website with advanced features and custom functionality",
+    "category_id": 4,
+    "subcategory_id": 5,
+    "delivery_time_unit": "days",
+    "delivery_time": 10,
+    "fees_type": "fixed",
+    "price": 750,
+    "hashtags": [
+        "wordpress",
+        "website",
+        "ecommerce",
+        "responsive"
+    ],
+    "attachment_ids": [
+        18,
+        19,
+        20
+    ],
+    "faqs": [
+        {
+            "question": "amniihfqcoynlazghdtqt",
+            "answer": "qxbajwbpilpmufinllwlo"
+        }
+    ]
+};
+
 fetch(url, {
     method: "PUT",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-PUTapi-freelancers-services--id-">
-</span>
+            <blockquote>
+            <p>Example response (200, Service updated successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Service updated successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Updated WordPress Website Development&quot;,
+        &quot;description&quot;: &quot;I will create a professional WordPress website with advanced features and custom functionality tailored to your business needs&quot;,
+        &quot;category_id&quot;: 4,
+        &quot;subcategory_id&quot;: 5,
+        &quot;category&quot;: {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Programming&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+        },
+        &quot;subcategory&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Web&quot;,
+            &quot;parent_id&quot;: 4,
+            &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+        },
+        &quot;delivery_time&quot;: 10,
+        &quot;delivery_time_unit&quot;: &quot;days&quot;,
+        &quot;service_fees_type&quot;: &quot;fixed&quot;,
+        &quot;price&quot;: &quot;750.00&quot;,
+        &quot;cover_photo&quot;: &quot;storage/services/68d3dfbf590a6.PNG&quot;,
+        &quot;faqs&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;question&quot;: &quot;Do you provide SSL certificates?&quot;,
+                &quot;answer&quot;: &quot;Yes, I can help you install SSL certificates for enhanced security.&quot;,
+                &quot;service_id&quot;: 1,
+                &quot;created_at&quot;: &quot;2025-09-24T15:30:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T15:30:00.000000Z&quot;
+            }
+        ],
+        &quot;attachments&quot;: [
+            {
+                &quot;id&quot;: 18,
+                &quot;file_path&quot;: &quot;storage/services/68d3df744e841.PNG&quot;,
+                &quot;user_id&quot;: 3,
+                &quot;service_id&quot;: 1,
+                &quot;created_at&quot;: &quot;2025-09-24T15:30:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T15:30:00.000000Z&quot;
+            }
+        ],
+        &quot;hashtags&quot;: [
+            {
+                &quot;id&quot;: 11,
+                &quot;name&quot;: &quot;wordpress&quot;,
+                &quot;created_at&quot;: &quot;2025-09-24T15:30:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T15:30:00.000000Z&quot;,
+                &quot;pivot&quot;: {
+                    &quot;service_id&quot;: 1,
+                    &quot;hashtag_id&quot;: 11
+                }
+            }
+        ],
+        &quot;user_id&quot;: 3,
+        &quot;created_at&quot;: &quot;2025-09-24T12:10:39.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-09-24T15:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid category):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;This category is not a parent category&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid subcategory):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;This subcategory does not belong to the selected category&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Attachment already used):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;This attachment is already used&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The title field must not be greater than 255 characters.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Unauthenticated):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Service not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 404,
+    &quot;message&quot;: &quot;Service not found&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PUTapi-freelancers-services--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-freelancers-services--id-"></span>:
@@ -8831,7 +9029,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PUTapi-freelancers-services--id-" data-method="PUT"
       data-path="api/freelancers/services/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -8901,23 +9099,219 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-freelancers-services--id-"
-               value="consequatur"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the service. Example: <code>consequatur</code></p>
+<p>Service ID to update. Example: <code>1</code></p>
             </div>
-                    </form>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="Updated WordPress Website Development"
+               data-component="body">
+    <br>
+<p>optional Service title (max 255 characters). Example: <code>Updated WordPress Website Development</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="I will create a professional WordPress website with advanced features and custom functionality"
+               data-component="body">
+    <br>
+<p>optional Detailed service description (min 200 characters). Example: <code>I will create a professional WordPress website with advanced features and custom functionality</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_id"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="4"
+               data-component="body">
+    <br>
+<p>optional Main category ID (must be a parent category). Example: <code>4</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="subcategory_id"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="5"
+               data-component="body">
+    <br>
+<p>optional Subcategory ID (must belong to the selected category). Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>delivery_time_unit</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="delivery_time_unit"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="days"
+               data-component="body">
+    <br>
+<p>optional Time unit for delivery. Must be one of: hours, days, weeks. Example: <code>days</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>delivery_time</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="delivery_time"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="10"
+               data-component="body">
+    <br>
+<p>optional Delivery time in the specified unit. Example: <code>10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fees_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fees_type"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="fixed"
+               data-component="body">
+    <br>
+<p>optional Pricing type. Must be one of: fixed, hourly. Example: <code>fixed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="price"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="750"
+               data-component="body">
+    <br>
+<p>optional Service price (minimum 0). Example: <code>750</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover_photo"                data-endpoint="PUTapi-freelancers-services--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>optional New cover photo for the service (image file, max 2MB). Example:</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="hashtags[0]"                data-endpoint="PUTapi-freelancers-services--id-"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="hashtags[1]"                data-endpoint="PUTapi-freelancers-services--id-"
+               data-component="body">
+    <br>
+<p>optional Array of hashtag strings (max 255 characters each).</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="attachment_ids[0]"                data-endpoint="PUTapi-freelancers-services--id-"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="attachment_ids[1]"                data-endpoint="PUTapi-freelancers-services--id-"
+               data-component="body">
+    <br>
+<p>optional Array of attachment IDs from uploaded files. Upload files first using /api/upload endpoint.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>faqs</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+<p>optional Array of FAQ objects with question and answer. Example:</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>question</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="faqs.0.question"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="amniihfqcoynlazghdtqt"
+               data-component="body">
+    <br>
+<p>This field is required when <code>faqs</code> is present. Must not be greater than 255 characters. Example: <code>amniihfqcoynlazghdtqt</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>answer</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="faqs.0.answer"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="qxbajwbpilpmufinllwlo"
+               data-component="body">
+    <br>
+<p>This field is required when <code>faqs</code> is present. Must not be greater than 1000 characters. Example: <code>qxbajwbpilpmufinllwlo</code></p>
+                    </div>
+                                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
 
-                    <h2 id="service-management-DELETEapi-freelancers-services--id-">Remove the specified resource from storage.</h2>
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>question</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="faqs.*.question"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="Do you provide SSL certificates?"
+               data-component="body">
+    <br>
+<p>required_with:faqs FAQ question (max 500 characters). Example: <code>Do you provide SSL certificates?</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>answer</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="faqs.*.answer"                data-endpoint="PUTapi-freelancers-services--id-"
+               value="Yes, I can help you install SSL certificates for enhanced security."
+               data-component="body">
+    <br>
+<p>required_with:faqs FAQ answer (max 1000 characters). Example: <code>Yes, I can help you install SSL certificates for enhanced security.</code></p>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
+        </div>
+        </form>
+
+                    <h2 id="service-management-DELETEapi-freelancers-services--id-">Delete service</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Delete an existing service offering for the authenticated freelancer. This endpoint
+permanently removes the service and all associated data including FAQs, hashtag
+associations, and attachment references. The service attachments files will also
+be deleted from storage.</p>
 
 <span id="example-requests-DELETEapi-freelancers-services--id-">
 <blockquote>Example request:</blockquote>
@@ -8925,7 +9319,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://backend.shuwier.com/api/freelancers/services/consequatur" \
+    "http://backend.shuwier.com/api/freelancers/services/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Accept-Language: en"</code></pre></div>
@@ -8933,7 +9327,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/services/consequatur"
+    "http://backend.shuwier.com/api/freelancers/services/1"
 );
 
 const headers = {
@@ -8950,7 +9344,51 @@ fetch(url, {
 </span>
 
 <span id="example-responses-DELETEapi-freelancers-services--id-">
-</span>
+            <blockquote>
+            <p>Example response (200, Service deleted successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Service deleted successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Unauthenticated):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Unauthorized access):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 403,
+    &quot;message&quot;: &quot;You are not authorized to delete this service&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Service not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 404,
+    &quot;message&quot;: &quot;Service not found&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-DELETEapi-freelancers-services--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-DELETEapi-freelancers-services--id-"></span>:
@@ -8968,7 +9406,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-DELETEapi-freelancers-services--id-" data-method="DELETE"
       data-path="api/freelancers/services/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -9034,14 +9472,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="DELETEapi-freelancers-services--id-"
-               value="consequatur"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-freelancers-services--id-"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the service. Example: <code>consequatur</code></p>
+<p>Service ID to delete. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -12751,7 +13189,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYsTQ5o" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpIehu6G" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -12912,7 +13350,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYsTQ5o</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpIehu6G</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

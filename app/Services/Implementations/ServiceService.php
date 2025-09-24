@@ -122,20 +122,122 @@ class ServiceService implements ServiceServiceInterface
             return $service;
         });
 
-        return ['status' => true, 'message' => __('message.success'), 'data' => $service];
+        return ['status' => true, 'message' => __('message.service_created_successfully'), 'data' => $service];
     }
 
     public function update(int $id, array $data): array
     {
-        $service = $this->serviceRepo->update($id, $data);
+        $category = $this->categoryRepo->find($data['category_id']);
 
-        return ['status' => 'success', 'message' => __('message.success'), 'data' => $service];
+        if ($category->parent_id != null)
+            return ['status' => false, 'message' => __('message.this_category_is_not_a_parent_category')];
+
+        if (isset($data['subcategory_id'])) {
+            $subcategory = $this->categoryRepo->find($data['subcategory_id']);
+
+            if ($subcategory->parent_id == null)
+                return ['status' => false, 'message' => __('message.this_category_is_not_a_subcategory')];
+
+            if ($subcategory->parent_id != $data['category_id'])
+                return ['status' => false, 'message' => __('message.this_subcategory_does_not_belong_to_the_selected_category')];
+        }
+
+        $service = $this->serviceRepo->findById($id);
+
+        $coverPath = $service->cover_photo;
+
+        if (isset($data['cover_photo']))
+            $coverPath = ImageHelpers::addImage($data['cover_photo'], 'services');
+
+        if (isset($data['attachment_ids'])) {
+            foreach ($data['attachment_ids'] as $attachment_id) {
+                $attachment = $this->serviceAttachmentRepo->findById($attachment_id);
+
+                if ($attachment->service_id != null && $attachment->service_id != $service->id)
+                    return ['status' => false, 'message' => __('message.this_attachment_is_already_used')];
+
+                if ($attachment->user_id != auth('api')->id())
+                    return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
+            }
+        }
+
+        $service = DB::transaction(function () use ($data, $id, $coverPath, $service) {
+
+            $this->serviceRepo->update($id, [
+                'title'              => $data['title'],
+                'description'        => $data['description'],
+                'category_id'        => $data['category_id'],
+                'subcategory_id'     => $data['subcategory_id'] ?? null,
+                'delivery_time_unit' => $data['delivery_time_unit'],
+                'delivery_time'      => $data['delivery_time'],
+                'fees_type'          => $data['fees_type'],
+                'price'              => $data['price'],
+                'cover_photo'        => $coverPath,
+            ]);
+
+            if (isset($data['hashtags'])) {
+                foreach ($data['hashtags'] as $hashtag)
+                    $hashtagIds[] = $this->hashtagRepo->firstOrCreate(['name' => strtolower($hashtag)])->id;
+
+                $service->hashtags()->sync($hashtagIds);
+            } else
+                $service->hashtags()->sync([]);
+
+            $oldAttachments = $this->serviceAttachmentRepo->getByServiceId($id);
+
+            if (count($oldAttachments) > 0) {
+                foreach ($oldAttachments as $oldAttachment) {
+                    if (isset($data['attachment_ids']) && !in_array($oldAttachment->id, $data['attachment_ids'])) {
+                        if ($oldAttachment->is_cover)
+                            continue;
+
+                        ImageHelpers::deleteImage($oldAttachment->file_path);
+                        $this->serviceAttachmentRepo->delete($oldAttachment->id);
+                    }
+                }
+            }
+
+            if (!empty($data['attachment_ids'])) {
+                foreach ($data['attachment_ids'] as $attachment_id) {
+                    $this->serviceAttachmentRepo->update($attachment_id, [
+                        'service_id' => $service->id
+                    ]);
+                }
+            }
+
+
+            $this->serviceFaqRepo->deleteByServiceId($service->id);
+
+            if (isset($data['faqs'])) {
+                foreach ($data['faqs'] as $faq)
+                    $this->serviceFaqRepo->create([
+                        'question' => $faq['question'],
+                        'answer'   => $faq['answer'],
+                        'service_id' => $service->id
+                    ]);
+            }
+
+            $service->refresh();
+
+            $service->load(['faqs', 'attachments', 'hashtags']);
+
+            return $service;
+        });
+
+        return ['status' => true, 'message' => __('message.service_updated_successfully'), 'data' => $service];
     }
 
     public function delete(int $id): array
     {
+        $service = $this->serviceRepo->findById($id);
+
+        $attachments = $service->attachments;
+
+        foreach ($attachments as $attachment)
+            $this->serviceAttachmentRepo->delete($attachment->id);
+
         $this->serviceRepo->delete($id);
 
-        return ['status' => 'success', 'message' => __('message.success')];
+        return ['status' => 'success', 'message' => __('message.service_deleted_successfully')];
     }
 }
