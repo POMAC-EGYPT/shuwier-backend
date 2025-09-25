@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Helpers\ImageHelpers;
 use App\Models\PortfolioAttachment;
+use App\Models\ServiceAttachment;
 use Illuminate\Console\Command;
 
 class CleanUnusedAttachments extends Command
@@ -24,6 +25,7 @@ class CleanUnusedAttachments extends Command
 
     private array $strategies = [
         'portfolio' => PortfolioAttachment::class,
+        'service' => ServiceAttachment::class,
     ];
 
     /**
@@ -41,7 +43,7 @@ class CleanUnusedAttachments extends Command
         $repo = app($this->strategies[$type]);
 
         $attachments = $repo->query()
-            ->whereNull('portfolio_id')
+            ->whereNull("{$type}_id")
             ->where('created_at', '<', now()->subDay())
             ->get();
 
