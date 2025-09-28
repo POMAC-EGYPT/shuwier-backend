@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Skill;
 use App\Repository\Contracts\AdminRepositoryInterface;
 use App\Repository\Contracts\CategoryRepositoryInterface;
+use App\Repository\Contracts\CommissionRepositoryInterface;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
 use App\Repository\Contracts\HashtagRepositoryInterface;
 use App\Repository\Contracts\InvitationFreelancerRepositoryInterface;
@@ -20,6 +21,7 @@ use App\Repository\Contracts\UserRepositoryInterface;
 use App\Repository\Contracts\UserVerificationRepositoryInterface;
 use App\Repository\Eloquent\AdminRepository;
 use App\Repository\Eloquent\CategoryRepository;
+use App\Repository\Eloquent\CommissionRepository;
 use App\Repository\Eloquent\FreelancerProfileRepository;
 use App\Repository\Eloquent\HashtagRepository;
 use App\Repository\Eloquent\InvitationFreelancerRepository;
@@ -54,6 +56,7 @@ use App\Services\Implementations\LanguageService;
 use App\Services\Implementations\PortfolioService;
 use App\Services\Implementations\SkillService;
 use App\Repository\Eloquent\UserVerificationRepository;
+use App\Services\Contracts\CommissionServiceInterface;
 use App\Services\Contracts\HashtagServiceInterface;
 use App\Services\Implementations\UserVerificationService;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
@@ -61,6 +64,7 @@ use App\Services\Upload\Factory\UploadStrategyFactory;
 use App\Services\Upload\Strategies\PortfolioUpload;
 use App\Services\Contracts\InvitationFreelancerServiceInterface;
 use App\Services\Contracts\ServiceServiceInterface;
+use App\Services\Implementations\CommissionService;
 use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\InvitationFreelancerService;
 use App\Services\Implementations\ServiceService;
@@ -130,6 +134,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ServiceServiceInterface::class, ServiceService::class);
 
         $this->app->bind(ServiceFaqRepositoryInterface::class, ServiceFaqRepository::class);
+
+        $this->app->bind(CommissionRepositoryInterface::class, CommissionRepository::class);
+        $this->app->bind(CommissionServiceInterface::class, CommissionService::class);
     }
 
     /**
