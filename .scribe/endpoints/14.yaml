@@ -1,4 +1,4 @@
-name: 'Admin - Commission Management'
+name: 'Admin Commission Management'
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - GET
     uri: api/admin/commissions
     metadata:
-      groupName: 'Admin - Commission Management'
+      groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -166,7 +166,7 @@ endpoints:
       - POST
     uri: api/admin/commissions
     metadata:
-      groupName: 'Admin - Commission Management'
+      groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -287,7 +287,7 @@ endpoints:
       - PATCH
     uri: 'api/admin/commissions/{id}'
     metadata:
-      groupName: 'Admin - Commission Management'
+      groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -429,7 +429,7 @@ endpoints:
       - DELETE
     uri: 'api/admin/commissions/{id}'
     metadata:
-      groupName: 'Admin - Commission Management'
+      groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
