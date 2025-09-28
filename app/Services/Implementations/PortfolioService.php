@@ -75,7 +75,7 @@ class PortfolioService implements PortfolioServiceInterface
                 return ['status' => false, 'message' => __('message.cover_must_be_an_image')];
         }
 
-        if (isset($data['attachment_ids'])) {
+        if (isset($data['attachment_ids']) && count($data['attachment_ids']) > 0) {
             foreach ($data['attachment_ids'] as $attachment_id) {
                 $attachment = $this->portfolioAttachmentRepo->findById($attachment_id);
 
