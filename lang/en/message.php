@@ -118,4 +118,6 @@ return [
     'service_updated_successfully' => 'Service updated successfully',
     'service_deleted_successfully' => 'Service deleted successfully',
     'service_created_successfully' => 'Service created successfully',
+    'commission_created_successfully' => 'Commission created successfully',
+    'only_approved_freelancers_can_request_verification' => 'Only approved freelancers can request verification',
 ];

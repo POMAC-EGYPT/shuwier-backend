@@ -118,4 +118,6 @@ return [
     'service_updated_successfully' => 'تم تحديث الخدمة بنجاح',
     'service_deleted_successfully' => 'تم حذف الخدمة بنجاح',
     'service_created_successfully' => 'تم إنشاء الخدمة بنجاح',
+    'commission_created_successfully' => 'تم إنشاء العمولة بنجاح',
+    'only_approved_freelancers_can_request_verification' => 'يمكن لمقدمي الخدمات المعتمدين فقط طلب التحقق',
 ];
