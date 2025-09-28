@@ -28,7 +28,7 @@ class CommissionController extends Controller
      * Results are ordered by creation date (newest first).
      * 
      * @authenticated
-     * @group Admin - Commission Management
+     * @group Admin Commission Management
      * 
      * @queryParam search string optional Search term to filter commissions by rate or effective date. Example: 15
      * @queryParam per_page integer optional Number of items per page (1-100). Example: 15
@@ -131,7 +131,7 @@ class CommissionController extends Controller
      * be between 1% and 100%. The effective date must be today or in the future.
      * 
      * @authenticated
-     * @group Admin - Commission Management
+     * @group Admin Commission Management
      * 
      * @bodyParam rate number required Commission rate percentage (1-100). Will be converted to decimal for storage. Example: 15
      * @bodyParam effective_from date required Date when this commission rate becomes effective (today or future). Example: 2025-10-01
@@ -209,7 +209,7 @@ class CommissionController extends Controller
      * (today or past dates). At least one field must be different from current values.
      * 
      * @authenticated
-     * @group Admin - Commission Management
+     * @group Admin Commission Management
      * 
      * @urlParam id integer required Commission ID to update. Example: 1
      * 
@@ -295,7 +295,7 @@ class CommissionController extends Controller
      * effective (today or past dates) to maintain historical data integrity.
      * 
      * @authenticated
-     * @group Admin - Commission Management
+     * @group Admin Commission Management
      * 
      * @urlParam id integer required Commission ID to delete. Example: 1
      * 
