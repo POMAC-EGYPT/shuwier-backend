@@ -120,4 +120,9 @@ return [
     'service_created_successfully' => 'Service created successfully',
     'commission_created_successfully' => 'Commission created successfully',
     'only_approved_freelancers_can_request_verification' => 'Only approved freelancers can request verification',
+    'commission_updated_successfully' => 'Commission updated successfully',
+    'commission_deleted_successfully' => 'Commission deleted successfully',
+    'cannot_update_commission_effective_from_today_or_past' => 'Cannot update commission effective from today or past',
+    'cannot_delete_commission_effective_from_today_or_past' => 'Cannot delete commission effective from today or past',
+    'please_provide_different_values_to_update' => 'Please provide different values to update',
 ];

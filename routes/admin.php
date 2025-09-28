@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\FreelancerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommissionController;
 use App\Http\Controllers\Admin\InvitationFreelancerController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\UserVerificationController;
@@ -18,6 +19,7 @@ Route::apiResources([
     'clients'     => ClientController::class,
     'categories'  => CategoryController::class,
     'skills'      => SkillController::class,
+    'commissions' => CommissionController::class,
 ], [
     'middleware' => ['auth:admin']
 ]);
@@ -39,6 +41,6 @@ Route::group(['prefix' => 'verifications', 'middleware' => 'auth:admin'], functi
 });
 
 Route::group(['prefix' => 'invitations', 'middleware' => 'auth:admin'], function () {
-    Route::get('/', [InvitationFreelancerController::class, 'index'])->name('admin.freelancer.invitations') ;
+    Route::get('/', [InvitationFreelancerController::class, 'index'])->name('admin.freelancer.invitations');
     Route::post('/', [InvitationFreelancerController::class, 'sendInvitation'])->name('admin.freelancer.invite');
 });

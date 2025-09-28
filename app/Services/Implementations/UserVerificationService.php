@@ -22,11 +22,11 @@ class UserVerificationService implements UserVerificationServiceInterface
     public function create(array $data): array
     {
         $verification = $this->userVerificationRepo->getByUserId($data['user_id']);
+
         $user = $this->userRepo->find($data['user_id']);
 
-        if($user->user_type == UserType::FREELANCER->value && $user->approval_status != ApprovalStatus::APPROVED->value)
+        if ($user->user_type == UserType::FREELANCER->value && $user->approval_status != ApprovalStatus::APPROVED->value)
             return ['status' => false, 'message' => __('message.only_approved_freelancers_can_request_verification')];
-
 
         if ($verification)
             return ['status' => false, 'message' => __('message.verification_request_already_sent')];

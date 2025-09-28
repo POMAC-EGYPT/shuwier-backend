@@ -17,13 +17,27 @@ class CommissionRepository implements CommissionRepositoryInterface
             ->orderBy('effective_from', 'desc')->paginate($perPage);
     }
 
-    public function getLatest(): ?Commission
-    {
-        return Commission::orderBy('effective_from', 'desc')->first();
-    }
-
     public function create(array $data): Commission
     {
         return Commission::create($data);
+    }
+
+    public function findById(int $id): Commission
+    {
+        return Commission::findOrFail($id);
+    }
+
+    public function update(int $id, array $data): bool
+    {
+        $commission = $this->findById($id);
+
+        return $commission->update($data);
+    }
+
+    public function delete(int $id): bool
+    {
+        $commission = $this->findById($id);
+
+        return $commission->delete();
     }
 }

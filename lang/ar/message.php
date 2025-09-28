@@ -120,4 +120,9 @@ return [
     'service_created_successfully' => 'تم إنشاء الخدمة بنجاح',
     'commission_created_successfully' => 'تم إنشاء العمولة بنجاح',
     'only_approved_freelancers_can_request_verification' => 'يمكن لمقدمي الخدمات المعتمدين فقط طلب التحقق',
+    'commission_updated_successfully' => 'تم تحديث العمولة بنجاح',
+    'commission_deleted_successfully' => 'تم حذف العمولة بنجاح',
+    'cannot_update_commission_effective_from_today_or_past' => 'لا يمكن تحديث تاريخ سريان العمولة إلى اليوم أو أي تاريخ سابق',
+    'cannot_delete_commission_effective_from_today_or_past' => 'لا يمكن حذف العمولة التي سارية من اليوم أو أي تاريخ سابق',
+    'please_provide_different_values_to_update' => 'يرجى تقديم قيم مختلفة للتحديث',
 ];

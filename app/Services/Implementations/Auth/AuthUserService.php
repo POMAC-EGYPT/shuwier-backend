@@ -359,6 +359,9 @@ class AuthUserService implements AuthUserServiceInterface
     {
         $user = auth('api')->user();
 
+        if ($user->user_type == UserType::FREELANCER->value && $user->approval_status != ApprovalStatus::APPROVED->value)
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.you_are_not_approved_freelancer')];
+
         if ($user->email == $email)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.new_email_must_be_different')];
 
@@ -381,6 +384,9 @@ class AuthUserService implements AuthUserServiceInterface
     public function verifyChangeEmail(string $email, string $otp): array
     {
         $user = auth('api')->user();
+
+        if ($user->user_type == UserType::FREELANCER->value && $user->approval_status != ApprovalStatus::APPROVED->value)
+            return ['status' => false, 'error_num' => 400, 'message' => __('message.you_are_not_approved_freelancer')];
 
         $result = $this->verifyService->verifyCode($email, $otp);
 
