@@ -153,7 +153,7 @@ class PortfolioService implements PortfolioServiceInterface
             if (!in_array(strtolower(pathinfo($cover->file_path, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp']))
                 return ['status' => false, 'message' => __('message.cover_must_be_an_image')];
         }
-
+        dd(isset($data['attachment_ids']) && count($data['attachment_ids']) > 0 , $data['attachment_ids']);
         if (isset($data['attachment_ids']) && count($data['attachment_ids']) > 0) {
             foreach ($data['attachment_ids'] as $attachment_id) {
                 $attachment = $this->portfolioAttachmentRepo->findById($attachment_id);
