@@ -134,7 +134,7 @@ class PortfolioController extends Controller
             'category_id'       => $request->category_id,
             'subcategory_id'    => $request->subcategory_id ?? null,
             'attachment_ids'    => $request->attachment_ids ?? [],
-            'cover_id'          => $request->cover_id ?? null,
+            'cover_id'          => $request->cover_id,
             'hashtags'          => $request->hashtags ?? null,
             'user_id'           => auth('api')->id(),
         ]);
@@ -273,7 +273,7 @@ class PortfolioController extends Controller
             'category_id'       => $request->category_id,
             'subcategory_id'    => $request->subcategory_id ?? null,
             'attachment_ids'    => $request->attachment_ids ?? [],
-            'cover_id'          => $request->cover_id ?? null,
+            'cover_id'          => $request->cover_id,
             'hashtags'          => $request->hashtags ?? [],
             'user_id'           => auth('api')->id(),
         ]);
