@@ -67,7 +67,7 @@ class PortfolioService implements PortfolioServiceInterface
 
             if ($cover->user_id != $data['user_id'])
                 return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
-
+ 
             if ($cover->portfolio_id != null)
                 return ['status' => false, 'message' => __('message.this_attachment_is_already_used')];
 
@@ -75,7 +75,7 @@ class PortfolioService implements PortfolioServiceInterface
                 return ['status' => false, 'message' => __('message.cover_must_be_an_image')];
         }
 
-        if (isset($data['attachment_ids']) && count($data['attachment_ids']) > 0) {
+        if (isset($data['attachment_ids']) && count($data['attachment_ids']) > 0 && $data['attachment_ids'][0] != null) {
             foreach ($data['attachment_ids'] as $attachment_id) {
                 $attachment = $this->portfolioAttachmentRepo->findById($attachment_id);
 
@@ -103,7 +103,7 @@ class PortfolioService implements PortfolioServiceInterface
                 'hashtags'       => $hashtagIds ?? null,
             ]);
 
-            if (isset($data['attachment_ids'])) {
+            if (isset($data['attachment_ids']) && count($data['attachment_ids']) > 0 && $data['attachment_ids'][0] !== null) {
                 foreach ($data['attachment_ids'] as $attachment_id) {
                     $this->portfolioAttachmentRepo->update($attachment_id, [
                         'portfolio_id' => $portfolio->id
