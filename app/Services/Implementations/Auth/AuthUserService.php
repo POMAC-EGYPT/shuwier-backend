@@ -398,6 +398,8 @@ class AuthUserService implements AuthUserServiceInterface
             'email_verified_at' => now(),
         ]);
 
+        $user->refresh();
+
         return ['status' => true, 'message' => __('message.email_changed_successfully'), 'email' => $user->email];
     }
 }
