@@ -1112,6 +1112,6 @@ class AuthController extends Controller
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
 
-        return Response::api($result['message'], 200, true);
+        return Response::api($result['message'], 200, true, ['email' => $result['email']]);
     }
 }
