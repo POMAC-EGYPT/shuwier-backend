@@ -131,12 +131,6 @@
                                                                                 <li class="tocify-item level-2" data-unique="admin-commission-management-POSTapi-admin-commissions">
                                 <a href="#admin-commission-management-POSTapi-admin-commissions">Create commission</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="admin-commission-management-PUTapi-admin-commissions--id-">
-                                <a href="#admin-commission-management-PUTapi-admin-commissions--id-">Update commission</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="admin-commission-management-DELETEapi-admin-commissions--id-">
-                                <a href="#admin-commission-management-DELETEapi-admin-commissions--id-">Delete commission</a>
-                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-admin-freelancer-invitations" class="tocify-header">
@@ -374,7 +368,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 28, 2025</li>
+        <li>Last updated: September 29, 2025</li>
     </ul>
 </div>
 
@@ -2954,8 +2948,7 @@ be between 1% and 100%. The effective date must be today or in the future.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"rate\": 15,
-    \"effective_from\": \"2025-10-01\"
+    \"rate\": 15
 }"
 </code></pre></div>
 
@@ -2972,8 +2965,7 @@ const headers = {
 };
 
 let body = {
-    "rate": 15,
-    "effective_from": "2025-10-01"
+    "rate": 15
 };
 
 fetch(url, {
@@ -3141,446 +3133,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Commission rate percentage (1-100). Will be converted to decimal for storage. Example: <code>15</code></p>
         </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>effective_from</code></b>&nbsp;&nbsp;
-<small>date</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="effective_from"                data-endpoint="POSTapi-admin-commissions"
-               value="2025-10-01"
-               data-component="body">
-    <br>
-<p>Date when this commission rate becomes effective (today or future). Example: <code>2025-10-01</code></p>
-        </div>
         </form>
-
-                    <h2 id="admin-commission-management-PUTapi-admin-commissions--id-">Update commission</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Update an existing commission rate. Only commissions with future effective dates
-can be updated. The system prevents updating commissions that are already effective
-(today or past dates). At least one field must be different from current values.</p>
-
-<span id="example-requests-PUTapi-admin-commissions--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://backend.shuwier.com/api/admin/commissions/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"rate\": 18,
-    \"effective_from\": \"2025-11-01\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/commissions/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-let body = {
-    "rate": 18,
-    "effective_from": "2025-11-01"
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-admin-commissions--id-">
-            <blockquote>
-            <p>Example response (200, Commission updated successfully):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;Commission updated successfully&quot;,
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;rate&quot;: 0.18,
-        &quot;effective_from&quot;: &quot;2025-11-01&quot;,
-        &quot;created_by&quot;: 1,
-        &quot;created_at&quot;: &quot;2025-09-28T10:00:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-09-28T14:30:00.000000Z&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Commission already effective):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;Cannot update commission effective from today or past&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, No changes provided):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;Please provide different values to update&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Invalid rate):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The rate field must be between 1 and 100.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401, Unauthenticated):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404, Commission not found):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 404,
-    &quot;message&quot;: &quot;Commission not found&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PUTapi-admin-commissions--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-admin-commissions--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-admin-commissions--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-admin-commissions--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-admin-commissions--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-admin-commissions--id-" data-method="PUT"
-      data-path="api/admin/commissions/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-admin-commissions--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-admin-commissions--id-"
-                    onclick="tryItOut('PUTapi-admin-commissions--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-admin-commissions--id-"
-                    onclick="cancelTryOut('PUTapi-admin-commissions--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-admin-commissions--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/admin/commissions/{id}</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/admin/commissions/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-admin-commissions--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-admin-commissions--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="PUTapi-admin-commissions--id-"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-admin-commissions--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>Commission ID to update. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>rate</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="rate"                data-endpoint="PUTapi-admin-commissions--id-"
-               value="18"
-               data-component="body">
-    <br>
-<p>optional New commission rate percentage (1-100). Will be converted to decimal for storage. Example: <code>18</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>effective_from</code></b>&nbsp;&nbsp;
-<small>date</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="effective_from"                data-endpoint="PUTapi-admin-commissions--id-"
-               value="2025-11-01"
-               data-component="body">
-    <br>
-<p>optional New effective date (today or future). Example: <code>2025-11-01</code></p>
-        </div>
-        </form>
-
-                    <h2 id="admin-commission-management-DELETEapi-admin-commissions--id-">Delete commission</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Delete a commission rate from the system. Only commissions with future effective
-dates can be deleted. The system prevents deletion of commissions that are already
-effective (today or past dates) to maintain historical data integrity.</p>
-
-<span id="example-requests-DELETEapi-admin-commissions--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://backend.shuwier.com/api/admin/commissions/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/commissions/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-admin-commissions--id-">
-            <blockquote>
-            <p>Example response (200, Commission deleted successfully):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;Commission deleted successfully&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Commission already effective):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;Cannot delete commission effective from today or past&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401, Unauthenticated):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404, Commission not found):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 404,
-    &quot;message&quot;: &quot;Commission not found&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEapi-admin-commissions--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-admin-commissions--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-admin-commissions--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-admin-commissions--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-admin-commissions--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-admin-commissions--id-" data-method="DELETE"
-      data-path="api/admin/commissions/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-admin-commissions--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-admin-commissions--id-"
-                    onclick="tryItOut('DELETEapi-admin-commissions--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-admin-commissions--id-"
-                    onclick="cancelTryOut('DELETEapi-admin-commissions--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-admin-commissions--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/admin/commissions/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-admin-commissions--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-admin-commissions--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="DELETEapi-admin-commissions--id-"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-admin-commissions--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>Commission ID to delete. Example: <code>1</code></p>
-            </div>
-                    </form>
 
                 <h1 id="admin-freelancer-invitations">Admin Freelancer Invitations</h1>
 
@@ -3997,7 +3550,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
+    \"approval_status\": \"approved\",
     \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -4025,7 +3578,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
+    "approval_status": "approved",
     "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -4252,10 +3805,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -6996,7 +6549,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOQ76Ue" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpN7kCZU" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7165,7 +6718,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOQ76Ue</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpN7kCZU</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9038,7 +8591,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php1Vpy5Y" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3dwJgW" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9371,7 +8924,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php1Vpy5Y</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3dwJgW</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -14130,7 +13683,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpirBJLY" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkJr9yX" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -14291,7 +13844,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpirBJLY</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkJr9yX</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\CommissionResource;
 use App\Services\Contracts\CommissionServiceInterface;
-use Faker\Provider\Base;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
@@ -134,7 +133,7 @@ class CommissionController extends Controller
      * @group Admin Commission Management
      * 
      * @bodyParam rate number required Commission rate percentage (1-100). Will be converted to decimal for storage. Example: 15
-     * @bodyParam effective_from date required Date when this commission rate becomes effective (today or future). Example: 2025-10-01
+     * effective_from date Note: The effective_from will always be set to the current date/time automatically.
      * 
      * @response 200 scenario="Commission created successfully" {
      *   "status": true,
@@ -177,16 +176,14 @@ class CommissionController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'rate'           => 'required|numeric|min:1|max:100',
-            'effective_from' => 'required|date|after_or_equal:today',
+            'rate' => 'required|numeric|min:1|max:50',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
         $result = $this->commissionService->create([
-            'rate'           => $request->rate,
-            'effective_from' => $request->effective_from,
+            'rate' => $request->rate,
         ]);
 
         if (!$result['status'])
@@ -199,137 +196,5 @@ class CommissionController extends Controller
             null,
             BaseResource::make(CommissionResource::make($result['data']))
         );
-    }
-
-    /**
-     * Update commission
-     * 
-     * Update an existing commission rate. Only commissions with future effective dates
-     * can be updated. The system prevents updating commissions that are already effective
-     * (today or past dates). At least one field must be different from current values.
-     * 
-     * @authenticated
-     * @group Admin Commission Management
-     * 
-     * @urlParam id integer required Commission ID to update. Example: 1
-     * 
-     * @bodyParam rate number optional New commission rate percentage (1-100). Will be converted to decimal for storage. Example: 18
-     * @bodyParam effective_from date optional New effective date (today or future). Example: 2025-11-01
-     * 
-     * @response 200 scenario="Commission updated successfully" {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "Commission updated successfully",
-     *   "data": {
-     *     "id": 1,
-     *     "rate": 0.18,
-     *     "effective_from": "2025-11-01",
-     *     "created_by": 1,
-     *     "created_at": "2025-09-28T10:00:00.000000Z",
-     *     "updated_at": "2025-09-28T14:30:00.000000Z"
-     *   }
-     * }
-     * 
-     * @response 400 scenario="Commission already effective" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "Cannot update commission effective from today or past"
-     * }
-     * 
-     * @response 400 scenario="No changes provided" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "Please provide different values to update"
-     * }
-     * 
-     * @response 400 scenario="Invalid rate" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "The rate field must be between 1 and 100."
-     * }
-     * 
-     * @response 404 scenario="Commission not found" {
-     *   "status": false,
-     *   "error_num": 404,
-     *   "message": "Commission not found"
-     * }
-     * 
-     * @response 401 scenario="Unauthenticated" {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Unauthenticated"
-     * }
-     */
-    public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'rate'           => 'sometimes|numeric|min:1|max:100',
-            'effective_from' => 'sometimes|date|after_or_equal:today',
-        ]);
-
-        if ($validator->fails())
-            return Response::api($validator->errors()->first(), 400, false, 400);
-
-        $result = $this->commissionService->update((int) $id, [
-            'rate'           => $request->rate,
-            'effective_from' => $request->effective_from,
-        ]);
-
-        if (!$result['status'])
-            return Response::api($result['message'], 400, false, 400);
-
-        return Response::api(
-            $result['message'],
-            200,
-            true,
-            null,
-            BaseResource::make(CommissionResource::make($result['data']))
-        );
-    }
-
-    /**
-     * Delete commission
-     * 
-     * Delete a commission rate from the system. Only commissions with future effective
-     * dates can be deleted. The system prevents deletion of commissions that are already
-     * effective (today or past dates) to maintain historical data integrity.
-     * 
-     * @authenticated
-     * @group Admin Commission Management
-     * 
-     * @urlParam id integer required Commission ID to delete. Example: 1
-     * 
-     * @response 200 scenario="Commission deleted successfully" {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "Commission deleted successfully"
-     * }
-     * 
-     * @response 400 scenario="Commission already effective" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "Cannot delete commission effective from today or past"
-     * }
-     * 
-     * @response 404 scenario="Commission not found" {
-     *   "status": false,
-     *   "error_num": 404,
-     *   "message": "Commission not found"
-     * }
-     * 
-     * @response 401 scenario="Unauthenticated" {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Unauthenticated"
-     * }
-     */
-    public function destroy($id)
-    {
-        $result = $this->commissionService->delete((int) $id);
-
-        if (!$result['status'])
-            return Response::api($result['message'], 400, false, 400);
-
-        return Response::api($result['message'], 200, true, null);
     }
 }
