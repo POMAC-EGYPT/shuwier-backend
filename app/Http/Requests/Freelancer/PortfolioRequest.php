@@ -53,6 +53,13 @@ class PortfolioRequest extends FormRequest
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'cover_id.required' => 'The thumbnail image is required.',
+        ];
+    }
+
     /**
      * Get the body parameters for Scribe documentation.
      */
