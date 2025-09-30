@@ -30,6 +30,7 @@ class ClientResource extends JsonResource
             'country'                        => $this->country,
             'city'                           => $this->city,
             'is_verified'                    => $this->is_verified,
+            'user_verification_status'       => $this->user_verification_status,
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
             'languages'                      => $this->when(

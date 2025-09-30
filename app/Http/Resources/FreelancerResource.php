@@ -34,6 +34,7 @@ class FreelancerResource extends JsonResource
             'portfolio_link'                 => $this->freelancerProfile->portfolio_link ?? null,
             'headline'                       => $this->freelancerProfile->headline ?? null,
             'is_verified'                    => $this->is_verified,
+            'user_verification_status'       => $this->user_verification_status,
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
             'portfolios'                      => $this->when(

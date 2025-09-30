@@ -65,6 +65,17 @@ class User extends Authenticatable implements JWTSubject
         'approval_status' => ApprovalStatus::class
     ];
 
+    protected $with = ['verification'];
+
+    protected $appends = [
+        'user_verification_status'
+    ];
+
+    public function getUserVerificationStatusAttribute()
+    {
+        return $this->verification ? $this->verification->status : null;
+    }
+
     #[Scope]
     protected function freelancers(Builder $query): Builder
     {
