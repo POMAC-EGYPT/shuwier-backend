@@ -281,13 +281,13 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-public-homepage" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="public-homepage">
-                    <a href="#public-homepage">Public - Homepage</a>
+                    <ul id="tocify-header-public-home-page" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="public-home-page">
+                    <a href="#public-home-page">Public Home Page</a>
                 </li>
-                                    <ul id="tocify-subheader-public-homepage" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="public-homepage-GETapi-home-guest">
-                                <a href="#public-homepage-GETapi-home-guest">Guest homepage data</a>
+                                    <ul id="tocify-subheader-public-home-page" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="public-home-page-GETapi-home-guest">
+                                <a href="#public-home-page-GETapi-home-guest">Guest home page</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -3574,7 +3574,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"approved\",
-    \"is_active\": \"1\",
+    \"is_active\": \"0\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3602,7 +3602,7 @@ const headers = {
 
 let body = {
     "approval_status": "approved",
-    "is_active": "1",
+    "is_active": "0",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3841,10 +3841,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="1"
+               value="0"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>0</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -6854,7 +6854,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYXRiM3" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT276Eq" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7023,7 +7023,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYXRiM3</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT276Eq</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8579,11 +8579,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                <h1 id="public-homepage">Public - Homepage</h1>
+                <h1 id="public-home-page">Public Home Page</h1>
 
     
 
-                                <h2 id="public-homepage-GETapi-home-guest">Guest homepage data</h2>
+                                <h2 id="public-home-page-GETapi-home-guest">Guest home page</h2>
 
 <p>
 </p>
@@ -8625,7 +8625,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-home-guest">
             <blockquote>
-            <p>Example response (200, Homepage data retrieved successfully):</p>
+            <p>Example response (200, Home page data retrieved successfully):</p>
         </blockquote>
                 <pre>
 
@@ -8727,7 +8727,7 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: false,
     &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;Unable to retrieve homepage data&quot;
+    &quot;message&quot;: &quot;Unable to retrieve home page data&quot;
 }</code>
  </pre>
     </span>
@@ -9130,7 +9130,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5zGzbW" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmIjFKy" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9463,7 +9463,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5zGzbW</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmIjFKy</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -14222,7 +14222,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoEsJbv" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZoppfO" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -14383,7 +14383,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoEsJbv</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZoppfO</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

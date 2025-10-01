@@ -1,4 +1,4 @@
-name: 'Public - Homepage'
+name: 'Public Home Page'
 description: ''
 endpoints:
   -
@@ -6,11 +6,11 @@ endpoints:
       - GET
     uri: api/home/guest
     metadata:
-      groupName: 'Public - Homepage'
+      groupName: 'Public Home Page'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Guest homepage data'
+      title: 'Guest home page'
       description: |-
         Retrieve the homepage data for guest (non-authenticated) users. This endpoint provides
         curated content including best-selling categories and top-performing services to showcase
@@ -124,7 +124,7 @@ endpoints:
             }
           }
         headers: []
-        description: 'Homepage data retrieved successfully'
+        description: 'Home page data retrieved successfully'
         custom: []
       -
         status: 400
@@ -132,7 +132,7 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "Unable to retrieve homepage data"
+            "message": "Unable to retrieve home page data"
           }
         headers: []
         description: 'Service unavailable'

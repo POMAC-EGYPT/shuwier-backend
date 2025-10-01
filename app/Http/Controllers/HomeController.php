@@ -17,16 +17,16 @@ class HomeController extends Controller
         $this->homeService = $homeService;
     }
     /**
-     * Guest homepage data
+     * Guest home page
      * 
      * Retrieve the homepage data for guest (non-authenticated) users. This endpoint provides
      * curated content including best-selling categories and top-performing services to showcase
      * the platform's offerings. This data helps visitors discover popular services and categories
      * without requiring authentication.
      * 
-     * @group Public - Homepage
+     * @group Public Home Page
      * 
-     * @response 200 scenario="Homepage data retrieved successfully" {
+     * @response 200 scenario="Home page data retrieved successfully" {
      *   "status": true,
      *   "error_num": null,
      *   "message": "Success",
@@ -119,7 +119,7 @@ class HomeController extends Controller
      * @response 400 scenario="Service unavailable" {
      *   "status": false,
      *   "error_num": 400,
-     *   "message": "Unable to retrieve homepage data"
+     *   "message": "Unable to retrieve home page data"
      * }
      */
     public function guestHome()
