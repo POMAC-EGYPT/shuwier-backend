@@ -125,4 +125,5 @@ return [
     'cannot_update_commission_effective_from_today_or_past' => 'Cannot update commission effective from today or past',
     'cannot_delete_commission_effective_from_today_or_past' => 'Cannot delete commission effective from today or past',
     'please_provide_different_values_to_update' => 'Please provide different values to update',
+    'cannot_set_category_as_its_own_parent' => 'Cannot set category as its own parent',
 ];

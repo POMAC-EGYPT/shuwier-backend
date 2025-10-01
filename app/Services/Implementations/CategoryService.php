@@ -2,6 +2,7 @@
 
 namespace App\Services\Implementations;
 
+use App\Helpers\ImageHelpers;
 use App\Models\Category;
 use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Services\Contracts\CategoryServiceInterface;
@@ -56,10 +57,13 @@ class CategoryService implements CategoryServiceInterface
                 return ['status' => false, 'message' => __('message.cannot_add_subcategory_to_child')];
         }
 
+        $imagePath = ImageHelpers::addImage($data['image'], 'categories');
+
         $category = $this->categoryRepo->create([
             'name_en'   => $data['name_en'],
             'name_ar'   => $data['name_ar'],
             'parent_id' => $data['parent_id'] ?? null,
+            'image'     => $imagePath,
         ]);
 
         return ['status' => true, 'message' => __('message.category_created_successfully'), 'data' => $category];
@@ -94,14 +98,24 @@ class CategoryService implements CategoryServiceInterface
         if ($data['parent_id'] != null) {
             $parent = $this->categoryRepo->find($data['parent_id'], true);
 
+            if ($data['parent_id'] == $id)
+                return ['status' => false, 'message' => __('message.cannot_set_category_as_its_own_parent')];
+
             if ($parent->parent_id != null)
                 return ['status' => false, 'message' => __('message.cannot_add_subcategory_to_child')];
+        }
+
+        if (isset($data['image']) && $data['image'] != null) {
+            ImageHelpers::deleteImage($category->image);
+            
+            $imagePath = ImageHelpers::addImage($data['image'], 'categories');
         }
 
         $this->categoryRepo->update($id, [
             'name_en' => $data['name_en'],
             'name_ar' => $data['name_ar'],
             'parent_id' => $data['parent_id'],
+            'image' => $imagePath ?? $category->image,
         ]);
 
         $category->refresh();
@@ -115,6 +129,10 @@ class CategoryService implements CategoryServiceInterface
 
     public function delete(int $id): bool
     {
+        $category = $this->categoryRepo->find($id);
+
+        ImageHelpers::deleteImage($category->image);
+
         return $this->categoryRepo->delete($id);
     }
 }

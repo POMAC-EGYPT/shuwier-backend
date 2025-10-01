@@ -19,6 +19,7 @@ class CategoryResource extends JsonResource
                 'id'         => $this->id,
                 'name_en'    => $this->name_en,
                 'name_ar'    => $this->name_ar,
+                'image'      => $this->image,
                 'parent_id'  => $this->parent_id,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
@@ -28,6 +29,7 @@ class CategoryResource extends JsonResource
         return [
             'id'         => $this->id,
             'name'       => app()->getLocale() === 'en' ? $this->name_en : $this->name_ar,
+            'image'     => $this->image,
             'parent_id'  => $this->parent_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

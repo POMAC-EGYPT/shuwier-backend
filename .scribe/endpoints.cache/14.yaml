@@ -142,7 +142,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters: []
@@ -180,11 +180,22 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
+      image:
+        name: image
+        description: 'category image file.'
+        required: true
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
       name_en: Design
       name_ar: تصميم
       parent_id: 2
-    fileParameters: []
+    fileParameters:
+      image: null
     responses:
       -
         status: 201
@@ -197,6 +208,7 @@ endpoints:
               "id": 5,
               "name_en": "Development",
               "name_ar": "تطوير",
+              "image": "development.jpg",
               "parent_id": null,
               "created_at": "2025-09-07T10:30:00.000000Z",
               "updated_at": "2025-09-07T10:30:00.000000Z"
@@ -274,6 +286,7 @@ endpoints:
               "id": 1,
               "name_en": "Design",
               "name_ar": "تصميم",
+              "image": null,
               "parent_id": null,
               "created_at": "2025-09-07T10:30:00.000000Z",
               "updated_at": "2025-09-07T10:30:00.000000Z"
@@ -319,7 +332,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters:
@@ -360,10 +373,20 @@ endpoints:
         custom: []
       parent_id:
         name: parent_id
-        description: 'Parent category ID for creating subcategories (optional). The <code>id</code> of an existing record in the categories table.'
+        description: 'The parent category ID (for subcategories).'
         required: false
-        example: 1
-        type: string
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      image:
+        name: image
+        description: 'Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it.'
+        required: false
+        example: null
+        type: file
         enumValues: []
         exampleWasSpecified: false
         nullable: true
@@ -371,8 +394,9 @@ endpoints:
     cleanBodyParameters:
       name_en: Design
       name_ar: تصميم
-      parent_id: 1
-    fileParameters: []
+      parent_id: 2
+    fileParameters:
+      image: null
     responses:
       -
         status: 200

@@ -125,4 +125,5 @@ return [
     'cannot_update_commission_effective_from_today_or_past' => 'لا يمكن تحديث تاريخ سريان العمولة إلى اليوم أو أي تاريخ سابق',
     'cannot_delete_commission_effective_from_today_or_past' => 'لا يمكن حذف العمولة التي سارية من اليوم أو أي تاريخ سابق',
     'please_provide_different_values_to_update' => 'يرجى تقديم قيم مختلفة للتحديث',
+    'cannot_set_category_as_its_own_parent' => 'لا يمكن تعيين الفئة كوالد لنفسها',
 ];

@@ -12,6 +12,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property string $name_ar
  * @property string $name_en
  * @property int|null $parent_id
+ * @property \Illuminate\Http\UploadedFile|null $image
  */
 class StoreCategoryRequest extends FormRequest
 {
@@ -41,6 +42,7 @@ class StoreCategoryRequest extends FormRequest
             'name_en'   => 'required|string|max:255',
             'name_ar'   => 'required|string|max:255',
             'parent_id' => 'nullable|exists:categories,id',
+            'image'     => request()->routeIs('admin.categories.store') ? 'required|file|mimes:svg|max:2048' : 'nullable|mimes:svg|max:2048',
         ];
     }
 
@@ -61,6 +63,10 @@ class StoreCategoryRequest extends FormRequest
             'parent_id' => [
                 'description' => 'Parent category ID for creating subcategories (optional)',
                 'example' => 1,
+            ],
+            'image' => [
+                'description' => 'Category image file (required for creation, optional for update). Must be an SVG file, max 2MB.',
+                'example' => 'No-example',
             ],
         ];
     }

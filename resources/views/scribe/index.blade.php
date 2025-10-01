@@ -888,15 +888,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://backend.shuwier.com/api/admin/categories" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --data "{
-    \"name_en\": \"Design\",
-    \"name_ar\": \"تصميم\",
-    \"parent_id\": 2
-}"
-</code></pre></div>
+    --form "name_en=Design"\
+    --form "name_ar=تصميم"\
+    --form "parent_id=2"\
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfMk3Ee" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -905,21 +903,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
     "Accept-Language": "en",
 };
 
-let body = {
-    "name_en": "Design",
-    "name_ar": "تصميم",
-    "parent_id": 2
-};
+const body = new FormData();
+body.append('name_en', 'Design');
+body.append('name_ar', 'تصميم');
+body.append('parent_id', '2');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -938,6 +936,7 @@ fetch(url, {
         &quot;id&quot;: 5,
         &quot;name_en&quot;: &quot;Development&quot;,
         &quot;name_ar&quot;: &quot;تطوير&quot;,
+        &quot;image&quot;: &quot;development.jpg&quot;,
         &quot;parent_id&quot;: null,
         &quot;created_at&quot;: &quot;2025-09-07T10:30:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-09-07T10:30:00.000000Z&quot;
@@ -974,7 +973,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-admin-categories" data-method="POST"
       data-path="api/admin/categories"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-categories', this);">
@@ -1009,10 +1008,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-categories"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -1070,6 +1069,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>The parent category ID (for subcategories). Example: <code>2</code></p>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="image"                data-endpoint="POSTapi-admin-categories"
+               value=""
+               data-component="body">
+    <br>
+<p>category image file. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfMk3Ee</code></p>
+        </div>
         </form>
 
                     <h2 id="admin-category-management-GETapi-admin-categories--id-">Show category details by ID.</h2>
@@ -1124,6 +1134,7 @@ fetch(url, {
         &quot;id&quot;: 1,
         &quot;name_en&quot;: &quot;Design&quot;,
         &quot;name_ar&quot;: &quot;تصميم&quot;,
+        &quot;image&quot;: null,
         &quot;parent_id&quot;: null,
         &quot;created_at&quot;: &quot;2025-09-07T10:30:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-09-07T10:30:00.000000Z&quot;
@@ -1251,15 +1262,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
     "http://backend.shuwier.com/api/admin/categories/1" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --data "{
-    \"name_en\": \"Design\",
-    \"name_ar\": \"تصميم\",
-    \"parent_id\": 1
-}"
-</code></pre></div>
+    --form "name_en=Design"\
+    --form "name_ar=تصميم"\
+    --form "parent_id=2"\
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaYxa2s" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1268,21 +1277,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
     "Accept-Language": "en",
 };
 
-let body = {
-    "name_en": "Design",
-    "name_ar": "تصميم",
-    "parent_id": 1
-};
+const body = new FormData();
+body.append('name_en', 'Design');
+body.append('name_ar', 'تصميم');
+body.append('parent_id', '2');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
     method: "PUT",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -1340,7 +1349,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-PUTapi-admin-categories--id-" data-method="PUT"
       data-path="api/admin/categories/{id}"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-admin-categories--id-', this);">
@@ -1379,10 +1388,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-admin-categories--id-"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -1443,14 +1452,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="parent_id"                data-endpoint="PUTapi-admin-categories--id-"
-               value="1"
+                <input type="number" style="display: none"
+               step="any"               name="parent_id"                data-endpoint="PUTapi-admin-categories--id-"
+               value="2"
                data-component="body">
     <br>
-<p>Parent category ID for creating subcategories (optional). The <code>id</code> of an existing record in the categories table. Example: <code>1</code></p>
+<p>The parent category ID (for subcategories). Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="image"                data-endpoint="PUTapi-admin-categories--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaYxa2s</code></p>
         </div>
         </form>
 
@@ -6854,7 +6874,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT276Eq" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjmUZ0q" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7023,7 +7043,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT276Eq</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjmUZ0q</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9130,7 +9150,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmIjFKy" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTdle2y" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9463,7 +9483,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmIjFKy</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTdle2y</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -14222,7 +14242,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZoppfO" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpolB0CR" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -14383,7 +14403,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZoppfO</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpolB0CR</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

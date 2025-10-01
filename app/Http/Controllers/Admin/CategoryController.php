@@ -86,6 +86,7 @@ class CategoryController extends Controller
      * @bodyParam name_en string required Category name in English. Example: Design
      * @bodyParam name_ar string required Category name in Arabic. Example: تصميم
      * @bodyParam parent_id integer The parent category ID (for subcategories). Example: 2
+     * @bodyParam image file required category image file.
      *
      * @response 201 scenario="Category created successfully" {
      *   "status": true,
@@ -95,6 +96,7 @@ class CategoryController extends Controller
      *     "id": 5,
      *     "name_en": "Development",
      *     "name_ar": "تطوير",
+     *     "image": "development.jpg",
      *     "parent_id": null,
      *     "created_at": "2025-09-07T10:30:00.000000Z",
      *     "updated_at": "2025-09-07T10:30:00.000000Z"
@@ -113,6 +115,7 @@ class CategoryController extends Controller
             'name_en'   => $request->name_en,
             'name_ar'   => $request->name_ar,
             'parent_id' => $request->parent_id,
+            'image'     => $request->image,
         ]);
 
         if (!$result['status'])
@@ -177,6 +180,7 @@ class CategoryController extends Controller
      *     "id": 1,
      *     "name_en": "Design",
      *     "name_ar": "تصميم",
+     *     "image": null,
      *     "parent_id": null,
      *     "created_at": "2025-09-07T10:30:00.000000Z",
      *     "updated_at": "2025-09-07T10:30:00.000000Z"
@@ -211,6 +215,8 @@ class CategoryController extends Controller
      * @urlParam id integer required The ID of the category to update. Example: 1
      * @bodyParam name_en string Category name in English. Example: Design
      * @bodyParam name_ar string Category name in Arabic. Example: تصميم
+     * @bodyParam parent_id integer The parent category ID (for subcategories). Example: 2
+     * @bodyParam image file Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it.
      *
      * @response 200 scenario="Category updated successfully" {
      *   "status": true,
@@ -233,9 +239,10 @@ class CategoryController extends Controller
     public function update(StoreCategoryRequest $request, string $id)
     {
         $result = $this->categoryService->update((int) $id, [
-            'name_en' => $request->name_en ?? null,
-            'name_ar' => $request->name_ar ?? null,
+            'name_en'   => $request->name_en ?? null,
+            'name_ar'   => $request->name_ar ?? null,
             'parent_id' => $request->parent_id ?? null,
+            'image'     => $request->image ?? null,
         ]);
 
         if (!$result['status'])
