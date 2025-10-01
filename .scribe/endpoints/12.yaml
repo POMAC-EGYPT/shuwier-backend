@@ -1,25 +1,28 @@
-name: 'Admin Category Management'
+name: 'Admin Freelancer Management'
 description: |-
 
-  APIs for managing categories in the admin panel.
-  These endpoints allow administrators to view, create, update, and delete categories,
-  including bulk creation with children and searching/filtering.
+  APIs for managing freelancers in the admin panel.
+  These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+  including approving or rejecting freelancer applications.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/categories
+    uri: api/admin/freelancers
     metadata:
-      groupName: 'Admin Category Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing categories in the admin panel.
-        These endpoints allow administrators to view, create, update, and delete categories,
-        including bulk creation with children and searching/filtering.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'List categories with optional filters and pagination.'
-      description: 'This endpoint returns a paginated list of categories. You can filter by type and search by name.'
+      title: 'Display a listing of freelancers with optional filters.'
+      description: |-
+        This endpoint returns a paginated list of all freelancers in the system.
+        Results can be filtered by approval status, active status, and name.
+        The response includes pagination metadata for easy navigation.
       authenticated: true
       deprecated: false
       custom: []
@@ -30,49 +33,39 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      search:
-        name: search
-        description: 'Optional search by category name (Arabic or English).'
+      approval_status:
+        name: approval_status
+        description: 'Optional filter by approval status. Must be "requested" or "approved".'
         required: false
-        example: تصميم
+        example: requested
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
-      per_page:
-        name: per_page
-        description: 'Number of items per page (default: 10).'
+      is_active:
+        name: is_active
+        description: 'Optional filter by active status. Must be 0 (inactive) or 1 (active).'
         required: false
-        example: 20
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
-      type:
-        name: type
-        description: 'Optional filter by category type.'
+      name:
+        name: name
+        description: 'Optional filter by freelancer name (searches in name).'
         required: false
-        example: 'parent. Possible values: parent, child'
+        example: أحمد
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
-        custom: []
-      parent_id:
-        name: parent_id
-        description: "The parent category ID to filter by (only used when type is 'child')."
-        required: false
-        example: 2
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       page:
         name: page
-        description: 'Page number for pagination (default: 1).'
+        description: 'Optional page number for pagination (default: 1).'
         required: false
         example: 2
         type: integer
@@ -81,13 +74,49 @@ endpoints:
         nullable: false
         custom: []
     cleanQueryParameters:
-      search: تصميم
-      per_page: 20
-      type: 'parent. Possible values: parent, child'
-      parent_id: 2
+      approval_status: requested
+      is_active: 1
+      name: أحمد
       page: 2
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      approval_status:
+        name: approval_status
+        description: ''
+        required: false
+        example: approved
+        type: string
+        enumValues:
+          - requested
+          - approved
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: ''
+        required: false
+        example: '1'
+        type: string
+        enumValues:
+          - '0'
+          - '1'
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: vmqeopfuudtdsufvyvddq
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      approval_status: approved
+      is_active: '1'
+      name: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
       -
@@ -100,108 +129,40 @@ endpoints:
             "data": [
               {
                 "id": 1,
-                "name_en": "Design",
-                "name_ar": "تصميم",
-                "parent_id": null,
-                "created_at": "2025-09-07T10:30:00.000000Z",
-                "updated_at": "2025-09-07T10:30:00.000000Z"
+                "name": "John Doe",
+                "email": "john@example.com",
+                "type": "freelancer",
+                "email_verified_at": "2025-08-24T10:30:00.000000Z",
+                "phone": null,
+                "is_active": true,
+                "about_me": null,
+                "profile_picture": null,
+                "approval_status": "requested",
+                "linkedin_link": "https://linkedin.com/in/johndoe",
+                "twitter_link": "https://twitter.com/johndoe",
+                "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+                "portfolio_link": "https://johndoe.com",
+                "headline": null,
+                "description": null,
+                "created_at": "2025-08-24T10:30:00.000000Z",
+                "updated_at": "2025-08-24T10:30:00.000000Z"
               }
             ],
             "current_page": 1,
-            "last_page": 3,
+            "from": 1,
+            "last_page": 5,
             "per_page": 10,
-            "total": 25
-          }
-        headers: []
-        description: 'Categories retrieved successfully'
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/admin/categories
-    metadata:
-      groupName: 'Admin Category Management'
-      groupDescription: |-
-
-        APIs for managing categories in the admin panel.
-        These endpoints allow administrators to view, create, update, and delete categories,
-        including bulk creation with children and searching/filtering.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Create a new category.'
-      description: 'This endpoint allows admins to create a new category. You can specify parent_id to create a subcategory.'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name_en:
-        name: name_en
-        description: 'Category name in English.'
-        required: true
-        example: Design
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      name_ar:
-        name: name_ar
-        description: 'Category name in Arabic.'
-        required: true
-        example: تصميم
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      parent_id:
-        name: parent_id
-        description: 'The parent category ID (for subcategories).'
-        required: false
-        example: 2
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      name_en: Design
-      name_ar: تصميم
-      parent_id: 2
-    fileParameters: []
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Category created successfully",
-            "data": {
-              "id": 5,
-              "name_en": "Development",
-              "name_ar": "تطوير",
-              "parent_id": null,
-              "created_at": "2025-09-07T10:30:00.000000Z",
-              "updated_at": "2025-09-07T10:30:00.000000Z"
+            "to": 10,
+            "total": 50,
+            "links": {
+              "first": "http://localhost/api/admin/freelancers?page=1",
+              "last": "http://localhost/api/admin/freelancers?page=5",
+              "prev": null,
+              "next": "http://localhost/api/admin/freelancers?page=2"
             }
           }
         headers: []
-        description: 'Category created successfully'
+        description: ''
         custom: []
       -
         status: 400
@@ -209,10 +170,32 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The name_en field is required."
+            "message": "The approval_status field must be one of: requested, approved."
           }
         headers: []
-        description: 'Validation error'
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth: []
@@ -223,18 +206,18 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/admin/categories/{id}'
+    uri: 'api/admin/freelancers/{id}'
     metadata:
-      groupName: 'Admin Category Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing categories in the admin panel.
-        These endpoints allow administrators to view, create, update, and delete categories,
-        including bulk creation with children and searching/filtering.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Show category details by ID.'
-      description: 'This endpoint returns details for a specific category by its ID.'
+      title: 'Display the specified freelancer details.'
+      description: ''
       authenticated: true
       deprecated: false
       custom: []
@@ -245,7 +228,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the category to view.'
+        description: 'The ID of the freelancer to view.'
         required: true
         example: 1
         type: integer
@@ -270,15 +253,49 @@ endpoints:
             "message": "Success",
             "data": {
               "id": 1,
-              "name_en": "Design",
-              "name_ar": "تصميم",
-              "parent_id": null,
-              "created_at": "2025-09-07T10:30:00.000000Z",
-              "updated_at": "2025-09-07T10:30:00.000000Z"
+              "name": "John Doe",
+              "email": "john@example.com",
+              "type": "freelancer",
+              "email_verified_at": "2025-08-24T10:30:00.000000Z",
+              "phone": null,
+              "is_active": true,
+              "about_me": null,
+              "profile_picture": null,
+              "approval_status": "requested",
+              "linkedin_link": "https://linkedin.com/in/johndoe",
+              "twitter_link": "https://twitter.com/johndoe",
+              "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+              "portfolio_link": "https://johndoe.com",
+              "headline": null,
+              "description": null,
+              "created_at": "2025-08-24T10:30:00.000000Z",
+              "updated_at": "2025-08-24T10:30:00.000000Z"
             }
           }
         headers: []
-        description: 'Category details retrieved successfully'
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
         custom: []
       -
         status: 404
@@ -286,124 +303,10 @@ endpoints:
           {
             "status": false,
             "error_num": 404,
-            "message": "Category not found"
+            "message": "Freelancer not found"
           }
         headers: []
-        description: 'Category not found'
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/admin/categories/{id}'
-    metadata:
-      groupName: 'Admin Category Management'
-      groupDescription: |-
-
-        APIs for managing categories in the admin panel.
-        These endpoints allow administrators to view, create, update, and delete categories,
-        including bulk creation with children and searching/filtering.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Update a category by ID.'
-      description: 'This endpoint allows admins to update the name of a category (English/Arabic).'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the category to update.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name_en:
-        name: name_en
-        description: 'Category name in English.'
-        required: false
-        example: Design
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      name_ar:
-        name: name_ar
-        description: 'Category name in Arabic.'
-        required: false
-        example: تصميم
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      parent_id:
-        name: parent_id
-        description: 'Parent category ID for creating subcategories (optional). The <code>id</code> of an existing record in the categories table.'
-        required: false
-        example: 1
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      name_en: Design
-      name_ar: تصميم
-      parent_id: 1
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Category updated successfully",
-          }
-        headers: []
-        description: 'Category updated successfully'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The name_en field is required."
-          }
-        headers: []
-        description: 'Validation error'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "status": false,
-            "error_num": 404,
-            "message": "Category not found"
-          }
-        headers: []
-        description: 'Category not found'
+        description: ''
         custom: []
     responseFields: []
     auth: []
@@ -414,18 +317,21 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/categories/{id}'
+    uri: 'api/admin/freelancers/{id}'
     metadata:
-      groupName: 'Admin Category Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing categories in the admin panel.
-        These endpoints allow administrators to view, create, update, and delete categories,
-        including bulk creation with children and searching/filtering.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Delete a category by ID.'
-      description: 'This endpoint allows admins to delete a category by its ID.'
+      title: 'Delete a freelancer account permanently.'
+      description: |-
+        This endpoint allows admins to permanently delete a freelancer account from the system.
+        This action cannot be undone and will remove all associated data including profile information.
+        Use with caution as this is a destructive operation.
       authenticated: true
       deprecated: false
       custom: []
@@ -436,16 +342,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the category to delete.'
+        description: 'The ID of the freelancer to delete.'
         required: true
-        example: 1
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -458,10 +364,32 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "Category deleted successfully"
+            "message": "Freelancer deleted successfully"
           }
         headers: []
-        description: 'Category deleted successfully'
+        description: 'Freelancer deleted successfully'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
         custom: []
       -
         status: 404
@@ -469,10 +397,10 @@ endpoints:
           {
             "status": false,
             "error_num": 404,
-            "message": "Category not found"
+            "message": "Freelancer not found"
           }
         headers: []
-        description: 'Category not found'
+        description: ''
         custom: []
     responseFields: []
     auth: []
@@ -483,20 +411,21 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/admin/categories/store-all-with-childrens
+    uri: 'api/admin/freelancers/approve-reject/{id}'
     metadata:
-      groupName: 'Admin Category Management'
+      groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
-        APIs for managing categories in the admin panel.
-        These endpoints allow administrators to view, create, update, and delete categories,
-        including bulk creation with children and searching/filtering.
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Bulk create categories with children.'
+      title: 'Approve or Reject a freelancer application.'
       description: |-
-        This endpoint allows admins to create a category and its children in one request.
-        Useful for importing category trees.
+        This endpoint allows admins to approve or reject freelancer applications.
+        When approving, the freelancer receives an email notification and can start working.
+        When rejecting, the freelancer account is permanently deleted.
       authenticated: true
       deprecated: false
       custom: []
@@ -504,83 +433,80 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the freelancer to approve/reject.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name_en:
-        name: name_en
-        description: 'Parent category name in English.'
+      action:
+        name: action
+        description: 'The action to perform. Must be either "approve" or "reject".'
         required: true
-        example: Programming
+        example: approve
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
-        custom: []
-      name_ar:
-        name: name_ar
-        description: 'Parent category name in Arabic.'
-        required: true
-        example: برمجة
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      childrens:
-        name: childrens
-        description: 'Array of child categories (each with name_en, name_ar).'
-        required: false
-        example:
-          -
-            name_en: Web
-            name_ar: ويب
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      'childrens[].name_en':
-        name: 'childrens[].name_en'
-        description: 'Child category name in English (required if childrens array is provided). Must not be greater than 255 characters.'
-        required: true
-        example: 'Web Development'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      'childrens[].name_ar':
-        name: 'childrens[].name_ar'
-        description: 'Child category name in Arabic (required if childrens array is provided). Must not be greater than 255 characters.'
-        required: true
-        example: 'تطوير المواقع'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name_en: Programming
-      name_ar: برمجة
-      childrens:
-        -
-          name_en: Web
-          name_ar: ويب
+      action: approve
     fileParameters: []
     responses:
       -
-        status: 201
+        status: 200
         content: |-
           {
             "status": true,
             "error_num": null,
-            "message": "Categories created successfully"
+            "message": "Freelancer approved successfully",
+            "data": {
+              "id": 14,
+              "name": "احمد حسني",
+              "email": "abdelrahmanelghonemypomac@gmail.com",
+              "type": "freelancer",
+              "email_verified_at": "2025-08-26T09:09:53.000000Z",
+              "phone": null,
+              "is_active": true,
+              "about_me": null,
+              "profile_picture": null,
+              "approval_status": "approved",
+              "linkedin_link": "https://www.linkedin.com/in/muhammed-yousry96?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXWDAHlI8QB2HsM6PFNaclA%3D%3D",
+              "twitter_link": "https://www.facebook.com/ahmedhosni516",
+              "other_freelance_platform_links": [
+                "https://www.google.com",
+                "https://www.google.com"
+              ],
+              "portfolio_link": "https://www.facebook.com/ahmedhosni516",
+              "headline": null,
+              "description": null,
+              "created_at": "2025-08-26T09:09:53.000000Z",
+              "updated_at": "2025-08-27T08:49:50.000000Z"
+            }
           }
         headers: []
-        description: 'Categories created successfully'
+        description: 'Freelancer approved successfully'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer rejected successfully"
+          }
+        headers: []
+        description: 'Freelancer rejected successfully'
         custom: []
       -
         status: 400
@@ -588,10 +514,171 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The childrens field must be an array."
+            "message": "Freelancer already approved"
           }
         headers: []
-        description: 'Validation error'
+        description: 'Freelancer already approved'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The action field is required."
+          }
+        headers: []
+        description: 'Invalid action parameter'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Freelancer not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/admin/freelancers/block-unblock/{id}'
+    metadata:
+      groupName: 'Admin Freelancer Management'
+      groupDescription: |-
+
+        APIs for managing freelancers in the admin panel.
+        These endpoints allow administrators to view, create, delete, and manage freelancer accounts,
+        including approving or rejecting freelancer applications.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Block or Unblock a freelancer account.'
+      description: |-
+        This endpoint allows admins to toggle the active status of a freelancer account.
+        When blocked (is_active = false), the freelancer cannot log in or access the platform.
+        When unblocked (is_active = true), the freelancer can resume normal platform activities.
+        This is a reversible action unlike deletion.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the freelancer to block/unblock.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 3
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer blocked successfully"
+          }
+        headers: []
+        description: 'Freelancer blocked successfully'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Freelancer unblocked successfully"
+          }
+        headers: []
+        description: 'Freelancer unblocked successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Cannot block/unblock unapproved freelancer"
+          }
+        headers: []
+        description: 'Freelancer not approved yet'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this resource"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Freelancer not found"
+          }
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth: []

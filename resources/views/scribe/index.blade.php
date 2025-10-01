@@ -216,6 +216,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-home-freelancer">
+                                <a href="#endpoints-GETapi-home-freelancer">GET api/home/freelancer</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-home-client">
+                                <a href="#endpoints-GETapi-home-client">GET api/home/client</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-file-upload" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="file-upload">
                     <a href="#file-upload">File Upload</a>
@@ -265,6 +278,16 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="portfolio-management-DELETEapi-freelancers-portfolios--id-">
                                 <a href="#portfolio-management-DELETEapi-freelancers-portfolios--id-">Delete portfolio</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-public-homepage" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="public-homepage">
+                    <a href="#public-homepage">Public - Homepage</a>
+                </li>
+                                    <ul id="tocify-subheader-public-homepage" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="public-homepage-GETapi-home-guest">
+                                <a href="#public-homepage-GETapi-home-guest">Guest homepage data</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -368,7 +391,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 29, 2025</li>
+        <li>Last updated: October 1, 2025</li>
     </ul>
 </div>
 
@@ -6525,6 +6548,288 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-home-freelancer">GET api/home/freelancer</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-home-freelancer">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/home/freelancer" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/home/freelancer"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-home-freelancer">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-home-freelancer" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-home-freelancer"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-home-freelancer"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-home-freelancer" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-home-freelancer">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-home-freelancer" data-method="GET"
+      data-path="api/home/freelancer"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-home-freelancer', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-home-freelancer"
+                    onclick="tryItOut('GETapi-home-freelancer');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-home-freelancer"
+                    onclick="cancelTryOut('GETapi-home-freelancer');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-home-freelancer"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/home/freelancer</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-home-freelancer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-home-freelancer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-home-freelancer"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-home-client">GET api/home/client</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-home-client">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/home/client" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/home/client"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-home-client">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 401,
+    &quot;message&quot;: &quot;Unauthenticated&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-home-client" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-home-client"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-home-client"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-home-client" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-home-client">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-home-client" data-method="GET"
+      data-path="api/home/client"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-home-client', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-home-client"
+                    onclick="tryItOut('GETapi-home-client');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-home-client"
+                    onclick="cancelTryOut('GETapi-home-client');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-home-client"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/home/client</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-home-client"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-home-client"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-home-client"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        </form>
+
                 <h1 id="file-upload">File Upload</h1>
 
     <p>APIs for handling file uploads</p>
@@ -6549,7 +6854,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpN7kCZU" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYXRiM3" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6718,7 +7023,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpN7kCZU</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYXRiM3</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8274,6 +8579,240 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="public-homepage">Public - Homepage</h1>
+
+    
+
+                                <h2 id="public-homepage-GETapi-home-guest">Guest homepage data</h2>
+
+<p>
+</p>
+
+<p>Retrieve the homepage data for guest (non-authenticated) users. This endpoint provides
+curated content including best-selling categories and top-performing services to showcase
+the platform's offerings. This data helps visitors discover popular services and categories
+without requiring authentication.</p>
+
+<span id="example-requests-GETapi-home-guest">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/home/guest" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/home/guest"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-home-guest">
+            <blockquote>
+            <p>Example response (200, Homepage data retrieved successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;best_seller_categories&quot;: [
+            {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;Programming&quot;,
+                &quot;parent_id&quot;: null,
+                &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Design &amp; Creative&quot;,
+                &quot;parent_id&quot;: null,
+                &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+            }
+        ],
+        &quot;best_seller_services&quot;: [
+            {
+                &quot;id&quot;: 4,
+                &quot;title&quot;: &quot;WordPress Website Development&quot;,
+                &quot;description&quot;: &quot;I will create a professional WordPress website with custom design and functionality tailored to your business needs with modern features and responsive design&quot;,
+                &quot;category_id&quot;: 4,
+                &quot;subcategory_id&quot;: 5,
+                &quot;category&quot;: {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Programming&quot;,
+                    &quot;parent_id&quot;: null,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;subcategory&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Web&quot;,
+                    &quot;parent_id&quot;: 4,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;delivery_time&quot;: 7,
+                &quot;delivery_time_unit&quot;: &quot;days&quot;,
+                &quot;service_fees_type&quot;: &quot;fixed&quot;,
+                &quot;price&quot;: &quot;500.00&quot;,
+                &quot;cover_photo&quot;: &quot;storage/services/68d3e4ae826cd.PNG&quot;,
+                &quot;faqs&quot;: null,
+                &quot;attachments&quot;: null,
+                &quot;hashtags&quot;: null,
+                &quot;user_id&quot;: 3,
+                &quot;created_at&quot;: &quot;2025-09-24T12:31:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T12:31:42.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;title&quot;: &quot;Mobile App Development&quot;,
+                &quot;description&quot;: &quot;I will develop a custom mobile application for iOS and Android platforms using React Native with modern UI and seamless performance&quot;,
+                &quot;category_id&quot;: 4,
+                &quot;subcategory_id&quot;: 5,
+                &quot;category&quot;: {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Programming&quot;,
+                    &quot;parent_id&quot;: null,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;subcategory&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Web&quot;,
+                    &quot;parent_id&quot;: 4,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;delivery_time&quot;: 7,
+                &quot;delivery_time_unit&quot;: &quot;days&quot;,
+                &quot;service_fees_type&quot;: &quot;fixed&quot;,
+                &quot;price&quot;: &quot;500.00&quot;,
+                &quot;cover_photo&quot;: &quot;storage/services/68d3e46824cdc.PNG&quot;,
+                &quot;faqs&quot;: null,
+                &quot;attachments&quot;: null,
+                &quot;hashtags&quot;: null,
+                &quot;user_id&quot;: 3,
+                &quot;created_at&quot;: &quot;2025-09-24T12:30:32.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T12:30:32.000000Z&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Service unavailable):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Unable to retrieve homepage data&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-home-guest" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-home-guest"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-home-guest"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-home-guest" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-home-guest">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-home-guest" data-method="GET"
+      data-path="api/home/guest"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-home-guest', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-home-guest"
+                    onclick="tryItOut('GETapi-home-guest');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-home-guest"
+                    onclick="cancelTryOut('GETapi-home-guest');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-home-guest"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/home/guest</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-home-guest"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-home-guest"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-home-guest"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        </form>
+
                 <h1 id="service-management">Service Management</h1>
 
     <p>APIs for managing freelancer services - creating, listing, updating and managing service offerings</p>
@@ -8591,7 +9130,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3dwJgW" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5zGzbW" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -8924,7 +9463,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3dwJgW</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5zGzbW</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -13683,7 +14222,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkJr9yX" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoEsJbv" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13844,7 +14383,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkJr9yX</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoEsJbv</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

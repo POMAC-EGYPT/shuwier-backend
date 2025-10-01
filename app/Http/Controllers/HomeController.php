@@ -16,6 +16,112 @@ class HomeController extends Controller
     {
         $this->homeService = $homeService;
     }
+    /**
+     * Guest homepage data
+     * 
+     * Retrieve the homepage data for guest (non-authenticated) users. This endpoint provides
+     * curated content including best-selling categories and top-performing services to showcase
+     * the platform's offerings. This data helps visitors discover popular services and categories
+     * without requiring authentication.
+     * 
+     * @group Public - Homepage
+     * 
+     * @response 200 scenario="Homepage data retrieved successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Success",
+     *   "data": {
+     *     "best_seller_categories": [
+     *       {
+     *         "id": 4,
+     *         "name": "Programming",
+     *         "parent_id": null,
+     *         "created_at": "2025-09-07T08:44:46.000000Z",
+     *         "updated_at": "2025-09-07T08:44:46.000000Z"
+     *       },
+     *       {
+     *         "id": 2,
+     *         "name": "Design & Creative",
+     *         "parent_id": null,
+     *         "created_at": "2025-09-07T08:44:46.000000Z",
+     *         "updated_at": "2025-09-07T08:44:46.000000Z"
+     *       }
+     *     ],
+     *     "best_seller_services": [
+     *       {
+     *         "id": 4,
+     *         "title": "WordPress Website Development",
+     *         "description": "I will create a professional WordPress website with custom design and functionality tailored to your business needs with modern features and responsive design",
+     *         "category_id": 4,
+     *         "subcategory_id": 5,
+     *         "category": {
+     *           "id": 4,
+     *           "name": "Programming",
+     *           "parent_id": null,
+     *           "created_at": "2025-09-07T08:44:46.000000Z",
+     *           "updated_at": "2025-09-07T08:44:46.000000Z"
+     *         },
+     *         "subcategory": {
+     *           "id": 5,
+     *           "name": "Web",
+     *           "parent_id": 4,
+     *           "created_at": "2025-09-07T08:44:46.000000Z",
+     *           "updated_at": "2025-09-07T08:44:46.000000Z"
+     *         },
+     *         "delivery_time": 7,
+     *         "delivery_time_unit": "days",
+     *         "service_fees_type": "fixed",
+     *         "price": "500.00",
+     *         "cover_photo": "storage/services/68d3e4ae826cd.PNG",
+     *         "faqs": null,
+     *         "attachments": null,
+     *         "hashtags": null,
+     *         "user_id": 3,
+     *         "created_at": "2025-09-24T12:31:42.000000Z",
+     *         "updated_at": "2025-09-24T12:31:42.000000Z"
+     *       },
+     *       {
+     *         "id": 3,
+     *         "title": "Mobile App Development",
+     *         "description": "I will develop a custom mobile application for iOS and Android platforms using React Native with modern UI and seamless performance",
+     *         "category_id": 4,
+     *         "subcategory_id": 5,
+     *         "category": {
+     *           "id": 4,
+     *           "name": "Programming",
+     *           "parent_id": null,
+     *           "created_at": "2025-09-07T08:44:46.000000Z",
+     *           "updated_at": "2025-09-07T08:44:46.000000Z"
+     *         },
+     *         "subcategory": {
+     *           "id": 5,
+     *           "name": "Web",
+     *           "parent_id": 4,
+     *           "created_at": "2025-09-07T08:44:46.000000Z",
+     *           "updated_at": "2025-09-07T08:44:46.000000Z"
+     *         },
+     *         "delivery_time": 7,
+     *         "delivery_time_unit": "days",
+     *         "service_fees_type": "fixed",
+     *         "price": "500.00",
+     *         "cover_photo": "storage/services/68d3e46824cdc.PNG",
+     *         "faqs": null,
+     *         "attachments": null,
+     *         "hashtags": null,
+     *         "user_id": 3,
+     *         "created_at": "2025-09-24T12:30:32.000000Z",
+     *         "updated_at": "2025-09-24T12:30:32.000000Z"
+     *       }
+     *     ]
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Service unavailable" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Unable to retrieve homepage data"
+     * }
+     */
     public function guestHome()
     {
         $result = $this->homeService->guestHome();
