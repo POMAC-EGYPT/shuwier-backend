@@ -38,21 +38,25 @@ class FreelancerResource extends JsonResource
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
             'portfolios'                      => $this->when(
-                $this->portfolios &&
+                $this->relationLoaded('portfolios') &&
+                    $this->portfolios &&
                     $this->portfolios->count() > 0,
                 BaseResource::make(PortfolioResource::collection($this->portfolios))
             ),
             'category'                       => $this->when(
-                $this->freelancerProfile &&
+                $this->relationLoaded('freelancerProfile') &&
+                    $this->freelancerProfile &&
                     $this->freelancerProfile->category,
                 BaseResource::make(CategoryResource::make($this->freelancerProfile->category))
             ),
             'skills'                        => $this->when(
-                $this->skills && $this->skills->count() > 0,
+                $this->relationLoaded('skills') &&
+                    $this->skills && $this->skills->count() > 0,
                 BaseResource::make(SkillResource::collection($this->skills))
             ),
             'languages'                      => $this->when(
-                $this->languages && $this->languages->count() > 0,
+                $this->relationLoaded('languages') &&
+                    $this->languages && $this->languages->count() > 0,
                 BaseResource::make(UserLanguageResource::collection($this->languages)),
                 null
             ),

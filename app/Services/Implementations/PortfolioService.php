@@ -67,7 +67,7 @@ class PortfolioService implements PortfolioServiceInterface
 
             if ($cover->user_id != $data['user_id'])
                 return ['status' => false, 'message' => __('message.this_attachment_does_not_belong_to_the_user')];
- 
+
             if ($cover->portfolio_id != null)
                 return ['status' => false, 'message' => __('message.this_attachment_is_already_used')];
 
@@ -116,7 +116,7 @@ class PortfolioService implements PortfolioServiceInterface
                     'is_cover'     => true,
                 ]);
 
-            return $portfolio->load(['category', 'subcategory', 'hashtags', 'attachments']);
+            return $portfolio;
         });
 
         return ['status' => true, 'message' => __('message.portfolio_created_successfully'), 'data' => $portfolio];
@@ -227,7 +227,7 @@ class PortfolioService implements PortfolioServiceInterface
 
             $portfolio->refresh();
 
-            return $portfolio->load(['category', 'subcategory', 'hashtags', 'attachments']);
+            return $portfolio;
         });
 
         return [

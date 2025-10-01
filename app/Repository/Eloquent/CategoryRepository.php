@@ -9,6 +9,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
+    public function getBestSellersParentCategories(int $limit = 8): Collection
+    {
+        //TODO: apply filter logic of best sellers
+
+        return Category::parents()
+            ->orderByDesc('created_at')
+            ->limit($limit)
+            ->get();
+    }
     private function search($query, ?string $search)
     {
         $query->where(function ($q) use ($search) {

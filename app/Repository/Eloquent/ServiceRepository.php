@@ -5,9 +5,28 @@ namespace App\Repository\Eloquent;
 use App\Models\Service;
 use App\Repository\Contracts\ServiceRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 
 class ServiceRepository implements ServiceRepositoryInterface
 {
+    // public function getAllWithFilterPaginated(?int $perPage = 10): LengthAwarePaginator
+    // {
+    //     // Apply any necessary filters here
+    //     return Service::with(['category', 'subcategory', 'user'])
+    //         ->orderByDesc('created_at')
+    //         ->paginate($perPage);
+    // }
+
+    public function getBestSellersServices(int $limit = 8): Collection
+    {
+        //TODO: apply filter logic of best sellers
+
+        return Service::with(['category', 'subcategory', 'user'])
+            ->orderByDesc('created_at')
+            ->limit($limit)
+            ->get();
+    }
+
     public function getByFreelancerIdPaginated(int $freelancerId, int $perPage = 10): LengthAwarePaginator
     {
         return Service::where('user_id', $freelancerId)

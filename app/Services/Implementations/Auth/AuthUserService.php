@@ -152,7 +152,7 @@ class AuthUserService implements AuthUserServiceInterface
         if (!$user)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.user_not_found')];
 
-        if (!Hash::check($password, hashedValue: $user->password))
+        if (!Hash::check($password,  $user->password))
             return ['status' => false, 'error_num' => 400, 'message' => __('message.invalid_password')];
 
         if (!$user->is_active)

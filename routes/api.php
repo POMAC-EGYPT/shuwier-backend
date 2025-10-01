@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Freelancer\PortfolioController;
 use App\Http\Controllers\Freelancer\ServiceController;
 use App\Http\Controllers\HashtagController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
@@ -63,3 +64,10 @@ Route::get('/hashtags', [HashtagController::class, 'index'])
 
 Route::post('/verifications', [UserVerificationController::class, 'sendRequest'])
     ->middleware('auth:api')->name('user.verification.sendRequest');
+
+
+Route::group(['prefix' => 'home'], function () {
+    Route::get('/guest', [HomeController::class, 'guestHome'])->name('home.guest');
+    Route::get('/freelancer', [HomeController::class, 'freelancerHome'])->middleware(['auth:api', 'checkUserType:freelancer'])->name('home.freelancer');
+    Route::get('/client', [HomeController::class, 'clientHome'])->middleware(['auth:api', 'checkUserType:client'])->name('home.client');
+});

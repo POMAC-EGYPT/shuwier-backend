@@ -4,6 +4,8 @@ namespace App\Services\Contracts;
 
 interface ServiceServiceInterface
 {
+    // public function getAllWithFilterPaginated(?int $perPage = 10): array;
+
     public function getByFreelancerIdPaginated(int $freelancerId, int $perPage = 10): array;
 
     public function getById(int $id): array;

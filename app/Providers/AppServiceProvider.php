@@ -58,6 +58,7 @@ use App\Services\Implementations\SkillService;
 use App\Repository\Eloquent\UserVerificationRepository;
 use App\Services\Contracts\CommissionServiceInterface;
 use App\Services\Contracts\HashtagServiceInterface;
+use App\Services\Contracts\HomeServiceInterface;
 use App\Services\Implementations\UserVerificationService;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
 use App\Services\Upload\Factory\UploadStrategyFactory;
@@ -66,6 +67,7 @@ use App\Services\Contracts\InvitationFreelancerServiceInterface;
 use App\Services\Contracts\ServiceServiceInterface;
 use App\Services\Implementations\CommissionService;
 use App\Services\Implementations\HashtagService;
+use App\Services\Implementations\HomeService;
 use App\Services\Implementations\InvitationFreelancerService;
 use App\Services\Implementations\ServiceService;
 use App\Services\Upload\Strategies\ServiceUpload;
@@ -137,6 +139,8 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(CommissionRepositoryInterface::class, CommissionRepository::class);
         $this->app->bind(CommissionServiceInterface::class, CommissionService::class);
+
+        $this->app->bind(HomeServiceInterface::class, HomeService::class);
     }
 
     /**

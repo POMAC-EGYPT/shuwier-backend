@@ -31,13 +31,13 @@ class ServiceResource extends JsonResource
             'service_fees_type'  => $this->service_fees_type,
             'price'              => $this->price,
             'cover_photo'        => $this->cover_photo,
-            'faqs'               => $this->faqs ?? null,
-            'attachments'        => $this->attachments ?? null,
-            'hashtags'           => $this->hashtags ?? null,
+            'faqs'               => $this->relationLoaded('faqs') && $this->faqs ? $this->faqs : null,
+            'attachments'        => $this->relationLoaded('attachments') && $this->attachments ? $this->attachments : null,
+            'hashtags'           => $this->relationLoaded('hashtags') && $this->hashtags ? $this->hashtags : null,
             'user_id'            => $this->user_id,
-            
+
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
-        ];
+        ]; //todo::check of all apis of service if they need to load relationships
     }
 }
