@@ -33,8 +33,8 @@ class SearchController extends Controller
      * @bodyParam category_id integer optional Filter services by main category ID. Must be a valid category. Example: 4
      * @bodyParam subcategory_id integer optional Filter services by subcategory ID. Must be a valid subcategory. Example: 5
      * @bodyParam hashtag_ids integer[] optional Array of hashtag IDs to filter services. Services matching any hashtag will be returned. Example: [11, 25, 30]
-     * @bodyParam priceMin number optional Minimum price filter. Only services with price >= this value will be returned. Example: 100.00
-     * @bodyParam priceMax number optional Maximum price filter. Only services with price <= this value will be returned. Example: 1000.00
+     * @bodyParam price_min number optional Minimum price filter. Only services with price >= this value will be returned. Example: 100.00
+     * @bodyParam price_max number optional Maximum price filter. Only services with price <= this value will be returned. Example: 1000.00
      * 
      * @response 200 scenario="Services found successfully" {
      *   "status": true,

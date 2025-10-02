@@ -904,7 +904,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpPeTR02" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkpkLMO" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1088,7 +1088,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>category image file. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpPeTR02</code></p>
+<p>category image file. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkpkLMO</code></p>
         </div>
         </form>
 
@@ -1278,7 +1278,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpsUZotl" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXOoIiL" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1480,7 +1480,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpsUZotl</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXOoIiL</code></p>
         </div>
         </form>
 
@@ -6884,7 +6884,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpclrZhE" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMasrPo" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7053,7 +7053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpclrZhE</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMasrPo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8877,9 +8877,7 @@ discovery functionality with multiple filtering options. Results are paginated w
         30
     ],
     \"price_min\": 100,
-    \"price_max\": 1000,
-    \"priceMin\": 100,
-    \"priceMax\": 1000
+    \"price_max\": 1000
 }"
 </code></pre></div>
 
@@ -8905,9 +8903,7 @@ let body = {
         30
     ],
     "price_min": 100,
-    "price_max": 1000,
-    "priceMin": 100,
-    "priceMax": 1000
+    "price_max": 1000
 };
 
 fetch(url, {
@@ -9270,7 +9266,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="100"
                data-component="body">
     <br>
-<p>Minimum price filter for services. Only services with price greater than or equal to this value will be returned. Must be at least 0. Example: <code>100</code></p>
+<p>optional Minimum price filter. Only services with price &gt;= this value will be returned. Example: <code>100</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>price_max</code></b>&nbsp;&nbsp;
@@ -9278,28 +9274,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="price_max"                data-endpoint="GETapi-search-service"
-               value="1000"
-               data-component="body">
-    <br>
-<p>Maximum price filter for services. Only services with price less than or equal to this value will be returned. Must be at least 0. Example: <code>1000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>priceMin</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="priceMin"                data-endpoint="GETapi-search-service"
-               value="100"
-               data-component="body">
-    <br>
-<p>optional Minimum price filter. Only services with price &gt;= this value will be returned. Example: <code>100</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>priceMax</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="priceMax"                data-endpoint="GETapi-search-service"
                value="1000"
                data-component="body">
     <br>
@@ -9624,7 +9598,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpwezw3J" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfb3rm8" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9957,7 +9931,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpwezw3J</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfb3rm8</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -14716,7 +14690,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php84OTSQ" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMbMHIv" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -14877,7 +14851,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php84OTSQ</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMbMHIv</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
