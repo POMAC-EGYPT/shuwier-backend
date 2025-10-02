@@ -9,6 +9,7 @@ use App\Http\Controllers\Freelancer\ServiceController;
 use App\Http\Controllers\HashtagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
 
@@ -70,4 +71,8 @@ Route::group(['prefix' => 'home'], function () {
     Route::get('/guest', [HomeController::class, 'guestHome'])->name('home.guest');
     Route::get('/freelancer', [HomeController::class, 'freelancerHome'])->middleware(['auth:api', 'checkUserType:freelancer'])->name('home.freelancer');
     Route::get('/client', [HomeController::class, 'clientHome'])->middleware(['auth:api', 'checkUserType:client'])->name('home.client');
+});
+
+Route::group(['prefix' => 'search'], function () {
+    Route::get('/service', [SearchController::class, 'serviceSearch'])->name('search');
 });

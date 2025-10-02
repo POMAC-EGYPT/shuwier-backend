@@ -291,6 +291,16 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-public-search" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="public-search">
+                    <a href="#public-search">Public Search</a>
+                </li>
+                                    <ul id="tocify-subheader-public-search" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="public-search-GETapi-search-service">
+                                <a href="#public-search-GETapi-search-service">Search services</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-service-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="service-management">
                     <a href="#service-management">Service Management</a>
@@ -391,7 +401,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 1, 2025</li>
+        <li>Last updated: October 2, 2025</li>
     </ul>
 </div>
 
@@ -894,7 +904,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfMk3Ee" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5rowhk" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1078,7 +1088,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>category image file. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfMk3Ee</code></p>
+<p>category image file. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5rowhk</code></p>
         </div>
         </form>
 
@@ -1268,7 +1278,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaYxa2s" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUXa5C2" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1470,7 +1480,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaYxa2s</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUXa5C2</code></p>
         </div>
         </form>
 
@@ -6874,7 +6884,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjmUZ0q" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgMRwyN" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7043,7 +7053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjmUZ0q</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgMRwyN</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -8833,6 +8843,444 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+                <h1 id="public-search">Public Search</h1>
+
+    
+
+                                <h2 id="public-search-GETapi-search-service">Search services</h2>
+
+<p>
+</p>
+
+<p>Search and filter services based on various criteria including text search, category,
+subcategory, hashtags, and price range. This endpoint provides comprehensive service
+discovery functionality with multiple filtering options. Results are paginated with
+16 services per page.</p>
+
+<span id="example-requests-GETapi-search-service">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/search/service" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"search\": \"wordpress website development\",
+    \"category_id\": 4,
+    \"subcategory_id\": 5,
+    \"hashtag_ids\": [
+        11,
+        25,
+        30
+    ],
+    \"priceMin\": 100,
+    \"priceMax\": 1000
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/search/service"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "search": "wordpress website development",
+    "category_id": 4,
+    "subcategory_id": 5,
+    "hashtag_ids": [
+        11,
+        25,
+        30
+    ],
+    "priceMin": 100,
+    "priceMax": 1000
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-search-service">
+            <blockquote>
+            <p>Example response (200, Services found successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 4,
+                &quot;title&quot;: &quot;WordPress Website Development&quot;,
+                &quot;description&quot;: &quot;I will create a professional WordPress website with custom design and functionality tailored to your business needs&quot;,
+                &quot;category_id&quot;: 4,
+                &quot;subcategory_id&quot;: 5,
+                &quot;category&quot;: {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Programming&quot;,
+                    &quot;parent_id&quot;: null,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;subcategory&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Web&quot;,
+                    &quot;parent_id&quot;: 4,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;delivery_time&quot;: 7,
+                &quot;delivery_time_unit&quot;: &quot;days&quot;,
+                &quot;service_fees_type&quot;: &quot;fixed&quot;,
+                &quot;price&quot;: &quot;500.00&quot;,
+                &quot;cover_photo&quot;: &quot;storage/services/68d3e4ae826cd.PNG&quot;,
+                &quot;faqs&quot;: null,
+                &quot;attachments&quot;: null,
+                &quot;hashtags&quot;: null,
+                &quot;user_id&quot;: 3,
+                &quot;created_at&quot;: &quot;2025-09-24T12:31:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-24T12:31:42.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 8,
+                &quot;title&quot;: &quot;E-commerce Website Development&quot;,
+                &quot;description&quot;: &quot;I will build a complete e-commerce website with payment integration, product management, and admin dashboard&quot;,
+                &quot;category_id&quot;: 4,
+                &quot;subcategory_id&quot;: 5,
+                &quot;category&quot;: {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Programming&quot;,
+                    &quot;parent_id&quot;: null,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;subcategory&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Web&quot;,
+                    &quot;parent_id&quot;: 4,
+                    &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+                },
+                &quot;delivery_time&quot;: 14,
+                &quot;delivery_time_unit&quot;: &quot;days&quot;,
+                &quot;service_fees_type&quot;: &quot;fixed&quot;,
+                &quot;price&quot;: &quot;750.00&quot;,
+                &quot;cover_photo&quot;: &quot;storage/services/68d3e4ae826ce.PNG&quot;,
+                &quot;faqs&quot;: null,
+                &quot;attachments&quot;: null,
+                &quot;hashtags&quot;: null,
+                &quot;user_id&quot;: 5,
+                &quot;created_at&quot;: &quot;2025-09-25T09:15:30.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-09-25T09:15:30.000000Z&quot;
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/search/services?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 3,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/search/services?page=3&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/search/services?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/search/services?page=2&quot;,
+                &quot;label&quot;: &quot;2&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/search/services?page=3&quot;,
+                &quot;label&quot;: &quot;3&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/search/services?page=2&quot;,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: &quot;http://localhost/api/search/services?page=2&quot;,
+        &quot;path&quot;: &quot;http://localhost/api/search/services&quot;,
+        &quot;per_page&quot;: 16,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 16,
+        &quot;total&quot;: 45
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, No services found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/search/services?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/search/services?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/search/services?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/search/services&quot;,
+        &quot;per_page&quot;: 16,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid category):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The selected category id is invalid.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid subcategory):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The selected subcategory id is invalid.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid hashtag):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The selected hashtag_ids.0 is invalid.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid price range):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The price min field must be at least 0.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Search term too long):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The search field must not be greater than 5000 characters.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-search-service" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-search-service"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-search-service"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-search-service" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-search-service">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-search-service" data-method="GET"
+      data-path="api/search/service"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-service', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-search-service"
+                    onclick="tryItOut('GETapi-search-service');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-search-service"
+                    onclick="cancelTryOut('GETapi-search-service');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-search-service"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/search/service</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-search-service"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-search-service"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-search-service"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-search-service"
+               value="wordpress website development"
+               data-component="body">
+    <br>
+<p>optional Search term to find services by title, description, or keywords (max 5000 characters). Example: <code>wordpress website development</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_id"                data-endpoint="GETapi-search-service"
+               value="4"
+               data-component="body">
+    <br>
+<p>optional Filter services by main category ID. Must be a valid category. Example: <code>4</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="subcategory_id"                data-endpoint="GETapi-search-service"
+               value="5"
+               data-component="body">
+    <br>
+<p>optional Filter services by subcategory ID. Must be a valid subcategory. Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>hashtag_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="hashtag_ids[0]"                data-endpoint="GETapi-search-service"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="hashtag_ids[1]"                data-endpoint="GETapi-search-service"
+               data-component="body">
+    <br>
+<p>optional Array of hashtag IDs to filter services. Services matching any hashtag will be returned.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>priceMin</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="priceMin"                data-endpoint="GETapi-search-service"
+               value="100"
+               data-component="body">
+    <br>
+<p>optional Minimum price filter. Only services with price &gt;= this value will be returned. Example: <code>100</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>priceMax</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="priceMax"                data-endpoint="GETapi-search-service"
+               value="1000"
+               data-component="body">
+    <br>
+<p>optional Maximum price filter. Only services with price &lt;= this value will be returned. Example: <code>1000</code></p>
+        </div>
+        </form>
+
                 <h1 id="service-management">Service Management</h1>
 
     <p>APIs for managing freelancer services - creating, listing, updating and managing service offerings</p>
@@ -9150,7 +9598,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTdle2y" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUuv0Wn" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9483,7 +9931,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTdle2y</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUuv0Wn</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -14242,7 +14690,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpolB0CR" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgQiLI1" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -14403,7 +14851,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpolB0CR</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgQiLI1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

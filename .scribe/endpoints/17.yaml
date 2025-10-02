@@ -1,18 +1,21 @@
-name: 'Admin User Verification'
+name: 'Admin Commission Management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/verifications
+    uri: api/admin/commissions
     metadata:
-      groupName: 'Admin User Verification'
+      groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get User Verification Requests'
-      description: 'Retrieve a paginated list of user verification requests with optional status filtering.'
-      authenticated: false
+      title: 'List commissions'
+      description: |-
+        Retrieve a paginated list of all commission rates in the system. This endpoint allows
+        admins to view and search through commission rates with optional filtering by search terms.
+        Results are ordered by creation date (newest first).
+      authenticated: true
       deprecated: false
       custom: []
     headers:
@@ -22,69 +25,135 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      status:
-        name: status
-        description: 'Filter by verification status. Allowed values: pending, approved.'
+      search:
+        name: search
+        description: 'optional Search term to filter commissions by rate or effective date.'
         required: false
-        example: pending
+        example: '15'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      search:
-        name: search
-        description: 'Optional search term to filter requests by user name or email.'
+      per_page:
+        name: per_page
+        description: 'optional Number of items per page (1-100).'
         required: false
-        example: john
-        type: string
+        example: 15
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanQueryParameters:
-      status: pending
-      search: john
-    bodyParameters: []
-    cleanBodyParameters: []
+      search: '15'
+      per_page: 15
+    bodyParameters:
+      search:
+        name: search
+        description: ''
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Must be at least 1. Must not be greater than 100.'
+        required: false
+        example: 13
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      search: consequatur
+      per_page: 13
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "User verification requests retrieved successfully",
             "status": true,
             "error_num": null,
+            "message": "Success",
             "data": {
               "current_page": 1,
               "data": [
                 {
                   "id": 1,
-                  "user_id": 1,
-                  "document_one": "path/to/document1.pdf",
-                  "document_two": "path/to/document2.pdf",
-                  "status": "pending",
-                  "created_at": "2025-09-15T10:00:00.000000Z"
+                  "rate": 0.15,
+                  "effective_from": "2025-10-01",
+                  "created_by": 1,
+                  "created_at": "2025-09-28T10:00:00.000000Z",
+                  "updated_at": "2025-09-28T10:00:00.000000Z"
+                },
+                {
+                  "id": 2,
+                  "rate": 0.12,
+                  "effective_from": "2025-11-01",
+                  "created_by": 1,
+                  "created_at": "2025-09-27T15:30:00.000000Z",
+                  "updated_at": "2025-09-27T15:30:00.000000Z"
                 }
               ],
+              "first_page_url": "http://localhost/api/admin/commissions?page=1",
+              "from": 1,
+              "last_page": 1,
+              "last_page_url": "http://localhost/api/admin/commissions?page=1",
+              "links": [
+                {
+                  "url": null,
+                  "label": "&laquo; Previous",
+                  "active": false
+                },
+                {
+                  "url": "http://localhost/api/admin/commissions?page=1",
+                  "label": "1",
+                  "active": true
+                },
+                {
+                  "url": null,
+                  "label": "Next &raquo;",
+                  "active": false
+                }
+              ],
+              "next_page_url": null,
+              "path": "http://localhost/api/admin/commissions",
               "per_page": 10,
-              "total": 1
+              "prev_page_url": null,
+              "to": 2,
+              "total": 2
             }
           }
         headers: []
-        description: ''
+        description: 'Commissions retrieved successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "Invalid status parameter",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "The per page field must be at least 1."
           }
         headers: []
-        description: ''
+        description: 'Invalid parameters'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
         custom: []
     responseFields: []
     auth: []
@@ -95,83 +164,105 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/admin/verifications/{id}'
+    uri: api/admin/commissions
     metadata:
-      groupName: 'Admin User Verification'
+      groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Accept or Reject User Verification'
-      description: 'Approve or reject a user verification request by ID.'
-      authenticated: false
+      title: 'Create commission'
+      description: |-
+        Create a new commission rate that will be effective from a specified future date.
+        The commission rate is stored as a decimal (e.g., 15% is stored as 0.15) and must
+        be between 1% and 100%. The effective date must be today or in the future.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the user verification request.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
+    urlParameters: []
+    cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      action:
-        name: action
-        description: 'The action to perform. Allowed values: approved, rejected.'
+      rate:
+        name: rate
+        description: 'Commission rate percentage (1-100). Will be converted to decimal for storage.'
         required: true
-        example: approved
-        type: string
+        example: 15.0
+        type: number
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      action: approved
+      rate: 15.0
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "User verification request updated successfully",
             "status": true,
-            "error_num": null
+            "error_num": null,
+            "message": "Commission created successfully",
+            "data": {
+              "id": 3,
+              "rate": 0.15,
+              "effective_from": "2025-10-01",
+              "created_by": 1,
+              "created_at": "2025-09-28T12:00:00.000000Z",
+              "updated_at": "2025-09-28T12:00:00.000000Z"
+            }
           }
         headers: []
-        description: ''
+        description: 'Commission created successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "Invalid action parameter",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "The rate field must be between 1 and 100."
           }
         headers: []
-        description: ''
+        description: 'Invalid rate'
         custom: []
       -
-        status: 404
+        status: 400
         content: |-
           {
-            "message": "not found",
             "status": false,
-            "error_num": 404
+            "error_num": 400,
+            "message": "The effective from field must be a date after or equal to today."
           }
         headers: []
-        description: ''
+        description: 'Invalid effective date'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The rate field is required."
+          }
+        headers: []
+        description: 'Validation error'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
         custom: []
     responseFields: []
     auth: []

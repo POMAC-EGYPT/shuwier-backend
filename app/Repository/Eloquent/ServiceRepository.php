@@ -9,13 +9,35 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ServiceRepository implements ServiceRepositoryInterface
 {
-    // public function getAllWithFilterPaginated(?int $perPage = 10): LengthAwarePaginator
-    // {
-    //     // Apply any necessary filters here
-    //     return Service::with(['category', 'subcategory', 'user'])
-    //         ->orderByDesc('created_at')
-    //         ->paginate($perPage);
-    // }
+    public function searchWithFilters(
+        string $search,
+        ?int $category_id = null,
+        ?int $subcategory_id = null,
+        ?array $hashtag_ids = null,
+        ?int $priceMin = null,
+        ?int $priceMax = null,
+        ?int $perPage = 10
+    ): LengthAwarePaginator {
+
+        return Service::with(['category', 'subcategory', 'user'])
+            ->when($search, function ($q) use ($search) {
+                $q->where(function ($q2) use ($search) {
+                    $q2->whereFullText(['title', 'description'], $search)
+                        ->orWhere('title', 'LIKE', "%{$search}%")
+                        ->orWhere('description', 'LIKE', "%{$search}%");
+                });
+            })
+            ->when($category_id, fn($q) => $q->where('category_id', $category_id))
+            ->when($subcategory_id, fn($q) => $q->where('subcategory_id', $subcategory_id))
+            ->when($hashtag_ids, function ($q) use ($hashtag_ids) {
+                $q->whereHas('hashtags', function ($q) use ($hashtag_ids) {
+                    $q->whereIn('hashtags.id', $hashtag_ids);
+                });
+            })
+            ->when($priceMin, fn($q) => $q->where('price', '>=', $priceMin))
+            ->when($priceMax, fn($q) => $q->where('price', '<=', $priceMax))
+            ->orderByDesc('created_at')->paginate($perPage);
+    }
 
     public function getBestSellersServices(int $limit = 8): Collection
     {

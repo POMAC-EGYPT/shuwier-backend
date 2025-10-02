@@ -70,6 +70,9 @@ use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\HomeService;
 use App\Services\Implementations\InvitationFreelancerService;
 use App\Services\Implementations\ServiceService;
+use App\Services\Search\Contracts\SearchStrategyInterface;
+use App\Services\Search\Factory\SearchStrategyFactory;
+use App\Services\Search\Strategies\ServiceSearch;
 use App\Services\Upload\Strategies\ServiceUpload;
 
 class AppServiceProvider extends ServiceProvider
@@ -115,6 +118,14 @@ class AppServiceProvider extends ServiceProvider
             return new UploadStrategyFactory(
                 $app->make(UploadStrategyInterface::class . '_portfolio'),
                 $app->make(UploadStrategyInterface::class . '_service')
+            );
+        });
+
+        $this->app->bind(SearchStrategyInterface::class . '_service', ServiceSearch::class);
+
+        $this->app->bind(SearchStrategyFactory::class, function ($app) {
+            return new SearchStrategyFactory(
+                $app->make(SearchStrategyInterface::class . '_service')
             );
         });
 
