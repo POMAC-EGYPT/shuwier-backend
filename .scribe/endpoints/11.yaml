@@ -71,6 +71,26 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      price_min:
+        name: price_min
+        description: 'Minimum price filter for services. Only services with price greater than or equal to this value will be returned. Must be at least 0.'
+        required: false
+        example: 100.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      price_max:
+        name: price_max
+        description: 'Maximum price filter for services. Only services with price less than or equal to this value will be returned. Must be at least 0.'
+        required: false
+        example: 1000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
       priceMin:
         name: priceMin
         description: 'optional Minimum price filter. Only services with price >= this value will be returned.'
@@ -79,7 +99,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       priceMax:
         name: priceMax
@@ -89,7 +109,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
     cleanBodyParameters:
       search: 'wordpress website development'
@@ -99,6 +119,8 @@ endpoints:
         - 11
         - 25
         - 30
+      price_min: 100.0
+      price_max: 1000.0
       priceMin: 100.0
       priceMax: 1000.0
     fileParameters: []

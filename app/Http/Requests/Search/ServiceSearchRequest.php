@@ -12,8 +12,8 @@ use Illuminate\Contracts\Validation\Validator;
  * @property int|null $category_id
  * @property int|null $subcategory_id
  * @property array|null $hashtag_ids
- * @property float|null $priceMin
- * @property float|null $priceMax
+ * @property float|null $price_min
+ * @property float|null $price_max
  */
 
 class ServiceSearchRequest extends FormRequest
@@ -46,8 +46,8 @@ class ServiceSearchRequest extends FormRequest
             'subcategory_id' => 'nullable|integer|exists:subcategories,id',
             'hashtag_ids'    => 'nullable|array',
             'hashtag_ids.*'  => 'required|integer|exists:hashtags,id',
-            'priceMin'       => 'nullable|numeric|min:0',
-            'priceMax'       => 'nullable|numeric|min:0',
+            'price_min'       => 'nullable|numeric|min:0',
+            'price_max'       => 'nullable|numeric|min:0',
         ];
     }
 
@@ -75,11 +75,11 @@ class ServiceSearchRequest extends FormRequest
                 'description' => 'Array of hashtag IDs to filter services. Services matching any of the provided hashtags will be returned.',
                 'example' => [11, 25, 30],
             ],
-            'priceMin' => [
+            'price_min' => [
                 'description' => 'Minimum price filter for services. Only services with price greater than or equal to this value will be returned.',
                 'example' => 100.00,
             ],
-            'priceMax' => [
+            'price_max' => [
                 'description' => 'Maximum price filter for services. Only services with price less than or equal to this value will be returned.',
                 'example' => 1000.00,
             ],

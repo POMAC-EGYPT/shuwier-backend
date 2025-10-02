@@ -27,8 +27,8 @@ class ServiceSearch implements SearchStrategyInterface
             $filters['category_id'] ?? null,
             $filters['subcategory_id'] ?? null,
             $filters['hashtag_ids'] ?? null,
-            $filters['priceMin'] ?? null,
-            $filters['priceMax'] ?? null,
+            $filters['price_min'] ?? null,
+            $filters['price_max'] ?? null,
             $filters['perPage'] ?? 16
         );
     }

@@ -222,8 +222,8 @@ class SearchController extends Controller
             'category_id'    => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'hashtag_ids'    => $request->hashtag_ids,
-            'priceMin'       => $request->priceMin,
-            'priceMax'       => $request->priceMax,
+            'price_min'       => $request->price_min,
+            'price_max'       => $request->price_max,
             'perPage'        => 16,
         ]);
 
