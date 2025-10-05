@@ -86,7 +86,7 @@ class CategoryController extends Controller
      * @bodyParam name_en string required Category name in English. Example: Design
      * @bodyParam name_ar string required Category name in Arabic. Example: تصميم
      * @bodyParam parent_id integer The parent category ID (for subcategories). Example: 2
-     * @bodyParam image file required category image file.
+     * @bodyParam image file required Category image file (required for parent categories).
      *
      * @response 201 scenario="Category created successfully" {
      *   "status": true,
@@ -115,7 +115,7 @@ class CategoryController extends Controller
             'name_en'   => $request->name_en,
             'name_ar'   => $request->name_ar,
             'parent_id' => $request->parent_id,
-            'image'     => $request->image,
+            'image'     => $request->image ?? null,
         ]);
 
         if (!$result['status'])
