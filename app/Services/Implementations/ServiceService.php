@@ -231,11 +231,12 @@ class ServiceService implements ServiceServiceInterface
     {
         $service = $this->serviceRepo->findById($id);
 
-        $attachments = $service->attachments;
+        // $attachments = $service->attachments;
 
-        foreach ($attachments as $attachment)
-            $this->serviceAttachmentRepo->delete($attachment->id);
-
+        // foreach ($attachments as $attachment)
+        //     $this->serviceAttachmentRepo->delete($attachment->id);
+        
+        // TODO: implement delete attachments if needed
         $this->serviceRepo->delete($id);
 
         return ['status' => 'success', 'message' => __('message.service_deleted_successfully')];
