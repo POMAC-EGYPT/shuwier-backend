@@ -19,6 +19,8 @@ class Service extends Model
         'user_id'
     ];
 
+    protected $with = ['reviews'];
+
     protected $appends = [
         'rate'
     ];
