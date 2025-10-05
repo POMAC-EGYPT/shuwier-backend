@@ -127,6 +127,7 @@ class ServiceService implements ServiceServiceInterface
 
     public function update(int $id, array $data): array
     {
+        // TODO: check if have order is pending or in progress and prevent update
         $category = $this->categoryRepo->find($data['category_id']);
 
         if ($category->parent_id != null)
@@ -229,15 +230,9 @@ class ServiceService implements ServiceServiceInterface
 
     public function delete(int $id): array
     {
-        $service = $this->serviceRepo->findById($id);
-
-        // $attachments = $service->attachments;
-
-        // foreach ($attachments as $attachment)
-        //     $this->serviceAttachmentRepo->delete($attachment->id);
-        
-        // TODO: implement delete attachments if needed
         $this->serviceRepo->delete($id);
+
+        // TODO: check if have order is pending or in progress and prevent deletion
 
         return ['status' => 'success', 'message' => __('message.service_deleted_successfully')];
     }
