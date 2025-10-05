@@ -33,10 +33,17 @@ class ClientResource extends JsonResource
             'user_verification_status'       => $this->user_verification_status,
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
+            'rate'                           => $this->rate,
             'languages'                      => $this->when(
                 $this->relationLoaded('languages') &&
                     $this->languages && $this->languages->count() > 0,
                 BaseResource::make(UserLanguageResource::collection($this->languages)),
+                null
+            ),
+            'reviews'                        => $this->when(
+                $this->relationLoaded('reviews') &&
+                    $this->reviews && $this->reviews->count() > 0,
+                BaseResource::make(ReviewResource::collection($this->reviews)),
                 null
             ),
         ];

@@ -38,6 +38,12 @@ class ServiceResource extends JsonResource
             'user'               => $this->when($this->relationLoaded('user') && $this->user, function () {
                 return BaseResource::make(FreelancerResource::make($this->user));
             }),
+            'reviews'            => $this->when(
+                $this->relationLoaded('reviews') &&
+                    $this->reviews && $this->reviews->count() > 0,
+                BaseResource::make(ReviewResource::collection($this->reviews)),
+                null
+            ),
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
         ];

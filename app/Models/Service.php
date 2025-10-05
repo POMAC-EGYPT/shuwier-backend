@@ -48,4 +48,9 @@ class Service extends Model
     {
         return $this->belongsToMany(Hashtag::class, 'service_hashtags', 'service_id', 'hashtag_id');
     }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
+    }
 }

@@ -65,15 +65,21 @@ class User extends Authenticatable implements JWTSubject
         'approval_status' => ApprovalStatus::class
     ];
 
-    protected $with = ['verification'];
+    protected $with = ['verification', 'reviews'];
 
     protected $appends = [
-        'user_verification_status'
+        'user_verification_status',
+        'rate'
     ];
 
     public function getUserVerificationStatusAttribute()
     {
         return $this->verification ? $this->verification->status : null;
+    }
+
+    public function getRateAttribute()
+    {
+        return $this->reviews != null ? round($this->reviews?->avg('rating'), 2) : 0;
     }
 
     #[Scope]
@@ -113,6 +119,11 @@ class User extends Authenticatable implements JWTSubject
     public function verification()
     {
         return $this->hasOne(UserVerification::class);
+    }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 
     /**

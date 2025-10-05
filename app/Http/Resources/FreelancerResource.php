@@ -35,6 +35,7 @@ class FreelancerResource extends JsonResource
             'headline'                       => $this->freelancerProfile->headline ?? null,
             'is_verified'                    => $this->is_verified,
             'user_verification_status'       => $this->user_verification_status,
+            'rate'                           => $this->rate,
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
             'portfolios'                      => $this->when(
@@ -58,6 +59,12 @@ class FreelancerResource extends JsonResource
                 $this->relationLoaded('languages') &&
                     $this->languages && $this->languages->count() > 0,
                 BaseResource::make(UserLanguageResource::collection($this->languages)),
+                null
+            ),
+            'reviews'                        => $this->when(
+                $this->relationLoaded('reviews') &&
+                    $this->reviews && $this->reviews->count() > 0,
+                BaseResource::make(ReviewResource::collection($this->reviews)),
                 null
             ),
         ];
