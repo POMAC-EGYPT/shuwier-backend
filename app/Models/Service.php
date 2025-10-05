@@ -19,6 +19,15 @@ class Service extends Model
         'user_id'
     ];
 
+    protected $appends = [
+        'rate'
+    ];
+
+    public function getRateAttribute()
+    {
+        return $this->reviews != null ? round($this->reviews?->avg('rating'), 2) : 0;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
