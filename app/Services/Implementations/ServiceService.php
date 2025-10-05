@@ -33,13 +33,6 @@ class ServiceService implements ServiceServiceInterface
         $this->hashtagRepo = $hashtagRepo;
     }
 
-    // public function getAllWithFilterPaginated(?int $perPage = 10): array
-    // {
-    //     $services = $this->serviceRepo->getAllWithFilterPaginated($perPage);
-
-    //     return ['status' => true, 'message' => __('message.success'), 'data' => $services];
-    // }
-
     public function getByFreelancerIdPaginated(int $freelancerId, int $perPage = 10): array
     {
         $services = $this->serviceRepo->getByFreelancerIdPaginated($freelancerId, $perPage);
@@ -51,7 +44,7 @@ class ServiceService implements ServiceServiceInterface
     {
         $service = $this->serviceRepo->findById($id);
 
-        $service->load(['faqs', 'attachments', 'hashtags', 'category', 'subcategory']);
+        $service->load(['faqs', 'attachments', 'hashtags', 'category', 'subcategory', 'user']);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $service];
     }

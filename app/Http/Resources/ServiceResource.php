@@ -35,9 +35,11 @@ class ServiceResource extends JsonResource
             'attachments'        => $this->relationLoaded('attachments') && $this->attachments ? $this->attachments : null,
             'hashtags'           => $this->relationLoaded('hashtags') && $this->hashtags ? $this->hashtags : null,
             'user_id'            => $this->user_id,
-
+            'user'               => $this->when($this->relationLoaded('user') && $this->user, function () {
+                return BaseResource::make(FreelancerResource::make($this->user));
+            }),
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
-        ]; //todo::check of all apis of service if they need to load relationships
+        ];
     }
 }
