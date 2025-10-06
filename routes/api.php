@@ -10,6 +10,7 @@ use App\Http\Controllers\Freelancer\ServiceController as FreelancerServiceContro
 use App\Http\Controllers\HashtagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ProjectController as ControllersProjectController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
@@ -45,16 +46,7 @@ Route::group(['prefix' => 'freelancers'], function () {
     );
 });
 
-Route::group(['prefix' => 'clients'], function () {
-    Route::apiResources(
-        [
-            'projects' => ProjectController::class,
-        ],
-        [
-            'middleware' => 'checkUserType:client',
-        ]
-    );
-});
+
 
 Route::post('/upload', [UploadFileController::class, 'upload'])
     ->middleware('auth:api')->name('file.upload');
@@ -92,4 +84,4 @@ Route::group(['prefix' => 'search'], function () {
 
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
 
-Route::get('/projects/{id}', [ProjectController::class, 'show'])->middleware('auth:api')->name('projects.show');
+Route::get('/projects/{id}', [ControllersProjectController::class, 'showToFreelancer'])->middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])->name('projects.show');

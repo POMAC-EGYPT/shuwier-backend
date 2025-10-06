@@ -126,5 +126,8 @@ return [
     'cannot_delete_commission_effective_from_today_or_past' => 'لا يمكن حذف العمولة التي سارية من اليوم أو أي تاريخ سابق',
     'please_provide_different_values_to_update' => 'يرجى تقديم قيم مختلفة للتحديث',
     'cannot_set_category_as_its_own_parent' => 'لا يمكن تعيين الفئة كوالد لنفسها',
-    'project_created_successfully' => 'تم إنشاء المشروع بنجاح'
+    'project_created_successfully' => 'تم إنشاء المشروع بنجاح',
+    'proposals_are_not_enabled_for_this_project' => 'لا يمكن تقديم عروض الأسعار لهذا المشروع',
+    'user_not_active' => 'المستخدم غير نشط',
+    'user_not_verified' => 'المستخدم غير موثق',
 ];

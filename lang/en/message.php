@@ -127,4 +127,7 @@ return [
     'please_provide_different_values_to_update' => 'Please provide different values to update',
     'cannot_set_category_as_its_own_parent' => 'Cannot set category as its own parent',
     'project_created_successfully' => 'Project created successfully',
+    'proposals_are_not_enabled_for_this_project' => 'Proposals are not enabled for this project',
+    'user_not_active' => 'User is not active',
+    'user_not_verified' => 'User is not verified',
 ];

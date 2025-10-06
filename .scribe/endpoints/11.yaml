@@ -1,22 +1,22 @@
-name: 'Client - Homepage'
+name: 'Public Search'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/home/client
+    uri: api/search/service
     metadata:
-      groupName: 'Client - Homepage'
+      groupName: 'Public Search'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Client homepage'
+      title: 'Search services'
       description: |-
-        Retrieve personalized dashboard data for authenticated clients. This endpoint provides
-        an overview of the client's posted projects, active proposals, and platform statistics
-        relevant to their hiring needs. The dashboard helps clients manage their projects
-        and track the progress of their hiring activities.
-      authenticated: true
+        Search and filter services based on various criteria including text search, category,
+        subcategory, hashtags, and price range. This endpoint provides comprehensive service
+        discovery functionality with multiple filtering options. Results are paginated with
+        16 services per page.
+      authenticated: false
       deprecated: false
       custom: []
     headers:
@@ -27,8 +27,80 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      search:
+        name: search
+        description: 'optional Search term to find services by title, description, or keywords (max 5000 characters).'
+        required: false
+        example: 'wordpress website development'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      category_id:
+        name: category_id
+        description: 'optional Filter services by main category ID. Must be a valid category.'
+        required: false
+        example: 4
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      subcategory_id:
+        name: subcategory_id
+        description: 'optional Filter services by subcategory ID. Must be a valid subcategory.'
+        required: false
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      hashtag_ids:
+        name: hashtag_ids
+        description: 'optional Array of hashtag IDs to filter services. Services matching any hashtag will be returned.'
+        required: false
+        example:
+          - 11
+          - 25
+          - 30
+        type: 'integer[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      price_min:
+        name: price_min
+        description: 'optional Minimum price filter. Only services with price >= this value will be returned.'
+        required: false
+        example: 100.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      price_max:
+        name: price_max
+        description: 'optional Maximum price filter. Only services with price <= this value will be returned.'
+        required: false
+        example: 1000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      search: 'wordpress website development'
+      category_id: 4
+      subcategory_id: 5
+      hashtag_ids:
+        - 11
+        - 25
+        - 30
+      price_min: 100.0
+      price_max: 1000.0
     fileParameters: []
     responses:
       -
@@ -39,101 +111,114 @@ endpoints:
             "error_num": null,
             "message": "Success",
             "data": {
-              "projects_overview": {
-                "total_projects": 12,
-                "active_projects": 5,
-                "completed_projects": 6,
-                "pending_projects": 1,
-                "total_proposals_received": 84
-              },
-              "recent_projects": [
-                {
-                  "id": 15,
-                  "title": "Mobile App Development",
-                  "budget": "$2000-$3000",
-                  "status": "active",
-                  "proposals_count": 12,
-                  "deadline": "15 days",
-                  "created_at": "2025-10-06T10:30:00.000000Z",
-                  "category": {
-                    "id": 4,
-                    "name": "Programming"
-                  }
-                },
-                {
-                  "id": 14,
-                  "title": "Logo Design for Startup",
-                  "budget": "$200-$400",
-                  "status": "completed",
-                  "proposals_count": 8,
-                  "deadline": "completed",
-                  "created_at": "2025-09-28T14:20:00.000000Z",
-                  "category": {
-                    "id": 2,
-                    "name": "Design & Creative"
-                  }
-                }
-              ],
-              "recent_proposals": [
-                {
-                  "id": 45,
-                  "project_id": 15,
-                  "project_title": "Mobile App Development",
-                  "freelancer": {
-                    "id": 7,
-                    "name": "Mohammad Ali",
-                    "profile_picture": "storage/profiles/68d28083a3dd3.PNG",
-                    "rating": 4.8,
-                    "completed_projects": 23
-                  },
-                  "proposal_amount": "$2500",
-                  "delivery_time": "20 days",
-                  "status": "pending",
-                  "submitted_at": "2025-10-06T12:15:00.000000Z"
-                },
-                {
-                  "id": 44,
-                  "project_id": 15,
-                  "project_title": "Mobile App Development",
-                  "freelancer": {
-                    "id": 9,
-                    "name": "Fatima Hassan",
-                    "profile_picture": "storage/profiles/68d28083a3dd4.PNG",
-                    "rating": 4.9,
-                    "completed_projects": 31
-                  },
-                  "proposal_amount": "$2800",
-                  "delivery_time": "18 days",
-                  "status": "pending",
-                  "submitted_at": "2025-10-06T11:45:00.000000Z"
-                }
-              ],
-              "platform_stats": {
-                "total_freelancers": 1250,
-                "active_freelancers": 892,
-                "average_project_completion_time": "12 days",
-                "client_satisfaction_rate": "96%"
-              },
-              "recommended_categories": [
+              "current_page": 1,
+              "data": [
                 {
                   "id": 4,
-                  "name": "Programming",
-                  "image": "storage/categories/68dd364f26e71.svg",
-                  "projects_count": 234,
-                  "avg_budget": "$1200"
+                  "title": "WordPress Website Development",
+                  "description": "I will create a professional WordPress website with custom design and functionality tailored to your business needs",
+                  "category_id": 4,
+                  "subcategory_id": 5,
+                  "category": {
+                    "id": 4,
+                    "name": "Programming",
+                    "parent_id": null,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "subcategory": {
+                    "id": 5,
+                    "name": "Web",
+                    "parent_id": 4,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "delivery_time": 7,
+                  "delivery_time_unit": "days",
+                  "service_fees_type": "fixed",
+                  "price": "500.00",
+                  "cover_photo": "storage/services/68d3e4ae826cd.PNG",
+                  "faqs": null,
+                  "attachments": null,
+                  "hashtags": null,
+                  "user_id": 3,
+                  "created_at": "2025-09-24T12:31:42.000000Z",
+                  "updated_at": "2025-09-24T12:31:42.000000Z"
                 },
                 {
-                  "id": 2,
-                  "name": "Design & Creative",
-                  "image": "storage/categories/68dd364f26e72.svg",
-                  "projects_count": 189,
-                  "avg_budget": "$450"
+                  "id": 8,
+                  "title": "E-commerce Website Development",
+                  "description": "I will build a complete e-commerce website with payment integration, product management, and admin dashboard",
+                  "category_id": 4,
+                  "subcategory_id": 5,
+                  "category": {
+                    "id": 4,
+                    "name": "Programming",
+                    "parent_id": null,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "subcategory": {
+                    "id": 5,
+                    "name": "Web",
+                    "parent_id": 4,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "delivery_time": 14,
+                  "delivery_time_unit": "days",
+                  "service_fees_type": "fixed",
+                  "price": "750.00",
+                  "cover_photo": "storage/services/68d3e4ae826ce.PNG",
+                  "faqs": null,
+                  "attachments": null,
+                  "hashtags": null,
+                  "user_id": 5,
+                  "created_at": "2025-09-25T09:15:30.000000Z",
+                  "updated_at": "2025-09-25T09:15:30.000000Z"
                 }
-              ]
+              ],
+              "first_page_url": "http://localhost/api/search/services?page=1",
+              "from": 1,
+              "last_page": 3,
+              "last_page_url": "http://localhost/api/search/services?page=3",
+              "links": [
+                {
+                  "url": null,
+                  "label": "&laquo; Previous",
+                  "active": false
+                },
+                {
+                  "url": "http://localhost/api/search/services?page=1",
+                  "label": "1",
+                  "active": true
+                },
+                {
+                  "url": "http://localhost/api/search/services?page=2",
+                  "label": "2",
+                  "active": false
+                },
+                {
+                  "url": "http://localhost/api/search/services?page=3",
+                  "label": "3",
+                  "active": false
+                },
+                {
+                  "url": "http://localhost/api/search/services?page=2",
+                  "label": "Next &raquo;",
+                  "active": false
+                }
+              ],
+              "next_page_url": "http://localhost/api/search/services?page=2",
+              "path": "http://localhost/api/search/services",
+              "per_page": 16,
+              "prev_page_url": null,
+              "to": 16,
+              "total": 45
             }
           }
         headers: []
-        description: 'Client dashboard data retrieved successfully'
+        description: 'Services found successfully'
         custom: []
       -
         status: 200
@@ -143,70 +228,94 @@ endpoints:
             "error_num": null,
             "message": "Success",
             "data": {
-              "projects_overview": {
-                "total_projects": 0,
-                "active_projects": 0,
-                "completed_projects": 0,
-                "pending_projects": 0,
-                "total_proposals_received": 0
-              },
-              "recent_projects": [],
-              "recent_proposals": [],
-              "platform_stats": {
-                "total_freelancers": 1250,
-                "active_freelancers": 892,
-                "average_project_completion_time": "12 days",
-                "client_satisfaction_rate": "96%"
-              },
-              "recommended_categories": [
+              "current_page": 1,
+              "data": [],
+              "first_page_url": "http://localhost/api/search/services?page=1",
+              "from": null,
+              "last_page": 1,
+              "last_page_url": "http://localhost/api/search/services?page=1",
+              "links": [
                 {
-                  "id": 4,
-                  "name": "Programming",
-                  "image": "storage/categories/68dd364f26e71.svg",
-                  "projects_count": 234,
-                  "avg_budget": "$1200"
+                  "url": null,
+                  "label": "&laquo; Previous",
+                  "active": false
                 },
                 {
-                  "id": 2,
-                  "name": "Design & Creative",
-                  "image": "storage/categories/68dd364f26e72.svg",
-                  "projects_count": 189,
-                  "avg_budget": "$450"
+                  "url": "http://localhost/api/search/services?page=1",
+                  "label": "1",
+                  "active": true
                 },
                 {
-                  "id": 1,
-                  "name": "Writing & Translation",
-                  "image": "storage/categories/68dd364f26e73.svg",
-                  "projects_count": 156,
-                  "avg_budget": "$280"
+                  "url": null,
+                  "label": "Next &raquo;",
+                  "active": false
                 }
-              ]
+              ],
+              "next_page_url": null,
+              "path": "http://localhost/api/search/services",
+              "per_page": 16,
+              "prev_page_url": null,
+              "to": null,
+              "total": 0
             }
           }
         headers: []
-        description: 'New client with no projects'
+        description: 'No services found'
         custom: []
       -
-        status: 401
+        status: 400
         content: |-
           {
             "status": false,
-            "error_num": 401,
-            "message": "Unauthenticated"
+            "error_num": 400,
+            "message": "The selected category id is invalid."
           }
         headers: []
-        description: Unauthenticated
+        description: 'Invalid category'
         custom: []
       -
-        status: 403
+        status: 400
         content: |-
           {
             "status": false,
-            "error_num": 403,
-            "message": "Access denied. This endpoint is only available for clients."
+            "error_num": 400,
+            "message": "The selected subcategory id is invalid."
           }
         headers: []
-        description: 'Access denied - not a client'
+        description: 'Invalid subcategory'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The selected hashtag_ids.0 is invalid."
+          }
+        headers: []
+        description: 'Invalid hashtag'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The price min field must be at least 0."
+          }
+        headers: []
+        description: 'Invalid price range'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The search field must not be greater than 5000 characters."
+          }
+        headers: []
+        description: 'Search term too long'
         custom: []
     responseFields: []
     auth: []

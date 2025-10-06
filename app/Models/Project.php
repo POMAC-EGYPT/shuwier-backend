@@ -17,6 +17,7 @@ class Project extends Model
         'status',
         'comments_enabled',
         'proposals_enabled',
+        'submited_proposal_count',
         'user_id'
     ];
 
