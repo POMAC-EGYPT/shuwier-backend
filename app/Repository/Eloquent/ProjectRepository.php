@@ -15,6 +15,7 @@ class ProjectRepository implements ProjectRepositoryInterface
         int $perPage = 15
     ): LengthAwarePaginator {
         return Project::with('category')
+            ->where('proposals_enabled', true)
             ->when($search, fn($query) => $query->where('title', 'like', "%$search%"))
             ->when($category_ids, fn($query) => $query->whereIn('category_id', $category_ids))
             ->when($budgets, fn($query) => $query->whereIn('budget', $budgets))
