@@ -44,6 +44,7 @@ Route::group(['prefix' => 'freelancers'], function () {
             'middleware' => ['checkUserType:freelancer', 'checkFreelancerApproval'],
         ]
     );
+    Route::get('/projects/{id}', [ControllersProjectController::class, 'showToFreelancer'])->middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])->name('projects.show');
 });
 
 
@@ -83,5 +84,3 @@ Route::group(['prefix' => 'search'], function () {
 });
 
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
-
-Route::get('/projects/{id}', [ControllersProjectController::class, 'showToFreelancer'])->middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])->name('projects.show');
