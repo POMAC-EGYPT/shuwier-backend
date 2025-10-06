@@ -4,6 +4,7 @@ use App\Http\Controllers\UserVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Client\ProjectController;
 use App\Http\Controllers\Freelancer\PortfolioController;
 use App\Http\Controllers\Freelancer\ServiceController as FreelancerServiceController;
 use App\Http\Controllers\HashtagController;
@@ -44,6 +45,17 @@ Route::group(['prefix' => 'freelancers'], function () {
     );
 });
 
+Route::group(['prefix' => 'clients'], function () {
+    Route::apiResources(
+        [
+            'projects' => ProjectController::class,
+        ],
+        [
+            'middleware' => 'checkUserType:client',
+        ]
+    );
+});
+
 Route::post('/upload', [UploadFileController::class, 'upload'])
     ->middleware('auth:api')->name('file.upload');
 
@@ -79,3 +91,5 @@ Route::group(['prefix' => 'search'], function () {
 });
 
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->middleware('auth:api')->name('projects.show');

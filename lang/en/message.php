@@ -126,4 +126,5 @@ return [
     'cannot_delete_commission_effective_from_today_or_past' => 'Cannot delete commission effective from today or past',
     'please_provide_different_values_to_update' => 'Please provide different values to update',
     'cannot_set_category_as_its_own_parent' => 'Cannot set category as its own parent',
+    'project_created_successfully' => 'Project created successfully',
 ];
