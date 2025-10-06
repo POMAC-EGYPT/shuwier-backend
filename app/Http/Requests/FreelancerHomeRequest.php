@@ -46,4 +46,31 @@ class FreelancerHomeRequest extends FormRequest
             'per_page'       => 'nullable|integer|min:1|max:50',
         ];
     }
+
+    /**
+     * Get the body parameters for API documentation.
+     *
+     * @return array
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'search' => [
+                'description' => 'Search term to filter projects by title, description, or keywords. Use this to find projects that match specific skills or technologies.',
+                'example' => 'website development',
+            ],
+            'category_ids' => [
+                'description' => 'Array of category IDs to filter projects by specific categories. Only projects belonging to these categories will be returned.',
+                'example' => [4, 2],
+            ],
+            'budgets' => [
+                'description' => 'Array of budget ranges to filter projects by client budget. Use predefined budget ranges to find projects within your preferred price range.',
+                'example' => ['$500-$1000', '$1000-$2000'],
+            ],
+            'per_page' => [
+                'description' => 'Number of projects to return per page for pagination. Maximum allowed is 50, default is 10.',
+                'example' => 15,
+            ],
+        ];
+    }
 }

@@ -47,7 +47,16 @@ Route::group(['prefix' => 'freelancers'], function () {
     Route::get('/projects/{id}', [ControllersProjectController::class, 'showToFreelancer'])->middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])->name('projects.show');
 });
 
-
+Route::group(['prefix' => 'clients'], function () {
+    Route::apiResources(
+        [
+            'projects' => ProjectController::class,
+        ],
+        [
+            'middleware' => 'checkUserType:client',
+        ]
+    );
+});
 
 Route::post('/upload', [UploadFileController::class, 'upload'])
     ->middleware('auth:api')->name('file.upload');
