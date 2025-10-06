@@ -43,7 +43,7 @@ class FreelancerHomeRequest extends FormRequest
             'category_ids.*' => 'required|integer|exists:categories,id',
             'budgets'        => 'nullable|array',
             'budgets.*'      => 'required|string',
-            'per_page'       => 'nullable|integer|min:1',
+            'per_page'       => 'nullable|integer|min:1|max:50',
         ];
     }
 }
