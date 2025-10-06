@@ -27,7 +27,7 @@ class ProjectController extends Controller
      * current proposal statistics.
      * 
      * @authenticated
-     * @group Freelancer - Projects
+     * @group Freelancer Projects
      * 
      * @urlParam id integer required The ID of the project to retrieve. Example: 5
      * 

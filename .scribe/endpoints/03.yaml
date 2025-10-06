@@ -1,4 +1,4 @@
-name: 'Freelancer - Projects'
+name: 'Freelancer Projects'
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - GET
     uri: 'api/freelancers/projects/{id}'
     metadata:
-      groupName: 'Freelancer - Projects'
+      groupName: 'Freelancer Projects'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
