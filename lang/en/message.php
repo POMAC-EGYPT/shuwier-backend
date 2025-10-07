@@ -130,4 +130,12 @@ return [
     'proposals_are_not_enabled_for_this_project' => 'Proposals are not enabled for this project',
     'user_not_active' => 'User is not active',
     'user_not_verified' => 'User is not verified',
+    'this_project_is_not_belog_to_this_client' => 'This project does not belong to this client',
+    'this_project_already_ended' => 'This project already ended',
+    'this_project_is_in_progress' => 'This project is in progress',
+    "can't_end_project_completed" => "Can't end project that is completed",
+    'project_ended_successfully' => 'Project ended successfully',
+    'cannot_propose_to_completed_project_or_inprogress' => 'Cannot propose to completed project or inprogress',
+    'proposal_created_successfully' => 'Proposal created successfully',
+    'you_are_not_authorized_to_view_proposals_for_this_project' => 'You are not authorized to view proposals for this project',
 ];

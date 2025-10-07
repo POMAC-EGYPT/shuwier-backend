@@ -21,6 +21,13 @@ class CommissionService implements CommissionServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $commissions];
     }
 
+    public function getLast(): array
+    {
+        $commission = $this->commissionRepo->getLast();
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $commission];
+    }
+
     public function create(array $data): array
     {
         $createdCommission = $this->commissionRepo->create([

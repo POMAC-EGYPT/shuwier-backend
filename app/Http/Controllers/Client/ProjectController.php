@@ -250,8 +250,8 @@ class ProjectController extends Controller
             $result['message'],
             200,
             true,
-            200,
-            new BaseResource(ProjectResource::collection($result['data']))
+            null,
+            BaseResource::make(ProjectResource::collection($result['data']))
         );
     }
 
@@ -403,8 +403,8 @@ class ProjectController extends Controller
             $result['message'],
             200,
             true,
-            200,
-            new BaseResource(ProjectResource::make($result['data']))
+            null,
+            BaseResource::make(ProjectResource::make($result['data']))
         );
     }
 
@@ -538,8 +538,80 @@ class ProjectController extends Controller
             $result['message'],
             200,
             true,
-            200,
-            new BaseResource(ProjectResource::make($result['data']))
+            null,
+            BaseResource::make(ProjectResource::make($result['data']))
         );
+    }
+
+    /**
+     * End project
+     * 
+     * Mark a project as completed or ended by the client. This endpoint allows
+     * the project owner (client) to close their project, stopping any further
+     * proposal submissions and marking the project as finished. This action
+     * is typically performed when the client has found a suitable freelancer
+     * or decides to cancel the project.
+     * 
+     * @authenticated
+     * @group Client Project Management
+     * 
+     * @urlParam id integer required The ID of the project to end. Must be owned by the authenticated client. Example: 5
+     * 
+     * @response 200 scenario="Project ended successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Project ended successfully"
+     * }
+     * 
+     * @response 200 scenario="Project already ended" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Project is already ended"
+     * }
+     * 
+     * @response 404 scenario="Project not found" {
+     *   "status": false,
+     *   "error_num": null,
+     *   "message": "Project not found"
+     * }
+     * 
+     * @response 403 scenario="Unauthorized - not project owner" {
+     *   "status": false,
+     *   "error_num": null,
+     *   "message": "You are not authorized to end this project"
+     * }
+     * 
+     * @response 400 scenario="Cannot end project in current status" {
+     *   "status": false,
+     *   "error_num": null,
+     *   "message": "Project cannot be ended in current status"
+     * }
+     * 
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     * 
+     * @response 403 scenario="Not a client" {
+     *   "status": false,
+     *   "error_num": 403,
+     *   "message": "Access denied. Client role required."
+     * }
+     * 
+     * @response 400 scenario="Invalid project ID" {
+     *   "status": false,
+     *   "error_num": null,
+     *   "message": "Invalid project ID provided"
+     * }
+     */
+    public function endProject(string $id)
+    {
+        $result = $this->projectService->endProject((int) $id, auth('api')->id());
+
+        if (!$result['status'])
+            return Response::api($result['message'], 200, true, null);
+
+        return Response::api($result['message'], 200, true, null);
     }
 }

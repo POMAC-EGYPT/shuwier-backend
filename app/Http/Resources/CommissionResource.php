@@ -15,12 +15,13 @@ class CommissionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'             => $this->id,
-            'rate'           => $this->rate,
-            'effective_from' => $this->effective_from,
-            'created_by'     => $this->created_by,
-            'created_at'     => $this->created_at,
-            'updated_at'     => $this->updated_at,
+            'id'             => $this->id ?? null,
+            'rate'           => $this->rate ?? null,
+            'effective_from' => $this->effective_from ?? null,
+            'created_by'     => $this->created_by ?? null,
+            'created_at'     => $this->created_at ?? null,
+            'updated_at'     => $this->updated_at ?? null,
+            
         ];
     }
 }

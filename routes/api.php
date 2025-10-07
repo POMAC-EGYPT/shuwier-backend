@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Client\ProjectController;
+use App\Http\Controllers\Client\ProposalController as ClientProposalController;
+use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\Freelancer\ProposalController;
 use App\Http\Controllers\Freelancer\PortfolioController;
 use App\Http\Controllers\Freelancer\ServiceController as FreelancerServiceController;
 use App\Http\Controllers\HashtagController;
@@ -39,6 +42,7 @@ Route::group(['prefix' => 'freelancers'], function () {
         [
             'portfolios' => PortfolioController::class,
             'services'   => FreelancerServiceController::class,
+            'proposals'  => ProposalController::class,
         ],
         [
             'middleware' => ['checkUserType:freelancer', 'checkFreelancerApproval'],
@@ -56,6 +60,12 @@ Route::group(['prefix' => 'clients'], function () {
             'middleware' => 'checkUserType:client',
         ]
     );
+
+    Route::group(['prefix' => 'projects', 'middleware' => ['auth:api', 'checkUserType:client']], function () {
+        Route::post('/{id}/end', [ProjectController::class, 'endProject'])->name('projects.end');
+        Route::get('/{projectId}/proposals', [ClientProposalController::class, 'index'])->name('projects.proposals.index');
+    });
+    Route::get('/proposals/{id}', [ClientProposalController::class, 'show'])->middleware(['auth:api', 'checkUserType:client'])->name('proposals.show');
 });
 
 Route::post('/upload', [UploadFileController::class, 'upload'])
@@ -93,3 +103,5 @@ Route::group(['prefix' => 'search'], function () {
 });
 
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+
+Route::get('/commissions', [CommissionController::class, 'index'])->name('commissions.index');

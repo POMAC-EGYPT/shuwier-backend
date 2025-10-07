@@ -1,110 +1,181 @@
-name: 'File Upload'
-description: |-
-
-  APIs for handling file uploads
+name: 'Freelancer Projects'
+description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/upload
+      - GET
+    uri: 'api/freelancers/projects/{id}'
     metadata:
-      groupName: 'File Upload'
-      groupDescription: |-
-
-        APIs for handling file uploads
+      groupName: 'Freelancer Projects'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Upload file'
+      title: 'Show project details to freelancer'
       description: |-
-        Upload files for different purposes like portfolios, profile pictures, etc.
-        The uploaded file will be stored and return file information including the file path and attachment ID.
+        Retrieve detailed information about a specific project for freelancers to view.
+        This endpoint provides all the necessary information for freelancers to understand
+        the project requirements and decide whether to submit a proposal. The response
+        includes project details, client information, category data, attachments, and
+        current proposal statistics.
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
       Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      file:
-        name: file
-        description: 'The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example:'
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the project to retrieve.'
         required: true
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      type:
-        name: type
-        description: 'The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate.'
-        required: true
-        example: portfolio
-        type: string
+        example: 5
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-    cleanBodyParameters:
-      type: portfolio
-    fileParameters:
-      file: null
+    cleanUrlParameters:
+      id: 5
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "File uploaded successfully",
             "status": true,
+            "error_num": null,
+            "message": "Project retrieved successfully",
             "data": {
-              "id": 15,
-              "file_path": "storage/portfolios/66e1a5c4e8b47.jpg",
-              "user_id": 1,
-              "portfolio_id": null,
-              "created_at": "2024-09-11T10:30:00.000000Z",
-              "updated_at": "2024-09-11T10:30:00.000000Z"
+              "id": 5,
+              "title": "E-commerce Website Development",
+              "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized with modern design principles.",
+              "category_id": "4",
+              "subcategory_id": "5",
+              "budget": "$1000-$2000",
+              "deadline_unit": "days",
+              "deadline": "12",
+              "status": "active",
+              "comments_enabled": true,
+              "proposals_enabled": true,
+              "created_at": "2025-10-06T09:11:11.000000Z",
+              "updated_at": "2025-10-06T09:11:11.000000Z",
+              "category": {
+                "id": 4,
+                "name": "Programming",
+                "image": "storage/categories/68dd364f26e71.svg",
+                "parent_id": null,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-10-01T14:10:23.000000Z"
+              },
+              "subcategory": {
+                "id": 5,
+                "name": "Web Development",
+                "image": null,
+                "parent_id": 4,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
+              },
+              "attachments": [
+                {
+                  "id": 2,
+                  "file_path": "storage/projects/68e3876bcc657.PNG",
+                  "user_id": 2,
+                  "project_id": 5,
+                  "created_at": "2025-10-06T09:10:03.000000Z",
+                  "updated_at": "2025-10-06T09:11:11.000000Z"
+                },
+                {
+                  "id": 3,
+                  "file_path": "storage/projects/68e3876bcc658.pdf",
+                  "user_id": 2,
+                  "project_id": 5,
+                  "created_at": "2025-10-06T09:10:05.000000Z",
+                  "updated_at": "2025-10-06T09:11:11.000000Z"
+                }
+              ],
+              "user": {
+                "id": 2,
+                "name": "Ahmed Test",
+                "email": "client@example.com",
+                "type": "client",
+                "is_active": true,
+                "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
+                "company": "Tech Solutions Ltd",
+                "country": "Egypt",
+                "city": "Cairo",
+                "is_verified": true,
+                "user_verification_status": "approved",
+                "created_at": "2025-09-03T11:34:36.000000Z",
+                "updated_at": "2025-09-23T11:12:03.000000Z"
+              },
+              "proposals_count": 8,
+              "time_remaining": "5 days left",
+              "can_submit_proposal": true,
+              "freelancer_proposal_status": null
             }
           }
         headers: []
-        description: ''
+        description: 'Project details retrieved successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "The file field is required.",
             "status": false,
-            "error_code": 400
+            "error_num": 400,
+            "message": "This project is no longer accepting proposals"
           }
         headers: []
-        description: ''
+        description: 'Project not available for proposals'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "The selected type is invalid.",
             "status": false,
-            "error_code": 400
+            "error_num": 400,
+            "message": "This project is not available for viewing"
           }
         headers: []
-        description: ''
+        description: 'Project is completed or cancelled'
         custom: []
       -
-        status: 400
+        status: 401
         content: |-
           {
-            "message": "The file may not be greater than 5120 kilobytes.",
             "status": false,
-            "error_code": 400
+            "error_num": 401,
+            "message": "Unauthenticated"
           }
         headers: []
-        description: ''
+        description: Unauthenticated
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "Access denied. This endpoint is only available for freelancers."
+          }
+        headers: []
+        description: 'Access denied - not a freelancer'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Project not found"
+          }
+        headers: []
+        description: 'Project not found'
         custom: []
     responseFields: []
     auth: []

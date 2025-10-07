@@ -142,7 +142,7 @@ class HomeController extends Controller
 
 
     /**
-     * Freelancer homepage
+     * Freelancer Home Page
      * 
      * Retrieve personalized homepage data for authenticated freelancers. This endpoint provides
      * a curated list of available projects that match the freelancer's skills and interests.
@@ -376,7 +376,7 @@ class HomeController extends Controller
      * and track the progress of their hiring activities.
      * 
      * @authenticated
-     * @group Client - Homepage
+     * @group Public Home Page
      * 
      * @response 200 scenario="Client dashboard data retrieved successfully" {
      *   "status": true,

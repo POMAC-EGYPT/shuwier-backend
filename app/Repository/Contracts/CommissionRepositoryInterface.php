@@ -9,6 +9,8 @@ interface CommissionRepositoryInterface
 {
     public function getAllPaginated(?string $search = null, int $perPage = 10): LengthAwarePaginator;
 
+    public function getLast(): ?Commission;
+
     public function create(array $data): Commission;
 
     public function findById(int $id): Commission;

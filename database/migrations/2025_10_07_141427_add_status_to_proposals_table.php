@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('porposals', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('proposals', function (Blueprint $table) {
+            $table->enum('status', ['submitted', 'viewed', 'accepted', 'rejected'])
+                ->default('submitted')
+                ->after('bid_amount');
         });
     }
 
@@ -22,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('porposals');
+        Schema::table('proposals', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 };

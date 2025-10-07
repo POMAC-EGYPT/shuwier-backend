@@ -4,7 +4,10 @@ namespace App\Console\Commands;
 
 use App\Helpers\ImageHelpers;
 use App\Models\PortfolioAttachment;
+use App\Models\ProjectAttachment;
 use App\Models\ServiceAttachment;
+use App\Models\ProposalAttachment;
+
 use Illuminate\Console\Command;
 
 class CleanUnusedAttachments extends Command
@@ -25,7 +28,9 @@ class CleanUnusedAttachments extends Command
 
     private array $strategies = [
         'portfolio' => PortfolioAttachment::class,
-        'service' => ServiceAttachment::class,
+        'service'   => ServiceAttachment::class,
+        'proposal'  => ProposalAttachment::class,
+        'project'   => ProjectAttachment::class,
     ];
 
     /**

@@ -17,6 +17,11 @@ class CommissionRepository implements CommissionRepositoryInterface
             ->orderBy('effective_from', 'desc')->paginate($perPage);
     }
 
+    public function getLast(): ?Commission
+    {
+        return Commission::latest()->first();
+    }
+
     public function create(array $data): Commission
     {
         return Commission::create($data);

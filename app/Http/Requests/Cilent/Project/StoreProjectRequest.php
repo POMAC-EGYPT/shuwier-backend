@@ -49,8 +49,8 @@ class StoreProjectRequest extends FormRequest
             'subcategory_id'   => 'nullable|integer|exists:categories,id',
             'budget'           => 'required|string',
             'deadline_unit'    => 'required|in:hours,days,months',
-            'deadline'         => 'required|integer|min:1',
-            'attachment_ids'   => 'nullable|array',
+            'deadline'         => 'required|integer|min:1|max:365',
+            'attachment_ids'   => 'nullable|array|max:10',
             'attachment_ids.*' => 'required|integer|exists:project_attachments,id',
         ];
     }

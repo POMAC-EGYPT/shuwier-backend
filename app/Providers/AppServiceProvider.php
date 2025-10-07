@@ -14,6 +14,8 @@ use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
 use App\Repository\Contracts\PortfolioRepositoryInterface;
 use App\Repository\Contracts\ProjectAttachmentRepositoryInterface;
 use App\Repository\Contracts\ProjectRepositoryInterface;
+use App\Repository\Contracts\ProposalAttachmentRepositoryInterface;
+use App\Repository\Contracts\ProposalRepositoryInterface;
 use App\Repository\Contracts\ServiceAttachmentRepositoryInterface;
 use App\Repository\Contracts\ServiceFaqRepositoryInterface;
 use App\Repository\Contracts\ServiceRepositoryInterface;
@@ -33,6 +35,8 @@ use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\PortfolioAttachmentRepository;
 use App\Repository\Eloquent\ProjectAttachmentRepository;
 use App\Repository\Eloquent\ProjectRepository;
+use App\Repository\Eloquent\ProposalAttachmentRepository;
+use App\Repository\Eloquent\ProposalRepository;
 use App\Repository\Eloquent\ServiceAttachmentRepository;
 use App\Repository\Eloquent\ServiceFaqRepository;
 use App\Repository\Eloquent\ServiceRepository;
@@ -69,17 +73,20 @@ use App\Services\Upload\Factory\UploadStrategyFactory;
 use App\Services\Upload\Strategies\PortfolioUpload;
 use App\Services\Contracts\InvitationFreelancerServiceInterface;
 use App\Services\Contracts\ProjectServiceInterface;
+use App\Services\Contracts\ProposalServiceInterface;
 use App\Services\Contracts\ServiceServiceInterface;
 use App\Services\Implementations\CommissionService;
 use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\HomeService;
 use App\Services\Implementations\InvitationFreelancerService;
 use App\Services\Implementations\ProjectService;
+use App\Services\Implementations\ProposalService;
 use App\Services\Implementations\ServiceService;
 use App\Services\Search\Contracts\SearchStrategyInterface;
 use App\Services\Search\Factory\SearchStrategyFactory;
 use App\Services\Search\Strategies\ServiceSearch;
 use App\Services\Upload\Strategies\ProjectUpload;
+use App\Services\Upload\Strategies\ProposalUpload;
 use App\Services\Upload\Strategies\ServiceUpload;
 
 class AppServiceProvider extends ServiceProvider
@@ -122,12 +129,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UploadStrategyInterface::class . '_portfolio', PortfolioUpload::class);
         $this->app->bind(UploadStrategyInterface::class . '_service', ServiceUpload::class);
         $this->app->bind(UploadStrategyInterface::class . '_project', ProjectUpload::class);
+        $this->app->bind(UploadStrategyInterface::class . '_proposal', ProposalUpload::class);
 
         $this->app->bind(UploadStrategyFactory::class, function ($app) {
             return new UploadStrategyFactory(
                 $app->make(UploadStrategyInterface::class . '_portfolio'),
                 $app->make(UploadStrategyInterface::class . '_service'),
-                $app->make(UploadStrategyInterface::class . '_project')
+                $app->make(UploadStrategyInterface::class . '_project'),
+                $app->make(UploadStrategyInterface::class . '_proposal'),
             );
         });
 
@@ -163,6 +172,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(ProjectRepositoryInterface::class, ProjectRepository::class);
         $this->app->bind(ProjectServiceInterface::class, ProjectService::class);
+
+        $this->app->bind(ProposalRepositoryInterface::class, ProposalRepository::class);
+        $this->app->bind(ProposalAttachmentRepositoryInterface::class, ProposalAttachmentRepository::class);
+        $this->app->bind(ProposalServiceInterface::class, ProposalService::class);
 
         $this->app->bind(HomeServiceInterface::class, HomeService::class);
     }

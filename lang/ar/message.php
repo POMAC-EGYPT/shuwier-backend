@@ -130,4 +130,12 @@ return [
     'proposals_are_not_enabled_for_this_project' => 'لا يمكن تقديم عروض الأسعار لهذا المشروع',
     'user_not_active' => 'المستخدم غير نشط',
     'user_not_verified' => 'المستخدم غير موثق',
+    'this_project_is_not_belog_to_this_client' => 'هذا المشروع لا ينتمي إلى هذا العميل',
+    'this_project_already_ended' => 'هذا المشروع قد انتهى بالفعل',
+    'this_project_is_in_progress' => 'هذا المشروع قيد التنفيذ',
+    "can't_end_project_completed" => "لا يمكن إنهاء مشروع مكتمل",
+    'project_ended_successfully' => 'تم إنهاء المشروع بنجاح',
+    'cannot_propose_to_completed_project_or_inprogress' => 'لا يمكن تقديم عرض سعر لمشروع مكتمل أو قيد التنفيذ',
+    'proposal_created_successfully' => 'تم إنشاء عرض السعر بنجاح',
+    'you_are_not_authorized_to_view_proposals_for_this_project' => 'أنت غير مخول لعرض عروض الأسعار لهذا المشروع',
 ];

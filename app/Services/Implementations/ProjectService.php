@@ -54,10 +54,10 @@ class ProjectService implements ProjectServiceInterface
 
         $freelancer = $this->userRepo->find($freelancerId);
 
-        if(!$freelancer->is_active)
+        if (!$freelancer->is_active)
             return ['status' => false, 'message' => __('message.user_not_active')];
 
-        if(!$freelancer->is_verified)
+        if (!$freelancer->is_verified)
             return ['status' => false, 'message' => __('message.user_not_verified')];
 
         $project->load(['attachments', 'category', 'subcategory', 'user']);
@@ -86,7 +86,7 @@ class ProjectService implements ProjectServiceInterface
             foreach ($data['attachment_ids'] as $attachment_id) {
                 $attachment = $this->projectAttachmentRepo->findById($attachment_id);
 
-                if ($attachment->service_id != null)
+                if ($attachment->project_id != null)
                     return ['status' => false, 'message' => __('message.this_attachment_is_already_used')];
 
                 if ($attachment->user_id != $data['user_id'])
@@ -122,13 +122,24 @@ class ProjectService implements ProjectServiceInterface
         return ['status' => true, 'message' => __('message.project_created_successfully'), 'data' => $project];
     }
 
-    public function update(int $id, array $data): array
+    public function endProject(int $id, $clientId): array
     {
-        return [];
-    }
+        $project = $this->projectRepo->findById($id);
 
-    public function delete(int $id): array
-    {
-        return [];
+        if ($project->user_id != $clientId)
+            return ['status' => false, 'message' => __('message.this_project_is_not_belog_to_this_client')];
+
+        if (!$project->proposals_enabled)
+            return ['status' => false, 'message' => __('message.this_project_already_ended')];
+
+        if ($project->status == ProjectStatus::INPROGRESS)
+            return ['status' => false, 'message' => __('message.this_project_is_in_progress')];
+
+        if ($project->status == ProjectStatus::COMPLETED)
+            return ['status' => false, 'message' => __("message.can't_end_project_completed")];
+
+        $this->projectRepo->update($id, ['proposals_enabled' => false]);
+
+        return ['status' => true, 'message' => __('message.project_ended_successfully')];
     }
 }
