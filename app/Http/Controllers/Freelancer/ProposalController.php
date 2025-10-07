@@ -31,7 +31,7 @@ class ProposalController extends Controller
      * @authenticated
      * @group Freelancer Proposals
      * 
-     * @queryParam status string optional Filter proposals by status. Available values: pending, accepted, rejected, withdrawn. Example: pending
+     * @queryParam status array optional Filter proposals by status. Available values: submitted, viewed, accepted, rejected, withdrawn. Example: ["viewed","accepted"]
      * @queryParam search string optional Search proposals by project title, cover letter content, or project description keywords. Example: website development
      * @queryParam per_page integer optional Number of proposals per page (default: 16, minimum: 1, maximum: 50). Example: 10
      * 

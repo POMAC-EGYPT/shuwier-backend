@@ -31,7 +31,6 @@ class ProposalController extends Controller
      * @group Client Proposal Management
      * 
      * @urlParam projectId integer required The ID of the project to get proposals for. Must be owned by the authenticated client. Example: 5
-     * @queryParam per_page integer optional Number of proposals per page (default: 15, minimum: 1, maximum: 50). Example: 10
      * 
      * @response 200 scenario="Proposals retrieved successfully" {
      *   "status": true,

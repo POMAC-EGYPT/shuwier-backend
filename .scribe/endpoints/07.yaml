@@ -36,19 +36,8 @@ endpoints:
         custom: []
     cleanUrlParameters:
       projectId: 5
-    queryParameters:
-      per_page:
-        name: per_page
-        description: 'optional Number of proposals per page (default: 15, minimum: 1, maximum: 50).'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      per_page: 10
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters:
       per_page:
         name: per_page

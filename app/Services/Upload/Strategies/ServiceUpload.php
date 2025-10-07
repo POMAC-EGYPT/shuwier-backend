@@ -26,8 +26,8 @@ class ServiceUpload implements UploadStrategyInterface
 
         $attachment = $this->serviceAttachmentRepo->create([
             'file_path'    => $path,
-            'user_id'      => $userId,
             'service_id'   => null,
+            'user_id'      => $userId,
         ]);
 
         return $attachment;

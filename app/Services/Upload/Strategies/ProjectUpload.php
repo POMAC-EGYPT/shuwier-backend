@@ -16,21 +16,21 @@ class ProjectUpload implements UploadStrategyInterface
         $this->projectAttachmentRepo = $projectAttachmentRepo;
     }
 
-   public function supports(string $type): bool
-   {
-       return $type === 'project';
-   }
+    public function supports(string $type): bool
+    {
+        return $type === 'project';
+    }
 
-   public function store($file, int $userId): ProjectAttachment
-   {
+    public function store($file, int $userId): ProjectAttachment
+    {
         $path = ImageHelpers::addImage($file, 'projects');
 
         $attachment = $this->projectAttachmentRepo->create([
             'file_path'    => $path,
-            'user_id'      => $userId,
             'project_id'   => null,
+            'user_id'      => $userId,
         ]);
 
         return $attachment;
-   }
+    }
 }
