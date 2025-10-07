@@ -53,7 +53,7 @@ class UpdateServiceRequest extends FormRequest
             'category_id'        => 'required|exists:categories,id',
             'subcategory_id'     => 'nullable|exists:categories,id',
             'delivery_time_unit' => 'required|in:hours,days,months',
-            'delivery_time'      => 'required|integer|min:1',
+            'delivery_time'      => 'required|integer|min:1|max:365',
             'fees_type'          => 'required|in:fixed,hourly',
             'price'              => 'required|numeric|min:0',
             'cover_photo'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
