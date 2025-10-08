@@ -40,9 +40,9 @@ class ServiceService implements ServiceServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $services];
     }
 
-    public function getById(int $id): array
+    public function findByIdAndFreelancerId(int $id, int $freelancerId): array
     {
-        $service = $this->serviceRepo->findById($id);
+        $service = $this->serviceRepo->findByIdAndFreelancerId($id, $freelancerId);
 
         $service->load(['faqs', 'attachments', 'hashtags', 'category', 'subcategory', 'user']);
 
@@ -125,7 +125,7 @@ class ServiceService implements ServiceServiceInterface
         return ['status' => true, 'message' => __('message.service_created_successfully'), 'data' => $service];
     }
 
-    public function update(int $id, array $data): array
+    public function update(int $id, int $freelancerId, array $data): array
     {
         // TODO: check if have order is pending or in progress and prevent update
         $category = $this->categoryRepo->find($data['category_id']);
@@ -143,7 +143,7 @@ class ServiceService implements ServiceServiceInterface
                 return ['status' => false, 'message' => __('message.this_subcategory_does_not_belong_to_the_selected_category')];
         }
 
-        $service = $this->serviceRepo->findById($id);
+        $service = $this->serviceRepo->findByIdAndFreelancerId($id, $freelancerId);
 
         $coverPath = $service->cover_photo;
 
@@ -162,9 +162,9 @@ class ServiceService implements ServiceServiceInterface
             }
         }
 
-        $service = DB::transaction(function () use ($data, $id, $coverPath, $service) {
+        $service = DB::transaction(function () use ($data, $id, $coverPath, $service, $freelancerId) {
 
-            $this->serviceRepo->update($id, [
+            $this->serviceRepo->update($id, $freelancerId, [
                 'title'              => $data['title'],
                 'description'        => $data['description'],
                 'category_id'        => $data['category_id'],
@@ -230,9 +230,9 @@ class ServiceService implements ServiceServiceInterface
         return ['status' => true, 'message' => __('message.service_updated_successfully'), 'data' => $service];
     }
 
-    public function delete(int $id): array
+    public function delete(int $id, int $freelancerId): array
     {
-        $this->serviceRepo->delete($id);
+        $this->serviceRepo->delete($id, $freelancerId);
 
         // TODO: check if have order is pending or in progress and prevent deletion
 

@@ -22,11 +22,11 @@ interface ServiceRepositoryInterface
 
     public function getByFreelancerIdPaginated(int $freelancerId, int $perPage = 10): LengthAwarePaginator;
 
-    public function findById(int $id): ?Service;
+    public function findByIdAndFreelancerId(int $id, int $freelancerId): ?Service;
 
     public function create(array $data): Service;
 
-    public function update(int $id, array $data): bool;
+    public function update(int $id, int $freelancerId, array $data): bool;
 
-    public function delete(int $id): bool;
+    public function delete(int $id, int $freelancerId): bool;
 }

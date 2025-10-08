@@ -55,10 +55,10 @@ class ServiceRepository implements ServiceRepositoryInterface
             ->orderByDesc('created_at')
             ->paginate($perPage);
     }
-
-    public function findById(int $id): ?Service
+    
+    public function findByIdAndFreelancerId(int $id, int $freelancerId): ?Service
     {
-        return Service::findOrFail($id);
+        return Service::where('user_id', $freelancerId)->findOrFail($id);
     }
 
     public function create(array $data): Service
@@ -66,16 +66,16 @@ class ServiceRepository implements ServiceRepositoryInterface
         return Service::create($data);
     }
 
-    public function update(int $id, array $data): bool
+    public function update(int $id, int $freelancerId, array $data): bool
     {
-        $service = $this->findById($id);
+        $service = $this->findByIdAndFreelancerId($id, $freelancerId);
 
         return $service->update($data);
     }
 
-    public function delete(int $id): bool
+    public function delete(int $id, int $freelancerId): bool
     {
-        $service = $this->findById($id);
+        $service = $this->findByIdAndFreelancerId($id, $freelancerId);
 
         return $service->delete();
     }

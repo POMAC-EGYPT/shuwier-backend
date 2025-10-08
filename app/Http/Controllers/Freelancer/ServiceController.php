@@ -398,7 +398,7 @@ class ServiceController extends Controller
      */
     public function show(string $id)
     {
-        $result = $this->serviceService->getById($id);
+        $result = $this->serviceService->findByIdAndFreelancerId($id, auth('api')->id());
 
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);
@@ -537,7 +537,7 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, string $id)
     {
-        $result = $this->serviceService->update($id, [
+        $result = $this->serviceService->update($id, auth('api')->id(), [
             'title'              => $request->title,
             'description'        => $request->description,
             'category_id'        => $request->category_id,
@@ -596,7 +596,7 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = $this->serviceService->delete($id);
+        $result = $this->serviceService->delete($id, auth('api')->id());
 
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);
