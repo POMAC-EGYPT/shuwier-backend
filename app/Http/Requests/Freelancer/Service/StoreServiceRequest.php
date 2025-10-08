@@ -55,7 +55,7 @@ class StoreServiceRequest extends FormRequest
             'delivery_time_unit' => 'required|in:hours,days,months',
             'delivery_time'      => 'required|integer|min:1|max:365',
             'fees_type'          => 'required|in:fixed,hourly',
-            'price'              => 'required|numeric|min:0',
+            'price'              => 'required|numeric|min:1',
             'cover_photo'        => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'hashtags'           => 'nullable|array',
             'hashtags.*'         => 'string|max:255',
