@@ -176,7 +176,7 @@ class ServiceService implements ServiceServiceInterface
                 'cover_photo'        => $coverPath,
             ]);
 
-            if (isset($data['hashtags'])) {
+            if (isset($data['hashtags']) && $data['hashtags'] != null) {
                 foreach ($data['hashtags'] as $hashtag)
                     $hashtagIds[] = $this->hashtagRepo->firstOrCreate(['name' => strtolower($hashtag)])->id;
 
@@ -184,27 +184,30 @@ class ServiceService implements ServiceServiceInterface
             } else
                 $service->hashtags()->sync([]);
 
-            if (isset($data['attachment_ids'])) {
-                $oldAttachments = $this->serviceAttachmentRepo->getByServiceId($id);
+            $oldAttachments = $this->serviceAttachmentRepo->getByServiceId($id);
 
-                if (count($oldAttachments) > 0) {
-                    foreach ($oldAttachments as $oldAttachment) {
-                        if (!in_array($oldAttachment->id, $data['attachment_ids'])) {
-                            ImageHelpers::deleteImage($oldAttachment->file_path);
-                            $this->serviceAttachmentRepo->delete($oldAttachment->id);
-                        }
-                    }
+            $attachmentIds = $data['attachment_ids'] ?? [];
+
+            if (empty($attachmentIds)) {
+                foreach ($oldAttachments as $oldAttachment) {
+                    ImageHelpers::deleteImage($oldAttachment->file_path);
+                    $this->serviceAttachmentRepo->delete($oldAttachment->id);
                 }
-            }
+            } else {
+                $oldIds = $oldAttachments->pluck('id')->toArray();
 
-            if (is_array($data['attachment_ids']) && !empty($data['attachment_ids'])) {
-                foreach ($data['attachment_ids'] as $attachment_id) {
-                    $this->serviceAttachmentRepo->update($attachment_id, [
+                $toDelete = array_diff($oldIds, $attachmentIds);
+                foreach ($toDelete as $deleteId) {
+                    $oldAttachment = $oldAttachments->firstWhere('id', $deleteId);
+                    ImageHelpers::deleteImage($oldAttachment->file_path);
+                    $this->serviceAttachmentRepo->delete($deleteId);
+                }
+
+                foreach ($attachmentIds as $attachmentId)
+                    $this->serviceAttachmentRepo->update($attachmentId, [
                         'service_id' => $service->id
                     ]);
-                }
             }
-
 
             $this->serviceFaqRepo->deleteByServiceId($service->id);
 
