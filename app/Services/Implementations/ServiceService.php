@@ -184,21 +184,20 @@ class ServiceService implements ServiceServiceInterface
             } else
                 $service->hashtags()->sync([]);
 
-            $oldAttachments = $this->serviceAttachmentRepo->getByServiceId($id);
+            if (isset($data['attachment_ids'])) {
+                $oldAttachments = $this->serviceAttachmentRepo->getByServiceId($id);
 
-            if (count($oldAttachments) > 0) {
-                foreach ($oldAttachments as $oldAttachment) {
-                    if (isset($data['attachment_ids']) && !in_array($oldAttachment->id, $data['attachment_ids'])) {
-                        if ($oldAttachment->is_cover)
-                            continue;
-
-                        ImageHelpers::deleteImage($oldAttachment->file_path);
-                        $this->serviceAttachmentRepo->delete($oldAttachment->id);
+                if (count($oldAttachments) > 0) {
+                    foreach ($oldAttachments as $oldAttachment) {
+                        if (!in_array($oldAttachment->id, $data['attachment_ids'])) {
+                            ImageHelpers::deleteImage($oldAttachment->file_path);
+                            $this->serviceAttachmentRepo->delete($oldAttachment->id);
+                        }
                     }
                 }
             }
 
-            if (!empty($data['attachment_ids'])) {
+            if (is_array($data['attachment_ids']) && !empty($data['attachment_ids'])) {
                 foreach ($data['attachment_ids'] as $attachment_id) {
                     $this->serviceAttachmentRepo->update($attachment_id, [
                         'service_id' => $service->id
