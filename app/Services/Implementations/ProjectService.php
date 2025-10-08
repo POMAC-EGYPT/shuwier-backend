@@ -36,11 +36,11 @@ class ProjectService implements ProjectServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $projects];
     }
 
-    public function findById(int $id): array
+    public function findByIdAndClientId(int $id, int $clientId): array
     {
-        $project = $this->projectRepo->findById($id);
+        $project = $this->projectRepo->findByIdAndClientId($id, $clientId);
 
-        $project->load(['attachments', 'category', 'subcategory', 'user']);
+        $project->load(relations: ['attachments', 'category', 'subcategory', 'user']);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $project];
     }

@@ -528,7 +528,7 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $result = $this->projectService->findById($id);
+        $result = $this->projectService->findByIdAndClientId($id, auth('api')->id());
 
         if (!$result['status']) {
             return Response::api($result['message'], 404, false, 404);

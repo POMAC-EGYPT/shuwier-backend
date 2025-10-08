@@ -35,6 +35,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         return Project::findOrFail($id);
     }
 
+    public function findByIdAndClientId(int $id, int $clientId): Project
+    {
+        return Project::where('user_id', $clientId)->findOrFail($id);
+    }
+
     public function create(array $data): Project
     {
         return Project::create($data);
