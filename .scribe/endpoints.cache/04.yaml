@@ -93,8 +93,11 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 404
-        content: '{"status":false,"error_num":404,"message":"Not Found"}'
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

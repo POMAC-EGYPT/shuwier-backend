@@ -65,7 +65,7 @@ class StoreCategoryRequest extends FormRequest
                 'example' => 1,
             ],
             'image' => [
-                'description' => 'Category image file (required for creation, optional for update). Must be an SVG file, max 2MB.',
+                'description' => 'Category image file (required for creation, optional for update). Must be an SVG or PNG file, max 2MB.',
                 'example' => 'No-example',
             ],
         ];
