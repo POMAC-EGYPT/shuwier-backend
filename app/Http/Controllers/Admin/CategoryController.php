@@ -114,7 +114,7 @@ class CategoryController extends Controller
         $result = $this->categoryService->create([
             'name_en'   => $request->name_en,
             'name_ar'   => $request->name_ar,
-            'parent_id' => $request->parent_id,
+            'parent_id' => (int) $request->parent_id,
             'image'     => $request->image ?? null,
         ]);
 
@@ -241,7 +241,7 @@ class CategoryController extends Controller
         $result = $this->categoryService->update((int) $id, [
             'name_en'   => $request->name_en ?? null,
             'name_ar'   => $request->name_ar ?? null,
-            'parent_id' => $request->parent_id ?? null,
+            'parent_id' => (int) $request->parent_id ?? null,
             'image'     => $request->image ?? null,
         ]);
 
