@@ -41,7 +41,7 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name_en'   => 'required|string|max:255',
             'name_ar'   => 'required|string|max:255',
-            'parent_id' => 'nullable|exists:categories,id',
+            'parent_id' => 'nullable|integer|exists:categories,id',
             'image'     => request()->routeIs('admin.categories.store') ? 'required_without:parent_id|file|mimes:svg,png|max:2048' : 'nullable|mimes:svg,png|max:2048',
         ];
     }
