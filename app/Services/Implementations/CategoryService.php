@@ -110,8 +110,11 @@ class CategoryService implements CategoryServiceInterface
                 return ['status' => false, 'message' => __('message.cannot_add_subcategory_to_child')];
         }
 
+        if (($data['parent_id'] != null && $category->parent_id == null) || ($data['parent_id'] == null && $category->parent_id != null))
+            return ['status' => false, 'message' => __('message.cant_convert_parent_category_to_child_or_vice_versa')];
+
         if ($data['parent_id'] != null && $data['image'] != null)
-            
+
             return ['status' => false, 'message' => __('message.child_category_cannot_have_image')];
 
         if (isset($data['image']) && $data['image'] != null) {
