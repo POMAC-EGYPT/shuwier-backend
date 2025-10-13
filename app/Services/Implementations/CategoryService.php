@@ -56,6 +56,10 @@ class CategoryService implements CategoryServiceInterface
             if ($parent->parent_id != null)
                 return ['status' => false, 'message' => __('message.cannot_add_subcategory_to_child')];
         }
+
+        if ($data['parent_id'] != null && $data['image'] != null)
+            return ['status' => false, 'message' => __('message.child_category_cannot_have_image')];
+
         if (isset($data['image']) && $data['image'] != null)
 
             $imagePath = ImageHelpers::addImage($data['image'], 'categories');
@@ -105,6 +109,10 @@ class CategoryService implements CategoryServiceInterface
             if ($parent->parent_id != null)
                 return ['status' => false, 'message' => __('message.cannot_add_subcategory_to_child')];
         }
+
+        if ($data['parent_id'] != null && $data['image'] != null)
+            
+            return ['status' => false, 'message' => __('message.child_category_cannot_have_image')];
 
         if (isset($data['image']) && $data['image'] != null) {
             ImageHelpers::deleteImage($category->image);
