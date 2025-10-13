@@ -110,7 +110,7 @@ class ProposalService implements ProposalServiceInterface
         $this->proposalRepo->update($id, ['status' => ProposalStatus::VIEWED]);
 
         $proposal->refresh();
-        
+
         $proposal->load('attachments', 'user', 'project');
 
         return ['status' => 'success', 'message' => __('message.success'), 'data' => $proposal];

@@ -388,14 +388,14 @@ class ProposalController extends Controller
     public function store(StoreProposalRequest $request)
     {
         $result = $this->proposalService->create([
-            'cover_letter' => $request->cover_letter,
+            'cover_letter'        => $request->cover_letter,
             'estimated_time_unit' => $request->estimated_time_unit,
-            'estimated_time' => $request->estimated_time,
-            'fees_type' => $request->fees_type,
-            'bid_amount' => $request->bid_amount,
-            'project_id' => $request->project_id,
-            'attachment_ids' => $request->attachment_ids,
-            'user_id' => auth('api')->id(),
+            'estimated_time'      => $request->estimated_time,
+            'fees_type'           => $request->fees_type,
+            'bid_amount'          => $request->bid_amount,
+            'project_id'          => $request->project_id,
+            'attachment_ids'      => $request->attachment_ids,
+            'user_id'             => auth('api')->id(),
         ]);
 
         if (!$result['status'])
