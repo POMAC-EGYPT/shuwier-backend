@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\ImageHelpers;
 use App\Http\Controllers\UserVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
+use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -105,3 +107,7 @@ Route::group(['prefix' => 'search'], function () {
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
 
 Route::get('/commissions', [CommissionController::class, 'index'])->name('commissions.index');
+
+Route::post('/test', function (Request $request) {
+    return ImageHelpers::addImage($request->image, 'test');
+});
