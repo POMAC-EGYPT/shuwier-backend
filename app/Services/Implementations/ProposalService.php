@@ -36,10 +36,10 @@ class ProposalService implements ProposalServiceInterface
     {
         $project = $this->projectRepo->findById($data['project_id']);
 
-        $existingProposal = $this->proposalRepo->findByFreelancerIdAndProjectId($data['user_id'], $data['project_id']);
+        // $existingProposal = $this->proposalRepo->findByFreelancerIdAndProjectId($data['user_id'], $data['project_id']);
 
-        if ($existingProposal)
-            return ['status' => false, 'message' => __('message.you_have_already_submitted_a_proposal_for_this_project')];
+        // if ($existingProposal)
+        //     return ['status' => false, 'message' => __('message.you_have_already_submitted_a_proposal_for_this_project')];
 
         if (!$project->proposals_enabled)
             return ['status' => false, 'message' => __('message.proposals_are_not_enabled_for_this_project')];
