@@ -30,6 +30,13 @@ class ProposalRepository implements ProposalRepositoryInterface
             ->findOrFail($id);
     }
 
+    public function findByFreelancerIdAndProjectId(int $freelancerId, int $projectId): ?Proposal
+    {
+        return Proposal::where('user_id', $freelancerId)
+            ->where('project_id', $projectId)
+            ->first();
+    }
+
     public function getAllByProjectIdPaginated(int $projectId, ?int $perPage = 15): LengthAwarePaginator
     {
         return Proposal::with('user', 'attachments', 'project')

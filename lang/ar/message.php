@@ -140,4 +140,5 @@ return [
     'you_are_not_authorized_to_view_proposals_for_this_project' => 'أنت غير مخول لعرض عروض الأسعار لهذا المشروع',
     'child_category_cannot_have_image' => 'الفئة الفرعية لا يمكن أن تحتوي على صورة',
     'cant_convert_parent_category_to_child_or_vice_versa' => 'لا يمكن تحويل الفئة الرئيسية إلى فرعية أو العكس',
+    'you_have_already_submitted_a_proposal_for_this_project' => 'لقد قمت بالفعل بتقديم عرض سعر لهذا المشروع',
 ];

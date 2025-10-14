@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\ImageHelpers;
 use App\Http\Controllers\UserVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;

@@ -13,6 +13,8 @@ interface ProposalRepositoryInterface
 
     public function getByIdAndFreelancerId(int $id, int $freelancerId): Proposal;
 
+    public function findByFreelancerIdAndProjectId(int $freelancerId, int $projectId): ?Proposal;
+
     public function getAllByProjectIdPaginated(int $projectId, ?int $perPage = 15): LengthAwarePaginator;
 
     public function create(array $data): Proposal;

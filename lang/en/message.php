@@ -140,4 +140,5 @@ return [
     'you_are_not_authorized_to_view_proposals_for_this_project' => 'You are not authorized to view proposals for this project',
     'child_category_cannot_have_image' => 'Child category cannot have image',
     'cant_convert_parent_category_to_child_or_vice_versa' => 'Can\'t convert parent category to child or vice versa',
+    'you_have_already_submitted_a_proposal_for_this_project' => 'You have already submitted a proposal for this project',
 ];
