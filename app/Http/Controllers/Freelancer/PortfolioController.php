@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 /**
- * @group Portfolio Management
+ * @group Freelancer Portfolio
  * 
  * APIs for managing freelancer portfolios
  */

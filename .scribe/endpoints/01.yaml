@@ -1,4 +1,4 @@
-name: 'Portfolio Management'
+name: 'Freelancer Portfolio'
 description: |-
 
   APIs for managing freelancer portfolios
@@ -8,7 +8,7 @@ endpoints:
       - GET
     uri: api/freelancers/portfolios
     metadata:
-      groupName: 'Portfolio Management'
+      groupName: 'Freelancer Portfolio'
       groupDescription: |-
 
         APIs for managing freelancer portfolios
@@ -91,7 +91,7 @@ endpoints:
       - POST
     uri: api/freelancers/portfolios
     metadata:
-      groupName: 'Portfolio Management'
+      groupName: 'Freelancer Portfolio'
       groupDescription: |-
 
         APIs for managing freelancer portfolios
@@ -267,7 +267,7 @@ endpoints:
       - GET
     uri: 'api/freelancers/portfolios/{id}'
     metadata:
-      groupName: 'Portfolio Management'
+      groupName: 'Freelancer Portfolio'
       groupDescription: |-
 
         APIs for managing freelancer portfolios
@@ -355,7 +355,7 @@ endpoints:
       - PATCH
     uri: 'api/freelancers/portfolios/{id}'
     metadata:
-      groupName: 'Portfolio Management'
+      groupName: 'Freelancer Portfolio'
       groupDescription: |-
 
         APIs for managing freelancer portfolios
@@ -565,7 +565,7 @@ endpoints:
       - DELETE
     uri: 'api/freelancers/portfolios/{id}'
     metadata:
-      groupName: 'Portfolio Management'
+      groupName: 'Freelancer Portfolio'
       groupDescription: |-
 
         APIs for managing freelancer portfolios

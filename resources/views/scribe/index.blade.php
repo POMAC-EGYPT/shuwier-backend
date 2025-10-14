@@ -281,6 +281,28 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-freelancer-portfolio" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="freelancer-portfolio">
+                    <a href="#freelancer-portfolio">Freelancer Portfolio</a>
+                </li>
+                                    <ul id="tocify-subheader-freelancer-portfolio" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="freelancer-portfolio-GETapi-freelancers-portfolios">
+                                <a href="#freelancer-portfolio-GETapi-freelancers-portfolios">Get user portfolios</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="freelancer-portfolio-POSTapi-freelancers-portfolios">
+                                <a href="#freelancer-portfolio-POSTapi-freelancers-portfolios">Create new portfolio</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="freelancer-portfolio-GETapi-freelancers-portfolios--id-">
+                                <a href="#freelancer-portfolio-GETapi-freelancers-portfolios--id-">Get specific portfolio</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="freelancer-portfolio-PUTapi-freelancers-portfolios--id-">
+                                <a href="#freelancer-portfolio-PUTapi-freelancers-portfolios--id-">Update portfolio</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="freelancer-portfolio-DELETEapi-freelancers-portfolios--id-">
+                                <a href="#freelancer-portfolio-DELETEapi-freelancers-portfolios--id-">Delete portfolio</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-freelancer-projects" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="freelancer-projects">
                     <a href="#freelancer-projects">Freelancer Projects</a>
@@ -321,28 +343,6 @@
                                     <ul id="tocify-subheader-languages" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="languages-GETapi-languages">
                                 <a href="#languages-GETapi-languages">Get All Languages</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
-                    <ul id="tocify-header-portfolio-management" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="portfolio-management">
-                    <a href="#portfolio-management">Portfolio Management</a>
-                </li>
-                                    <ul id="tocify-subheader-portfolio-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="portfolio-management-GETapi-freelancers-portfolios">
-                                <a href="#portfolio-management-GETapi-freelancers-portfolios">Get user portfolios</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-POSTapi-freelancers-portfolios">
-                                <a href="#portfolio-management-POSTapi-freelancers-portfolios">Create new portfolio</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-GETapi-freelancers-portfolios--id-">
-                                <a href="#portfolio-management-GETapi-freelancers-portfolios--id-">Get specific portfolio</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-PUTapi-freelancers-portfolios--id-">
-                                <a href="#portfolio-management-PUTapi-freelancers-portfolios--id-">Update portfolio</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="portfolio-management-DELETEapi-freelancers-portfolios--id-">
-                                <a href="#portfolio-management-DELETEapi-freelancers-portfolios--id-">Delete portfolio</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -975,7 +975,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php75y1GN" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8lAI1E" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1159,7 +1159,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php75y1GN</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8lAI1E</code></p>
         </div>
         </form>
 
@@ -1349,7 +1349,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpn08J8M" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8YC8jw" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1551,7 +1551,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpn08J8M</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8YC8jw</code></p>
         </div>
         </form>
 
@@ -6675,7 +6675,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"completed\",
+    \"status\": \"active\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -6700,7 +6700,7 @@ const headers = {
 };
 
 let body = {
-    "status": "completed",
+    "status": "active",
     "per_page": 73
 };
 
@@ -7045,10 +7045,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="completed"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -9095,7 +9095,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5ukTAx" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOjTs7l" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9264,7 +9264,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5ukTAx</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOjTs7l</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9278,6 +9278,1121 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate. Example: <code>portfolio</code></p>
         </div>
         </form>
+
+                <h1 id="freelancer-portfolio">Freelancer Portfolio</h1>
+
+    <p>APIs for managing freelancer portfolios</p>
+
+                                <h2 id="freelancer-portfolio-GETapi-freelancers-portfolios">Get user portfolios</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retrieve all portfolios for the authenticated freelancer with pagination.</p>
+
+<span id="example-requests-GETapi-freelancers-portfolios">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/freelancers/portfolios?per_page=15" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/freelancers/portfolios"
+);
+
+const params = {
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-freelancers-portfolios">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: {
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;title&quot;: &quot;E-commerce Website&quot;,
+                &quot;description&quot;: &quot;Modern responsive e-commerce website&quot;,
+                &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
+                &quot;category&quot;: {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Web Development&quot;
+                },
+                &quot;subcategory&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Frontend&quot;
+                },
+                &quot;hashtags&quot;: [
+                    &quot;#react&quot;,
+                    &quot;#ecommerce&quot;
+                ],
+                &quot;attachments&quot;: [
+                    {
+                        &quot;id&quot;: 1,
+                        &quot;file_path&quot;: &quot;storage/portfolios/image1.jpg&quot;
+                    }
+                ]
+            }
+        ],
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 10,
+        &quot;total&quot;: 25
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-freelancers-portfolios" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-freelancers-portfolios"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-freelancers-portfolios"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-freelancers-portfolios" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-freelancers-portfolios">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-freelancers-portfolios" data-method="GET"
+      data-path="api/freelancers/portfolios"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-freelancers-portfolios', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-freelancers-portfolios"
+                    onclick="tryItOut('GETapi-freelancers-portfolios');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-freelancers-portfolios"
+                    onclick="cancelTryOut('GETapi-freelancers-portfolios');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-freelancers-portfolios"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/freelancers/portfolios</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-freelancers-portfolios"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-freelancers-portfolios"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-freelancers-portfolios"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-freelancers-portfolios"
+               value="15"
+               data-component="query">
+    <br>
+<p>Number of portfolios per page. Default is 10. Example: <code>15</code></p>
+            </div>
+                </form>
+
+                    <h2 id="freelancer-portfolio-POSTapi-freelancers-portfolios">Create new portfolio</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Create a new portfolio for the authenticated freelancer.</p>
+
+<span id="example-requests-POSTapi-freelancers-portfolios">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://backend.shuwier.com/api/freelancers/portfolios" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --form "title="E-commerce Website""\
+    --form "description="A modern responsive e-commerce website built with React and Laravel""\
+    --form "category_id=1"\
+    --form "subcategory_id=2"\
+    --form "attachment_ids[]=15"\
+    --form "hashtags[]=react"\
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT0izx1" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/freelancers/portfolios"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+const body = new FormData();
+body.append('title', '"E-commerce Website"');
+body.append('description', '"A modern responsive e-commerce website built with React and Laravel"');
+body.append('category_id', '1');
+body.append('subcategory_id', '2');
+body.append('attachment_ids[]', '15');
+body.append('hashtags[]', 'react');
+body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-freelancers-portfolios">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Portfolio created successfully&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;E-commerce Website&quot;,
+        &quot;description&quot;: &quot;A modern responsive e-commerce website&quot;,
+        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
+        &quot;category&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Web Development&quot;
+        },
+        &quot;subcategory&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Frontend&quot;
+        },
+        &quot;hashtags&quot;: [
+            &quot;#react&quot;,
+            &quot;#ecommerce&quot;
+        ],
+        &quot;attachments&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;file_path&quot;: &quot;storage/portfolios/image1.jpg&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This category is not a parent category&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This subcategory does not belong to the selected category&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-freelancers-portfolios" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-freelancers-portfolios"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-freelancers-portfolios"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-freelancers-portfolios" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-freelancers-portfolios">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-freelancers-portfolios" data-method="POST"
+      data-path="api/freelancers/portfolios"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-freelancers-portfolios', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-freelancers-portfolios"
+                    onclick="tryItOut('POSTapi-freelancers-portfolios');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-freelancers-portfolios"
+                    onclick="cancelTryOut('POSTapi-freelancers-portfolios');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-freelancers-portfolios"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/freelancers/portfolios</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-freelancers-portfolios"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-freelancers-portfolios"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="POSTapi-freelancers-portfolios"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="POSTapi-freelancers-portfolios"
+               value=""E-commerce Website""
+               data-component="body">
+    <br>
+<p>The portfolio title (max 255 characters). Example: <code>"E-commerce Website"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-freelancers-portfolios"
+               value=""A modern responsive e-commerce website built with React and Laravel""
+               data-component="body">
+    <br>
+<p>The portfolio description. Example: <code>"A modern responsive e-commerce website built with React and Laravel"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_id"                data-endpoint="POSTapi-freelancers-portfolios"
+               value="1"
+               data-component="body">
+    <br>
+<p>The main category ID (must be a parent category). Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="subcategory_id"                data-endpoint="POSTapi-freelancers-portfolios"
+               value="2"
+               data-component="body">
+    <br>
+<p>optional The subcategory ID (must belong to the selected category). Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-freelancers-portfolios"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="attachment_ids[1]"                data-endpoint="POSTapi-freelancers-portfolios"
+               data-component="body">
+    <br>
+<p>optional Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover_photo"                data-endpoint="POSTapi-freelancers-portfolios"
+               value=""
+               data-component="body">
+    <br>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT0izx1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="hashtags[0]"                data-endpoint="POSTapi-freelancers-portfolios"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="hashtags[1]"                data-endpoint="POSTapi-freelancers-portfolios"
+               data-component="body">
+    <br>
+<p>optional Array of hashtag strings (max 255 characters each).</p>
+        </div>
+        </form>
+
+                    <h2 id="freelancer-portfolio-GETapi-freelancers-portfolios--id-">Get specific portfolio</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retrieve a specific portfolio by its ID with all related data.</p>
+
+<span id="example-requests-GETapi-freelancers-portfolios--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/freelancers/portfolios/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/freelancers/portfolios/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-freelancers-portfolios--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;E-commerce Website&quot;,
+        &quot;description&quot;: &quot;A modern responsive e-commerce website&quot;,
+        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
+        &quot;category&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Web Development&quot;
+        },
+        &quot;subcategory&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Frontend&quot;
+        },
+        &quot;hashtags&quot;: [
+            &quot;#react&quot;,
+            &quot;#ecommerce&quot;
+        ],
+        &quot;attachments&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;file_path&quot;: &quot;storage/portfolios/image1.jpg&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Portfolio not found&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-freelancers-portfolios--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-freelancers-portfolios--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-freelancers-portfolios--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-freelancers-portfolios--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-freelancers-portfolios--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-freelancers-portfolios--id-" data-method="GET"
+      data-path="api/freelancers/portfolios/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-freelancers-portfolios--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-freelancers-portfolios--id-"
+                    onclick="tryItOut('GETapi-freelancers-portfolios--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-freelancers-portfolios--id-"
+                    onclick="cancelTryOut('GETapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-freelancers-portfolios--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-freelancers-portfolios--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-freelancers-portfolios--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-freelancers-portfolios--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-freelancers-portfolios--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The portfolio ID. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="freelancer-portfolio-PUTapi-freelancers-portfolios--id-">Update portfolio</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update an existing portfolio. <strong>Important behavior notes:</strong></p>
+<p><strong>For Attachments:</strong></p>
+<ul>
+<li>If you send <code>attachment_ids</code> parameter (even as empty array), ALL existing attachments will be detached and replaced with the new ones</li>
+<li>If you don't send <code>attachment_ids</code> parameter at all, existing attachments will remain unchanged</li>
+<li>You need to upload files first using /api/upload endpoint to get attachment IDs</li>
+<li>Example: To change attachments, send new attachment IDs: <code>"attachment_ids": [20, 21, 22]</code></li>
+</ul>
+<p><strong>For Hashtags:</strong></p>
+<ul>
+<li>If you send <code>hashtags</code> parameter (even as empty array), ALL existing hashtags will be replaced with the new ones</li>
+<li>If you don't send <code>hashtags</code> parameter at all, existing hashtags will remain unchanged</li>
+<li>To remove all hashtags, send an empty array: <code>"hashtags": []</code></li>
+</ul>
+
+<span id="example-requests-PUTapi-freelancers-portfolios--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://backend.shuwier.com/api/freelancers/portfolios/1" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --form "title="Updated E-commerce Website""\
+    --form "description="An updated modern responsive e-commerce website""\
+    --form "category_id=1"\
+    --form "subcategory_id=2"\
+    --form "attachment_ids[]=20"\
+    --form "hashtags[]=react"\
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZRrwwy" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/freelancers/portfolios/1"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+const body = new FormData();
+body.append('title', '"Updated E-commerce Website"');
+body.append('description', '"An updated modern responsive e-commerce website"');
+body.append('category_id', '1');
+body.append('subcategory_id', '2');
+body.append('attachment_ids[]', '20');
+body.append('hashtags[]', 'react');
+body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-freelancers-portfolios--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Portfolio updated successfully&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Updated E-commerce Website&quot;,
+        &quot;description&quot;: &quot;An updated modern responsive e-commerce website&quot;,
+        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
+        &quot;category&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Web Development&quot;
+        },
+        &quot;subcategory&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Frontend&quot;
+        },
+        &quot;hashtags&quot;: [
+            &quot;#react&quot;,
+            &quot;#updated&quot;
+        ],
+        &quot;attachments&quot;: [
+            {
+                &quot;id&quot;: 2,
+                &quot;file_path&quot;: &quot;storage/portfolios/new_image.jpg&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This category is not a parent category&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This attachment is already used&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This attachment does not belong to the user&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 400
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-freelancers-portfolios--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-freelancers-portfolios--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-freelancers-portfolios--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-freelancers-portfolios--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-freelancers-portfolios--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-freelancers-portfolios--id-" data-method="PUT"
+      data-path="api/freelancers/portfolios/{id}"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-freelancers-portfolios--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-freelancers-portfolios--id-"
+                    onclick="tryItOut('PUTapi-freelancers-portfolios--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-freelancers-portfolios--id-"
+                    onclick="cancelTryOut('PUTapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-freelancers-portfolios--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The portfolio ID to update. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value=""Updated E-commerce Website""
+               data-component="body">
+    <br>
+<p>The portfolio title (max 255 characters). Example: <code>"Updated E-commerce Website"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value=""An updated modern responsive e-commerce website""
+               data-component="body">
+    <br>
+<p>The portfolio description. Example: <code>"An updated modern responsive e-commerce website"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value="1"
+               data-component="body">
+    <br>
+<p>The main category ID (must be a parent category). Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="subcategory_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value="2"
+               data-component="body">
+    <br>
+<p>optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="attachment_ids[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="attachment_ids[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               data-component="body">
+    <br>
+<p>optional Array of attachment IDs from uploaded files (max 8 files). <strong>CAUTION:</strong> If provided, ALL existing attachments will be detached first.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover_photo"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZRrwwy</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="hashtags[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="hashtags[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               data-component="body">
+    <br>
+<p>optional Array of hashtag strings. <strong>CAUTION:</strong> If provided, ALL existing hashtags will be replaced.</p>
+        </div>
+        </form>
+
+                    <h2 id="freelancer-portfolio-DELETEapi-freelancers-portfolios--id-">Delete portfolio</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Permanently delete a portfolio and all its associated data including attachments and hashtag relationships.
+<strong>Warning:</strong> This action cannot be undone. All uploaded files will also be deleted from storage.</p>
+
+<span id="example-requests-DELETEapi-freelancers-portfolios--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://backend.shuwier.com/api/freelancers/portfolios/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/freelancers/portfolios/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-freelancers-portfolios--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Portfolio deleted successfully&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Portfolio not found&quot;,
+    &quot;status&quot;: false,
+    &quot;error_code&quot;: 404
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-freelancers-portfolios--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-freelancers-portfolios--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-freelancers-portfolios--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-freelancers-portfolios--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-freelancers-portfolios--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-freelancers-portfolios--id-" data-method="DELETE"
+      data-path="api/freelancers/portfolios/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-freelancers-portfolios--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-freelancers-portfolios--id-"
+                    onclick="tryItOut('DELETEapi-freelancers-portfolios--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-freelancers-portfolios--id-"
+                    onclick="cancelTryOut('DELETEapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-freelancers-portfolios--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/freelancers/portfolios/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The portfolio ID to delete. Example: <code>1</code></p>
+            </div>
+                    </form>
 
                 <h1 id="freelancer-projects">Freelancer Projects</h1>
 
@@ -10761,1121 +11876,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>en</code></p>
             </div>
                         </form>
-
-                <h1 id="portfolio-management">Portfolio Management</h1>
-
-    <p>APIs for managing freelancer portfolios</p>
-
-                                <h2 id="portfolio-management-GETapi-freelancers-portfolios">Get user portfolios</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Retrieve all portfolios for the authenticated freelancer with pagination.</p>
-
-<span id="example-requests-GETapi-freelancers-portfolios">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/freelancers/portfolios?per_page=15" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/portfolios"
-);
-
-const params = {
-    "per_page": "15",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-freelancers-portfolios">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Success&quot;,
-    &quot;status&quot;: true,
-    &quot;data&quot;: {
-        &quot;data&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;title&quot;: &quot;E-commerce Website&quot;,
-                &quot;description&quot;: &quot;Modern responsive e-commerce website&quot;,
-                &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
-                &quot;category&quot;: {
-                    &quot;id&quot;: 1,
-                    &quot;name&quot;: &quot;Web Development&quot;
-                },
-                &quot;subcategory&quot;: {
-                    &quot;id&quot;: 2,
-                    &quot;name&quot;: &quot;Frontend&quot;
-                },
-                &quot;hashtags&quot;: [
-                    &quot;#react&quot;,
-                    &quot;#ecommerce&quot;
-                ],
-                &quot;attachments&quot;: [
-                    {
-                        &quot;id&quot;: 1,
-                        &quot;file_path&quot;: &quot;storage/portfolios/image1.jpg&quot;
-                    }
-                ]
-            }
-        ],
-        &quot;current_page&quot;: 1,
-        &quot;per_page&quot;: 10,
-        &quot;total&quot;: 25
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-freelancers-portfolios" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-freelancers-portfolios"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-freelancers-portfolios"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-freelancers-portfolios" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-freelancers-portfolios">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-freelancers-portfolios" data-method="GET"
-      data-path="api/freelancers/portfolios"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-freelancers-portfolios', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-freelancers-portfolios"
-                    onclick="tryItOut('GETapi-freelancers-portfolios');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-freelancers-portfolios"
-                    onclick="cancelTryOut('GETapi-freelancers-portfolios');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-freelancers-portfolios"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/freelancers/portfolios</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-freelancers-portfolios"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-freelancers-portfolios"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-freelancers-portfolios"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-freelancers-portfolios"
-               value="15"
-               data-component="query">
-    <br>
-<p>Number of portfolios per page. Default is 10. Example: <code>15</code></p>
-            </div>
-                </form>
-
-                    <h2 id="portfolio-management-POSTapi-freelancers-portfolios">Create new portfolio</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Create a new portfolio for the authenticated freelancer.</p>
-
-<span id="example-requests-POSTapi-freelancers-portfolios">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/freelancers/portfolios" \
-    --header "Content-Type: multipart/form-data" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --form "title="E-commerce Website""\
-    --form "description="A modern responsive e-commerce website built with React and Laravel""\
-    --form "category_id=1"\
-    --form "subcategory_id=2"\
-    --form "attachment_ids[]=15"\
-    --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb4gXeN" </code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/portfolios"
-);
-
-const headers = {
-    "Content-Type": "multipart/form-data",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-const body = new FormData();
-body.append('title', '"E-commerce Website"');
-body.append('description', '"A modern responsive e-commerce website built with React and Laravel"');
-body.append('category_id', '1');
-body.append('subcategory_id', '2');
-body.append('attachment_ids[]', '15');
-body.append('hashtags[]', 'react');
-body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-freelancers-portfolios">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Portfolio created successfully&quot;,
-    &quot;status&quot;: true,
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title&quot;: &quot;E-commerce Website&quot;,
-        &quot;description&quot;: &quot;A modern responsive e-commerce website&quot;,
-        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
-        &quot;category&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Web Development&quot;
-        },
-        &quot;subcategory&quot;: {
-            &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;Frontend&quot;
-        },
-        &quot;hashtags&quot;: [
-            &quot;#react&quot;,
-            &quot;#ecommerce&quot;
-        ],
-        &quot;attachments&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;file_path&quot;: &quot;storage/portfolios/image1.jpg&quot;
-            }
-        ]
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;This category is not a parent category&quot;,
-    &quot;status&quot;: false,
-    &quot;error_code&quot;: 400
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;This subcategory does not belong to the selected category&quot;,
-    &quot;status&quot;: false,
-    &quot;error_code&quot;: 400
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-freelancers-portfolios" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-freelancers-portfolios"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-freelancers-portfolios"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-freelancers-portfolios" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-freelancers-portfolios">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-freelancers-portfolios" data-method="POST"
-      data-path="api/freelancers/portfolios"
-      data-authed="1"
-      data-hasfiles="1"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-freelancers-portfolios', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-freelancers-portfolios"
-                    onclick="tryItOut('POSTapi-freelancers-portfolios');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-freelancers-portfolios"
-                    onclick="cancelTryOut('POSTapi-freelancers-portfolios');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-freelancers-portfolios"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/freelancers/portfolios</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-freelancers-portfolios"
-               value="multipart/form-data"
-               data-component="header">
-    <br>
-<p>Example: <code>multipart/form-data</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-freelancers-portfolios"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-freelancers-portfolios"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="title"                data-endpoint="POSTapi-freelancers-portfolios"
-               value=""E-commerce Website""
-               data-component="body">
-    <br>
-<p>The portfolio title (max 255 characters). Example: <code>"E-commerce Website"</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="POSTapi-freelancers-portfolios"
-               value=""A modern responsive e-commerce website built with React and Laravel""
-               data-component="body">
-    <br>
-<p>The portfolio description. Example: <code>"A modern responsive e-commerce website built with React and Laravel"</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="category_id"                data-endpoint="POSTapi-freelancers-portfolios"
-               value="1"
-               data-component="body">
-    <br>
-<p>The main category ID (must be a parent category). Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="subcategory_id"                data-endpoint="POSTapi-freelancers-portfolios"
-               value="2"
-               data-component="body">
-    <br>
-<p>optional The subcategory ID (must belong to the selected category). Example: <code>2</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
-<small>integer[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-freelancers-portfolios"
-               data-component="body">
-        <input type="number" style="display: none"
-               name="attachment_ids[1]"                data-endpoint="POSTapi-freelancers-portfolios"
-               data-component="body">
-    <br>
-<p>optional Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="cover_photo"                data-endpoint="POSTapi-freelancers-portfolios"
-               value=""
-               data-component="body">
-    <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb4gXeN</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="hashtags[0]"                data-endpoint="POSTapi-freelancers-portfolios"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="hashtags[1]"                data-endpoint="POSTapi-freelancers-portfolios"
-               data-component="body">
-    <br>
-<p>optional Array of hashtag strings (max 255 characters each).</p>
-        </div>
-        </form>
-
-                    <h2 id="portfolio-management-GETapi-freelancers-portfolios--id-">Get specific portfolio</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Retrieve a specific portfolio by its ID with all related data.</p>
-
-<span id="example-requests-GETapi-freelancers-portfolios--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/freelancers/portfolios/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/portfolios/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-freelancers-portfolios--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Success&quot;,
-    &quot;status&quot;: true,
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title&quot;: &quot;E-commerce Website&quot;,
-        &quot;description&quot;: &quot;A modern responsive e-commerce website&quot;,
-        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
-        &quot;category&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Web Development&quot;
-        },
-        &quot;subcategory&quot;: {
-            &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;Frontend&quot;
-        },
-        &quot;hashtags&quot;: [
-            &quot;#react&quot;,
-            &quot;#ecommerce&quot;
-        ],
-        &quot;attachments&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;file_path&quot;: &quot;storage/portfolios/image1.jpg&quot;
-            }
-        ]
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Portfolio not found&quot;,
-    &quot;status&quot;: false,
-    &quot;error_code&quot;: 400
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-freelancers-portfolios--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-freelancers-portfolios--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-freelancers-portfolios--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-freelancers-portfolios--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-freelancers-portfolios--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-freelancers-portfolios--id-" data-method="GET"
-      data-path="api/freelancers/portfolios/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-freelancers-portfolios--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-freelancers-portfolios--id-"
-                    onclick="tryItOut('GETapi-freelancers-portfolios--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-freelancers-portfolios--id-"
-                    onclick="cancelTryOut('GETapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-freelancers-portfolios--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/freelancers/portfolios/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-freelancers-portfolios--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-freelancers-portfolios--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-freelancers-portfolios--id-"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-freelancers-portfolios--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The portfolio ID. Example: <code>1</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="portfolio-management-PUTapi-freelancers-portfolios--id-">Update portfolio</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Update an existing portfolio. <strong>Important behavior notes:</strong></p>
-<p><strong>For Attachments:</strong></p>
-<ul>
-<li>If you send <code>attachment_ids</code> parameter (even as empty array), ALL existing attachments will be detached and replaced with the new ones</li>
-<li>If you don't send <code>attachment_ids</code> parameter at all, existing attachments will remain unchanged</li>
-<li>You need to upload files first using /api/upload endpoint to get attachment IDs</li>
-<li>Example: To change attachments, send new attachment IDs: <code>"attachment_ids": [20, 21, 22]</code></li>
-</ul>
-<p><strong>For Hashtags:</strong></p>
-<ul>
-<li>If you send <code>hashtags</code> parameter (even as empty array), ALL existing hashtags will be replaced with the new ones</li>
-<li>If you don't send <code>hashtags</code> parameter at all, existing hashtags will remain unchanged</li>
-<li>To remove all hashtags, send an empty array: <code>"hashtags": []</code></li>
-</ul>
-
-<span id="example-requests-PUTapi-freelancers-portfolios--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://backend.shuwier.com/api/freelancers/portfolios/1" \
-    --header "Content-Type: multipart/form-data" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --form "title="Updated E-commerce Website""\
-    --form "description="An updated modern responsive e-commerce website""\
-    --form "category_id=1"\
-    --form "subcategory_id=2"\
-    --form "attachment_ids[]=20"\
-    --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpFe9DLp" </code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/portfolios/1"
-);
-
-const headers = {
-    "Content-Type": "multipart/form-data",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-const body = new FormData();
-body.append('title', '"Updated E-commerce Website"');
-body.append('description', '"An updated modern responsive e-commerce website"');
-body.append('category_id', '1');
-body.append('subcategory_id', '2');
-body.append('attachment_ids[]', '20');
-body.append('hashtags[]', 'react');
-body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-freelancers-portfolios--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Portfolio updated successfully&quot;,
-    &quot;status&quot;: true,
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title&quot;: &quot;Updated E-commerce Website&quot;,
-        &quot;description&quot;: &quot;An updated modern responsive e-commerce website&quot;,
-        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
-        &quot;category&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Web Development&quot;
-        },
-        &quot;subcategory&quot;: {
-            &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;Frontend&quot;
-        },
-        &quot;hashtags&quot;: [
-            &quot;#react&quot;,
-            &quot;#updated&quot;
-        ],
-        &quot;attachments&quot;: [
-            {
-                &quot;id&quot;: 2,
-                &quot;file_path&quot;: &quot;storage/portfolios/new_image.jpg&quot;
-            }
-        ]
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;This category is not a parent category&quot;,
-    &quot;status&quot;: false,
-    &quot;error_code&quot;: 400
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;This attachment is already used&quot;,
-    &quot;status&quot;: false,
-    &quot;error_code&quot;: 400
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;This attachment does not belong to the user&quot;,
-    &quot;status&quot;: false,
-    &quot;error_code&quot;: 400
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PUTapi-freelancers-portfolios--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-freelancers-portfolios--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-freelancers-portfolios--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-freelancers-portfolios--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-freelancers-portfolios--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-freelancers-portfolios--id-" data-method="PUT"
-      data-path="api/freelancers/portfolios/{id}"
-      data-authed="1"
-      data-hasfiles="1"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-freelancers-portfolios--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-freelancers-portfolios--id-"
-                    onclick="tryItOut('PUTapi-freelancers-portfolios--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-freelancers-portfolios--id-"
-                    onclick="cancelTryOut('PUTapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-freelancers-portfolios--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/freelancers/portfolios/{id}</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/freelancers/portfolios/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="multipart/form-data"
-               data-component="header">
-    <br>
-<p>Example: <code>multipart/form-data</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The portfolio ID to update. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="title"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value=""Updated E-commerce Website""
-               data-component="body">
-    <br>
-<p>The portfolio title (max 255 characters). Example: <code>"Updated E-commerce Website"</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value=""An updated modern responsive e-commerce website""
-               data-component="body">
-    <br>
-<p>The portfolio description. Example: <code>"An updated modern responsive e-commerce website"</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="category_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="1"
-               data-component="body">
-    <br>
-<p>The main category ID (must be a parent category). Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="subcategory_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="2"
-               data-component="body">
-    <br>
-<p>optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory. Example: <code>2</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
-<small>integer[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="attachment_ids[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               data-component="body">
-        <input type="number" style="display: none"
-               name="attachment_ids[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               data-component="body">
-    <br>
-<p>optional Array of attachment IDs from uploaded files (max 8 files). <strong>CAUTION:</strong> If provided, ALL existing attachments will be detached first.</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="cover_photo"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value=""
-               data-component="body">
-    <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpFe9DLp</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="hashtags[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="hashtags[1]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               data-component="body">
-    <br>
-<p>optional Array of hashtag strings. <strong>CAUTION:</strong> If provided, ALL existing hashtags will be replaced.</p>
-        </div>
-        </form>
-
-                    <h2 id="portfolio-management-DELETEapi-freelancers-portfolios--id-">Delete portfolio</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Permanently delete a portfolio and all its associated data including attachments and hashtag relationships.
-<strong>Warning:</strong> This action cannot be undone. All uploaded files will also be deleted from storage.</p>
-
-<span id="example-requests-DELETEapi-freelancers-portfolios--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://backend.shuwier.com/api/freelancers/portfolios/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/freelancers/portfolios/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-freelancers-portfolios--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Portfolio deleted successfully&quot;,
-    &quot;status&quot;: true,
-    &quot;data&quot;: null
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Portfolio not found&quot;,
-    &quot;status&quot;: false,
-    &quot;error_code&quot;: 404
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEapi-freelancers-portfolios--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-freelancers-portfolios--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-freelancers-portfolios--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-freelancers-portfolios--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-freelancers-portfolios--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-freelancers-portfolios--id-" data-method="DELETE"
-      data-path="api/freelancers/portfolios/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-freelancers-portfolios--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-freelancers-portfolios--id-"
-                    onclick="tryItOut('DELETEapi-freelancers-portfolios--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-freelancers-portfolios--id-"
-                    onclick="cancelTryOut('DELETEapi-freelancers-portfolios--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-freelancers-portfolios--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/freelancers/portfolios/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The portfolio ID to delete. Example: <code>1</code></p>
-            </div>
-                    </form>
 
                 <h1 id="public-home-page">Public Home Page</h1>
 
@@ -13578,7 +13578,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2ilIto" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGQBhlt" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13911,7 +13911,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2ilIto</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGQBhlt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -18670,7 +18670,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMFMpkG" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpexI6IQ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -18831,7 +18831,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMFMpkG</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpexI6IQ</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
