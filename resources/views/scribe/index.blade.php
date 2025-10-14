@@ -472,7 +472,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 13, 2025</li>
+        <li>Last updated: October 14, 2025</li>
     </ul>
 </div>
 
@@ -975,7 +975,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpdpvutH" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php75y1GN" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1159,7 +1159,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpdpvutH</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php75y1GN</code></p>
         </div>
         </form>
 
@@ -1349,7 +1349,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php74HFDc" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpn08J8M" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1551,7 +1551,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php74HFDc</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpn08J8M</code></p>
         </div>
         </form>
 
@@ -3674,7 +3674,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"approved\",
+    \"approval_status\": \"requested\",
     \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3702,7 +3702,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "approved",
+    "approval_status": "requested",
     "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3929,10 +3929,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="approved"
+               value="requested"
                data-component="body">
     <br>
-<p>Example: <code>approved</code></p>
+<p>Example: <code>requested</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -9095,7 +9095,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpNVb1sF" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5ukTAx" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9264,7 +9264,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpNVb1sF</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php5ukTAx</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -10825,6 +10825,7 @@ fetch(url, {
                 &quot;id&quot;: 1,
                 &quot;title&quot;: &quot;E-commerce Website&quot;,
                 &quot;description&quot;: &quot;Modern responsive e-commerce website&quot;,
+                &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
                 &quot;category&quot;: {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Web Development&quot;
@@ -10961,27 +10962,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://backend.shuwier.com/api/freelancers/portfolios" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --data "{
-    \"title\": \"\\\"E-commerce Website\\\"\",
-    \"description\": \"\\\"A modern responsive e-commerce website built with React and Laravel\\\"\",
-    \"category_id\": 1,
-    \"subcategory_id\": 2,
-    \"attachment_ids\": [
-        15,
-        16,
-        17
-    ],
-    \"cover_id\": 20,
-    \"hashtags\": [
-        \"react\",
-        \"ecommerce\",
-        \"laravel\"
-    ]
-}"
-</code></pre></div>
+    --form "title="E-commerce Website""\
+    --form "description="A modern responsive e-commerce website built with React and Laravel""\
+    --form "category_id=1"\
+    --form "subcategory_id=2"\
+    --form "attachment_ids[]=15"\
+    --form "hashtags[]=react"\
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb4gXeN" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10990,33 +10980,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
     "Accept-Language": "en",
 };
 
-let body = {
-    "title": "\"E-commerce Website\"",
-    "description": "\"A modern responsive e-commerce website built with React and Laravel\"",
-    "category_id": 1,
-    "subcategory_id": 2,
-    "attachment_ids": [
-        15,
-        16,
-        17
-    ],
-    "cover_id": 20,
-    "hashtags": [
-        "react",
-        "ecommerce",
-        "laravel"
-    ]
-};
+const body = new FormData();
+body.append('title', '"E-commerce Website"');
+body.append('description', '"A modern responsive e-commerce website built with React and Laravel"');
+body.append('category_id', '1');
+body.append('subcategory_id', '2');
+body.append('attachment_ids[]', '15');
+body.append('hashtags[]', 'react');
+body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -11034,6 +11015,7 @@ fetch(url, {
         &quot;id&quot;: 1,
         &quot;title&quot;: &quot;E-commerce Website&quot;,
         &quot;description&quot;: &quot;A modern responsive e-commerce website&quot;,
+        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
         &quot;category&quot;: {
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Web Development&quot;
@@ -11096,7 +11078,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-freelancers-portfolios" data-method="POST"
       data-path="api/freelancers/portfolios"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-freelancers-portfolios', this);">
@@ -11131,10 +11113,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-freelancers-portfolios"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -11217,15 +11199,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>optional Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>cover_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="cover_id"                data-endpoint="POSTapi-freelancers-portfolios"
-               value="20"
+            <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover_photo"                data-endpoint="POSTapi-freelancers-portfolios"
+               value=""
                data-component="body">
     <br>
-<p>The attachment ID to set as the cover image. Example: <code>20</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb4gXeN</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11293,6 +11275,7 @@ fetch(url, {
         &quot;id&quot;: 1,
         &quot;title&quot;: &quot;E-commerce Website&quot;,
         &quot;description&quot;: &quot;A modern responsive e-commerce website&quot;,
+        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
         &quot;category&quot;: {
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Web Development&quot;
@@ -11448,27 +11431,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
     "http://backend.shuwier.com/api/freelancers/portfolios/1" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --data "{
-    \"title\": \"\\\"Updated E-commerce Website\\\"\",
-    \"description\": \"\\\"An updated modern responsive e-commerce website\\\"\",
-    \"category_id\": 1,
-    \"subcategory_id\": 2,
-    \"attachment_ids\": [
-        20,
-        21,
-        22
-    ],
-    \"cover_id\": 20,
-    \"hashtags\": [
-        \"react\",
-        \"updated\",
-        \"laravel\"
-    ]
-}"
-</code></pre></div>
+    --form "title="Updated E-commerce Website""\
+    --form "description="An updated modern responsive e-commerce website""\
+    --form "category_id=1"\
+    --form "subcategory_id=2"\
+    --form "attachment_ids[]=20"\
+    --form "hashtags[]=react"\
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpFe9DLp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11477,33 +11449,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
     "Accept-Language": "en",
 };
 
-let body = {
-    "title": "\"Updated E-commerce Website\"",
-    "description": "\"An updated modern responsive e-commerce website\"",
-    "category_id": 1,
-    "subcategory_id": 2,
-    "attachment_ids": [
-        20,
-        21,
-        22
-    ],
-    "cover_id": 20,
-    "hashtags": [
-        "react",
-        "updated",
-        "laravel"
-    ]
-};
+const body = new FormData();
+body.append('title', '"Updated E-commerce Website"');
+body.append('description', '"An updated modern responsive e-commerce website"');
+body.append('category_id', '1');
+body.append('subcategory_id', '2');
+body.append('attachment_ids[]', '20');
+body.append('hashtags[]', 'react');
+body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
 
 fetch(url, {
     method: "PUT",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -11521,6 +11484,7 @@ fetch(url, {
         &quot;id&quot;: 1,
         &quot;title&quot;: &quot;Updated E-commerce Website&quot;,
         &quot;description&quot;: &quot;An updated modern responsive e-commerce website&quot;,
+        &quot;cover_photo&quot;: &quot;storage/portfolios/68ee0f54b6ee8.PNG&quot;,
         &quot;category&quot;: {
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Web Development&quot;
@@ -11594,7 +11558,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-PUTapi-freelancers-portfolios--id-" data-method="PUT"
       data-path="api/freelancers/portfolios/{id}"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-freelancers-portfolios--id-', this);">
@@ -11633,10 +11597,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -11731,15 +11695,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>optional Array of attachment IDs from uploaded files (max 8 files). <strong>CAUTION:</strong> If provided, ALL existing attachments will be detached first.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>cover_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="cover_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
-               value="20"
+            <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover_photo"                data-endpoint="PUTapi-freelancers-portfolios--id-"
+               value=""
                data-component="body">
     <br>
-<p>The attachment ID to set as the cover image. Example: <code>20</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpFe9DLp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -13614,7 +13578,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiHBxss" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2ilIto" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13947,7 +13911,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiHBxss</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2ilIto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -18706,7 +18670,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTu07vI" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMFMpkG" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -18867,7 +18831,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTu07vI</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpMFMpkG</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

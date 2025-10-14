@@ -13,6 +13,7 @@ class Portfolio extends Model
         'category_id',
         'subcategory_id',
         'user_id',
+        'cover_photo',
     ];
 
     public function user()

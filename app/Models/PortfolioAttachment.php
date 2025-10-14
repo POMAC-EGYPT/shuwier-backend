@@ -13,11 +13,6 @@ class PortfolioAttachment extends Model
         'portfolio_id',
         'file_path',
         'user_id',
-        'is_cover'
-    ];
-
-    protected $casts = [
-        'is_cover'     => 'boolean',
     ];
 
     protected $appends = [

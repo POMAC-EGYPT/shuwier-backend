@@ -18,6 +18,7 @@ class PortfolioResource extends JsonResource
             'id'                 => $this->id,
             'title'              => $this->title,
             'description'        => $this->description,
+            'cover_photo'        => $this->cover_photo,
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
             'user'               => $this->when($this->relationLoaded('user') && $this->user, function () {

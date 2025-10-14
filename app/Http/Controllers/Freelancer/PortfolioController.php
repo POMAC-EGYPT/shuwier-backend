@@ -40,6 +40,7 @@ class PortfolioController extends Controller
      *         "id": 1,
      *         "title": "E-commerce Website",
      *         "description": "Modern responsive e-commerce website",
+     *     "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
      *         "category": {
      *           "id": 1,
      *           "name": "Web Development"
@@ -84,7 +85,7 @@ class PortfolioController extends Controller
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Example: 2
      * @bodyParam attachment_ids integer[] optional Array of attachment IDs from uploaded files (max 8 files). Use /api/upload endpoint first to upload files and get IDs. Example: [15, 16, 17]
-     * @bodyParam cover_id integer required The attachment ID to set as the cover image. Example: 20
+     * @bodyParam cover_photo file optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB
      * @bodyParam hashtags string[] optional Array of hashtag strings (max 255 characters each). Example: ["react", "ecommerce", "laravel"]
      * 
      * @response 200 {
@@ -94,6 +95,7 @@ class PortfolioController extends Controller
      *     "id": 1,
      *     "title": "E-commerce Website",
      *     "description": "A modern responsive e-commerce website",
+     *     "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
      *     "category": {
      *       "id": 1,
      *       "name": "Web Development"
@@ -134,7 +136,7 @@ class PortfolioController extends Controller
             'category_id'       => $request->category_id,
             'subcategory_id'    => $request->subcategory_id ?? null,
             'attachment_ids'    => $request->attachment_ids ?? [],
-            'cover_id'          => $request->cover_id,
+            'cover_photo'       => $request->cover_photo,
             'hashtags'          => $request->hashtags ?? null,
             'user_id'           => auth('api')->id(),
         ]);
@@ -159,6 +161,7 @@ class PortfolioController extends Controller
      *     "id": 1,
      *     "title": "E-commerce Website",
      *     "description": "A modern responsive e-commerce website",
+     *     "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
      *     "category": {
      *       "id": 1,
      *       "name": "Web Development"
@@ -217,7 +220,7 @@ class PortfolioController extends Controller
      * @bodyParam category_id integer required The main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional The subcategory ID (must belong to the selected category). Set to null to remove subcategory. Example: 2
      * @bodyParam attachment_ids integer[] optional Array of attachment IDs from uploaded files (max 8 files). **CAUTION:** If provided, ALL existing attachments will be detached first. Example: [20, 21, 22]
-     * @bodyParam cover_id integer required The attachment ID to set as the cover image. Example: 20
+     * @bodyParam cover_photo file optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB
      * @bodyParam hashtags string[] optional Array of hashtag strings. **CAUTION:** If provided, ALL existing hashtags will be replaced. Example: ["react", "updated", "laravel"]
      * 
      * @response 200 {
@@ -227,6 +230,7 @@ class PortfolioController extends Controller
      *     "id": 1,
      *     "title": "Updated E-commerce Website",
      *     "description": "An updated modern responsive e-commerce website",
+     *     "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
      *     "category": {
      *       "id": 1,
      *       "name": "Web Development"
@@ -273,7 +277,7 @@ class PortfolioController extends Controller
             'category_id'       => $request->category_id,
             'subcategory_id'    => $request->subcategory_id ?? null,
             'attachment_ids'    => $request->attachment_ids ?? [],
-            'cover_id'          => $request->cover_id,
+            'cover_photo'       => $request->cover_photo ?? null,
             'hashtags'          => $request->hashtags ?? [],
             'user_id'           => auth('api')->id(),
         ]);

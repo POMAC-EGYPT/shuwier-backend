@@ -56,6 +56,7 @@ endpoints:
                   "id": 1,
                   "title": "E-commerce Website",
                   "description": "Modern responsive e-commerce website",
+              "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
                   "category": {
                     "id": 1,
                     "name": "Web Development"
@@ -104,7 +105,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters: []
@@ -165,15 +166,15 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
-      cover_id:
-        name: cover_id
-        description: 'The attachment ID to set as the cover image.'
-        required: true
-        example: 20
-        type: integer
+      cover_photo:
+        name: cover_photo
+        description: 'optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB'
+        required: false
+        example: null
+        type: file
         enumValues: []
-        exampleWasSpecified: true
-        nullable: false
+        exampleWasSpecified: false
+        nullable: true
         custom: []
       hashtags:
         name: hashtags
@@ -197,12 +198,12 @@ endpoints:
         - 15
         - 16
         - 17
-      cover_id: 20
       hashtags:
         - react
         - ecommerce
         - laravel
-    fileParameters: []
+    fileParameters:
+      cover_photo: null
     responses:
       -
         status: 200
@@ -214,6 +215,7 @@ endpoints:
               "id": 1,
               "title": "E-commerce Website",
               "description": "A modern responsive e-commerce website",
+              "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
               "category": {
                 "id": 1,
                 "name": "Web Development"
@@ -311,6 +313,7 @@ endpoints:
               "id": 1,
               "title": "E-commerce Website",
               "description": "A modern responsive e-commerce website",
+              "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
               "category": {
                 "id": 1,
                 "name": "Web Development"
@@ -378,7 +381,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters:
@@ -450,15 +453,15 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
-      cover_id:
-        name: cover_id
-        description: 'The attachment ID to set as the cover image.'
-        required: true
-        example: 20
-        type: integer
+      cover_photo:
+        name: cover_photo
+        description: 'optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB'
+        required: false
+        example: null
+        type: file
         enumValues: []
-        exampleWasSpecified: true
-        nullable: false
+        exampleWasSpecified: false
+        nullable: true
         custom: []
       hashtags:
         name: hashtags
@@ -482,12 +485,12 @@ endpoints:
         - 20
         - 21
         - 22
-      cover_id: 20
       hashtags:
         - react
         - updated
         - laravel
-    fileParameters: []
+    fileParameters:
+      cover_photo: null
     responses:
       -
         status: 200
@@ -499,6 +502,7 @@ endpoints:
               "id": 1,
               "title": "Updated E-commerce Website",
               "description": "An updated modern responsive e-commerce website",
+              "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
               "category": {
                 "id": 1,
                 "name": "Web Development"

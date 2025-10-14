@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Number;
 
 class ProjectAttachment extends Model
 {
@@ -11,6 +13,15 @@ class ProjectAttachment extends Model
         'user_id',
         'project_id',
     ];
+
+    protected $appends = [
+        'size'
+    ];
+
+    public function getSizeAttribute()
+    {
+        return Number::fileSize(File::size($this->file_path));
+    }
 
     public function user()
     {
@@ -21,5 +32,4 @@ class ProjectAttachment extends Model
     {
         return $this->belongsTo(Project::class);
     }
-    
 }
