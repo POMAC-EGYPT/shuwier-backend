@@ -49,6 +49,15 @@ class ServiceService implements ServiceServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $service];
     }
 
+    public function getById(int $id): array
+    {
+        $service = $this->serviceRepo->findById($id);
+
+        $service->load(['faqs', 'attachments', 'hashtags', 'category', 'subcategory', 'user']);
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $service];
+    }
+
     public function create(array $data): array
     {
         $category = $this->categoryRepo->find($data['category_id']);

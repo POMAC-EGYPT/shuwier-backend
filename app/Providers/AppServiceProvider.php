@@ -88,6 +88,7 @@ use App\Services\Search\Strategies\ServiceSearch;
 use App\Services\Upload\Strategies\ProjectUpload;
 use App\Services\Upload\Strategies\ProposalUpload;
 use App\Services\Upload\Strategies\ServiceUpload;
+use Illuminate\Database\Eloquent\Model;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -185,6 +186,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Model::automaticallyEagerLoadRelationships();
+
         Response::macro(
             'api',
             function ($message, $statusCode = 200, $status = true, $errorNum = null, $data = null) {

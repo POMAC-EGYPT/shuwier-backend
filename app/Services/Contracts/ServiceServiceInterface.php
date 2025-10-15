@@ -8,6 +8,8 @@ interface ServiceServiceInterface
 
     public function findByIdAndFreelancerId(int $id, int $freelancerId): array;
 
+    public function getById(int $id): array;
+
     public function create(array $data): array;
 
     public function update(int $id, int $freelancerId, array $data): array;

@@ -24,6 +24,8 @@ interface ServiceRepositoryInterface
 
     public function findByIdAndFreelancerId(int $id, int $freelancerId): ?Service;
 
+    public function findById(int $id): Service;
+
     public function create(array $data): Service;
 
     public function update(int $id, int $freelancerId, array $data): bool;

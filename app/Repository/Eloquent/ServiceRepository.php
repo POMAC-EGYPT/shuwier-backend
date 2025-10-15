@@ -55,10 +55,15 @@ class ServiceRepository implements ServiceRepositoryInterface
             ->orderByDesc('created_at')
             ->paginate($perPage);
     }
-    
+
     public function findByIdAndFreelancerId(int $id, int $freelancerId): ?Service
     {
         return Service::where('user_id', $freelancerId)->findOrFail($id);
+    }
+
+    public function findById(int $id): Service
+    {
+        return Service::findOrFail($id);
     }
 
     public function create(array $data): Service
