@@ -43,7 +43,7 @@ class ServiceSearchRequest extends FormRequest
         return [
             'search'         => 'nullable|string|max:5000',
             'category_id'    => 'nullable|integer|exists:categories,id',
-            'subcategory_id' => 'nullable|integer|exists:subcategories,id',
+            'subcategory_id' => 'nullable|integer|exists:categories,id',
             'hashtag_ids'    => 'nullable|array',
             'hashtag_ids.*'  => 'required|integer|exists:hashtags,id',
             'price_min'      => 'nullable|numeric|min:0',
