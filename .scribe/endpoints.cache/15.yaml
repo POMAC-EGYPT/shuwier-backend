@@ -60,18 +60,15 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
-      hashtag_ids:
-        name: hashtag_ids
-        description: 'optional Array of hashtag IDs to filter services. Services matching any hashtag will be returned.'
+      hashtag:
+        name: hashtag
+        description: 'optional Filter services by hashtag keyword. Search for services tagged with specific keywords.'
         required: false
-        example:
-          - 11
-          - 25
-          - 30
-        type: 'integer[]'
+        example: php
+        type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       price_min:
         name: price_min
@@ -97,10 +94,7 @@ endpoints:
       search: 'wordpress website development'
       category_id: 4
       subcategory_id: 5
-      hashtag_ids:
-        - 11
-        - 25
-        - 30
+      hashtag: php
       price_min: 100.0
       price_max: 1000.0
     fileParameters: []

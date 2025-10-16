@@ -32,7 +32,7 @@ class SearchController extends Controller
      * @bodyParam search string optional Search term to find services by title, description, or keywords (max 5000 characters). Example: wordpress website development
      * @bodyParam category_id integer optional Filter services by main category ID. Must be a valid category. Example: 4
      * @bodyParam subcategory_id integer optional Filter services by subcategory ID. Must be a valid subcategory. Example: 5
-     * @bodyParam hashtag_ids integer[] optional Array of hashtag IDs to filter services. Services matching any hashtag will be returned. Example: [11, 25, 30]
+     * @bodyParam hashtag string optional Filter services by hashtag keyword. Search for services tagged with specific keywords. Example: php
      * @bodyParam price_min number optional Minimum price filter. Only services with price >= this value will be returned. Example: 100.00
      * @bodyParam price_max number optional Maximum price filter. Only services with price <= this value will be returned. Example: 1000.00
      * 
@@ -221,9 +221,9 @@ class SearchController extends Controller
             'search'         => $request->search,
             'category_id'    => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
-            'hashtag_ids'    => $request->hashtag_ids,
-            'price_min'       => $request->price_min,
-            'price_max'       => $request->price_max,
+            'hashtag'        => $request->hashtag,
+            'price_min'      => $request->price_min,
+            'price_max'      => $request->price_max,
             'perPage'        => 16,
         ]);
 

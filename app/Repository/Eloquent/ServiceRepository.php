@@ -13,7 +13,7 @@ class ServiceRepository implements ServiceRepositoryInterface
         string $search,
         ?int $categoryId = null,
         ?int $subcategoryId = null,
-        ?array $hashtagIds = null,
+        ?string $hashtag = null,
         ?int $priceMin = null,
         ?int $priceMax = null,
         ?int $perPage = 10
@@ -29,14 +29,11 @@ class ServiceRepository implements ServiceRepositoryInterface
             })
             ->when($categoryId, fn($q) => $q->where('category_id', $categoryId))
             ->when($subcategoryId, fn($q) => $q->where('subcategory_id', $subcategoryId))
-            ->when($hashtagIds, function ($q) use ($hashtagIds) {
-                $q->whereHas('hashtags', function ($q) use ($hashtagIds) {
-                    $q->whereIn('hashtags.id', $hashtagIds);
-                });
-            })
+            ->when($hashtag, fn($q) => $q->whereRelation('hashtags', 'name', 'LIKE', "%" . strtolower($hashtag) . "%"))
             ->when($priceMin, fn($q) => $q->where('price', '>=', $priceMin))
             ->when($priceMax, fn($q) => $q->where('price', '<=', $priceMax))
-            ->orderByDesc('created_at')->paginate($perPage);
+            ->orderByDesc('created_at')
+            ->paginate($perPage);
     }
 
     public function getBestSellersServices(int $limit = 8): Collection

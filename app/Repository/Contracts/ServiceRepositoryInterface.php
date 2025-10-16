@@ -12,7 +12,7 @@ interface ServiceRepositoryInterface
         string $search,
         ?int $categoryId = null,
         ?int $subcategoryId = null,
-        ?array $hashtagIds = null,
+        ?string $hashtag = null,
         ?int $priceMin = null,
         ?int $priceMax = null,
         ?int $perPage = 10

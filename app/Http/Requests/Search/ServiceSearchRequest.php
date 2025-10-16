@@ -11,7 +11,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property string $search
  * @property int|null $category_id
  * @property int|null $subcategory_id
- * @property array|null $hashtag_ids
+ * @property string|null $hashtag
  * @property float|null $price_min
  * @property float|null $price_max
  */
@@ -44,8 +44,7 @@ class ServiceSearchRequest extends FormRequest
             'search'         => 'nullable|string|max:5000',
             'category_id'    => 'nullable|integer|exists:categories,id',
             'subcategory_id' => 'nullable|integer|exists:categories,id',
-            'hashtag_ids'    => 'nullable|array',
-            'hashtag_ids.*'  => 'required|integer|exists:hashtags,id',
+            'hashtag'        => 'nullable|string|max:255',
             'price_min'      => 'nullable|numeric|min:0',
             'price_max'      => 'nullable|numeric|min:0',
         ];
