@@ -10,9 +10,9 @@ interface ServiceRepositoryInterface
 {
     public function searchWithFilters(
         string $search,
-        ?int $category_id = null,
-        ?int $subcategory_id = null,
-        ?array $hashtag_ids = null,
+        ?int $categoryId = null,
+        ?int $subcategoryId = null,
+        ?array $hashtagIds = null,
         ?int $priceMin = null,
         ?int $priceMax = null,
         ?int $perPage = 10

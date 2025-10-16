@@ -11,9 +11,9 @@ class ServiceRepository implements ServiceRepositoryInterface
 {
     public function searchWithFilters(
         string $search,
-        ?int $category_id = null,
-        ?int $subcategory_id = null,
-        ?array $hashtag_ids = null,
+        ?int $categoryId = null,
+        ?int $subcategoryId = null,
+        ?array $hashtagIds = null,
         ?int $priceMin = null,
         ?int $priceMax = null,
         ?int $perPage = 10
@@ -27,11 +27,11 @@ class ServiceRepository implements ServiceRepositoryInterface
                         ->orWhere('description', 'LIKE', "%{$search}%");
                 });
             })
-            ->when($category_id, fn($q) => $q->where('category_id', $category_id))
-            ->when($subcategory_id, fn($q) => $q->where('subcategory_id', $subcategory_id))
-            ->when($hashtag_ids, function ($q) use ($hashtag_ids) {
-                $q->whereHas('hashtags', function ($q) use ($hashtag_ids) {
-                    $q->whereIn('hashtags.id', $hashtag_ids);
+            ->when($categoryId, fn($q) => $q->where('category_id', $categoryId))
+            ->when($subcategoryId, fn($q) => $q->where('subcategory_id', $subcategoryId))
+            ->when($hashtagIds, function ($q) use ($hashtagIds) {
+                $q->whereHas('hashtags', function ($q) use ($hashtagIds) {
+                    $q->whereIn('hashtags.id', $hashtagIds);
                 });
             })
             ->when($priceMin, fn($q) => $q->where('price', '>=', $priceMin))
