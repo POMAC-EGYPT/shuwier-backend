@@ -1449,9 +1449,9 @@ endpoints:
         status: 401
         content: |-
           {
-            "status": false,
-            "error_num": 401,
-            "message": "Unauthenticated"
+          "status"   : false,
+          "error_num": 401,
+          "message"  : "Unauthenticated"
           }
         headers: []
         description: Unauthenticated

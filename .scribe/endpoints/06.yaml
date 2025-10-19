@@ -54,7 +54,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: active
+        example: in_progress
         type: string
         enumValues:
           - active
@@ -74,7 +74,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      status: active
+      status: in_progress
       per_page: 73
     fileParameters: []
     responses:
@@ -384,7 +384,7 @@ endpoints:
         custom: []
       deadline_unit:
         name: deadline_unit
-        description: 'Time unit for project deadline - The unit of measurement for your deadline. Must be one of: hours, days, weeks, months.'
+        description: 'Time unit for project deadline - The unit of measurement for your deadline. Must be one of: hours, days, months.'
         required: true
         example: days
         type: string
