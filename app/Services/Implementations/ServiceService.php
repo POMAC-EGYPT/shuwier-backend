@@ -188,12 +188,13 @@ class ServiceService implements ServiceServiceInterface
             ]);
 
             if (isset($data['hashtags']) && $data['hashtags'] != null) {
-                foreach ($data['hashtags'] as $hashtag)
+                foreach ($data['hashtags'] as $hashtag) {
                     $hashtagIds[] = $this->hashtagRepo->firstOrCreate(['name' => strtolower($hashtag)])->id;
-
-                $service->hashtags()->sync($hashtagIds);
-            } else
+                    $service->hashtags()->sync($hashtagIds);
+                }
+            } else {
                 $service->hashtags()->sync([]);
+            }
 
             $oldAttachments = $this->serviceAttachmentRepo->getByServiceId($id);
 
