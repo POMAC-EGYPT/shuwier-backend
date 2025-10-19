@@ -36,6 +36,7 @@ class FreelancerResource extends JsonResource
             'is_verified'                    => $this->is_verified,
             'user_verification_status'       => $this->user_verification_status,
             'rate'                           => $this->rate,
+            'rate_count'                     => $this->rate_count,
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
             'portfolios'                     => $this->when(

@@ -13,9 +13,9 @@ class Review extends Model
         'rating',
         'comment',
     ];
-    
+
     protected $with = ['user'];
-    
+
     public function reviewable()
     {
         return $this->morphTo();
@@ -23,6 +23,11 @@ class Review extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'reviewable_id');
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'reviewable_id');
     }
 }

@@ -44,9 +44,10 @@ class ServiceResource extends JsonResource
                 BaseResource::make(ReviewResource::collection($this->reviews)),
                 null
             ),
-            'rate'               => $this->rate,
-            'created_at'         => $this->created_at,
-            'updated_at'         => $this->updated_at,
+            'rate'       => $this->rate,
+            'rate_count' => $this->rate_count,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

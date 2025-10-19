@@ -28,12 +28,18 @@ class Service extends Model
     protected $with = ['reviews'];
 
     protected $appends = [
-        'rate'
+        'rate',
+        'rate_count'
     ];
 
     public function getRateAttribute()
     {
         return $this->reviews != null ? round($this->reviews?->avg('rating'), 2) : 0;
+    }
+
+    public function getRateCountAttribute()
+    {
+        return $this->reviews != null ? $this->reviews?->count() : 0;
     }
 
     public function user()

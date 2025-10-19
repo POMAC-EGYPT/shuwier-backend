@@ -69,7 +69,8 @@ class User extends Authenticatable implements JWTSubject
 
     protected $appends = [
         'user_verification_status',
-        'rate'
+        'rate',
+        'rate_count'
     ];
 
     public function getUserVerificationStatusAttribute()
@@ -80,6 +81,11 @@ class User extends Authenticatable implements JWTSubject
     public function getRateAttribute()
     {
         return $this->reviews != null ? round($this->reviews?->avg('rating'), 2) : 0;
+    }
+
+    public function getRateCountAttribute()
+    {
+        return $this->reviews != null ? $this->reviews?->count() : 0;
     }
 
     #[Scope]
