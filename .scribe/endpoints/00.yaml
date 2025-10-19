@@ -2081,6 +2081,185 @@ endpoints:
         description: 'Token refreshed successfully'
         custom: []
       -
+        status: 200
+        content: |-
+          {
+             "status": true,
+             "error_num": null,
+             "message": "Token Refreshed Successfully",
+             "data": {
+                 "user": {
+                     "id": 2,
+                     "name": "Ahmed test",
+                     "email": "freelancer2@gmail.com",
+                     "email_verified_at": "2025-09-11T11:33:20.000000Z",
+                     "phone": "+966501234567",
+                     "country_code": null,
+                     "phone_number": null,
+                     "type": "client",
+                     "is_active": true,
+                     "about_me": "Professional Full Stack Developer",
+                     "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
+                     "company": "شركة التقنيات المتقدمة",
+                     "country": "asd",
+                     "city": "asd",
+                     "is_verified": false,
+                     "user_verification_status": "approved",
+                     "created_at": "2025-09-03T11:34:36.000000Z",
+                     "updated_at": "2025-09-23T11:12:03.000000Z",
+                     "rate": 0,
+                     "languages": null,
+                     "reviews": null
+                 },
+                 "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc2MDg2OTYwOCwiZXhwIjoxNzYwODczMjMzLCJuYmYiOjE3NjA4Njk2MzMsImp0aSI6ImZmM2s5ZDJaS1Rmams4SDUiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Yhn36E5bG42bkrahNv8cOoQqpSyqHV-UHL_QB7GyfRE"
+             }
+          }
+        headers: []
+        description: 'Client token refreshed'
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Token Refreshed Successfully",
+            "data": {
+                "user": {
+                    "id": 3,
+                    "name": "Ahmed test",
+                    "email": "freelancer3@gmail.com",
+                    "type": "freelancer",
+                    "email_verified_at": "2025-09-21T09:56:16.000000Z",
+                    "phone": "1234567893",
+                    "is_active": true,
+                    "about_me": "Experienced freelancer with skills in various domains.",
+                    "profile_picture": "storage/profiles/68d27bc809cf4.png",
+                    "approval_status": "approved",
+                    "country": null,
+                    "city": null,
+                    "linkedin_link": "https://linkedin.com/in/freelancer3",
+                    "twitter_link": null,
+                    "other_freelance_platform_links": [],
+                    "portfolio_link": "https://portfolio.freelancer3.com",
+                    "headline": "Professional Freelancer",
+                    "is_verified": false,
+                    "user_verification_status": null,
+                    "rate": 4.67,
+                    "created_at": "2025-09-03T11:34:37.000000Z",
+                    "updated_at": "2025-09-23T10:51:52.000000Z",
+                    "category": {
+                        "id": 4,
+                        "name": "Design",
+                        "image": "storage/categories/68dd364f26e71.svg",
+                        "parent_id": null,
+                        "created_at": "2025-09-07T08:44:46.000000Z",
+                        "updated_at": "2025-10-01T14:10:23.000000Z"
+                    },
+                    "languages": null,
+                    "reviews": [
+                        {
+                            "id": 3,
+                            "user_id": 2,
+                            "rating": 5,
+                            "comment": "Excellent freelancer! Very professional and delivered high-quality work on time. Great communication skills and attention to detail. Highly recommended for WordPress development projects.",
+                            "user": {
+                                "id": 2,
+                                "name": "Ahmed test",
+                                "email": "freelancer2@gmail.com",
+                                "email_verified_at": "2025-09-11T11:33:20.000000Z",
+                                "phone": "+966501234567",
+                                "country_code": null,
+                                "phone_number": null,
+                                "type": "client",
+                                "is_active": true,
+                                "about_me": "Professional Full Stack Developer",
+                                "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
+                                "company": "شركة التقنيات المتقدمة",
+                                "country": "asd",
+                                "city": "asd",
+                                "is_verified": false,
+                                "user_verification_status": "approved",
+                                "created_at": "2025-09-03T11:34:36.000000Z",
+                                "updated_at": "2025-09-23T11:12:03.000000Z",
+                                "rate": 0,
+                                "languages": null,
+                                "reviews": null
+                            },
+                            "created_at": "2025-10-05T12:47:53.000000Z",
+                            "updated_at": "2025-10-05T12:47:53.000000Z"
+                        },
+                        {
+                            "id": 4,
+                            "user_id": 4,
+                            "rating": 4,
+                            "comment": "Good work overall. The project was completed within the deadline and met most of our requirements. Would work with this freelancer again.",
+                            "user": {
+                                "id": 4,
+                                "name": "Freelancer4",
+                                "email": "freelancer4@example.com",
+                                "email_verified_at": null,
+                                "phone": "1234567894",
+                                "country_code": null,
+                                "phone_number": null,
+                                "type": "freelancer",
+                                "is_active": true,
+                                "about_me": "Experienced freelancer with skills in various domains.",
+                                "profile_picture": null,
+                                "company": null,
+                                "country": null,
+                                "city": null,
+                                "is_verified": false,
+                                "user_verification_status": null,
+                                "created_at": "2025-09-03T11:34:37.000000Z",
+                                "updated_at": "2025-09-03T11:34:37.000000Z",
+                                "rate": 0,
+                                "languages": null,
+                                "reviews": null
+                            },
+                            "created_at": "2025-10-05T12:48:33.000000Z",
+                            "updated_at": "2025-10-05T12:48:33.000000Z"
+                        },
+                        {
+                            "id": 5,
+                            "user_id": 7,
+                            "rating": 5,
+                            "comment": "Outstanding developer! Exceeded expectations with creative solutions and clean code. Fast delivery and excellent communication throughout the project.",
+                            "user": {
+                                "id": 7,
+                                "name": "Freelancer7",
+                                "email": "freelancer7@example.com",
+                                "email_verified_at": null,
+                                "phone": "1234567897",
+                                "country_code": null,
+                                "phone_number": null,
+                                "type": "freelancer",
+                                "is_active": true,
+                                "about_me": "Experienced freelancer with skills in various domains.",
+                                "profile_picture": null,
+                                "company": null,
+                                "country": null,
+                                "city": null,
+                                "is_verified": false,
+                                "user_verification_status": null,
+                                "created_at": "2025-09-03T11:34:38.000000Z",
+                                "updated_at": "2025-09-03T11:34:38.000000Z",
+                                "rate": 0,
+                                "languages": null,
+                                "reviews": null
+                            },
+                            "created_at": "2025-10-05T12:48:33.000000Z",
+                            "updated_at": "2025-10-05T12:48:33.000000Z"
+                        }
+                    ]
+                },
+                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc2MDg2OTc4MywiZXhwIjoxNzYwODczMzk5LCJuYmYiOjE3NjA4Njk3OTksImp0aSI6IjRIdXlldnY2UjZCZXpSWHIiLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.akONhVkZTCjGyFVdEuF4QjI-uybIVlSkc84-H18oNJs"
+            }
+          }
+        headers: []
+        description: 'Freelancer token refreshed'
+        custom: []
+      -
         status: 401
         content: |-
           {

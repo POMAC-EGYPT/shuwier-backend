@@ -402,4 +402,20 @@ class AuthUserService implements AuthUserServiceInterface
 
         return ['status' => true, 'message' => __('message.email_changed_successfully'), 'email' => $user->email];
     }
+
+    public function refreshToken(): array
+    {
+        $user = auth('api')->user();
+
+        $token = JWTAuth::refresh(JWTAuth::getToken());
+
+        return [
+            'status' => true,
+            'message' => __('message.token_refreshed'),
+            'data' => [
+                'user' => $user,
+                'token' => $token,
+            ]
+        ];
+    }
 }

@@ -975,7 +975,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpve75wq" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phppeAl30" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1159,7 +1159,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpve75wq</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phppeAl30</code></p>
         </div>
         </form>
 
@@ -1349,7 +1349,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpadUeQq" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEPzZRv" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1551,7 +1551,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpadUeQq</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEPzZRv</code></p>
         </div>
         </form>
 
@@ -3675,7 +3675,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"approved\",
-    \"is_active\": \"0\",
+    \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3703,7 +3703,7 @@ const headers = {
 
 let body = {
     "approval_status": "approved",
-    "is_active": "0",
+    "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3942,10 +3942,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -6675,7 +6675,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"completed\",
+    \"status\": \"active\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -6700,7 +6700,7 @@ const headers = {
 };
 
 let body = {
-    "status": "completed",
+    "status": "active",
     "per_page": 73
 };
 
@@ -7045,10 +7045,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="completed"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -9097,7 +9097,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGOLl5Z" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6uDSAH" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9266,7 +9266,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGOLl5Z</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6uDSAH</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9490,7 +9490,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpx1W227" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpFUsr7E" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9726,7 +9726,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpx1W227</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpFUsr7E</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -9959,7 +9959,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpQqg1VF" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpVHMbH1" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10222,7 +10222,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpQqg1VF</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpVHMbH1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -13570,7 +13570,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpwk31kA" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0rBmUm" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13903,7 +13903,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpwk31kA</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0rBmUm</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -18536,6 +18536,185 @@ fetch(url, {
 }</code>
  </pre>
             <blockquote>
+            <p>Example response (200, Client token refreshed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Token Refreshed Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;user&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Ahmed test&quot;,
+            &quot;email&quot;: &quot;freelancer2@gmail.com&quot;,
+            &quot;email_verified_at&quot;: &quot;2025-09-11T11:33:20.000000Z&quot;,
+            &quot;phone&quot;: &quot;+966501234567&quot;,
+            &quot;country_code&quot;: null,
+            &quot;phone_number&quot;: null,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;is_active&quot;: true,
+            &quot;about_me&quot;: &quot;Professional Full Stack Developer&quot;,
+            &quot;profile_picture&quot;: &quot;storage/profiles/68d28083a3dd1.PNG&quot;,
+            &quot;company&quot;: &quot;شركة التقنيات المتقدمة&quot;,
+            &quot;country&quot;: &quot;asd&quot;,
+            &quot;city&quot;: &quot;asd&quot;,
+            &quot;is_verified&quot;: false,
+            &quot;user_verification_status&quot;: &quot;approved&quot;,
+            &quot;created_at&quot;: &quot;2025-09-03T11:34:36.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-23T11:12:03.000000Z&quot;,
+            &quot;rate&quot;: 0,
+            &quot;languages&quot;: null,
+            &quot;reviews&quot;: null
+        },
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc2MDg2OTYwOCwiZXhwIjoxNzYwODczMjMzLCJuYmYiOjE3NjA4Njk2MzMsImp0aSI6ImZmM2s5ZDJaS1Rmams4SDUiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Yhn36E5bG42bkrahNv8cOoQqpSyqHV-UHL_QB7GyfRE&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Freelancer token refreshed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Token Refreshed Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;user&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Ahmed test&quot;,
+            &quot;email&quot;: &quot;freelancer3@gmail.com&quot;,
+            &quot;type&quot;: &quot;freelancer&quot;,
+            &quot;email_verified_at&quot;: &quot;2025-09-21T09:56:16.000000Z&quot;,
+            &quot;phone&quot;: &quot;1234567893&quot;,
+            &quot;is_active&quot;: true,
+            &quot;about_me&quot;: &quot;Experienced freelancer with skills in various domains.&quot;,
+            &quot;profile_picture&quot;: &quot;storage/profiles/68d27bc809cf4.png&quot;,
+            &quot;approval_status&quot;: &quot;approved&quot;,
+            &quot;country&quot;: null,
+            &quot;city&quot;: null,
+            &quot;linkedin_link&quot;: &quot;https://linkedin.com/in/freelancer3&quot;,
+            &quot;twitter_link&quot;: null,
+            &quot;other_freelance_platform_links&quot;: [],
+            &quot;portfolio_link&quot;: &quot;https://portfolio.freelancer3.com&quot;,
+            &quot;headline&quot;: &quot;Professional Freelancer&quot;,
+            &quot;is_verified&quot;: false,
+            &quot;user_verification_status&quot;: null,
+            &quot;rate&quot;: 4.67,
+            &quot;created_at&quot;: &quot;2025-09-03T11:34:37.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-09-23T10:51:52.000000Z&quot;,
+            &quot;category&quot;: {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;Design&quot;,
+                &quot;image&quot;: &quot;storage/categories/68dd364f26e71.svg&quot;,
+                &quot;parent_id&quot;: null,
+                &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-10-01T14:10:23.000000Z&quot;
+            },
+            &quot;languages&quot;: null,
+            &quot;reviews&quot;: [
+                {
+                    &quot;id&quot;: 3,
+                    &quot;user_id&quot;: 2,
+                    &quot;rating&quot;: 5,
+                    &quot;comment&quot;: &quot;Excellent freelancer! Very professional and delivered high-quality work on time. Great communication skills and attention to detail. Highly recommended for WordPress development projects.&quot;,
+                    &quot;user&quot;: {
+                        &quot;id&quot;: 2,
+                        &quot;name&quot;: &quot;Ahmed test&quot;,
+                        &quot;email&quot;: &quot;freelancer2@gmail.com&quot;,
+                        &quot;email_verified_at&quot;: &quot;2025-09-11T11:33:20.000000Z&quot;,
+                        &quot;phone&quot;: &quot;+966501234567&quot;,
+                        &quot;country_code&quot;: null,
+                        &quot;phone_number&quot;: null,
+                        &quot;type&quot;: &quot;client&quot;,
+                        &quot;is_active&quot;: true,
+                        &quot;about_me&quot;: &quot;Professional Full Stack Developer&quot;,
+                        &quot;profile_picture&quot;: &quot;storage/profiles/68d28083a3dd1.PNG&quot;,
+                        &quot;company&quot;: &quot;شركة التقنيات المتقدمة&quot;,
+                        &quot;country&quot;: &quot;asd&quot;,
+                        &quot;city&quot;: &quot;asd&quot;,
+                        &quot;is_verified&quot;: false,
+                        &quot;user_verification_status&quot;: &quot;approved&quot;,
+                        &quot;created_at&quot;: &quot;2025-09-03T11:34:36.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2025-09-23T11:12:03.000000Z&quot;,
+                        &quot;rate&quot;: 0,
+                        &quot;languages&quot;: null,
+                        &quot;reviews&quot;: null
+                    },
+                    &quot;created_at&quot;: &quot;2025-10-05T12:47:53.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-10-05T12:47:53.000000Z&quot;
+                },
+                {
+                    &quot;id&quot;: 4,
+                    &quot;user_id&quot;: 4,
+                    &quot;rating&quot;: 4,
+                    &quot;comment&quot;: &quot;Good work overall. The project was completed within the deadline and met most of our requirements. Would work with this freelancer again.&quot;,
+                    &quot;user&quot;: {
+                        &quot;id&quot;: 4,
+                        &quot;name&quot;: &quot;Freelancer4&quot;,
+                        &quot;email&quot;: &quot;freelancer4@example.com&quot;,
+                        &quot;email_verified_at&quot;: null,
+                        &quot;phone&quot;: &quot;1234567894&quot;,
+                        &quot;country_code&quot;: null,
+                        &quot;phone_number&quot;: null,
+                        &quot;type&quot;: &quot;freelancer&quot;,
+                        &quot;is_active&quot;: true,
+                        &quot;about_me&quot;: &quot;Experienced freelancer with skills in various domains.&quot;,
+                        &quot;profile_picture&quot;: null,
+                        &quot;company&quot;: null,
+                        &quot;country&quot;: null,
+                        &quot;city&quot;: null,
+                        &quot;is_verified&quot;: false,
+                        &quot;user_verification_status&quot;: null,
+                        &quot;created_at&quot;: &quot;2025-09-03T11:34:37.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2025-09-03T11:34:37.000000Z&quot;,
+                        &quot;rate&quot;: 0,
+                        &quot;languages&quot;: null,
+                        &quot;reviews&quot;: null
+                    },
+                    &quot;created_at&quot;: &quot;2025-10-05T12:48:33.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-10-05T12:48:33.000000Z&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;user_id&quot;: 7,
+                    &quot;rating&quot;: 5,
+                    &quot;comment&quot;: &quot;Outstanding developer! Exceeded expectations with creative solutions and clean code. Fast delivery and excellent communication throughout the project.&quot;,
+                    &quot;user&quot;: {
+                        &quot;id&quot;: 7,
+                        &quot;name&quot;: &quot;Freelancer7&quot;,
+                        &quot;email&quot;: &quot;freelancer7@example.com&quot;,
+                        &quot;email_verified_at&quot;: null,
+                        &quot;phone&quot;: &quot;1234567897&quot;,
+                        &quot;country_code&quot;: null,
+                        &quot;phone_number&quot;: null,
+                        &quot;type&quot;: &quot;freelancer&quot;,
+                        &quot;is_active&quot;: true,
+                        &quot;about_me&quot;: &quot;Experienced freelancer with skills in various domains.&quot;,
+                        &quot;profile_picture&quot;: null,
+                        &quot;company&quot;: null,
+                        &quot;country&quot;: null,
+                        &quot;city&quot;: null,
+                        &quot;is_verified&quot;: false,
+                        &quot;user_verification_status&quot;: null,
+                        &quot;created_at&quot;: &quot;2025-09-03T11:34:38.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2025-09-03T11:34:38.000000Z&quot;,
+                        &quot;rate&quot;: 0,
+                        &quot;languages&quot;: null,
+                        &quot;reviews&quot;: null
+                    },
+                    &quot;created_at&quot;: &quot;2025-10-05T12:48:33.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2025-10-05T12:48:33.000000Z&quot;
+                }
+            ]
+        },
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc2MDg2OTc4MywiZXhwIjoxNzYwODczMzk5LCJuYmYiOjE3NjA4Njk3OTksImp0aSI6IjRIdXlldnY2UjZCZXpSWHIiLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.akONhVkZTCjGyFVdEuF4QjI-uybIVlSkc84-H18oNJs&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
             <p>Example response (401, Token invalid or expired):</p>
         </blockquote>
                 <pre>
@@ -18662,7 +18841,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXVDVFg" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpIoq84W" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -18823,7 +19002,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXVDVFg</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpIoq84W</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
