@@ -54,7 +54,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: in_progress
+        example: completed
         type: string
         enumValues:
           - active
@@ -74,7 +74,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      status: in_progress
+      status: completed
       per_page: 73
     fileParameters: []
     responses:
@@ -394,7 +394,7 @@ endpoints:
         custom: []
       deadline:
         name: deadline
-        description: 'Project deadline - Number of units (hours/days/weeks/months) for project completion.'
+        description: 'Project deadline - Number of units (hours/days/months) for project completion.'
         required: true
         example: 12
         type: integer

@@ -266,13 +266,13 @@ class ProjectController extends Controller
      * @authenticated
      * @group Client Project Management
      * 
-     * @bodyParam title string required Project title - A clear and descriptive name for your project. Example: E-commerce Website Development
-     * @bodyParam description string required Detailed project description - Explain your project requirements, goals, and expectations (minimum characters required). Example: I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.
-     * @bodyParam category_id integer required Main category ID - Must be a valid parent category that matches your project type. Example: 4
-     * @bodyParam subcategory_id integer optional Subcategory ID - Must belong to the selected main category for more specific categorization. Example: 5
-     * @bodyParam budget string required Project budget - Specify your budget range or fixed amount for this project. Example: $1000-$2000
-     * @bodyParam deadline_unit string required Time unit for project deadline - The unit of measurement for your deadline. Must be one of: hours, days, months. Example: days
-     * @bodyParam deadline integer required Project deadline - Number of units (hours/days/weeks/months) for project completion. Example: 12
+     * @bodyParam title string required Project title - A clear and descriptive name for your project. Example                                                                     : E-commerce Website Development
+     * @bodyParam description string required Detailed project description - Explain your project requirements,                                                                      goals, and expectations (minimum characters required). Example: I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.
+     * @bodyParam category_id integer required Main category ID - Must be a valid parent category that matches your project type. Example                                          : 4
+     * @bodyParam subcategory_id integer optional Subcategory ID - Must belong to the selected main category for more specific categorization. Example                             : 5
+     * @bodyParam budget string required Project budget - Specify your budget range or fixed amount for this project. Example                                                      : $1000-$2000
+     * @bodyParam deadline_unit string required Time unit for project deadline - The unit of measurement for your deadline. Must be one of                                         : hours, days,                                                    months. Example                                          : days
+     * @bodyParam deadline integer required Project deadline - Number of units (hours/days/months) for project completion. Example                                                 : 12
      * @bodyParam attachment_ids integer[] optional Array of attachment IDs - Files that provide additional project details (must be uploaded first using upload endpoint). Example: [2, 3, 4]
      * 
      * @response 200 scenario="Project created successfully" {
