@@ -69,7 +69,7 @@ class UserVerificationService implements UserVerificationServiceInterface
             $this->userVerificationRepo->delete($id);
 
             $this->userRepo->update($verification->user_id, ['is_verified' => false]);
-
+            // TODO:
             // Send notification to user about rejection
             // $user = $this->userRepo->find($verification->user_id);
             // You'll need to implement your notification logic here

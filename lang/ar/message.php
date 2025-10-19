@@ -141,4 +141,5 @@ return [
     'child_category_cannot_have_image' => 'الفئة الفرعية لا يمكن أن تحتوي على صورة',
     'cant_convert_parent_category_to_child_or_vice_versa' => 'لا يمكن تحويل الفئة الرئيسية إلى فرعية أو العكس',
     'you_have_already_submitted_a_proposal_for_this_project' => 'لقد قمت بالفعل بتقديم عرض سعر لهذا المشروع',
+    'your_account_is_not_verified_from_admin' => 'حسابك غير موثق من قبل الإدارة',
 ];

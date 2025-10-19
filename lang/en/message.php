@@ -141,4 +141,5 @@ return [
     'child_category_cannot_have_image' => 'Child category cannot have image',
     'cant_convert_parent_category_to_child_or_vice_versa' => 'Can\'t convert parent category to child or vice versa',
     'you_have_already_submitted_a_proposal_for_this_project' => 'You have already submitted a proposal for this project',
+    'your_account_is_not_verified_from_admin' => 'Your account is not verified from admin',
 ];

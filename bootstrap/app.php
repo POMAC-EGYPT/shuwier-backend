@@ -26,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth.any'                => \App\Http\Middleware\AuthenticateAnyGuard::class,
             'checkUserType'           => \App\Http\Middleware\CheckUserType::class,
             'checkFreelancerApproval' => \App\Http\Middleware\CheckFreelancerApproval::class,
+            'checkBlueMark'           => \App\Http\Middleware\CheckBlueMark::class,
         ]);
         $middleware->append([
             \App\Http\Middleware\Lang::class,

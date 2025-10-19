@@ -37,35 +37,37 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'freelancers'], function () {
-    Route::apiResources(
-        [
-            'portfolios' => PortfolioController::class,
-            'services'   => FreelancerServiceController::class,
-            'proposals'  => ProposalController::class,
-        ],
-        [
-            'middleware' => ['checkUserType:freelancer', 'checkFreelancerApproval'],
-        ]
-    );
-    Route::get('/projects/{id}', [ControllersProjectController::class, 'showToFreelancer'])->middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])->name('projects.show');
-});
+Route::middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])
+    ->prefix('freelancers')->group(function () {
+        Route::apiResource('portfolios', PortfolioController::class);
 
-Route::group(['prefix' => 'clients'], function () {
+        Route::apiResources(
+            [
+                'services' => FreelancerServiceController::class,
+                'proposals' => ProposalController::class,
+            ],
+            [
+                'middleware' => 'checkBlueMark',
+            ]
+        );
+
+        Route::get('/projects/{id}', [ControllersProjectController::class, 'showToFreelancer'])
+            ->middleware('checkBlueMark')->name('projects.show');
+    });
+
+Route::middleware(['auth:api', 'checkUserType:client', 'checkBlueMark'])->prefix('clients')->group(function () {
     Route::apiResources(
         [
             'projects' => ProjectController::class,
-        ],
-        [
-            'middleware' => 'checkUserType:client',
         ]
     );
 
-    Route::group(['prefix' => 'projects', 'middleware' => ['auth:api', 'checkUserType:client']], function () {
+    Route::prefix('projects')->group(function () {
         Route::post('/{id}/end', [ProjectController::class, 'endProject'])->name('projects.end');
         Route::get('/{projectId}/proposals', [ClientProposalController::class, 'index'])->name('projects.proposals.index');
     });
-    Route::get('/proposals/{id}', [ClientProposalController::class, 'show'])->middleware(['auth:api', 'checkUserType:client'])->name('proposals.show');
+
+    Route::get('/proposals/{id}', [ClientProposalController::class, 'show'])->name('proposals.show');
 });
 
 Route::post('/upload', [UploadFileController::class, 'upload'])
