@@ -38,7 +38,7 @@ class FreelancerResource extends JsonResource
             'rate'                           => $this->rate,
             'created_at'                     => $this->created_at,
             'updated_at'                     => $this->updated_at,
-            'portfolios'                      => $this->when(
+            'portfolios'                     => $this->when(
                 $this->relationLoaded('portfolios') &&
                     $this->portfolios &&
                     $this->portfolios->count() > 0,
@@ -50,7 +50,7 @@ class FreelancerResource extends JsonResource
                     $this->freelancerProfile->category,
                 BaseResource::make(CategoryResource::make($this->freelancerProfile->category))
             ),
-            'skills'                        => $this->when(
+            'skills'                         => $this->when(
                 $this->relationLoaded('skills') &&
                     $this->skills && $this->skills->count() > 0,
                 BaseResource::make(SkillResource::collection($this->skills))

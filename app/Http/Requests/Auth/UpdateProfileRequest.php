@@ -54,14 +54,13 @@ class UpdateProfileRequest extends FormRequest
                 'max:255',
                 'regex:/^([ء-ي\s]+|[a-zA-Z\s]+)$/u'
             ],
-            'profile_picture'               => 'sometimes|nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
-            'about_me'                      => 'sometimes|nullable|string|max:500',
-            'country'                       => 'sometimes|required_with:city|string|max:100',
-            'city'                          => 'sometimes|required_with:country|string|max:100',
-            'languages'                     => 'sometimes|array',
-            'languages.*.language_id'       => 'required_with:languages.*|exists:languages,id',
-            'languages.*.language_level'    => 'required_with:languages.*|in:basic,intermediate,advanced,native',
-
+            'profile_picture'            => 'sometimes|nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'about_me'                   => 'sometimes|nullable|string|max:500',
+            'country'                    => 'sometimes|required_with:city|string|max:100',
+            'city'                       => 'sometimes|required_with:country|string|max:100',
+            'languages'                  => 'sometimes|array',
+            'languages.*.language_id'    => 'required_with:languages.*|exists:languages,id',
+            'languages.*.language_level' => 'required_with:languages.*|in:basic,intermediate,advanced,native',
         ];
 
         if ($type === 'freelancer') {

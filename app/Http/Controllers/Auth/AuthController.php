@@ -99,14 +99,14 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $result = $this->authUserService->register([
-            'name'                             => $request->name,
-            'email'                            => $request->email,
-            'password'                         => $request->password,
-            'type'                             => $request->type,
-            'linkedin_link'                    => $request->linkedin_link,
-            'twitter_link'                     => $request->twitter_link,
-            'other_freelance_platform_links'   => $request->other_freelance_platform_links,
-            'portfolio_link'                   => $request->portfolio_link,
+            'name'                           => $request->name,
+            'email'                          => $request->email,
+            'password'                       => $request->password,
+            'type'                           => $request->type,
+            'linkedin_link'                  => $request->linkedin_link,
+            'twitter_link'                   => $request->twitter_link,
+            'other_freelance_platform_links' => $request->other_freelance_platform_links,
+            'portfolio_link'                 => $request->portfolio_link,
         ]);
 
         if (!$result['status'])
@@ -441,12 +441,12 @@ class AuthController extends Controller
 
         if ($result['data']['user']['type'] == 'freelancer')
             return Response::api($result['message'], 200, true, null, [
-                'user' => BaseResource::make(FreelancerResource::make($result['data']['user'])),
+                'user'  => BaseResource::make(FreelancerResource::make($result['data']['user'])),
                 'token' => $result['data']['token'],
             ]);
 
         return Response::api($result['message'], 200, true, null, [
-            'user' => BaseResource::make(ClientResource::make($result['data']['user'])),
+            'user'  => BaseResource::make(ClientResource::make($result['data']['user'])),
             'token' => $result['data']['token'],
         ]);
     }
@@ -785,6 +785,8 @@ class AuthController extends Controller
      */
     public function refresh()
     {
+        // TODO: change response structure to the old one with only token in data
+
         $result = $this->authUserService->refreshToken();
 
         if (!$result['status'])
@@ -792,12 +794,12 @@ class AuthController extends Controller
 
         if ($result['data']['user']['type'] == 'freelancer')
             return Response::api($result['message'], 200, true, null, [
-                'user' => BaseResource::make(FreelancerResource::make($result['data']['user'])),
+                'user'  => BaseResource::make(FreelancerResource::make($result['data']['user'])),
                 'token' => $result['data']['token'],
             ]);
 
         return Response::api($result['message'], 200, true, null, [
-            'user' => BaseResource::make(ClientResource::make($result['data']['user'])),
+            'user'  => BaseResource::make(ClientResource::make($result['data']['user'])),
             'token' => $result['data']['token'],
         ]);
     }
@@ -1248,9 +1250,9 @@ class AuthController extends Controller
      * }
      *
      * @response 401 scenario="Unauthenticated" {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Unauthenticated"
+     * "status"   : false,
+     * "error_num": 401,
+     * "message"  : "Unauthenticated"
      * }
      *
      * @response 400 scenario="Validation error - Invalid email format" {
