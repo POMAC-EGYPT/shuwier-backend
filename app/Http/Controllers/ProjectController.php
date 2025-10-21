@@ -27,7 +27,7 @@ class ProjectController extends Controller
      * for freelancer-specific requirements like account status and verification.
      * 
      * @authenticated
-     * @group Public - Projects
+     * @group Public Projects
      * 
      * @urlParam id integer required The ID of the project to retrieve. Example: 5
      * 
