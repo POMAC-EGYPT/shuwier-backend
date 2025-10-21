@@ -2,6 +2,7 @@
 
 namespace App\Services\Implementations;
 
+use App\Enum\ApprovalStatus;
 use App\Enum\ProjectStatus;
 use App\Enum\UserType;
 use App\Models\Project;
@@ -44,7 +45,7 @@ class ProjectService implements ProjectServiceInterface
         $project = $this->projectRepo->findById($id);
 
         if ($user->type == UserType::FREELANCER->value) {
-            if ($user->approval_status != 'approved')
+            if ($user->approval_status != ApprovalStatus::APPROVED)
                 return ['status' => false, 'message' => __('message.you_are_not_approved_freelancer')];
 
             if (!$project->proposals_enabled)
