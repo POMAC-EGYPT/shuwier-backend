@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Freelancer\Proposal;
 
+use App\Rules\IndexedArray;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Response;
@@ -14,6 +15,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property string $fees_type
  * @property float $bid_amount
  * @property int $project_id
+ * @property array|null $relevant_links
  * @property array|null $attachment_ids
  */
 class StoreProposalRequest extends FormRequest
@@ -47,6 +49,8 @@ class StoreProposalRequest extends FormRequest
             'fees_type'           => 'required|in:fixed,hourly',
             'bid_amount'          => 'required|numeric|min:1|max:1000000',
             'project_id'          => 'required|integer|exists:projects,id',
+            'relevant_links'      => ['nullable', 'array', 'max:3', new IndexedArray()],
+            'relevant_links.*'    => 'url',
             'attachment_ids'      => 'nullable|array|max:10',
             'attachment_ids.*'    => 'nullable|integer|exists:proposal_attachments,id',
         ];

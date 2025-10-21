@@ -21,7 +21,6 @@ class CommissionResource extends JsonResource
             'created_by'     => $this->created_by ?? null,
             'created_at'     => $this->created_at ?? null,
             'updated_at'     => $this->updated_at ?? null,
-            
         ];
     }
 }

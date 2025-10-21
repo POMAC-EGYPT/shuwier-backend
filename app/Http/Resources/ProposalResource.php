@@ -21,6 +21,7 @@ class ProposalResource extends JsonResource
             'estimated_time'      => $this->estimated_time,
             'fees_type'           => $this->fees_type,
             'bid_amount'          => $this->bid_amount,
+            'relevant_links'      => $this->relevant_links ?? null,
             'project_id'          => $this->project_id,
             'status'              => $this->status,
             'project'             => when(

@@ -167,7 +167,7 @@ class AuthUserService implements AuthUserServiceInterface
             'status' => true,
             'message' => __('message.login_success'),
             'data' => [
-                'user' => $user,
+                'user'  => $user,
                 'token' => $token,
             ]
         ];

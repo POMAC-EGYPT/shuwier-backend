@@ -53,7 +53,7 @@ class ServiceService implements ServiceServiceInterface
     {
         $service = $this->serviceRepo->findById($id);
 
-        $service->load(['faqs', 'attachments', 'hashtags', 'category', 'subcategory', 'user']);
+        $service->load(['faqs', 'attachments', 'hashtags', 'category', 'subcategory', 'user.languages']);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $service];
     }

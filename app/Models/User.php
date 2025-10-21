@@ -59,10 +59,10 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_active' => 'boolean',
-        'is_verified' => 'boolean',
-        'user_type' => UserType::class,
-        'approval_status' => ApprovalStatus::class
+        'is_active'         => 'boolean',
+        'is_verified'       => 'boolean',
+        'user_type'         => UserType::class,
+        'approval_status'   => ApprovalStatus::class
     ];
 
     protected $with = ['verification', 'reviews'];

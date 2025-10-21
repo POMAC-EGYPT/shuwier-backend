@@ -17,6 +17,7 @@ class CheckBlueMark
     public function handle(Request $request, Closure $next): Response
     {
         if (!auth('api')->user()?->is_verified)
+            
             return FacadesResponse::api(__('message.your_account_is_not_verified_from_admin'), 403, false, 403);
 
         return $next($request);

@@ -67,6 +67,7 @@ class ProposalService implements ProposalServiceInterface
                 'fees_type'           => $data['fees_type'],
                 'bid_amount'          => $data['bid_amount'],
                 'project_id'          => $data['project_id'],
+                'relevant_links'      => $data['relevant_links'] ?? null,
                 'status'              => ProposalStatus::SUBMITTED,
                 'user_id'             => $data['user_id'],
             ]);

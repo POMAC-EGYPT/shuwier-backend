@@ -263,6 +263,7 @@ class ProposalController extends Controller
      * @bodyParam fees_type string required Type of pricing structure. Must be one of: fixed, hourly. Example: fixed
      * @bodyParam bid_amount numeric required Your bid amount for the project in USD. Must be a positive number. Example: 1500.00
      * @bodyParam project_id integer required ID of the project you're submitting a proposal for. Must be an active project accepting proposals. Example: 5
+     * @bodyParam relevant_links array[] optional Array of URLs to showcase your portfolio, previous work, or relevant profiles. Example: ["http://portfolio.example.com", "http://github.com/example"]
      * @bodyParam attachment_ids integer[] optional Array of attachment IDs to include with your proposal (portfolio samples, certificates, etc.). Files must be uploaded first using upload endpoint. Example: [2, 3, 4]
      * 
      * @response 200 scenario="Proposal submitted successfully" {
@@ -277,6 +278,7 @@ class ProposalController extends Controller
      *     "fees_type": "fixed",
      *     "bid_amount": "1500.00",
      *     "status": "submitted",
+     *     "relevant_links": ["http://portfolio.example.com", "http://github.com/example"],
      *     "created_at": "2025-10-07T10:30:00.000000Z",
      *     "updated_at": "2025-10-07T10:30:00.000000Z",
      *     "project": {
@@ -394,6 +396,7 @@ class ProposalController extends Controller
             'fees_type'           => $request->fees_type,
             'bid_amount'          => $request->bid_amount,
             'project_id'          => $request->project_id,
+            'relevant_links'      => $request->relevant_links,
             'attachment_ids'      => $request->attachment_ids,
             'user_id'             => auth('api')->id(),
         ]);

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Proposal extends Model
@@ -15,8 +16,17 @@ class Proposal extends Model
         'bid_amount',
         'project_id',
         'status',
+        'relevant_links',
         'user_id'
     ];
+
+    public function relevantLinks(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value ? json_decode($value) : null,
+            set: fn($value) => $value ? json_encode($value) : null,
+        );
+    }
 
     public function project()
     {

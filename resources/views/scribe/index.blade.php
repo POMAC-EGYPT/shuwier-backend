@@ -472,7 +472,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 19, 2025</li>
+        <li>Last updated: October 21, 2025</li>
     </ul>
 </div>
 
@@ -975,7 +975,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpKDT47D" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXHESDs" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1159,7 +1159,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpKDT47D</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXHESDs</code></p>
         </div>
         </form>
 
@@ -1349,7 +1349,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpBLAbPM" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpRYd8Fs" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1551,7 +1551,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpBLAbPM</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpRYd8Fs</code></p>
         </div>
         </form>
 
@@ -3674,8 +3674,8 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"requested\",
-    \"is_active\": \"0\",
+    \"approval_status\": \"approved\",
+    \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3702,8 +3702,8 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "requested",
-    "is_active": "0",
+    "approval_status": "approved",
+    "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3929,10 +3929,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="requested"
+               value="approved"
                data-component="body">
     <br>
-<p>Example: <code>requested</code></p>
+<p>Example: <code>approved</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -3942,10 +3942,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -7087,13 +7087,13 @@ who can then submit proposals.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"title\": \"E-commerce Website Development\",
+    \"title\": \"consequatur\",
     \"description\": \"I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.\",
-    \"category_id\": 4,
-    \"subcategory_id\": 5,
-    \"budget\": \"$1000-$2000\",
-    \"deadline_unit\": \"days\",
-    \"deadline\": 12,
+    \"category_id\": 17,
+    \"subcategory_id\": 17,
+    \"budget\": \"consequatur\",
+    \"deadline_unit\": \"consequatur\",
+    \"deadline\": 17,
     \"attachment_ids\": [
         2,
         3,
@@ -7115,13 +7115,13 @@ const headers = {
 };
 
 let body = {
-    "title": "E-commerce Website Development",
+    "title": "consequatur",
     "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.",
-    "category_id": 4,
-    "subcategory_id": 5,
-    "budget": "$1000-$2000",
-    "deadline_unit": "days",
-    "deadline": 12,
+    "category_id": 17,
+    "subcategory_id": 17,
+    "budget": "consequatur",
+    "deadline_unit": "consequatur",
+    "deadline": 17,
     "attachment_ids": [
         2,
         3,
@@ -7367,10 +7367,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-clients-projects"
-               value="E-commerce Website Development"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Project title - A clear and descriptive name for your project. Example: <code>E-commerce Website Development</code></p>
+<p>Project title - A clear and descriptive name for your project. Example                                                                     : E-commerce Website Development Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -7381,7 +7381,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized."
                data-component="body">
     <br>
-<p>Detailed project description - Explain your project requirements, goals, and expectations (minimum characters required). Example: <code>I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.</code></p>
+<p>Detailed project description - Explain your project requirements,                                                                      goals, and expectations (minimum characters required). Example: <code>I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
@@ -7389,10 +7389,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="POSTapi-clients-projects"
-               value="4"
+               value="17"
                data-component="body">
     <br>
-<p>Main category ID - Must be a valid parent category that matches your project type. Example: <code>4</code></p>
+<p>Main category ID - Must be a valid parent category that matches your project type. Example                                          : 4 Example: <code>17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
@@ -7400,10 +7400,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="subcategory_id"                data-endpoint="POSTapi-clients-projects"
-               value="5"
+               value="17"
                data-component="body">
     <br>
-<p>optional Subcategory ID - Must belong to the selected main category for more specific categorization. Example: <code>5</code></p>
+<p>optional Subcategory ID - Must belong to the selected main category for more specific categorization. Example                             : 5 Example: <code>17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>budget</code></b>&nbsp;&nbsp;
@@ -7411,10 +7411,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="budget"                data-endpoint="POSTapi-clients-projects"
-               value="$1000-$2000"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Project budget - Specify your budget range or fixed amount for this project. Example: <code>$1000-$2000</code></p>
+<p>Project budget - Specify your budget range or fixed amount for this project. Example                                                      : $1000-$2000 Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>deadline_unit</code></b>&nbsp;&nbsp;
@@ -7422,10 +7422,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="deadline_unit"                data-endpoint="POSTapi-clients-projects"
-               value="days"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Time unit for project deadline - The unit of measurement for your deadline. Must be one of: hours, days, months. Example: <code>days</code></p>
+<p>Time unit for project deadline - The unit of measurement for your deadline. Must be one of                                         : hours, days,                                                    months. Example                                          : days Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>deadline</code></b>&nbsp;&nbsp;
@@ -7433,10 +7433,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="deadline"                data-endpoint="POSTapi-clients-projects"
-               value="12"
+               value="17"
                data-component="body">
     <br>
-<p>Project deadline - Number of units (hours/days/months) for project completion. Example: <code>12</code></p>
+<p>Project deadline - Number of units (hours/days/months) for project completion. Example                                                 : 12 Example: <code>17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
@@ -9097,7 +9097,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOpJbru" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpd0ztwD" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9266,7 +9266,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOpJbru</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpd0ztwD</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9490,7 +9490,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpssp4e5" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoFux6B" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9726,7 +9726,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpssp4e5</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoFux6B</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -9959,7 +9959,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLwZaoV" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpy9HEqt" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10222,7 +10222,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLwZaoV</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpy9HEqt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11098,6 +11098,10 @@ only submit one proposal per project, and the project must be accepting proposal
     \"fees_type\": \"fixed\",
     \"bid_amount\": \"1500.00\",
     \"project_id\": 5,
+    \"relevant_links\": [
+        \"http:\\/\\/portfolio.example.com\",
+        \"http:\\/\\/github.com\\/example\"
+    ],
     \"attachment_ids\": [
         2,
         3,
@@ -11125,6 +11129,10 @@ let body = {
     "fees_type": "fixed",
     "bid_amount": "1500.00",
     "project_id": 5,
+    "relevant_links": [
+        "http:\/\/portfolio.example.com",
+        "http:\/\/github.com\/example"
+    ],
     "attachment_ids": [
         2,
         3,
@@ -11158,6 +11166,7 @@ fetch(url, {
     &quot;fees_type&quot;: &quot;fixed&quot;,
     &quot;bid_amount&quot;: &quot;1500.00&quot;,
     &quot;status&quot;: &quot;submitted&quot;,
+    &quot;relevant_links&quot;: [&quot;http://portfolio.example.com&quot;, &quot;http://github.com/example&quot;],
     &quot;created_at&quot;: &quot;2025-10-07T10:30:00.000000Z&quot;,
     &quot;updated_at&quot;: &quot;2025-10-07T10:30:00.000000Z&quot;,
     &quot;project&quot;: {
@@ -11473,6 +11482,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>ID of the project you're submitting a proposal for. Must be an active project accepting proposals. Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>relevant_links</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="relevant_links[0]"                data-endpoint="POSTapi-freelancers-proposals"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="relevant_links[1]"                data-endpoint="POSTapi-freelancers-proposals"
+               data-component="body">
+    <br>
+<p>optional Array of URLs to showcase your portfolio, previous work, or relevant profiles.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
@@ -13570,7 +13592,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php9mqjWz" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpCxq9GO" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13903,7 +13925,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php9mqjWz</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpCxq9GO</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -18841,7 +18863,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpECy8lb" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkEA300" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -19002,7 +19024,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpECy8lb</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkEA300</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Enum\ApprovalStatus;
 use App\Enum\UserType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ChangePasswordRequest;
@@ -14,19 +13,13 @@ use App\Http\Requests\Auth\UpdateProfileRequest;
 use App\Http\Requests\Auth\VerifyEmailRequest;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\ClientResource;
-
 use App\Http\Resources\FreelancerResource;
-use App\Models\User;
 use App\Rules\EmailRule;
 use App\Services\Contracts\Auth\AuthUserServiceInterface;
 use App\Services\Contracts\Auth\EmailVerificationServiceInterface;
-use App\Services\Contracts\LoginServiceInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**

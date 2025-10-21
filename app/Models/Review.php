@@ -14,7 +14,7 @@ class Review extends Model
         'comment',
     ];
 
-    protected $with = ['user'];
+    // protected $with = ['user'];
 
     public function reviewable()
     {
@@ -23,11 +23,11 @@ class Review extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'reviewable_id');
+        return $this->belongsTo(User::class);
     }
 
     public function service()
     {
-        return $this->belongsTo(Service::class, 'reviewable_id');
+        return $this->belongsTo(Service::class);
     }
 }
