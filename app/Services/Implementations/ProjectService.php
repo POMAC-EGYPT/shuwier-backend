@@ -41,9 +41,9 @@ class ProjectService implements ProjectServiceInterface
     {
         $user = auth('api')->user();
 
-        $project = $this->projectRepo->findById(id: $id);
+        $project = $this->projectRepo->findById($id);
 
-        if ($user->user_type == UserType::FREELANCER->value) {
+        if ($user->type == UserType::FREELANCER->value) {
             if ($user->approval_status != 'approved')
                 return ['status' => false, 'message' => __('message.you_are_not_approved_freelancer')];
 
