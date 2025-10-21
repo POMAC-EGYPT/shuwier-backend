@@ -387,7 +387,7 @@ endpoints:
         custom: []
       relevant_links:
         name: relevant_links
-        description: 'optional Array of URLs to showcase your portfolio, previous work, or relevant profiles.'
+        description: 'optional Array of URLs to showcase your portfolio,                                                                                                                     previous work, or relevant profiles.'
         required: false
         example:
           - 'http://portfolio.example.com'

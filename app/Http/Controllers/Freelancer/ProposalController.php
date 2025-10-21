@@ -263,7 +263,7 @@ class ProposalController extends Controller
      * @bodyParam fees_type string required Type of pricing structure. Must be one of: fixed, hourly. Example: fixed
      * @bodyParam bid_amount numeric required Your bid amount for the project in USD. Must be a positive number. Example: 1500.00
      * @bodyParam project_id integer required ID of the project you're submitting a proposal for. Must be an active project accepting proposals. Example: 5
-     * @bodyParam relevant_links array[] optional Array of URLs to showcase your portfolio, previous work, or relevant profiles. Example: ["http://portfolio.example.com", "http://github.com/example"]
+     * @bodyParam relevant_links array[] optional Array of URLs to showcase your portfolio,                                                                                                                     previous work, or relevant profiles. Example: ["http://portfolio.example.com", "http://github.com/example"]
      * @bodyParam attachment_ids integer[] optional Array of attachment IDs to include with your proposal (portfolio samples, certificates, etc.). Files must be uploaded first using upload endpoint. Example: [2, 3, 4]
      * 
      * @response 200 scenario="Proposal submitted successfully" {
