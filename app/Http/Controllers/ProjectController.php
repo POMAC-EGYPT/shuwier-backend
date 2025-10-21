@@ -18,23 +18,23 @@ class ProjectController extends Controller
     }
 
     /**
-     * Show project details to freelancer
+     * Show project details for all users
      * 
-     * Retrieve detailed information about a specific project for freelancers to view.
-     * This endpoint provides all the necessary information for freelancers to understand
-     * the project requirements and decide whether to submit a proposal. The response
-     * includes project details, client information, category data, attachments, and
-     * current proposal statistics.
+     * Retrieve detailed information about a specific project. This endpoint is accessible
+     * to all authenticated users (both clients and freelancers) with different access
+     * controls based on user type. Freelancers can view projects to submit proposals,
+     * while clients can view any project details. The endpoint includes validation
+     * for freelancer-specific requirements like account status and verification.
      * 
      * @authenticated
-     * @group Freelancer Projects
+     * @group Public - Projects
      * 
      * @urlParam id integer required The ID of the project to retrieve. Example: 5
      * 
      * @response 200 scenario="Project details retrieved successfully" {
      *   "status": true,
-     *   "error_num": null,
-     *   "message": "Project retrieved successfully",
+     *   "error_num": 200,
+     *   "message": "Success",
      *   "data": {
      *     "id": 5,
      *     "title": "E-commerce Website Development",
@@ -47,6 +47,7 @@ class ProjectController extends Controller
      *     "status": "active",
      *     "comments_enabled": true,
      *     "proposals_enabled": true,
+     *     "submited_proposal_count": 8,
      *     "created_at": "2025-10-06T09:11:11.000000Z",
      *     "updated_at": "2025-10-06T09:11:11.000000Z",
      *     "category": {
@@ -98,29 +99,33 @@ class ProjectController extends Controller
      *       "created_at": "2025-09-03T11:34:36.000000Z",
      *       "updated_at": "2025-09-23T11:12:03.000000Z"
      *     },
-     *     "proposals_count": 8,
-     *     "time_remaining": "5 days left",
      *     "can_submit_proposal": true,
-     *     "freelancer_proposal_status": null
+     *     "time_remaining": "5 days left"
      *   }
+     * }
+     * 
+     * @response 400 scenario="Proposals not enabled for freelancers" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Proposals are not enabled for this project"
+     * }
+     * 
+     * @response 400 scenario="Freelancer account not active" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "User not active"
+     * }
+     * 
+     * @response 400 scenario="Freelancer not verified" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "User not verified"
      * }
      * 
      * @response 404 scenario="Project not found" {
      *   "status": false,
-     *   "error_num": 404,
+     *   "error_num": 400,
      *   "message": "Project not found"
-     * }
-     * 
-     * @response 400 scenario="Project not available for proposals" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "This project is no longer accepting proposals"
-     * }
-     * 
-     * @response 400 scenario="Project is completed or cancelled" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "This project is not available for viewing"
      * }
      * 
      * @response 401 scenario="Unauthenticated" {
@@ -129,15 +134,15 @@ class ProjectController extends Controller
      *   "message": "Unauthenticated"
      * }
      * 
-     * @response 403 scenario="Access denied - not a freelancer" {
+     * @response 400 scenario="Invalid project ID" {
      *   "status": false,
-     *   "error_num": 403,
-     *   "message": "Access denied. This endpoint is only available for freelancers."
+     *   "error_num": 400,
+     *   "message": "Invalid project ID provided"
      * }
      */
-    public function showToFreelancer(string $id)
+    public function show(string $id)
     {
-        $result = $this->projectService->findByIdToFreelancer(auth('api')->id(), (int) $id);
+        $result = $this->projectService->getByIdForAllUsers((int) $id);
 
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);

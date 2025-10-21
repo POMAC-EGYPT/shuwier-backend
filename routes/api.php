@@ -38,6 +38,7 @@ Route::group(['prefix' => 'auth'], function () {
 
 
 Route::middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])
+
     ->prefix('freelancers')->group(function () {
         Route::apiResource('portfolios', PortfolioController::class);
 
@@ -50,15 +51,15 @@ Route::middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerAppro
                 'middleware' => 'checkBlueMark',
             ]
         );
-
-        Route::get('/projects/{id}', [ControllersProjectController::class, 'showToFreelancer'])
-            ->middleware('checkBlueMark')->name('projects.show');
     });
 
 Route::middleware(['auth:api', 'checkUserType:client', 'checkBlueMark'])->prefix('clients')->group(function () {
     Route::apiResources(
         [
             'projects' => ProjectController::class,
+        ],
+        [
+            'except' => 'show'
         ]
     );
 
@@ -69,6 +70,10 @@ Route::middleware(['auth:api', 'checkUserType:client', 'checkBlueMark'])->prefix
 
     Route::get('/proposals/{id}', [ClientProposalController::class, 'show'])->name('proposals.show');
 });
+
+
+Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])
+    ->middleware('auth:api')->name('projects.show');
 
 Route::post('/upload', [UploadFileController::class, 'upload'])
     ->middleware('auth:api')->name('file.upload');

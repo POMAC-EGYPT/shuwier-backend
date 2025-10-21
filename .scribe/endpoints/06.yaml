@@ -1,21 +1,21 @@
-name: 'Client Project Management'
+name: 'Client Proposal Management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/clients/projects
+    uri: 'api/clients/projects/{projectId}/proposals'
     metadata:
-      groupName: 'Client Project Management'
+      groupName: 'Client Proposal Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'List client projects'
+      title: 'List project proposals'
       description: |-
-        Retrieve a paginated list of projects belonging to the authenticated client.
-        This endpoint allows clients to view and filter their posted projects by status
-        with optional pagination control. Results include complete project details
-        with categories, attachments, and user information.
+        Retrieve a paginated list of proposals submitted for a specific project owned by the client.
+        This endpoint allows clients to view all proposals received for their projects,
+        helping them evaluate and compare different freelancer offers. Each proposal includes
+        freelancer information, bid details, attachments, and reviews.
       authenticated: true
       deprecated: false
       custom: []
@@ -23,59 +23,34 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      status:
-        name: status
-        description: 'optional Filter projects by status. Available values: active, in_progress, completed.'
-        required: false
-        example: active
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: 'optional Number of projects per page (default: 15, minimum: 1).'
-        required: false
-        example: 10
+    urlParameters:
+      projectId:
+        name: projectId
+        description: 'The ID of the project to get proposals for. Must be owned by the authenticated client.'
+        required: true
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-    cleanQueryParameters:
-      status: active
-      per_page: 10
+    cleanUrlParameters:
+      projectId: 5
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters:
-      status:
-        name: status
-        description: ''
-        required: false
-        example: in_progress
-        type: string
-        enumValues:
-          - active
-          - in_progress
-          - completed
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
       per_page:
         name: per_page
-        description: 'Must be at least 1.'
+        description: 'Must be at least 1. Must not be greater than 50.'
         required: false
-        example: 73
+        example: 21
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      status: in_progress
-      per_page: 73
+      per_page: 21
     fileParameters: []
     responses:
       -
@@ -83,103 +58,50 @@ endpoints:
         content: |-
           {
             "status": true,
-            "error_num": 200,
+            "error_num": null,
             "message": "Success",
             "data": {
               "current_page": 1,
               "data": [
                 {
-                  "id": 5,
-                  "title": "E-commerce Website Development",
-                  "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.",
-                  "category_id": "4",
-                  "subcategory_id": "5",
-                  "budget": "$1000-$2000",
-                  "deadline_unit": "days",
-                  "deadline": "12",
-                  "status": "active",
-                  "comments_enabled": true,
-                  "proposals_enabled": true,
-                  "created_at": "2025-10-06T09:11:11.000000Z",
-                  "updated_at": "2025-10-06T09:11:11.000000Z",
-                  "category": {
-                    "id": 4,
-                    "name": "Design",
-                    "image": "storage/categories/68dd364f26e71.svg",
-                    "parent_id": null,
-                    "created_at": "2025-09-07T08:44:46.000000Z",
-                    "updated_at": "2025-10-01T14:10:23.000000Z"
-                  },
-                  "subcategory": {
-                    "id": 5,
-                    "name": "Web",
-                    "image": null,
-                    "parent_id": 4,
-                    "created_at": "2025-09-07T08:44:46.000000Z",
-                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  "id": 1,
+                  "cover_letter": "I have 5+ years of experience in e-commerce development using Laravel and Vue.js. I have built similar platforms with payment integration and can deliver this project within your timeline.",
+                  "estimated_time_unit": "days",
+                  "estimated_time": 14,
+                  "fees_type": "fixed",
+                  "bid_amount": "1500.00",
+                  "status": "pending",
+                  "created_at": "2025-10-07T10:36:03.000000Z",
+                  "updated_at": "2025-10-07T10:37:27.000000Z",
+                  "freelancer": {
+                    "id": 3,
+                    "name": "Ahmed test",
+                    "email": "freelancer3@gmail.com",
+                    "profile_picture": "storage/profiles/68d27bc809cf4.png",
+                    "headline": "Professional Freelancer",
+                    "rate": 4.67,
+                    "approval_status": "approved",
+                    "category": {
+                      "id": 4,
+                      "name": "Design",
+                      "image": "storage/categories/68dd364f26e71.svg"
+                    },
+                    "reviews_count": 3,
+                    "completed_projects": 15
                   },
                   "attachments": [
                     {
-                      "id": 2,
-                      "file_path": "storage/projects/68e3876bcc657.PNG",
-                      "user_id": 2,
-                      "project_id": 5,
-                      "created_at": "2025-10-06T09:10:03.000000Z",
-                      "updated_at": "2025-10-06T09:11:11.000000Z"
+                      "id": 1,
+                      "file_path": "storage/proposals/68e4ed13c9536.PNG",
+                      "created_at": "2025-10-07T10:36:03.000000Z"
                     }
-                  ],
-                  "user": {
-                    "id": 2,
-                    "name": "Ahmed test",
-                    "email": "freelancer2@gmail.com",
-                    "type": "client",
-                    "is_active": true,
-                    "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
-                    "company": "شركة التقنيات المتقدمة",
-                    "country": "asd",
-                    "city": "asd",
-                    "is_verified": false,
-                    "user_verification_status": "approved",
-                    "created_at": "2025-09-03T11:34:36.000000Z",
-                    "updated_at": "2025-09-23T11:12:03.000000Z"
-                  }
-                },
-                {
-                  "id": 3,
-                  "title": "Mobile App UI/UX Design",
-                  "description": "Looking for a talented designer to create modern and user-friendly UI/UX design for a mobile application.",
-                  "category_id": "2",
-                  "subcategory_id": "6",
-                  "budget": "$500-$800",
-                  "deadline_unit": "days",
-                  "deadline": "7",
-                  "status": "in_progress",
-                  "comments_enabled": true,
-                  "proposals_enabled": false,
-                  "created_at": "2025-10-05T14:20:30.000000Z",
-                  "updated_at": "2025-10-06T08:15:45.000000Z",
-                  "category": {
-                    "id": 2,
-                    "name": "Design & Creative",
-                    "image": "storage/categories/68dd364f26e72.svg",
-                    "parent_id": null,
-                    "created_at": "2025-09-07T08:44:46.000000Z",
-                    "updated_at": "2025-10-01T14:10:23.000000Z"
-                  },
-                  "subcategory": {
-                    "id": 6,
-                    "name": "UI/UX Design",
-                    "image": null,
-                    "parent_id": 2,
-                    "created_at": "2025-09-07T08:44:46.000000Z",
-                    "updated_at": "2025-09-07T08:44:46.000000Z"
-                  },
+                  ]
                 }
               ],
-              "first_page_url": "http://localhost/api/clients/projects?page=1",
+              "first_page_url": "http://localhost/api/clients/projects/5/proposals?page=1",
               "from": 1,
               "last_page": 2,
-              "last_page_url": "http://localhost/api/clients/projects?page=2",
+              "last_page_url": "http://localhost/api/clients/projects/5/proposals?page=2",
               "links": [
                 {
                   "url": null,
@@ -187,65 +109,43 @@ endpoints:
                   "active": false
                 },
                 {
-                  "url": "http://localhost/api/clients/projects?page=1",
+                  "url": "http://localhost/api/clients/projects/5/proposals?page=1",
                   "label": "1",
                   "active": true
                 },
                 {
-                  "url": "http://localhost/api/clients/projects?page=2",
+                  "url": "http://localhost/api/clients/projects/5/proposals?page=2",
                   "label": "2",
-                  "active": false
-                },
-                {
-                  "url": "http://localhost/api/clients/projects?page=2",
-                  "label": "Next &raquo;",
                   "active": false
                 }
               ],
-              "next_page_url": "http://localhost/api/clients/projects?page=2",
-              "path": "http://localhost/api/clients/projects",
+              "next_page_url": "http://localhost/api/clients/projects/5/proposals?page=2",
+              "path": "http://localhost/api/clients/projects/5/proposals",
               "per_page": 15,
               "prev_page_url": null,
               "to": 15,
-              "total": 23
+              "total": 28
             }
           }
         headers: []
-        description: 'Projects retrieved successfully'
+        description: 'Proposals retrieved successfully'
         custom: []
       -
         status: 200
         content: |-
           {
             "status": true,
-            "error_num": 200,
-            "message": "Success",
+            "error_num": null,
+            "message": "No proposals found for this project",
             "data": {
               "current_page": 1,
               "data": [],
-              "first_page_url": "http://localhost/api/clients/projects?page=1",
+              "first_page_url": "http://localhost/api/clients/projects/5/proposals?page=1",
               "from": null,
               "last_page": 1,
-              "last_page_url": "http://localhost/api/clients/projects?page=1",
-              "links": [
-                {
-                  "url": null,
-                  "label": "&laquo; Previous",
-                  "active": false
-                },
-                {
-                  "url": "http://localhost/api/clients/projects?page=1",
-                  "label": "1",
-                  "active": true
-                },
-                {
-                  "url": null,
-                  "label": "Next &raquo;",
-                  "active": false
-                }
-              ],
+              "last_page_url": "http://localhost/api/clients/projects/5/proposals?page=1",
               "next_page_url": null,
-              "path": "http://localhost/api/clients/projects",
+              "path": "http://localhost/api/clients/projects/5/proposals",
               "per_page": 15,
               "prev_page_url": null,
               "to": null,
@@ -253,7 +153,7 @@ endpoints:
             }
           }
         headers: []
-        description: 'No projects found'
+        description: 'No proposals found'
         custom: []
       -
         status: 400
@@ -261,18 +161,7 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The selected status is invalid."
-          }
-        headers: []
-        description: 'Invalid status filter'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The per page field must be at least 1."
+            "message": "The per page field must be between 1 and 50."
           }
         headers: []
         description: 'Invalid per_page parameter'
@@ -293,282 +182,33 @@ endpoints:
         content: |-
           {
             "status": false,
+            "error_num": 400,
+            "message": "You are not authorized to view proposals for this project"
+          }
+        headers: []
+        description: 'Not project owner'
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "status": false,
             "error_num": 403,
             "message": "Access denied. Client role required."
           }
         headers: []
         description: 'Not a client'
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/clients/projects
-    metadata:
-      groupName: 'Client Project Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Create new project'
-      description: |-
-        Create a new project posting for clients. This endpoint allows authenticated clients
-        to post new projects with detailed requirements including budget, deadline,
-        attachments, and category specifications. The project will be visible to freelancers
-        who can then submit proposals.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      title:
-        name: title
-        description: 'Project title - A clear and descriptive name for your project. Example                                                                     : E-commerce Website Development'
-        required: true
-        example: consequatur
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      description:
-        name: description
-        description: 'Detailed project description - Explain your project requirements,                                                                      goals, and expectations (minimum characters required).'
-        required: true
-        example: 'I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      category_id:
-        name: category_id
-        description: 'Main category ID - Must be a valid parent category that matches your project type. Example                                          : 4'
-        required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      subcategory_id:
-        name: subcategory_id
-        description: 'optional Subcategory ID - Must belong to the selected main category for more specific categorization. Example                             : 5'
-        required: false
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      budget:
-        name: budget
-        description: 'Project budget - Specify your budget range or fixed amount for this project. Example                                                      : $1000-$2000'
-        required: true
-        example: consequatur
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      deadline_unit:
-        name: deadline_unit
-        description: 'Time unit for project deadline - The unit of measurement for your deadline. Must be one of                                         : hours, days,                                                    months. Example                                          : days'
-        required: true
-        example: consequatur
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      deadline:
-        name: deadline
-        description: 'Project deadline - Number of units (hours/days/months) for project completion. Example                                                 : 12'
-        required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      attachment_ids:
-        name: attachment_ids
-        description: 'optional Array of attachment IDs - Files that provide additional project details (must be uploaded first using upload endpoint).'
-        required: false
-        example:
-          - 2
-          - 3
-          - 4
-        type: 'integer[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      title: consequatur
-      description: 'I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.'
-      category_id: 17
-      subcategory_id: 17
-      budget: consequatur
-      deadline_unit: consequatur
-      deadline: 17
-      attachment_ids:
-        - 2
-        - 3
-        - 4
-    fileParameters: []
-    responses:
       -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": 200,
-            "message": "Project created successfully",
-            "data": {
-              "id": 5,
-              "title": "E-commerce Website Development",
-              "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized with modern design and user-friendly interface.",
-              "category_id": "4",
-              "subcategory_id": "5",
-              "budget": "$1000-$2000",
-              "deadline_unit": "days",
-              "deadline": "12",
-              "status": "active",
-              "comments_enabled": true,
-              "proposals_enabled": true,
-              "created_at": "2025-10-06T09:11:11.000000Z",
-              "updated_at": "2025-10-06T09:11:11.000000Z",
-              "category": {
-                "id": 4,
-                "name": "Design",
-                "image": "storage/categories/68dd364f26e71.svg",
-                "parent_id": null,
-                "created_at": "2025-09-07T08:44:46.000000Z",
-                "updated_at": "2025-10-01T14:10:23.000000Z"
-              },
-              "subcategory": {
-                "id": 5,
-                "name": "Web",
-                "image": null,
-                "parent_id": 4,
-                "created_at": "2025-09-07T08:44:46.000000Z",
-                "updated_at": "2025-09-07T08:44:46.000000Z"
-              },
-              "attachments": [
-                {
-                  "id": 2,
-                  "file_path": "storage/projects/68e3876bcc657.PNG",
-                  "user_id": 2,
-                  "project_id": 5,
-                  "created_at": "2025-10-06T09:10:03.000000Z",
-                  "updated_at": "2025-10-06T09:11:11.000000Z"
-                }
-              ],
-              "user": {
-                "id": 2,
-                "name": "Ahmed test",
-                "email": "freelancer2@gmail.com",
-                "email_verified_at": "2025-09-11T11:33:20.000000Z",
-                "phone": "+966501234567",
-                "country_code": null,
-                "phone_number": null,
-                "type": "client",
-                "is_active": true,
-                "about_me": "Professional Full Stack Developer",
-                "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
-                "company": "شركة التقنيات المتقدمة",
-                "country": "asd",
-                "city": "asd",
-                "is_verified": false,
-                "user_verification_status": "approved",
-                "created_at": "2025-09-03T11:34:36.000000Z",
-                "updated_at": "2025-09-23T11:12:03.000000Z",
-                "rate": 0,
-                "languages": null,
-                "reviews": null
-              }
-            }
-          }
-        headers: []
-        description: 'Project created successfully'
-        custom: []
-      -
-        status: 400
+        status: 404
         content: |-
           {
             "status": false,
             "error_num": 400,
-            "message": "The selected category id is invalid."
+            "message": "Project not found"
           }
         headers: []
-        description: 'Invalid category'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The selected subcategory id is invalid."
-          }
-        headers: []
-        description: 'Invalid subcategory'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The selected attachment_ids.0 is invalid."
-          }
-        headers: []
-        description: 'Invalid attachment'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The title field is required."
-          }
-        headers: []
-        description: 'Validation error'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The selected deadline unit is invalid."
-          }
-        headers: []
-        description: 'Invalid deadline unit'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "status": false,
-            "error_num": 401,
-            "message": "Unauthenticated"
-          }
-        headers: []
-        description: Unauthenticated
+        description: 'Project not found'
         custom: []
     responseFields: []
     auth: []
@@ -579,18 +219,18 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/clients/projects/{id}'
+    uri: 'api/clients/proposals/{id}'
     metadata:
-      groupName: 'Client Project Management'
+      groupName: 'Client Proposal Management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Show project details'
+      title: 'Show proposal details'
       description: |-
-        Retrieve detailed information about a specific project by ID. This endpoint
-        is accessible to both clients (owners) and authenticated freelancers who want
-        to view project details for potential proposals. Returns complete project
-        information including categories, attachments, and client details.
+        Retrieve detailed information about a specific proposal submitted to the client's project.
+        This endpoint provides comprehensive proposal details including cover letter, bid amount,
+        freelancer profile with reviews, attachments, and project information. Clients use this
+        to evaluate individual proposals and make hiring decisions.
       authenticated: true
       deprecated: false
       custom: []
@@ -601,16 +241,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'Project ID to retrieve.'
+        description: 'The ID of the proposal to retrieve. Must be for a project owned by the authenticated client.'
         required: true
-        example: 5
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 5
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -622,86 +262,139 @@ endpoints:
         content: |-
           {
             "status": true,
-            "error_num": 200,
+            "error_num": null,
             "message": "Success",
             "data": {
-              "id": 5,
-              "title": "E-commerce Website Development",
-              "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized with modern design and user-friendly interface.",
-              "category_id": "4",
-              "subcategory_id": "5",
-              "budget": "$1000-$2000",
-              "deadline_unit": "days",
-              "deadline": "12",
-              "status": "active",
-              "comments_enabled": true,
-              "proposals_enabled": true,
-              "created_at": "2025-10-06T09:11:11.000000Z",
-              "updated_at": "2025-10-06T09:11:11.000000Z",
-              "category": {
-                "id": 4,
-                "name": "Design",
-                "image": "storage/categories/68dd364f26e71.svg",
-                "parent_id": null,
-                "created_at": "2025-09-07T08:44:46.000000Z",
-                "updated_at": "2025-10-01T14:10:23.000000Z"
-              },
-              "subcategory": {
+              "id": 1,
+              "cover_letter": "I have 5+ years of experience in e-commerce development using Laravel and Vue.js. I have built similar platforms with payment integration and can deliver this project within your timeline.",
+              "estimated_time_unit": "days",
+              "estimated_time": 14,
+              "fees_type": "fixed",
+              "bid_amount": "1500.00",
+              "project_id": 5,
+              "status": "viewed",
+              "created_at": "2025-10-07T10:36:03.000000Z",
+              "updated_at": "2025-10-07T10:37:27.000000Z",
+              "project": {
                 "id": 5,
-                "name": "Web",
-                "image": null,
-                "parent_id": 4,
-                "created_at": "2025-09-07T08:44:46.000000Z",
-                "updated_at": "2025-09-07T08:44:46.000000Z"
+                "title": "E-commerce Website Development",
+                "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.",
+                "category_id": 4,
+                "subcategory_id": 5,
+                "budget": "$1000-$2000",
+                "deadline_unit": "days",
+                "deadline": 12,
+                "status": "active",
+                "comments_enabled": true,
+                "proposals_enabled": true,
+                "submited_proposal_count": 8,
+                "created_at": "2025-10-06T09:11:11.000000Z",
+                "updated_at": "2025-10-06T09:11:11.000000Z"
               },
               "attachments": [
                 {
-                  "id": 2,
-                  "file_path": "storage/projects/68e3876bcc657.PNG",
-                  "user_id": 2,
-                  "project_id": 5,
-                  "created_at": "2025-10-06T09:10:03.000000Z",
-                  "updated_at": "2025-10-06T09:11:11.000000Z"
+                  "id": 1,
+                  "file_path": "storage/proposals/68e4ed13c9536.PNG",
+                  "user_id": 3,
+                  "proposal_id": 1,
+                  "created_at": "2025-10-07T10:36:03.000000Z",
+                  "updated_at": "2025-10-07T10:37:27.000000Z"
                 },
                 {
-                  "id": 3,
-                  "file_path": "storage/projects/68e3876bcc658.PDF",
-                  "user_id": 2,
-                  "project_id": 5,
-                  "created_at": "2025-10-06T09:10:15.000000Z",
-                  "updated_at": "2025-10-06T09:11:11.000000Z"
+                  "id": 2,
+                  "file_path": "storage/proposals/68e4ed166e064.PNG",
+                  "user_id": 3,
+                  "proposal_id": 1,
+                  "created_at": "2025-10-07T10:36:06.000000Z",
+                  "updated_at": "2025-10-07T10:37:27.000000Z"
                 }
               ],
               "user": {
-                "id": 2,
+                "id": 3,
                 "name": "Ahmed test",
-                "email": "freelancer2@gmail.com",
-                "email_verified_at": "2025-09-11T11:33:20.000000Z",
-                "phone": "+966501234567",
-                "country_code": null,
-                "phone_number": null,
-                "type": "client",
+                "email": "freelancer3@gmail.com",
+                "type": "freelancer",
+                "email_verified_at": "2025-09-21T09:56:16.000000Z",
+                "phone": "1234567893",
                 "is_active": true,
-                "about_me": "Professional Full Stack Developer",
-                "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
-                "company": "شركة التقنيات المتقدمة",
-                "country": "asd",
-                "city": "asd",
+                "about_me": "Experienced freelancer with skills in various domains.",
+                "profile_picture": "storage/profiles/68d27bc809cf4.png",
+                "approval_status": "approved",
+                "country": null,
+                "city": null,
+                "linkedin_link": "https://linkedin.com/in/freelancer3",
+                "twitter_link": null,
+                "other_freelance_platform_links": [],
+                "portfolio_link": "https://portfolio.freelancer3.com",
+                "headline": "Professional Freelancer",
                 "is_verified": false,
-                "user_verification_status": "approved",
-                "created_at": "2025-09-03T11:34:36.000000Z",
-                "updated_at": "2025-09-23T11:12:03.000000Z",
-                "rate": 0,
+                "user_verification_status": null,
+                "rate": 4.67,
+                "created_at": "2025-09-03T11:34:37.000000Z",
+                "updated_at": "2025-09-23T10:51:52.000000Z",
+                "category": {
+                  "id": 4,
+                  "name": "Design",
+                  "image": "storage/categories/68dd364f26e71.svg",
+                  "parent_id": null,
+                  "created_at": "2025-09-07T08:44:46.000000Z",
+                  "updated_at": "2025-10-01T14:10:23.000000Z"
+                },
                 "languages": null,
-                "reviews": null
-              },
-              "proposals_count": 12,
-              "average_proposal_amount": "$1200",
-              "project_visibility": "public"
+                "reviews": [
+                  {
+                    "id": 3,
+                    "user_id": 2,
+                    "rating": 5,
+                    "comment": "Excellent freelancer! Very professional and delivered high-quality work on time. Great communication skills and attention to detail. Highly recommended for WordPress development projects.",
+                    "user": {
+                      "id": 2,
+                      "name": "Ahmed test",
+                      "email": "freelancer2@gmail.com",
+                      "type": "client",
+                      "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
+                      "company": "شركة التقنيات المتقدمة",
+                      "created_at": "2025-09-03T11:34:36.000000Z"
+                    },
+                    "created_at": "2025-10-05T12:47:53.000000Z",
+                    "updated_at": "2025-10-05T12:47:53.000000Z"
+                  },
+                  {
+                    "id": 4,
+                    "user_id": 4,
+                    "rating": 4,
+                    "comment": "Good work overall. The project was completed within the deadline and met most of our requirements. Would work with this freelancer again.",
+                    "user": {
+                      "id": 4,
+                      "name": "Freelancer4",
+                      "email": "freelancer4@example.com",
+                      "type": "freelancer",
+                      "created_at": "2025-09-03T11:34:37.000000Z"
+                    },
+                    "created_at": "2025-10-05T12:48:33.000000Z",
+                    "updated_at": "2025-10-05T12:48:33.000000Z"
+                  },
+                  {
+                    "id": 5,
+                    "user_id": 7,
+                    "rating": 5,
+                    "comment": "Outstanding developer! Exceeded expectations with creative solutions and clean code. Fast delivery and excellent communication throughout the project.",
+                    "user": {
+                      "id": 7,
+                      "name": "Freelancer7",
+                      "email": "freelancer7@example.com",
+                      "type": "freelancer",
+                      "created_at": "2025-09-03T11:34:38.000000Z"
+                    },
+                    "created_at": "2025-10-05T12:48:33.000000Z",
+                    "updated_at": "2025-10-05T12:48:33.000000Z"
+                  }
+                ]
+              }
             }
           }
         headers: []
-        description: 'Project retrieved successfully'
+        description: 'Proposal details retrieved successfully'
         custom: []
       -
         status: 400
@@ -709,10 +402,10 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "Invalid project ID provided"
+            "message": "Invalid proposal ID provided"
           }
         headers: []
-        description: 'Invalid project ID'
+        description: 'Invalid proposal ID'
         custom: []
       -
         status: 401
@@ -730,136 +423,11 @@ endpoints:
         content: |-
           {
             "status": false,
-            "error_num": 403,
-            "message": "You do not have permission to view this project"
+            "error_num": 400,
+            "message": "You are not authorized to view this proposal"
           }
         headers: []
-        description: 'Access denied to private project'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "status": false,
-            "error_num": 404,
-            "message": "Project not found"
-          }
-        headers: []
-        description: 'Project not found'
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/clients/projects/{id}/end'
-    metadata:
-      groupName: 'Client Project Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'End project'
-      description: |-
-        Mark a project as completed or ended by the client. This endpoint allows
-        the project owner (client) to close their project, stopping any further
-        proposal submissions and marking the project as finished. This action
-        is typically performed when the client has found a suitable freelancer
-        or decides to cancel the project.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the project to end. Must be owned by the authenticated client.'
-        required: true
-        example: 5
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 5
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Project ended successfully"
-          }
-        headers: []
-        description: 'Project ended successfully'
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "Project is already ended"
-          }
-        headers: []
-        description: 'Project already ended'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": null,
-            "message": "Project cannot be ended in current status"
-          }
-        headers: []
-        description: 'Cannot end project in current status'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": null,
-            "message": "Invalid project ID provided"
-          }
-        headers: []
-        description: 'Invalid project ID'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "status": false,
-            "error_num": 401,
-            "message": "Unauthenticated"
-          }
-        headers: []
-        description: Unauthenticated
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": null,
-            "message": "You are not authorized to end this project"
-          }
-        headers: []
-        description: 'Unauthorized - not project owner'
+        description: 'Not authorized to view proposal'
         custom: []
       -
         status: 403
@@ -877,11 +445,11 @@ endpoints:
         content: |-
           {
             "status": false,
-            "error_num": null,
-            "message": "Project not found"
+            "error_num": 400,
+            "message": "Proposal not found"
           }
         headers: []
-        description: 'Project not found'
+        description: 'Proposal not found'
         custom: []
     responseFields: []
     auth: []

@@ -3,6 +3,7 @@
 namespace App\Services\Implementations;
 
 use App\Enum\ProjectStatus;
+use App\Enum\UserType;
 use App\Models\Project;
 use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Repository\Contracts\ProjectAttachmentRepositoryInterface;
@@ -36,29 +37,25 @@ class ProjectService implements ProjectServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $projects];
     }
 
-    public function findByIdAndClientId(int $id, int $clientId): array
+    public function getByIdForAllUsers(int $id): array
     {
-        $project = $this->projectRepo->findByIdAndClientId($id, $clientId);
+        $user = auth('api')->user();
 
-        $project->load(relations: ['attachments', 'category', 'subcategory', 'user']);
+        $project = $this->projectRepo->findById(id: $id);
 
-        return ['status' => true, 'message' => __('message.success'), 'data' => $project];
-    }
+        if ($user->user_type == UserType::FREELANCER->value) {
+            if ($user->approval_status != 'approved')
+                return ['status' => false, 'message' => __('message.you_are_not_approved_freelancer')];
 
-    public function findByIdToFreelancer(int $freelancerId, int $id): array
-    {
-        $project = $this->projectRepo->findById($id);
+            if (!$project->proposals_enabled)
+                return ['status' => false, 'message' => __('message.proposals_are_not_enabled_for_this_project')];
 
-        if ($project->proposals_enabled == false)
-            return ['status' => false, 'message' => __('message.proposals_are_not_enabled_for_this_project')];
+            if (!$user->is_active)
+                return ['status' => false, 'message' => __('message.user_not_active')];
 
-        $freelancer = $this->userRepo->find($freelancerId);
-
-        if (!$freelancer->is_active)
-            return ['status' => false, 'message' => __('message.user_not_active')];
-
-        if (!$freelancer->is_verified)
-            return ['status' => false, 'message' => __('message.user_not_verified')];
+            if (!$user->is_verified)
+                return ['status' => false, 'message' => __('message.user_not_verified')];
+        }
 
         $project->load(['attachments', 'category', 'subcategory', 'user']);
 
