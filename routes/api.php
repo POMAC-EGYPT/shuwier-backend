@@ -72,7 +72,8 @@ Route::middleware(['auth:api', 'checkUserType:client', 'checkBlueMark'])->prefix
 });
 
 
-Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])->name('projects.show');
+Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])
+    ->middleware('auth:api')->name('projects.show');
 
 Route::post('/upload', [UploadFileController::class, 'upload'])
     ->middleware('auth:api')->name('file.upload');
@@ -100,7 +101,7 @@ Route::post('/verifications', [UserVerificationController::class, 'sendRequest']
 
 Route::group(['prefix' => 'home'], function () {
     Route::get('/guest', [HomeController::class, 'guestHome'])->name('home.guest');
-    Route::get('/freelancer', [HomeController::class, 'freelancerHome'])->middleware(['auth:api', 'checkUserType:freelancer'])->name('home.freelancer');
+    Route::get('/freelancer', [HomeController::class, 'freelancerHome'])->name('home.freelancer');
     Route::get('/client', [HomeController::class, 'clientHome'])->middleware(['auth:api', 'checkUserType:client'])->name('home.client');
 });
 

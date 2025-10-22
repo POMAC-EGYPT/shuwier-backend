@@ -40,7 +40,23 @@ class ProjectService implements ProjectServiceInterface
 
     public function getByIdForAllUsers(int $id): array
     {
+        $user = auth('api')->user();
+
         $project = $this->projectRepo->findById($id);
+
+        if ($user->type == UserType::FREELANCER->value) {
+            if ($user->approval_status != ApprovalStatus::APPROVED)
+                return ['status' => false, 'message' => __('message.you_are_not_approved_freelancer')];
+
+            if (!$project->proposals_enabled)
+                return ['status' => false, 'message' => __('message.proposals_are_not_enabled_for_this_project')];
+
+            if (!$user->is_active)
+                return ['status' => false, 'message' => __('message.user_not_active')];
+
+            if (!$user->is_verified)
+                return ['status' => false, 'message' => __('message.user_not_verified')];
+        }
 
         $project->load(['attachments', 'category', 'subcategory', 'user']);
 
