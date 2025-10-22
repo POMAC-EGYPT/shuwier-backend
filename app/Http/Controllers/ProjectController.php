@@ -142,6 +142,8 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
+        // TODO: change location of this function to make it in guest mode
+
         $result = $this->projectService->getByIdForAllUsers((int) $id);
 
         if (!$result['status'])
