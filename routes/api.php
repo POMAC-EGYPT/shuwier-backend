@@ -72,8 +72,7 @@ Route::middleware(['auth:api', 'checkUserType:client', 'checkBlueMark'])->prefix
 });
 
 
-Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])
-    ->middleware('auth:api')->name('projects.show');
+Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])->name('projects.show');
 
 Route::post('/upload', [UploadFileController::class, 'upload'])
     ->middleware('auth:api')->name('file.upload');
