@@ -341,9 +341,6 @@
                                                     <li class="tocify-item level-2" data-unique="public-home-page-GETapi-home-guest">
                                 <a href="#public-home-page-GETapi-home-guest">Guest home page</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="public-home-page-GETapi-home-freelancer">
-                                <a href="#public-home-page-GETapi-home-freelancer">Freelancer Home Page</a>
-                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="public-home-page-GETapi-home-client">
                                 <a href="#public-home-page-GETapi-home-client">Client homepage</a>
                             </li>
@@ -366,6 +363,9 @@
                                     <ul id="tocify-subheader-public-search" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="public-search-GETapi-search-service">
                                 <a href="#public-search-GETapi-search-service">Search services</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="public-search-GETapi-search-project">
+                                <a href="#public-search-GETapi-search-project">Project Search</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -469,7 +469,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 26, 2025</li>
+        <li>Last updated: October 27, 2025</li>
     </ul>
 </div>
 
@@ -972,7 +972,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZHohJc" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWFhZ8f" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1156,7 +1156,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpZHohJc</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWFhZ8f</code></p>
         </div>
         </form>
 
@@ -1346,7 +1346,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpV70uRQ" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphgLKCI" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1548,7 +1548,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpV70uRQ</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphgLKCI</code></p>
         </div>
         </form>
 
@@ -8827,7 +8827,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptpAaqt" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOYXfDP" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -8996,7 +8996,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptpAaqt</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOYXfDP</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -9220,7 +9220,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb47GvV" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeJuahg" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9456,7 +9456,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb47GvV</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeJuahg</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -9689,7 +9689,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmRMEtP" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpn5fQny" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9952,7 +9952,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmRMEtP</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpn5fQny</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11589,416 +11589,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="public-home-page-GETapi-home-freelancer">Freelancer Home Page</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Retrieve personalized homepage data for authenticated freelancers. This endpoint provides
-a curated list of available projects that match the freelancer's skills and interests.
-Projects can be filtered by search terms, categories, and budget ranges to help freelancers
-find relevant opportunities to bid on.</p>
-
-<span id="example-requests-GETapi-home-freelancer">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/home/freelancer" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"search\": \"website development\",
-    \"category_ids\": [
-        4,
-        2
-    ],
-    \"budgets\": [
-        \"$100-$500\",
-        \"$500-$1000\"
-    ],
-    \"per_page\": 15
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/home/freelancer"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-let body = {
-    "search": "website development",
-    "category_ids": [
-        4,
-        2
-    ],
-    "budgets": [
-        "$100-$500",
-        "$500-$1000"
-    ],
-    "per_page": 15
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-home-freelancer">
-            <blockquote>
-            <p>Example response (200, Freelancer homepage data retrieved successfully):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-  &quot;status&quot;: true,
-  &quot;error_num&quot;: null,
-  &quot;message&quot;: &quot;Success&quot;,
-  &quot;data&quot;: {
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-      {
-        &quot;id&quot;: 5,
-        &quot;title&quot;: &quot;E-commerce Website Development&quot;,
-        &quot;description&quot;: &quot;I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.&quot;,
-        &quot;category_id&quot;: &quot;4&quot;,
-        &quot;subcategory_id&quot;: &quot;5&quot;,
-        &quot;budget&quot;: &quot;$1000-$2000&quot;,
-        &quot;deadline_unit&quot;: &quot;days&quot;,
-        &quot;deadline&quot;: &quot;12&quot;,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;comments_enabled&quot;: true,
-        &quot;proposals_enabled&quot;: true,
-        &quot;created_at&quot;: &quot;2025-10-06T09:11:11.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-10-06T09:11:11.000000Z&quot;,
-        &quot;category&quot;: {
-          &quot;id&quot;: 4,
-          &quot;name&quot;: &quot;Programming&quot;,
-          &quot;image&quot;: &quot;storage/categories/68dd364f26e71.svg&quot;,
-          &quot;parent_id&quot;: null,
-          &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
-          &quot;updated_at&quot;: &quot;2025-10-01T14:10:23.000000Z&quot;
-        },
-        &quot;subcategory&quot;: {
-          &quot;id&quot;: 5,
-          &quot;name&quot;: &quot;Web&quot;,
-          &quot;image&quot;: null,
-          &quot;parent_id&quot;: 4,
-          &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
-          &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
-        },
-        &quot;attachments&quot;: [
-          {
-            &quot;id&quot;: 2,
-            &quot;file_path&quot;: &quot;storage/projects/68e3876bcc657.PNG&quot;,
-            &quot;user_id&quot;: 2,
-            &quot;project_id&quot;: 5,
-            &quot;created_at&quot;: &quot;2025-10-06T09:10:03.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-10-06T09:11:11.000000Z&quot;
-          }
-        ],
-        &quot;user&quot;: {
-          &quot;id&quot;: 2,
-          &quot;name&quot;: &quot;Ahmed test&quot;,
-          &quot;email&quot;: &quot;freelancer2@gmail.com&quot;,
-          &quot;type&quot;: &quot;client&quot;,
-          &quot;is_active&quot;: true,
-          &quot;profile_picture&quot;: &quot;storage/profiles/68d28083a3dd1.PNG&quot;,
-          &quot;company&quot;: &quot;شركة التقنيات المتقدمة&quot;,
-          &quot;country&quot;: &quot;asd&quot;,
-          &quot;city&quot;: &quot;asd&quot;,
-          &quot;is_verified&quot;: false,
-          &quot;user_verification_status&quot;: &quot;approved&quot;,
-          &quot;created_at&quot;: &quot;2025-09-03T11:34:36.000000Z&quot;,
-          &quot;updated_at&quot;: &quot;2025-09-23T11:12:03.000000Z&quot;
-        },
-        &quot;proposals_count&quot;: 8,
-        &quot;time_remaining&quot;: &quot;5 days left&quot;
-      },
-      {
-        &quot;id&quot;: 7,
-        &quot;title&quot;: &quot;Mobile App UI/UX Design&quot;,
-        &quot;description&quot;: &quot;Looking for a talented designer to create modern and user-friendly UI/UX design for a fitness tracking mobile application.&quot;,
-        &quot;category_id&quot;: &quot;2&quot;,
-        &quot;subcategory_id&quot;: &quot;6&quot;,
-        &quot;budget&quot;: &quot;$500-$800&quot;,
-        &quot;deadline_unit&quot;: &quot;days&quot;,
-        &quot;deadline&quot;: &quot;10&quot;,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;comments_enabled&quot;: true,
-        &quot;proposals_enabled&quot;: true,
-        &quot;created_at&quot;: &quot;2025-10-05T14:20:30.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-10-06T08:15:45.000000Z&quot;,
-        &quot;category&quot;: {
-          &quot;id&quot;: 2,
-          &quot;name&quot;: &quot;Design &amp; Creative&quot;,
-          &quot;image&quot;: &quot;storage/categories/68dd364f26e72.svg&quot;,
-          &quot;parent_id&quot;: null,
-          &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
-          &quot;updated_at&quot;: &quot;2025-10-01T14:10:23.000000Z&quot;
-        },
-        &quot;attachments&quot;: [],
-        &quot;user&quot;: {
-          &quot;id&quot;: 8,
-          &quot;name&quot;: &quot;Sarah Johnson&quot;,
-          &quot;email&quot;: &quot;sarah.client@example.com&quot;,
-          &quot;type&quot;: &quot;client&quot;,
-          &quot;is_active&quot;: true,
-          &quot;profile_picture&quot;: &quot;storage/profiles/68d28083a3dd2.PNG&quot;,
-          &quot;company&quot;: &quot;FitTech Solutions&quot;,
-          &quot;country&quot;: &quot;USA&quot;,
-          &quot;city&quot;: &quot;San Francisco&quot;,
-          &quot;is_verified&quot;: true,
-          &quot;user_verification_status&quot;: &quot;approved&quot;,
-          &quot;created_at&quot;: &quot;2025-09-15T09:20:15.000000Z&quot;,
-          &quot;updated_at&quot;: &quot;2025-10-01T16:45:30.000000Z&quot;
-        },
-      }
-    ],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 4,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=4&quot;,
-    &quot;links&quot;: [
-      {
-        &quot;url&quot;: null,
-        &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-        &quot;active&quot;: false
-      },
-      {
-        &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
-        &quot;label&quot;: &quot;1&quot;,
-        &quot;active&quot;: true
-      },
-      {
-        &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=2&quot;,
-        &quot;label&quot;: &quot;2&quot;,
-        &quot;active&quot;: false
-      },
-      {
-        &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=2&quot;,
-        &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-        &quot;active&quot;: false
-      }
-    ],
-    &quot;next_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=2&quot;,
-    &quot;path&quot;: &quot;http://localhost/api/freelancer/home&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 10,
-    &quot;total&quot;: 35
-  }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (200, No projects found):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;Success&quot;,
-    &quot;data&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;data&quot;: [],
-        &quot;first_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
-        &quot;from&quot;: null,
-        &quot;last_page&quot;: 1,
-        &quot;last_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;next_page_url&quot;: null,
-        &quot;path&quot;: &quot;http://localhost/api/freelancer/home&quot;,
-        &quot;per_page&quot;: 10,
-        &quot;prev_page_url&quot;: null,
-        &quot;to&quot;: null,
-        &quot;total&quot;: 0
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Invalid parameters):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;Invalid filter parameters provided&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401, Unauthenticated):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-home-freelancer" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-home-freelancer"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-home-freelancer"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-home-freelancer" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-home-freelancer">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-home-freelancer" data-method="GET"
-      data-path="api/home/freelancer"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-home-freelancer', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-home-freelancer"
-                    onclick="tryItOut('GETapi-home-freelancer');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-home-freelancer"
-                    onclick="cancelTryOut('GETapi-home-freelancer');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-home-freelancer"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/home/freelancer</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-home-freelancer"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-home-freelancer"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-home-freelancer"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-home-freelancer"
-               value="website development"
-               data-component="body">
-    <br>
-<p>optional Search term to filter projects by title, description, or keywords. Example: <code>website development</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>category_ids</code></b>&nbsp;&nbsp;
-<small>integer[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="category_ids[0]"                data-endpoint="GETapi-home-freelancer"
-               data-component="body">
-        <input type="number" style="display: none"
-               name="category_ids[1]"                data-endpoint="GETapi-home-freelancer"
-               data-component="body">
-    <br>
-<p>optional Array of category IDs to filter projects by specific categories.</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>budgets</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="budgets[0]"                data-endpoint="GETapi-home-freelancer"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="budgets[1]"                data-endpoint="GETapi-home-freelancer"
-               data-component="body">
-    <br>
-<p>optional Array of budget ranges to filter projects.</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-home-freelancer"
-               value="15"
-               data-component="body">
-    <br>
-<p>optional Number of projects per page (default: 10). Example: <code>15</code></p>
-        </div>
-        </form>
-
                     <h2 id="public-home-page-GETapi-home-client">Client homepage</h2>
 
 <p>
@@ -13015,6 +12605,404 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                    <h2 id="public-search-GETapi-search-project">Project Search</h2>
+
+<p>
+</p>
+
+<p>Retrieve personalized homepage data for authenticated freelancers. This endpoint provides
+a curated list of available projects that match the freelancer's skills and interests.
+Projects can be filtered by search terms, categories, and budget ranges to help freelancers
+find relevant opportunities to bid on.</p>
+
+<span id="example-requests-GETapi-search-project">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/search/project" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"search\": \"website development\",
+    \"category_ids\": [
+        4,
+        2
+    ],
+    \"budgets\": [
+        \"$100-$500\",
+        \"$500-$1000\"
+    ],
+    \"per_page\": 15
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/search/project"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "search": "website development",
+    "category_ids": [
+        4,
+        2
+    ],
+    "budgets": [
+        "$100-$500",
+        "$500-$1000"
+    ],
+    "per_page": 15
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-search-project">
+            <blockquote>
+            <p>Example response (200, Freelancer homepage data retrieved successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;status&quot;: true,
+  &quot;error_num&quot;: null,
+  &quot;message&quot;: &quot;Success&quot;,
+  &quot;data&quot;: {
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+      {
+        &quot;id&quot;: 5,
+        &quot;title&quot;: &quot;E-commerce Website Development&quot;,
+        &quot;description&quot;: &quot;I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.&quot;,
+        &quot;category_id&quot;: &quot;4&quot;,
+        &quot;subcategory_id&quot;: &quot;5&quot;,
+        &quot;budget&quot;: &quot;$1000-$2000&quot;,
+        &quot;deadline_unit&quot;: &quot;days&quot;,
+        &quot;deadline&quot;: &quot;12&quot;,
+        &quot;status&quot;: &quot;active&quot;,
+        &quot;comments_enabled&quot;: true,
+        &quot;proposals_enabled&quot;: true,
+        &quot;created_at&quot;: &quot;2025-10-06T09:11:11.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-06T09:11:11.000000Z&quot;,
+        &quot;category&quot;: {
+          &quot;id&quot;: 4,
+          &quot;name&quot;: &quot;Programming&quot;,
+          &quot;image&quot;: &quot;storage/categories/68dd364f26e71.svg&quot;,
+          &quot;parent_id&quot;: null,
+          &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+          &quot;updated_at&quot;: &quot;2025-10-01T14:10:23.000000Z&quot;
+        },
+        &quot;subcategory&quot;: {
+          &quot;id&quot;: 5,
+          &quot;name&quot;: &quot;Web&quot;,
+          &quot;image&quot;: null,
+          &quot;parent_id&quot;: 4,
+          &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+          &quot;updated_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;
+        },
+        &quot;attachments&quot;: [
+          {
+            &quot;id&quot;: 2,
+            &quot;file_path&quot;: &quot;storage/projects/68e3876bcc657.PNG&quot;,
+            &quot;user_id&quot;: 2,
+            &quot;project_id&quot;: 5,
+            &quot;created_at&quot;: &quot;2025-10-06T09:10:03.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-06T09:11:11.000000Z&quot;
+          }
+        ],
+        &quot;user&quot;: {
+          &quot;id&quot;: 2,
+          &quot;name&quot;: &quot;Ahmed test&quot;,
+          &quot;email&quot;: &quot;freelancer2@gmail.com&quot;,
+          &quot;type&quot;: &quot;client&quot;,
+          &quot;is_active&quot;: true,
+          &quot;profile_picture&quot;: &quot;storage/profiles/68d28083a3dd1.PNG&quot;,
+          &quot;company&quot;: &quot;شركة التقنيات المتقدمة&quot;,
+          &quot;country&quot;: &quot;asd&quot;,
+          &quot;city&quot;: &quot;asd&quot;,
+          &quot;is_verified&quot;: false,
+          &quot;user_verification_status&quot;: &quot;approved&quot;,
+          &quot;created_at&quot;: &quot;2025-09-03T11:34:36.000000Z&quot;,
+          &quot;updated_at&quot;: &quot;2025-09-23T11:12:03.000000Z&quot;
+        },
+        &quot;proposals_count&quot;: 8,
+        &quot;time_remaining&quot;: &quot;5 days left&quot;
+      },
+      {
+        &quot;id&quot;: 7,
+        &quot;title&quot;: &quot;Mobile App UI/UX Design&quot;,
+        &quot;description&quot;: &quot;Looking for a talented designer to create modern and user-friendly UI/UX design for a fitness tracking mobile application.&quot;,
+        &quot;category_id&quot;: &quot;2&quot;,
+        &quot;subcategory_id&quot;: &quot;6&quot;,
+        &quot;budget&quot;: &quot;$500-$800&quot;,
+        &quot;deadline_unit&quot;: &quot;days&quot;,
+        &quot;deadline&quot;: &quot;10&quot;,
+        &quot;status&quot;: &quot;active&quot;,
+        &quot;comments_enabled&quot;: true,
+        &quot;proposals_enabled&quot;: true,
+        &quot;created_at&quot;: &quot;2025-10-05T14:20:30.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-06T08:15:45.000000Z&quot;,
+        &quot;category&quot;: {
+          &quot;id&quot;: 2,
+          &quot;name&quot;: &quot;Design &amp; Creative&quot;,
+          &quot;image&quot;: &quot;storage/categories/68dd364f26e72.svg&quot;,
+          &quot;parent_id&quot;: null,
+          &quot;created_at&quot;: &quot;2025-09-07T08:44:46.000000Z&quot;,
+          &quot;updated_at&quot;: &quot;2025-10-01T14:10:23.000000Z&quot;
+        },
+        &quot;attachments&quot;: [],
+        &quot;user&quot;: {
+          &quot;id&quot;: 8,
+          &quot;name&quot;: &quot;Sarah Johnson&quot;,
+          &quot;email&quot;: &quot;sarah.client@example.com&quot;,
+          &quot;type&quot;: &quot;client&quot;,
+          &quot;is_active&quot;: true,
+          &quot;profile_picture&quot;: &quot;storage/profiles/68d28083a3dd2.PNG&quot;,
+          &quot;company&quot;: &quot;FitTech Solutions&quot;,
+          &quot;country&quot;: &quot;USA&quot;,
+          &quot;city&quot;: &quot;San Francisco&quot;,
+          &quot;is_verified&quot;: true,
+          &quot;user_verification_status&quot;: &quot;approved&quot;,
+          &quot;created_at&quot;: &quot;2025-09-15T09:20:15.000000Z&quot;,
+          &quot;updated_at&quot;: &quot;2025-10-01T16:45:30.000000Z&quot;
+        },
+      }
+    ],
+    &quot;first_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 4,
+    &quot;last_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=4&quot;,
+    &quot;links&quot;: [
+      {
+        &quot;url&quot;: null,
+        &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+        &quot;active&quot;: false
+      },
+      {
+        &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
+        &quot;label&quot;: &quot;1&quot;,
+        &quot;active&quot;: true
+      },
+      {
+        &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=2&quot;,
+        &quot;label&quot;: &quot;2&quot;,
+        &quot;active&quot;: false
+      },
+      {
+        &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=2&quot;,
+        &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+        &quot;active&quot;: false
+      }
+    ],
+    &quot;next_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=2&quot;,
+    &quot;path&quot;: &quot;http://localhost/api/freelancer/home&quot;,
+    &quot;per_page&quot;: 10,
+    &quot;prev_page_url&quot;: null,
+    &quot;to&quot;: 10,
+    &quot;total&quot;: 35
+  }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, No projects found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/freelancer/home?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/freelancer/home&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid parameters):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Invalid filter parameters provided&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-search-project" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-search-project"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-search-project"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-search-project" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-search-project">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-search-project" data-method="GET"
+      data-path="api/search/project"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-project', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-search-project"
+                    onclick="tryItOut('GETapi-search-project');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-search-project"
+                    onclick="cancelTryOut('GETapi-search-project');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-search-project"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/search/project</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-search-project"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-search-project"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-search-project"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-search-project"
+               value="website development"
+               data-component="body">
+    <br>
+<p>optional Search term to filter projects by title, description, or keywords. Example: <code>website development</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_ids[0]"                data-endpoint="GETapi-search-project"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="category_ids[1]"                data-endpoint="GETapi-search-project"
+               data-component="body">
+    <br>
+<p>optional Array of category IDs to filter projects by specific categories.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>budgets</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="budgets[0]"                data-endpoint="GETapi-search-project"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="budgets[1]"                data-endpoint="GETapi-search-project"
+               data-component="body">
+    <br>
+<p>optional Array of budget ranges to filter projects.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-search-project"
+               value="15"
+               data-component="body">
+    <br>
+<p>optional Number of projects per page (default: 10). Example: <code>15</code></p>
+        </div>
+        </form>
+
                 <h1 id="service-management">Service Management</h1>
 
     <p>APIs for managing freelancer services - creating, listing, updating and managing service offerings</p>
@@ -13332,7 +13320,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEA3Qrp" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGvCRMJ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13665,7 +13653,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEA3Qrp</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGvCRMJ</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -18603,7 +18591,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpliss5O" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7KybUC" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -18764,7 +18752,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpliss5O</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7KybUC</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

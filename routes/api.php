@@ -101,12 +101,12 @@ Route::post('/verifications', [UserVerificationController::class, 'sendRequest']
 
 Route::group(['prefix' => 'home'], function () {
     Route::get('/guest', [HomeController::class, 'guestHome'])->name('home.guest');
-    Route::get('/freelancer', [HomeController::class, 'freelancerHome'])->name('home.freelancer');
     Route::get('/client', [HomeController::class, 'clientHome'])->middleware(['auth:api', 'checkUserType:client'])->name('home.client');
 });
 
 Route::group(['prefix' => 'search'], function () {
     Route::get('/service', [SearchController::class, 'serviceSearch'])->name('search');
+    Route::get('/project', [SearchController::class, 'projectSearch'])->name('search.project');
 });
 
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');

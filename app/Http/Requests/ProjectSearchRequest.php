@@ -13,7 +13,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property array|null $budgets
  * @property int|null $per_page
  */
-class FreelancerHomeRequest extends FormRequest
+class ProjectSearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

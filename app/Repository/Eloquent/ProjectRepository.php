@@ -8,16 +8,22 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ProjectRepository implements ProjectRepositoryInterface
 {
-    public function getWithFilterByCategoryAndBudget(
+    public function searchWithFilters(
         ?string $search = null,
-        ?array $category_ids = null,
+        ?array $categoryIds = null,
         ?array $budgets = null,
         int $perPage = 15
     ): LengthAwarePaginator {
         return Project::with('category')
             ->where('proposals_enabled', true)
-            ->when($search, fn($query) => $query->where('title', 'like', "%$search%"))
-            ->when($category_ids, fn($query) => $query->whereIn('category_id', $category_ids))
+            ->when($search, function ($q) use ($search) {
+                $q->where(function ($q2) use ($search) {
+                    $q2->whereFullText(['title', 'description'], $search)
+                        ->orWhere('title', 'LIKE', "%{$search}%")
+                        ->orWhere('description', 'LIKE', "%{$search}%");
+                });
+            })
+            ->when($categoryIds, fn($query) => $query->whereIn('category_id', $categoryIds))
             ->when($budgets, fn($query) => $query->whereIn('budget', $budgets))
             ->orderByDesc('created_at')
             ->paginate($perPage);

@@ -7,11 +7,11 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface ProjectRepositoryInterface
 {
-    public function getWithFilterByCategoryAndBudget(
+    public function searchWithFilters(
         ?string $search = null,
-        ?array $category_ids = null,
+        ?array $categoryIds = null,
         ?array $budgets = null,
-        int $perPage = 10
+        int $perPage = 15
     ): LengthAwarePaginator;
 
     public function getByClientIdPaginated(?string $status = null, int $clientId, int $perPage = 15): LengthAwarePaginator;
