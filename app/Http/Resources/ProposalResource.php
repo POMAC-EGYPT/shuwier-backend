@@ -29,11 +29,7 @@ class ProposalResource extends JsonResource
                     $this->project,
                 BaseResource::make(ProjectResource::make($this->project))
             ),
-            'attachments'         => $this->when(
-                $this->relationLoaded('attachments') &&
-                    $this->attachments && $this->attachments->count() > 0,
-                $this->attachments
-            ),
+            'attachments'         => $this->relationLoaded('attachments') && $this->attachments ? $this->attachments : null,
             'user'                => $this->when(
                 $this->relationLoaded('user') &&
                     $this->user,
