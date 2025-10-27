@@ -84,6 +84,7 @@ use App\Services\Implementations\ProposalService;
 use App\Services\Implementations\ServiceService;
 use App\Services\Search\Contracts\SearchStrategyInterface;
 use App\Services\Search\Factory\SearchStrategyFactory;
+use App\Services\Search\Strategies\ProjectSearch;
 use App\Services\Search\Strategies\ServiceSearch;
 use App\Services\Upload\Strategies\ProjectUpload;
 use App\Services\Upload\Strategies\ProposalUpload;
@@ -142,10 +143,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(SearchStrategyInterface::class . '_service', ServiceSearch::class);
+        $this->app->bind(SearchStrategyInterface::class . '_project', ProjectSearch::class);
 
         $this->app->bind(SearchStrategyFactory::class, function ($app) {
             return new SearchStrategyFactory(
-                $app->make(SearchStrategyInterface::class . '_service')
+                $app->make(SearchStrategyInterface::class . '_service'),
+                $app->make(SearchStrategyInterface::class . '_project')
             );
         });
 
