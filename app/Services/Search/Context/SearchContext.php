@@ -13,7 +13,7 @@ class SearchContext
         $this->factory = $factory;
     }
 
-    public function search(string $type, array $filters)
+    public function search(string $type, array $filters): mixed
     {
         $strategy = $this->factory->getStrategy($type);
 

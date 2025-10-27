@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enum\ApprovalStatus;
 use App\Enum\UserType;
+use App\Helpers\SlugHelpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,6 +25,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
+        'slug',
         'name',
         'email',
         'phone',
@@ -146,5 +148,18 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->slug = SlugHelpers::generateSlug($user->name, $user->id);
+            $user->save();
+        });
+
+        static::updating(function ($user) {
+            if ($user->isDirty('name'))
+                $user->slug = SlugHelpers::generateSlug($user->name, $user->id);
+        });
     }
 }

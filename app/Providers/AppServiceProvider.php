@@ -75,6 +75,7 @@ use App\Services\Contracts\InvitationFreelancerServiceInterface;
 use App\Services\Contracts\ProjectServiceInterface;
 use App\Services\Contracts\ProposalServiceInterface;
 use App\Services\Contracts\ServiceServiceInterface;
+use App\Services\Contracts\UserServiceInterface;
 use App\Services\Implementations\CommissionService;
 use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\HomeService;
@@ -82,6 +83,7 @@ use App\Services\Implementations\InvitationFreelancerService;
 use App\Services\Implementations\ProjectService;
 use App\Services\Implementations\ProposalService;
 use App\Services\Implementations\ServiceService;
+use App\Services\Implementations\UserService;
 use App\Services\Search\Contracts\SearchStrategyInterface;
 use App\Services\Search\Factory\SearchStrategyFactory;
 use App\Services\Search\Strategies\ProjectSearch;
@@ -101,6 +103,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(EmailVerificationServiceInterface::class, EmailVerificationService::class);
 
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(UserServiceInterface::class, UserService::class);
         $this->app->bind(AuthUserServiceInterface::class, AuthUserService::class);
 
         $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);

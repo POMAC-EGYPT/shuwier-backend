@@ -226,15 +226,6 @@ class AuthUserService implements AuthUserServiceInterface
         return ['status' => true, 'message' => __('message.password_reset_success')];
     }
 
-    public function getProfile(): array
-    {
-        $user = auth('api')->user();
-
-        $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages']);
-
-        return ['status' => true, 'message' => __('message.success'), 'data' => $user];
-    }
-
     public function updateProfile(array $data): array
     {
         $user = auth('api')->user();

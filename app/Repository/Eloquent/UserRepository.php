@@ -43,6 +43,11 @@ class UserRepository implements UserRepositoryInterface
         return User::{$type}()->where('email', $email)->first();
     }
 
+    public function findBySlug(string $slug): ?User
+    {
+        return User::where('slug', $slug)->firstOrFail();
+    }
+
     public function create(array $data): User
     {
         return User::create($data);
