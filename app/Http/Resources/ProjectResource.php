@@ -39,11 +39,7 @@ class ProjectResource extends JsonResource
                     $this->subcategory,
                 BaseResource::make(CategoryResource::make($this->subcategory))
             ),
-            'attachments'             => $this->when(
-                $this->relationLoaded('attachments') &&
-                    $this->attachments && $this->attachments->count() > 0,
-                $this->attachments
-            ),
+            'attachments'             => $this->relationLoaded('attachments') && $this->attachments ? $this->attachments : null,
             'user'                    => $this->when(
                 $this->relationLoaded('user') && $this->user,
                 BaseResource::make(ClientResource::make($this->user))
