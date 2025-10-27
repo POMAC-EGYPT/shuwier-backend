@@ -445,7 +445,7 @@ class SearchController extends Controller
         ]);
 
         return Response::api(
-            $result['message'],
+            __('message.success'),
             200,
             true,
             null,
