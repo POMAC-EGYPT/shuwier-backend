@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // AdminTableSeeder::class,
             // PermissionTableSeeder::class,
-            // UserTableSeeder::class,
-            LanguageTableSeeder::class,
+            UserTableSeeder::class,
+            // LanguageTableSeeder::class,
         ]);
     }
 }
