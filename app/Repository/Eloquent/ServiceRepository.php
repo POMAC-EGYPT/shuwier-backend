@@ -19,9 +19,7 @@ class ServiceRepository implements ServiceRepositoryInterface
         ?int $perPage = 10
     ): LengthAwarePaginator {
 
-        return Service::with(['category', 'subcategory', 'user', 'attachments' => function ($query) {
-            $query->limit(3);
-        }])
+        return Service::with(['category', 'subcategory', 'user', 'attachments'])
             ->when($search, function ($q) use ($search) {
                 $q->where(function ($q2) use ($search) {
                     $q2->whereFullText(['title', 'description'], $search)
@@ -42,9 +40,7 @@ class ServiceRepository implements ServiceRepositoryInterface
     {
         //TODO: apply filter logic of best sellers
 
-        return Service::with(['category', 'subcategory', 'user', 'attachments' => function ($query) {
-            $query->limit(3);
-        }])
+        return Service::with(['category', 'subcategory', 'user', 'attachments'])
             ->orderByDesc('created_at')
             ->limit($limit)
             ->get();
