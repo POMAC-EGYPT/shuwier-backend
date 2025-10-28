@@ -46,7 +46,8 @@ class ProjectResource extends JsonResource
             ),
             'user'                    => $this->when(
                 $this->relationLoaded('user') && $this->user,
-                fn() => BaseResource::make(ClientResource::make($this->user))
+                fn() => BaseResource::make(ClientResource::make($this->user)),
+                null
             ),
         ];
     }
