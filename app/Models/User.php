@@ -117,6 +117,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Portfolio::class);
     }
 
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
     public function languages()
     {
         return $this->belongsToMany(Language::class, 'user_languages')

@@ -36,6 +36,12 @@ class ClientResource extends JsonResource
             'updated_at'               => $this->updated_at,
             'rate'                     => $this->rate,
             'rate_count'               => $this->rate_count,
+            'projects'                 => $this->when(
+                $this->relationLoaded('projects') &&
+                    $this->projects && $this->projects->count() > 0,
+                fn() =>  BaseResource::make(ProjectResource::collection($this->projects)),
+                null
+            ),
             'languages'                => $this->when(
                 $this->relationLoaded('languages') &&
                     $this->languages && $this->languages->count() > 0,
