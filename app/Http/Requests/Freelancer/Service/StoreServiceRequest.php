@@ -16,7 +16,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @property int|null $subcategory_id
  * @property string $delivery_time_unit
  * @property int $delivery_time
- * @property string $fees_type
+ * @property string $service_fees_type
  * @property float $price   
  * @property \Illuminate\Http\UploadedFile $cover_photo
  * @property array|null $hashtags
@@ -54,7 +54,7 @@ class StoreServiceRequest extends FormRequest
             'subcategory_id'     => 'nullable|exists:categories,id',
             'delivery_time_unit' => 'required|in:hours,days,months',
             'delivery_time'      => 'required|integer|min:1|max:365',
-            'fees_type'          => 'required|in:fixed,hourly',
+            'service_fees_type'  => 'required|in:fixed,hourly',
             'price'              => 'required|numeric|min:1',
             'cover_photo'        => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'hashtags'           => 'nullable|array',
@@ -99,7 +99,7 @@ class StoreServiceRequest extends FormRequest
                 'description' => 'Delivery time - Number of units (hours/days/months) required to complete the service',
                 'example' => 7,
             ],
-            'fees_type' => [
+            'service_fees_type' => [
                 'description' => 'Pricing model - How you charge for this service',
                 'example' => 'fixed',
             ],

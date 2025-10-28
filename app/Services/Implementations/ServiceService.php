@@ -96,7 +96,7 @@ class ServiceService implements ServiceServiceInterface
                 'subcategory_id'     => $data['subcategory_id'] ?? null,
                 'delivery_time_unit' => $data['delivery_time_unit'],
                 'delivery_time'      => $data['delivery_time'],
-                'fees_type'          => $data['fees_type'],
+                'service_fees_type'  => $data['service_fees_type'],
                 'price'              => $data['price'],
                 'cover_photo'        => $coverPath,
                 'faqs'               => $data['faqs'] ?? [],
@@ -182,7 +182,7 @@ class ServiceService implements ServiceServiceInterface
                 'subcategory_id'     => $data['subcategory_id'] ?? null,
                 'delivery_time_unit' => $data['delivery_time_unit'],
                 'delivery_time'      => $data['delivery_time'],
-                'fees_type'          => $data['fees_type'],
+                'service_fees_type'  => $data['service_fees_type'],
                 'price'              => $data['price'],
                 'cover_photo'        => $coverPath,
             ]);

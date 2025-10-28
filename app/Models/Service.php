@@ -17,7 +17,6 @@ class Service extends Model
         'delivery_time',
         'delivery_time_unit',
         'service_fees_type',
-        'fees_type',
         'price',
         'cover_photo',
         'user_id',
