@@ -143,4 +143,10 @@ return [
     'you_have_already_submitted_a_proposal_for_this_project'          => 'You have already submitted a proposal for this project',
     'your_account_is_not_verified_from_admin'                         => 'Your account is not verified from admin',
     'the_array_must_be_indexed'                                       => 'The array must be indexed',
+    'how_it_work_created_successfully'                                => 'How It Work created successfully',
+    'how_it_work_updated_successfully'                                => 'How It Work updated successfully',
+    'how_it_work_deleted_successfully'                                => 'How It Work deleted successfully',
+    'tips_and_guid_created_successfully'                              => 'Tips and Guid created successfully',
+    'tips_and_guid_updated_successfully'                              => 'Tips and Guid updated successfully',
+    'tips_and_guid_deleted_successfully'                              => 'Tips and Guid deleted successfully',
 ];

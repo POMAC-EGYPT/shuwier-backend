@@ -6,8 +6,10 @@ use App\Http\Controllers\Admin\FreelancerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommissionController;
+use App\Http\Controllers\Admin\HowItWorkController;
 use App\Http\Controllers\Admin\InvitationFreelancerController;
 use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\TipsAndGuidController;
 use App\Http\Controllers\Admin\UserVerificationController;
 
 Route::group(['prefix' => 'auth'], function () {
@@ -15,11 +17,13 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::apiResources([
-    'freelancers' => FreelancerController::class,
-    'clients'     => ClientController::class,
-    'categories'  => CategoryController::class,
-    'skills'      => SkillController::class,
-    'commissions' => CommissionController::class,
+    'freelancers'     => FreelancerController::class,
+    'clients'         => ClientController::class,
+    'categories'      => CategoryController::class,
+    'skills'          => SkillController::class,
+    'commissions'     => CommissionController::class,
+    'how-it-works'    => HowItWorkController::class,
+    'tips-and-guides' => TipsAndGuidController::class
 ], [
     'middleware' => ['auth:admin']
 ]);
