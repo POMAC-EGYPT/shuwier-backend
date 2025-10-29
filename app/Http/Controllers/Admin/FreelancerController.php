@@ -56,9 +56,7 @@ class FreelancerController extends Controller
      *       "about_me": null,
      *       "profile_picture": null,
      *       "approval_status": "requested",
-     *       "linkedin_link": "https://linkedin.com/in/johndoe",
-     *       "twitter_link": "https://twitter.com/johndoe",
-     *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+     *       "other_links": ["https://upwork.com/freelancers/johndoe"],
      *       "portfolio_link": "https://johndoe.com",
      *       "headline": null,
      *       "description": null,
@@ -149,9 +147,7 @@ class FreelancerController extends Controller
      *     "about_me": null,
      *     "profile_picture": null,
      *     "approval_status": "requested",
-     *     "linkedin_link": "https://linkedin.com/in/johndoe",
-     *     "twitter_link": "https://twitter.com/johndoe",
-     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+     *     "other_links": ["https://upwork.com/freelancers/johndoe"],
      *     "portfolio_link": "https://johndoe.com",
      *     "headline": null,
      *     "description": null,
@@ -208,9 +204,7 @@ class FreelancerController extends Controller
      * @bodyParam about_me string A brief description about the freelancer. Example: خبير في تطوير المواقع
      * @bodyParam profile_picture file The freelancer's profile picture.
      * @bodyParam approval_status string The approval status. Must be "requested" or "approved". Example: approved
-     * @bodyParam linkedin_link string The freelancer's LinkedIn profile URL. Example: https://linkedin.com/in/ahmed
-     * @bodyParam twitter_link string The freelancer's Twitter profile URL. Example: https://twitter.com/ahmed
-     * @bodyParam other_freelance_platform_links array An array of other freelance platform URLs. Example: ["https://upwork.com/freelancers/ahmed"]
+     * @bodyParam other_links array An array of other freelance platform URLs. Example: ["https://upwork.com/freelancers/ahmed"]
      * @bodyParam portfolio_link string The freelancer's portfolio website URL. Example: https://ahmed-portfolio.com
      * @bodyParam headline string A short professional headline. Example: Full Stack Developer
      * 
@@ -229,9 +223,7 @@ class FreelancerController extends Controller
      *     "about_me": "خبير في تطوير المواقع الإلكترونية",
      *     "profile_picture": null,
      *     "approval_status": "approved",
-     *     "linkedin_link": "https://linkedin.com/in/ahmed",
-     *     "twitter_link": "https://twitter.com/ahmed",
-     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+     *     "other_links": ["https://upwork.com/freelancers/ahmed"],
      *     "portfolio_link": "https://ahmed-portfolio.com",
      *     "headline": "Full Stack Developer",
      *     "description": null,
@@ -339,9 +331,7 @@ class FreelancerController extends Controller
      *     "about_me": null,
      *     "profile_picture": null,
      *     "approval_status": "approved",
-     *     "linkedin_link": "https://www.linkedin.com/in/muhammed-yousry96?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXWDAHlI8QB2HsM6PFNaclA%3D%3D",
-     *     "twitter_link": "https://www.facebook.com/ahmedhosni516",
-     *     "other_freelance_platform_links": [
+     *     "other_links": [
      *       "https://www.google.com",
      *       "https://www.google.com"
      *     ],

@@ -29,7 +29,6 @@ class UserTableSeeder extends Seeder
         //     \App\Models\FreelancerProfile::create([
         //         'user_id' => $user->id,
         //         'headline' => 'Professional Freelancer',
-        //         'linkedin_link' => 'https://linkedin.com/in/freelancer' . $i,
         //         'portfolio_link' => 'https://portfolio.freelancer' . $i . '.com'
         //     ]);
         // }

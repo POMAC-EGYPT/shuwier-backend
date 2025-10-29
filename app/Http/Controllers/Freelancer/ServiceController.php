@@ -166,9 +166,9 @@ class ServiceController extends Controller
      * @bodyParam description string required Detailed service description. Example: I will create a professional WordPress website with custom design and functionality
      * @bodyParam category_id integer required Main category ID (must be a parent category). Example: 1
      * @bodyParam subcategory_id integer optional Subcategory ID (must belong to the selected category). Example: 4
-     * @bodyParam delivery_time_unit string required Time unit for delivery. Must be one of: hours, days, weeks. Example: days
+     * @bodyParam delivery_time_unit string required Time unit for delivery. Must be one of: hours, days, months. Example: days
      * @bodyParam delivery_time integer required Delivery time in the specified unit. Example: 7
-     * @bodyParam fees_type string required Pricing type. Must be one of: fixed, hourly. Example: fixed
+     * @bodyParam service_fees_type string required Pricing type. Must be one of: fixed, hourly. Example: fixed
      * @bodyParam price number required Service price (minimum 0). Example: 500.00
      * @bodyParam cover_photo file required Cover photo for the service (image file, max 2MB). Example: No-example
      * @bodyParam hashtags string[] optional Array of hashtag strings (max 255 characters each). Example: ["wordpress", "website", "development"]
@@ -421,9 +421,9 @@ class ServiceController extends Controller
      * @bodyParam description string optional Detailed service description (min 200 characters). Example: I will create a professional WordPress website with advanced features and custom functionality
      * @bodyParam category_id integer optional Main category ID (must be a parent category). Example: 4
      * @bodyParam subcategory_id integer optional Subcategory ID (must belong to the selected category). Example: 5
-     * @bodyParam delivery_time_unit string optional Time unit for delivery. Must be one of: hours, days, weeks. Example: days
+     * @bodyParam delivery_time_unit string optional Time unit for delivery. Must be one of: hours, days, months. Example: days
      * @bodyParam delivery_time integer optional Delivery time in the specified unit. Example: 10
-     * @bodyParam fees_type string optional Pricing type. Must be one of: fixed, hourly. Example: fixed
+     * @bodyParam service_fees_type string optional Pricing type. Must be one of: fixed, hourly. Example: fixed
      * @bodyParam price number optional Service price (minimum 0). Example: 750.00
      * @bodyParam cover_photo file optional New cover photo for the service (image file, max 2MB). Example: No-example
      * @bodyParam hashtags string[] optional Array of hashtag strings (max 255 characters each). Example: ["wordpress", "website", "ecommerce", "responsive"]

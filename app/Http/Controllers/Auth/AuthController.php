@@ -53,10 +53,8 @@ class AuthController extends Controller
      * @bodyParam password string required Password (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: Password123!
      * @bodyParam password_confirmation string required Password confirmation (must match password). Example: Password123!
      * @bodyParam type string required User type. Must be either "freelancer" or "client". Example: freelancer
-     * @bodyParam linkedin_link string required_if:type,freelancer LinkedIn profile URL (required for freelancers). Example: https://linkedin.com/in/ahmed
-     * @bodyParam twitter_link string required_if:type,freelancer Twitter profile URL (required for freelancers). Example: https://twitter.com/ahmed
-     * @bodyParam other_freelance_platform_links array required_if:type,freelancer Array of other freelance platform URLs (1-3 links, required for freelancers). Example: ["https://upwork.com/freelancers/ahmed"]
-     * @bodyParam other_freelance_platform_links.* string URL format for each freelance platform link. Example: https://upwork.com/freelancers/ahmed
+     * @bodyParam other_links array required_if:type,freelancer Array of other freelance platform URLs (1-3 links, required for freelancers). Example: ["https://upwork.com/freelancers/ahmed"]
+     * @bodyParam other_links.* string URL format for each freelance platform link. Example: https://upwork.com/freelancers/ahmed
      * @bodyParam portfolio_link string required_if:type,freelancer Portfolio website URL (required for freelancers). Example: https://ahmed-portfolio.com
      * 
      * @response 200 scenario="Verification code sent successfully" {
@@ -92,14 +90,12 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $result = $this->authUserService->register([
-            'name'                           => $request->name,
-            'email'                          => $request->email,
-            'password'                       => $request->password,
-            'type'                           => $request->type,
-            'linkedin_link'                  => $request->linkedin_link,
-            'twitter_link'                   => $request->twitter_link,
-            'other_freelance_platform_links' => $request->other_freelance_platform_links,
-            'portfolio_link'                 => $request->portfolio_link,
+            'name'           => $request->name,
+            'email'          => $request->email,
+            'password'       => $request->password,
+            'type'           => $request->type,
+            'other_links'    => $request->other_links ?? [],
+            'portfolio_link' => $request->portfolio_link,
         ]);
 
         if (!$result['status'])
@@ -196,9 +192,7 @@ class AuthController extends Controller
      *       "about_me": null,
      *       "profile_picture": null,
      *       "approval_status": "requested",
-     *       "linkedin_link": "https://linkedin.com/in/johndoe",
-     *       "twitter_link": "https://twitter.com/johndoe",
-     *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+     *       "other_links": ["https://upwork.com/freelancers/johndoe"],
      *       "portfolio_link": "https://johndoe.com",
      *       "headline": null,
      *       "description": null,
@@ -225,9 +219,7 @@ class AuthController extends Controller
      *       "about_me": null,
      *       "profile_picture": null,
      *       "approval_status": "approved",
-     *       "linkedin_link": "https://linkedin.com/in/johndoe",
-     *       "twitter_link": "https://twitter.com/johndoe",
-     *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+     *       "other_links": ["https://upwork.com/freelancers/johndoe"],
      *       "portfolio_link": "https://johndoe.com",
      *       "headline": null,
      *       "description": null,
@@ -657,9 +649,7 @@ class AuthController extends Controller
      *           "approval_status": "approved",
      *           "country": null,
      *           "city": null,
-     *           "linkedin_link": "https://linkedin.com/in/freelancer3",
-     *           "twitter_link": null,
-     *           "other_freelance_platform_links": [],
+     *           "other_links": [],
      *           "portfolio_link": "https://portfolio.freelancer3.com",
      *           "headline": "Professional Freelancer",
      *           "is_verified": false,
@@ -846,9 +836,7 @@ class AuthController extends Controller
      *     "about_me": "مطور ويب محترف مع خبرة 5 سنوات",
      *     "profile_picture": "storage/profiles/ahmed_profile.jpg",
      *     "approval_status": "approved",
-     *     "linkedin_link": "https://linkedin.com/in/ahmed",
-     *     "twitter_link": "https://twitter.com/ahmed",
-     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+     *     "other_links": ["https://upwork.com/freelancers/ahmed"],
      *     "portfolio_link": "https://ahmed-portfolio.com",
      *     "headline": "Full Stack Developer",
      *     "description": "Experienced developer specializing in Laravel and React",
