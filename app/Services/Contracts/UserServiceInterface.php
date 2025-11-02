@@ -4,5 +4,5 @@ namespace App\Services\Contracts;
 
 interface UserServiceInterface
 {
-    public function getProfile(string $slug): array;
+    public function getProfile(string $username): array;
 }

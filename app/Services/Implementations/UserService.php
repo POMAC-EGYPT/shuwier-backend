@@ -14,9 +14,9 @@ class UserService implements UserServiceInterface
         $this->userRepo = $userRepo;
     }
 
-    public function getProfile(string $slug): array
+    public function getProfile(string $username): array
     {
-        $user = $this->userRepo->findBySlug($slug);
+        $user = $this->userRepo->findByUsername($username);
 
         $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages', 'projects']);
 

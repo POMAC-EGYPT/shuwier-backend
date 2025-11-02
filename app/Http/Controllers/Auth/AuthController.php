@@ -91,6 +91,7 @@ class AuthController extends Controller
     {
         $result = $this->authUserService->register([
             'name'           => $request->name,
+            'username'       => $request->username,
             'email'          => $request->email,
             'password'       => $request->password,
             'type'           => $request->type,

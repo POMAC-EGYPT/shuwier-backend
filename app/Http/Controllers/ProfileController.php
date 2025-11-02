@@ -89,9 +89,9 @@ class ProfileController extends Controller
      *   "message": "Unable to retrieve profile information"
      * }
      */
-    public function profile(string $slug)
+    public function profile(string $username)
     {
-        $result = $this->userService->getProfile($slug);
+        $result = $this->userService->getProfile($username);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);

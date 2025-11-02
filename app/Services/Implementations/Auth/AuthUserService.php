@@ -55,6 +55,7 @@ class AuthUserService implements AuthUserServiceInterface
 
         $result = $this->verifyService->sendVerificationCode([
             'name'           => $data['name'],
+            'username'       => $data['username'],
             'email'          => $data['email'],
             'password'       => $data['password'],
             'type'           => $data['type'],
@@ -93,6 +94,7 @@ class AuthUserService implements AuthUserServiceInterface
 
             $user = $this->userRepo->create([
                 'name'              => $result['data']['name'],
+                'username'          => $result['data']['username'],
                 'email'             => $result['data']['email'],
                 'password'          => Hash::make($result['data']['password']),
                 'type'              => $result['data']['type'],

@@ -12,6 +12,7 @@ use Illuminate\Contracts\Validation\Validator;
  * Summary of RegisterRequest
  * This request validates the registration data for new users.
  * @param string $name
+ * @param string $username
  * @param string $email
  * @param string $password
  * @param string $type (freelancer|client)
@@ -19,6 +20,7 @@ use Illuminate\Contracts\Validation\Validator;
  * @param string|null $portfolio_link (required if type is freelancer)
  * 
  * @property string $name
+ * @property string $username
  * @property string $email
  * @property string $password
  * @property string $type (freelancer|client)
@@ -53,6 +55,7 @@ class RegisterRequest extends FormRequest
                 'max:255',
                 'regex:/^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u'
             ],
+            'username'      => 'required|string|alpha_dash|max:30|unique:users,username',
             'email'         => [
                 'required',
                 'string',
@@ -78,6 +81,10 @@ class RegisterRequest extends FormRequest
             'name' => [
                 'description' => 'User full name',
                 'example' => 'John Doe',
+            ],
+            'username' => [
+                'description' => 'Unique username for the user (alphanumeric, dashes, underscores)',
+                'example' => 'john_doe123',
             ],
             'email' => [
                 'description' => 'User email address (must be unique)',

@@ -25,8 +25,8 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'slug',
         'name',
+        'username',
         'email',
         'phone',
         'country_code',
@@ -153,18 +153,5 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
-    }
-
-    protected static function booted()
-    {
-        static::created(function ($user) {
-            $user->slug = SlugHelpers::generateSlug($user->name, $user->id);
-            $user->save();
-        });
-
-        static::updating(function ($user) {
-            if ($user->isDirty('name'))
-                $user->slug = SlugHelpers::generateSlug($user->name, $user->id);
-        });
     }
 }

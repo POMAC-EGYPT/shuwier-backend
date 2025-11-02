@@ -17,7 +17,7 @@ interface UserRepositoryInterface
 
     public function findByEmailAndType(string $email, string $type): ?User;
 
-    public function findBySlug(string $slug): ?User;
+    public function findByUsername(string $username): ?User;
 
     public function create(array $data): User;
 
