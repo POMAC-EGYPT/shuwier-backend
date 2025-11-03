@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class FreelancerProfile extends Model
 {
     protected $fillable = [
-        'linkedin_link',
-        'twitter_link',
-        'other_freelance_platform_links',
         'portfolio_link',
+        'other_links',
         'headline',
         'user_id',
         'category_id'
     ];
 
     protected $casts = [
-        'other_freelance_platform_links' => 'array',
+        'other_links' => 'array',
     ];
 
     public function user()

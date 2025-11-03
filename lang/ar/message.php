@@ -143,4 +143,10 @@ return [
     'you_have_already_submitted_a_proposal_for_this_project'          => 'لقد قمت بالفعل بتقديم عرض سعر لهذا المشروع',
     'your_account_is_not_verified_from_admin'                         => 'حسابك غير موثق من قبل الإدارة',
     'the_array_must_be_indexed'                                       => 'يجب أن يكون المصفوفة مفهرسة',
+    'how_it_work_created_successfully'                                => 'تم إنشاء قسم كيف يعمل بنجاح',
+    'how_it_work_updated_successfully'                                => 'تم تحديث قسم كيف يعمل بنجاح',
+    'how_it_work_deleted_successfully'                                => 'تم حذف قسم كيف يعمل بنجاح',
+    'tips_and_guid_created_successfully'                              => 'تم إنشاء قسم النصائح والإرشادات بنجاح',
+    'tips_and_guid_updated_successfully'                              => 'تم تحديث قسم النصائح والإرشادات بنجاح',
+    'tips_and_guid_deleted_successfully'                              => 'تم حذف قسم النصائح والإرشادات بنجاح',
 ];

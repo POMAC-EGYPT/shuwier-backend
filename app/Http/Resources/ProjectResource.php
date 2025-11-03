@@ -42,7 +42,8 @@ class ProjectResource extends JsonResource
             'attachments'             => $this->relationLoaded('attachments') && $this->attachments ? $this->attachments : null,
             'user'                    => $this->when(
                 $this->relationLoaded('user') && $this->user,
-                BaseResource::make(ClientResource::make($this->user))
+                fn() => BaseResource::make(ClientResource::make($this->user)),
+                null
             ),
         ];
     }

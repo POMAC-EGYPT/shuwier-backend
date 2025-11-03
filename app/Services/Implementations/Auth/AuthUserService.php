@@ -54,13 +54,12 @@ class AuthUserService implements AuthUserServiceInterface
             return ['status' => false, 'error_num' => 400, 'message' => __('message.user_already_registered')];
 
         $result = $this->verifyService->sendVerificationCode([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'type' => $data['type'],
-            'linkedin_link' => $data['linkedin_link'],
-            'twitter_link' => $data['twitter_link'],
-            'other_freelance_platform_links' => $data['other_freelance_platform_links'],
+            'name'           => $data['name'],
+            'username'       => $data['username'],
+            'email'          => $data['email'],
+            'password'       => $data['password'],
+            'type'           => $data['type'],
+            'other_links'    => $data['other_links'],
             'portfolio_link' => $data['portfolio_link'],
         ]);
 
@@ -89,18 +88,19 @@ class AuthUserService implements AuthUserServiceInterface
 
         if ($result['data']['type'] != 'forget_password') {
             if ($result['data']['type'] == 'freelancer')
-                $result['data']['other_freelance_platform_links'] = array_values($result['data']['other_freelance_platform_links']);
+                $result['data']['other_links'] = array_values($result['data']['other_links']);
 
             $invitation = $this->invitationUserRepo->getByEmail($result['data']['email']);
 
             $user = $this->userRepo->create([
-                'name' => $result['data']['name'],
-                'email' => $result['data']['email'],
-                'password' => Hash::make($result['data']['password']),
-                'type' => $result['data']['type'],
+                'name'              => $result['data']['name'],
+                'username'          => $result['data']['username'],
+                'email'             => $result['data']['email'],
+                'password'          => Hash::make($result['data']['password']),
+                'type'              => $result['data']['type'],
                 'email_verified_at' => now(),
-                'is_active' => 1,
-                'approval_status' => (
+                'is_active'         => 1,
+                'approval_status'   => (
                     $result['data']['type'] == UserType::CLIENT->value
                     || (
                         $invitation && $result['data']['type'] == UserType::FREELANCER->value
@@ -110,10 +110,8 @@ class AuthUserService implements AuthUserServiceInterface
 
             if ($result['data']['type'] == UserType::FREELANCER->value) {
                 $this->freelancerRepo->create([
-                    'user_id' => $user->id,
-                    'linkedin_link' => $result['data']['linkedin_link'],
-                    'twitter_link' => $result['data']['twitter_link'],
-                    'other_freelance_platform_links' => json_encode($result['data']['other_freelance_platform_links']),
+                    'user_id'        => $user->id,
+                    'other_links'    => json_encode($result['data']['other_links']),
                     'portfolio_link' => $result['data']['portfolio_link'],
                 ]);
             }
@@ -123,10 +121,10 @@ class AuthUserService implements AuthUserServiceInterface
             $user->load('freelancerProfile');
 
             return [
-                'status' => true,
+                'status'  => true,
                 'message' => __('message.user_registered'),
-                'data' => [
-                    'user' => $user,
+                'data'    => [
+                    'user'  => $user,
                     'token' => JWTAuth::fromUser($user),
                 ]
             ];
@@ -224,15 +222,6 @@ class AuthUserService implements AuthUserServiceInterface
         Cache::forget('forget_password_' . $user->email);
 
         return ['status' => true, 'message' => __('message.password_reset_success')];
-    }
-
-    public function getProfile(): array
-    {
-        $user = auth('api')->user();
-
-        $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages']);
-
-        return ['status' => true, 'message' => __('message.success'), 'data' => $user];
     }
 
     public function updateProfile(array $data): array

@@ -12,21 +12,19 @@ use Illuminate\Contracts\Validation\Validator;
  * Summary of RegisterRequest
  * This request validates the registration data for new users.
  * @param string $name
+ * @param string $username
  * @param string $email
  * @param string $password
  * @param string $type (freelancer|client)
- * @param string|null $linkedin_link (required if type is freelancer)
- * @param string|null $twitter_link (required if type is freelancer)
- * @param array|null $other_freelance_platform_links (required if type is freelancer and min:1|max:3)
+ * @param array|null $other_links (required if type is freelancer and min:1|max:3)
  * @param string|null $portfolio_link (required if type is freelancer)
  * 
  * @property string $name
+ * @property string $username
  * @property string $email
  * @property string $password
  * @property string $type (freelancer|client)
- * @property string|null $linkedin_link (required if type is freelancer)
- * @property string|null $twitter_link (required if type is freelancer)
- * @property array|null $other_freelance_platform_links (required if type is freelancer and min:1|max:3)
+ * @property array|null $other_links (required if type is freelancer and min:1|max:3)
  * @property string|null $portfolio_link (required if type is freelancer)
  */
 class RegisterRequest extends FormRequest
@@ -52,12 +50,13 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'                             => [
+            'name'          => [
                 'required',
                 'max:255',
                 'regex:/^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u'
             ],
-            'email'                            => [
+            'username'      => 'required|string|alpha_dash|max:30|unique:users,username',
+            'email'         => [
                 'required',
                 'string',
                 'email:rfc,dns',
@@ -65,13 +64,11 @@ class RegisterRequest extends FormRequest
                 'unique:users',
                 new EmailRule,
             ],
-            'password'                         => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
-            'type'                             => 'required|string|in:freelancer,client',
-            'linkedin_link'                    => 'required_if:type,freelancer|url',
-            'twitter_link'                     => 'required_if:type,freelancer|url',
-            'other_freelance_platform_links'   => 'required_if:type,freelancer|array|min:1|max:3',
-            'other_freelance_platform_links.*' => 'url',
-            'portfolio_link'                   => 'required_if:type,freelancer|url',
+            'password'       => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
+            'type'           => 'required|string|in:freelancer,client',
+            'other_links'    => 'nullable|array|max:3',
+            'other_links.*'  => 'url',
+            'portfolio_link' => 'required_if:type,freelancer|url',
         ];
     }
 
@@ -84,6 +81,10 @@ class RegisterRequest extends FormRequest
             'name' => [
                 'description' => 'User full name',
                 'example' => 'John Doe',
+            ],
+            'username' => [
+                'description' => 'Unique username for the user (alphanumeric, dashes, underscores)',
+                'example' => 'john_doe123',
             ],
             'email' => [
                 'description' => 'User email address (must be unique)',
@@ -101,15 +102,7 @@ class RegisterRequest extends FormRequest
                 'description' => 'User type (freelancer or client)',
                 'example' => 'freelancer',
             ],
-            'linkedin_link' => [
-                'description' => 'LinkedIn profile URL (required if type is freelancer)',
-                'example' => 'https://linkedin.com/in/johndoe',
-            ],
-            'twitter_link' => [
-                'description' => 'Twitter profile URL (required if type is freelancer)',
-                'example' => 'https://twitter.com/johndoe',
-            ],
-            'other_freelance_platform_links' => [
+            'other_links' => [
                 'description' => 'Array of other freelance platform URLs (required if type is freelancer, min: 1, max: 3)',
                 'example' => ['https://upwork.com/freelancers/johndoe', 'https://fiverr.com/johndoe'],
             ],

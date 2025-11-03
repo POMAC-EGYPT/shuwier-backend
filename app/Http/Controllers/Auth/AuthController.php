@@ -53,10 +53,8 @@ class AuthController extends Controller
      * @bodyParam password string required Password (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: Password123!
      * @bodyParam password_confirmation string required Password confirmation (must match password). Example: Password123!
      * @bodyParam type string required User type. Must be either "freelancer" or "client". Example: freelancer
-     * @bodyParam linkedin_link string required_if:type,freelancer LinkedIn profile URL (required for freelancers). Example: https://linkedin.com/in/ahmed
-     * @bodyParam twitter_link string required_if:type,freelancer Twitter profile URL (required for freelancers). Example: https://twitter.com/ahmed
-     * @bodyParam other_freelance_platform_links array required_if:type,freelancer Array of other freelance platform URLs (1-3 links, required for freelancers). Example: ["https://upwork.com/freelancers/ahmed"]
-     * @bodyParam other_freelance_platform_links.* string URL format for each freelance platform link. Example: https://upwork.com/freelancers/ahmed
+     * @bodyParam other_links array required_if:type,freelancer Array of other freelance platform URLs (1-3 links, required for freelancers). Example: ["https://upwork.com/freelancers/ahmed"]
+     * @bodyParam other_links.* string URL format for each freelance platform link. Example: https://upwork.com/freelancers/ahmed
      * @bodyParam portfolio_link string required_if:type,freelancer Portfolio website URL (required for freelancers). Example: https://ahmed-portfolio.com
      * 
      * @response 200 scenario="Verification code sent successfully" {
@@ -92,14 +90,13 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $result = $this->authUserService->register([
-            'name'                           => $request->name,
-            'email'                          => $request->email,
-            'password'                       => $request->password,
-            'type'                           => $request->type,
-            'linkedin_link'                  => $request->linkedin_link,
-            'twitter_link'                   => $request->twitter_link,
-            'other_freelance_platform_links' => $request->other_freelance_platform_links,
-            'portfolio_link'                 => $request->portfolio_link,
+            'name'           => $request->name,
+            'username'       => $request->username,
+            'email'          => $request->email,
+            'password'       => $request->password,
+            'type'           => $request->type,
+            'other_links'    => $request->other_links ?? [],
+            'portfolio_link' => $request->portfolio_link,
         ]);
 
         if (!$result['status'])
@@ -196,9 +193,7 @@ class AuthController extends Controller
      *       "about_me": null,
      *       "profile_picture": null,
      *       "approval_status": "requested",
-     *       "linkedin_link": "https://linkedin.com/in/johndoe",
-     *       "twitter_link": "https://twitter.com/johndoe",
-     *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+     *       "other_links": ["https://upwork.com/freelancers/johndoe"],
      *       "portfolio_link": "https://johndoe.com",
      *       "headline": null,
      *       "description": null,
@@ -225,9 +220,7 @@ class AuthController extends Controller
      *       "about_me": null,
      *       "profile_picture": null,
      *       "approval_status": "approved",
-     *       "linkedin_link": "https://linkedin.com/in/johndoe",
-     *       "twitter_link": "https://twitter.com/johndoe",
-     *       "other_freelance_platform_links": ["https://upwork.com/freelancers/johndoe"],
+     *       "other_links": ["https://upwork.com/freelancers/johndoe"],
      *       "portfolio_link": "https://johndoe.com",
      *       "headline": null,
      *       "description": null,
@@ -657,9 +650,7 @@ class AuthController extends Controller
      *           "approval_status": "approved",
      *           "country": null,
      *           "city": null,
-     *           "linkedin_link": "https://linkedin.com/in/freelancer3",
-     *           "twitter_link": null,
-     *           "other_freelance_platform_links": [],
+     *           "other_links": [],
      *           "portfolio_link": "https://portfolio.freelancer3.com",
      *           "headline": "Professional Freelancer",
      *           "is_verified": false,
@@ -798,100 +789,6 @@ class AuthController extends Controller
     }
 
     /**
-     * Get User Profile.
-     * 
-     * This endpoint retrieves the authenticated user's profile information.
-     * Returns different data structures based on user type (freelancer or client).
-     * Freelancers will get additional fields like skills, category, portfolio links, etc.
-     * Clients will get basic profile information along with company details.
-     * 
-     * @authenticated
-     * 
-     * @response 200 scenario="Freelancer profile" {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "Profile retrieved successfully",
-     *   "data": {
-     *     "id": 1,
-     *     "name": "أحمد محمد",
-     *     "email": "ahmed@example.com",
-     *     "type": "freelancer",
-     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
-     *     "phone": null,
-     *     "is_active": true,
-     *     "about_me": "مطور ويب محترف مع خبرة 5 سنوات",
-     *     "profile_picture": "storage/profiles/ahmed_profile.jpg",
-     *     "approval_status": "approved",
-     *     "linkedin_link": "https://linkedin.com/in/ahmed",
-     *     "twitter_link": "https://twitter.com/ahmed",
-     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
-     *     "portfolio_link": "https://ahmed-portfolio.com",
-     *     "headline": "Full Stack Developer & UI/UX Designer",
-     *     "description": "Experienced developer specializing in Laravel and React",
-     *     "category": {
-     *       "id": 1,
-     *       "name": "Web Development"
-     *     },
-     *     "skills": [
-     *       {"id": 1, "name": "PHP"},
-     *       {"id": 2, "name": "Laravel"},
-     *       {"id": 3, "name": "React"}
-     *     ],
-     *     "portfolios": [],
-     *     "created_at": "2025-08-24T10:30:00.000000Z",
-     *     "updated_at": "2025-08-24T10:30:00.000000Z"
-     *   }
-     * }
-     *
-     * @response 200 scenario="Client profile" {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "Profile retrieved successfully",
-     *   "data": {
-     *     "id": 2,
-     *     "name": "Jane Smith",
-     *     "email": "jane@example.com",
-     *     "email_verified_at": "2025-08-24T10:30:00.000000Z",
-     *     "phone": "+1234567890",
-     *     "type": "client",
-     *     "is_active": true,
-     *     "about_me": "Business owner looking for quality freelance services",
-     *     "profile_picture": "storage/profiles/jane_profile.jpg",
-     *     "company": "Tech Solutions Inc",
-     *     "created_at": "2025-08-24T10:30:00.000000Z",
-     *     "updated_at": "2025-08-24T10:30:00.000000Z"
-     *   }
-     * }
-     *
-     * @response 401 scenario="Unauthenticated" {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Unauthenticated"
-     * }
-     *
-     * @response 400 scenario="Profile retrieval failed" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "Unable to retrieve profile information"
-     * }
-     */
-    public function profile()
-    {
-        $result = $this->authUserService->getProfile();
-
-        if (!$result['status'])
-            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
-
-        $user = $result['data'];
-
-        $resource = $user->type == UserType::FREELANCER->value
-            ? FreelancerResource::make($user)
-            : ClientResource::make($user);
-
-        return Response::api($result['message'], 200, true, null, $resource);
-    }
-
-    /**
      * Update User Profile.
      * 
      * This endpoint allows authenticated users to update their profile information.
@@ -940,9 +837,7 @@ class AuthController extends Controller
      *     "about_me": "مطور ويب محترف مع خبرة 5 سنوات",
      *     "profile_picture": "storage/profiles/ahmed_profile.jpg",
      *     "approval_status": "approved",
-     *     "linkedin_link": "https://linkedin.com/in/ahmed",
-     *     "twitter_link": "https://twitter.com/ahmed",
-     *     "other_freelance_platform_links": ["https://upwork.com/freelancers/ahmed"],
+     *     "other_links": ["https://upwork.com/freelancers/ahmed"],
      *     "portfolio_link": "https://ahmed-portfolio.com",
      *     "headline": "Full Stack Developer",
      *     "description": "Experienced developer specializing in Laravel and React",

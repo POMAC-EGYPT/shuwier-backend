@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enum\ApprovalStatus;
 use App\Enum\UserType;
+use App\Helpers\SlugHelpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,6 +26,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'phone',
         'country_code',
@@ -113,6 +115,11 @@ class User extends Authenticatable implements JWTSubject
     public function portfolios()
     {
         return $this->hasMany(Portfolio::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
     }
 
     public function languages()

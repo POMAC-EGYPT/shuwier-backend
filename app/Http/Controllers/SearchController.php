@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\SearchType;
-use App\Http\Requests\ProjectSearchRequest;
+use App\Http\Requests\Search\ProjectSearchRequest;
 use App\Http\Requests\Search\ServiceSearchRequest;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\ServiceResource;

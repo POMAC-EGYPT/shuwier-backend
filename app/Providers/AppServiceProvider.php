@@ -8,6 +8,7 @@ use App\Repository\Contracts\CategoryRepositoryInterface;
 use App\Repository\Contracts\CommissionRepositoryInterface;
 use App\Repository\Contracts\FreelancerProfileRepositoryInterface;
 use App\Repository\Contracts\HashtagRepositoryInterface;
+use App\Repository\Contracts\HowItWorkRepositoryInterface;
 use App\Repository\Contracts\InvitationFreelancerRepositoryInterface;
 use App\Repository\Contracts\LanguageRepositoryInterface;
 use App\Repository\Contracts\PortfolioAttachmentRepositoryInterface;
@@ -20,6 +21,7 @@ use App\Repository\Contracts\ServiceAttachmentRepositoryInterface;
 use App\Repository\Contracts\ServiceFaqRepositoryInterface;
 use App\Repository\Contracts\ServiceRepositoryInterface;
 use App\Repository\Contracts\SkillRepositoryInterface;
+use App\Repository\Contracts\TipsAndGuidRepositoryInterface;
 use App\Repository\Contracts\UserLanguageRepositoryInterface;
 use App\Repository\Contracts\UserRepositoryInterface;
 use App\Repository\Contracts\UserVerificationRepositoryInterface;
@@ -28,6 +30,7 @@ use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\CommissionRepository;
 use App\Repository\Eloquent\FreelancerProfileRepository;
 use App\Repository\Eloquent\HashtagRepository;
+use App\Repository\Eloquent\HowItWorkRepository;
 use App\Repository\Eloquent\InvitationFreelancerRepository;
 use App\Repository\Eloquent\LanguageRepository;
 use App\Repository\Eloquent\PortfolioRepository;
@@ -41,6 +44,7 @@ use App\Repository\Eloquent\ServiceAttachmentRepository;
 use App\Repository\Eloquent\ServiceFaqRepository;
 use App\Repository\Eloquent\ServiceRepository;
 use App\Repository\Eloquent\SkillRepository;
+use App\Repository\Eloquent\TipsAndGuidRepository;
 use App\Repository\Eloquent\UserLanguageRepository;
 use App\Services\Contracts\Auth\AuthAdminServiceInterface;
 use App\Services\Contracts\Auth\AuthUserServiceInterface;
@@ -67,6 +71,7 @@ use App\Repository\Eloquent\UserVerificationRepository;
 use App\Services\Contracts\CommissionServiceInterface;
 use App\Services\Contracts\HashtagServiceInterface;
 use App\Services\Contracts\HomeServiceInterface;
+use App\Services\Contracts\HowItWorkServiceInterface;
 use App\Services\Implementations\UserVerificationService;
 use App\Services\Upload\Contracts\UploadStrategyInterface;
 use App\Services\Upload\Factory\UploadStrategyFactory;
@@ -75,13 +80,18 @@ use App\Services\Contracts\InvitationFreelancerServiceInterface;
 use App\Services\Contracts\ProjectServiceInterface;
 use App\Services\Contracts\ProposalServiceInterface;
 use App\Services\Contracts\ServiceServiceInterface;
+use App\Services\Contracts\TipsAndGuidServiceInterface;
+use App\Services\Contracts\UserServiceInterface;
 use App\Services\Implementations\CommissionService;
 use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\HomeService;
+use App\Services\Implementations\HowItWorkService;
 use App\Services\Implementations\InvitationFreelancerService;
 use App\Services\Implementations\ProjectService;
 use App\Services\Implementations\ProposalService;
 use App\Services\Implementations\ServiceService;
+use App\Services\Implementations\TipsAndGuidService;
+use App\Services\Implementations\UserService;
 use App\Services\Search\Contracts\SearchStrategyInterface;
 use App\Services\Search\Factory\SearchStrategyFactory;
 use App\Services\Search\Strategies\ProjectSearch;
@@ -101,6 +111,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(EmailVerificationServiceInterface::class, EmailVerificationService::class);
 
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(UserServiceInterface::class, UserService::class);
         $this->app->bind(AuthUserServiceInterface::class, AuthUserService::class);
 
         $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);
@@ -182,6 +193,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProposalServiceInterface::class, ProposalService::class);
 
         $this->app->bind(HomeServiceInterface::class, HomeService::class);
+
+        $this->app->bind(HowItWorkRepositoryInterface::class, HowItWorkRepository::class);
+        $this->app->bind(HowItWorkServiceInterface::class, HowItWorkService::class);
+
+        $this->app->bind(TipsAndGuidRepositoryInterface::class, TipsAndGuidRepository::class);
+        $this->app->bind(TipsAndGuidServiceInterface::class, TipsAndGuidService::class);
+
     }
 
     /**

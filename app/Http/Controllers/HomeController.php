@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\HowItWorkResource;
 use App\Http\Resources\ServiceResource;
+use App\Http\Resources\TipsAndGuidResource;
 use App\Services\Contracts\HomeServiceInterface;
 use Illuminate\Support\Facades\Response;
 
@@ -111,8 +113,25 @@ class HomeController extends Controller
      *         "created_at": "2025-09-24T12:30:32.000000Z",
      *         "updated_at": "2025-09-24T12:30:32.000000Z"
      *       }
-     *     ]
-     *   }
+     *     ],
+     *    "how_it_works": [
+     *      {
+     *        "id": 1,
+     *        "title": "How It Works",
+     *        "description": "Learn how our platform connects clients with freelancers.",
+     *        "created_at": "2025-09-07T08:44:46.000000Z",
+     *        "updated_at": "2025-09-07T08:44:46.000000Z"
+     *      }
+     *   ],
+     *   "tips_and_guides": [
+     *      {
+     *        "id": 1,
+     *        "title": "Tips for Success",
+     *        "description": "Get the most out of our platform with these tips.",
+     *        "created_at": "2025-09-07T08:44:46.000000Z",
+     *        "updated_at": "2025-09-07T08:44:46.000000Z"
+     *      }
+     *   ]
      * }
      * 
      * @response 400 scenario="Service unavailable" {
@@ -132,8 +151,14 @@ class HomeController extends Controller
             'best_seller_categories' => BaseResource::make(
                 CategoryResource::collection($result['data']['best_seller_categories'])
             ),
-            'best_seller_services' => BaseResource::make(
+            'best_seller_services'   => BaseResource::make(
                 ServiceResource::collection($result['data']['best_seller_services'])
+            ),
+            'how_it_works'           => BaseResource::make(
+                HowItWorkResource::collection($result['data']['how_it_works'])
+            ),
+            'tips_and_guides'        => BaseResource::make(
+                TipsAndGuidResource::collection($result['data']['tips_and_guides'])
             )
         ]);
     }

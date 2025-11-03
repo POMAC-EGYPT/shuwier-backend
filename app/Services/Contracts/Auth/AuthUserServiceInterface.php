@@ -18,8 +18,6 @@ interface AuthUserServiceInterface
 
     public function resetPassword(string $email, string $password, string $token): array;
 
-    public function getProfile(): array;
-
     public function updateProfile(array $data): array;
 
     public function changePassword(string $currentPassword, string $newPassword): array;

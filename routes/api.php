@@ -13,6 +13,7 @@ use App\Http\Controllers\Freelancer\ServiceController as FreelancerServiceContro
 use App\Http\Controllers\HashtagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController as ControllersProjectController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
@@ -30,7 +31,6 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/change-password', [AuthController::class, 'changePassword'])->name('change-password')->middleware('auth:api');
     Route::post('/change-email', [AuthController::class, 'changeEmail'])->name('change-email')->middleware('auth:api');
     Route::post('/verify-change-email', [AuthController::class, 'verifyChangeEmail'])->name('verify-change-email')->middleware('auth:api');
-    Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:api');
     Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth.any:api,admin')->name('logout');
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth.any:api,admin')->name('refresh');
@@ -71,13 +71,32 @@ Route::middleware(['auth:api', 'checkUserType:client', 'checkBlueMark'])->prefix
     Route::get('/proposals/{id}', [ClientProposalController::class, 'show'])->name('proposals.show');
 });
 
-
-Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])
-    ->name('projects.show');
-
 Route::post('/upload', [UploadFileController::class, 'upload'])
     ->middleware('auth:api')->name('file.upload');
 
+Route::post('/verifications', [UserVerificationController::class, 'sendRequest'])
+    ->middleware('auth:api')->name('user.verification.sendRequest');
+
+
+// guest mode routes
+Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
+
+Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+
+Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])->name('projects.show');
+
+Route::group(['prefix' => 'search'], function () {
+    Route::get('/service', [SearchController::class, 'serviceSearch'])->name('search');
+    Route::get('/project', [SearchController::class, 'projectSearch'])->name('search.project');
+});
+
+Route::group(['prefix' => 'home'], function () {
+    Route::get('/guest', [HomeController::class, 'guestHome'])->name('home.guest');
+    // Route::get('/client', [HomeController::class, 'clientHome'])->middleware(['auth:api', 'checkUserType:client'])->name('home.client');
+});
+
+
+// front utils
 Route::get('/languages', [LanguageController::class, 'index'])
     ->name('languages.index');
 
@@ -94,21 +113,5 @@ Route::get('/skills', [SkillController::class, 'index'])
 
 Route::get('/hashtags', [HashtagController::class, 'index'])
     ->name('hashtags.index');
-
-Route::post('/verifications', [UserVerificationController::class, 'sendRequest'])
-    ->middleware('auth:api')->name('user.verification.sendRequest');
-
-
-Route::group(['prefix' => 'home'], function () {
-    Route::get('/guest', [HomeController::class, 'guestHome'])->name('home.guest');
-    Route::get('/client', [HomeController::class, 'clientHome'])->middleware(['auth:api', 'checkUserType:client'])->name('home.client');
-});
-
-Route::group(['prefix' => 'search'], function () {
-    Route::get('/service', [SearchController::class, 'serviceSearch'])->name('search');
-    Route::get('/project', [SearchController::class, 'projectSearch'])->name('search.project');
-});
-
-Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
 
 Route::get('/commissions', [CommissionController::class, 'index'])->name('commissions.index');
