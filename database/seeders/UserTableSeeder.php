@@ -33,7 +33,16 @@ class UserTableSeeder extends Seeder
         //     ]);
         // }
         User::all()->each(function ($user) {
-            $user->update(['username' => Str::slug($user->name)]);
+            $baseUsername = Str::slug($user->name);
+            $username = $baseUsername;
+            $counter = 1;
+            
+            while (User::where('username', $username)->where('id', '!=', $user->id)->exists()) {
+            $username = $baseUsername . '-' . $counter;
+            $counter++;
+            }
+            
+            $user->update(['username' => $username]);
         });
     }
 }
