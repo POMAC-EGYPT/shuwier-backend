@@ -1,22 +1,24 @@
-name: Commissions
-description: ''
+name: Hashtags
+description: |-
+
+  APIs for managing hashtags and searching hashtag data
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/commissions
+    uri: api/hashtags
     metadata:
-      groupName: Commissions
-      groupDescription: ''
+      groupName: Hashtags
+      groupDescription: |-
+
+        APIs for managing hashtags and searching hashtag data
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get current commission rates'
+      title: 'Search hashtags'
       description: |-
-        Retrieve the latest commission rates and fee structure used by the platform.
-        This endpoint provides information about platform commission percentages,
-        payment processing fees, and other charges that apply to transactions.
-        This information is typically used for calculating final amounts in proposals,
-        payments, and displaying fee breakdowns to users.
+        Search for hashtags by name/keyword with pagination. This endpoint is used to find existing hashtags
+        when creating portfolios or filtering content. Returns hashtags that match the search term.
+        Results are limited to 50 items per request for performance.
       authenticated: false
       deprecated: false
       custom: []
@@ -26,50 +28,102 @@ endpoints:
       Accept-Language: en
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    queryParameters:
+      search:
+        name: search
+        description: 'The search term to look for hashtags. Minimum 1 character, maximum 50 characters.'
+        required: true
+        example: react
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      search: react
+    bodyParameters:
+      search:
+        name: search
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: vmqeopfuudtdsufvyvddq
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      search: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "message": "Success",
             "status": true,
-            "error_num": null,
-            "message": "Commission rates retrieved successfully",
             "data": {
-              "id": 1,
-              "rate": 10.0,
-              "effective_from": "2025-10-01T00:00:00.000000Z",
-              "created_by": 1,
-              "created_at": "2025-09-28T10:30:00.000000Z",
-              "updated_at": "2025-10-01T14:20:00.000000Z",
+              "data": [
+                {
+                  "id": 1,
+                  "name": "react"
+                },
+                {
+                  "id": 2,
+                  "name": "reactjs"
+                },
+                {
+                  "id": 3,
+                  "name": "react-native"
+                }
+              ]
             }
           }
         headers: []
-        description: 'Commission rates retrieved successfully'
+        description: 'Hashtags found successfully'
         custom: []
       -
         status: 200
         content: |-
           {
+            "message": "Success",
             "status": true,
-            "error_num": null,
-            "message": "No commission rates configured",
-            "data": null
+            "data": {
+              "data": []
+            }
           }
         headers: []
-        description: 'No commission rates found'
+        description: 'No hashtags found'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The search field is required."
+          }
+        headers: []
+        description: 'Validation error - Missing search parameter'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The search may not be greater than 50 characters."
+          }
+        headers: []
+        description: 'Validation error - Search term too long'
         custom: []
       -
         status: 500
         content: |-
           {
             "status": false,
-            "error_num": 500,
-            "message": "Unable to retrieve commission rates"
+            "error_num": 400,
+            "message": "An error occurred while searching hashtags"
           }
         headers: []
         description: 'Server error'

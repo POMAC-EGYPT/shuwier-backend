@@ -250,7 +250,7 @@ endpoints:
         custom: []
       delivery_time_unit:
         name: delivery_time_unit
-        description: 'Time unit for delivery. Must be one of: hours, days, weeks.'
+        description: 'Time unit for delivery. Must be one of: hours, days, months.'
         required: true
         example: days
         type: string
@@ -268,8 +268,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      fees_type:
-        name: fees_type
+      service_fees_type:
+        name: service_fees_type
         description: 'Pricing type. Must be one of: fixed, hourly.'
         required: true
         example: fixed
@@ -381,7 +381,7 @@ endpoints:
       subcategory_id: 4
       delivery_time_unit: days
       delivery_time: 7
-      fees_type: fixed
+      service_fees_type: fixed
       price: 500.0
       hashtags:
         - wordpress
@@ -763,7 +763,7 @@ endpoints:
         custom: []
       delivery_time_unit:
         name: delivery_time_unit
-        description: 'optional Time unit for delivery. Must be one of: hours, days, weeks.'
+        description: 'optional Time unit for delivery. Must be one of: hours, days, months.'
         required: false
         example: days
         type: string
@@ -781,8 +781,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      fees_type:
-        name: fees_type
+      service_fees_type:
+        name: service_fees_type
         description: 'optional Pricing type. Must be one of: fixed, hourly.'
         required: false
         example: fixed
@@ -895,7 +895,7 @@ endpoints:
       subcategory_id: 5
       delivery_time_unit: days
       delivery_time: 10
-      fees_type: fixed
+      service_fees_type: fixed
       price: 750.0
       hashtags:
         - wordpress

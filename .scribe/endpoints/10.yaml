@@ -1,108 +1,23 @@
-name: Categories
-description: |-
-
-  APIs for managing categories and retrieving category data
+name: 'Public Projects'
+description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/categories
+    uri: 'api/projects/{id}'
     metadata:
-      groupName: Categories
-      groupDescription: |-
-
-        APIs for managing categories and retrieving category data
+      groupName: 'Public Projects'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get all parent categories'
+      title: 'Show project details for all users'
       description: |-
-        Retrieve all parent categories available in the system. These are the main categories
-        that can contain subcategories. Use this endpoint to populate category dropdowns
-        in forms or display category lists.
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Success",
-            "status": true,
-            "data": {
-              "data": [
-                {
-                  "id": 1,
-                  "name": "Web Development",
-                  "description": "Website and web application development",
-                  "parent_id": null,
-                  "subcategories": []
-                },
-                {
-                  "id": 2,
-                  "name": "Mobile Development",
-                  "description": "Mobile application development for iOS and Android",
-                  "parent_id": null,
-                  "subcategories": []
-                },
-                {
-                  "id": 3,
-                  "name": "Graphic Design",
-                  "description": "Visual design and graphic arts",
-                  "parent_id": null,
-                  "subcategories": []
-                }
-              ]
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "message": "An error occurred while retrieving categories",
-            "status": false,
-            "error_num": 400
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/categories/child/{id}'
-    metadata:
-      groupName: Categories
-      groupDescription: |-
-
-        APIs for managing categories and retrieving category data
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get subcategories'
-      description: |-
-        Retrieve all subcategories that belong to a specific parent category. This endpoint is used
-        to get the child categories when a user selects a main category, allowing for hierarchical
-        category selection in forms and filters.
-      authenticated: false
+        Retrieve detailed information about a specific project. This endpoint is accessible
+        to all authenticated users (both clients and freelancers) with different access
+        controls based on user type. Freelancers can view projects to submit proposals,
+        while clients can view any project details. The endpoint includes validation
+        for freelancer-specific requirements like account status and verification.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
@@ -112,16 +27,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The parent category ID to get subcategories for.'
+        description: 'The ID of the project to retrieve.'
         required: true
-        example: 1
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -132,65 +47,145 @@ endpoints:
         status: 200
         content: |-
           {
-            "message": "Success",
             "status": true,
+            "error_num": 200,
+            "message": "Success",
             "data": {
-              "data": [
+              "id": 5,
+              "title": "E-commerce Website Development",
+              "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized with modern design principles.",
+              "category_id": "4",
+              "subcategory_id": "5",
+              "budget": "$1000-$2000",
+              "deadline_unit": "days",
+              "deadline": "12",
+              "status": "active",
+              "comments_enabled": true,
+              "proposals_enabled": true,
+              "submited_proposal_count": 8,
+              "created_at": "2025-10-06T09:11:11.000000Z",
+              "updated_at": "2025-10-06T09:11:11.000000Z",
+              "category": {
+                "id": 4,
+                "name": "Programming",
+                "image": "storage/categories/68dd364f26e71.svg",
+                "parent_id": null,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-10-01T14:10:23.000000Z"
+              },
+              "subcategory": {
+                "id": 5,
+                "name": "Web Development",
+                "image": null,
+                "parent_id": 4,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
+              },
+              "attachments": [
                 {
-                  "id": 4,
-                  "name": "Frontend Development",
-                  "parent_id": 1,
+                  "id": 2,
+                  "file_path": "storage/projects/68e3876bcc657.PNG",
+                  "user_id": 2,
+                  "project_id": 5,
+                  "created_at": "2025-10-06T09:10:03.000000Z",
+                  "updated_at": "2025-10-06T09:11:11.000000Z"
                 },
                 {
-                  "id": 5,
-                  "name": "Backend Development",
-                  "parent_id": 1,
-                },
-                {
-                  "id": 6,
-                  "name": "Full Stack Development",
-                  "parent_id": 1,
+                  "id": 3,
+                  "file_path": "storage/projects/68e3876bcc658.pdf",
+                  "user_id": 2,
+                  "project_id": 5,
+                  "created_at": "2025-10-06T09:10:05.000000Z",
+                  "updated_at": "2025-10-06T09:11:11.000000Z"
                 }
-              ]
+              ],
+              "user": {
+                "id": 2,
+                "name": "Ahmed Test",
+                "email": "client@example.com",
+                "type": "client",
+                "is_active": true,
+                "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
+                "company": "Tech Solutions Ltd",
+                "country": "Egypt",
+                "city": "Cairo",
+                "is_verified": true,
+                "user_verification_status": "approved",
+                "created_at": "2025-09-03T11:34:36.000000Z",
+                "updated_at": "2025-09-23T11:12:03.000000Z"
+              },
+              "can_submit_proposal": true,
+              "time_remaining": "5 days left"
             }
           }
         headers: []
-        description: 'Subcategories found successfully'
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Success",
-            "status": true,
-            "data": {
-              "data": []
-            }
-          }
-        headers: []
-        description: 'No subcategories found'
+        description: 'Project details retrieved successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "Category not found",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "Proposals are not enabled for this project"
           }
         headers: []
-        description: 'Invalid parent category ID'
+        description: 'Proposals not enabled for freelancers'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "An error occurred while retrieving subcategories",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "User not active"
           }
         headers: []
-        description: 'Server error'
+        description: 'Freelancer account not active'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "User not verified"
+          }
+        headers: []
+        description: 'Freelancer not verified'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Invalid project ID provided"
+          }
+        headers: []
+        description: 'Invalid project ID'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Project not found"
+          }
+        headers: []
+        description: 'Project not found'
         custom: []
     responseFields: []
     auth: []

@@ -107,3 +107,726 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/admin/how-it-works
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      search:
+        name: search
+        description: ''
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      type:
+        name: type
+        description: ''
+        required: false
+        example: freelancer
+        type: string
+        enumValues:
+          - freelancer
+          - client
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Must be at least 1.'
+        required: false
+        example: 45
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      search: consequatur
+      type: freelancer
+      per_page: 45
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"status":false,"error_num":401,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/how-it-works
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title_en:
+        name: title_en
+        description: 'Title in English (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'How It Works for Freelancers'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      title_ar:
+        name: title_ar
+        description: 'Title in Arabic (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'كيف يعمل للمستقلين'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_en:
+        name: description_en
+        description: 'Description in English (required). Must not be greater than 5000 characters.'
+        required: true
+        example: 'This section explains how freelancers can use the platform to find work and get paid.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_ar:
+        name: description_ar
+        description: 'Description in Arabic (required). Must not be greater than 5000 characters.'
+        required: true
+        example: 'يشرح هذا القسم كيف يمكن للمستقلين استخدام المنصة للعثور على عمل والحصول على أجر.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      type:
+        name: type
+        description: 'Type of user the entry is for (required, either freelancer or client).'
+        required: true
+        example: freelancer
+        type: string
+        enumValues:
+          - freelancer
+          - client
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'An optional image illustrating the how-it-works step (image file, max 2MB). Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      title_en: 'How It Works for Freelancers'
+      title_ar: 'كيف يعمل للمستقلين'
+      description_en: 'This section explains how freelancers can use the platform to find work and get paid.'
+      description_ar: 'يشرح هذا القسم كيف يمكن للمستقلين استخدام المنصة للعثور على عمل والحصول على أجر.'
+      type: freelancer
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/admin/how-it-works/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the how it work.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"status":false,"error_num":401,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/admin/how-it-works/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the how it work.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title_en:
+        name: title_en
+        description: 'Title in English (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'How It Works for Freelancers'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      title_ar:
+        name: title_ar
+        description: 'Title in Arabic (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'كيف يعمل للمستقلين'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_en:
+        name: description_en
+        description: 'Description in English (required). Must not be greater than 5000 characters.'
+        required: true
+        example: 'This section explains how freelancers can use the platform to find work and get paid.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_ar:
+        name: description_ar
+        description: 'Description in Arabic (required). Must not be greater than 5000 characters.'
+        required: true
+        example: 'يشرح هذا القسم كيف يمكن للمستقلين استخدام المنصة للعثور على عمل والحصول على أجر.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      type:
+        name: type
+        description: 'Type of user the entry is for (required, either freelancer or client).'
+        required: true
+        example: freelancer
+        type: string
+        enumValues:
+          - freelancer
+          - client
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'An optional image illustrating the how-it-works step (image file, max 2MB). Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      title_en: 'How It Works for Freelancers'
+      title_ar: 'كيف يعمل للمستقلين'
+      description_en: 'This section explains how freelancers can use the platform to find work and get paid.'
+      description_ar: 'يشرح هذا القسم كيف يمكن للمستقلين استخدام المنصة للعثور على عمل والحصول على أجر.'
+      type: freelancer
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/how-it-works/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the how it work.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/admin/tips-and-guides
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      search:
+        name: search
+        description: ''
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Must be at least 1.'
+        required: false
+        example: 45
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      search: consequatur
+      per_page: 45
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"status":false,"error_num":401,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/tips-and-guides
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title_en:
+        name: title_en
+        description: 'Title in English (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'Tips for Freelancers'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      title_ar:
+        name: title_ar
+        description: 'Title in Arabic (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'نصائح للمستقلين'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_en:
+        name: description_en
+        description: 'Description in English (required, max 5000 characters). Must not be greater than 5000 characters.'
+        required: true
+        example: 'Here are some useful tips for freelancers to succeed in their careers...'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_ar:
+        name: description_ar
+        description: 'Description in Arabic (required, max 5000 characters). Must not be greater than 5000 characters.'
+        required: true
+        example: 'إليك بعض النصائح المفيدة للمستقلين للنجاح في حياتهم المهنية...'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'An optional image for the tip or guide (jpeg, png, jpg, gif, webp; max 2MB). Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      title_en: 'Tips for Freelancers'
+      title_ar: 'نصائح للمستقلين'
+      description_en: 'Here are some useful tips for freelancers to succeed in their careers...'
+      description_ar: 'إليك بعض النصائح المفيدة للمستقلين للنجاح في حياتهم المهنية...'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/admin/tips-and-guides/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tips and guide.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"status":false,"error_num":401,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/admin/tips-and-guides/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tips and guide.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title_en:
+        name: title_en
+        description: 'Title in English (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'Tips for Freelancers'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      title_ar:
+        name: title_ar
+        description: 'Title in Arabic (required, max 255 characters). Must not be greater than 255 characters.'
+        required: true
+        example: 'نصائح للمستقلين'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_en:
+        name: description_en
+        description: 'Description in English (required, max 5000 characters). Must not be greater than 5000 characters.'
+        required: true
+        example: 'Here are some useful tips for freelancers to succeed in their careers...'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description_ar:
+        name: description_ar
+        description: 'Description in Arabic (required, max 5000 characters). Must not be greater than 5000 characters.'
+        required: true
+        example: 'إليك بعض النصائح المفيدة للمستقلين للنجاح في حياتهم المهنية...'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'An optional image for the tip or guide (jpeg, png, jpg, gif, webp; max 2MB). Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      title_en: 'Tips for Freelancers'
+      title_ar: 'نصائح للمستقلين'
+      description_en: 'Here are some useful tips for freelancers to succeed in their careers...'
+      description_ar: 'إليك بعض النصائح المفيدة للمستقلين للنجاح في حياتهم المهنية...'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/tips-and-guides/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tips and guide.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -1,24 +1,21 @@
-name: Hashtags
-description: |-
-
-  APIs for managing hashtags and searching hashtag data
+name: 'Public Home Page'
+description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/hashtags
+    uri: api/home/guest
     metadata:
-      groupName: Hashtags
-      groupDescription: |-
-
-        APIs for managing hashtags and searching hashtag data
+      groupName: 'Public Home Page'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Search hashtags'
+      title: 'Guest home page'
       description: |-
-        Search for hashtags by name/keyword with pagination. This endpoint is used to find existing hashtags
-        when creating portfolios or filtering content. Returns hashtags that match the search term.
-        Results are limited to 50 items per request for performance.
+        Retrieve the homepage data for guest (non-authenticated) users. This endpoint provides
+        curated content including best-selling categories and top-performing services to showcase
+        the platform's offerings. This data helps visitors discover popular services and categories
+        without requiring authentication.
       authenticated: false
       deprecated: false
       custom: []
@@ -28,83 +25,123 @@ endpoints:
       Accept-Language: en
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters:
-      search:
-        name: search
-        description: 'The search term to look for hashtags. Minimum 1 character, maximum 50 characters.'
-        required: true
-        example: react
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      search: react
-    bodyParameters:
-      search:
-        name: search
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: vmqeopfuudtdsufvyvddq
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      search: vmqeopfuudtdsufvyvddq
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "Success",
             "status": true,
+            "error_num": null,
+            "message": "Success",
             "data": {
-              "data": [
+              "best_seller_categories": [
                 {
-                  "id": 1,
-                  "name": "react"
+                  "id": 4,
+                  "name": "Programming",
+                  "parent_id": null,
+                  "created_at": "2025-09-07T08:44:46.000000Z",
+                  "updated_at": "2025-09-07T08:44:46.000000Z"
                 },
                 {
                   "id": 2,
-                  "name": "reactjs"
+                  "name": "Design & Creative",
+                  "parent_id": null,
+                  "created_at": "2025-09-07T08:44:46.000000Z",
+                  "updated_at": "2025-09-07T08:44:46.000000Z"
+                }
+              ],
+              "best_seller_services": [
+                {
+                  "id": 4,
+                  "title": "WordPress Website Development",
+                  "description": "I will create a professional WordPress website with custom design and functionality tailored to your business needs with modern features and responsive design",
+                  "category_id": 4,
+                  "subcategory_id": 5,
+                  "category": {
+                    "id": 4,
+                    "name": "Programming",
+                    "parent_id": null,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "subcategory": {
+                    "id": 5,
+                    "name": "Web",
+                    "parent_id": 4,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "delivery_time": 7,
+                  "delivery_time_unit": "days",
+                  "service_fees_type": "fixed",
+                  "price": "500.00",
+                  "cover_photo": "storage/services/68d3e4ae826cd.PNG",
+                  "faqs": null,
+                  "attachments": null,
+                  "hashtags": null,
+                  "user_id": 3,
+                  "created_at": "2025-09-24T12:31:42.000000Z",
+                  "updated_at": "2025-09-24T12:31:42.000000Z"
                 },
                 {
                   "id": 3,
-                  "name": "react-native"
+                  "title": "Mobile App Development",
+                  "description": "I will develop a custom mobile application for iOS and Android platforms using React Native with modern UI and seamless performance",
+                  "category_id": 4,
+                  "subcategory_id": 5,
+                  "category": {
+                    "id": 4,
+                    "name": "Programming",
+                    "parent_id": null,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "subcategory": {
+                    "id": 5,
+                    "name": "Web",
+                    "parent_id": 4,
+                    "created_at": "2025-09-07T08:44:46.000000Z",
+                    "updated_at": "2025-09-07T08:44:46.000000Z"
+                  },
+                  "delivery_time": 7,
+                  "delivery_time_unit": "days",
+                  "service_fees_type": "fixed",
+                  "price": "500.00",
+                  "cover_photo": "storage/services/68d3e46824cdc.PNG",
+                  "faqs": null,
+                  "attachments": null,
+                  "hashtags": null,
+                  "user_id": 3,
+                  "created_at": "2025-09-24T12:30:32.000000Z",
+                  "updated_at": "2025-09-24T12:30:32.000000Z"
                 }
-              ]
-            }
+              ],
+             "how_it_works": [
+               {
+                 "id": 1,
+                 "title": "How It Works",
+                 "description": "Learn how our platform connects clients with freelancers.",
+                 "created_at": "2025-09-07T08:44:46.000000Z",
+                 "updated_at": "2025-09-07T08:44:46.000000Z"
+               }
+            ],
+            "tips_and_guides": [
+               {
+                 "id": 1,
+                 "title": "Tips for Success",
+                 "description": "Get the most out of our platform with these tips.",
+                 "created_at": "2025-09-07T08:44:46.000000Z",
+                 "updated_at": "2025-09-07T08:44:46.000000Z"
+               }
+            ]
           }
         headers: []
-        description: 'Hashtags found successfully'
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Success",
-            "status": true,
-            "data": {
-              "data": []
-            }
-          }
-        headers: []
-        description: 'No hashtags found'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The search field is required."
-          }
-        headers: []
-        description: 'Validation error - Missing search parameter'
+        description: 'Home page data retrieved successfully'
         custom: []
       -
         status: 400
@@ -112,21 +149,10 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The search may not be greater than 50 characters."
+            "message": "Unable to retrieve home page data"
           }
         headers: []
-        description: 'Validation error - Search term too long'
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "An error occurred while searching hashtags"
-          }
-        headers: []
-        description: 'Server error'
+        description: 'Service unavailable'
         custom: []
     responseFields: []
     auth: []
