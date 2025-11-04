@@ -19,6 +19,8 @@ class PortfolioController extends Controller
 
 
     /**
+     * @group Portfolios
+     * 
      * Get specific portfolio
      * 
      * Retrieve a specific portfolio by its ID with all related data.

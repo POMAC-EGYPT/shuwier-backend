@@ -108,91 +108,6 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/portfolios/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get specific portfolio'
-      description: 'Retrieve a specific portfolio by its ID with all related data.'
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters:
-      id:
-        name: id
-        description: 'The portfolio ID.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Success",
-            "status": true,
-            "data": {
-              "id": 1,
-              "title": "E-commerce Website",
-              "description": "A modern responsive e-commerce website",
-              "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
-              "category": {
-                "id": 1,
-                "name": "Web Development"
-              },
-              "subcategory": {
-                "id": 2,
-                "name": "Frontend"
-              },
-              "hashtags": ["#react", "#ecommerce"],
-              "attachments": [
-                {
-                  "id": 1,
-                  "file_path": "storage/portfolios/image1.jpg"
-                }
-              ]
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "message": "Portfolio not found",
-            "status": false,
-            "error_code": 400
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
     uri: api/admin/how-it-works
     metadata:
       groupName: Endpoints
@@ -227,7 +142,7 @@ endpoints:
         name: type
         description: ''
         required: false
-        example: client
+        example: freelancer
         type: string
         enumValues:
           - freelancer
@@ -247,7 +162,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       search: consequatur
-      type: client
+      type: freelancer
       per_page: 45
     fileParameters: []
     responses:
