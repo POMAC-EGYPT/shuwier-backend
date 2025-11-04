@@ -55,7 +55,14 @@ class RegisterRequest extends FormRequest
                 'max:255',
                 'regex:/^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u'
             ],
-            'username'      => 'required|min:3|max:30|string|alpha_dash|unique:users,username',
+            'username'      => [
+                'required',
+                'min:3',
+                'max:30',
+                'string',
+                'regex:/^[A-Za-z0-9_-]+$/u',
+                'unique:users,username',
+            ],
             'email'         => [
                 'required',
                 'string',
