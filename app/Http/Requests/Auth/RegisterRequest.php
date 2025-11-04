@@ -60,7 +60,7 @@ class RegisterRequest extends FormRequest
                 'min:3',
                 'max:30',
                 'string',
-                'regex:/^[A-Za-z0-9_-]+$/u',
+                'regex:/^[A-Za-z][A-Za-z0-9_-]*$/u',
                 'unique:users,username',
             ],
             'email'         => [
