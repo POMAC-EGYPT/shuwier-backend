@@ -144,7 +144,7 @@ endpoints:
         name: type
         description: ''
         required: false
-        example: freelancer
+        example: client
         type: string
         enumValues:
           - freelancer
@@ -164,7 +164,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       search: consequatur
-      type: freelancer
+      type: client
       per_page: 45
     fileParameters: []
     responses:

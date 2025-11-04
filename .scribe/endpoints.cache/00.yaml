@@ -20,8 +20,12 @@ endpoints:
         and other authentication-related functionality for both clients and freelancers.
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
+      title: 'Check Registration Fields.'
+      description: |-
+        This endpoint validates user registration data without actually creating the user account.
+        It's useful for frontend validation and checking field availability (like email uniqueness)
+        before proceeding with the full registration process. This helps provide immediate feedback
+        to users about any validation issues with their registration data.
       authenticated: false
       deprecated: false
       custom: []
@@ -36,77 +40,195 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Must match the regex /^(?:[ء-ي]+(?:\s[ء-ي]+)*)$. Must not be greater than 255 characters.'
+        description: "User's full name (Arabic or English characters only)."
         required: true
-        example: vmqeopfuudtdsufvyvddq
+        example: 'أحمد محمد'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       email:
         name: email
-        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        description: "User's email address (must be unique and valid)."
         required: true
-        example: kunde.eloisa@example.com
+        example: ahmed@example.com
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       password:
         name: password
-        description: 'Must match the regex /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u. Must be at least 8 characters.'
+        description: 'Password (min 8 chars, must contain uppercase, lowercase, number, and special character).'
         required: true
-        example: '4[*UyPJ"}6'
+        example: Password123!
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       type:
         name: type
-        description: ''
+        description: 'User type. Must be either "freelancer" or "client".'
         required: true
-        example: client
+        example: freelancer
         type: string
-        enumValues:
-          - freelancer
-          - client
-        exampleWasSpecified: false
+        enumValues: []
+        exampleWasSpecified: true
         nullable: false
         custom: []
       other_links:
         name: other_links
-        description: 'Must be a valid URL.'
+        description: 'sometimes Array of other freelance platform URLs (max 3 links, optional).'
         required: false
         example:
-          - 'http://www.cartwright.info/id-et-necessitatibus-architecto-aut-consequatur-debitis'
+          - 'https://upwork.com/freelancers/ahmed'
         type: 'string[]'
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       portfolio_link:
         name: portfolio_link
-        description: 'This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        description: 'required_if:type,freelancer Portfolio website URL (required for freelancers).'
         required: false
-        example: 'http://www.mitchell.com/'
+        example: 'https://ahmed-portfolio.com'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Password confirmation (must match password).'
+        required: true
+        example: Password123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'other_links.*':
+        name: 'other_links.*'
+        description: 'URL format for each freelance platform link.'
+        required: false
+        example: 'https://upwork.com/freelancers/ahmed'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: vmqeopfuudtdsufvyvddq
-      email: kunde.eloisa@example.com
-      password: '4[*UyPJ"}6'
-      type: client
+      name: 'أحمد محمد'
+      email: ahmed@example.com
+      password: Password123!
+      type: freelancer
       other_links:
-        - 'http://www.cartwright.info/id-et-necessitatibus-architecto-aut-consequatur-debitis'
-      portfolio_link: 'http://www.mitchell.com/'
+        - 'https://upwork.com/freelancers/ahmed'
+      portfolio_link: 'https://ahmed-portfolio.com'
+      password_confirmation: Password123!
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Success"
+          }
+        headers: []
+        description: 'All fields are valid'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The email has already been taken."
+          }
+        headers: []
+        description: 'Email already exists'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The name format is invalid."
+          }
+        headers: []
+        description: 'Invalid name format'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+          }
+        headers: []
+        description: 'Password too weak'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The password confirmation does not match."
+          }
+        headers: []
+        description: 'Password confirmation mismatch'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The selected type is invalid."
+          }
+        headers: []
+        description: 'Invalid user type'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The portfolio link field is required when type is freelancer."
+          }
+        headers: []
+        description: 'Portfolio link missing for freelancer'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The other links may not have more than 3 items."
+          }
+        headers: []
+        description: 'Too many other links'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The other_links.0 format is invalid."
+          }
+        headers: []
+        description: 'Invalid URL format'
+        custom: []
     responseFields: []
     auth: []
     controller: null

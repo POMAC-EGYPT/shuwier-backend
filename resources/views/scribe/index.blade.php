@@ -453,7 +453,7 @@ Retrieve a specific portfolio by its ID with all related data.</a>
                 </li>
                                     <ul id="tocify-subheader-user-authentication" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-auth-check-register">
-                                <a href="#user-authentication-POSTapi-auth-check-register">POST api/auth/check-register</a>
+                                <a href="#user-authentication-POSTapi-auth-check-register">Check Registration Fields.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-authentication-POSTapi-auth-register">
                                 <a href="#user-authentication-POSTapi-auth-register">User Registration.</a>
@@ -1018,7 +1018,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6Th9tl" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpHCdJ5g" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1202,7 +1202,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6Th9tl</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpHCdJ5g</code></p>
         </div>
         </form>
 
@@ -1392,7 +1392,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpApRXEc" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLTI8SK" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1594,7 +1594,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpApRXEc</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLTI8SK</code></p>
         </div>
         </form>
 
@@ -3717,8 +3717,8 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"approved\",
-    \"is_active\": \"0\",
+    \"approval_status\": \"requested\",
+    \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3745,8 +3745,8 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "approved",
-    "is_active": "0",
+    "approval_status": "requested",
+    "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3970,10 +3970,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="approved"
+               value="requested"
                data-component="body">
     <br>
-<p>Example: <code>approved</code></p>
+<p>Example: <code>requested</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -3983,10 +3983,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -6712,7 +6712,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"completed\",
+    \"status\": \"in_progress\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -6737,7 +6737,7 @@ const headers = {
 };
 
 let body = {
-    "status": "completed",
+    "status": "in_progress",
     "per_page": 73
 };
 
@@ -7082,10 +7082,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="completed"
+               value="in_progress"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>in_progress</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -8860,7 +8860,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept-Language: en" \
     --data "{
     \"search\": \"consequatur\",
-    \"type\": \"freelancer\",
+    \"type\": \"client\",
     \"per_page\": 45
 }"
 </code></pre></div>
@@ -8879,7 +8879,7 @@ const headers = {
 
 let body = {
     "search": "consequatur",
-    "type": "freelancer",
+    "type": "client",
     "per_page": 45
 };
 
@@ -9009,10 +9009,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-how-it-works"
-               value="freelancer"
+               value="client"
                data-component="body">
     <br>
-<p>Example: <code>freelancer</code></p>
+<p>Example: <code>client</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>freelancer</code></li> <li><code>client</code></li></ul>
         </div>
@@ -10624,7 +10624,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8X24yR" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbprvlJ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10793,7 +10793,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8X24yR</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbprvlJ</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -11017,7 +11017,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYCIRrZ" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0n2B14" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11253,7 +11253,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpYCIRrZ</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0n2B14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11294,7 +11294,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaL2tss" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEo8BTK" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11557,7 +11557,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaL2tss</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEo8BTK</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -15049,7 +15049,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbp94Nz" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7kDXWj" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -15382,7 +15382,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbp94Nz</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7kDXWj</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -16613,12 +16613,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 These endpoints handle user registration with email verification, login, password reset,
 and other authentication-related functionality for both clients and freelancers.</p>
 
-                                <h2 id="user-authentication-POSTapi-auth-check-register">POST api/auth/check-register</h2>
+                                <h2 id="user-authentication-POSTapi-auth-check-register">Check Registration Fields.</h2>
 
 <p>
 </p>
 
-
+<p>This endpoint validates user registration data without actually creating the user account.
+It's useful for frontend validation and checking field availability (like email uniqueness)
+before proceeding with the full registration process. This helps provide immediate feedback
+to users about any validation issues with their registration data.</p>
 
 <span id="example-requests-POSTapi-auth-check-register">
 <blockquote>Example request:</blockquote>
@@ -16631,14 +16634,15 @@ and other authentication-related functionality for both clients and freelancers.
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"name\": \"vmqeopfuudtdsufvyvddq\",
-    \"email\": \"kunde.eloisa@example.com\",
-    \"password\": \"4[*UyPJ\\\"}6\",
-    \"type\": \"client\",
+    \"name\": \"أحمد محمد\",
+    \"email\": \"ahmed@example.com\",
+    \"password\": \"Password123!\",
+    \"type\": \"freelancer\",
     \"other_links\": [
-        \"http:\\/\\/www.cartwright.info\\/id-et-necessitatibus-architecto-aut-consequatur-debitis\"
+        \"https:\\/\\/upwork.com\\/freelancers\\/ahmed\"
     ],
-    \"portfolio_link\": \"http:\\/\\/www.mitchell.com\\/\"
+    \"portfolio_link\": \"https:\\/\\/ahmed-portfolio.com\",
+    \"password_confirmation\": \"Password123!\"
 }"
 </code></pre></div>
 
@@ -16655,14 +16659,15 @@ const headers = {
 };
 
 let body = {
-    "name": "vmqeopfuudtdsufvyvddq",
-    "email": "kunde.eloisa@example.com",
-    "password": "4[*UyPJ\"}6",
-    "type": "client",
+    "name": "أحمد محمد",
+    "email": "ahmed@example.com",
+    "password": "Password123!",
+    "type": "freelancer",
     "other_links": [
-        "http:\/\/www.cartwright.info\/id-et-necessitatibus-architecto-aut-consequatur-debitis"
+        "https:\/\/upwork.com\/freelancers\/ahmed"
     ],
-    "portfolio_link": "http:\/\/www.mitchell.com\/"
+    "portfolio_link": "https:\/\/ahmed-portfolio.com",
+    "password_confirmation": "Password123!"
 };
 
 fetch(url, {
@@ -16674,7 +16679,106 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-auth-check-register">
-</span>
+            <blockquote>
+            <p>Example response (200, All fields are valid):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Email already exists):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The email has already been taken.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid name format):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The name format is invalid.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Password too weak):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Password confirmation mismatch):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The password confirmation does not match.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid user type):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The selected type is invalid.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Portfolio link missing for freelancer):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The portfolio link field is required when type is freelancer.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Too many other links):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The other links may not have more than 3 items.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid URL format):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The other_links.0 format is invalid.&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-auth-check-register" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-auth-check-register"></span>:
@@ -16762,10 +16866,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-auth-check-register"
-               value="vmqeopfuudtdsufvyvddq"
+               value="أحمد محمد"
                data-component="body">
     <br>
-<p>Must match the regex /^(?:[ء-ي]+(?:\s[ء-ي]+)*)$. Must not be greater than 255 characters. Example: <code>vmqeopfuudtdsufvyvddq</code></p>
+<p>User's full name (Arabic or English characters only). Example: <code>أحمد محمد</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -16773,10 +16877,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-check-register"
-               value="kunde.eloisa@example.com"
+               value="ahmed@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>kunde.eloisa@example.com</code></p>
+<p>User's email address (must be unique and valid). Example: <code>ahmed@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -16784,10 +16888,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-check-register"
-               value="4[*UyPJ"}6"
+               value="Password123!"
                data-component="body">
     <br>
-<p>Must match the regex /^(?=.<em>[a-z])(?=.</em>[A-Z])(?=.<em>\d)(?=.</em>[!@#\$٪\^&amp;*)(ـ+])[A-Za-z\d!@#\$٪\^&amp;*)(ـ+]{8,}$/u. Must be at least 8 characters. Example: <code>4[*UyPJ"}6</code></p>
+<p>Password (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: <code>Password123!</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -16795,25 +16899,32 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-auth-check-register"
-               value="client"
+               value="freelancer"
                data-component="body">
     <br>
-<p>Example: <code>client</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>freelancer</code></li> <li><code>client</code></li></ul>
+<p>User type. Must be either &quot;freelancer&quot; or &quot;client&quot;. Example: <code>freelancer</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>other_links</code></b>&nbsp;&nbsp;
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>other_links</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+<br>
+<p>sometimes Array of other freelance platform URLs (max 3 links, optional).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="other_links[0]"                data-endpoint="POSTapi-auth-check-register"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="other_links[1]"                data-endpoint="POSTapi-auth-check-register"
+                              name="other_links.*"                data-endpoint="POSTapi-auth-check-register"
+               value="https://upwork.com/freelancers/ahmed"
                data-component="body">
     <br>
-<p>Must be a valid URL.</p>
+<p>URL format for each freelance platform link. Example: <code>https://upwork.com/freelancers/ahmed</code></p>
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>portfolio_link</code></b>&nbsp;&nbsp;
@@ -16821,10 +16932,21 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="portfolio_link"                data-endpoint="POSTapi-auth-check-register"
-               value="http://www.mitchell.com/"
+               value="https://ahmed-portfolio.com"
                data-component="body">
     <br>
-<p>This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL. Example: <code>http://www.mitchell.com/</code></p>
+<p>required_if:type,freelancer Portfolio website URL (required for freelancers). Example: <code>https://ahmed-portfolio.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-auth-check-register"
+               value="Password123!"
+               data-component="body">
+    <br>
+<p>Password confirmation (must match password). Example: <code>Password123!</code></p>
         </div>
         </form>
 
@@ -20290,7 +20412,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgsC7qn" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3t7H5P" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -20451,7 +20573,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgsC7qn</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3t7H5P</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

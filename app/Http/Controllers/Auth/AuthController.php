@@ -41,6 +41,77 @@ class AuthController extends Controller
         $this->authUserService = $authUserService;
     }
 
+    /**
+     * Check Registration Fields.
+     * 
+     * This endpoint validates user registration data without actually creating the user account.
+     * It's useful for frontend validation and checking field availability (like email uniqueness)
+     * before proceeding with the full registration process. This helps provide immediate feedback
+     * to users about any validation issues with their registration data.
+     * 
+     * @bodyParam name string required User's full name (Arabic or English characters only). Example: أحمد محمد
+     * @bodyParam email string required User's email address (must be unique and valid). Example: ahmed@example.com
+     * @bodyParam password string required Password (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: Password123!
+     * @bodyParam password_confirmation string required Password confirmation (must match password). Example: Password123!
+     * @bodyParam type string required User type. Must be either "freelancer" or "client". Example: freelancer
+     * @bodyParam other_links array sometimes Array of other freelance platform URLs (max 3 links, optional). Example: ["https://upwork.com/freelancers/ahmed"]
+     * @bodyParam other_links.* string URL format for each freelance platform link. Example: https://upwork.com/freelancers/ahmed
+     * @bodyParam portfolio_link string required_if:type,freelancer Portfolio website URL (required for freelancers). Example: https://ahmed-portfolio.com
+     * 
+     * @response 200 scenario="All fields are valid" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Success"
+     * }
+     *
+     * @response 400 scenario="Email already exists" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The email has already been taken."
+     * }
+     *
+     * @response 400 scenario="Invalid name format" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The name format is invalid."
+     * }
+     *
+     * @response 400 scenario="Password too weak" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+     * }
+     *
+     * @response 400 scenario="Password confirmation mismatch" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The password confirmation does not match."
+     * }
+     *
+     * @response 400 scenario="Invalid user type" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The selected type is invalid."
+     * }
+     *
+     * @response 400 scenario="Portfolio link missing for freelancer" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The portfolio link field is required when type is freelancer."
+     * }
+     *
+     * @response 400 scenario="Too many other links" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The other links may not have more than 3 items."
+     * }
+     *
+     * @response 400 scenario="Invalid URL format" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The other_links.0 format is invalid."
+     * }
+     */
     public function checkRegisterFields(Request $request)
     {
         $validator = Validator::make($request->all(), [

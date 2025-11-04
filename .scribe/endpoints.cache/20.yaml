@@ -85,7 +85,7 @@ endpoints:
         name: approval_status
         description: ''
         required: false
-        example: approved
+        example: requested
         type: string
         enumValues:
           - requested
@@ -97,7 +97,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: '0'
+        example: '1'
         type: string
         enumValues:
           - '0'
@@ -116,8 +116,8 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      approval_status: approved
-      is_active: '0'
+      approval_status: requested
+      is_active: '1'
       name: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
