@@ -15,7 +15,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Get user portfolios'
-      description: 'Retrieve all portfolios for the authenticated freelancer with pagination.'
+      description: ''
       authenticated: true
       deprecated: false
       custom: []
@@ -98,7 +98,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Create new portfolio'
-      description: 'Create a new portfolio for the authenticated freelancer.'
+      description: ''
       authenticated: true
       deprecated: false
       custom: []
@@ -264,93 +264,6 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: 'api/freelancers/portfolios/{id}'
-    metadata:
-      groupName: 'Freelancer Portfolio'
-      groupDescription: |-
-
-        APIs for managing freelancer portfolios
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get specific portfolio'
-      description: 'Retrieve a specific portfolio by its ID with all related data.'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters:
-      id:
-        name: id
-        description: 'The portfolio ID.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Success",
-            "status": true,
-            "data": {
-              "id": 1,
-              "title": "E-commerce Website",
-              "description": "A modern responsive e-commerce website",
-              "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
-              "category": {
-                "id": 1,
-                "name": "Web Development"
-              },
-              "subcategory": {
-                "id": 2,
-                "name": "Frontend"
-              },
-              "hashtags": ["#react", "#ecommerce"],
-              "attachments": [
-                {
-                  "id": 1,
-                  "file_path": "storage/portfolios/image1.jpg"
-                }
-              ]
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "message": "Portfolio not found",
-            "status": false,
-            "error_code": 400
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
       - PUT
       - PATCH
     uri: 'api/freelancers/portfolios/{id}'
@@ -362,19 +275,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Update portfolio'
-      description: |-
-        Update an existing portfolio. **Important behavior notes:**
-
-        **For Attachments:**
-        - If you send `attachment_ids` parameter (even as empty array), ALL existing attachments will be detached and replaced with the new ones
-        - If you don't send `attachment_ids` parameter at all, existing attachments will remain unchanged
-        - You need to upload files first using /api/upload endpoint to get attachment IDs
-        - Example: To change attachments, send new attachment IDs: `"attachment_ids": [20, 21, 22]`
-
-        **For Hashtags:**
-        - If you send `hashtags` parameter (even as empty array), ALL existing hashtags will be replaced with the new ones
-        - If you don't send `hashtags` parameter at all, existing hashtags will remain unchanged
-        - To remove all hashtags, send an empty array: `"hashtags": []`
+      description: ''
       authenticated: true
       deprecated: false
       custom: []
@@ -572,9 +473,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Delete portfolio'
-      description: |-
-        Permanently delete a portfolio and all its associated data including attachments and hashtag relationships.
-        **Warning:** This action cannot be undone. All uploaded files will also be deleted from storage.
+      description: ''
       authenticated: true
       deprecated: false
       custom: []

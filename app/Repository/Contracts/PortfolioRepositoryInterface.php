@@ -11,6 +11,8 @@ interface PortfolioRepositoryInterface
 
     public function findByUserIdAndPortfolioId(int $userId, int $portfolioId): Portfolio;
 
+    public function findById(int $id): Portfolio;
+
     public function syncHashtags(Portfolio $portfolio, array $hashtags): void;
 
     public function create(array $data): Portfolio;

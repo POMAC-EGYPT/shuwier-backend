@@ -27,6 +27,8 @@ class PortfolioController extends Controller
     /**
      * Get user portfolios
      * 
+     * @authenticated
+     * 
      * Retrieve all portfolios for the authenticated freelancer with pagination.
      * 
      * @queryParam per_page integer Number of portfolios per page. Default is 10. Example: 15
@@ -64,7 +66,6 @@ class PortfolioController extends Controller
      *   }
      * }
      * 
-     * @authenticated
      */
     public function index(Request $request)
     {
@@ -77,6 +78,8 @@ class PortfolioController extends Controller
 
     /**
      * Create new portfolio
+     * 
+     * @authenticated
      * 
      * Create a new portfolio for the authenticated freelancer.
      * 
@@ -126,7 +129,6 @@ class PortfolioController extends Controller
      *   "error_code": 400
      * }
      * 
-     * @authenticated
      */
     public function store(PortfolioRequest $request)
     {
@@ -148,59 +150,10 @@ class PortfolioController extends Controller
     }
 
     /**
-     * Get specific portfolio
-     * 
-     * Retrieve a specific portfolio by its ID with all related data.
-     * 
-     * @urlParam id integer required The portfolio ID. Example: 1
-     * 
-     * @response 200 {
-     *   "message": "Success",
-     *   "status": true,
-     *   "data": {
-     *     "id": 1,
-     *     "title": "E-commerce Website",
-     *     "description": "A modern responsive e-commerce website",
-     *     "cover_photo": "storage/portfolios/68ee0f54b6ee8.PNG",
-     *     "category": {
-     *       "id": 1,
-     *       "name": "Web Development"
-     *     },
-     *     "subcategory": {
-     *       "id": 2,
-     *       "name": "Frontend"
-     *     },
-     *     "hashtags": ["#react", "#ecommerce"],
-     *     "attachments": [
-     *       {
-     *         "id": 1,
-     *         "file_path": "storage/portfolios/image1.jpg"
-     *       }
-     *     ]
-     *   }
-     * }
-     * 
-     * @response 400 {
-     *   "message": "Portfolio not found",
-     *   "status": false,
-     *   "error_code": 400
-     * }
-     * 
-     * @authenticated
-     */
-    public function show(string $id)
-    {
-        $result = $this->portfolioService->getPortfolioByUserIdAndPortfolioId(auth('api')->id(), (int) $id);
-
-        if (!$result['status'])
-            return Response::api($result['message'], 400, false, 400);
-
-        return Response::api($result['message'], 200, true, null, BaseResource::make(PortfolioResource::make($result['data'])));
-    }
-
-    /**
      * Update portfolio
      * 
+     * @authenticated
+     *
      * Update an existing portfolio. **Important behavior notes:**
      * 
      * **For Attachments:**
@@ -267,7 +220,6 @@ class PortfolioController extends Controller
      *   "error_code": 400
      * }
      * 
-     * @authenticated
      */
     public function update(PortfolioRequest $request, string $id)
     {
@@ -291,6 +243,8 @@ class PortfolioController extends Controller
     /**
      * Delete portfolio
      * 
+     * @authenticated
+     * 
      * Permanently delete a portfolio and all its associated data including attachments and hashtag relationships.
      * **Warning:** This action cannot be undone. All uploaded files will also be deleted from storage.
      * 
@@ -308,7 +262,6 @@ class PortfolioController extends Controller
      *   "error_code": 404
      * }
      * 
-     * @authenticated
      */
     public function destroy(string $id)
     {

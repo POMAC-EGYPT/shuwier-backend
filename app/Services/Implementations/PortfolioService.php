@@ -45,6 +45,13 @@ class PortfolioService implements PortfolioServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $portfolio];
     }
 
+    public function getById(int $id): array
+    {
+        $portfolio = $this->profileRepo->findById($id);
+
+        return ['status' => true, 'message' => __('message.success'), 'data' => $portfolio];
+    }
+
     public function create(array $data): array
     {
         $category = $this->categoryService->getById($data['category_id']);

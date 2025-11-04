@@ -8,6 +8,112 @@ endpoints:
   -
     httpMethods:
       - POST
+    uri: api/auth/check-register
+    metadata:
+      groupName: 'User Authentication'
+      groupDescription: |-
+
+        APIs for user registration, authentication, and account management.
+        These endpoints handle user registration with email verification, login, password reset,
+        and other authentication-related functionality for both clients and freelancers.
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must match the regex /^(?:[ء-ي]+(?:\s[ء-ي]+)*)$. Must not be greater than 255 characters.'
+        required: true
+        example: vmqeopfuudtdsufvyvddq
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: true
+        example: kunde.eloisa@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Must match the regex /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u. Must be at least 8 characters.'
+        required: true
+        example: '4[*UyPJ"}6'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      type:
+        name: type
+        description: ''
+        required: true
+        example: client
+        type: string
+        enumValues:
+          - freelancer
+          - client
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      other_links:
+        name: other_links
+        description: 'Must be a valid URL.'
+        required: false
+        example:
+          - 'http://www.cartwright.info/id-et-necessitatibus-architecto-aut-consequatur-debitis'
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      portfolio_link:
+        name: portfolio_link
+        description: 'This field is required when <code>type</code> is <code>freelancer</code>. Must be a valid URL.'
+        required: false
+        example: 'http://www.mitchell.com/'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: vmqeopfuudtdsufvyvddq
+      email: kunde.eloisa@example.com
+      password: '4[*UyPJ"}6'
+      type: client
+      other_links:
+        - 'http://www.cartwright.info/id-et-necessitatibus-architecto-aut-consequatur-debitis'
+      portfolio_link: 'http://www.mitchell.com/'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
     uri: api/auth/register
     metadata:
       groupName: 'User Authentication'
@@ -47,7 +153,7 @@ endpoints:
         custom: []
       username:
         name: username
-        description: 'Unique username for the user (alphanumeric, dashes, underscores). Must contain only letters, numbers, dashes and underscores. Must not be greater than 30 characters.'
+        description: 'Unique username for the user (alphanumeric, dashes, underscores). Must match the regex /^[A-Za-z0-9_-]+$/u. Must be at least 3 characters. Must not be greater than 30 characters.'
         required: true
         example: john_doe123
         type: string

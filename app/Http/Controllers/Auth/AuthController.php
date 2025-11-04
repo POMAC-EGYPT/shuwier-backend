@@ -41,6 +41,36 @@ class AuthController extends Controller
         $this->authUserService = $authUserService;
     }
 
+    public function checkRegisterFields(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'          => [
+                'required',
+                'max:255',
+                'regex:/^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u'
+            ],
+            'email'         => [
+                'required',
+                'string',
+                'email:rfc,dns',
+                'max:255',
+                'unique:users',
+                new EmailRule,
+            ],
+            'password'       => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
+            'type'           => 'required|string|in:freelancer,client',
+            'other_links'    => 'nullable|array|max:3',
+            'other_links.*'  => 'url',
+            'portfolio_link' => 'required_if:type,freelancer|url',
+        ]);
+
+        if ($validator->fails())
+            return Response::api($validator->errors()->first(), 400, false, 400);
+
+
+        return Response::api(__('message.success'), 200, true, null);
+    }
+
     /**
      * User Registration.
      * 

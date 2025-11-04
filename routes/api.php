@@ -19,8 +19,10 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
+use App\Http\Controllers\PortfolioController as GuestPortfolioController;
 
 Route::group(['prefix' => 'auth'], function () {
+    Route::post('/check-register', [AuthController::class, 'checkRegisterFields'])->name('check-register');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/resend-code', [AuthController::class, 'resendCode'])->name('resend-code');
     Route::post('/verify-email', [AuthController::class, 'verifyEmail'])->name('verify-email');
@@ -40,7 +42,8 @@ Route::group(['prefix' => 'auth'], function () {
 Route::middleware(['auth:api', 'checkUserType:freelancer', 'checkFreelancerApproval'])
 
     ->prefix('freelancers')->group(function () {
-        Route::apiResource('portfolios', PortfolioController::class);
+        Route::apiResource('portfolios', PortfolioController::class)->except('show');
+
 
         Route::apiResources(
             [
@@ -79,11 +82,13 @@ Route::post('/verifications', [UserVerificationController::class, 'sendRequest']
 
 
 // guest mode routes
-Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/profile/{username}', [ProfileController::class, 'profile'])->name('profile');
 
 Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
 
 Route::get('/projects/{id}', [ControllersProjectController::class, 'show'])->name('projects.show');
+
+Route::get('/portfolios/{id}', [GuestPortfolioController::class, 'show'])->name('portfolios.show');
 
 Route::group(['prefix' => 'search'], function () {
     Route::get('/service', [SearchController::class, 'serviceSearch'])->name('search');

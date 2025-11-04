@@ -8,7 +8,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/profile/{slug}'
+    uri: 'api/profile/{username}'
     metadata:
       groupName: 'Profile Management'
       groupDescription: |-
@@ -28,9 +28,9 @@ endpoints:
       Accept: application/json
       Accept-Language: en
     urlParameters:
-      slug:
-        name: slug
-        description: 'The slug of the profile.'
+      username:
+        name: username
+        description: ''
         required: true
         example: consequatur
         type: string
@@ -39,7 +39,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      slug: consequatur
+      username: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

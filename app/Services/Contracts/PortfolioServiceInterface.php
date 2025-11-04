@@ -8,6 +8,8 @@ interface PortfolioServiceInterface
 
     public function getPortfolioByUserIdAndPortfolioId(int $userId, int $portfolioId): array;
 
+    public function getById(int $id): array;
+
     public function create(array $data): array;
 
     public function update(int $userId, int $id, array $data): array;
