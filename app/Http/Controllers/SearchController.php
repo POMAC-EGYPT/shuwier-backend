@@ -226,7 +226,7 @@ class SearchController extends Controller
             'hashtag'        => $request->hashtag,
             'price_min'      => $request->price_min,
             'price_max'      => $request->price_max,
-            'perPage'        => $request->per_page ?? 16,
+            'per_page'        => $request->per_page ?? 16,
         ]);
 
         return Response::api(
