@@ -36,6 +36,7 @@ class SearchController extends Controller
      * @bodyParam hashtag string optional Filter services by hashtag keyword. Search for services tagged with specific keywords. Example: php
      * @bodyParam price_min number optional Minimum price filter. Only services with price >= this value will be returned. Example: 100.00
      * @bodyParam price_max number optional Maximum price filter. Only services with price <= this value will be returned. Example: 1000.00
+     * @bodyParam per_page integer optional Number of results to return per page. Must be between 1 and 50. Example: 10
      * 
      * @response 200 scenario="Services found successfully" {
      *   "status": true,
@@ -225,7 +226,7 @@ class SearchController extends Controller
             'hashtag'        => $request->hashtag,
             'price_min'      => $request->price_min,
             'price_max'      => $request->price_max,
-            'perPage'        => 16,
+            'perPage'        => $request->per_page ?? 16,
         ]);
 
         return Response::api(

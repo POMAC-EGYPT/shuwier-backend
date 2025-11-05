@@ -47,6 +47,7 @@ class ServiceSearchRequest extends FormRequest
             'hashtag'        => 'nullable|string|max:255',
             'price_min'      => 'nullable|numeric|min:0',
             'price_max'      => 'nullable|numeric|min:0',
+            'per_page'      => 'nullable|integer|min:1|max:50',
         ];
     }
 
@@ -81,6 +82,10 @@ class ServiceSearchRequest extends FormRequest
             'price_max' => [
                 'description' => 'Maximum price filter for services. Only services with price less than or equal to this value will be returned.',
                 'example'     => 1000.00,
+            ],
+            'per_page' => [
+                'description' => 'Number of results to return per page. Must be between 1 and 50.',
+                'example'     => 10,
             ],
         ];
     }
