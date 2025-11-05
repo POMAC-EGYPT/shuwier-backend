@@ -29,7 +29,7 @@ class ServiceSearch implements SearchStrategyInterface
             $filters['hashtag'] ?? null,
             $filters['price_min'] ?? null,
             $filters['price_max'] ?? null,
-            $filters['perPage'] ?? 16
+            $filters['per_page'] ?? 16
         );
     }
 }
