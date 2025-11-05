@@ -275,7 +275,7 @@ endpoints:
         custom: []
       username:
         name: username
-        description: 'Unique username for the user (alphanumeric, dashes, underscores). Must match the regex /^[A-Za-z0-9_-]+$/u. Must be at least 3 characters. Must not be greater than 30 characters.'
+        description: 'Unique username for the user (alphanumeric, dashes, underscores). Must match the regex /^[A-Za-z][A-Za-z0-9_-]*$/u. Must be at least 3 characters. Must not be greater than 30 characters.'
         required: true
         example: john_doe123
         type: string

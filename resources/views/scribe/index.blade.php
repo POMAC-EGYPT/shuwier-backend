@@ -515,7 +515,7 @@ Retrieve a specific portfolio by its ID with all related data.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 4, 2025</li>
+        <li>Last updated: November 5, 2025</li>
     </ul>
 </div>
 
@@ -1018,7 +1018,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpHCdJ5g" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpS39UQm" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1202,7 +1202,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpHCdJ5g</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpS39UQm</code></p>
         </div>
         </form>
 
@@ -1392,7 +1392,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLTI8SK" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfBdFsY" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1594,7 +1594,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLTI8SK</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpfBdFsY</code></p>
         </div>
         </form>
 
@@ -6712,7 +6712,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"in_progress\",
+    \"status\": \"completed\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -6737,7 +6737,7 @@ const headers = {
 };
 
 let body = {
-    "status": "in_progress",
+    "status": "completed",
     "per_page": 73
 };
 
@@ -7082,10 +7082,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="in_progress"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>in_progress</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -10624,7 +10624,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbprvlJ" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpzvASR5" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10793,7 +10793,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbprvlJ</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpzvASR5</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -11017,7 +11017,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0n2B14" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprhEWBe" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11253,7 +11253,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0n2B14</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprhEWBe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11294,7 +11294,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEo8BTK" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXRNCi0" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11557,7 +11557,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpEo8BTK</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpXRNCi0</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -13936,7 +13936,8 @@ discovery functionality with multiple filtering options. Results are paginated w
     \"subcategory_id\": 5,
     \"hashtag\": \"php\",
     \"price_min\": 100,
-    \"price_max\": 1000
+    \"price_max\": 1000,
+    \"per_page\": 10
 }"
 </code></pre></div>
 
@@ -13958,7 +13959,8 @@ let body = {
     "subcategory_id": 5,
     "hashtag": "php",
     "price_min": 100,
-    "price_max": 1000
+    "price_max": 1000,
+    "per_page": 10
 };
 
 fetch(url, {
@@ -14331,6 +14333,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>optional Maximum price filter. Only services with price &lt;= this value will be returned. Example: <code>1000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-search-service"
+               value="10"
+               data-component="body">
+    <br>
+<p>optional Number of results to return per page. Must be between 1 and 50. Example: <code>10</code></p>
         </div>
         </form>
 
@@ -15049,7 +15062,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7kDXWj" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjcoTfX" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -15382,7 +15395,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7kDXWj</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjcoTfX</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -17174,7 +17187,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="john_doe123"
                data-component="body">
     <br>
-<p>Unique username for the user (alphanumeric, dashes, underscores). Must match the regex /^[A-Za-z0-9_-]+$/u. Must be at least 3 characters. Must not be greater than 30 characters. Example: <code>john_doe123</code></p>
+<p>Unique username for the user (alphanumeric, dashes, underscores). Must match the regex /^[A-Za-z][A-Za-z0-9_-]*$/u. Must be at least 3 characters. Must not be greater than 30 characters. Example: <code>john_doe123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -20412,7 +20425,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3t7H5P" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoH0noA" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -20573,7 +20586,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3t7H5P</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpoH0noA</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
