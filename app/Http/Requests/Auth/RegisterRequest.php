@@ -79,6 +79,13 @@ class RegisterRequest extends FormRequest
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'username.regex' => 'Your username must begin with a letter and can include numbers and underscores.',
+        ];
+    }
+
     /**
      * Get custom body parameters for API documentation.
      */
