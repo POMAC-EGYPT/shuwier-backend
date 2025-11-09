@@ -176,17 +176,11 @@
                                                     <li class="tocify-item level-2" data-unique="admin-how-it-works-management-GETapi-admin-how-it-works">
                                 <a href="#admin-how-it-works-management-GETapi-admin-how-it-works">Get How It Works List.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="admin-how-it-works-management-POSTapi-admin-how-it-works">
-                                <a href="#admin-how-it-works-management-POSTapi-admin-how-it-works">Create How It Works Item.</a>
-                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="admin-how-it-works-management-GETapi-admin-how-it-works--id-">
                                 <a href="#admin-how-it-works-management-GETapi-admin-how-it-works--id-">Get How It Works Item Details.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="admin-how-it-works-management-PUTapi-admin-how-it-works--id-">
                                 <a href="#admin-how-it-works-management-PUTapi-admin-how-it-works--id-">Update How It Works Item.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="admin-how-it-works-management-DELETEapi-admin-how-it-works--id-">
-                                <a href="#admin-how-it-works-management-DELETEapi-admin-how-it-works--id-">Delete How It Works Item.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -1032,7 +1026,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkNqQma" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb6Wifh" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1216,7 +1210,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkNqQma</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpb6Wifh</code></p>
         </div>
         </form>
 
@@ -1406,7 +1400,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSzGNVv" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjJuNZV" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1608,7 +1602,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSzGNVv</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjJuNZV</code></p>
         </div>
         </form>
 
@@ -4880,7 +4874,7 @@ This endpoint supports searching through titles and descriptions in both English
     --header "Accept-Language: en" \
     --data "{
     \"search\": \"consequatur\",
-    \"type\": \"freelancer\",
+    \"type\": \"client\",
     \"per_page\": 45
 }"
 </code></pre></div>
@@ -4907,7 +4901,7 @@ const headers = {
 
 let body = {
     "search": "consequatur",
-    "type": "freelancer",
+    "type": "client",
     "per_page": 45
 };
 
@@ -5105,10 +5099,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-how-it-works"
-               value="freelancer"
+               value="client"
                data-component="body">
     <br>
-<p>Example: <code>freelancer</code></p>
+<p>Example: <code>client</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>freelancer</code></li> <li><code>client</code></li></ul>
         </div>
@@ -5122,268 +5116,6 @@ Must be one of:
                data-component="body">
     <br>
 <p>Must be at least 1. Example: <code>45</code></p>
-        </div>
-        </form>
-
-                    <h2 id="admin-how-it-works-management-POSTapi-admin-how-it-works">Create How It Works Item.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Create a new &quot;How It Works&quot; instructional item with multilingual content and optional image.
-This endpoint allows administrators to add new guidance content for freelancers or clients.</p>
-
-<span id="example-requests-POSTapi-admin-how-it-works">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://backend.shuwier.com/api/admin/how-it-works" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"title_en\": \"Getting Started\",
-    \"title_ar\": \"البدء\",
-    \"description_en\": \"Learn how to create your profile and start working\",
-    \"description_ar\": \"تعلم كيفية إنشاء ملفك الشخصي وبدء العمل\",
-    \"type\": \"freelancer\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/how-it-works"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-let body = {
-    "title_en": "Getting Started",
-    "title_ar": "البدء",
-    "description_en": "Learn how to create your profile and start working",
-    "description_ar": "تعلم كيفية إنشاء ملفك الشخصي وبدء العمل",
-    "type": "freelancer"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-admin-how-it-works">
-            <blockquote>
-            <p>Example response (200, Item created successfully):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;How it works created successfully&quot;,
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title_en&quot;: &quot;Getting Started&quot;,
-        &quot;title_ar&quot;: &quot;البدء&quot;,
-        &quot;description_en&quot;: &quot;Learn how to create your profile and start working&quot;,
-        &quot;description_ar&quot;: &quot;تعلم كيفية إنشاء ملفك الشخصي وبدء العمل&quot;,
-        &quot;type&quot;: &quot;freelancer&quot;,
-        &quot;image&quot;: &quot;storage/how-it-works/getting-started.jpg&quot;,
-        &quot;created_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Validation error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The title_en field is required.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Invalid image):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;The image must be a file of type: jpeg, png, jpg, gif, svg.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401, Unauthenticated):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-admin-how-it-works" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-admin-how-it-works"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-admin-how-it-works"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-admin-how-it-works" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-admin-how-it-works">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-admin-how-it-works" data-method="POST"
-      data-path="api/admin/how-it-works"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-admin-how-it-works', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-admin-how-it-works"
-                    onclick="tryItOut('POSTapi-admin-how-it-works');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-admin-how-it-works"
-                    onclick="cancelTryOut('POSTapi-admin-how-it-works');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-admin-how-it-works"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/admin/how-it-works</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-admin-how-it-works"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-admin-how-it-works"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="POSTapi-admin-how-it-works"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>title_en</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="title_en"                data-endpoint="POSTapi-admin-how-it-works"
-               value="Getting Started"
-               data-component="body">
-    <br>
-<p>English title for the how-it-works item. Example: <code>Getting Started</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>title_ar</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="title_ar"                data-endpoint="POSTapi-admin-how-it-works"
-               value="البدء"
-               data-component="body">
-    <br>
-<p>Arabic title for the how-it-works item. Example: <code>البدء</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description_en</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description_en"                data-endpoint="POSTapi-admin-how-it-works"
-               value="Learn how to create your profile and start working"
-               data-component="body">
-    <br>
-<p>English description explaining the process. Example: <code>Learn how to create your profile and start working</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description_ar</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description_ar"                data-endpoint="POSTapi-admin-how-it-works"
-               value="تعلم كيفية إنشاء ملفك الشخصي وبدء العمل"
-               data-component="body">
-    <br>
-<p>Arabic description explaining the process. Example: <code>تعلم كيفية إنشاء ملفك الشخصي وبدء العمل</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="type"                data-endpoint="POSTapi-admin-how-it-works"
-               value="freelancer"
-               data-component="body">
-    <br>
-<p>Target user type (freelancer or client). Example: <code>freelancer</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="image"                data-endpoint="POSTapi-admin-how-it-works"
-               value=""
-               data-component="body">
-    <br>
-<p>optional Image file to illustrate the process (max 2MB, jpg/png/svg). Example:</p>
         </div>
         </form>
 
@@ -5843,185 +5575,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>optional New image file to replace existing one (max 2MB, jpg/png/svg). Example:</p>
         </div>
         </form>
-
-                    <h2 id="admin-how-it-works-management-DELETEapi-admin-how-it-works--id-">Delete How It Works Item.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Permanently delete a &quot;How It Works&quot; item from the system. This action cannot be undone.
-The associated image file will also be removed from storage.</p>
-
-<span id="example-requests-DELETEapi-admin-how-it-works--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://backend.shuwier.com/api/admin/how-it-works/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/admin/how-it-works/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-admin-how-it-works--id-">
-            <blockquote>
-            <p>Example response (200, Item deleted successfully):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;How it works deleted successfully&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Item not found):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;How it works not found&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Cannot delete):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 400,
-    &quot;message&quot;: &quot;Cannot delete this how it works item&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401, Unauthenticated):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: false,
-    &quot;error_num&quot;: 401,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEapi-admin-how-it-works--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-admin-how-it-works--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-admin-how-it-works--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-admin-how-it-works--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-admin-how-it-works--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-admin-how-it-works--id-" data-method="DELETE"
-      data-path="api/admin/how-it-works/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-admin-how-it-works--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-admin-how-it-works--id-"
-                    onclick="tryItOut('DELETEapi-admin-how-it-works--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-admin-how-it-works--id-"
-                    onclick="cancelTryOut('DELETEapi-admin-how-it-works--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-admin-how-it-works--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/admin/how-it-works/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-admin-how-it-works--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-admin-how-it-works--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="DELETEapi-admin-how-it-works--id-"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-admin-how-it-works--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the how-it-works item to delete. Example: <code>1</code></p>
-            </div>
-                    </form>
 
                 <h1 id="admin-skills-management">Admin Skills Management</h1>
 
@@ -9010,7 +8563,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"completed\",
+    \"status\": \"active\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -9035,7 +8588,7 @@ const headers = {
 };
 
 let body = {
-    "status": "completed",
+    "status": "active",
     "per_page": 73
 };
 
@@ -9380,10 +8933,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="completed"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -11163,7 +10716,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php84qei6" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6ysHjb" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11332,7 +10885,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php84qei6</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6ysHjb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -11556,7 +11109,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpCjYnD1" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpllM3CL" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11792,7 +11345,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpCjYnD1</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpllM3CL</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11833,7 +11386,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpagzJ7o" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUSyHS9" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -12096,7 +11649,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpagzJ7o</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUSyHS9</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -15601,7 +15154,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSE79V7" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpi793J5" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -15934,7 +15487,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSE79V7</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpi793J5</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -20964,7 +20517,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbhcumN" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkRGL8T" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -21125,7 +20678,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbhcumN</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkRGL8T</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

@@ -28,6 +28,11 @@ class TipsAndGuidRepository implements TipsAndGuidRepositoryInterface
             ->get();
     }
 
+    public function count(): int
+    {
+        return TipsAndGuid::count();
+    }
+
     public function find(int $id): TipsAndGuid
     {
         return TipsAndGuid::findOrFail($id);

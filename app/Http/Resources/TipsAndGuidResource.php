@@ -22,6 +22,7 @@ class TipsAndGuidResource extends JsonResource
                 'description_en' => $this->description_en,
                 'description_ar' => $this->description_ar,
                 'image'          => $this->image,
+                'is_popular'     => $this->is_popular,
                 'created_at'     => $this->created_at,
                 'updated_at'     => $this->updated_at,
             ];
@@ -31,6 +32,7 @@ class TipsAndGuidResource extends JsonResource
             'title'       => app()->getLocale() == 'ar' ? $this->title_ar : $this->title_en,
             'description' => app()->getLocale() == 'ar' ? $this->description_ar : $this->description_en,
             'image'       => $this->image,
+            'is_popular'  => $this->is_popular,
             'created_at'  => $this->created_at,
             'updated_at'  => $this->updated_at,
         ];

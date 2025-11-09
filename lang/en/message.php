@@ -149,4 +149,5 @@ return [
     'tips_and_guid_created_successfully'                              => 'Tips and Guid created successfully',
     'tips_and_guid_updated_successfully'                              => 'Tips and Guid updated successfully',
     'tips_and_guid_deleted_successfully'                              => 'Tips and Guid deleted successfully',
+    "can't_delete_popular_tips_and_guid"                              => "Can't delete popular tips and guid",
 ];

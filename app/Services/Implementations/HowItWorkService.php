@@ -29,22 +29,6 @@ class HowItWorkService implements HowItWorkServiceInterface
         return ['status' => true, 'message' => __('message.success'), 'data' => $howItWork];
     }
 
-    public function create(array $data): array
-    {
-        $imagePath = ImageHelpers::addImage($data['image'], 'how_it_works');
-
-        $howItWork = $this->howItWorkRepository->create([
-            'title_en'       => $data['title_en'],
-            'title_ar'       => $data['title_ar'],
-            'description_en' => $data['description_en'],
-            'description_ar' => $data['description_ar'],
-            'type'           => $data['type'],
-            'image'          => $imagePath,
-        ]);
-
-        return ['status' => true, 'message' => __('message.how_it_work_created_successfully'), 'data' => $howItWork];
-    }
-
     public function update(int $id, array $data): array
     {
         $howItWork = $this->howItWorkRepository->find($id);
@@ -69,16 +53,5 @@ class HowItWorkService implements HowItWorkServiceInterface
         ]);
 
         return ['status' => true, 'message' => __('message.how_it_work_updated_successfully')];
-    }
-
-    public function delete(int $id): array
-    {
-        $howItWork = $this->howItWorkRepository->find($id);
-
-        ImageHelpers::deleteImage($howItWork->image);
-
-        $this->howItWorkRepository->delete($id);
-
-        return ['status' => true, 'message' => __('message.how_it_work_deleted_successfully')];
     }
 }

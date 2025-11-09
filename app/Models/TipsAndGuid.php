@@ -12,5 +12,10 @@ class TipsAndGuid extends Model
         'description_en',
         'description_ar',
         'image',
+        'is_popular',
+    ];
+
+    protected $casts = [
+        'is_popular' => 'boolean',
     ];
 }

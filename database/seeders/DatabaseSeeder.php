@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             // PermissionTableSeeder::class,
             // UserTableSeeder::class,
             // LanguageTableSeeder::class,
+            HowItWorkTableSeeder::class,
+            TipsAndGuidTableSeeder::class,
         ]);
     }
 }

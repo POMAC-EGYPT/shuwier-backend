@@ -102,79 +102,6 @@ class HowItWorkController extends Controller
     }
 
     /**
-     * Create How It Works Item.
-     * 
-     * Create a new "How It Works" instructional item with multilingual content and optional image.
-     * This endpoint allows administrators to add new guidance content for freelancers or clients.
-     * 
-     * @authenticated
-     * 
-     * @bodyParam title_en string required English title for the how-it-works item. Example: Getting Started
-     * @bodyParam title_ar string required Arabic title for the how-it-works item. Example: البدء
-     * @bodyParam description_en string required English description explaining the process. Example: Learn how to create your profile and start working
-     * @bodyParam description_ar string required Arabic description explaining the process. Example: تعلم كيفية إنشاء ملفك الشخصي وبدء العمل
-     * @bodyParam type string required Target user type (freelancer or client). Example: freelancer
-     * @bodyParam image file optional Image file to illustrate the process (max 2MB, jpg/png/svg). Example: No-example
-     * 
-     * @response 200 scenario="Item created successfully" {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "How it works created successfully",
-     *   "data": {
-     *     "id": 1,
-     *     "title_en": "Getting Started",
-     *     "title_ar": "البدء",
-     *     "description_en": "Learn how to create your profile and start working",
-     *     "description_ar": "تعلم كيفية إنشاء ملفك الشخصي وبدء العمل",
-     *     "type": "freelancer",
-     *     "image": "storage/how-it-works/getting-started.jpg",
-     *     "created_at": "2025-11-09T10:00:00.000000Z",
-     *     "updated_at": "2025-11-09T10:00:00.000000Z"
-     *   }
-     * }
-     *
-     * @response 400 scenario="Validation error" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "The title_en field is required."
-     * }
-     *
-     * @response 400 scenario="Invalid image" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "The image must be a file of type: jpeg, png, jpg, gif, svg."
-     * }
-     *
-     * @response 401 scenario="Unauthenticated" {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Unauthenticated"
-     * }
-     */
-    public function store(HowItWorkRequest $request)
-    {
-        $result = $this->howItWorkService->create([
-            'title_en'       => $request->title_en,
-            'title_ar'       => $request->title_ar,
-            'description_en' => $request->description_en,
-            'description_ar' => $request->description_ar,
-            'type'           => $request->type,
-            'image'          => $request->image,
-        ]);
-
-        if (!$result['status'])
-            return Response::api($result['message'], 400, false, 400);
-
-        return Response::api(
-            $result['message'],
-            200,
-            true,
-            null,
-            BaseResource::make(HowItWorkResource::make($result['data']))
-        );
-    }
-
-    /**
      * Get How It Works Item Details.
      * 
      * Retrieve detailed information about a specific "How It Works" item by its ID.
@@ -285,50 +212,6 @@ class HowItWorkController extends Controller
             'type'           => $request->type,
             'image'          => $request->image ?? null,
         ]);
-
-        if (!$result['status'])
-            return Response::api($result['message'], 400, false, 400);
-
-        return Response::api($result['message'], 200, true, null);
-    }
-
-    /**
-     * Delete How It Works Item.
-     * 
-     * Permanently delete a "How It Works" item from the system. This action cannot be undone.
-     * The associated image file will also be removed from storage.
-     * 
-     * @authenticated
-     * 
-     * @urlParam id integer required The ID of the how-it-works item to delete. Example: 1
-     * 
-     * @response 200 scenario="Item deleted successfully" {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "How it works deleted successfully"
-     * }
-     *
-     * @response 400 scenario="Item not found" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "How it works not found"
-     * }
-     *
-     * @response 400 scenario="Cannot delete" {
-     *   "status": false,
-     *   "error_num": 400,
-     *   "message": "Cannot delete this how it works item"
-     * }
-     *
-     * @response 401 scenario="Unauthenticated" {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Unauthenticated"
-     * }
-     */
-    public function destroy(string $id)
-    {
-        $result = $this->howItWorkService->delete((int) $id);
 
         if (!$result['status'])
             return Response::api($result['message'], 400, false, 400);

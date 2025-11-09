@@ -12,6 +12,8 @@ interface TipsAndGuidRepositoryInterface
 
     public function getWithLimit(int $limit = 10): Collection;
 
+    public function count(): int;
+
     public function find(int $id): TipsAndGuid;
 
     public function create(array $data): TipsAndGuid;

@@ -39,6 +39,7 @@ class TipsAndGuidService implements TipsAndGuidServiceInterface
             'description_en' => $data['description_en'],
             'description_ar' => $data['description_ar'],
             'image'          => $imagePath,
+            'is_popular'     => false,
         ]);
 
         return ['status' => true, 'message' => __('message.tips_and_guid_created_successfully'), 'data' => $tipsAndGuid];
@@ -62,6 +63,7 @@ class TipsAndGuidService implements TipsAndGuidServiceInterface
             'description_en' => $data['description_en'],
             'description_ar' => $data['description_ar'],
             'image'          => $imagePath ?? $tipsAndGuid->image,
+            'is_popular'     => $tipsAndGuid->is_popular,
         ]);
 
         return ['status' => true, 'message' => __('message.tips_and_guid_updated_successfully')];
@@ -70,6 +72,9 @@ class TipsAndGuidService implements TipsAndGuidServiceInterface
     public function delete(int $id): array
     {
         $tipsAndGuid = $this->tipsAndGuidRepo->find($id);
+
+        if ($tipsAndGuid->is_popular)
+            return ['status' => false, 'message' => __("message.can't_delete_popular_tips_and_guid")];
 
         ImageHelpers::deleteImage($tipsAndGuid->image);
 
