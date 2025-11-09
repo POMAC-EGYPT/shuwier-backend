@@ -46,7 +46,7 @@ class HowItWorkRequest extends FormRequest
             'description_en' => 'required|string|max:5000',
             'description_ar' => 'required|string|max:5000',
             'type'           => 'required|in:freelancer,client',
-            'image'          => request()->routeIs('admin.how-it-works.store') ? 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048' : 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image'          => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ];
     }
 
