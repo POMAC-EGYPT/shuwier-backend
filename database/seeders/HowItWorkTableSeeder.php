@@ -47,7 +47,7 @@ class HowItWorkTableSeeder extends Seeder
                 'description_en' => 'Discover new opportunities that match your skills.',
                 'description_ar' => 'اكتشف فرصًا جديدة تتناسب مع مهاراتك.',
                 'type'           => 'freelancer',
-                'image'          => 'assets/img/how_it_works/image/image4.png',
+                'image'          => 'assets/img/how_it_works/image4.png',
             ],
             [
                 'title_en'       => 'Submit a Proposal',
