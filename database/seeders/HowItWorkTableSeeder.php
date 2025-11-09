@@ -20,7 +20,7 @@ class HowItWorkTableSeeder extends Seeder
                 'description_en' => 'Create a job post with your requirements or browse freelancers directly.',
                 'description_ar' => 'قم بإنشاء منشور وظيفة مع متطلباتك أو تصفح المستقلين مباشرةً.',
                 'type'           => 'client',
-                'image'          => 'assets/img/how_it_works/image/image1.png',
+                'image'          => 'assets/img/how_it_works/image1.png',
             ],
             [
                 'title_en'       => 'Choose the right freelancer',
@@ -28,7 +28,7 @@ class HowItWorkTableSeeder extends Seeder
                 'description_en' => 'Review proposals, check profiles, compare skills, and explore portfolios',
                 'description_ar' => 'راجع المقترحات، تحقق من الملفات الشخصية، قارن المهارات، واستعرض المحافظ.',
                 'type'           => 'client',
-                'image'          => 'assets/img/how_it_works/image/image2.png',
+                'image'          => 'assets/img/how_it_works/image2.png',
             ],
             [
                 'title_en'       => 'Get it done',
@@ -36,7 +36,7 @@ class HowItWorkTableSeeder extends Seeder
                 'description_en' => 'Collaborate, track progress, and release payment securely.',
                 'description_ar' => 'تعاون، تتبع التقدم، وأصدر الدفعات بأمان.',
                 'type'           => 'client',
-                'image'          => 'assets/img/how_it_works/image/image3.png',
+                'image'          => 'assets/img/how_it_works/image3.png',
             ],
         ];
 
@@ -55,7 +55,7 @@ class HowItWorkTableSeeder extends Seeder
                 'description_en' => 'Craft a convincing offer and showcase your expertise.',
                 'description_ar' => 'قم بصياغة عرض مقنع وعرض خبراتك.',
                 'type'           => 'freelancer',
-                'image'          => 'assets/img/how_it_works/image/image5.png',
+                'image'          => 'assets/img/how_it_works/image5.png',
             ],
             [
                 'title_en'       => 'Work & Get Paid',
@@ -63,7 +63,7 @@ class HowItWorkTableSeeder extends Seeder
                 'description_en' => 'Complete the job, deliver high-quality work, and receive secure payments.',
                 'description_ar' => 'أكمل المهمة، قدم عملًا عالي الجودة، وتلقى المدفوعات بأمان.',
                 'type'           => 'freelancer',
-                'image'          => 'assets/img/how_it_works/image/image6.png',
+                'image'          => 'assets/img/how_it_works/image6.png',
             ],
         ];
 
