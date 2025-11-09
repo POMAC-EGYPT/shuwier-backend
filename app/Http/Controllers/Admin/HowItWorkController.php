@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @group Admin How It Works Management
+ * 
+ * APIs for managing "How It Works" content sections that explain platform functionality
+ * to freelancers and clients. These endpoints allow administrators to create, update, 
+ * and manage instructional content with multilingual support (English and Arabic).
+ */
 class HowItWorkController extends Controller
 {
     protected $howItWorkService;
@@ -21,7 +28,53 @@ class HowItWorkController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Get How It Works List.
+     * 
+     * Retrieve a paginated list of "How It Works" items with optional filtering by search term and user type.
+     * This endpoint supports searching through titles and descriptions in both English and Arabic languages.
+     * 
+     * @authenticated
+     * 
+     * @queryParam search string optional Search term to filter items by title or description. Example: getting started
+     * @queryParam type string optional Filter by user type (freelancer or client). Example: freelancer
+     * @queryParam per_page integer optional Number of items per page (minimum 1). Example: 10
+     * 
+     * @response 200 scenario="Success with results" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "How it works retrieved successfully",
+     *   "data": {
+     *     "data": [
+     *       {
+     *         "id": 1,
+     *         "title_en": "Getting Started",
+     *         "title_ar": "البدء",
+     *         "description_en": "Learn how to create your profile and start working",
+     *         "description_ar": "تعلم كيفية إنشاء ملفك الشخصي وبدء العمل",
+     *         "type": "freelancer",
+     *         "image": "storage/how-it-works/getting-started.jpg",
+     *         "created_at": "2025-11-09T10:00:00.000000Z",
+     *         "updated_at": "2025-11-09T10:00:00.000000Z"
+     *       }
+     *     ],
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 10,
+     *     "total": 1
+     *   }
+     * }
+     *
+     * @response 400 scenario="Invalid parameters" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The selected type is invalid."
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
      */
     public function index(Request $request)
     {
@@ -49,7 +102,54 @@ class HowItWorkController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create How It Works Item.
+     * 
+     * Create a new "How It Works" instructional item with multilingual content and optional image.
+     * This endpoint allows administrators to add new guidance content for freelancers or clients.
+     * 
+     * @authenticated
+     * 
+     * @bodyParam title_en string required English title for the how-it-works item. Example: Getting Started
+     * @bodyParam title_ar string required Arabic title for the how-it-works item. Example: البدء
+     * @bodyParam description_en string required English description explaining the process. Example: Learn how to create your profile and start working
+     * @bodyParam description_ar string required Arabic description explaining the process. Example: تعلم كيفية إنشاء ملفك الشخصي وبدء العمل
+     * @bodyParam type string required Target user type (freelancer or client). Example: freelancer
+     * @bodyParam image file optional Image file to illustrate the process (max 2MB, jpg/png/svg). Example: No-example
+     * 
+     * @response 200 scenario="Item created successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "How it works created successfully",
+     *   "data": {
+     *     "id": 1,
+     *     "title_en": "Getting Started",
+     *     "title_ar": "البدء",
+     *     "description_en": "Learn how to create your profile and start working",
+     *     "description_ar": "تعلم كيفية إنشاء ملفك الشخصي وبدء العمل",
+     *     "type": "freelancer",
+     *     "image": "storage/how-it-works/getting-started.jpg",
+     *     "created_at": "2025-11-09T10:00:00.000000Z",
+     *     "updated_at": "2025-11-09T10:00:00.000000Z"
+     *   }
+     * }
+     *
+     * @response 400 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The title_en field is required."
+     * }
+     *
+     * @response 400 scenario="Invalid image" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The image must be a file of type: jpeg, png, jpg, gif, svg."
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
      */
     public function store(HowItWorkRequest $request)
     {
@@ -75,7 +175,43 @@ class HowItWorkController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get How It Works Item Details.
+     * 
+     * Retrieve detailed information about a specific "How It Works" item by its ID.
+     * This endpoint returns the complete item data including multilingual content and image.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id integer required The ID of the how-it-works item to retrieve. Example: 1
+     * 
+     * @response 200 scenario="Item found successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "How it works retrieved successfully",
+     *   "data": {
+     *     "id": 1,
+     *     "title_en": "Getting Started",
+     *     "title_ar": "البدء",
+     *     "description_en": "Learn how to create your profile and start working",
+     *     "description_ar": "تعلم كيفية إنشاء ملفك الشخصي وبدء العمل",
+     *     "type": "freelancer",
+     *     "image": "storage/how-it-works/getting-started.jpg",
+     *     "created_at": "2025-11-09T10:00:00.000000Z",
+     *     "updated_at": "2025-11-09T10:00:00.000000Z"
+     *   }
+     * }
+     *
+     * @response 400 scenario="Item not found" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "How it works not found"
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
      */
     public function show(string $id)
     {
@@ -94,7 +230,50 @@ class HowItWorkController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update How It Works Item.
+     * 
+     * Update an existing "How It Works" item with new content. All fields are optional
+     * and only provided fields will be updated. If no new image is provided, the existing image is kept.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id integer required The ID of the how-it-works item to update. Example: 1
+     * @bodyParam title_en string optional English title for the how-it-works item. Example: Getting Started - Updated
+     * @bodyParam title_ar string optional Arabic title for the how-it-works item. Example: البدء - محدث
+     * @bodyParam description_en string optional English description explaining the process. Example: Updated: Learn how to create your profile and start working
+     * @bodyParam description_ar string optional Arabic description explaining the process. Example: محدث: تعلم كيفية إنشاء ملفك الشخصي وبدء العمل
+     * @bodyParam type string optional Target user type (freelancer or client). Example: client
+     * @bodyParam image file optional New image file to replace existing one (max 2MB, jpg/png/svg). Example: No-example
+     * 
+     * @response 200 scenario="Item updated successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "How it works updated successfully"
+     * }
+     *
+     * @response 400 scenario="Item not found" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "How it works not found"
+     * }
+     *
+     * @response 400 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The selected type is invalid."
+     * }
+     *
+     * @response 400 scenario="Invalid image" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The image must be a file of type: jpeg, png, jpg, gif, svg."
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
      */
     public function update(HowItWorkRequest $request, string $id)
     {
@@ -114,7 +293,38 @@ class HowItWorkController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete How It Works Item.
+     * 
+     * Permanently delete a "How It Works" item from the system. This action cannot be undone.
+     * The associated image file will also be removed from storage.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id integer required The ID of the how-it-works item to delete. Example: 1
+     * 
+     * @response 200 scenario="Item deleted successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "How it works deleted successfully"
+     * }
+     *
+     * @response 400 scenario="Item not found" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "How it works not found"
+     * }
+     *
+     * @response 400 scenario="Cannot delete" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Cannot delete this how it works item"
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
      */
     public function destroy(string $id)
     {

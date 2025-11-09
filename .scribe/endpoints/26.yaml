@@ -1,17 +1,27 @@
-name: 'Admin Freelancer Invitations'
-description: ''
+name: 'Admin Tips & Guides Management'
+description: |-
+
+  APIs for managing tips and guides content that provide helpful advice and best practices
+  for platform users. These endpoints allow administrators to create, update, and manage
+  educational content with multilingual support (English and Arabic).
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/invitations
+    uri: api/admin/tips-and-guides
     metadata:
-      groupName: 'Admin Freelancer Invitations'
-      groupDescription: ''
+      groupName: 'Admin Tips & Guides Management'
+      groupDescription: |-
+
+        APIs for managing tips and guides content that provide helpful advice and best practices
+        for platform users. These endpoints allow administrators to create, update, and manage
+        educational content with multilingual support (English and Arabic).
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get All Freelancer Invitations'
-      description: 'Retrieve a paginated list of all freelancer invitations sent by the admin.'
+      title: 'Get Tips & Guides List.'
+      description: |-
+        Retrieve a paginated list of tips and guides with optional search filtering.
+        This endpoint supports searching through titles and descriptions in both English and Arabic languages.
       authenticated: true
       deprecated: false
       custom: []
@@ -22,68 +32,105 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
+      search:
+        name: search
+        description: 'optional Search term to filter items by title or description.'
+        required: false
+        example: 'freelancing tips'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       per_page:
         name: per_page
-        description: 'optional Number of items per page. Minimum: 1.'
+        description: 'optional Number of items per page (minimum 1).'
         required: false
-        example: 15
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanQueryParameters:
-      per_page: 15
+      search: 'freelancing tips'
+      per_page: 10
     bodyParameters:
+      search:
+        name: search
+        description: ''
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
       per_page:
         name: per_page
         description: 'Must be at least 1.'
         required: false
-        example: 73
+        example: 45
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      per_page: 73
+      search: consequatur
+      per_page: 45
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "Success",
             "status": true,
             "error_num": null,
+            "message": "Tips and guides retrieved successfully",
             "data": {
-              "current_page": 1,
               "data": [
                 {
                   "id": 1,
-                  "email": "freelancer@example.com",
-                  "expired_at": "2025-09-23T10:00:00.000000Z",
-                  "created_at": "2025-09-16T10:00:00.000000Z",
-                  "updated_at": "2025-09-16T10:00:00.000000Z"
+                  "title_en": "Best Freelancing Practices",
+                  "title_ar": "أفضل ممارسات العمل الحر",
+                  "description_en": "Learn the essential tips for successful freelancing career",
+                  "description_ar": "تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر",
+                  "image": "storage/tips-guides/freelancing-tips.jpg",
+                  "created_at": "2025-11-09T10:00:00.000000Z",
+                  "updated_at": "2025-11-09T10:00:00.000000Z"
                 }
               ],
+              "current_page": 1,
+              "last_page": 1,
               "per_page": 10,
               "total": 1
             }
           }
         headers: []
-        description: ''
+        description: 'Success with results'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "Validation error",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "The per_page must be at least 1."
           }
         headers: []
-        description: ''
+        description: 'Invalid parameters'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
         custom: []
     responseFields: []
     auth: []
@@ -94,14 +141,20 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/admin/invitations
+    uri: api/admin/tips-and-guides
     metadata:
-      groupName: 'Admin Freelancer Invitations'
-      groupDescription: ''
+      groupName: 'Admin Tips & Guides Management'
+      groupDescription: |-
+
+        APIs for managing tips and guides content that provide helpful advice and best practices
+        for platform users. These endpoints allow administrators to create, update, and manage
+        educational content with multilingual support (English and Arabic).
       subgroup: ''
       subgroupDescription: ''
-      title: 'Send Freelancer Invitation'
-      description: 'Send an invitation email to a potential freelancer. The email must be unique and not already registered.'
+      title: 'Create Tips & Guides Item.'
+      description: |-
+        Create a new tip or guide item with multilingual content and optional image.
+        This endpoint allows administrators to add educational and helpful content for platform users.
       authenticated: true
       deprecated: false
       custom: []
@@ -114,63 +167,460 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      email:
-        name: email
-        description: 'A valid email address for the freelancer invitation. Must be unique and not already registered.'
+      title_en:
+        name: title_en
+        description: 'English title for the tip or guide.'
         required: true
-        example: freelancer@example.com
+        example: 'Best Freelancing Practices'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      title_ar:
+        name: title_ar
+        description: 'Arabic title for the tip or guide.'
+        required: true
+        example: 'أفضل ممارسات العمل الحر'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description_en:
+        name: description_en
+        description: 'English description with detailed advice.'
+        required: true
+        example: 'Learn the essential tips for successful freelancing career'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description_ar:
+        name: description_ar
+        description: 'Arabic description with detailed advice.'
+        required: true
+        example: 'تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'optional Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example:'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      email: freelancer@example.com
+      title_en: 'Best Freelancing Practices'
+      title_ar: 'أفضل ممارسات العمل الحر'
+      description_en: 'Learn the essential tips for successful freelancing career'
+      description_ar: 'تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Tips and guide created successfully",
+            "data": {
+              "id": 1,
+              "title_en": "Best Freelancing Practices",
+              "title_ar": "أفضل ممارسات العمل الحر",
+              "description_en": "Learn the essential tips for successful freelancing career",
+              "description_ar": "تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر",
+              "image": "storage/tips-guides/freelancing-tips.jpg",
+              "created_at": "2025-11-09T10:00:00.000000Z",
+              "updated_at": "2025-11-09T10:00:00.000000Z"
+            }
+          }
+        headers: []
+        description: 'Item created successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The title_en field is required."
+          }
+        headers: []
+        description: 'Validation error'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The image must be a file of type: jpeg, png, jpg, gif, svg."
+          }
+        headers: []
+        description: 'Invalid image'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/admin/tips-and-guides/{id}'
+    metadata:
+      groupName: 'Admin Tips & Guides Management'
+      groupDescription: |-
+
+        APIs for managing tips and guides content that provide helpful advice and best practices
+        for platform users. These endpoints allow administrators to create, update, and manage
+        educational content with multilingual support (English and Arabic).
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Tips & Guides Item Details.'
+      description: |-
+        Retrieve detailed information about a specific tip or guide item by its ID.
+        This endpoint returns the complete item data including multilingual content and image.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tips and guides item to retrieve.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "message": "Invitation sent successfully",
             "status": true,
-            "error_num": null
+            "error_num": null,
+            "message": "Tips and guide retrieved successfully",
+            "data": {
+              "id": 1,
+              "title_en": "Best Freelancing Practices",
+              "title_ar": "أفضل ممارسات العمل الحر",
+              "description_en": "Learn the essential tips for successful freelancing career",
+              "description_ar": "تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر",
+              "image": "storage/tips-guides/freelancing-tips.jpg",
+              "created_at": "2025-11-09T10:00:00.000000Z",
+              "updated_at": "2025-11-09T10:00:00.000000Z"
+            }
           }
         headers: []
-        description: ''
+        description: 'Item found successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "The email field is required.",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "Tips and guide not found"
           }
         headers: []
-        description: ''
+        description: 'Item not found'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/admin/tips-and-guides/{id}'
+    metadata:
+      groupName: 'Admin Tips & Guides Management'
+      groupDescription: |-
+
+        APIs for managing tips and guides content that provide helpful advice and best practices
+        for platform users. These endpoints allow administrators to create, update, and manage
+        educational content with multilingual support (English and Arabic).
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update Tips & Guides Item.'
+      description: |-
+        Update an existing tip or guide item with new content. All fields are optional
+        and only provided fields will be updated. If no new image is provided, the existing image is kept.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tips and guides item to update.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title_en:
+        name: title_en
+        description: 'optional English title for the tip or guide.'
+        required: false
+        example: 'Best Freelancing Practices - Updated'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      title_ar:
+        name: title_ar
+        description: 'optional Arabic title for the tip or guide.'
+        required: false
+        example: 'أفضل ممارسات العمل الحر - محدث'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description_en:
+        name: description_en
+        description: 'optional English description with detailed advice.'
+        required: false
+        example: 'Updated: Learn the essential tips for successful freelancing career'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description_ar:
+        name: description_ar
+        description: 'optional Arabic description with detailed advice.'
+        required: false
+        example: 'محدث: تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'optional New image file to replace existing one (max 2MB, jpg/png/svg). Example:'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      title_en: 'Best Freelancing Practices - Updated'
+      title_ar: 'أفضل ممارسات العمل الحر - محدث'
+      description_en: 'Updated: Learn the essential tips for successful freelancing career'
+      description_ar: 'محدث: تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Tips and guide updated successfully"
+          }
+        headers: []
+        description: 'Item updated successfully'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "The email has already been taken.",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "Tips and guide not found"
           }
         headers: []
-        description: ''
+        description: 'Item not found'
         custom: []
       -
         status: 400
         content: |-
           {
-            "message": "User already registered",
             "status": false,
-            "error_num": 400
+            "error_num": 400,
+            "message": "The title_en must be a string."
           }
         headers: []
-        description: ''
+        description: 'Validation error'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The image must be a file of type: jpeg, png, jpg, gif, svg."
+          }
+        headers: []
+        description: 'Invalid image'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/tips-and-guides/{id}'
+    metadata:
+      groupName: 'Admin Tips & Guides Management'
+      groupDescription: |-
+
+        APIs for managing tips and guides content that provide helpful advice and best practices
+        for platform users. These endpoints allow administrators to create, update, and manage
+        educational content with multilingual support (English and Arabic).
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete Tips & Guides Item.'
+      description: |-
+        Permanently delete a tip or guide item from the system. This action cannot be undone.
+        The associated image file will also be removed from storage.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tips and guides item to delete.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Tips and guide deleted successfully"
+          }
+        headers: []
+        description: 'Item deleted successfully'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Tips and guide not found"
+          }
+        headers: []
+        description: 'Item not found'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Cannot delete this tips and guide item"
+          }
+        headers: []
+        description: 'Cannot delete'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
         custom: []
     responseFields: []
     auth: []
