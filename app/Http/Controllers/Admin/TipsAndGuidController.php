@@ -51,6 +51,7 @@ class TipsAndGuidController extends Controller
      *         "description_en": "Learn the essential tips for successful freelancing career",
      *         "description_ar": "تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر",
      *         "image": "storage/tips-guides/freelancing-tips.jpg",
+     *         "is_popular": false,
      *         "created_at": "2025-11-09T10:00:00.000000Z",
      *         "updated_at": "2025-11-09T10:00:00.000000Z"
      *       }
@@ -123,6 +124,7 @@ class TipsAndGuidController extends Controller
      *     "description_en": "Learn the essential tips for successful freelancing career",
      *     "description_ar": "تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر",
      *     "image": "storage/tips-guides/freelancing-tips.jpg",
+     *     "is_popular": false,
      *     "created_at": "2025-11-09T10:00:00.000000Z",
      *     "updated_at": "2025-11-09T10:00:00.000000Z"
      *   }
@@ -189,6 +191,7 @@ class TipsAndGuidController extends Controller
      *     "description_en": "Learn the essential tips for successful freelancing career",
      *     "description_ar": "تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر",
      *     "image": "storage/tips-guides/freelancing-tips.jpg",
+     *     "is_popular": false,
      *     "created_at": "2025-11-09T10:00:00.000000Z",
      *     "updated_at": "2025-11-09T10:00:00.000000Z"
      *   }

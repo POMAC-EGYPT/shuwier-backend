@@ -390,6 +390,19 @@ Retrieve a specific portfolio by its ID with all related data.</a>
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-public-tips-guides" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="public-tips-guides">
+                    <a href="#public-tips-guides">Public - Tips & Guides</a>
+                </li>
+                                    <ul id="tocify-subheader-public-tips-guides" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="public-tips-guides-GETapi-tips-and-guides">
+                                <a href="#public-tips-guides-GETapi-tips-and-guides">Get Tips & Guides List.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="public-tips-guides-GETapi-tips-and-guides--id-">
+                                <a href="#public-tips-guides-GETapi-tips-and-guides--id-">Get Tips & Guides Item Details.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-public-home-page" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="public-home-page">
                     <a href="#public-home-page">Public Home Page</a>
@@ -523,7 +536,7 @@ Retrieve a specific portfolio by its ID with all related data.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 9, 2025</li>
+        <li>Last updated: November 10, 2025</li>
     </ul>
 </div>
 
@@ -1026,7 +1039,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgcMqqT" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWl2WTf" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1210,7 +1223,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgcMqqT</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpWl2WTf</code></p>
         </div>
         </form>
 
@@ -1400,7 +1413,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprPQB4u" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php4MTfeJ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1602,7 +1615,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprPQB4u</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php4MTfeJ</code></p>
         </div>
         </form>
 
@@ -3725,7 +3738,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"approval_status\": \"approved\",
+    \"approval_status\": \"requested\",
     \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
@@ -3753,7 +3766,7 @@ const headers = {
 };
 
 let body = {
-    "approval_status": "approved",
+    "approval_status": "requested",
     "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
@@ -3978,10 +3991,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
-               value="approved"
+               value="requested"
                data-component="body">
     <br>
-<p>Example: <code>approved</code></p>
+<p>Example: <code>requested</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>requested</code></li> <li><code>approved</code></li></ul>
         </div>
@@ -4874,7 +4887,7 @@ This endpoint supports searching through titles and descriptions in both English
     --header "Accept-Language: en" \
     --data "{
     \"search\": \"consequatur\",
-    \"type\": \"client\",
+    \"type\": \"freelancer\",
     \"per_page\": 45
 }"
 </code></pre></div>
@@ -4901,7 +4914,7 @@ const headers = {
 
 let body = {
     "search": "consequatur",
-    "type": "client",
+    "type": "freelancer",
     "per_page": 45
 };
 
@@ -5099,10 +5112,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-how-it-works"
-               value="client"
+               value="freelancer"
                data-component="body">
     <br>
-<p>Example: <code>client</code></p>
+<p>Example: <code>freelancer</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>freelancer</code></li> <li><code>client</code></li></ul>
         </div>
@@ -6754,6 +6767,7 @@ fetch(url, {
                 &quot;description_en&quot;: &quot;Learn the essential tips for successful freelancing career&quot;,
                 &quot;description_ar&quot;: &quot;تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر&quot;,
                 &quot;image&quot;: &quot;storage/tips-guides/freelancing-tips.jpg&quot;,
+                &quot;is_popular&quot;: false,
                 &quot;created_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;,
                 &quot;updated_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;
             }
@@ -6987,6 +7001,7 @@ fetch(url, {
         &quot;description_en&quot;: &quot;Learn the essential tips for successful freelancing career&quot;,
         &quot;description_ar&quot;: &quot;تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر&quot;,
         &quot;image&quot;: &quot;storage/tips-guides/freelancing-tips.jpg&quot;,
+        &quot;is_popular&quot;: false,
         &quot;created_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;
     }
@@ -7220,6 +7235,7 @@ fetch(url, {
         &quot;description_en&quot;: &quot;Learn the essential tips for successful freelancing career&quot;,
         &quot;description_ar&quot;: &quot;تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر&quot;,
         &quot;image&quot;: &quot;storage/tips-guides/freelancing-tips.jpg&quot;,
+        &quot;is_popular&quot;: false,
         &quot;created_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;
     }
@@ -8563,7 +8579,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"in_progress\",
+    \"status\": \"completed\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -8588,7 +8604,7 @@ const headers = {
 };
 
 let body = {
-    "status": "in_progress",
+    "status": "completed",
     "per_page": 73
 };
 
@@ -8933,10 +8949,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="in_progress"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>in_progress</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -10716,7 +10732,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2Qq4Yc" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpRlZmEg" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10885,7 +10901,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php2Qq4Yc</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpRlZmEg</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -11109,7 +11125,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjBcVoc" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpyDZYPa" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11345,7 +11361,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjBcVoc</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpyDZYPa</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11386,7 +11402,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpK9dRve" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php49WiEX" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11649,7 +11665,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpK9dRve</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php49WiEX</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -13461,6 +13477,459 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="public-tips-guides">Public - Tips & Guides</h1>
+
+    <p>Public APIs for accessing tips and guides content. These endpoints provide helpful advice
+and best practices for platform users without requiring authentication. Content is available
+in both English and Arabic languages to help users understand platform functionality and
+improve their freelancing or client experience.</p>
+
+                                <h2 id="public-tips-guides-GETapi-tips-and-guides">Get Tips &amp; Guides List.</h2>
+
+<p>
+</p>
+
+<p>Retrieve a paginated list of tips and guides available to all users. This endpoint allows
+filtering by search terms and supports pagination. The content includes helpful advice
+and best practices for both freelancers and clients in multiple languages.</p>
+
+<span id="example-requests-GETapi-tips-and-guides">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/tips-and-guides?search=freelancing&amp;per_page=15" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"search\": \"consequatur\",
+    \"per_page\": 13
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/tips-and-guides"
+);
+
+const params = {
+    "search": "freelancing",
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "search": "consequatur",
+    "per_page": 13
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-tips-and-guides">
+            <blockquote>
+            <p>Example response (200, Success with results):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Tips and guides retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;title_en&quot;: &quot;Best Freelancing Practices&quot;,
+                &quot;title_ar&quot;: &quot;أفضل ممارسات العمل الحر&quot;,
+                &quot;description_en&quot;: &quot;Learn the essential tips for building a successful freelancing career including client communication, time management, and portfolio development.&quot;,
+                &quot;description_ar&quot;: &quot;تعلم النصائح الأساسية لبناء مهنة ناجحة في العمل الحر بما في ذلك التواصل مع العملاء وإدارة الوقت وتطوير الملف الشخصي.&quot;,
+                &quot;image&quot;: &quot;storage/tips-guides/freelancing-best-practices.jpg&quot;,
+                &quot;created_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;title_en&quot;: &quot;Client Hiring Guide&quot;,
+                &quot;title_ar&quot;: &quot;دليل توظيف العملاء&quot;,
+                &quot;description_en&quot;: &quot;A comprehensive guide for clients on how to find, evaluate, and hire the right freelancers for their projects.&quot;,
+                &quot;description_ar&quot;: &quot;دليل شامل للعملاء حول كيفية العثور على المستقلين المناسبين وتقييمهم وتوظيفهم لمشاريعهم.&quot;,
+                &quot;image&quot;: &quot;storage/tips-guides/client-hiring-guide.jpg&quot;,
+                &quot;is_popular&quot;: false,
+                &quot;created_at&quot;: &quot;2025-11-09T11:00:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-11-09T11:00:00.000000Z&quot;
+            }
+        ],
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Empty results):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Tips and guides retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;data&quot;: [],
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid parameters):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The per_page must be at least 1.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Per page too large):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The per_page may not be greater than 50.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-tips-and-guides" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-tips-and-guides"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-tips-and-guides"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-tips-and-guides" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-tips-and-guides">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-tips-and-guides" data-method="GET"
+      data-path="api/tips-and-guides"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-tips-and-guides', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-tips-and-guides"
+                    onclick="tryItOut('GETapi-tips-and-guides');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-tips-and-guides"
+                    onclick="cancelTryOut('GETapi-tips-and-guides');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-tips-and-guides"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/tips-and-guides</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-tips-and-guides"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-tips-and-guides"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-tips-and-guides"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-tips-and-guides"
+               value="freelancing"
+               data-component="query">
+    <br>
+<p>optional Search term to filter tips and guides by title or description. Example: <code>freelancing</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-tips-and-guides"
+               value="15"
+               data-component="query">
+    <br>
+<p>optional Number of items per page (1-50, default 10). Example: <code>15</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-tips-and-guides"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-tips-and-guides"
+               value="13"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 50. Example: <code>13</code></p>
+        </div>
+        </form>
+
+                    <h2 id="public-tips-guides-GETapi-tips-and-guides--id-">Get Tips &amp; Guides Item Details.</h2>
+
+<p>
+</p>
+
+<p>Retrieve detailed information about a specific tip or guide item by its ID. This endpoint
+returns the complete content including multilingual titles, descriptions, and associated
+images. The content is publicly accessible without authentication.</p>
+
+<span id="example-requests-GETapi-tips-and-guides--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/tips-and-guides/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/tips-and-guides/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-tips-and-guides--id-">
+            <blockquote>
+            <p>Example response (200, Item found successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Tips and guide retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title_en&quot;: &quot;Best Freelancing Practices&quot;,
+        &quot;title_ar&quot;: &quot;أفضل ممارسات العمل الحر&quot;,
+        &quot;description_en&quot;: &quot;Learn the essential tips for building a successful freelancing career including client communication, time management, and portfolio development. This comprehensive guide covers everything from setting your rates to managing multiple projects effectively.&quot;,
+        &quot;description_ar&quot;: &quot;تعلم النصائح الأساسية لبناء مهنة ناجحة في العمل الحر بما في ذلك التواصل مع العملاء وإدارة الوقت وتطوير الملف الشخصي. يغطي هذا الدليل الشامل كل شيء من تحديد الأسعار إلى إدارة المشاريع المتعددة بفعالية.&quot;,
+        &quot;image&quot;: &quot;storage/tips-guides/freelancing-best-practices.jpg&quot;,
+        &quot;is_popular&quot;: false,
+        &quot;created_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-11-09T10:00:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Item not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Tips and guide not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid ID format):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Invalid tips and guide ID&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-tips-and-guides--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-tips-and-guides--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-tips-and-guides--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-tips-and-guides--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-tips-and-guides--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-tips-and-guides--id-" data-method="GET"
+      data-path="api/tips-and-guides/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-tips-and-guides--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-tips-and-guides--id-"
+                    onclick="tryItOut('GETapi-tips-and-guides--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-tips-and-guides--id-"
+                    onclick="cancelTryOut('GETapi-tips-and-guides--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-tips-and-guides--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/tips-and-guides/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-tips-and-guides--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-tips-and-guides--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-tips-and-guides--id-"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-tips-and-guides--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the tips and guides item to retrieve. Example: <code>1</code></p>
+            </div>
+                    </form>
+
                 <h1 id="public-home-page">Public Home Page</h1>
 
     
@@ -15154,7 +15623,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGu6SED" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxBdiWz" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -15487,7 +15956,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGu6SED</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxBdiWz</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -20517,7 +20986,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbV6LJ3" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpPhji9J" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -20678,7 +21147,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpbV6LJ3</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpPhji9J</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

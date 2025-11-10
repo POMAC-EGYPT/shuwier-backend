@@ -22,11 +22,9 @@ class HowItWorkRepository implements HowItWorkRepositoryInterface
             ->paginate($perPage);
     }
 
-    public function getWithLimit(int $limit = 10): Collection
+    public function getAll(): Collection
     {
-        return HowItWork::orderByDesc('created_at')
-            ->limit($limit)
-            ->get();
+        return HowItWork::limit(6)->get();
     }
 
     public function find($id): HowItWork

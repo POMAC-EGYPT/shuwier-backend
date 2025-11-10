@@ -21,10 +21,10 @@ class TipsAndGuidRepository implements TipsAndGuidRepositoryInterface
             ->paginate($perPage);
     }
 
-    public function getWithLimit(int $limit = 10): Collection
+    public function getPopular(): Collection
     {
-        return TipsAndGuid::orderByDesc('created_at')
-            ->limit($limit)
+        return TipsAndGuid::where('is_popular', true)
+            ->limit(3)
             ->get();
     }
 

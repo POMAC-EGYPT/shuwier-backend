@@ -28,15 +28,15 @@ class HomeService implements HomeServiceInterface
         $this->howItWorkRepo = $howItWorkRepo;
         $this->tipsAndGuidRepo = $tipsAndGuidRepo;
     }
-    public function guestHome(int $limitCategory = 8, int $limitService = 10, int $limitHowItWorks = 10, int $limitTipsAndGuid = 10): array
+    public function guestHome(int $limitCategory = 8, int $limitService = 10): array
     {
         $bestSellerCategories = $this->categoryRepo->getBestSellersParentCategories($limitCategory);
 
         $bestSellerServices = $this->serviceRepo->getBestSellersServices($limitService);
 
-        $howItWorks = $this->howItWorkRepo->getWithLimit($limitHowItWorks);
+        $howItWorks = $this->howItWorkRepo->getAll();
 
-        $tipsAndGuids = $this->tipsAndGuidRepo->getWithLimit($limitTipsAndGuid);
+        $tipsAndGuids = $this->tipsAndGuidRepo->getPopular();
 
         return ['status' => true, 'message' => __('message.success'), 'data' =>
         [

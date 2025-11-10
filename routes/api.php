@@ -20,6 +20,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
 use App\Http\Controllers\PortfolioController as GuestPortfolioController;
+use App\Http\Controllers\TipsAndGuidController;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/check-register', [AuthController::class, 'checkRegisterFields'])->name('check-register');
@@ -100,6 +101,10 @@ Route::group(['prefix' => 'home'], function () {
     // Route::get('/client', [HomeController::class, 'clientHome'])->middleware(['auth:api', 'checkUserType:client'])->name('home.client');
 });
 
+Route::prefix('/tips-and-guides')->group(function () {
+    Route::get('/', [TipsAndGuidController::class, 'index'])->name('tips-and-guides.index');
+    Route::get('/{id}', [TipsAndGuidController::class, 'show'])->name('tips-and-guides.show');
+});
 
 // front utils
 Route::get('/languages', [LanguageController::class, 'index'])

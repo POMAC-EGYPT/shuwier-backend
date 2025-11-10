@@ -10,7 +10,7 @@ interface TipsAndGuidRepositoryInterface
 {
     public function getAllPaginated(?string $search = null, ?int $perPage = 15): LengthAwarePaginator;
 
-    public function getWithLimit(int $limit = 10): Collection;
+    public function getPopular(): Collection;
 
     public function count(): int;
 

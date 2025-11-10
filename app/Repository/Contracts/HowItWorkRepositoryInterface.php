@@ -10,7 +10,7 @@ interface HowItWorkRepositoryInterface
 {
     public function getAllWithFiltersPaginated(?string $search = null, ?string $type = null, ?int $perPage = 15): LengthAwarePaginator;
 
-    public function getWithLimit(int $limit = 10): Collection;
+    public function getAll(): Collection;
 
     public function find($id): HowItWork;
 

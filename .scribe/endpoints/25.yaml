@@ -1,27 +1,20 @@
-name: 'Admin How It Works Management'
-description: |-
-
-  APIs for managing "How It Works" content sections that explain platform functionality
-  to freelancers and clients. These endpoints allow administrators to create, update, 
-  and manage instructional content with multilingual support (English and Arabic).
+name: 'Admin Commission Management'
+description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/how-it-works
+    uri: api/admin/commissions
     metadata:
-      groupName: 'Admin How It Works Management'
-      groupDescription: |-
-
-        APIs for managing "How It Works" content sections that explain platform functionality
-        to freelancers and clients. These endpoints allow administrators to create, update, 
-        and manage instructional content with multilingual support (English and Arabic).
+      groupName: 'Admin Commission Management'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get How It Works List.'
+      title: 'List commissions'
       description: |-
-        Retrieve a paginated list of "How It Works" items with optional filtering by search term and user type.
-        This endpoint supports searching through titles and descriptions in both English and Arabic languages.
+        Retrieve a paginated list of all commission rates in the system. This endpoint allows
+        admins to view and search through commission rates with optional filtering by search terms.
+        Results are ordered by creation date (newest first).
       authenticated: true
       deprecated: false
       custom: []
@@ -34,19 +27,9 @@ endpoints:
     queryParameters:
       search:
         name: search
-        description: 'optional Search term to filter items by title or description.'
+        description: 'optional Search term to filter commissions by rate or effective date.'
         required: false
-        example: 'getting started'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      type:
-        name: type
-        description: 'optional Filter by user type (freelancer or client).'
-        required: false
-        example: freelancer
+        example: '15'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -54,18 +37,17 @@ endpoints:
         custom: []
       per_page:
         name: per_page
-        description: 'optional Number of items per page (minimum 1).'
+        description: 'optional Number of items per page (1-100).'
         required: false
-        example: 10
+        example: 15
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanQueryParameters:
-      search: 'getting started'
-      type: freelancer
-      per_page: 10
+      search: '15'
+      per_page: 15
     bodyParameters:
       search:
         name: search
@@ -77,23 +59,11 @@ endpoints:
         exampleWasSpecified: false
         nullable: true
         custom: []
-      type:
-        name: type
-        description: ''
-        required: false
-        example: client
-        type: string
-        enumValues:
-          - freelancer
-          - client
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
       per_page:
         name: per_page
-        description: 'Must be at least 1.'
+        description: 'Must be at least 1. Must not be greater than 100.'
         required: false
-        example: 45
+        example: 13
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -101,8 +71,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       search: consequatur
-      type: client
-      per_page: 45
+      per_page: 13
     fileParameters: []
     responses:
       -
@@ -111,29 +80,58 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "How it works retrieved successfully",
+            "message": "Success",
             "data": {
+              "current_page": 1,
               "data": [
                 {
                   "id": 1,
-                  "title_en": "Getting Started",
-                  "title_ar": "البدء",
-                  "description_en": "Learn how to create your profile and start working",
-                  "description_ar": "تعلم كيفية إنشاء ملفك الشخصي وبدء العمل",
-                  "type": "freelancer",
-                  "image": "storage/how-it-works/getting-started.jpg",
-                  "created_at": "2025-11-09T10:00:00.000000Z",
-                  "updated_at": "2025-11-09T10:00:00.000000Z"
+                  "rate": 0.15,
+                  "effective_from": "2025-10-01",
+                  "created_by": 1,
+                  "created_at": "2025-09-28T10:00:00.000000Z",
+                  "updated_at": "2025-09-28T10:00:00.000000Z"
+                },
+                {
+                  "id": 2,
+                  "rate": 0.12,
+                  "effective_from": "2025-11-01",
+                  "created_by": 1,
+                  "created_at": "2025-09-27T15:30:00.000000Z",
+                  "updated_at": "2025-09-27T15:30:00.000000Z"
                 }
               ],
-              "current_page": 1,
+              "first_page_url": "http://localhost/api/admin/commissions?page=1",
+              "from": 1,
               "last_page": 1,
+              "last_page_url": "http://localhost/api/admin/commissions?page=1",
+              "links": [
+                {
+                  "url": null,
+                  "label": "&laquo; Previous",
+                  "active": false
+                },
+                {
+                  "url": "http://localhost/api/admin/commissions?page=1",
+                  "label": "1",
+                  "active": true
+                },
+                {
+                  "url": null,
+                  "label": "Next &raquo;",
+                  "active": false
+                }
+              ],
+              "next_page_url": null,
+              "path": "http://localhost/api/admin/commissions",
               "per_page": 10,
-              "total": 1
+              "prev_page_url": null,
+              "to": 2,
+              "total": 2
             }
           }
         headers: []
-        description: 'Success with results'
+        description: 'Commissions retrieved successfully'
         custom: []
       -
         status: 400
@@ -141,7 +139,7 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The selected type is invalid."
+            "message": "The per page field must be at least 1."
           }
         headers: []
         description: 'Invalid parameters'
@@ -165,21 +163,18 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: 'api/admin/how-it-works/{id}'
+      - POST
+    uri: api/admin/commissions
     metadata:
-      groupName: 'Admin How It Works Management'
-      groupDescription: |-
-
-        APIs for managing "How It Works" content sections that explain platform functionality
-        to freelancers and clients. These endpoints allow administrators to create, update, 
-        and manage instructional content with multilingual support (English and Arabic).
+      groupName: 'Admin Commission Management'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get How It Works Item Details.'
+      title: 'Create commission'
       description: |-
-        Retrieve detailed information about a specific "How It Works" item by its ID.
-        This endpoint returns the complete item data including multilingual content and image.
+        Create a new commission rate that will be effective from a specified future date.
+        The commission rate is stored as a decimal (e.g., 15% is stored as 0.15) and must
+        be between 1% and 100%. The effective date must be today or in the future.
       authenticated: true
       deprecated: false
       custom: []
@@ -187,182 +182,23 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the how-it-works item to retrieve.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "status": true,
-            "error_num": null,
-            "message": "How it works retrieved successfully",
-            "data": {
-              "id": 1,
-              "title_en": "Getting Started",
-              "title_ar": "البدء",
-              "description_en": "Learn how to create your profile and start working",
-              "description_ar": "تعلم كيفية إنشاء ملفك الشخصي وبدء العمل",
-              "type": "freelancer",
-              "image": "storage/how-it-works/getting-started.jpg",
-              "created_at": "2025-11-09T10:00:00.000000Z",
-              "updated_at": "2025-11-09T10:00:00.000000Z"
-            }
-          }
-        headers: []
-        description: 'Item found successfully'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "How it works not found"
-          }
-        headers: []
-        description: 'Item not found'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "status": false,
-            "error_num": 401,
-            "message": "Unauthenticated"
-          }
-        headers: []
-        description: Unauthenticated
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/admin/how-it-works/{id}'
-    metadata:
-      groupName: 'Admin How It Works Management'
-      groupDescription: |-
-
-        APIs for managing "How It Works" content sections that explain platform functionality
-        to freelancers and clients. These endpoints allow administrators to create, update, 
-        and manage instructional content with multilingual support (English and Arabic).
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Update How It Works Item.'
-      description: |-
-        Update an existing "How It Works" item with new content. All fields are optional
-        and only provided fields will be updated. If no new image is provided, the existing image is kept.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Accept-Language: en
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the how-it-works item to update.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
+    urlParameters: []
+    cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      title_en:
-        name: title_en
-        description: 'optional English title for the how-it-works item.'
-        required: false
-        example: 'Getting Started - Updated'
-        type: string
+      rate:
+        name: rate
+        description: 'Commission rate percentage (1-100). Will be converted to decimal for storage.'
+        required: true
+        example: 15.0
+        type: number
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
-      title_ar:
-        name: title_ar
-        description: 'optional Arabic title for the how-it-works item.'
-        required: false
-        example: 'البدء - محدث'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      description_en:
-        name: description_en
-        description: 'optional English description explaining the process.'
-        required: false
-        example: 'Updated: Learn how to create your profile and start working'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      description_ar:
-        name: description_ar
-        description: 'optional Arabic description explaining the process.'
-        required: false
-        example: 'محدث: تعلم كيفية إنشاء ملفك الشخصي وبدء العمل'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      type:
-        name: type
-        description: 'optional Target user type (freelancer or client).'
-        required: false
-        example: client
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      image:
-        name: image
-        description: 'optional New image file to replace existing one (max 2MB, jpg/png/svg). Example:'
-        required: false
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
         custom: []
     cleanBodyParameters:
-      title_en: 'Getting Started - Updated'
-      title_ar: 'البدء - محدث'
-      description_en: 'Updated: Learn how to create your profile and start working'
-      description_ar: 'محدث: تعلم كيفية إنشاء ملفك الشخصي وبدء العمل'
-      type: client
+      rate: 15.0
     fileParameters: []
     responses:
       -
@@ -371,10 +207,18 @@ endpoints:
           {
             "status": true,
             "error_num": null,
-            "message": "How it works updated successfully"
+            "message": "Commission created successfully",
+            "data": {
+              "id": 3,
+              "rate": 0.15,
+              "effective_from": "2025-10-01",
+              "created_by": 1,
+              "created_at": "2025-09-28T12:00:00.000000Z",
+              "updated_at": "2025-09-28T12:00:00.000000Z"
+            }
           }
         headers: []
-        description: 'Item updated successfully'
+        description: 'Commission created successfully'
         custom: []
       -
         status: 400
@@ -382,10 +226,10 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "How it works not found"
+            "message": "The rate field must be between 1 and 100."
           }
         headers: []
-        description: 'Item not found'
+        description: 'Invalid rate'
         custom: []
       -
         status: 400
@@ -393,21 +237,21 @@ endpoints:
           {
             "status": false,
             "error_num": 400,
-            "message": "The selected type is invalid."
+            "message": "The effective from field must be a date after or equal to today."
+          }
+        headers: []
+        description: 'Invalid effective date'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The rate field is required."
           }
         headers: []
         description: 'Validation error'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The image must be a file of type: jpeg, png, jpg, gif, svg."
-          }
-        headers: []
-        description: 'Invalid image'
         custom: []
       -
         status: 401
