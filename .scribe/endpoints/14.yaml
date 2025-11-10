@@ -1,4 +1,4 @@
-name: 'Public - Tips & Guides'
+name: 'Public Tips & Guides'
 description: |-
 
   Public APIs for accessing tips and guides content. These endpoints provide helpful advice 
@@ -11,7 +11,7 @@ endpoints:
       - GET
     uri: api/tips-and-guides
     metadata:
-      groupName: 'Public - Tips & Guides'
+      groupName: 'Public Tips & Guides'
       groupDescription: |-
 
         Public APIs for accessing tips and guides content. These endpoints provide helpful advice 
@@ -175,7 +175,7 @@ endpoints:
       - GET
     uri: 'api/tips-and-guides/{id}'
     metadata:
-      groupName: 'Public - Tips & Guides'
+      groupName: 'Public Tips & Guides'
       groupDescription: |-
 
         Public APIs for accessing tips and guides content. These endpoints provide helpful advice 
