@@ -154,13 +154,13 @@ endpoints:
       subgroupDescription: ''
       title: 'Create Tips & Guides Item.'
       description: |-
-        Create a new tip or guide item with multilingual content and optional image.
+        Create a new tip or guide item with multilingual content and required image.
         This endpoint allows administrators to add educational and helpful content for platform users.
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters: []
@@ -210,8 +210,8 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'optional Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example:'
-        required: false
+        description: 'Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example:'
+        required: true
         example: null
         type: file
         enumValues: []
@@ -223,7 +223,8 @@ endpoints:
       title_ar: 'أفضل ممارسات العمل الحر'
       description_en: 'Learn the essential tips for successful freelancing career'
       description_ar: 'تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر'
-    fileParameters: []
+    fileParameters:
+      image: null
     responses:
       -
         status: 201
