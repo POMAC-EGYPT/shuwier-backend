@@ -102,7 +102,7 @@ class TipsAndGuidController extends Controller
     /**
      * Create Tips & Guides Item.
      * 
-     * Create a new tip or guide item with multilingual content and optional image.
+     * Create a new tip or guide item with multilingual content and required image.
      * This endpoint allows administrators to add educational and helpful content for platform users.
      * 
      * @authenticated
@@ -111,7 +111,7 @@ class TipsAndGuidController extends Controller
      * @bodyParam title_ar string required Arabic title for the tip or guide. Example: أفضل ممارسات العمل الحر
      * @bodyParam description_en string required English description with detailed advice. Example: Learn the essential tips for successful freelancing career
      * @bodyParam description_ar string required Arabic description with detailed advice. Example: تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر
-     * @bodyParam image file optional Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: No-example
+     * @bodyParam image file required Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: No-example
      * 
      * @response 201 scenario="Item created successfully" {
      *   "status": true,
