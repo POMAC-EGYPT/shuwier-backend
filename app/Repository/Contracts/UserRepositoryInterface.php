@@ -11,6 +11,8 @@ interface UserRepositoryInterface
 
     public function getClientsWithFilter(?string $name = null, int $perPage = 10): ?LengthAwarePaginator;
 
+    public function clientSearchWithRate(?string $search = null, ?array $rates = null, int $perPage = 15): mixed;
+
     public function find(int $id): ?User;
 
     public function findByEmail(string $email): ?User;

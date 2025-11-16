@@ -32,6 +32,7 @@ class FreelancerResource extends JsonResource
             'other_links'              => json_decode($this->freelancerProfile?->other_links) ?? [],
             'portfolio_link'           => $this->freelancerProfile?->portfolio_link ?? null,
             'headline'                 => $this->freelancerProfile?->headline ?? null,
+            'professional_document'    => $this->freelancerProfile?->professional_document ?? null,
             'is_verified'              => $this->is_verified,
             'user_verification_status' => $this->user_verification_status,
             'rate'                     => $this->rate,

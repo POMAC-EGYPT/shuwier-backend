@@ -150,4 +150,5 @@ return [
     'tips_and_guid_updated_successfully'                              => 'Tips and Guid updated successfully',
     'tips_and_guid_deleted_successfully'                              => 'Tips and Guid deleted successfully',
     "can't_delete_popular_tips_and_guid"                              => "Can't delete popular tips and guid",
+    'professional_document_only_freelancer'                           => 'Professional document can only be provided by freelancers',
 ];

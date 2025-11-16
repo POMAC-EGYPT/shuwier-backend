@@ -9,6 +9,7 @@ class FreelancerProfile extends Model
     protected $fillable = [
         'portfolio_link',
         'other_links',
+        'professional_document',
         'headline',
         'user_id',
         'category_id'

@@ -28,6 +28,13 @@ class UserRepository implements UserRepositoryInterface
             ->paginate($perPage);
     }
 
+    public function clientSearchWithRate(?string $search = null, ?array $rates = null, int $perPage = 15): LengthAwarePaginator
+    {
+        // TODO: Implement search by rates logic and filtering based on Jira Ticket
+        return User::clients()
+            ->paginate($perPage);
+    }
+
     public function find(int $id): ?User
     {
         return User::findOrFail($id);

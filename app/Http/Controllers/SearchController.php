@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enum\SearchType;
+use App\Http\Requests\Search\ClientSearchRequest;
 use App\Http\Requests\Search\ProjectSearchRequest;
 use App\Http\Requests\Search\ServiceSearchRequest;
 use App\Http\Resources\BaseResource;
+use App\Http\Resources\ClientResource;
 use App\Http\Resources\ServiceResource;
 use App\Services\Search\Context\SearchContext;
 use App\Http\Resources\ProjectResource;
@@ -452,5 +454,27 @@ class SearchController extends Controller
             null,
             BaseResource::make(ProjectResource::collection($result))
         );
+    }
+
+    public function clientSearch(ClientSearchRequest $request)
+    {
+        $result = $this->searchContext->search(SearchType::CLIENT->value, [
+            'search'   => $request->search,
+            'rates'    => $request->rates,
+            'per_page' => $request->per_page ?? 15
+        ]);
+
+        return Response::api(
+            __('message.success'),
+            200,
+            true,
+            null,
+            BaseResource::make(ClientResource::collection($result))
+        );
+    }
+
+    public function freelancerSearch($request)
+    {
+        //
     }
 }

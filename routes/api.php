@@ -94,6 +94,8 @@ Route::get('/portfolios/{id}', [GuestPortfolioController::class, 'show'])->name(
 Route::group(['prefix' => 'search'], function () {
     Route::get('/service', [SearchController::class, 'serviceSearch'])->name('search');
     Route::get('/project', [SearchController::class, 'projectSearch'])->name('search.project');
+    Route::get('/client', [SearchController::class, 'clientSearch'])->name('search.client');
+    Route::get('/freelancer', [SearchController::class, 'freelancerSearch'])->name('search.freelancer');
 });
 
 Route::group(['prefix' => 'home'], function () {

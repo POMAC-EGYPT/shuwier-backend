@@ -50,12 +50,12 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'          => [
+            'name'                  => [
                 'required',
                 'max:255',
                 'regex:/^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u'
             ],
-            'username'      => [
+            'username'              => [
                 'required',
                 'min:3',
                 'max:30',
@@ -63,7 +63,7 @@ class RegisterRequest extends FormRequest
                 'regex:/^[A-Za-z][A-Za-z0-9_-]*$/u',
                 'unique:users,username',
             ],
-            'email'         => [
+            'email'                 => [
                 'required',
                 'string',
                 'email:rfc,dns',
@@ -71,11 +71,12 @@ class RegisterRequest extends FormRequest
                 'unique:users',
                 new EmailRule,
             ],
-            'password'       => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
-            'type'           => 'required|string|in:freelancer,client',
-            'other_links'    => 'nullable|array|max:3',
-            'other_links.*'  => 'url',
-            'portfolio_link' => 'required_if:type,freelancer|url',
+            'password'              => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
+            'type'                  => 'required|string|in:freelancer,client',
+            'other_links'           => 'nullable|array|max:3',
+            'other_links.*'         => 'url',
+            'portfolio_link'        => 'required_if:type,freelancer|url',
+            'professional_document' => 'nullable|file|mimes:png,jpg,jpeg,webp,pdf,docx|max:5120',
         ];
     }
 

@@ -111,16 +111,22 @@ class AuthController extends Controller
      *   "error_num": 400,
      *   "message": "The other_links.0 format is invalid."
      * }
+     * 
+     * @response 400 scenario="Professional document only for freelancers" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Professional document can only be provided by freelancers"
+     * }
      */
     public function checkRegisterFields(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'          => [
+            'name'                  => [
                 'required',
                 'max:255',
                 'regex:/^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u'
             ],
-            'email'         => [
+            'email'                 => [
                 'required',
                 'string',
                 'email:rfc,dns',
@@ -128,15 +134,19 @@ class AuthController extends Controller
                 'unique:users',
                 new EmailRule,
             ],
-            'password'       => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
-            'type'           => 'required|string|in:freelancer,client',
-            'other_links'    => 'nullable|array|max:3',
-            'other_links.*'  => 'url',
-            'portfolio_link' => 'required_if:type,freelancer|url',
+            'password'              => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
+            'type'                  => 'required|string|in:freelancer,client',
+            'other_links'           => 'nullable|array|max:3',
+            'other_links.*'         => 'url',
+            'portfolio_link'        => 'required_if:type,freelancer|url',
+            'professional_document' => 'nullable|file|mimes:png,jpg,jpeg,webp,pdf,docx|max:5120',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
+
+        if ($request->has('professional_document') && $request->type == UserType::CLIENT->value)
+            return Response::api(__('message.professional_document_only_freelancer'), 400, false, 400);
 
 
         return Response::api(__('message.success'), 200, true, null);
@@ -191,13 +201,14 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $result = $this->authUserService->register([
-            'name'           => $request->name,
-            'username'       => $request->username,
-            'email'          => $request->email,
-            'password'       => $request->password,
-            'type'           => $request->type,
-            'other_links'    => $request->other_links ?? [],
-            'portfolio_link' => $request->portfolio_link,
+            'name'                  => $request->name,
+            'username'              => $request->username,
+            'email'                 => $request->email,
+            'password'              => $request->password,
+            'type'                  => $request->type,
+            'other_links'           => $request->other_links ?? [],
+            'portfolio_link'        => $request->portfolio_link,
+            'professional_document' => $request->professional_document,
         ]);
 
         if (!$result['status'])

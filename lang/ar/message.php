@@ -150,4 +150,5 @@ return [
     'tips_and_guid_updated_successfully'                              => 'تم تحديث قسم النصائح والإرشادات بنجاح',
     'tips_and_guid_deleted_successfully'                              => 'تم حذف قسم النصائح والإرشادات بنجاح',
     "can't_delete_popular_tips_and_guid"                              => 'لا يمكن حذف قسم نصائح وإرشادات شائع',
+    'professional_document_only_freelancer'                           => 'يمكن لمقدمي الخدمات فقط تقديم المستند المهني',
 ];

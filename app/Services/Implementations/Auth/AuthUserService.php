@@ -53,14 +53,20 @@ class AuthUserService implements AuthUserServiceInterface
         if ($user && $data['type'] == UserType::CLIENT->value)
             return ['status' => false, 'error_num' => 400, 'message' => __('message.user_already_registered')];
 
+        $profiessionalDocumentPath = null;
+
+        if ($data['type'] == UserType::FREELANCER->value && $data['professional_document'] != null)
+            $profiessionalDocumentPath = ImageHelpers::addImage($data['professional_document'], 'professional_documents');
+
         $result = $this->verifyService->sendVerificationCode([
-            'name'           => $data['name'],
-            'username'       => $data['username'],
-            'email'          => $data['email'],
-            'password'       => $data['password'],
-            'type'           => $data['type'],
-            'other_links'    => $data['other_links'],
-            'portfolio_link' => $data['portfolio_link'],
+            'name'                  => $data['name'],
+            'username'              => $data['username'],
+            'email'                 => $data['email'],
+            'password'              => $data['password'],
+            'type'                  => $data['type'],
+            'other_links'           => $data['other_links'],
+            'portfolio_link'        => $data['portfolio_link'],
+            'professional_document' => $profiessionalDocumentPath
         ]);
 
         if (!$result['status'])
@@ -110,9 +116,10 @@ class AuthUserService implements AuthUserServiceInterface
 
             if ($result['data']['type'] == UserType::FREELANCER->value) {
                 $this->freelancerRepo->create([
-                    'user_id'        => $user->id,
-                    'other_links'    => json_encode($result['data']['other_links']),
-                    'portfolio_link' => $result['data']['portfolio_link'],
+                    'user_id'               => $user->id,
+                    'other_links'           => json_encode($result['data']['other_links']),
+                    'portfolio_link'        => $result['data']['portfolio_link'],
+                    'professional_document' => $result['data']['professional_document'] ?? null,
                 ]);
             }
             if ($invitation && $result['data']['type'] == UserType::FREELANCER->value)
