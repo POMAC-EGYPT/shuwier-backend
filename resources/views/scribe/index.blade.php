@@ -304,6 +304,12 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-services--id-">
                                 <a href="#endpoints-GETapi-services--id-">GET api/services/{id}</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-search-client">
+                                <a href="#endpoints-GETapi-search-client">GET api/search/client</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-search-freelancer">
+                                <a href="#endpoints-GETapi-search-freelancer">GET api/search/freelancer</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-file-upload" class="tocify-header">
@@ -536,7 +542,7 @@ Retrieve a specific portfolio by its ID with all related data.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 11, 2025</li>
+        <li>Last updated: November 16, 2025</li>
     </ul>
 </div>
 
@@ -1039,7 +1045,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaP8sXU" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgnKJE7" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1223,7 +1229,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaP8sXU</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgnKJE7</code></p>
         </div>
         </form>
 
@@ -1413,7 +1419,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8mwiTM" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php73W2je" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1615,7 +1621,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8mwiTM</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php73W2je</code></p>
         </div>
         </form>
 
@@ -4887,7 +4893,7 @@ This endpoint supports searching through titles and descriptions in both English
     --header "Accept-Language: en" \
     --data "{
     \"search\": \"consequatur\",
-    \"type\": \"freelancer\",
+    \"type\": \"client\",
     \"per_page\": 45
 }"
 </code></pre></div>
@@ -4914,7 +4920,7 @@ const headers = {
 
 let body = {
     "search": "consequatur",
-    "type": "freelancer",
+    "type": "client",
     "per_page": 45
 };
 
@@ -5112,10 +5118,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-how-it-works"
-               value="freelancer"
+               value="client"
                data-component="body">
     <br>
-<p>Example: <code>freelancer</code></p>
+<p>Example: <code>client</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>freelancer</code></li> <li><code>client</code></li></ul>
         </div>
@@ -6953,7 +6959,7 @@ This endpoint allows administrators to add educational and helpful content for p
     --form "title_ar=أفضل ممارسات العمل الحر"\
     --form "description_en=Learn the essential tips for successful freelancing career"\
     --form "description_ar=تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxLQ5xv" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuEILoI" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7173,7 +7179,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpxLQ5xv</code></p>
+<p>Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuEILoI</code></p>
         </div>
         </form>
 
@@ -8577,7 +8583,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"in_progress\",
+    \"status\": \"completed\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -8602,7 +8608,7 @@ const headers = {
 };
 
 let body = {
-    "status": "in_progress",
+    "status": "completed",
     "per_page": 73
 };
 
@@ -8947,10 +8953,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="in_progress"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>in_progress</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -10706,6 +10712,348 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="endpoints-GETapi-search-client">GET api/search/client</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-search-client">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/search/client" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"search\": \"vmqeopfuudtdsufvyvddq\",
+    \"rates\": [
+        2
+    ],
+    \"per_page\": 13
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/search/client"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "search": "vmqeopfuudtdsufvyvddq",
+    "rates": [
+        2
+    ],
+    "per_page": 13
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-search-client">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: [],
+    &quot;current_page&quot;: 1,
+    &quot;from&quot;: null,
+    &quot;last_page&quot;: 1,
+    &quot;per_page&quot;: 13,
+    &quot;to&quot;: null,
+    &quot;total&quot;: 0,
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://backend.shuwier.com/api/search/client?page=1&quot;,
+        &quot;last&quot;: &quot;http://backend.shuwier.com/api/search/client?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-search-client" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-search-client"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-search-client"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-search-client" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-search-client">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-search-client" data-method="GET"
+      data-path="api/search/client"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-client', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-search-client"
+                    onclick="tryItOut('GETapi-search-client');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-search-client"
+                    onclick="cancelTryOut('GETapi-search-client');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-search-client"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/search/client</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-search-client"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-search-client"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-search-client"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-search-client"
+               value="vmqeopfuudtdsufvyvddq"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>vmqeopfuudtdsufvyvddq</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>rates</code></b>&nbsp;&nbsp;
+<small>number[]</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="rates[0]"                data-endpoint="GETapi-search-client"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="rates[1]"                data-endpoint="GETapi-search-client"
+               data-component="body">
+    <br>
+<p>Must be at least 1.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-search-client"
+               value="13"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 50. Example: <code>13</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-search-freelancer">GET api/search/freelancer</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-search-freelancer">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/search/freelancer" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/search/freelancer"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-search-freelancer">
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-search-freelancer" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-search-freelancer"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-search-freelancer"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-search-freelancer" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-search-freelancer">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-search-freelancer" data-method="GET"
+      data-path="api/search/freelancer"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-freelancer', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-search-freelancer"
+                    onclick="tryItOut('GETapi-search-freelancer');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-search-freelancer"
+                    onclick="cancelTryOut('GETapi-search-freelancer');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-search-freelancer"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/search/freelancer</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-search-freelancer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-search-freelancer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-search-freelancer"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        </form>
+
                 <h1 id="file-upload">File Upload</h1>
 
     <p>APIs for handling file uploads</p>
@@ -10730,7 +11078,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpAdMCR4" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptWOQBS" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10899,7 +11247,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpAdMCR4</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptWOQBS</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -11123,7 +11471,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpsaf34y" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuRxfpq" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11359,7 +11707,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpsaf34y</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuRxfpq</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -11400,7 +11748,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuIbKtX" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprXDV5F" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11663,7 +12011,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuIbKtX</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprXDV5F</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -15621,7 +15969,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphic8Dz" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkqP7OQ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -15954,7 +16302,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphic8Dz</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkqP7OQ</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -17202,21 +17550,17 @@ to users about any validation issues with their registration data.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://backend.shuwier.com/api/auth/check-register" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --data "{
-    \"name\": \"أحمد محمد\",
-    \"email\": \"ahmed@example.com\",
-    \"password\": \"Password123!\",
-    \"type\": \"freelancer\",
-    \"other_links\": [
-        \"https:\\/\\/upwork.com\\/freelancers\\/ahmed\"
-    ],
-    \"portfolio_link\": \"https:\\/\\/ahmed-portfolio.com\",
-    \"password_confirmation\": \"Password123!\"
-}"
-</code></pre></div>
+    --form "name=أحمد محمد"\
+    --form "email=ahmed@example.com"\
+    --form "password=Password123!"\
+    --form "type=freelancer"\
+    --form "other_links[]=https://upwork.com/freelancers/ahmed"\
+    --form "portfolio_link=https://ahmed-portfolio.com"\
+    --form "password_confirmation=Password123!"\
+    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgNvExW" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -17225,27 +17569,25 @@ to users about any validation issues with their registration data.</p>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
     "Accept-Language": "en",
 };
 
-let body = {
-    "name": "أحمد محمد",
-    "email": "ahmed@example.com",
-    "password": "Password123!",
-    "type": "freelancer",
-    "other_links": [
-        "https:\/\/upwork.com\/freelancers\/ahmed"
-    ],
-    "portfolio_link": "https:\/\/ahmed-portfolio.com",
-    "password_confirmation": "Password123!"
-};
+const body = new FormData();
+body.append('name', 'أحمد محمد');
+body.append('email', 'ahmed@example.com');
+body.append('password', 'Password123!');
+body.append('type', 'freelancer');
+body.append('other_links[]', 'https://upwork.com/freelancers/ahmed');
+body.append('portfolio_link', 'https://ahmed-portfolio.com');
+body.append('password_confirmation', 'Password123!');
+body.append('professional_document', document.querySelector('input[name="professional_document"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -17350,6 +17692,17 @@ fetch(url, {
     &quot;message&quot;: &quot;The other_links.0 format is invalid.&quot;
 }</code>
  </pre>
+            <blockquote>
+            <p>Example response (400, Professional document only for freelancers):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;Professional document can only be provided by freelancers&quot;
+}</code>
+ </pre>
     </span>
 <span id="execution-results-POSTapi-auth-check-register" hidden>
     <blockquote>Received response<span
@@ -17369,7 +17722,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-auth-check-register" data-method="POST"
       data-path="api/auth/check-register"
       data-authed="0"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-check-register', this);">
@@ -17404,10 +17757,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-check-register"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -17510,6 +17863,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>required_if:type,freelancer Portfolio website URL (required for freelancers). Example: <code>https://ahmed-portfolio.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>professional_document</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="professional_document"                data-endpoint="POSTapi-auth-check-register"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgNvExW</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
@@ -17538,22 +17902,18 @@ After successful validation, a 4-digit OTP code will be sent to the email for ve
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://backend.shuwier.com/api/auth/register" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --data "{
-    \"name\": \"أحمد محمد\",
-    \"username\": \"john_doe123\",
-    \"email\": \"ahmed@example.com\",
-    \"password\": \"Password123!\",
-    \"type\": \"freelancer\",
-    \"other_links\": [
-        \"https:\\/\\/upwork.com\\/freelancers\\/ahmed\"
-    ],
-    \"portfolio_link\": \"https:\\/\\/ahmed-portfolio.com\",
-    \"password_confirmation\": \"Password123!\"
-}"
-</code></pre></div>
+    --form "name=أحمد محمد"\
+    --form "username=john_doe123"\
+    --form "email=ahmed@example.com"\
+    --form "password=Password123!"\
+    --form "type=freelancer"\
+    --form "other_links[]=https://upwork.com/freelancers/ahmed"\
+    --form "portfolio_link=https://ahmed-portfolio.com"\
+    --form "password_confirmation=Password123!"\
+    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpvZndsZ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -17562,28 +17922,26 @@ After successful validation, a 4-digit OTP code will be sent to the email for ve
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
     "Accept-Language": "en",
 };
 
-let body = {
-    "name": "أحمد محمد",
-    "username": "john_doe123",
-    "email": "ahmed@example.com",
-    "password": "Password123!",
-    "type": "freelancer",
-    "other_links": [
-        "https:\/\/upwork.com\/freelancers\/ahmed"
-    ],
-    "portfolio_link": "https:\/\/ahmed-portfolio.com",
-    "password_confirmation": "Password123!"
-};
+const body = new FormData();
+body.append('name', 'أحمد محمد');
+body.append('username', 'john_doe123');
+body.append('email', 'ahmed@example.com');
+body.append('password', 'Password123!');
+body.append('type', 'freelancer');
+body.append('other_links[]', 'https://upwork.com/freelancers/ahmed');
+body.append('portfolio_link', 'https://ahmed-portfolio.com');
+body.append('password_confirmation', 'Password123!');
+body.append('professional_document', document.querySelector('input[name="professional_document"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -17663,7 +18021,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-auth-register" data-method="POST"
       data-path="api/auth/register"
       data-authed="0"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-register', this);">
@@ -17698,10 +18056,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-register"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -17813,6 +18171,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>required_if:type,freelancer Portfolio website URL (required for freelancers). Example: <code>https://ahmed-portfolio.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>professional_document</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="professional_document"                data-endpoint="POSTapi-auth-register"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpvZndsZ</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -20984,7 +21353,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGJ20m8" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM9A2Ww" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -21145,7 +21514,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGJ20m8</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM9A2Ww</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

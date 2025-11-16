@@ -28,7 +28,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters: []
@@ -97,6 +97,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      professional_document:
+        name: professional_document
+        description: 'Must be a file. Must not be greater than 5120 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
       password_confirmation:
         name: password_confirmation
         description: 'Password confirmation (must match password).'
@@ -126,7 +136,8 @@ endpoints:
         - 'https://upwork.com/freelancers/ahmed'
       portfolio_link: 'https://ahmed-portfolio.com'
       password_confirmation: Password123!
-    fileParameters: []
+    fileParameters:
+      professional_document: null
     responses:
       -
         status: 200
@@ -227,6 +238,17 @@ endpoints:
         headers: []
         description: 'Invalid URL format'
         custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Professional document can only be provided by freelancers"
+          }
+        headers: []
+        description: 'Professional document only for freelancers'
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -255,7 +277,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters: []
@@ -334,6 +356,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      professional_document:
+        name: professional_document
+        description: 'Must be a file. Must not be greater than 5120 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
       password_confirmation:
         name: password_confirmation
         description: 'Password confirmation (must match password).'
@@ -364,7 +396,8 @@ endpoints:
         - 'https://upwork.com/freelancers/ahmed'
       portfolio_link: 'https://ahmed-portfolio.com'
       password_confirmation: Password123!
-    fileParameters: []
+    fileParameters:
+      professional_document: null
     responses:
       -
         status: 200
