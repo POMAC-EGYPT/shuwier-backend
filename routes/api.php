@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Client\ProjectController;
 use App\Http\Controllers\Client\ProposalController as ClientProposalController;
@@ -38,21 +39,8 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth.any:api,admin')->name('logout');
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth.any:api,admin')->name('refresh');
-});
-Route::middleware('web')->get('/auth/redirect', function () {
-    $url = Socialite::driver('google')->redirect()->getTargetUrl();
-
-    return response()->json([
-        'url' => $url
-    ]);
-});
-
-Route::middleware('web')->get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
-    
-    return response()->json([
-        'user' => $user
-    ]);
+    Route::get('/{provider}/redirect', [SocialAuthController::class, 'redirect'])->middleware('web')->whereIn('provider', ['google', 'apple']);
+    Route::get('/{provider}/callback', [SocialAuthController::class, 'callback'])->middleware('web')->whereIn('provider', ['google', 'apple']);
 });
 
 
