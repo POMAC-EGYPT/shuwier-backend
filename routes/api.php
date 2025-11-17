@@ -43,7 +43,7 @@ Route::middleware('web')->get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 });
 
-Route::get('/auth/callback', function () {
+Route::middleware('web')->get('/auth/callback', function () {
     $user = Socialite::driver('google')->user();
     // $user->token
 });
