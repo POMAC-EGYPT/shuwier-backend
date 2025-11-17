@@ -48,7 +48,11 @@ Route::middleware('web')->get('/auth/redirect', function () {
 });
 
 Route::middleware('web')->get('/auth/callback', function () {
-    dd(true);
+    $user = Socialite::driver('google')->user();
+    
+    return response()->json([
+        'user' => $user
+    ]);
 });
 
 
