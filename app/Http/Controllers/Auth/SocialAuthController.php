@@ -13,21 +13,24 @@ class SocialAuthController extends Controller
     public function redirect(string $provider, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'mode' => 'required|string|in:login,register'
+            'state' => 'required|string|in:login,register'
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
-        $url = Socialite::driver($provider)->redirect()->getTargetUrl();
+        $url = Socialite::driver($provider)
+            ->with(['state' => $request->state])
+            ->redirect()
+            ->getTargetUrl();
 
         return Response::api(__('message.success'), 200, true, 200, ['url' => $url]);
     }
 
     public function callback(string $provider, Request $request)
     {
-        $mode = $request->mode;
-        dd($mode, request()->input('mode'));
+        $mode = $request->state;
+        dd($mode, request()->input('state'));
         $user = Socialite::driver($provider)->user();
 
         return Response::api(__('message.success'), 200, true, 200, ['user' => $user]);
