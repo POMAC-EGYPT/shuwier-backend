@@ -40,7 +40,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth.any:api,admin')->name('refresh');
 });
 Route::middleware('web')->get('/auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
+    return Socialite::driver('google')->redirect()->getTargetUrl();
 });
 
 Route::middleware('web')->get('/auth/callback', function () {
