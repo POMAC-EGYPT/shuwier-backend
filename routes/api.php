@@ -48,8 +48,7 @@ Route::middleware('web')->get('/auth/redirect', function () {
 });
 
 Route::middleware('web')->get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
-    return $user;
+    dd(true);
 });
 
 
