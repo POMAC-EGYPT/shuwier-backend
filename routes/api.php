@@ -21,6 +21,7 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
 use App\Http\Controllers\PortfolioController as GuestPortfolioController;
 use App\Http\Controllers\TipsAndGuidController;
+use Laravel\Socialite\Socialite;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/check-register', [AuthController::class, 'checkRegisterFields'])->name('check-register');
@@ -37,6 +38,14 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth.any:api,admin')->name('logout');
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth.any:api,admin')->name('refresh');
+});
+Route::middleware('web')->get('/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+    // $user->token
 });
 
 
