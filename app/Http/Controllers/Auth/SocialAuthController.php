@@ -27,7 +27,7 @@ class SocialAuthController extends Controller
     public function callback(string $provider, Request $request)
     {
         $mode = $request->mode;
-        dd($mode);
+        dd($mode, request()->input('mode'));
         $user = Socialite::driver($provider)->user();
 
         return Response::api(__('message.success'), 200, true, 200, ['user' => $user]);
