@@ -32,6 +32,15 @@ class UserRepository implements UserRepositoryInterface
     {
         // TODO: Implement search by rates logic and filtering based on Jira Ticket
         return User::clients()
+            ->when($search, fn($query)
+            => $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%");
+            }))
+            ->when($rates, fn($query) => $query->whereHas('reviews', function ($q) use ($rates) {
+                $q->withAvg('reviews', 'rate')
+                    ->havingBetween('reviews_avg_rate', min($rates), max($rates));
+            }))
             ->paginate($perPage);
     }
 

@@ -29,6 +29,7 @@ class SocialAuthController extends Controller
 
     public function callback(string $provider, Request $request)
     {
+        //TODO: Handle different states (login, register) accordingly with Jira Tekets
         $mode = $request->state;
         dd($mode, request()->input('state'));
         $user = Socialite::driver($provider)->user();
