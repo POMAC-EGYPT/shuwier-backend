@@ -18,7 +18,7 @@ class UserService implements UserServiceInterface
     {
         $user = $this->userRepo->findByUsername($username);
 
-        $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'portfolios', 'languages', 'projects']);
+        $user->load(['freelancerProfile', 'freelancerProfile.category', 'skills', 'languages', 'projects']);
 
         return ['status' => true, 'message' => __('message.success'), 'data' => $user];
     }

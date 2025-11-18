@@ -61,7 +61,11 @@ class UserRepository implements UserRepositoryInterface
 
     public function findByUsername(string $username): ?User
     {
-        return User::orderByDesc('id')->where('username', $username)->firstOrFail();
+        return User::with(
+            [
+                'portfolios' => fn($query) => $query->orderByDesc('id')
+            ]
+        )->where('username', $username)->firstOrFail();
     }
 
     public function create(array $data): User
