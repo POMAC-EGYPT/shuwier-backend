@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\Rule;
 
 /**
  * StoreServiceRequest handles the validation for storing a new service by a freelancer.
@@ -53,7 +54,14 @@ class StoreServiceRequest extends FormRequest
             'category_id'        => 'required|exists:categories,id',
             'subcategory_id'     => 'nullable|exists:categories,id',
             'delivery_time_unit' => 'required|in:hours,days,months',
-            'delivery_time'      => 'required|integer|min:1|max:365',
+            'delivery_time'      => [
+                'required',
+                'integer',
+                'min:1',
+                Rule::when($this->delivery_time_unit === 'hours', 'max:24'),
+                Rule::when($this->delivery_time_unit === 'days', 'max:31'),
+                Rule::when($this->delivery_time_unit === 'months', 'max:12'),
+            ],
             'service_fees_type'  => 'required|in:fixed,hourly',
             'price'              => 'required|numeric|min:1',
             'cover_photo'        => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
