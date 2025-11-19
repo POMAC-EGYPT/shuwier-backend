@@ -23,11 +23,12 @@ class AuthSocialService implements AuthSocialServiceInterface
         $name = $socialUser->getName();
 
         if ($state == 'register') {
+            
             $user = $this->userRepo->create([
                 'name' => $name,
                 'email' => $email,
                 'type' => 'client',
-                'provider' => 'google',
+                'provider' => $provider,
                 'provider_id' => $providerId,
                 'email_verified_at' => now(),
                 'is_active' => 1,
