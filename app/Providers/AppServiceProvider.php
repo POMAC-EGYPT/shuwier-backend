@@ -95,6 +95,7 @@ use App\Services\Implementations\UserService;
 use App\Services\Search\Contracts\SearchStrategyInterface;
 use App\Services\Search\Factory\SearchStrategyFactory;
 use App\Services\Search\Strategies\ClientSearch;
+use App\Services\Search\Strategies\FreelancerSearch;
 use App\Services\Search\Strategies\ProjectSearch;
 use App\Services\Search\Strategies\ServiceSearch;
 use App\Services\Upload\Strategies\ProjectUpload;
@@ -157,12 +158,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SearchStrategyInterface::class . '_service', ServiceSearch::class);
         $this->app->bind(SearchStrategyInterface::class . '_project', ProjectSearch::class);
         $this->app->bind(SearchStrategyInterface::class . '_client', ClientSearch::class);
+        $this->app->bind(SearchStrategyInterface::class . '_freelancer', FreelancerSearch::class);
 
         $this->app->bind(SearchStrategyFactory::class, function ($app) {
             return new SearchStrategyFactory(
                 $app->make(SearchStrategyInterface::class . '_service'),
                 $app->make(SearchStrategyInterface::class . '_project'),
                 $app->make(SearchStrategyInterface::class . '_client'),
+                $app->make(SearchStrategyInterface::class . '_freelancer'),
             );
         });
 

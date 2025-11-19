@@ -30,9 +30,9 @@
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="{{ asset("/vendor/scribe/js/tryitout-5.3.0.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-5.5.0.js") }}"></script>
 
-    <script src="{{ asset("/vendor/scribe/js/theme-default-5.3.0.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/theme-default-5.5.0.js") }}"></script>
 
 </head>
 
@@ -298,17 +298,17 @@
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-freelancers-proposals--id-">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-auth--provider--redirect">
+                                <a href="#endpoints-GETapi-auth--provider--redirect">GET api/auth/{provider}/redirect</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-auth--provider--callback">
+                                <a href="#endpoints-GETapi-auth--provider--callback">GET api/auth/{provider}/callback</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-freelancers-proposals--id-">
                                 <a href="#endpoints-GETapi-freelancers-proposals--id-">GET api/freelancers/proposals/{id}</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-services--id-">
                                 <a href="#endpoints-GETapi-services--id-">GET api/services/{id}</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-search-client">
-                                <a href="#endpoints-GETapi-search-client">GET api/search/client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-search-freelancer">
-                                <a href="#endpoints-GETapi-search-freelancer">GET api/search/freelancer</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -427,6 +427,12 @@ Retrieve a specific portfolio by its ID with all related data.</a>
                                                                                 <li class="tocify-item level-2" data-unique="public-search-GETapi-search-project">
                                 <a href="#public-search-GETapi-search-project">Project Search</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="public-search-GETapi-search-client">
+                                <a href="#public-search-GETapi-search-client">Client Search</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="public-search-GETapi-search-freelancer">
+                                <a href="#public-search-GETapi-search-freelancer">Freelancer Search</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-public-tips-guides" class="tocify-header">
@@ -542,7 +548,7 @@ Retrieve a specific portfolio by its ID with all related data.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 16, 2025</li>
+        <li>Last updated: November 19, 2025</li>
     </ul>
 </div>
 
@@ -751,6 +757,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-auth-login"
                value="application/json"
@@ -762,6 +769,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-auth-login"
                value="application/json"
@@ -772,6 +780,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-auth-login"
@@ -785,6 +794,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-admin-auth-login"
                value="admin@admin.com"
@@ -795,6 +805,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-admin-auth-login"
@@ -937,6 +948,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-categories"
                value="application/json"
@@ -948,6 +960,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-categories"
                value="application/json"
@@ -958,6 +971,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-categories"
@@ -971,6 +985,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-categories"
                value="تصميم"
@@ -982,6 +997,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-categories"
                value="20"
@@ -993,6 +1009,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-categories"
                value="parent. Possible values: parent, child"
@@ -1004,6 +1021,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="parent_id"                data-endpoint="GETapi-admin-categories"
                value="2"
@@ -1015,6 +1033,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="page"                data-endpoint="GETapi-admin-categories"
                value="2"
@@ -1045,7 +1064,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgnKJE7" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGbc17B" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1157,6 +1176,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-categories"
                value="multipart/form-data"
@@ -1168,6 +1188,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-categories"
                value="application/json"
@@ -1178,6 +1199,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-categories"
@@ -1191,6 +1213,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_en"                data-endpoint="POSTapi-admin-categories"
                value="Design"
@@ -1201,6 +1224,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="name_ar"                data-endpoint="POSTapi-admin-categories"
@@ -1213,6 +1237,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="parent_id"                data-endpoint="POSTapi-admin-categories"
                value="2"
@@ -1224,12 +1249,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="image"                data-endpoint="POSTapi-admin-categories"
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgnKJE7</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpGbc17B</code></p>
         </div>
         </form>
 
@@ -1355,6 +1381,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-categories--id-"
                value="application/json"
@@ -1365,6 +1392,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-categories--id-"
@@ -1377,6 +1405,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-categories--id-"
                value="en"
@@ -1388,6 +1417,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-admin-categories--id-"
@@ -1419,7 +1449,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php73W2je" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3nhOne" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1537,6 +1567,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-admin-categories--id-"
                value="multipart/form-data"
@@ -1548,6 +1579,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-admin-categories--id-"
                value="application/json"
@@ -1558,6 +1590,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="PUTapi-admin-categories--id-"
@@ -1571,6 +1604,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-admin-categories--id-"
                value="1"
@@ -1583,6 +1617,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_en"                data-endpoint="PUTapi-admin-categories--id-"
                value="Design"
@@ -1594,6 +1629,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_ar"                data-endpoint="PUTapi-admin-categories--id-"
                value="تصميم"
@@ -1605,6 +1641,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="parent_id"                data-endpoint="PUTapi-admin-categories--id-"
                value="2"
@@ -1616,12 +1653,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="image"                data-endpoint="PUTapi-admin-categories--id-"
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php73W2je</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php3nhOne</code></p>
         </div>
         </form>
 
@@ -1738,6 +1776,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-admin-categories--id-"
                value="application/json"
@@ -1748,6 +1787,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-admin-categories--id-"
@@ -1760,6 +1800,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="DELETEapi-admin-categories--id-"
                value="en"
@@ -1771,6 +1812,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-admin-categories--id-"
@@ -1918,6 +1960,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-categories-store-all-with-childrens"
                value="application/json"
@@ -1929,6 +1972,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-categories-store-all-with-childrens"
                value="application/json"
@@ -1939,6 +1983,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-categories-store-all-with-childrens"
@@ -1952,6 +1997,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_en"                data-endpoint="POSTapi-admin-categories-store-all-with-childrens"
                value="Programming"
@@ -1962,6 +2008,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="name_ar"                data-endpoint="POSTapi-admin-categories-store-all-with-childrens"
@@ -1976,12 +2023,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>childrens</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 <p>Array of child categories (each with name_en, name_ar).</p>
             </summary>
                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="childrens.0.name_en"                data-endpoint="POSTapi-admin-categories-store-all-with-childrens"
@@ -1993,6 +2042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="childrens.0.name_ar"                data-endpoint="POSTapi-admin-categories-store-all-with-childrens"
@@ -2206,6 +2256,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-clients"
                value="application/json"
@@ -2217,6 +2268,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-clients"
                value="application/json"
@@ -2227,6 +2279,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-clients"
@@ -2240,6 +2293,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="GETapi-admin-clients"
                value="سارة"
@@ -2251,6 +2305,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="page"                data-endpoint="GETapi-admin-clients"
                value="2"
@@ -2263,6 +2318,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="GETapi-admin-clients"
                value="vmqeopfuudtdsufvyvddq"
@@ -2422,6 +2478,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-clients--id-"
                value="application/json"
@@ -2432,6 +2489,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-clients--id-"
@@ -2444,6 +2502,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-clients--id-"
                value="en"
@@ -2455,6 +2514,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-admin-clients--id-"
@@ -2613,6 +2673,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-admin-clients--id-"
                value="application/json"
@@ -2623,6 +2684,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-admin-clients--id-"
@@ -2635,6 +2697,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="DELETEapi-admin-clients--id-"
                value="en"
@@ -2646,6 +2709,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-admin-clients--id-"
@@ -2805,6 +2869,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-clients-block-unblock--id-"
                value="application/json"
@@ -2815,6 +2880,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-clients-block-unblock--id-"
@@ -2827,6 +2893,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-clients-block-unblock--id-"
                value="en"
@@ -2838,6 +2905,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="POSTapi-admin-clients-block-unblock--id-"
@@ -3044,6 +3112,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-commissions"
                value="application/json"
@@ -3055,6 +3124,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-commissions"
                value="application/json"
@@ -3065,6 +3135,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-commissions"
@@ -3078,6 +3149,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-commissions"
                value="15"
@@ -3089,6 +3161,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-commissions"
                value="15"
@@ -3101,6 +3174,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-commissions"
                value="consequatur"
@@ -3112,6 +3186,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-commissions"
                value="13"
@@ -3286,6 +3361,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-commissions"
                value="application/json"
@@ -3296,6 +3372,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-commissions"
@@ -3308,6 +3385,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-commissions"
                value="en"
@@ -3319,6 +3397,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>rate</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="rate"                data-endpoint="POSTapi-admin-commissions"
@@ -3475,6 +3554,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-invitations"
                value="application/json"
@@ -3486,6 +3566,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-invitations"
                value="application/json"
@@ -3496,6 +3577,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-invitations"
@@ -3509,6 +3591,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-invitations"
                value="15"
@@ -3521,6 +3604,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-invitations"
                value="73"
@@ -3674,6 +3758,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-invitations"
                value="application/json"
@@ -3684,6 +3769,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-invitations"
@@ -3696,6 +3782,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-invitations"
                value="en"
@@ -3707,6 +3794,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-admin-invitations"
@@ -3745,7 +3833,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"approved\",
-    \"is_active\": \"0\",
+    \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -3773,7 +3861,7 @@ const headers = {
 
 let body = {
     "approval_status": "approved",
-    "is_active": "0",
+    "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -3916,6 +4004,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-freelancers"
                value="application/json"
@@ -3927,6 +4016,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-freelancers"
                value="application/json"
@@ -3937,6 +4027,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-freelancers"
@@ -3950,6 +4041,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>approval_status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
                value="requested"
@@ -3961,6 +4053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="is_active"                data-endpoint="GETapi-admin-freelancers"
                value="1"
@@ -3972,6 +4065,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="GETapi-admin-freelancers"
                value="أحمد"
@@ -3983,6 +4077,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="page"                data-endpoint="GETapi-admin-freelancers"
                value="2"
@@ -3995,6 +4090,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>approval_status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="approval_status"                data-endpoint="GETapi-admin-freelancers"
                value="approved"
@@ -4008,12 +4104,13 @@ Must be one of:
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -4021,6 +4118,7 @@ Must be one of:
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="GETapi-admin-freelancers"
                value="vmqeopfuudtdsufvyvddq"
@@ -4185,6 +4283,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-freelancers--id-"
                value="application/json"
@@ -4195,6 +4294,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-freelancers--id-"
@@ -4207,6 +4307,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-freelancers--id-"
                value="en"
@@ -4218,6 +4319,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-admin-freelancers--id-"
@@ -4365,6 +4467,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-admin-freelancers--id-"
                value="application/json"
@@ -4375,6 +4478,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-admin-freelancers--id-"
@@ -4387,6 +4491,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="DELETEapi-admin-freelancers--id-"
                value="en"
@@ -4398,6 +4503,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-admin-freelancers--id-"
@@ -4608,6 +4714,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-freelancers-approve-reject--id-"
                value="application/json"
@@ -4619,6 +4726,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-freelancers-approve-reject--id-"
                value="application/json"
@@ -4629,6 +4737,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-freelancers-approve-reject--id-"
@@ -4642,6 +4751,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="POSTapi-admin-freelancers-approve-reject--id-"
                value="1"
@@ -4653,6 +4763,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>action</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="action"                data-endpoint="POSTapi-admin-freelancers-approve-reject--id-"
@@ -4823,6 +4934,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
                value="application/json"
@@ -4833,6 +4945,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
@@ -4845,6 +4958,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
                value="en"
@@ -4856,6 +4970,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="POSTapi-admin-freelancers-block-unblock--id-"
@@ -5037,6 +5152,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-how-it-works"
                value="application/json"
@@ -5048,6 +5164,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-how-it-works"
                value="application/json"
@@ -5058,6 +5175,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-how-it-works"
@@ -5071,6 +5189,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-how-it-works"
                value="getting started"
@@ -5082,6 +5201,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-how-it-works"
                value="freelancer"
@@ -5093,6 +5213,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-how-it-works"
                value="10"
@@ -5105,6 +5226,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-how-it-works"
                value="consequatur"
@@ -5116,6 +5238,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-how-it-works"
                value="client"
@@ -5129,6 +5252,7 @@ Must be one of:
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-how-it-works"
                value="45"
@@ -5274,6 +5398,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-how-it-works--id-"
                value="application/json"
@@ -5284,6 +5409,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-how-it-works--id-"
@@ -5296,6 +5422,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-how-it-works--id-"
                value="en"
@@ -5307,6 +5434,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-admin-how-it-works--id-"
@@ -5485,6 +5613,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="application/json"
@@ -5496,6 +5625,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="application/json"
@@ -5506,6 +5636,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="PUTapi-admin-how-it-works--id-"
@@ -5519,6 +5650,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="1"
@@ -5531,6 +5663,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title_en"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="Getting Started - Updated"
@@ -5542,6 +5675,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title_ar"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="البدء - محدث"
@@ -5553,6 +5687,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>description_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description_en"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="Updated: Learn how to create your profile and start working"
@@ -5564,6 +5699,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>description_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description_ar"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="محدث: تعلم كيفية إنشاء ملفك الشخصي وبدء العمل"
@@ -5575,6 +5711,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value="client"
@@ -5586,6 +5723,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="image"                data-endpoint="PUTapi-admin-how-it-works--id-"
                value=""
@@ -5784,6 +5922,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-skills"
                value="application/json"
@@ -5795,6 +5934,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-skills"
                value="application/json"
@@ -5805,6 +5945,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-skills"
@@ -5818,6 +5959,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-skills"
                value=""PHP""
@@ -5829,6 +5971,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-skills"
                value="15"
@@ -5841,6 +5984,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-skills"
                value="vmqeopfuudtdsufvyvddq"
@@ -5852,6 +5996,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-skills"
                value="1"
@@ -6034,6 +6179,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-skills"
                value="application/json"
@@ -6045,6 +6191,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-skills"
                value="application/json"
@@ -6055,6 +6202,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-skills"
@@ -6068,6 +6216,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_ar"                data-endpoint="POSTapi-admin-skills"
                value=""برمجة PHP""
@@ -6079,6 +6228,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_en"                data-endpoint="POSTapi-admin-skills"
                value=""PHP Programming""
@@ -6089,6 +6239,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="POSTapi-admin-skills"
@@ -6237,6 +6388,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-skills--id-"
                value="application/json"
@@ -6247,6 +6399,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-skills--id-"
@@ -6259,6 +6412,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-skills--id-"
                value="en"
@@ -6270,6 +6424,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-admin-skills--id-"
@@ -6446,6 +6601,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-admin-skills--id-"
                value="application/json"
@@ -6457,6 +6613,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-admin-skills--id-"
                value="application/json"
@@ -6467,6 +6624,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="PUTapi-admin-skills--id-"
@@ -6480,6 +6638,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-admin-skills--id-"
                value="5"
@@ -6492,6 +6651,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_ar"                data-endpoint="PUTapi-admin-skills--id-"
                value=""تطوير تطبيقات PHP""
@@ -6503,6 +6663,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name_en"                data-endpoint="PUTapi-admin-skills--id-"
                value=""PHP Application Development""
@@ -6513,6 +6674,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="PUTapi-admin-skills--id-"
@@ -6648,6 +6810,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-admin-skills--id-"
                value="application/json"
@@ -6658,6 +6821,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-admin-skills--id-"
@@ -6670,6 +6834,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="DELETEapi-admin-skills--id-"
                value="en"
@@ -6681,6 +6846,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-admin-skills--id-"
@@ -6859,6 +7025,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-tips-and-guides"
                value="application/json"
@@ -6870,6 +7037,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-tips-and-guides"
                value="application/json"
@@ -6880,6 +7048,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-tips-and-guides"
@@ -6893,6 +7062,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-tips-and-guides"
                value="freelancing tips"
@@ -6904,6 +7074,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-tips-and-guides"
                value="10"
@@ -6916,6 +7087,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-tips-and-guides"
                value="consequatur"
@@ -6927,6 +7099,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-admin-tips-and-guides"
                value="45"
@@ -6959,7 +7132,7 @@ This endpoint allows administrators to add educational and helpful content for p
     --form "title_ar=أفضل ممارسات العمل الحر"\
     --form "description_en=Learn the essential tips for successful freelancing career"\
     --form "description_ar=تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuEILoI" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpIJH2Ug" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7096,6 +7269,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-tips-and-guides"
                value="multipart/form-data"
@@ -7107,6 +7281,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-tips-and-guides"
                value="application/json"
@@ -7117,6 +7292,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-tips-and-guides"
@@ -7130,6 +7306,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title_en"                data-endpoint="POSTapi-admin-tips-and-guides"
                value="Best Freelancing Practices"
@@ -7140,6 +7317,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>title_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="title_ar"                data-endpoint="POSTapi-admin-tips-and-guides"
@@ -7152,6 +7330,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>description_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description_en"                data-endpoint="POSTapi-admin-tips-and-guides"
                value="Learn the essential tips for successful freelancing career"
@@ -7162,6 +7341,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="description_ar"                data-endpoint="POSTapi-admin-tips-and-guides"
@@ -7174,12 +7354,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="image"                data-endpoint="POSTapi-admin-tips-and-guides"
                value=""
                data-component="body">
     <br>
-<p>Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuEILoI</code></p>
+<p>Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpIJH2Ug</code></p>
         </div>
         </form>
 
@@ -7319,6 +7500,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-tips-and-guides--id-"
                value="application/json"
@@ -7329,6 +7511,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-tips-and-guides--id-"
@@ -7341,6 +7524,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-tips-and-guides--id-"
                value="en"
@@ -7352,6 +7536,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-admin-tips-and-guides--id-"
@@ -7528,6 +7713,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value="application/json"
@@ -7539,6 +7725,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value="application/json"
@@ -7549,6 +7736,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
@@ -7562,6 +7750,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value="1"
@@ -7574,6 +7763,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title_en"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value="Best Freelancing Practices - Updated"
@@ -7585,6 +7775,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title_ar"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value="أفضل ممارسات العمل الحر - محدث"
@@ -7596,6 +7787,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>description_en</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description_en"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value="Updated: Learn the essential tips for successful freelancing career"
@@ -7607,6 +7799,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>description_ar</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description_ar"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value="محدث: تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر"
@@ -7618,6 +7811,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="image"                data-endpoint="PUTapi-admin-tips-and-guides--id-"
                value=""
@@ -7763,6 +7957,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-admin-tips-and-guides--id-"
                value="application/json"
@@ -7773,6 +7968,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-admin-tips-and-guides--id-"
@@ -7785,6 +7981,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="DELETEapi-admin-tips-and-guides--id-"
                value="en"
@@ -7796,6 +7993,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-admin-tips-and-guides--id-"
@@ -7944,6 +8142,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-verifications"
                value="application/json"
@@ -7955,6 +8154,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-verifications"
                value="application/json"
@@ -7965,6 +8165,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-admin-verifications"
@@ -7978,6 +8179,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-admin-verifications"
                value="pending"
@@ -7989,6 +8191,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-admin-verifications"
                value="john"
@@ -8130,6 +8333,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-verifications--id-"
                value="application/json"
@@ -8141,6 +8345,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-verifications--id-"
                value="application/json"
@@ -8151,6 +8356,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-admin-verifications--id-"
@@ -8164,6 +8370,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="POSTapi-admin-verifications--id-"
                value="1"
@@ -8175,6 +8382,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>action</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="action"                data-endpoint="POSTapi-admin-verifications--id-"
@@ -8327,6 +8535,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-categories"
                value="application/json"
@@ -8338,6 +8547,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-categories"
                value="application/json"
@@ -8348,6 +8558,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-categories"
@@ -8514,6 +8725,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-categories-child--id-"
                value="application/json"
@@ -8524,6 +8736,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-categories-child--id-"
@@ -8536,6 +8749,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-categories-child--id-"
                value="en"
@@ -8547,6 +8761,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-categories-child--id-"
@@ -8583,7 +8798,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"completed\",
+    \"status\": \"in_progress\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -8608,7 +8823,7 @@ const headers = {
 };
 
 let body = {
-    "status": "completed",
+    "status": "in_progress",
     "per_page": 73
 };
 
@@ -8894,6 +9109,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-clients-projects"
                value="application/json"
@@ -8905,6 +9121,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-clients-projects"
                value="application/json"
@@ -8915,6 +9132,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-clients-projects"
@@ -8928,6 +9146,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
                value="active"
@@ -8939,6 +9158,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-clients-projects"
                value="10"
@@ -8951,12 +9171,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="completed"
+               value="in_progress"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>in_progress</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -8964,6 +9185,7 @@ Must be one of:
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-clients-projects"
                value="73"
@@ -9239,6 +9461,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-clients-projects"
                value="application/json"
@@ -9250,6 +9473,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-clients-projects"
                value="application/json"
@@ -9260,6 +9484,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-clients-projects"
@@ -9273,6 +9498,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-clients-projects"
                value="consequatur"
@@ -9283,6 +9509,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-clients-projects"
@@ -9295,6 +9522,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="POSTapi-clients-projects"
                value="17"
@@ -9306,6 +9534,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="subcategory_id"                data-endpoint="POSTapi-clients-projects"
                value="17"
@@ -9316,6 +9545,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>budget</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="budget"                data-endpoint="POSTapi-clients-projects"
@@ -9328,6 +9558,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>deadline_unit</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="deadline_unit"                data-endpoint="POSTapi-clients-projects"
                value="consequatur"
@@ -9338,6 +9569,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>deadline</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="deadline"                data-endpoint="POSTapi-clients-projects"
@@ -9350,6 +9582,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-clients-projects"
                data-component="body">
@@ -9544,6 +9777,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-clients-projects--id--end"
                value="application/json"
@@ -9554,6 +9788,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-clients-projects--id--end"
@@ -9566,6 +9801,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-clients-projects--id--end"
                value="en"
@@ -9577,6 +9813,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="POSTapi-clients-projects--id--end"
@@ -9851,6 +10088,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-clients-projects--projectId--proposals"
                value="application/json"
@@ -9862,6 +10100,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-clients-projects--projectId--proposals"
                value="application/json"
@@ -9872,6 +10111,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-clients-projects--projectId--proposals"
@@ -9885,6 +10125,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>projectId</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="projectId"                data-endpoint="GETapi-clients-projects--projectId--proposals"
                value="5"
@@ -9897,6 +10138,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-clients-projects--projectId--proposals"
                value="21"
@@ -10192,6 +10434,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-clients-proposals--id-"
                value="application/json"
@@ -10202,6 +10445,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-clients-proposals--id-"
@@ -10214,6 +10458,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-clients-proposals--id-"
                value="en"
@@ -10225,6 +10470,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-clients-proposals--id-"
@@ -10375,6 +10621,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-commissions"
                value="application/json"
@@ -10386,6 +10633,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-commissions"
                value="application/json"
@@ -10396,6 +10644,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-commissions"
@@ -10410,7 +10659,341 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     
 
-                                <h2 id="endpoints-GETapi-freelancers-proposals--id-">GET api/freelancers/proposals/{id}</h2>
+                                <h2 id="endpoints-GETapi-auth--provider--redirect">GET api/auth/{provider}/redirect</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-auth--provider--redirect">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/auth/google|apple/redirect" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"state\": \"login\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/auth/google|apple/redirect"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "state": "login"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth--provider--redirect">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 404,
+    &quot;message&quot;: &quot;Not Found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth--provider--redirect" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth--provider--redirect"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth--provider--redirect"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth--provider--redirect" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth--provider--redirect">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth--provider--redirect" data-method="GET"
+      data-path="api/auth/{provider}/redirect"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth--provider--redirect', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-auth--provider--redirect"
+                    onclick="tryItOut('GETapi-auth--provider--redirect');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-auth--provider--redirect"
+                    onclick="cancelTryOut('GETapi-auth--provider--redirect');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-auth--provider--redirect"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/{provider}/redirect</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth--provider--redirect"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth--provider--redirect"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-auth--provider--redirect"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>provider</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="provider"                data-endpoint="GETapi-auth--provider--redirect"
+               value="google|apple"
+               data-component="url">
+    <br>
+<p>Example: <code>google|apple</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>state</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="state"                data-endpoint="GETapi-auth--provider--redirect"
+               value="login"
+               data-component="body">
+    <br>
+<p>Example: <code>login</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>login</code></li> <li><code>register</code></li></ul>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-auth--provider--callback">GET api/auth/{provider}/callback</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-auth--provider--callback">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/auth/google|apple/callback" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/auth/google|apple/callback"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth--provider--callback">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 404,
+    &quot;message&quot;: &quot;Not Found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth--provider--callback" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth--provider--callback"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth--provider--callback"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth--provider--callback" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth--provider--callback">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth--provider--callback" data-method="GET"
+      data-path="api/auth/{provider}/callback"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth--provider--callback', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-auth--provider--callback"
+                    onclick="tryItOut('GETapi-auth--provider--callback');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-auth--provider--callback"
+                    onclick="cancelTryOut('GETapi-auth--provider--callback');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-auth--provider--callback"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/{provider}/callback</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth--provider--callback"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth--provider--callback"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-auth--provider--callback"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>provider</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="provider"                data-endpoint="GETapi-auth--provider--callback"
+               value="google|apple"
+               data-component="url">
+    <br>
+<p>Example: <code>google|apple</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-freelancers-proposals--id-">GET api/freelancers/proposals/{id}</h2>
 
 <p>
 </p>
@@ -10518,6 +11101,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-freelancers-proposals--id-"
                value="application/json"
@@ -10528,6 +11112,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-freelancers-proposals--id-"
@@ -10540,6 +11125,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-freelancers-proposals--id-"
                value="en"
@@ -10551,6 +11137,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-freelancers-proposals--id-"
@@ -10669,6 +11256,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-services--id-"
                value="application/json"
@@ -10680,6 +11268,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-services--id-"
                value="application/json"
@@ -10690,6 +11279,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-services--id-"
@@ -10703,6 +11293,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-services--id-"
                value="consequatur"
@@ -10711,348 +11302,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The ID of the service. Example: <code>consequatur</code></p>
             </div>
                     </form>
-
-                    <h2 id="endpoints-GETapi-search-client">GET api/search/client</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-search-client">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/search/client" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en" \
-    --data "{
-    \"search\": \"vmqeopfuudtdsufvyvddq\",
-    \"rates\": [
-        2
-    ],
-    \"per_page\": 13
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/search/client"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-let body = {
-    "search": "vmqeopfuudtdsufvyvddq",
-    "rates": [
-        2
-    ],
-    "per_page": 13
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-search-client">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;status&quot;: true,
-    &quot;error_num&quot;: null,
-    &quot;message&quot;: &quot;Success&quot;,
-    &quot;data&quot;: [],
-    &quot;current_page&quot;: 1,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;per_page&quot;: 13,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0,
-    &quot;links&quot;: {
-        &quot;first&quot;: &quot;http://backend.shuwier.com/api/search/client?page=1&quot;,
-        &quot;last&quot;: &quot;http://backend.shuwier.com/api/search/client?page=1&quot;,
-        &quot;prev&quot;: null,
-        &quot;next&quot;: null
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-search-client" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-search-client"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-search-client"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-search-client" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-search-client">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-search-client" data-method="GET"
-      data-path="api/search/client"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-client', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-search-client"
-                    onclick="tryItOut('GETapi-search-client');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-search-client"
-                    onclick="cancelTryOut('GETapi-search-client');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-search-client"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/search/client</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-search-client"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-search-client"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-search-client"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-search-client"
-               value="vmqeopfuudtdsufvyvddq"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>vmqeopfuudtdsufvyvddq</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>rates</code></b>&nbsp;&nbsp;
-<small>number[]</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="rates[0]"                data-endpoint="GETapi-search-client"
-               data-component="body">
-        <input type="number" style="display: none"
-               name="rates[1]"                data-endpoint="GETapi-search-client"
-               data-component="body">
-    <br>
-<p>Must be at least 1.</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-search-client"
-               value="13"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Must not be greater than 50. Example: <code>13</code></p>
-        </div>
-        </form>
-
-                    <h2 id="endpoints-GETapi-search-freelancer">GET api/search/freelancer</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-search-freelancer">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://backend.shuwier.com/api/search/freelancer" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --header "Accept-Language: en"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://backend.shuwier.com/api/search/freelancer"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Accept-Language": "en",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-search-freelancer">
-            <blockquote>
-            <p>Example response (500):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-search-freelancer" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-search-freelancer"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-search-freelancer"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-search-freelancer" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-search-freelancer">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-search-freelancer" data-method="GET"
-      data-path="api/search/freelancer"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-freelancer', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-search-freelancer"
-                    onclick="tryItOut('GETapi-search-freelancer');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-search-freelancer"
-                    onclick="cancelTryOut('GETapi-search-freelancer');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-search-freelancer"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/search/freelancer</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-search-freelancer"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-search-freelancer"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept-Language"                data-endpoint="GETapi-search-freelancer"
-               value="en"
-               data-component="header">
-    <br>
-<p>Example: <code>en</code></p>
-            </div>
-                        </form>
 
                 <h1 id="file-upload">File Upload</h1>
 
@@ -11078,7 +11327,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptWOQBS" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpatTgyj" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11208,6 +11457,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-upload"
                value="multipart/form-data"
@@ -11219,6 +11469,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-upload"
                value="application/json"
@@ -11229,6 +11480,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-upload"
@@ -11242,16 +11494,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="file"                data-endpoint="POSTapi-upload"
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phptWOQBS</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpatTgyj</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-upload"
@@ -11404,6 +11658,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-freelancers-portfolios"
                value="application/json"
@@ -11415,6 +11670,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-freelancers-portfolios"
                value="application/json"
@@ -11425,6 +11681,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-freelancers-portfolios"
@@ -11438,6 +11695,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-freelancers-portfolios"
                value="15"
@@ -11471,7 +11729,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuRxfpq" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpVOkSi5" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11611,6 +11869,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-freelancers-portfolios"
                value="multipart/form-data"
@@ -11622,6 +11881,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-freelancers-portfolios"
                value="application/json"
@@ -11632,6 +11892,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-freelancers-portfolios"
@@ -11645,6 +11906,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-freelancers-portfolios"
                value=""E-commerce Website""
@@ -11655,6 +11917,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-freelancers-portfolios"
@@ -11667,6 +11930,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="POSTapi-freelancers-portfolios"
                value="1"
@@ -11678,6 +11942,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="subcategory_id"                data-endpoint="POSTapi-freelancers-portfolios"
                value="2"
@@ -11689,6 +11954,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
@@ -11702,17 +11968,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="cover_photo"                data-endpoint="POSTapi-freelancers-portfolios"
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpuRxfpq</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpVOkSi5</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="hashtags[0]"                data-endpoint="POSTapi-freelancers-portfolios"
                data-component="body">
@@ -11748,7 +12016,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprXDV5F" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeyFqFN" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11903,6 +12171,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="multipart/form-data"
@@ -11914,6 +12183,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="application/json"
@@ -11924,6 +12194,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="PUTapi-freelancers-portfolios--id-"
@@ -11937,6 +12208,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="1"
@@ -11949,6 +12221,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value=""Updated E-commerce Website""
@@ -11959,6 +12232,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="PUTapi-freelancers-portfolios--id-"
@@ -11971,6 +12245,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="1"
@@ -11982,6 +12257,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="subcategory_id"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value="2"
@@ -11993,6 +12269,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attachment_ids[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
@@ -12006,17 +12283,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="cover_photo"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phprXDV5F</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeyFqFN</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="hashtags[0]"                data-endpoint="PUTapi-freelancers-portfolios--id-"
                data-component="body">
@@ -12141,6 +12420,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
                value="application/json"
@@ -12151,6 +12431,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
@@ -12163,6 +12444,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
                value="en"
@@ -12174,6 +12456,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-freelancers-portfolios--id-"
@@ -12515,6 +12798,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-freelancers-proposals"
                value="application/json"
@@ -12526,6 +12810,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-freelancers-proposals"
                value="application/json"
@@ -12536,6 +12821,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-freelancers-proposals"
@@ -12549,6 +12835,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="status[0]"                data-endpoint="GETapi-freelancers-proposals"
                data-component="query">
@@ -12562,6 +12849,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-freelancers-proposals"
                value="website development"
@@ -12573,6 +12861,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-freelancers-proposals"
                value="10"
@@ -12899,6 +13188,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-freelancers-proposals"
                value="application/json"
@@ -12910,6 +13200,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-freelancers-proposals"
                value="application/json"
@@ -12920,6 +13211,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-freelancers-proposals"
@@ -12933,6 +13225,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>cover_letter</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="cover_letter"                data-endpoint="POSTapi-freelancers-proposals"
                value="I have 5+ years of experience in e-commerce development using Laravel and Vue.js. I've built similar platforms with payment integration and can deliver this project within your timeline."
@@ -12943,6 +13236,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>estimated_time_unit</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="estimated_time_unit"                data-endpoint="POSTapi-freelancers-proposals"
@@ -12955,6 +13249,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>estimated_time</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="estimated_time"                data-endpoint="POSTapi-freelancers-proposals"
                value="14"
@@ -12965,6 +13260,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fees_type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="fees_type"                data-endpoint="POSTapi-freelancers-proposals"
@@ -12977,6 +13273,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>bid_amount</code></b>&nbsp;&nbsp;
 <small>numeric</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="bid_amount"                data-endpoint="POSTapi-freelancers-proposals"
                value="1500.00"
@@ -12987,6 +13284,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="project_id"                data-endpoint="POSTapi-freelancers-proposals"
@@ -12999,6 +13297,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>relevant_links</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="relevant_links[0]"                data-endpoint="POSTapi-freelancers-proposals"
                data-component="body">
@@ -13012,6 +13311,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-freelancers-proposals"
                data-component="body">
@@ -13206,6 +13506,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-hashtags"
                value="application/json"
@@ -13217,6 +13518,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-hashtags"
                value="application/json"
@@ -13227,6 +13529,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-hashtags"
@@ -13240,6 +13543,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-hashtags"
                value="react"
@@ -13251,6 +13555,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-hashtags"
@@ -13382,6 +13687,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-languages"
                value="application/json"
@@ -13393,6 +13699,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-languages"
                value="application/json"
@@ -13403,6 +13710,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-languages"
@@ -13554,6 +13862,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-portfolios--id-"
                value="application/json"
@@ -13564,6 +13873,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-portfolios--id-"
@@ -13576,6 +13886,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-portfolios--id-"
                value="en"
@@ -13587,6 +13898,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-portfolios--id-"
@@ -13780,6 +14092,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-profile--username-"
                value="application/json"
@@ -13790,6 +14103,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-profile--username-"
@@ -13802,6 +14116,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-profile--username-"
                value="en"
@@ -13813,6 +14128,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>username</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="username"                data-endpoint="GETapi-profile--username-"
@@ -14043,6 +14359,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-home-guest"
                value="application/json"
@@ -14054,6 +14371,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-home-guest"
                value="application/json"
@@ -14064,6 +14382,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-home-guest"
@@ -14317,6 +14636,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-projects--id-"
                value="application/json"
@@ -14327,6 +14647,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-projects--id-"
@@ -14339,6 +14660,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-projects--id-"
                value="en"
@@ -14350,6 +14672,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-projects--id-"
@@ -14692,6 +15015,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-search-service"
                value="application/json"
@@ -14703,6 +15027,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-search-service"
                value="application/json"
@@ -14713,6 +15038,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-search-service"
@@ -14726,6 +15052,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-search-service"
                value="wordpress website development"
@@ -14737,6 +15064,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="GETapi-search-service"
                value="4"
@@ -14748,6 +15076,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="subcategory_id"                data-endpoint="GETapi-search-service"
                value="5"
@@ -14759,6 +15088,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>hashtag</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="hashtag"                data-endpoint="GETapi-search-service"
                value="php"
@@ -14770,6 +15100,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>price_min</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="price_min"                data-endpoint="GETapi-search-service"
                value="100"
@@ -14781,6 +15112,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>price_max</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="price_max"                data-endpoint="GETapi-search-service"
                value="1000"
@@ -14792,6 +15124,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-search-service"
                value="10"
@@ -15119,6 +15452,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-search-project"
                value="application/json"
@@ -15130,6 +15464,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-search-project"
                value="application/json"
@@ -15140,6 +15475,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-search-project"
@@ -15153,6 +15489,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-search-project"
                value="website development"
@@ -15164,6 +15501,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_ids[0]"                data-endpoint="GETapi-search-project"
                data-component="body">
@@ -15177,6 +15515,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>budgets</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="budgets[0]"                data-endpoint="GETapi-search-project"
                data-component="body">
@@ -15190,12 +15529,722 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-search-project"
                value="15"
                data-component="body">
     <br>
 <p>optional Number of projects per page (default: 10). Example: <code>15</code></p>
+        </div>
+        </form>
+
+                    <h2 id="public-search-GETapi-search-client">Client Search</h2>
+
+<p>
+</p>
+
+<p>Search and filter clients based on name, username, and average rating. This endpoint allows
+searching for clients with specific rating ranges to help freelancers find quality clients
+to work with. Results include client profile information and their average rating from previous
+projects.</p>
+
+<span id="example-requests-GETapi-search-client">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/search/client" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"search\": \"john smith\",
+    \"rates\": [
+        4
+    ],
+    \"per_page\": 10
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/search/client"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "search": "john smith",
+    "rates": [
+        4
+    ],
+    "per_page": 10
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-search-client">
+            <blockquote>
+            <p>Example response (200, Clients found successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 15,
+                &quot;name&quot;: &quot;John Smith&quot;,
+                &quot;username&quot;: &quot;johnsmith_client&quot;,
+                &quot;email&quot;: &quot;john.smith@example.com&quot;,
+                &quot;type&quot;: &quot;client&quot;,
+                &quot;is_active&quot;: true,
+                &quot;profile_picture&quot;: &quot;storage/profiles/client_15.jpg&quot;,
+                &quot;company&quot;: &quot;Tech Solutions Inc.&quot;,
+                &quot;country&quot;: &quot;United States&quot;,
+                &quot;city&quot;: &quot;New York&quot;,
+                &quot;is_verified&quot;: true,
+                &quot;user_verification_status&quot;: &quot;approved&quot;,
+                &quot;rate&quot;: 4.2,
+                &quot;rate_count&quot;: 18,
+                &quot;created_at&quot;: &quot;2025-08-15T10:30:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-11-10T14:20:00.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 23,
+                &quot;name&quot;: &quot;Sarah Johnson&quot;,
+                &quot;username&quot;: &quot;sarah_j_client&quot;,
+                &quot;email&quot;: &quot;sarah.j@business.com&quot;,
+                &quot;type&quot;: &quot;client&quot;,
+                &quot;is_active&quot;: true,
+                &quot;profile_picture&quot;: &quot;storage/profiles/client_23.jpg&quot;,
+                &quot;company&quot;: &quot;Digital Marketing Pro&quot;,
+                &quot;country&quot;: &quot;Canada&quot;,
+                &quot;city&quot;: &quot;Toronto&quot;,
+                &quot;is_verified&quot;: true,
+                &quot;user_verification_status&quot;: &quot;approved&quot;,
+                &quot;rate&quot;: 4.7,
+                &quot;rate_count&quot;: 25,
+                &quot;created_at&quot;: &quot;2025-09-02T09:15:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-11-18T11:45:00.000000Z&quot;
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/search/clients?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 3,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/search/clients?page=3&quot;,
+        &quot;next_page_url&quot;: &quot;http://localhost/api/search/clients?page=2&quot;,
+        &quot;path&quot;: &quot;http://localhost/api/search/clients&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 15,
+        &quot;total&quot;: 42
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, No clients found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/search/clients?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/search/clients?page=1&quot;,
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/search/clients&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid rating values):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The rates.0 field must be at least 1.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid search parameters):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The search field must not be greater than 255 characters.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-search-client" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-search-client"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-search-client"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-search-client" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-search-client">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-search-client" data-method="GET"
+      data-path="api/search/client"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-client', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-search-client"
+                    onclick="tryItOut('GETapi-search-client');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-search-client"
+                    onclick="cancelTryOut('GETapi-search-client');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-search-client"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/search/client</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-search-client"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-search-client"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-search-client"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-search-client"
+               value="john smith"
+               data-component="body">
+    <br>
+<p>optional Search term to find clients by name or username. Example: <code>john smith</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>rates</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="rates[0]"                data-endpoint="GETapi-search-client"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="rates[1]"                data-endpoint="GETapi-search-client"
+               data-component="body">
+    <br>
+<p>optional Array of rating values to filter clients. If single value provided (e.g., [3]), returns clients with ratings from 3.0 to 3.99. If multiple values provided (e.g., [3,5]), returns clients with ratings between 3 and 5.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-search-client"
+               value="10"
+               data-component="body">
+    <br>
+<p>optional Number of results to return per page. Must be between 1 and 50. Default is 15. Example: <code>10</code></p>
+        </div>
+        </form>
+
+                    <h2 id="public-search-GETapi-search-freelancer">Freelancer Search</h2>
+
+<p>
+</p>
+
+<p>Search and filter freelancers based on multiple criteria including name, category, skills,
+and average rating. This comprehensive search helps clients find qualified freelancers
+for their projects. Results include freelancer profiles, skills, categories, and ratings
+from previous work.</p>
+
+<span id="example-requests-GETapi-search-freelancer">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://backend.shuwier.com/api/search/freelancer" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Accept-Language: en" \
+    --data "{
+    \"search\": \"ahmed developer\",
+    \"category_ids\": [
+        4,
+        2
+    ],
+    \"skill_ids\": [
+        15,
+        23,
+        8
+    ],
+    \"rates\": [
+        4,
+        5
+    ],
+    \"per_page\": 10
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://backend.shuwier.com/api/search/freelancer"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Accept-Language": "en",
+};
+
+let body = {
+    "search": "ahmed developer",
+    "category_ids": [
+        4,
+        2
+    ],
+    "skill_ids": [
+        15,
+        23,
+        8
+    ],
+    "rates": [
+        4,
+        5
+    ],
+    "per_page": 10
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-search-freelancer">
+            <blockquote>
+            <p>Example response (200, Freelancers found successfully):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 12,
+                &quot;name&quot;: &quot;Ahmed Hassan&quot;,
+                &quot;username&quot;: &quot;ahmed_dev&quot;,
+                &quot;email&quot;: &quot;ahmed.hassan@freelancer.com&quot;,
+                &quot;type&quot;: &quot;freelancer&quot;,
+                &quot;is_active&quot;: true,
+                &quot;profile_picture&quot;: &quot;storage/profiles/freelancer_12.jpg&quot;,
+                &quot;about_me&quot;: &quot;Experienced full-stack developer with 5+ years in web development&quot;,
+                &quot;country&quot;: &quot;Egypt&quot;,
+                &quot;city&quot;: &quot;Cairo&quot;,
+                &quot;is_verified&quot;: true,
+                &quot;user_verification_status&quot;: &quot;approved&quot;,
+                &quot;rate&quot;: 4.8,
+                &quot;rate_count&quot;: 32,
+                &quot;freelancer_profile&quot;: {
+                    &quot;id&quot;: 8,
+                    &quot;user_id&quot;: 12,
+                    &quot;category_id&quot;: 4,
+                    &quot;hourly_rate&quot;: &quot;25.00&quot;,
+                    &quot;availability&quot;: &quot;full_time&quot;,
+                    &quot;experience_years&quot;: 5,
+                    &quot;category&quot;: {
+                        &quot;id&quot;: 4,
+                        &quot;name&quot;: &quot;Programming &amp; Development&quot;,
+                        &quot;parent_id&quot;: null
+                    }
+                },
+                &quot;skills&quot;: [
+                    {
+                        &quot;id&quot;: 15,
+                        &quot;name&quot;: &quot;Laravel&quot;,
+                        &quot;created_at&quot;: &quot;2025-09-01T10:00:00.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 23,
+                        &quot;name&quot;: &quot;Vue.js&quot;,
+                        &quot;created_at&quot;: &quot;2025-09-01T10:05:00.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 8,
+                        &quot;name&quot;: &quot;MySQL&quot;,
+                        &quot;created_at&quot;: &quot;2025-09-01T09:30:00.000000Z&quot;
+                    }
+                ],
+                &quot;created_at&quot;: &quot;2025-07-20T08:15:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-11-15T16:30:00.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 18,
+                &quot;name&quot;: &quot;Fatima Al-Zahra&quot;,
+                &quot;username&quot;: &quot;fatima_design&quot;,
+                &quot;email&quot;: &quot;fatima.design@creative.com&quot;,
+                &quot;type&quot;: &quot;freelancer&quot;,
+                &quot;is_active&quot;: true,
+                &quot;profile_picture&quot;: &quot;storage/profiles/freelancer_18.jpg&quot;,
+                &quot;about_me&quot;: &quot;Creative UI/UX designer passionate about user-centered design&quot;,
+                &quot;country&quot;: &quot;Morocco&quot;,
+                &quot;city&quot;: &quot;Casablanca&quot;,
+                &quot;is_verified&quot;: true,
+                &quot;user_verification_status&quot;: &quot;approved&quot;,
+                &quot;rate&quot;: 4.6,
+                &quot;rate_count&quot;: 28,
+                &quot;freelancer_profile&quot;: {
+                    &quot;id&quot;: 12,
+                    &quot;user_id&quot;: 18,
+                    &quot;category_id&quot;: 2,
+                    &quot;hourly_rate&quot;: &quot;30.00&quot;,
+                    &quot;availability&quot;: &quot;part_time&quot;,
+                    &quot;experience_years&quot;: 4,
+                    &quot;category&quot;: {
+                        &quot;id&quot;: 2,
+                        &quot;name&quot;: &quot;Design &amp; Creative&quot;,
+                        &quot;parent_id&quot;: null
+                    }
+                },
+                &quot;skills&quot;: [
+                    {
+                        &quot;id&quot;: 45,
+                        &quot;name&quot;: &quot;UI Design&quot;,
+                        &quot;created_at&quot;: &quot;2025-09-01T11:00:00.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 46,
+                        &quot;name&quot;: &quot;UX Design&quot;,
+                        &quot;created_at&quot;: &quot;2025-09-01T11:05:00.000000Z&quot;
+                    }
+                ],
+                &quot;created_at&quot;: &quot;2025-08-10T12:20:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-11-12T09:45:00.000000Z&quot;
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/search/freelancers?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 5,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/search/freelancers?page=5&quot;,
+        &quot;next_page_url&quot;: &quot;http://localhost/api/search/freelancers?page=2&quot;,
+        &quot;path&quot;: &quot;http://localhost/api/search/freelancers&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 15,
+        &quot;total&quot;: 73
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, No freelancers found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;error_num&quot;: null,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/search/freelancers?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/search/freelancers?page=1&quot;,
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/search/freelancers&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid category ID):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The selected category_ids.0 is invalid.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid skill ID):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The selected skill_ids.0 is invalid.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid rating values):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The rates.0 field must be at least 1.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Invalid search parameters):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: false,
+    &quot;error_num&quot;: 400,
+    &quot;message&quot;: &quot;The search field must not be greater than 255 characters.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-search-freelancer" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-search-freelancer"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-search-freelancer"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-search-freelancer" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-search-freelancer">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-search-freelancer" data-method="GET"
+      data-path="api/search/freelancer"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-search-freelancer', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-search-freelancer"
+                    onclick="tryItOut('GETapi-search-freelancer');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-search-freelancer"
+                    onclick="cancelTryOut('GETapi-search-freelancer');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-search-freelancer"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/search/freelancer</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-search-freelancer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-search-freelancer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept-Language"                data-endpoint="GETapi-search-freelancer"
+               value="en"
+               data-component="header">
+    <br>
+<p>Example: <code>en</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-search-freelancer"
+               value="ahmed developer"
+               data-component="body">
+    <br>
+<p>optional Search term to find freelancers by name or username. Example: <code>ahmed developer</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_ids[0]"                data-endpoint="GETapi-search-freelancer"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="category_ids[1]"                data-endpoint="GETapi-search-freelancer"
+               data-component="body">
+    <br>
+<p>optional Array of category IDs to filter freelancers by their specialization categories. Must be valid category IDs.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>skill_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="skill_ids[0]"                data-endpoint="GETapi-search-freelancer"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="skill_ids[1]"                data-endpoint="GETapi-search-freelancer"
+               data-component="body">
+    <br>
+<p>optional Array of skill IDs to filter freelancers who have these specific skills. Must be valid skill IDs.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>rates</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="rates[0]"                data-endpoint="GETapi-search-freelancer"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="rates[1]"                data-endpoint="GETapi-search-freelancer"
+               data-component="body">
+    <br>
+<p>optional Array of rating values to filter freelancers. If single value provided (e.g., [4]), returns freelancers with ratings from 4.0 to 4.99. If multiple values provided (e.g., [3,5]), returns freelancers with ratings between 3 and 5.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-search-freelancer"
+               value="10"
+               data-component="body">
+    <br>
+<p>optional Number of results to return per page. Must be between 1 and 50. Default is 15. Example: <code>10</code></p>
         </div>
         </form>
 
@@ -15396,6 +16445,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tips-and-guides"
                value="application/json"
@@ -15407,6 +16457,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tips-and-guides"
                value="application/json"
@@ -15417,6 +16468,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-tips-and-guides"
@@ -15430,6 +16482,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-tips-and-guides"
                value="freelancing"
@@ -15441,6 +16494,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-tips-and-guides"
                value="15"
@@ -15453,6 +16507,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-tips-and-guides"
                value="consequatur"
@@ -15464,6 +16519,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-tips-and-guides"
                value="13"
@@ -15609,6 +16665,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tips-and-guides--id-"
                value="application/json"
@@ -15619,6 +16676,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tips-and-guides--id-"
@@ -15631,6 +16689,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-tips-and-guides--id-"
                value="en"
@@ -15642,6 +16701,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-tips-and-guides--id-"
@@ -15882,6 +16942,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-freelancers-services"
                value="application/json"
@@ -15893,6 +16954,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-freelancers-services"
                value="application/json"
@@ -15903,6 +16965,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-freelancers-services"
@@ -15916,6 +16979,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-freelancers-services"
                value="15"
@@ -15928,6 +16992,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="per_page"                data-endpoint="GETapi-freelancers-services"
                value="73"
@@ -15969,7 +17034,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkqP7OQ" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL0WhoH" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -16175,6 +17240,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-freelancers-services"
                value="multipart/form-data"
@@ -16186,6 +17252,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-freelancers-services"
                value="application/json"
@@ -16196,6 +17263,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-freelancers-services"
@@ -16209,6 +17277,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-freelancers-services"
                value="WordPress Website Development"
@@ -16219,6 +17288,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-freelancers-services"
@@ -16231,6 +17301,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="POSTapi-freelancers-services"
                value="1"
@@ -16242,6 +17313,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="subcategory_id"                data-endpoint="POSTapi-freelancers-services"
                value="4"
@@ -16252,6 +17324,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>delivery_time_unit</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="delivery_time_unit"                data-endpoint="POSTapi-freelancers-services"
@@ -16264,6 +17337,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>delivery_time</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="delivery_time"                data-endpoint="POSTapi-freelancers-services"
                value="7"
@@ -16274,6 +17348,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>service_fees_type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="service_fees_type"                data-endpoint="POSTapi-freelancers-services"
@@ -16286,6 +17361,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="price"                data-endpoint="POSTapi-freelancers-services"
                value="500"
@@ -16297,17 +17373,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="cover_photo"                data-endpoint="POSTapi-freelancers-services"
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpkqP7OQ</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpL0WhoH</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="hashtags[0]"                data-endpoint="POSTapi-freelancers-services"
                data-component="body">
@@ -16321,6 +17399,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attachment_ids[0]"                data-endpoint="POSTapi-freelancers-services"
                data-component="body">
@@ -16336,6 +17415,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>faqs</code></b>&nbsp;&nbsp;
 <small>object[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 <p>optional Array of FAQ objects with question and answer. Example:</p>
             </summary>
@@ -16343,6 +17423,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>question</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.0.question"                data-endpoint="POSTapi-freelancers-services"
                value="amniihfqcoynlazghdtqt"
@@ -16354,6 +17435,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>answer</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.0.answer"                data-endpoint="POSTapi-freelancers-services"
                value="qxbajwbpilpmufinllwlo"
@@ -16367,6 +17449,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
 <small>object</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 
             </summary>
@@ -16374,6 +17457,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>question</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.*.question"                data-endpoint="POSTapi-freelancers-services"
                value="Do you provide hosting?"
@@ -16385,6 +17469,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>answer</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.*.answer"                data-endpoint="POSTapi-freelancers-services"
                value="No, you need to provide your own hosting."
@@ -16604,6 +17689,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-freelancers-services--id-"
                value="application/json"
@@ -16614,6 +17700,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-freelancers-services--id-"
@@ -16626,6 +17713,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-freelancers-services--id-"
                value="en"
@@ -16637,6 +17725,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-freelancers-services--id-"
@@ -16939,6 +18028,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-freelancers-services--id-"
                value="application/json"
@@ -16950,6 +18040,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-freelancers-services--id-"
                value="application/json"
@@ -16960,6 +18051,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="PUTapi-freelancers-services--id-"
@@ -16973,6 +18065,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-freelancers-services--id-"
                value="1"
@@ -16985,6 +18078,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="PUTapi-freelancers-services--id-"
                value="Updated WordPress Website Development"
@@ -16996,6 +18090,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="PUTapi-freelancers-services--id-"
                value="I will create a professional WordPress website with advanced features and custom functionality"
@@ -17007,6 +18102,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="PUTapi-freelancers-services--id-"
                value="4"
@@ -17018,6 +18114,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>subcategory_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="subcategory_id"                data-endpoint="PUTapi-freelancers-services--id-"
                value="5"
@@ -17029,6 +18126,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>delivery_time_unit</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="delivery_time_unit"                data-endpoint="PUTapi-freelancers-services--id-"
                value="days"
@@ -17040,6 +18138,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>delivery_time</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="delivery_time"                data-endpoint="PUTapi-freelancers-services--id-"
                value="10"
@@ -17051,6 +18150,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>service_fees_type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="service_fees_type"                data-endpoint="PUTapi-freelancers-services--id-"
                value="fixed"
@@ -17062,6 +18162,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="price"                data-endpoint="PUTapi-freelancers-services--id-"
                value="750"
@@ -17073,6 +18174,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>cover_photo</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="cover_photo"                data-endpoint="PUTapi-freelancers-services--id-"
                value=""
@@ -17084,6 +18186,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="hashtags[0]"                data-endpoint="PUTapi-freelancers-services--id-"
                data-component="body">
@@ -17097,6 +18200,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>attachment_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attachment_ids[0]"                data-endpoint="PUTapi-freelancers-services--id-"
                data-component="body">
@@ -17112,6 +18216,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>faqs</code></b>&nbsp;&nbsp;
 <small>object[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 <p>optional Array of FAQ objects with question and answer. Example:</p>
             </summary>
@@ -17119,6 +18224,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>question</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.0.question"                data-endpoint="PUTapi-freelancers-services--id-"
                value="amniihfqcoynlazghdtqt"
@@ -17130,6 +18236,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>answer</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.0.answer"                data-endpoint="PUTapi-freelancers-services--id-"
                value="qxbajwbpilpmufinllwlo"
@@ -17143,6 +18250,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
 <small>object</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 
             </summary>
@@ -17150,6 +18258,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>question</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.*.question"                data-endpoint="PUTapi-freelancers-services--id-"
                value="Do you provide SSL certificates?"
@@ -17161,6 +18270,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>answer</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="faqs.*.answer"                data-endpoint="PUTapi-freelancers-services--id-"
                value="Yes, I can help you install SSL certificates for enhanced security."
@@ -17312,6 +18422,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-freelancers-services--id-"
                value="application/json"
@@ -17322,6 +18433,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-freelancers-services--id-"
@@ -17334,6 +18446,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="DELETEapi-freelancers-services--id-"
                value="en"
@@ -17345,6 +18458,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-freelancers-services--id-"
@@ -17496,6 +18610,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-skills"
                value="application/json"
@@ -17507,6 +18622,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-skills"
                value="application/json"
@@ -17517,6 +18633,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="GETapi-skills"
@@ -17560,7 +18677,7 @@ to users about any validation issues with their registration data.</p>
     --form "other_links[]=https://upwork.com/freelancers/ahmed"\
     --form "portfolio_link=https://ahmed-portfolio.com"\
     --form "password_confirmation=Password123!"\
-    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgNvExW" </code></pre></div>
+    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSZzJ6p" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -17755,6 +18872,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-check-register"
                value="multipart/form-data"
@@ -17766,6 +18884,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-check-register"
                value="application/json"
@@ -17776,6 +18895,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-check-register"
@@ -17789,6 +18909,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-auth-check-register"
                value="أحمد محمد"
@@ -17799,6 +18920,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-check-register"
@@ -17811,6 +18933,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-check-register"
                value="Password123!"
@@ -17821,6 +18944,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-auth-check-register"
@@ -17835,6 +18959,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>other_links</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 <p>sometimes Array of other freelance platform URLs (max 3 links, optional).</p>
             </summary>
@@ -17842,6 +18967,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="other_links.*"                data-endpoint="POSTapi-auth-check-register"
                value="https://upwork.com/freelancers/ahmed"
@@ -17855,6 +18981,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>portfolio_link</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="portfolio_link"                data-endpoint="POSTapi-auth-check-register"
                value="https://ahmed-portfolio.com"
@@ -17866,16 +18993,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>professional_document</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="professional_document"                data-endpoint="POSTapi-auth-check-register"
                value=""
                data-component="body">
     <br>
-<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpgNvExW</code></p>
+<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpSZzJ6p</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="password_confirmation"                data-endpoint="POSTapi-auth-check-register"
@@ -17913,7 +19042,7 @@ After successful validation, a 4-digit OTP code will be sent to the email for ve
     --form "other_links[]=https://upwork.com/freelancers/ahmed"\
     --form "portfolio_link=https://ahmed-portfolio.com"\
     --form "password_confirmation=Password123!"\
-    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpvZndsZ" </code></pre></div>
+    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiIjJU9" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -18054,6 +19183,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-register"
                value="multipart/form-data"
@@ -18065,6 +19195,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-register"
                value="application/json"
@@ -18075,6 +19206,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-register"
@@ -18088,6 +19220,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-auth-register"
                value="أحمد محمد"
@@ -18098,6 +19231,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>username</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="username"                data-endpoint="POSTapi-auth-register"
@@ -18110,6 +19244,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-register"
                value="ahmed@example.com"
@@ -18121,6 +19256,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-register"
                value="Password123!"
@@ -18131,6 +19267,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-auth-register"
@@ -18145,6 +19282,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>other_links</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 <p>required_if:type,freelancer Array of other freelance platform URLs (1-3 links, required for freelancers).</p>
             </summary>
@@ -18152,6 +19290,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="other_links.*"                data-endpoint="POSTapi-auth-register"
                value="https://upwork.com/freelancers/ahmed"
@@ -18165,6 +19304,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>portfolio_link</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="portfolio_link"                data-endpoint="POSTapi-auth-register"
                value="https://ahmed-portfolio.com"
@@ -18176,16 +19316,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>professional_document</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="professional_document"                data-endpoint="POSTapi-auth-register"
                value=""
                data-component="body">
     <br>
-<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpvZndsZ</code></p>
+<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiIjJU9</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="password_confirmation"                data-endpoint="POSTapi-auth-register"
@@ -18351,6 +19493,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-resend-code"
                value="application/json"
@@ -18361,6 +19504,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-resend-code"
@@ -18373,6 +19517,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-resend-code"
                value="en"
@@ -18384,6 +19529,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-resend-code"
@@ -18636,6 +19782,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-verify-email"
                value="application/json"
@@ -18647,6 +19794,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-verify-email"
                value="application/json"
@@ -18657,6 +19805,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-verify-email"
@@ -18670,6 +19819,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-verify-email"
                value="user@example.com"
@@ -18680,6 +19830,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>otp</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="otp"                data-endpoint="POSTapi-auth-verify-email"
@@ -18859,6 +20010,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-reset-email"
                value="application/json"
@@ -18870,6 +20022,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-reset-email"
                value="application/json"
@@ -18880,6 +20033,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-reset-email"
@@ -18893,6 +20047,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>old_email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="old_email"                data-endpoint="POSTapi-auth-reset-email"
                value="oldemail@example.com"
@@ -18903,6 +20058,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="new_email"                data-endpoint="POSTapi-auth-reset-email"
@@ -19084,6 +20240,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-login"
                value="application/json"
@@ -19095,6 +20252,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-login"
                value="application/json"
@@ -19105,6 +20263,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-login"
@@ -19118,6 +20277,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-login"
                value="user@example.com"
@@ -19128,6 +20288,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-login"
@@ -19285,6 +20446,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-forget-password"
                value="application/json"
@@ -19295,6 +20457,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-forget-password"
@@ -19307,6 +20470,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-forget-password"
                value="en"
@@ -19318,6 +20482,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-forget-password"
@@ -19489,6 +20654,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-reset-password"
                value="application/json"
@@ -19500,6 +20666,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-reset-password"
                value="application/json"
@@ -19510,6 +20677,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-reset-password"
@@ -19523,6 +20691,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-reset-password"
                value="user@example.com"
@@ -19533,6 +20702,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>token</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="token"                data-endpoint="POSTapi-auth-reset-password"
@@ -19545,6 +20715,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-reset-password"
                value="NewPassword123!"
@@ -19555,6 +20726,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="password_confirmation"                data-endpoint="POSTapi-auth-reset-password"
@@ -19748,6 +20920,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-change-password"
                value="application/json"
@@ -19759,6 +20932,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-change-password"
                value="application/json"
@@ -19769,6 +20943,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-change-password"
@@ -19782,6 +20957,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>current_password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="current_password"                data-endpoint="POSTapi-auth-change-password"
                value="CurrentPassword123!"
@@ -19793,6 +20969,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>new_password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="new_password"                data-endpoint="POSTapi-auth-change-password"
                value="NewPassword123!"
@@ -19803,6 +20980,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_password_confirmation</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="new_password_confirmation"                data-endpoint="POSTapi-auth-change-password"
@@ -20008,6 +21186,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-change-email"
                value="application/json"
@@ -20019,6 +21198,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-change-email"
                value="application/json"
@@ -20029,6 +21209,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-change-email"
@@ -20042,6 +21223,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-change-email"
                value="newemail@example.com"
@@ -20053,6 +21235,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-change-email"
                value="CurrentPassword123!"
@@ -20063,6 +21246,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email_confirmation</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="email_confirmation"                data-endpoint="POSTapi-auth-change-email"
@@ -20265,6 +21449,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-verify-change-email"
                value="application/json"
@@ -20276,6 +21461,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-verify-change-email"
                value="application/json"
@@ -20286,6 +21472,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-verify-change-email"
@@ -20299,6 +21486,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-verify-change-email"
                value="newemail@example.com"
@@ -20309,6 +21497,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>otp</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="otp"                data-endpoint="POSTapi-auth-verify-change-email"
@@ -20629,6 +21818,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-profile"
                value="application/json"
@@ -20640,6 +21830,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-profile"
                value="application/json"
@@ -20650,6 +21841,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-profile"
@@ -20663,6 +21855,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-auth-profile"
                value="أحمد محمد"
@@ -20674,6 +21867,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>profile_picture</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="profile_picture"                data-endpoint="POSTapi-auth-profile"
                value=""
@@ -20685,6 +21879,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>about_me</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="about_me"                data-endpoint="POSTapi-auth-profile"
                value="مطور ويب محترف مع خبرة 5 سنوات"
@@ -20696,6 +21891,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="country"                data-endpoint="POSTapi-auth-profile"
                value="Saudi Arabia"
@@ -20707,6 +21903,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="POSTapi-auth-profile"
                value="Riyadh"
@@ -20720,6 +21917,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>languages</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 <p>sometimes Array of user languages (optional).</p>
             </summary>
@@ -20727,6 +21925,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>language_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="languages.0.language_id"                data-endpoint="POSTapi-auth-profile"
                value="1"
@@ -20738,6 +21937,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>language_level</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="languages.0.language_level"                data-endpoint="POSTapi-auth-profile"
                value="advanced"
@@ -20753,6 +21953,7 @@ Must be one of:
                 <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
 <small>object</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 
             </summary>
@@ -20760,6 +21961,7 @@ Must be one of:
                         <b style="line-height: 2;"><code>language_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="languages.*.language_id"                data-endpoint="POSTapi-auth-profile"
                value="1"
@@ -20771,6 +21973,7 @@ Must be one of:
                         <b style="line-height: 2;"><code>language_level</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="languages.*.language_level"                data-endpoint="POSTapi-auth-profile"
                value="advanced"
@@ -20786,6 +21989,7 @@ Must be one of:
             <b style="line-height: 2;"><code>headline</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="headline"                data-endpoint="POSTapi-auth-profile"
                value="Full Stack Developer"
@@ -20797,6 +22001,7 @@ Must be one of:
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="POSTapi-auth-profile"
                value="1"
@@ -20810,6 +22015,7 @@ Must be one of:
                 <b style="line-height: 2;"><code>skill_ids</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
 <br>
 <p>sometimes Array of skill IDs (for freelancers only, optional).</p>
             </summary>
@@ -20817,6 +22023,7 @@ Must be one of:
                         <b style="line-height: 2;"><code>*</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="skill_ids.*"                data-endpoint="POSTapi-auth-profile"
                value="1"
@@ -20830,6 +22037,7 @@ Must be one of:
             <b style="line-height: 2;"><code>company</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="company"                data-endpoint="POSTapi-auth-profile"
                value="Tech Solutions Inc"
@@ -20841,6 +22049,7 @@ Must be one of:
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="POSTapi-auth-profile"
                value="+966501234567"
@@ -20964,6 +22173,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-logout"
                value="application/json"
@@ -20975,6 +22185,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-logout"
                value="application/json"
@@ -20985,6 +22196,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-logout"
@@ -21300,6 +22512,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-auth-refresh"
                value="application/json"
@@ -21311,6 +22524,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-auth-refresh"
                value="application/json"
@@ -21321,6 +22535,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-auth-refresh"
@@ -21353,7 +22568,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM9A2Ww" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeNi1Mj" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -21475,6 +22690,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-verifications"
                value="multipart/form-data"
@@ -21486,6 +22702,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-verifications"
                value="application/json"
@@ -21496,6 +22713,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept-Language</code></b>&nbsp;&nbsp;
 &nbsp;
+ &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept-Language"                data-endpoint="POSTapi-verifications"
@@ -21509,17 +22727,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>document_one</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
  &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="document_one"                data-endpoint="POSTapi-verifications"
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpM9A2Ww</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeNi1Mj</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+ &nbsp;
                 <input type="file" style="display: none"
                               name="document_two"                data-endpoint="POSTapi-verifications"
                value=""

@@ -4,10 +4,12 @@ description: |-
   APIs for handling file uploads
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/upload
     metadata:
+      custom: []
       groupName: 'File Upload'
       groupDescription: |-
 
@@ -20,7 +22,6 @@ endpoints:
         The uploaded file will be stored and return file information including the file path and attachment ID.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: multipart/form-data
       Accept: application/json
@@ -31,6 +32,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       file:
+        custom: []
         name: file
         description: 'The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example:'
         required: true
@@ -39,8 +41,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       type:
+        custom: []
         name: type
         description: 'The upload type. Currently supports: portfolio, profile_picture, document, cv, certificate.'
         required: true
@@ -49,13 +52,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       type: portfolio
     fileParameters:
       file: null
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -72,8 +76,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -83,8 +87,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -94,8 +98,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -105,10 +109,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

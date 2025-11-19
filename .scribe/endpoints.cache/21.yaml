@@ -8,10 +8,12 @@ description: |-
   including approving or rejecting freelancer applications.
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/admin/freelancers
     metadata:
+      custom: []
       groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
@@ -27,7 +29,6 @@ endpoints:
         The response includes pagination metadata for easy navigation.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -36,6 +37,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       approval_status:
+        custom: []
         name: approval_status
         description: 'Optional filter by approval status. Must be "requested" or "approved".'
         required: false
@@ -44,8 +46,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       is_active:
+        custom: []
         name: is_active
         description: 'Optional filter by active status. Must be 0 (inactive) or 1 (active).'
         required: false
@@ -54,8 +57,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       name:
+        custom: []
         name: name
         description: 'Optional filter by freelancer name (searches in name).'
         required: false
@@ -64,8 +68,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       page:
+        custom: []
         name: page
         description: 'Optional page number for pagination (default: 1).'
         required: false
@@ -74,7 +79,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       approval_status: requested
       is_active: 1
@@ -82,6 +87,7 @@ endpoints:
       page: 2
     bodyParameters:
       approval_status:
+        custom: []
         name: approval_status
         description: ''
         required: false
@@ -92,20 +98,22 @@ endpoints:
           - approved
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       is_active:
+        custom: []
         name: is_active
         description: ''
         required: false
-        example: '0'
+        example: '1'
         type: string
         enumValues:
           - '0'
           - '1'
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       name:
+        custom: []
         name: name
         description: 'Must not be greater than 255 characters.'
         required: false
@@ -114,14 +122,15 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       approval_status: approved
-      is_active: '0'
+      is_active: '1'
       name: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -163,8 +172,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -174,8 +183,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -185,8 +194,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -196,18 +205,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/admin/freelancers/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
@@ -220,13 +229,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the freelancer to view.'
         required: true
@@ -235,7 +244,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -245,6 +254,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -272,8 +282,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -283,8 +293,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -294,8 +304,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -305,18 +315,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - DELETE
     uri: 'api/admin/freelancers/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
@@ -332,13 +342,13 @@ endpoints:
         Use with caution as this is a destructive operation.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the freelancer to delete.'
         required: true
@@ -347,7 +357,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 5
     queryParameters: []
@@ -357,6 +367,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -366,8 +377,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer deleted successfully'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -377,8 +388,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -388,8 +399,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -399,18 +410,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/admin/freelancers/approve-reject/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
@@ -426,13 +437,13 @@ endpoints:
         When rejecting, the freelancer account is permanently deleted.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the freelancer to approve/reject.'
         required: true
@@ -441,13 +452,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       action:
+        custom: []
         name: action
         description: 'The action to perform. Must be either "approve" or "reject".'
         required: true
@@ -456,12 +468,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       action: approve
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -492,8 +505,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer approved successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -503,8 +516,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer rejected successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -514,8 +527,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer already approved'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -525,8 +538,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid action parameter'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -536,8 +549,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -547,8 +560,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -558,18 +571,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/admin/freelancers/block-unblock/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Freelancer Management'
       groupDescription: |-
 
@@ -586,13 +599,13 @@ endpoints:
         This is a reversible action unlike deletion.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the freelancer to block/unblock.'
         required: true
@@ -601,7 +614,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 3
     queryParameters: []
@@ -611,6 +624,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -620,8 +634,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer blocked successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -631,8 +645,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer unblocked successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -642,8 +656,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer not approved yet'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -653,8 +667,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -664,8 +678,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -675,10 +689,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

@@ -6,10 +6,12 @@ description: |-
   including bulk creation with children and searching/filtering.
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/admin/categories
     metadata:
+      custom: []
       groupName: 'Admin Category Management'
       groupDescription: |-
 
@@ -22,7 +24,6 @@ endpoints:
       description: 'This endpoint returns a paginated list of categories. You can filter by type and search by name.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -31,6 +32,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       search:
+        custom: []
         name: search
         description: 'Optional search by category name (Arabic or English).'
         required: false
@@ -39,8 +41,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Number of items per page (default: 10).'
         required: false
@@ -49,8 +52,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       type:
+        custom: []
         name: type
         description: 'Optional filter by category type.'
         required: false
@@ -59,8 +63,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       parent_id:
+        custom: []
         name: parent_id
         description: "The parent category ID to filter by (only used when type is 'child')."
         required: false
@@ -69,8 +74,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       page:
+        custom: []
         name: page
         description: 'Page number for pagination (default: 1).'
         required: false
@@ -79,7 +85,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       search: تصميم
       per_page: 20
@@ -91,6 +97,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -114,18 +121,18 @@ endpoints:
           }
         headers: []
         description: 'Categories retrieved successfully'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/admin/categories
     metadata:
+      custom: []
       groupName: 'Admin Category Management'
       groupDescription: |-
 
@@ -138,7 +145,6 @@ endpoints:
       description: 'This endpoint allows admins to create a new category. You can specify parent_id to create a subcategory.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: multipart/form-data
       Accept: application/json
@@ -149,6 +155,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       name_en:
+        custom: []
         name: name_en
         description: 'Category name in English.'
         required: true
@@ -157,8 +164,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       name_ar:
+        custom: []
         name: name_ar
         description: 'Category name in Arabic.'
         required: true
@@ -167,8 +175,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       parent_id:
+        custom: []
         name: parent_id
         description: 'The parent category ID (for subcategories).'
         required: false
@@ -177,8 +186,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       image:
+        custom: []
         name: image
         description: 'Category image file (required for parent categories).'
         required: true
@@ -187,7 +197,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       name_en: Design
       name_ar: تصميم
@@ -196,6 +206,7 @@ endpoints:
       image: null
     responses:
       -
+        custom: []
         status: 201
         content: |-
           {
@@ -214,8 +225,8 @@ endpoints:
           }
         headers: []
         description: 'Category created successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -225,18 +236,18 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/admin/categories/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Category Management'
       groupDescription: |-
 
@@ -249,13 +260,13 @@ endpoints:
       description: 'This endpoint returns details for a specific category by its ID.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the category to view.'
         required: true
@@ -264,7 +275,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -274,6 +285,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -292,8 +304,8 @@ endpoints:
           }
         headers: []
         description: 'Category details retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -303,19 +315,19 @@ endpoints:
           }
         headers: []
         description: 'Category not found'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - PUT
       - PATCH
     uri: 'api/admin/categories/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Category Management'
       groupDescription: |-
 
@@ -328,13 +340,13 @@ endpoints:
       description: 'This endpoint allows admins to update the name of a category (English/Arabic).'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the category to update.'
         required: true
@@ -343,13 +355,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name_en:
+        custom: []
         name: name_en
         description: 'Category name in English.'
         required: false
@@ -358,8 +371,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       name_ar:
+        custom: []
         name: name_ar
         description: 'Category name in Arabic.'
         required: false
@@ -368,8 +382,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       parent_id:
+        custom: []
         name: parent_id
         description: 'The parent category ID (for subcategories).'
         required: false
@@ -378,8 +393,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       image:
+        custom: []
         name: image
         description: 'Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it.'
         required: false
@@ -388,7 +404,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       name_en: Design
       name_ar: تصميم
@@ -397,6 +413,7 @@ endpoints:
       image: null
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -406,8 +423,8 @@ endpoints:
           }
         headers: []
         description: 'Category updated successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -417,8 +434,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -428,18 +445,18 @@ endpoints:
           }
         headers: []
         description: 'Category not found'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - DELETE
     uri: 'api/admin/categories/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Category Management'
       groupDescription: |-
 
@@ -452,13 +469,13 @@ endpoints:
       description: 'This endpoint allows admins to delete a category by its ID.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the category to delete.'
         required: true
@@ -467,7 +484,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -477,6 +494,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -486,8 +504,8 @@ endpoints:
           }
         headers: []
         description: 'Category deleted successfully'
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -497,18 +515,18 @@ endpoints:
           }
         headers: []
         description: 'Category not found'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/admin/categories/store-all-with-childrens
     metadata:
+      custom: []
       groupName: 'Admin Category Management'
       groupDescription: |-
 
@@ -523,7 +541,6 @@ endpoints:
         Useful for importing category trees.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -534,6 +551,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       name_en:
+        custom: []
         name: name_en
         description: 'Parent category name in English.'
         required: true
@@ -542,8 +560,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       name_ar:
+        custom: []
         name: name_ar
         description: 'Parent category name in Arabic.'
         required: true
@@ -552,8 +571,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       childrens:
+        custom: []
         name: childrens
         description: 'Array of child categories (each with name_en, name_ar).'
         required: false
@@ -565,8 +585,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       'childrens[].name_en':
+        custom: []
         name: 'childrens[].name_en'
         description: 'Child category name in English (required if childrens array is provided). Must not be greater than 255 characters.'
         required: true
@@ -575,8 +596,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'childrens[].name_ar':
+        custom: []
         name: 'childrens[].name_ar'
         description: 'Child category name in Arabic (required if childrens array is provided). Must not be greater than 255 characters.'
         required: true
@@ -585,7 +607,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       name_en: Programming
       name_ar: برمجة
@@ -596,6 +618,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 201
         content: |-
           {
@@ -605,8 +628,8 @@ endpoints:
           }
         headers: []
         description: 'Categories created successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -616,10 +639,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

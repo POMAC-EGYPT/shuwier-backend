@@ -2,10 +2,12 @@ name: 'Admin Commission Management'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/admin/commissions
     metadata:
+      custom: []
       groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
@@ -17,7 +19,6 @@ endpoints:
         Results are ordered by creation date (newest first).
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -26,6 +27,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       search:
+        custom: []
         name: search
         description: 'optional Search term to filter commissions by rate or effective date.'
         required: false
@@ -34,8 +36,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'optional Number of items per page (1-100).'
         required: false
@@ -44,12 +47,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       search: '15'
       per_page: 15
     bodyParameters:
       search:
+        custom: []
         name: search
         description: ''
         required: false
@@ -58,8 +62,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Must be at least 1. Must not be greater than 100.'
         required: false
@@ -68,13 +73,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       search: consequatur
       per_page: 13
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -132,8 +138,8 @@ endpoints:
           }
         headers: []
         description: 'Commissions retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -143,8 +149,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid parameters'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -154,18 +160,18 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/admin/commissions
     metadata:
+      custom: []
       groupName: 'Admin Commission Management'
       groupDescription: ''
       subgroup: ''
@@ -177,7 +183,6 @@ endpoints:
         be between 1% and 100%. The effective date must be today or in the future.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -188,6 +193,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       rate:
+        custom: []
         name: rate
         description: 'Commission rate percentage (1-100). Will be converted to decimal for storage.'
         required: true
@@ -196,12 +202,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       rate: 15.0
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -219,8 +226,8 @@ endpoints:
           }
         headers: []
         description: 'Commission created successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -230,8 +237,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid rate'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -241,8 +248,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid effective date'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -252,8 +259,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -263,10 +270,8 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

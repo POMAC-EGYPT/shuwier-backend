@@ -7,10 +7,12 @@ description: |-
   improve their freelancing or client experience.
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/tips-and-guides
     metadata:
+      custom: []
       groupName: 'Public Tips & Guides'
       groupDescription: |-
 
@@ -27,7 +29,6 @@ endpoints:
         and best practices for both freelancers and clients in multiple languages.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -36,6 +37,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       search:
+        custom: []
         name: search
         description: 'optional Search term to filter tips and guides by title or description.'
         required: false
@@ -44,8 +46,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'optional Number of items per page (1-50, default 10).'
         required: false
@@ -54,12 +57,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       search: freelancing
       per_page: 15
     bodyParameters:
       search:
+        custom: []
         name: search
         description: ''
         required: false
@@ -68,8 +72,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Must be at least 1. Must not be greater than 50.'
         required: false
@@ -78,13 +83,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       search: consequatur
       per_page: 13
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -123,8 +129,8 @@ endpoints:
           }
         headers: []
         description: 'Success with results'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -141,8 +147,8 @@ endpoints:
           }
         headers: []
         description: 'Empty results'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -152,8 +158,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid parameters'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -163,18 +169,18 @@ endpoints:
           }
         headers: []
         description: 'Per page too large'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/tips-and-guides/{id}'
     metadata:
+      custom: []
       groupName: 'Public Tips & Guides'
       groupDescription: |-
 
@@ -191,13 +197,13 @@ endpoints:
         images. The content is publicly accessible without authentication.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the tips and guides item to retrieve.'
         required: true
@@ -206,7 +212,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -216,6 +222,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -236,8 +243,8 @@ endpoints:
           }
         headers: []
         description: 'Item found successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -247,8 +254,8 @@ endpoints:
           }
         headers: []
         description: 'Item not found'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -258,10 +265,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid ID format'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

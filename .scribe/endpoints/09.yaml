@@ -6,10 +6,12 @@ description: |-
   Clients will get basic profile information along with company details.
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/profile/{username}'
     metadata:
+      custom: []
       groupName: 'Profile Management'
       groupDescription: |-
         This endpoint retrieves the authenticated user's profile information.
@@ -22,13 +24,13 @@ endpoints:
       description: ''
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       username:
+        custom: []
         name: username
         description: ''
         required: true
@@ -37,7 +39,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       username: consequatur
     queryParameters: []
@@ -47,6 +49,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -84,8 +87,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer profile'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -109,8 +112,8 @@ endpoints:
           }
         headers: []
         description: 'Client profile'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -120,10 +123,8 @@ endpoints:
           }
         headers: []
         description: 'Profile retrieval failed'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

@@ -2,10 +2,12 @@ name: 'Admin User Verification'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/admin/verifications
     metadata:
+      custom: []
       groupName: 'Admin User Verification'
       groupDescription: ''
       subgroup: ''
@@ -14,7 +16,6 @@ endpoints:
       description: 'Retrieve a paginated list of user verification requests with optional status filtering.'
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -23,6 +24,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       status:
+        custom: []
         name: status
         description: 'Filter by verification status. Allowed values: pending, approved.'
         required: false
@@ -31,8 +33,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       search:
+        custom: []
         name: search
         description: 'Optional search term to filter requests by user name or email.'
         required: false
@@ -41,7 +44,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       status: pending
       search: john
@@ -50,6 +53,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -74,8 +78,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -85,18 +89,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/admin/verifications/{id}'
     metadata:
+      custom: []
       groupName: 'Admin User Verification'
       groupDescription: ''
       subgroup: ''
@@ -105,13 +109,13 @@ endpoints:
       description: 'Approve or reject a user verification request by ID.'
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the user verification request.'
         required: true
@@ -120,13 +124,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       action:
+        custom: []
         name: action
         description: 'The action to perform. Allowed values: approved, rejected.'
         required: true
@@ -135,12 +140,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       action: approved
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -150,8 +156,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -161,8 +167,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -172,10 +178,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

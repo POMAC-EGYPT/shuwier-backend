@@ -40,8 +40,8 @@ class UserRepository implements UserRepositoryInterface
                 $query = $query->withAvg('reviews', 'rating');
 
                 count($rates) === 1 ?
-                    $query->having('reviews_avg_rating', '>=', $rates[0])
-                    ->having('reviews_avg_rating', '<', $rates[0] + 1)
+                    $query->having('reviews_avg_rating', '>=', $rates[0] ?? 0)
+                    ->having('reviews_avg_rating', '<', ($rates[0] ?? 0) + 1)
                     : $query->havingBetween('reviews_avg_rating', [
                         min($rates),
                         max($rates)
@@ -50,6 +50,40 @@ class UserRepository implements UserRepositoryInterface
             ->paginate($perPage);
     }
 
+    public function freelancerSearchWithFilters(
+        ?string $search = null,
+        ?array $categoryIds = null,
+        ?array $skillIds = null,
+        ?array $rates = null,
+        int $perPage = 15
+    ): LengthAwarePaginator {
+        return User::with(['freelancerProfile', 'freelancerProfile.category', 'skills'])->freelancers()
+            ->when($search, fn($query)
+            => $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%");
+            }))
+            ->when($categoryIds, fn($query)
+            => $query->whereHas('freelancerProfile', fn($q)
+            => $q->whereIn('category_id', $categoryIds)))
+
+            ->when($skillIds, fn($query)
+            => $query->whereHas('skills', fn($q)
+            => $q->whereIn('skills.id', $skillIds)))
+
+            ->when($rates, function ($query) use ($rates) {
+                $query = $query->withAvg('reviews', 'rating');
+
+                count($rates) === 1 ?
+                    $query->having('reviews_avg_rating', '>=', $rates[0] ?? 0)
+                    ->having('reviews_avg_rating', '<', ($rates[0] ?? 0) + 1)
+                    : $query->havingBetween('reviews_avg_rating', [
+                        min($rates),
+                        max($rates)
+                    ]);
+            })
+            ->paginate($perPage);
+    }
 
     public function find(int $id): ?User
     {

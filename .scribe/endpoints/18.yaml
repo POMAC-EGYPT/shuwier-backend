@@ -4,10 +4,12 @@ description: |-
   APIs for managing hashtags and searching hashtag data
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/hashtags
     metadata:
+      custom: []
       groupName: Hashtags
       groupDescription: |-
 
@@ -21,7 +23,6 @@ endpoints:
         Results are limited to 50 items per request for performance.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -30,6 +31,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       search:
+        custom: []
         name: search
         description: 'The search term to look for hashtags. Minimum 1 character, maximum 50 characters.'
         required: true
@@ -38,11 +40,12 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       search: react
     bodyParameters:
       search:
+        custom: []
         name: search
         description: 'Must not be greater than 50 characters.'
         required: true
@@ -51,12 +54,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       search: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -81,8 +85,8 @@ endpoints:
           }
         headers: []
         description: 'Hashtags found successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -94,8 +98,8 @@ endpoints:
           }
         headers: []
         description: 'No hashtags found'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -105,8 +109,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Missing search parameter'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -116,8 +120,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Search term too long'
-        custom: []
       -
+        custom: []
         status: 500
         content: |-
           {
@@ -127,10 +131,8 @@ endpoints:
           }
         headers: []
         description: 'Server error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

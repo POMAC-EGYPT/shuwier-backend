@@ -4,10 +4,12 @@ description: |-
   APIs for managing skills and retrieving skill data
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/skills
     metadata:
+      custom: []
       groupName: Skills
       groupDescription: |-
 
@@ -21,7 +23,6 @@ endpoints:
         Use this endpoint to populate skill selection lists in user profiles or search filters.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -35,6 +36,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -67,8 +69,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -78,10 +80,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

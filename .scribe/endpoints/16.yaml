@@ -4,10 +4,12 @@ description: |-
   APIs for managing categories and retrieving category data
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/categories
     metadata:
+      custom: []
       groupName: Categories
       groupDescription: |-
 
@@ -21,7 +23,6 @@ endpoints:
         in forms or display category lists.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -35,6 +36,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -68,8 +70,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -79,18 +81,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/categories/child/{id}'
     metadata:
+      custom: []
       groupName: Categories
       groupDescription: |-
 
@@ -104,13 +106,13 @@ endpoints:
         category selection in forms and filters.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The parent category ID to get subcategories for.'
         required: true
@@ -119,7 +121,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -129,6 +131,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -156,8 +159,8 @@ endpoints:
           }
         headers: []
         description: 'Subcategories found successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -169,8 +172,8 @@ endpoints:
           }
         headers: []
         description: 'No subcategories found'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -180,8 +183,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid parent category ID'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -191,10 +194,8 @@ endpoints:
           }
         headers: []
         description: 'Server error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

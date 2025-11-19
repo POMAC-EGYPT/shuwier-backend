@@ -2,10 +2,12 @@ name: 'Public Projects'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/projects/{id}'
     metadata:
+      custom: []
       groupName: 'Public Projects'
       groupDescription: ''
       subgroup: ''
@@ -19,13 +21,13 @@ endpoints:
         for freelancer-specific requirements like account status and verification.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the project to retrieve.'
         required: true
@@ -34,7 +36,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 5
     queryParameters: []
@@ -44,6 +46,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -120,8 +123,8 @@ endpoints:
           }
         headers: []
         description: 'Project details retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -131,8 +134,8 @@ endpoints:
           }
         headers: []
         description: 'Proposals not enabled for freelancers'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -142,8 +145,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer account not active'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -153,8 +156,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer not verified'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -164,8 +167,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid project ID'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -175,8 +178,8 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -186,10 +189,8 @@ endpoints:
           }
         headers: []
         description: 'Project not found'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

@@ -7,10 +7,12 @@ description: |-
   These endpoints handle admin login and session management.
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/admin/auth/login
     metadata:
+      custom: []
       groupName: 'Admin Authentication'
       groupDescription: |-
 
@@ -24,7 +26,6 @@ endpoints:
         Only users with admin privileges can access this endpoint.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -35,6 +36,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: 'Admin email address.'
         required: true
@@ -43,8 +45,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       password:
+        custom: []
         name: password
         description: 'Admin password.'
         required: true
@@ -53,13 +56,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: admin@admin.com
       password: password123
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -92,8 +96,8 @@ endpoints:
           }
         headers: []
         description: 'Login successful'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -103,8 +107,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid password'
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -114,8 +118,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid email'
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -125,10 +129,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

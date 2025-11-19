@@ -2,10 +2,12 @@ name: 'User Verification'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/verifications
     metadata:
+      custom: []
       groupName: 'User Verification'
       groupDescription: ''
       subgroup: ''
@@ -14,7 +16,6 @@ endpoints:
       description: 'Submit documents for user verification. Users can upload one or two verification documents.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: multipart/form-data
       Accept: application/json
@@ -25,6 +26,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       document_one:
+        custom: []
         name: document_one
         description: 'The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example:'
         required: true
@@ -33,8 +35,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       document_two:
+        custom: []
         name: document_two
         description: 'optional The second verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example:'
         required: false
@@ -43,12 +46,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters: []
     fileParameters:
       document_one: null
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -58,8 +62,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -69,8 +73,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -80,8 +84,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -91,10 +95,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

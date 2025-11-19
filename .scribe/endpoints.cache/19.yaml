@@ -4,10 +4,12 @@ name: Commissions
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/commissions
     metadata:
+      custom: []
       groupName: Commissions
       groupDescription: ''
       subgroup: ''
@@ -21,7 +23,6 @@ endpoints:
         payments, and displaying fee breakdowns to users.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -35,6 +36,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -52,8 +54,8 @@ endpoints:
           }
         headers: []
         description: 'Commission rates retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -64,8 +66,8 @@ endpoints:
           }
         headers: []
         description: 'No commission rates found'
-        custom: []
       -
+        custom: []
         status: 500
         content: |-
           {
@@ -75,10 +77,8 @@ endpoints:
           }
         headers: []
         description: 'Server error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

@@ -1,24 +1,28 @@
-name: 'Freelancer Proposals'
-description: ''
+name: 'Service Management'
+description: |-
+
+  APIs for managing freelancer services - creating, listing, updating and managing service offerings
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
-    uri: api/freelancers/proposals
+    uri: api/freelancers/services
     metadata:
-      groupName: 'Freelancer Proposals'
-      groupDescription: ''
+      custom: []
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
       subgroup: ''
       subgroupDescription: ''
-      title: 'List freelancer proposals'
+      title: 'Get freelancer services'
       description: |-
-        Retrieve a paginated list of proposals submitted by the authenticated freelancer.
-        This endpoint allows freelancers to view and filter their submitted proposals
-        with search functionality and status filtering. Results include complete proposal
-        details with associated project information, status updates, and client responses.
+        Retrieve all services created by the authenticated freelancer with pagination.
+        This endpoint returns a paginated list of the freelancer's service offerings including
+        title, description, pricing, delivery time, and other service details.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -26,240 +30,144 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      status:
-        name: status
-        description: 'optional Filter proposals by status. Available values: submitted, viewed, accepted, rejected, withdrawn.'
-        required: false
-        example:
-          - viewed
-          - accepted
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      search:
-        name: search
-        description: 'optional Search proposals by project title, cover letter content, or project description keywords.'
-        required: false
-        example: 'website development'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
       per_page:
+        custom: []
         name: per_page
-        description: 'optional Number of proposals per page (default: 16, minimum: 1, maximum: 50).'
+        description: 'Number of services per page (minimum 1). Default is 10.'
         required: false
-        example: 10
+        example: 15
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
-        custom: []
+        nullable: false
+        deprecated: false
     cleanQueryParameters:
-      status:
-        - viewed
-        - accepted
-      search: 'website development'
-      per_page: 10
-    bodyParameters: []
-    cleanBodyParameters: []
+      per_page: 15
+    bodyParameters:
+      per_page:
+        custom: []
+        name: per_page
+        description: 'Must be at least 1.'
+        required: false
+        example: 73
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      per_page: 73
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
             "status": true,
             "error_num": null,
-            "message": "Proposals retrieved successfully",
-            "data": {
-              "current_page": 1,
-              "data": [
-                {
-                  "id": 15,
-                  "cover_letter": "I have 5+ years of experience in e-commerce development using Laravel and Vue.js. I've built similar platforms with payment integration and can deliver this project within your timeline.",
-                  "estimated_time_unit": "days",
-                  "estimated_time": 14,
-                  "fees_type": "fixed",
-                  "bid_amount": "1500.00",
-                  "status": "pending",
-                  "created_at": "2025-10-07T10:30:00.000000Z",
-                  "updated_at": "2025-10-07T10:30:00.000000Z",
-                  "project": {
-                    "id": 5,
-                    "title": "E-commerce Website Development",
-                    "description": "I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard.",
-                    "budget": "$1000-$2000",
-                    "deadline_unit": "days",
-                    "deadline": "12",
-                    "status": "active",
-                    "proposals_count": 8,
-                    "category": {
-                      "id": 4,
-                      "name": "Programming"
-                    },
-                    "user": {
-                      "id": 2,
-                      "name": "Ahmed Test",
-                      "company": "Tech Solutions Ltd",
-                      "profile_picture": "storage/profiles/68d28083a3dd1.PNG",
-                      "is_verified": true
+            "message": "Success",
+            "data": [
+              {
+                "id": 1,
+                "title": "WordPress Website Development",
+                "description": "I will create a professional WordPress website with custom design and functionality",
+                "category_id": 4,
+                "subcategory_id": 5,
+                "delivery_time": 7,
+                "delivery_time_unit": "days",
+                "service_fees_type": "fixed",
+                "price": "500.00",
+                "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+                "faqs": [
+                  {
+                    "id": 1,
+                    "question": "Do you provide hosting?",
+                    "answer": "No, you need to provide your own hosting.",
+                    "service_id": 1,
+                    "created_at": "2025-09-24T12:10:39.000000Z",
+                    "updated_at": "2025-09-24T12:10:39.000000Z"
+                  }
+                ],
+                "attachments": [
+                  {
+                    "id": 1,
+                    "file_path": "storage/services/68d3df744e841.PNG",
+                    "user_id": 3,
+                    "service_id": 1,
+                    "created_at": "2025-09-24T12:09:24.000000Z",
+                    "updated_at": "2025-09-24T12:10:39.000000Z"
+                  }
+                ],
+                "hashtags": [
+                  {
+                    "id": 11,
+                    "name": "wordpress",
+                    "created_at": "2025-09-24T12:10:39.000000Z",
+                    "updated_at": "2025-09-24T12:10:39.000000Z",
+                    "pivot": {
+                      "service_id": 1,
+                      "hashtag_id": 11
                     }
-                  },
-                  "attachments": [
-                    {
-                      "id": 2,
-                      "file_path": "storage/proposals/68e3876bcc657.PDF",
-                      "file_name": "portfolio_sample.pdf",
-                      "created_at": "2025-10-07T10:29:45.000000Z"
-                    }
-                  ],
-                  "response_received": false,
-                  "days_since_submission": 2,
-                  "competition_level": "medium"
-                },
-                {
-                  "id": 12,
-                  "cover_letter": "I'm a UI/UX designer with expertise in mobile app design. I can create a modern, user-friendly interface that will enhance user experience.",
-                  "estimated_time_unit": "days",
-                  "estimated_time": 7,
-                  "fees_type": "fixed",
-                  "bid_amount": "750.00",
-                  "status": "accepted",
-                  "created_at": "2025-10-05T14:20:00.000000Z",
-                  "updated_at": "2025-10-06T16:45:00.000000Z",
-                  "project": {
-                    "id": 3,
-                    "title": "Mobile App UI/UX Design",
-                    "description": "Looking for a talented designer to create modern and user-friendly UI/UX design for a mobile application.",
-                    "budget": "$500-$800",
-                    "deadline_unit": "days",
-                    "deadline": "7",
-                    "status": "in_progress",
-                    "proposals_count": 5,
-                    "category": {
-                      "id": 2,
-                      "name": "Design & Creative"
-                    },
-                    "user": {
-                      "id": 8,
-                      "name": "Sarah Johnson",
-                      "company": "FitTech Solutions",
-                      "profile_picture": "storage/profiles/68d28083a3dd2.PNG",
-                      "is_verified": true
-                    }
-                  },
-                  "attachments": [],
-                  "response_received": true,
-                  "days_since_submission": 5,
-                  "competition_level": "low"
-                }
-              ],
-              "first_page_url": "http://localhost/api/freelancers/proposals?page=1",
-              "from": 1,
-              "last_page": 3,
-              "last_page_url": "http://localhost/api/freelancers/proposals?page=3",
-              "links": [
-                {
-                  "url": null,
-                  "label": "&laquo; Previous",
-                  "active": false
-                },
-                {
-                  "url": "http://localhost/api/freelancers/proposals?page=1",
-                  "label": "1",
-                  "active": true
-                },
-                {
-                  "url": "http://localhost/api/freelancers/proposals?page=2",
-                  "label": "2",
-                  "active": false
-                },
-                {
-                  "url": "http://localhost/api/freelancers/proposals?page=2",
-                  "label": "Next &raquo;",
-                  "active": false
-                }
-              ],
-              "next_page_url": "http://localhost/api/freelancers/proposals?page=2",
-              "path": "http://localhost/api/freelancers/proposals",
-              "per_page": 16,
-              "prev_page_url": null,
-              "to": 16,
-              "total": 42
+                  }
+                ],
+                "user_id": 3,
+                "created_at": "2025-09-24T12:10:39.000000Z",
+                "updated_at": "2025-09-24T12:10:39.000000Z"
+              }
+            ],
+            "current_page": 1,
+            "from": 1,
+            "last_page": 1,
+            "per_page": 10,
+            "to": 4,
+            "total": 4,
+            "links": {
+              "first": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+              "last": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+              "prev": null,
+              "next": null
             }
           }
         headers: []
-        description: 'Proposals retrieved successfully'
-        custom: []
+        description: 'Services retrieved successfully'
       -
+        custom: []
         status: 200
         content: |-
           {
             "status": true,
             "error_num": null,
-            "message": "No proposals found",
-            "data": {
-              "current_page": 1,
-              "data": [],
-              "first_page_url": "http://localhost/api/freelancers/proposals?page=1",
-              "from": null,
-              "last_page": 1,
-              "last_page_url": "http://localhost/api/freelancers/proposals?page=1",
-              "links": [
-                {
-                  "url": null,
-                  "label": "&laquo; Previous",
-                  "active": false
-                },
-                {
-                  "url": "http://localhost/api/freelancers/proposals?page=1",
-                  "label": "1",
-                  "active": true
-                },
-                {
-                  "url": null,
-                  "label": "Next &raquo;",
-                  "active": false
-                }
-              ],
-              "next_page_url": null,
-              "path": "http://localhost/api/freelancers/proposals",
-              "per_page": 16,
-              "prev_page_url": null,
-              "to": null,
-              "total": 0
+            "message": "Success",
+            "data": [],
+            "current_page": 1,
+            "from": null,
+            "last_page": 1,
+            "per_page": 10,
+            "to": null,
+            "total": 0,
+            "links": {
+              "first": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+              "last": "http://127.0.0.1:8000/api/freelancers/services?page=1",
+              "prev": null,
+              "next": null
             }
           }
         headers: []
-        description: 'No proposals found'
-        custom: []
+        description: 'No services found'
       -
+        custom: []
         status: 400
         content: |-
           {
             "status": false,
             "error_num": 400,
-            "message": "The selected status is invalid."
-          }
-        headers: []
-        description: 'Invalid status filter'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The per page field must be between 1 and 50."
+            "message": "The per page must be at least 1."
           }
         headers: []
         description: 'Invalid per_page parameter'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -269,55 +177,33 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Access denied. Freelancer role required."
-          }
-        headers: []
-        description: 'Not a freelancer'
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Your freelancer account is not approved yet."
-          }
-        headers: []
-        description: 'Freelancer not approved'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
-    uri: api/freelancers/proposals
+    uri: api/freelancers/services
     metadata:
-      groupName: 'Freelancer Proposals'
-      groupDescription: ''
+      custom: []
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
       subgroup: ''
       subgroupDescription: ''
-      title: 'Store Proposal'
+      title: 'Create new service'
       description: |-
-        Submit a proposal for a specific project. This endpoint allows authenticated freelancers
-        to submit their bid and proposal details for client projects. The proposal includes
-        cover letter, estimated time, bid amount, and optional attachments. Freelancers can
-        only submit one proposal per project, and the project must be accepting proposals.
+        Create a new service offering for the authenticated freelancer. This endpoint allows
+        freelancers to add new services to their profile with detailed information including
+        pricing, delivery time, cover photo, attachments, FAQs, and hashtags.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
       Accept-Language: en
     urlParameters: []
@@ -325,261 +211,319 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      cover_letter:
-        name: cover_letter
-        description: "Detailed cover letter explaining your approach, experience, and why you're the best fit for this project."
+      title:
+        custom: []
+        name: title
+        description: 'Service title (max 255 characters).'
         required: true
-        example: "I have 5+ years of experience in e-commerce development using Laravel and Vue.js. I've built similar platforms with payment integration and can deliver this project within your timeline."
+        example: 'WordPress Website Development'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      description:
         custom: []
-      estimated_time_unit:
-        name: estimated_time_unit
-        description: 'Time unit for delivery estimate. Must be one of: hours, days, weeks, months.'
+        name: description
+        description: 'Detailed service description.'
+        required: true
+        example: 'I will create a professional WordPress website with custom design and functionality'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category_id:
+        custom: []
+        name: category_id
+        description: 'Main category ID (must be a parent category).'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      subcategory_id:
+        custom: []
+        name: subcategory_id
+        description: 'optional Subcategory ID (must belong to the selected category).'
+        required: false
+        example: 4
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      delivery_time_unit:
+        custom: []
+        name: delivery_time_unit
+        description: 'Time unit for delivery. Must be one of: hours, days, months.'
         required: true
         example: days
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      delivery_time:
         custom: []
-      estimated_time:
-        name: estimated_time
-        description: 'Number of time units needed to complete the project.'
+        name: delivery_time
+        description: 'Delivery time in the specified unit.'
         required: true
-        example: 14
+        example: 7
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      service_fees_type:
         custom: []
-      fees_type:
-        name: fees_type
-        description: 'Type of pricing structure. Must be one of: fixed, hourly.'
+        name: service_fees_type
+        description: 'Pricing type. Must be one of: fixed, hourly.'
         required: true
         example: fixed
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      price:
         custom: []
-      bid_amount:
-        name: bid_amount
-        description: 'Your bid amount for the project in USD. Must be a positive number.'
+        name: price
+        description: 'Service price (minimum 0).'
         required: true
-        example: '1500.00'
-        type: numeric
+        example: 500.0
+        type: number
         enumValues: []
         exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      cover_photo:
         custom: []
-      project_id:
-        name: project_id
-        description: "ID of the project you're submitting a proposal for. Must be an active project accepting proposals."
+        name: cover_photo
+        description: 'Cover photo for the service (image file, max 2MB). Example:'
         required: true
-        example: 5
-        type: integer
+        example: null
+        type: file
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
+        deprecated: false
+      hashtags:
         custom: []
-      relevant_links:
-        name: relevant_links
-        description: 'optional Array of URLs to showcase your portfolio,                                                                                                                     previous work, or relevant profiles.'
+        name: hashtags
+        description: 'optional Array of hashtag strings (max 255 characters each).'
         required: false
         example:
-          - 'http://portfolio.example.com'
-          - 'http://github.com/example'
+          - wordpress
+          - website
+          - development
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       attachment_ids:
+        custom: []
         name: attachment_ids
-        description: 'optional Array of attachment IDs to include with your proposal (portfolio samples, certificates, etc.). Files must be uploaded first using upload endpoint.'
+        description: 'optional Array of attachment IDs from uploaded files. Upload files first using /api/upload endpoint.'
         required: false
         example:
-          - 2
-          - 3
-          - 4
+          - 15
+          - 16
+          - 17
         type: 'integer[]'
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
+        deprecated: false
+      faqs:
         custom: []
+        name: faqs
+        description: 'optional Array of FAQ objects with question and answer. Example:'
+        required: false
+        example: null
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'faqs[].question':
+        custom: []
+        name: 'faqs[].question'
+        description: 'This field is required when <code>faqs</code> is present. Must not be greater than 255 characters.'
+        required: false
+        example: amniihfqcoynlazghdtqt
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'faqs[].answer':
+        custom: []
+        name: 'faqs[].answer'
+        description: 'This field is required when <code>faqs</code> is present. Must not be greater than 1000 characters.'
+        required: false
+        example: qxbajwbpilpmufinllwlo
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'faqs.*.question':
+        custom: []
+        name: 'faqs.*.question'
+        description: 'required_with:faqs FAQ question (max 500 characters).'
+        required: false
+        example: 'Do you provide hosting?'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'faqs.*.answer':
+        custom: []
+        name: 'faqs.*.answer'
+        description: 'required_with:faqs FAQ answer (max 1000 characters).'
+        required: false
+        example: 'No, you need to provide your own hosting.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
     cleanBodyParameters:
-      cover_letter: "I have 5+ years of experience in e-commerce development using Laravel and Vue.js. I've built similar platforms with payment integration and can deliver this project within your timeline."
-      estimated_time_unit: days
-      estimated_time: 14
-      fees_type: fixed
-      bid_amount: '1500.00'
-      project_id: 5
-      relevant_links:
-        - 'http://portfolio.example.com'
-        - 'http://github.com/example'
+      title: 'WordPress Website Development'
+      description: 'I will create a professional WordPress website with custom design and functionality'
+      category_id: 1
+      subcategory_id: 4
+      delivery_time_unit: days
+      delivery_time: 7
+      service_fees_type: fixed
+      price: 500.0
+      hashtags:
+        - wordpress
+        - website
+        - development
       attachment_ids:
-        - 2
-        - 3
-        - 4
-    fileParameters: []
+        - 15
+        - 16
+        - 17
+      faqs:
+        -
+          question: amniihfqcoynlazghdtqt
+          answer: qxbajwbpilpmufinllwlo
+    fileParameters:
+      cover_photo: null
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
             "status": true,
             "error_num": null,
-            "message": "Proposal submitted successfully",
+            "message": "Service created successfully",
             "data": {
-              "id": 15,
-              "cover_letter": "I have 5+ years of experience in e-commerce development using Laravel and Vue.js. I've built similar platforms with payment integration and can deliver this project within your timeline. My portfolio includes 12+ successful e-commerce projects.",
-              "estimated_time_unit": "days",
-              "estimated_time": 14,
-              "fees_type": "fixed",
-              "bid_amount": "1500.00",
-              "status": "submitted",
-              "relevant_links": ["http://portfolio.example.com", "http://github.com/example"],
-              "created_at": "2025-10-07T10:30:00.000000Z",
-              "updated_at": "2025-10-07T10:30:00.000000Z",
-              "project": {
+              "id": 29,
+              "title": "WordPress Website Development",
+              "description": "I will create a professional WordPress website with custom design and functionality",
+              "category_id": 4,
+              "subcategory_id": 5,
+              "category": {
+                "id": 4,
+                "name": "Programming",
+                "parent_id": null,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
+              },
+              "subcategory": {
                 "id": 5,
-                "title": "E-commerce Website Development",
-                "budget": "$1000-$2000",
-                "deadline_unit": "days",
-                "deadline": "12",
-                "status": "active",
-                "category": {
-                  "id": 4,
-                  "name": "Programming"
-                }
+                "name": "Web",
+                "parent_id": 4,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
               },
-              "user": {
-                "id": 7,
-                "name": "Mohammad Ali",
-                "profile_picture": "storage/profiles/68d28083a3dd3.PNG",
-                "rating": 4.8,
-                "completed_projects": 23,
-                "location": "Cairo, Egypt"
-              },
-              "attachments": [
+              "delivery_time": 7,
+              "delivery_time_unit": "days",
+              "service_fees_type": "fixed",
+              "price": "500.00",
+              "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+              "faqs": [
                 {
-                  "id": 2,
-                  "file_path": "storage/proposals/68e3876bcc657.PDF",
-                  "file_name": "portfolio_sample.pdf",
-                  "user_id": 7,
-                  "proposal_id": 15,
-                  "created_at": "2025-10-07T10:29:45.000000Z",
-                  "updated_at": "2025-10-07T10:30:00.000000Z"
+                  "id": 15,
+                  "question": "Do you provide hosting?",
+                  "answer": "No, you need to provide your own hosting.",
+                  "service_id": 29,
+                  "created_at": "2025-09-24T10:00:00.000000Z",
+                  "updated_at": "2025-09-24T10:00:00.000000Z"
                 }
               ],
+              "attachments": [
+                {
+                  "id": 15,
+                  "file_path": "storage/services/68d3df744e841.PNG",
+                  "user_id": 3,
+                  "service_id": 29,
+                  "created_at": "2025-09-24T10:00:00.000000Z",
+                  "updated_at": "2025-09-24T10:00:00.000000Z"
+                }
+              ],
+              "hashtags": [
+                {
+                  "id": 11,
+                  "name": "wordpress",
+                  "created_at": "2025-09-24T10:00:00.000000Z",
+                  "updated_at": "2025-09-24T10:00:00.000000Z",
+                  "pivot": {
+                    "service_id": 29,
+                    "hashtag_id": 11
+                  }
+                }
+              ],
+              "user_id": 3,
+              "created_at": "2025-09-24T10:00:00.000000Z",
+              "updated_at": "2025-09-24T10:00:00.000000Z"
             }
           }
         headers: []
-        description: 'Proposal submitted successfully'
-        custom: []
+        description: 'Service created successfully'
       -
+        custom: []
         status: 400
         content: |-
           {
             "status": false,
             "error_num": 400,
-            "message": "You have already submitted a proposal for this project"
+            "message": "This category is not a parent category"
           }
         headers: []
-        description: 'Already submitted proposal'
-        custom: []
+        description: 'Invalid category'
       -
+        custom: []
         status: 400
         content: |-
           {
             "status": false,
             "error_num": 400,
-            "message": "This project is no longer accepting proposals"
+            "message": "This subcategory does not belong to the selected category"
           }
         headers: []
-        description: 'Project not accepting proposals'
-        custom: []
+        description: 'Invalid subcategory'
       -
+        custom: []
         status: 400
         content: |-
           {
             "status": false,
             "error_num": 400,
-            "message": "The selected project id is invalid."
-          }
-        headers: []
-        description: 'Invalid project'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "You cannot submit a proposal for your own project"
-          }
-        headers: []
-        description: 'Own project'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The selected attachment_ids.0 is invalid."
-          }
-        headers: []
-        description: 'Invalid attachment'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The cover letter field is required."
+            "message": "The title field is required."
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The bid amount must be a positive number."
-          }
-        headers: []
-        description: 'Invalid bid amount'
         custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The selected fees type is invalid."
-          }
-        headers: []
-        description: 'Invalid fees type'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "status": false,
-            "error_num": 400,
-            "message": "The selected estimated time unit is invalid."
-          }
-        headers: []
-        description: 'Invalid time unit'
-        custom: []
-      -
         status: 401
         content: |-
           {
@@ -589,32 +533,656 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Access denied. Freelancer role required."
-          }
-        headers: []
-        description: 'Not a freelancer'
-        custom: []
-      -
-        status: 403
-        content: |-
-          {
-            "status": false,
-            "error_num": 403,
-            "message": "Your freelancer account is not approved yet."
-          }
-        headers: []
-        description: 'Freelancer not approved'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
+  -
     custom: []
+    httpMethods:
+      - GET
+    uri: 'api/freelancers/services/{id}'
+    metadata:
+      custom: []
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get specific service'
+      description: |-
+        Retrieve detailed information about a specific service by its ID. This endpoint returns
+        comprehensive service details including all related data like category, subcategory,
+        attachments, FAQs, hashtags, and pricing information.
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The service ID to retrieve.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Success",
+            "data": {
+              "id": 1,
+              "title": "WordPress Website Development",
+              "description": "I will create a professional WordPress website with custom design and functionality tailored to your business needs",
+              "category_id": 4,
+              "subcategory_id": 5,
+              "category": {
+                "id": 4,
+                "name": "Programming",
+                "parent_id": null,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
+              },
+              "subcategory": {
+                "id": 5,
+                "name": "Web",
+                "parent_id": 4,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
+              },
+              "delivery_time": 7,
+              "delivery_time_unit": "days",
+              "service_fees_type": "fixed",
+              "price": "500.00",
+              "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+              "faqs": [
+                {
+                  "id": 1,
+                  "question": "Do you provide hosting?",
+                  "answer": "No, you need to provide your own hosting. However, I can recommend reliable hosting providers.",
+                  "service_id": 1,
+                  "created_at": "2025-09-24T12:10:39.000000Z",
+                  "updated_at": "2025-09-24T12:10:39.000000Z"
+                },
+                {
+                  "id": 2,
+                  "question": "How many revisions are included?",
+                  "answer": "I provide up to 3 revisions to ensure you're completely satisfied with the final result.",
+                  "service_id": 1,
+                  "created_at": "2025-09-24T12:10:39.000000Z",
+                  "updated_at": "2025-09-24T12:10:39.000000Z"
+                }
+              ],
+              "attachments": [
+                {
+                  "id": 1,
+                  "file_path": "storage/services/68d3df744e841.PNG",
+                  "user_id": 3,
+                  "service_id": 1,
+                  "created_at": "2025-09-24T12:09:24.000000Z",
+                  "updated_at": "2025-09-24T12:10:39.000000Z"
+                }
+              ],
+              "hashtags": [
+                {
+                  "id": 11,
+                  "name": "wordpress",
+                  "created_at": "2025-09-24T12:10:39.000000Z",
+                  "updated_at": "2025-09-24T12:10:39.000000Z",
+                  "pivot": {
+                    "service_id": 1,
+                    "hashtag_id": 11
+                  }
+                }
+              ],
+              "user_id": 3,
+              "created_at": "2025-09-24T12:10:39.000000Z",
+              "updated_at": "2025-09-24T12:10:39.000000Z"
+            }
+          }
+        headers: []
+        description: 'Service retrieved successfully'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Service not found"
+          }
+        headers: []
+        description: 'Service not found'
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You don't have permission to access this service"
+          }
+        headers: []
+        description: 'Access denied - Not your service'
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/freelancers/services/{id}'
+    metadata:
+      custom: []
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update service'
+      description: |-
+        Update an existing service offering for the authenticated freelancer. This endpoint allows
+        freelancers to modify their service information including pricing, delivery time, cover photo,
+        attachments, FAQs, and hashtags. All fields are optional except the service ID in the URL.
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'Service ID to update.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        custom: []
+        name: title
+        description: 'optional Service title (max 255 characters).'
+        required: false
+        example: 'Updated WordPress Website Development'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'optional Detailed service description (min 200 characters).'
+        required: false
+        example: 'I will create a professional WordPress website with advanced features and custom functionality'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category_id:
+        custom: []
+        name: category_id
+        description: 'optional Main category ID (must be a parent category).'
+        required: false
+        example: 4
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      subcategory_id:
+        custom: []
+        name: subcategory_id
+        description: 'optional Subcategory ID (must belong to the selected category).'
+        required: false
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      delivery_time_unit:
+        custom: []
+        name: delivery_time_unit
+        description: 'optional Time unit for delivery. Must be one of: hours, days, months.'
+        required: false
+        example: days
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      delivery_time:
+        custom: []
+        name: delivery_time
+        description: 'optional Delivery time in the specified unit.'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      service_fees_type:
+        custom: []
+        name: service_fees_type
+        description: 'optional Pricing type. Must be one of: fixed, hourly.'
+        required: false
+        example: fixed
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      price:
+        custom: []
+        name: price
+        description: 'optional Service price (minimum 0).'
+        required: false
+        example: 750.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      cover_photo:
+        custom: []
+        name: cover_photo
+        description: 'optional New cover photo for the service (image file, max 2MB). Example:'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      hashtags:
+        custom: []
+        name: hashtags
+        description: 'optional Array of hashtag strings (max 255 characters each).'
+        required: false
+        example:
+          - wordpress
+          - website
+          - ecommerce
+          - responsive
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      attachment_ids:
+        custom: []
+        name: attachment_ids
+        description: 'optional Array of attachment IDs from uploaded files. Upload files first using /api/upload endpoint.'
+        required: false
+        example:
+          - 18
+          - 19
+          - 20
+        type: 'integer[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      faqs:
+        custom: []
+        name: faqs
+        description: 'optional Array of FAQ objects with question and answer. Example:'
+        required: false
+        example: null
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'faqs[].question':
+        custom: []
+        name: 'faqs[].question'
+        description: 'This field is required when <code>faqs</code> is present. Must not be greater than 255 characters.'
+        required: false
+        example: amniihfqcoynlazghdtqt
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'faqs[].answer':
+        custom: []
+        name: 'faqs[].answer'
+        description: 'This field is required when <code>faqs</code> is present. Must not be greater than 1000 characters.'
+        required: false
+        example: qxbajwbpilpmufinllwlo
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'faqs.*.question':
+        custom: []
+        name: 'faqs.*.question'
+        description: 'required_with:faqs FAQ question (max 500 characters).'
+        required: false
+        example: 'Do you provide SSL certificates?'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'faqs.*.answer':
+        custom: []
+        name: 'faqs.*.answer'
+        description: 'required_with:faqs FAQ answer (max 1000 characters).'
+        required: false
+        example: 'Yes, I can help you install SSL certificates for enhanced security.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      title: 'Updated WordPress Website Development'
+      description: 'I will create a professional WordPress website with advanced features and custom functionality'
+      category_id: 4
+      subcategory_id: 5
+      delivery_time_unit: days
+      delivery_time: 10
+      service_fees_type: fixed
+      price: 750.0
+      hashtags:
+        - wordpress
+        - website
+        - ecommerce
+        - responsive
+      attachment_ids:
+        - 18
+        - 19
+        - 20
+      faqs:
+        -
+          question: amniihfqcoynlazghdtqt
+          answer: qxbajwbpilpmufinllwlo
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Service updated successfully",
+            "data": {
+              "id": 1,
+              "title": "Updated WordPress Website Development",
+              "description": "I will create a professional WordPress website with advanced features and custom functionality tailored to your business needs",
+              "category_id": 4,
+              "subcategory_id": 5,
+              "category": {
+                "id": 4,
+                "name": "Programming",
+                "parent_id": null,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
+              },
+              "subcategory": {
+                "id": 5,
+                "name": "Web",
+                "parent_id": 4,
+                "created_at": "2025-09-07T08:44:46.000000Z",
+                "updated_at": "2025-09-07T08:44:46.000000Z"
+              },
+              "delivery_time": 10,
+              "delivery_time_unit": "days",
+              "service_fees_type": "fixed",
+              "price": "750.00",
+              "cover_photo": "storage/services/68d3dfbf590a6.PNG",
+              "faqs": [
+                {
+                  "id": 1,
+                  "question": "Do you provide SSL certificates?",
+                  "answer": "Yes, I can help you install SSL certificates for enhanced security.",
+                  "service_id": 1,
+                  "created_at": "2025-09-24T15:30:00.000000Z",
+                  "updated_at": "2025-09-24T15:30:00.000000Z"
+                }
+              ],
+              "attachments": [
+                {
+                  "id": 18,
+                  "file_path": "storage/services/68d3df744e841.PNG",
+                  "user_id": 3,
+                  "service_id": 1,
+                  "created_at": "2025-09-24T15:30:00.000000Z",
+                  "updated_at": "2025-09-24T15:30:00.000000Z"
+                }
+              ],
+              "hashtags": [
+                {
+                  "id": 11,
+                  "name": "wordpress",
+                  "created_at": "2025-09-24T15:30:00.000000Z",
+                  "updated_at": "2025-09-24T15:30:00.000000Z",
+                  "pivot": {
+                    "service_id": 1,
+                    "hashtag_id": 11
+                  }
+                }
+              ],
+              "user_id": 3,
+              "created_at": "2025-09-24T12:10:39.000000Z",
+              "updated_at": "2025-09-24T15:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: 'Service updated successfully'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "This category is not a parent category"
+          }
+        headers: []
+        description: 'Invalid category'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "This subcategory does not belong to the selected category"
+          }
+        headers: []
+        description: 'Invalid subcategory'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "This attachment is already used"
+          }
+        headers: []
+        description: 'Attachment already used'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The title field must not be greater than 255 characters."
+          }
+        headers: []
+        description: 'Validation error'
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Service not found"
+          }
+        headers: []
+        description: 'Service not found'
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/freelancers/services/{id}'
+    metadata:
+      custom: []
+      groupName: 'Service Management'
+      groupDescription: |-
+
+        APIs for managing freelancer services - creating, listing, updating and managing service offerings
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete service'
+      description: |-
+        Delete an existing service offering for the authenticated freelancer. This endpoint
+        permanently removes the service and all associated data including FAQs, hashtag
+        associations, and attachment references. The service attachments files will also
+        be deleted from storage.
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'Service ID to delete.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Service deleted successfully"
+          }
+        headers: []
+        description: 'Service deleted successfully'
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
+        status: 403
+        content: |-
+          {
+            "status": false,
+            "error_num": 403,
+            "message": "You are not authorized to delete this service"
+          }
+        headers: []
+        description: 'Unauthorized access'
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+            "status": false,
+            "error_num": 404,
+            "message": "Service not found"
+          }
+        headers: []
+        description: 'Service not found'
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

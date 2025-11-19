@@ -4,10 +4,12 @@ name: Portfolios
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/portfolios/{id}'
     metadata:
+      custom: []
       groupName: Portfolios
       groupDescription: ''
       subgroup: ''
@@ -19,13 +21,13 @@ endpoints:
       description: ''
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The portfolio ID.'
         required: true
@@ -34,7 +36,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -44,6 +46,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -73,8 +76,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -84,10 +87,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

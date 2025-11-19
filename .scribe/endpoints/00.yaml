@@ -6,10 +6,12 @@ description: |-
   and other authentication-related functionality for both clients and freelancers.
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/check-register
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -26,7 +28,6 @@ endpoints:
         to users about any validation issues with their registration data.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: multipart/form-data
       Accept: application/json
@@ -37,6 +38,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       name:
+        custom: []
         name: name
         description: "User's full name (Arabic or English characters only)."
         required: true
@@ -45,8 +47,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       email:
+        custom: []
         name: email
         description: "User's email address (must be unique and valid)."
         required: true
@@ -55,8 +58,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       password:
+        custom: []
         name: password
         description: 'Password (min 8 chars, must contain uppercase, lowercase, number, and special character).'
         required: true
@@ -65,8 +69,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       type:
+        custom: []
         name: type
         description: 'User type. Must be either "freelancer" or "client".'
         required: true
@@ -75,8 +80,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       other_links:
+        custom: []
         name: other_links
         description: 'sometimes Array of other freelance platform URLs (max 3 links, optional).'
         required: false
@@ -86,8 +92,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       portfolio_link:
+        custom: []
         name: portfolio_link
         description: 'required_if:type,freelancer Portfolio website URL (required for freelancers).'
         required: false
@@ -96,8 +103,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       professional_document:
+        custom: []
         name: professional_document
         description: 'Must be a file. Must not be greater than 5120 kilobytes.'
         required: false
@@ -106,8 +114,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       password_confirmation:
+        custom: []
         name: password_confirmation
         description: 'Password confirmation (must match password).'
         required: true
@@ -116,8 +125,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       'other_links.*':
+        custom: []
         name: 'other_links.*'
         description: 'URL format for each freelance platform link.'
         required: false
@@ -126,7 +136,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       name: 'أحمد محمد'
       email: ahmed@example.com
@@ -140,6 +150,7 @@ endpoints:
       professional_document: null
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -149,8 +160,8 @@ endpoints:
           }
         headers: []
         description: 'All fields are valid'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -160,8 +171,8 @@ endpoints:
           }
         headers: []
         description: 'Email already exists'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -171,8 +182,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid name format'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -182,8 +193,8 @@ endpoints:
           }
         headers: []
         description: 'Password too weak'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -193,8 +204,8 @@ endpoints:
           }
         headers: []
         description: 'Password confirmation mismatch'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -204,8 +215,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid user type'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -215,8 +226,8 @@ endpoints:
           }
         headers: []
         description: 'Portfolio link missing for freelancer'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -226,8 +237,8 @@ endpoints:
           }
         headers: []
         description: 'Too many other links'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -237,8 +248,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid URL format'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -248,18 +259,18 @@ endpoints:
           }
         headers: []
         description: 'Professional document only for freelancers'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/register
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -275,7 +286,6 @@ endpoints:
         After successful validation, a 4-digit OTP code will be sent to the email for verification.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: multipart/form-data
       Accept: application/json
@@ -286,6 +296,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       name:
+        custom: []
         name: name
         description: "User's full name (Arabic or English)."
         required: true
@@ -294,8 +305,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       username:
+        custom: []
         name: username
         description: 'Unique username for the user (alphanumeric, dashes, underscores). Must match the regex /^[A-Za-z][A-Za-z0-9_-]*$/u. Must be at least 3 characters. Must not be greater than 30 characters.'
         required: true
@@ -304,8 +316,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       email:
+        custom: []
         name: email
         description: "User's email address (must be unique and valid)."
         required: true
@@ -314,8 +327,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       password:
+        custom: []
         name: password
         description: 'Password (min 8 chars, must contain uppercase, lowercase, number, and special character).'
         required: true
@@ -324,8 +338,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       type:
+        custom: []
         name: type
         description: 'User type. Must be either "freelancer" or "client".'
         required: true
@@ -334,8 +349,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       other_links:
+        custom: []
         name: other_links
         description: 'required_if:type,freelancer Array of other freelance platform URLs (1-3 links, required for freelancers).'
         required: false
@@ -345,8 +361,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       portfolio_link:
+        custom: []
         name: portfolio_link
         description: 'required_if:type,freelancer Portfolio website URL (required for freelancers).'
         required: false
@@ -355,8 +372,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       professional_document:
+        custom: []
         name: professional_document
         description: 'Must be a file. Must not be greater than 5120 kilobytes.'
         required: false
@@ -365,8 +383,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       password_confirmation:
+        custom: []
         name: password_confirmation
         description: 'Password confirmation (must match password).'
         required: true
@@ -375,8 +394,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       'other_links.*':
+        custom: []
         name: 'other_links.*'
         description: 'URL format for each freelance platform link.'
         required: false
@@ -385,7 +405,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       name: 'أحمد محمد'
       username: john_doe123
@@ -400,6 +420,7 @@ endpoints:
       professional_document: null
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -409,8 +430,8 @@ endpoints:
           }
         headers: []
         description: 'Verification code sent successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -420,8 +441,8 @@ endpoints:
           }
         headers: []
         description: 'Email already exists'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -431,8 +452,8 @@ endpoints:
           }
         headers: []
         description: 'Email in invitation list'
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -442,8 +463,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 429
         content: |-
           {
@@ -453,18 +474,18 @@ endpoints:
           }
         headers: []
         description: 'Too many attempts'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/resend-code
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -479,7 +500,6 @@ endpoints:
         or if the previous code expired. Rate limiting applies to prevent spam.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -490,6 +510,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: 'The email address to resend the verification code to.'
         required: true
@@ -498,12 +519,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: ahmed@example.com
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -513,8 +535,8 @@ endpoints:
           }
         headers: []
         description: 'Code resent successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -524,8 +546,8 @@ endpoints:
           }
         headers: []
         description: 'Email not found'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -535,8 +557,8 @@ endpoints:
           }
         headers: []
         description: 'Rate limit exceeded'
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -546,8 +568,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 429
         content: |-
           {
@@ -557,18 +579,18 @@ endpoints:
           }
         headers: []
         description: 'Too many attempts'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/verify-email
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -587,7 +609,6 @@ endpoints:
         - **Regular freelancers**: Account created with "requested" approval status and requires admin approval
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -598,6 +619,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: 'The email address to verify.'
         required: true
@@ -606,8 +628,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       otp:
+        custom: []
         name: otp
         description: 'The 4-digit verification code sent to email.'
         required: true
@@ -616,13 +639,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: user@example.com
       otp: '1234'
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -653,8 +677,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer registration completed'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -693,8 +717,8 @@ endpoints:
           }
         headers: []
         description: 'Invited freelancer registration completed (pre-approved)'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -721,8 +745,8 @@ endpoints:
           }
         headers: []
         description: 'Client registration completed'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -732,8 +756,8 @@ endpoints:
           }
         headers: []
         description: 'Password reset verification'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -743,8 +767,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -754,18 +778,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/reset-email
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -781,7 +805,6 @@ endpoints:
         to the new email address.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -792,6 +815,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       old_email:
+        custom: []
         name: old_email
         description: 'The current email address that needs to be changed.'
         required: true
@@ -800,8 +824,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       new_email:
+        custom: []
         name: new_email
         description: 'The new email address (must be unique in both users and invitations, and valid).'
         required: true
@@ -810,13 +835,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       old_email: oldemail@example.com
       new_email: newemail@example.com
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -826,8 +852,8 @@ endpoints:
           }
         headers: []
         description: 'Email reset successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -837,8 +863,8 @@ endpoints:
           }
         headers: []
         description: 'Old email not found'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -848,8 +874,8 @@ endpoints:
           }
         headers: []
         description: 'Cannot change email yet'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -859,8 +885,8 @@ endpoints:
           }
         headers: []
         description: 'New email already exists'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -870,8 +896,8 @@ endpoints:
           }
         headers: []
         description: 'New email in invitation list'
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -881,18 +907,18 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/login
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -905,7 +931,6 @@ endpoints:
       description: 'This endpoint authenticates users and returns a JWT token.'
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -916,6 +941,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: 'User email address.'
         required: true
@@ -924,8 +950,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       password:
+        custom: []
         name: password
         description: 'User password (minimum 6 characters).'
         required: true
@@ -934,13 +961,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: user@example.com
       password: password123
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -965,8 +993,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -976,8 +1004,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -987,8 +1015,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -998,8 +1026,8 @@ endpoints:
           }
         headers: []
         description: 'Account blocked'
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -1009,18 +1037,18 @@ endpoints:
           }
         headers: []
         description: 'Email not verified'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/forget-password
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -1035,7 +1063,6 @@ endpoints:
         A reset token is also generated and returned for use in the password reset process.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -1046,6 +1073,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: "User's email address (must exist in the system)."
         required: true
@@ -1054,12 +1082,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: user@example.com
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -1072,8 +1101,8 @@ endpoints:
           }
         headers: []
         description: 'Reset code sent successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1083,8 +1112,8 @@ endpoints:
           }
         headers: []
         description: 'Email not found'
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -1094,8 +1123,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 429
         content: |-
           {
@@ -1105,18 +1134,18 @@ endpoints:
           }
         headers: []
         description: 'Too many attempts'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/reset-password
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -1131,7 +1160,6 @@ endpoints:
         The user must first verify their email through the forget password flow before using this endpoint.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -1142,6 +1170,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: "User's email address."
         required: true
@@ -1150,8 +1179,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       token:
+        custom: []
         name: token
         description: 'Reset token received from forget password endpoint.'
         required: true
@@ -1160,8 +1190,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       password:
+        custom: []
         name: password
         description: 'New password (min 8 chars, must contain uppercase, lowercase, number, and special character).'
         required: true
@@ -1170,8 +1201,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       password_confirmation:
+        custom: []
         name: password_confirmation
         description: 'Password confirmation (must match password).'
         required: true
@@ -1180,7 +1212,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: user@example.com
       token: abc123def456ghi789
@@ -1189,6 +1221,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -1198,8 +1231,8 @@ endpoints:
           }
         headers: []
         description: 'Password reset successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1209,8 +1242,8 @@ endpoints:
           }
         headers: []
         description: 'Verification session expired'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1220,8 +1253,8 @@ endpoints:
           }
         headers: []
         description: 'Verification code not verified'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1231,8 +1264,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid token'
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -1242,18 +1275,18 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/change-password
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -1269,7 +1302,6 @@ endpoints:
         This is a secure way for users to update their passwords while logged in.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -1280,6 +1312,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       current_password:
+        custom: []
         name: current_password
         description: "User's current password for verification."
         required: true
@@ -1288,8 +1321,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       new_password:
+        custom: []
         name: new_password
         description: 'New password (min 8 chars, must contain uppercase, lowercase, number, and special character).'
         required: true
@@ -1298,8 +1332,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       new_password_confirmation:
+        custom: []
         name: new_password_confirmation
         description: 'Password confirmation (must match new_password).'
         required: true
@@ -1308,7 +1343,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       current_password: CurrentPassword123!
       new_password: NewPassword123!
@@ -1316,6 +1351,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -1325,8 +1361,8 @@ endpoints:
           }
         headers: []
         description: 'Password changed successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1336,8 +1372,8 @@ endpoints:
           }
         headers: []
         description: 'Current password incorrect'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1347,8 +1383,8 @@ endpoints:
           }
         headers: []
         description: 'Password change failed'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1358,8 +1394,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1369,8 +1405,8 @@ endpoints:
           }
         headers: []
         description: 'Password confirmation mismatch'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1380,8 +1416,8 @@ endpoints:
           }
         headers: []
         description: 'Password too weak'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -1391,18 +1427,18 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/change-email
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -1419,7 +1455,6 @@ endpoints:
         **Rate Limiting:** This endpoint is limited to 3 attempts per week per user to prevent abuse.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -1430,6 +1465,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: 'The new email address (must be unique and valid).'
         required: true
@@ -1438,8 +1474,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       password:
+        custom: []
         name: password
         description: 'Current password confirmation (min 8 chars, must contain uppercase, lowercase, number, and special character).'
         required: true
@@ -1448,8 +1485,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       email_confirmation:
+        custom: []
         name: email_confirmation
         description: 'Email confirmation (must match email).'
         required: true
@@ -1458,7 +1496,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: newemail@example.com
       password: CurrentPassword123!
@@ -1466,6 +1504,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -1475,8 +1514,8 @@ endpoints:
           }
         headers: []
         description: 'Email change initiated successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1486,8 +1525,8 @@ endpoints:
           }
         headers: []
         description: 'Current password incorrect'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1497,8 +1536,8 @@ endpoints:
           }
         headers: []
         description: 'New email already exists'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1508,8 +1547,8 @@ endpoints:
           }
         headers: []
         description: 'New email in invitation list'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1519,8 +1558,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Password confirmation mismatch'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1530,8 +1569,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Invalid email format'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1541,8 +1580,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Missing fields'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -1552,18 +1591,18 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/verify-change-email
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -1579,7 +1618,6 @@ endpoints:
         to verify the new email address with the 4-digit OTP code sent to the new email.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -1590,6 +1628,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: 'The new email address to verify (must be the same email used in changeEmail).'
         required: true
@@ -1598,8 +1637,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       otp:
+        custom: []
         name: otp
         description: 'The 4-digit verification code sent to the new email address.'
         required: true
@@ -1608,13 +1648,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: newemail@example.com
       otp: '1234'
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -1624,8 +1665,8 @@ endpoints:
           }
         headers: []
         description: 'Email change verified successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1635,8 +1676,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid or expired OTP'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1646,8 +1687,8 @@ endpoints:
           }
         headers: []
         description: 'Email change session expired'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1657,8 +1698,8 @@ endpoints:
           }
         headers: []
         description: 'Email verification not initiated'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1668,8 +1709,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Invalid email format'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1679,8 +1720,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Invalid OTP format'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -1690,8 +1731,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Missing fields'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -1701,18 +1742,18 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/profile
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -1738,7 +1779,6 @@ endpoints:
         - Prohibited fields: headline, category_id, skill_ids
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -1749,6 +1789,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       name:
+        custom: []
         name: name
         description: "sometimes User's full name (Arabic or English characters only)."
         required: false
@@ -1757,8 +1798,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       profile_picture:
+        custom: []
         name: profile_picture
         description: 'sometimes Profile picture image file (max 2MB). Example:'
         required: false
@@ -1767,8 +1809,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       about_me:
+        custom: []
         name: about_me
         description: 'sometimes About me description (max 500 characters, optional).'
         required: false
@@ -1777,8 +1820,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       country:
+        custom: []
         name: country
         description: 'sometimes User country (max 100 characters, optional).'
         required: false
@@ -1787,8 +1831,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       city:
+        custom: []
         name: city
         description: 'sometimes User city (max 100 characters, optional).'
         required: false
@@ -1797,8 +1842,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       languages:
+        custom: []
         name: languages
         description: 'sometimes Array of user languages (optional).'
         required: false
@@ -1813,8 +1859,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       headline:
+        custom: []
         name: headline
         description: 'sometimes Professional headline (for freelancers only, optional).'
         required: false
@@ -1823,8 +1870,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       category_id:
+        custom: []
         name: category_id
         description: 'sometimes Main category ID (for freelancers only, optional, must exist in categories).'
         required: false
@@ -1833,8 +1881,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       skill_ids:
+        custom: []
         name: skill_ids
         description: 'sometimes Array of skill IDs (for freelancers only, optional).'
         required: false
@@ -1846,8 +1895,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       company:
+        custom: []
         name: company
         description: 'sometimes Company name (for clients only, optional, max 255 characters).'
         required: false
@@ -1856,8 +1906,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       phone:
+        custom: []
         name: phone
         description: 'sometimes Phone number in Saudi format (for clients only, optional).'
         required: false
@@ -1866,8 +1917,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       'languages[].language_id':
+        custom: []
         name: 'languages[].language_id'
         description: 'Language ID (must exist in languages table). This field is required when <code>languages.*</code> is present. The <code>id</code> of an existing record in the languages table.'
         required: false
@@ -1876,8 +1928,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'languages[].language_level':
+        custom: []
         name: 'languages[].language_level'
         description: 'Language proficiency level. This field is required when <code>languages.*</code> is present.'
         required: false
@@ -1890,8 +1943,9 @@ endpoints:
           - native
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'languages.*.language_id':
+        custom: []
         name: 'languages.*.language_id'
         description: 'Language ID (must exist in languages table).'
         required: false
@@ -1900,8 +1954,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       'languages.*.language_level':
+        custom: []
         name: 'languages.*.language_level'
         description: 'Language proficiency level (basic, intermediate, advanced, native).'
         required: false
@@ -1910,8 +1965,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       'skill_ids.*':
+        custom: []
         name: 'skill_ids.*'
         description: 'Each skill ID must exist in skills table.'
         required: false
@@ -1920,7 +1976,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       name: 'أحمد محمد'
       about_me: 'مطور ويب محترف مع خبرة 5 سنوات'
@@ -1944,6 +2000,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -1981,8 +2038,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer profile updated'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -2006,8 +2063,8 @@ endpoints:
           }
         headers: []
         description: 'Client profile updated'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -2017,8 +2074,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer not approved'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -2028,8 +2085,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid category'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -2039,8 +2096,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Name format'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -2050,8 +2107,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Prohibited field'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -2061,8 +2118,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - File too large'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -2072,8 +2129,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error - Invalid skill'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -2083,18 +2140,18 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/logout
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -2109,7 +2166,6 @@ endpoints:
         After logout, the token cannot be used for authentication.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -2123,6 +2179,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -2132,8 +2189,8 @@ endpoints:
           }
         headers: []
         description: 'Logout successful'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -2143,18 +2200,18 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/refresh
     metadata:
+      custom: []
       groupName: 'User Authentication'
       groupDescription: |-
 
@@ -2169,7 +2226,6 @@ endpoints:
         Use this endpoint to maintain user sessions without requiring re-authentication.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -2183,6 +2239,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -2195,8 +2252,8 @@ endpoints:
           }
         headers: []
         description: 'Token refreshed successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -2232,8 +2289,8 @@ endpoints:
           }
         headers: []
         description: 'Client token refreshed'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -2372,8 +2429,8 @@ endpoints:
           }
         headers: []
         description: 'Freelancer token refreshed'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -2383,8 +2440,8 @@ endpoints:
           }
         headers: []
         description: 'Token invalid or expired'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -2394,10 +2451,8 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

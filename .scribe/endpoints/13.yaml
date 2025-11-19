@@ -2,10 +2,12 @@ name: 'Public Home Page'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/home/guest
     metadata:
+      custom: []
       groupName: 'Public Home Page'
       groupDescription: ''
       subgroup: ''
@@ -18,7 +20,6 @@ endpoints:
         without requiring authentication.
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -32,6 +33,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -142,8 +144,8 @@ endpoints:
           }
         headers: []
         description: 'Home page data retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -153,10 +155,8 @@ endpoints:
           }
         headers: []
         description: 'Service unavailable'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

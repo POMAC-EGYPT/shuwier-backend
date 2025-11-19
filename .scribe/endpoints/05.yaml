@@ -2,10 +2,12 @@ name: 'Client Project Management'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/clients/projects
     metadata:
+      custom: []
       groupName: 'Client Project Management'
       groupDescription: ''
       subgroup: ''
@@ -18,7 +20,6 @@ endpoints:
         with categories, attachments, and user information.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -27,6 +28,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       status:
+        custom: []
         name: status
         description: 'optional Filter projects by status. Available values: active, in_progress, completed.'
         required: false
@@ -35,8 +37,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'optional Number of projects per page (default: 15, minimum: 1).'
         required: false
@@ -45,16 +48,17 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       status: active
       per_page: 10
     bodyParameters:
       status:
+        custom: []
         name: status
         description: ''
         required: false
-        example: completed
+        example: in_progress
         type: string
         enumValues:
           - active
@@ -62,8 +66,9 @@ endpoints:
           - completed
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Must be at least 1.'
         required: false
@@ -72,13 +77,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
-      status: completed
+      status: in_progress
       per_page: 73
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -212,8 +218,8 @@ endpoints:
           }
         headers: []
         description: 'Projects retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -254,8 +260,8 @@ endpoints:
           }
         headers: []
         description: 'No projects found'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -265,8 +271,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid status filter'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -276,8 +282,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid per_page parameter'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -287,8 +293,8 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -298,18 +304,18 @@ endpoints:
           }
         headers: []
         description: 'Not a client'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/clients/projects
     metadata:
+      custom: []
       groupName: 'Client Project Management'
       groupDescription: ''
       subgroup: ''
@@ -322,7 +328,6 @@ endpoints:
         who can then submit proposals.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -333,6 +338,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       title:
+        custom: []
         name: title
         description: 'Project title - A clear and descriptive name for your project. Example                                                                     : E-commerce Website Development'
         required: true
@@ -341,8 +347,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       description:
+        custom: []
         name: description
         description: 'Detailed project description - Explain your project requirements,                                                                      goals, and expectations (minimum characters required).'
         required: true
@@ -351,8 +358,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       category_id:
+        custom: []
         name: category_id
         description: 'Main category ID - Must be a valid parent category that matches your project type. Example                                          : 4'
         required: true
@@ -361,8 +369,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       subcategory_id:
+        custom: []
         name: subcategory_id
         description: 'optional Subcategory ID - Must belong to the selected main category for more specific categorization. Example                             : 5'
         required: false
@@ -371,8 +380,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       budget:
+        custom: []
         name: budget
         description: 'Project budget - Specify your budget range or fixed amount for this project. Example                                                      : $1000-$2000'
         required: true
@@ -381,8 +391,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       deadline_unit:
+        custom: []
         name: deadline_unit
         description: 'Time unit for project deadline - The unit of measurement for your deadline. Must be one of                                         : hours, days,                                                    months. Example                                          : days'
         required: true
@@ -391,8 +402,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       deadline:
+        custom: []
         name: deadline
         description: 'Project deadline - Number of units (hours/days/months) for project completion. Example                                                 : 12'
         required: true
@@ -401,8 +413,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       attachment_ids:
+        custom: []
         name: attachment_ids
         description: 'optional Array of attachment IDs - Files that provide additional project details (must be uploaded first using upload endpoint).'
         required: false
@@ -414,7 +427,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       title: consequatur
       description: 'I need a complete e-commerce website with product catalog, shopping cart, payment integration, and admin dashboard. The site should be responsive and SEO-optimized.'
@@ -430,6 +443,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -503,8 +517,8 @@ endpoints:
           }
         headers: []
         description: 'Project created successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -514,8 +528,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid category'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -525,8 +539,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid subcategory'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -536,8 +550,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid attachment'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -547,8 +561,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -558,8 +572,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid deadline unit'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -569,18 +583,18 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/clients/projects/{id}/end'
     metadata:
+      custom: []
       groupName: 'Client Project Management'
       groupDescription: ''
       subgroup: ''
@@ -594,13 +608,13 @@ endpoints:
         or decides to cancel the project.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the project to end. Must be owned by the authenticated client.'
         required: true
@@ -609,7 +623,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 5
     queryParameters: []
@@ -619,6 +633,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -628,8 +643,8 @@ endpoints:
           }
         headers: []
         description: 'Project ended successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -639,8 +654,8 @@ endpoints:
           }
         headers: []
         description: 'Project already ended'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -650,8 +665,8 @@ endpoints:
           }
         headers: []
         description: 'Cannot end project in current status'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -661,8 +676,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid project ID'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -672,8 +687,8 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -683,8 +698,8 @@ endpoints:
           }
         headers: []
         description: 'Unauthorized - not project owner'
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -694,8 +709,8 @@ endpoints:
           }
         headers: []
         description: 'Not a client'
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -705,10 +720,8 @@ endpoints:
           }
         headers: []
         description: 'Project not found'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

@@ -7,7 +7,14 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Contracts\Validation\Validator;
 
-class ClientSearchRequest extends FormRequest
+/**
+ * @property string|null $search
+ * @property array|null $category_ids
+ * @property array|null $skill_ids
+ * @property array|null $rates
+ * @property int|null $per_page
+ */
+class FreelancerSearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,10 +39,14 @@ class ClientSearchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'search'   => 'nullable|string|max:255',
-            'rates'    => 'nullable|array',
-            'rates.*'  => 'required|integer|min:1',
-            'per_page' => 'nullable|integer|min:1|max:50',
+            'search'         => 'nullable|string|max:255',
+            'category_ids'   => 'nullable|array',
+            'category_ids.*' => 'required|exists:categories,id',
+            'skill_ids'      => 'nullable|array',
+            'skill_ids.*'    => 'required|exists:skills,id',
+            'rates'          => 'nullable|array',
+            'rates.*'        => 'required|integer|min:1',
+            'per_page'       => 'nullable|integer|min:1|max:50',
         ];
     }
 }

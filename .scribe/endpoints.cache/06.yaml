@@ -4,10 +4,12 @@ name: 'Client Proposal Management'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/clients/projects/{projectId}/proposals'
     metadata:
+      custom: []
       groupName: 'Client Proposal Management'
       groupDescription: ''
       subgroup: ''
@@ -20,13 +22,13 @@ endpoints:
         freelancer information, bid details, attachments, and reviews.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       projectId:
+        custom: []
         name: projectId
         description: 'The ID of the project to get proposals for. Must be owned by the authenticated client.'
         required: true
@@ -35,13 +37,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       projectId: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       per_page:
+        custom: []
         name: per_page
         description: 'Must be at least 1. Must not be greater than 50.'
         required: false
@@ -50,12 +53,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       per_page: 21
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -131,8 +135,8 @@ endpoints:
           }
         headers: []
         description: 'Proposals retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -156,8 +160,8 @@ endpoints:
           }
         headers: []
         description: 'No proposals found'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -167,8 +171,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid per_page parameter'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -178,8 +182,8 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -189,8 +193,8 @@ endpoints:
           }
         headers: []
         description: 'Not project owner'
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -200,8 +204,8 @@ endpoints:
           }
         headers: []
         description: 'Not a client'
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -211,18 +215,18 @@ endpoints:
           }
         headers: []
         description: 'Project not found'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/clients/proposals/{id}'
     metadata:
+      custom: []
       groupName: 'Client Proposal Management'
       groupDescription: ''
       subgroup: ''
@@ -235,13 +239,13 @@ endpoints:
         to evaluate individual proposals and make hiring decisions.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the proposal to retrieve. Must be for a project owned by the authenticated client.'
         required: true
@@ -250,7 +254,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -260,6 +264,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -395,8 +400,8 @@ endpoints:
           }
         headers: []
         description: 'Proposal details retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -406,8 +411,8 @@ endpoints:
           }
         headers: []
         description: 'Invalid proposal ID'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -417,8 +422,8 @@ endpoints:
           }
         headers: []
         description: Unauthenticated
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -428,8 +433,8 @@ endpoints:
           }
         headers: []
         description: 'Not authorized to view proposal'
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -439,8 +444,8 @@ endpoints:
           }
         headers: []
         description: 'Not a client'
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -450,10 +455,8 @@ endpoints:
           }
         headers: []
         description: 'Proposal not found'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

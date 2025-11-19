@@ -4,10 +4,12 @@ name: 'Admin Freelancer Invitations'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/admin/invitations
     metadata:
+      custom: []
       groupName: 'Admin Freelancer Invitations'
       groupDescription: ''
       subgroup: ''
@@ -16,7 +18,6 @@ endpoints:
       description: 'Retrieve a paginated list of all freelancer invitations sent by the admin.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -25,6 +26,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       per_page:
+        custom: []
         name: per_page
         description: 'optional Number of items per page. Minimum: 1.'
         required: false
@@ -33,11 +35,12 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       per_page: 15
     bodyParameters:
       per_page:
+        custom: []
         name: per_page
         description: 'Must be at least 1.'
         required: false
@@ -46,12 +49,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       per_page: 73
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -75,8 +79,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -86,18 +90,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/admin/invitations
     metadata:
+      custom: []
       groupName: 'Admin Freelancer Invitations'
       groupDescription: ''
       subgroup: ''
@@ -106,7 +110,6 @@ endpoints:
       description: 'Send an invitation email to a potential freelancer. The email must be unique and not already registered.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -117,6 +120,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       email:
+        custom: []
         name: email
         description: 'A valid email address for the freelancer invitation. Must be unique and not already registered.'
         required: true
@@ -125,12 +129,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       email: freelancer@example.com
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -140,8 +145,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -151,8 +156,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -162,8 +167,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -173,10 +178,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []

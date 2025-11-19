@@ -13,6 +13,8 @@ interface UserRepositoryInterface
 
     public function clientSearchWithRate(?string $search = null, ?array $rates = null, int $perPage = 15): mixed;
 
+    public function freelancerSearchWithFilters(?string $search = null, ?array $categoryIds = null, ?array $skillIds = null, ?array $rates = null, int $perPage = 15): LengthAwarePaginator;
+
     public function find(int $id): ?User;
 
     public function findByEmail(string $email): ?User;

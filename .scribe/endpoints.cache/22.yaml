@@ -8,10 +8,12 @@ description: |-
   including listing all clients and viewing individual client details.
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/admin/clients
     metadata:
+      custom: []
       groupName: 'Admin Client Management'
       groupDescription: |-
 
@@ -27,7 +29,6 @@ endpoints:
         The response includes pagination metadata for easy navigation.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -36,6 +37,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       name:
+        custom: []
         name: name
         description: 'Optional filter by client name (searches in name).'
         required: false
@@ -44,8 +46,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       page:
+        custom: []
         name: page
         description: 'Optional page number for pagination (default: 1).'
         required: false
@@ -54,12 +57,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       name: سارة
       page: 2
     bodyParameters:
       name:
+        custom: []
         name: name
         description: 'Must not be greater than 255 characters.'
         required: false
@@ -68,12 +72,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       name: vmqeopfuudtdsufvyvddq
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -125,8 +130,8 @@ endpoints:
           }
         headers: []
         description: 'Clients retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -136,8 +141,8 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -147,8 +152,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -158,18 +163,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/admin/clients/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Client Management'
       groupDescription: |-
 
@@ -184,13 +189,13 @@ endpoints:
         Includes all client profile information and account status.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the client to view.'
         required: true
@@ -199,7 +204,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 1
     queryParameters: []
@@ -209,6 +214,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -232,8 +238,8 @@ endpoints:
           }
         headers: []
         description: 'Client details retrieved successfully'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -243,8 +249,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -254,8 +260,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -265,18 +271,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - DELETE
     uri: 'api/admin/clients/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Client Management'
       groupDescription: |-
 
@@ -292,13 +298,13 @@ endpoints:
         and any project history. Use with caution as this is a destructive operation.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the client to delete.'
         required: true
@@ -307,7 +313,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 5
     queryParameters: []
@@ -317,6 +323,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -326,8 +333,8 @@ endpoints:
           }
         headers: []
         description: 'Client deleted successfully'
-        custom: []
       -
+        custom: []
         status: 400
         content: |-
           {
@@ -337,8 +344,8 @@ endpoints:
           }
         headers: []
         description: 'Client has active projects'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -348,8 +355,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -359,8 +366,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -370,18 +377,18 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/admin/clients/block-unblock/{id}'
     metadata:
+      custom: []
       groupName: 'Admin Client Management'
       groupDescription: |-
 
@@ -398,13 +405,13 @@ endpoints:
         This is a reversible action unlike deletion.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Accept-Language: en
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the client to block/unblock.'
         required: true
@@ -413,7 +420,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 3
     queryParameters: []
@@ -423,6 +430,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -432,8 +440,8 @@ endpoints:
           }
         headers: []
         description: 'Client blocked successfully'
-        custom: []
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -443,8 +451,8 @@ endpoints:
           }
         headers: []
         description: 'Client unblocked successfully'
-        custom: []
       -
+        custom: []
         status: 401
         content: |-
           {
@@ -454,8 +462,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 403
         content: |-
           {
@@ -465,8 +473,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -476,10 +484,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
