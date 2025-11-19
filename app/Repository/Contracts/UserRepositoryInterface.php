@@ -23,6 +23,8 @@ interface UserRepositoryInterface
 
     public function findByUsername(string $username): ?User;
 
+    public function findByProviderAndProviderId(string $provider, int $providerId): User;
+
     public function create(array $data): User;
 
     public function update(int $id, array $data): bool;

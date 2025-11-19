@@ -109,6 +109,13 @@ class UserRepository implements UserRepositoryInterface
         )->where('username', $username)->firstOrFail();
     }
 
+    public function findByProviderAndProviderId(string $provider, int $providerId): User
+    {
+        return User::where('provider', $provider)
+            ->where('provider_id', $providerId)
+            ->firstOrFail();
+    }
+
     public function create(array $data): User
     {
         return User::create($data);
