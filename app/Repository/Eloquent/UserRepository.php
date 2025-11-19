@@ -30,19 +30,26 @@ class UserRepository implements UserRepositoryInterface
 
     public function clientSearchWithRate(?string $search = null, ?array $rates = null, int $perPage = 15): LengthAwarePaginator
     {
-        // TODO: Implement search by rates logic and filtering based on Jira Ticket
         return User::clients()
             ->when($search, fn($query)
             => $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%");
             }))
-            ->when($rates, fn($query) => $query->whereHas('reviews', function ($q) use ($rates) {
-                $q->withAvg('reviews', 'rate')
-                    ->havingBetween('reviews_avg_rate', min($rates), max($rates));
-            }))
+            ->when($rates, function ($query) use ($rates) {
+                $query = $query->withAvg('reviews', 'rating');
+
+                count($rates) === 1 ?
+                    $query->having('reviews_avg_rating', '>=', $rates[0])
+                    ->having('reviews_avg_rating', '<', $rates[0] + 1)
+                    : $query->havingBetween('reviews_avg_rating', [
+                        min($rates),
+                        max($rates)
+                    ]);
+            })
             ->paginate($perPage);
     }
+
 
     public function find(int $id): ?User
     {
