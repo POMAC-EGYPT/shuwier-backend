@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\Contracts\Auth\AuthSocialServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
@@ -10,6 +11,13 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialAuthController extends Controller
 {
+    protected $authSocialService;
+
+    public function __construct(AuthSocialServiceInterface $authSocialService)
+    {
+        $this->authSocialService = $authSocialService;
+    }
+
     public function redirect(string $provider, Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -29,11 +37,8 @@ class SocialAuthController extends Controller
 
     public function callback(string $provider, Request $request)
     {
-        //TODO: Handle different states (login, register) accordingly with Jira Tekets
-        $mode = $request->state;
-        dd($mode, request()->input('state'));
-        $user = Socialite::driver($provider)->user();
+        $result = $this->authSocialService->handleCallback($provider, $request->state);
 
-        return Response::api(__('message.success'), 200, true, 200, ['user' => $user]);
+        return Response::api(__('message.success'), 200, true, 200, ['user' => $result]);
     }
 }

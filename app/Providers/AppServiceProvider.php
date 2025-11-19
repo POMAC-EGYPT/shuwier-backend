@@ -68,6 +68,7 @@ use App\Services\Implementations\LanguageService;
 use App\Services\Implementations\PortfolioService;
 use App\Services\Implementations\SkillService;
 use App\Repository\Eloquent\UserVerificationRepository;
+use App\Services\Contracts\Auth\AuthSocialServiceInterface;
 use App\Services\Contracts\CommissionServiceInterface;
 use App\Services\Contracts\HashtagServiceInterface;
 use App\Services\Contracts\HomeServiceInterface;
@@ -82,6 +83,7 @@ use App\Services\Contracts\ProposalServiceInterface;
 use App\Services\Contracts\ServiceServiceInterface;
 use App\Services\Contracts\TipsAndGuidServiceInterface;
 use App\Services\Contracts\UserServiceInterface;
+use App\Services\Implementations\Auth\AuthSocialService;
 use App\Services\Implementations\CommissionService;
 use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\HomeService;
@@ -118,6 +120,8 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);
         $this->app->bind(AuthAdminServiceInterface::class, AuthAdminService::class);
+
+        $this->app->bind(AuthSocialServiceInterface::class, AuthSocialService::class);
 
         $this->app->bind(FreelancerProfileRepositoryInterface::class, FreelancerProfileRepository::class);
 
