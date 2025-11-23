@@ -94,7 +94,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::where('email', $email)->first();
     }
-
+    
     public function findByEmailAndType(string $email, string $type): ?User
     {
         return User::{$type}()->where('email', $email)->first();
@@ -113,7 +113,17 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::where('provider', $provider)
             ->where('provider_id', $providerId)
-            ->firstOrFail();
+            ->first();
+    }
+
+    public function findByEmailOrProvider(?string $email, string $provider, string $providerId): User
+    {
+        return User::when($email, fn($q) => $q->where('email', $email))
+            ->orWhere(
+                fn($q) =>
+                $q->where('provider', $provider)
+                    ->where('provider_id', $providerId)
+            )->first();
     }
 
     public function create(array $data): User

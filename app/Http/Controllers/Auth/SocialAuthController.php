@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Services\Contracts\Auth\AuthSocialServiceInterface;
+use App\Services\Implementations\Auth\Social\Context\SocialContext;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
@@ -11,11 +11,11 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialAuthController extends Controller
 {
-    protected $authSocialService;
+    protected $socialContext;
 
-    public function __construct(AuthSocialServiceInterface $authSocialService)
+    public function __construct(SocialContext $socialContext)
     {
-        $this->authSocialService = $authSocialService;
+        $this->socialContext = $socialContext;
     }
 
     public function redirect(string $provider, Request $request)
@@ -37,8 +37,18 @@ class SocialAuthController extends Controller
 
     public function callback(string $provider, Request $request)
     {
-        $result = $this->authSocialService->handleCallback($provider, $request->state);
+        $validator = Validator::make($request->all(), [
+            'state' => 'required|string|in:login,register'
+        ]);
 
-        return Response::api(__('message.success'), 200, true, 200, ['user' => $result]);
+        if ($validator->fails())
+            return Response::api($validator->errors()->first(), 400, false, 400);
+
+        $result = $this->socialContext->callback($provider, $request->state);
+
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+
+        return Response::api($result['message'], 200, true, 200, $result['data']);
     }
 }

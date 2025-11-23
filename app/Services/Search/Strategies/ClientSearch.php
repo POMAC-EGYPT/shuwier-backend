@@ -8,7 +8,7 @@ use App\Services\Search\Contracts\SearchStrategyInterface;
 
 class ClientSearch implements SearchStrategyInterface
 {
-    public function __construct(protected UserRepositoryInterface $userRepo) {}
+    
     public function supports(string $type): bool
     {
         return $type === 'client';

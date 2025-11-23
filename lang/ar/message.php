@@ -151,4 +151,6 @@ return [
     'tips_and_guid_deleted_successfully'                              => 'تم حذف قسم النصائح والإرشادات بنجاح',
     "can't_delete_popular_tips_and_guid"                              => 'لا يمكن حذف قسم نصائح وإرشادات شائع',
     'professional_document_only_freelancer'                           => 'يمكن لمقدمي الخدمات فقط تقديم المستند المهني',
+    'user_already_exists'                                             => 'المستخدم موجود بالفعل',
+    'Account already exists. Please login.'                           => 'المستخدم موجود بالفعل. يرجى تسجيل الدخول.',
 ];

@@ -84,6 +84,12 @@ use App\Services\Contracts\ServiceServiceInterface;
 use App\Services\Contracts\TipsAndGuidServiceInterface;
 use App\Services\Contracts\UserServiceInterface;
 use App\Services\Implementations\Auth\AuthSocialService;
+use App\Services\Implementations\Auth\Social\Contract\SocialModeInterface;
+use App\Services\Implementations\Auth\Social\Contract\SocialProviderInterface;
+use App\Services\Implementations\Auth\Social\Strategies\Modes\LoginStrategy;
+use App\Services\Implementations\Auth\Social\Strategies\Modes\RegisterStrategy;
+use App\Services\Implementations\Auth\Social\Strategies\Providers\AppleProvider;
+use App\Services\Implementations\Auth\Social\Strategies\Providers\GoogleProvider;
 use App\Services\Implementations\CommissionService;
 use App\Services\Implementations\HashtagService;
 use App\Services\Implementations\HomeService;
@@ -120,8 +126,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);
         $this->app->bind(AuthAdminServiceInterface::class, AuthAdminService::class);
-
-        $this->app->bind(AuthSocialServiceInterface::class, AuthSocialService::class);
 
         $this->app->bind(FreelancerProfileRepositoryInterface::class, FreelancerProfileRepository::class);
 
@@ -172,6 +176,27 @@ class AppServiceProvider extends ServiceProvider
                 $app->make(SearchStrategyInterface::class . '_freelancer'),
             );
         });
+
+        $this->app->bind(SocialProviderInterface::class . '_google', GoogleProvider::class);
+        $this->app->bind(SocialProviderInterface::class . '_apple', AppleProvider::class);
+
+        $this->app->bind(SocialProviderInterface::class, function ($app) {
+            return [
+                $app->make(SocialProviderInterface::class . '_google'),
+                $app->make(SocialProviderInterface::class . '_apple'),
+            ];
+        });
+
+        $this->app->bind(SocialModeInterface::class . '_login', LoginStrategy::class);
+        $this->app->bind(SocialModeInterface::class . '_register', RegisterStrategy::class);
+
+        $this->app->bind(SocialModeInterface::class, function ($app) {
+            return [
+                $app->make(SocialModeInterface::class . '_login'),
+                $app->make(SocialModeInterface::class . '_register'),
+            ];
+        });
+
 
         $this->app->bind(UserLanguageRepositoryInterface::class, UserLanguageRepository::class);
 
