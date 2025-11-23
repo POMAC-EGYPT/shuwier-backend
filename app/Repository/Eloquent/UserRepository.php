@@ -109,14 +109,14 @@ class UserRepository implements UserRepositoryInterface
         )->where('username', $username)->firstOrFail();
     }
 
-    public function findByProviderAndProviderId(string $provider, int $providerId): User
+    public function findByProviderAndProviderId(string $provider, int $providerId): ?User
     {
         return User::where('provider', $provider)
             ->where('provider_id', $providerId)
             ->first();
     }
 
-    public function findByEmailOrProvider(?string $email, string $provider, string $providerId): User
+    public function findByEmailOrProvider(?string $email, string $provider, string $providerId): ?User
     {
         return User::when($email, fn($q) => $q->where('email', $email))
             ->orWhere(
