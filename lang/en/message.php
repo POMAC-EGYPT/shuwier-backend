@@ -153,4 +153,5 @@ return [
     'professional_document_only_freelancer'                           => 'Professional document can only be provided by freelancers',
     'user_already_exists'                                             => 'User already exists',
     'Account already exists. Please login.'                           => 'Account already exists. Please login.',
+    'Temporary key has expired or is invalid.'                        => 'Temporary key has expired or is invalid.',
 ];

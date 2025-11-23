@@ -41,6 +41,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth.any:api,admin')->name('refresh');
     Route::get('/{provider}/redirect', [SocialAuthController::class, 'redirect'])->middleware('web')->whereIn('provider', ['google', 'apple']);
     Route::get('/{provider}/callback', [SocialAuthController::class, 'callback'])->middleware('web')->whereIn('provider', ['google', 'apple']);
+    Route::post('/register/finalize', [SocialAuthController::class, 'registerFinalize'])->name('social.register.finalize');
 });
 
 
