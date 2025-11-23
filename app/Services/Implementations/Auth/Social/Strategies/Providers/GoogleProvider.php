@@ -14,7 +14,7 @@ class GoogleProvider implements SocialProviderInterface
 
     public function getUserData(): array
     {
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->stateless()->user();
 
         return [
             'providerId' => $user->getId(),

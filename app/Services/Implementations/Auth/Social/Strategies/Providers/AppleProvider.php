@@ -14,7 +14,7 @@ class AppleProvider implements SocialProviderInterface
 
     public function getUserData(): array
     {
-        $socialUser = Socialite::driver('apple')->user();
+        $socialUser = Socialite::driver('apple')->stateless()->user();
 
         return [
             'providerId' => $socialUser->getId(),
