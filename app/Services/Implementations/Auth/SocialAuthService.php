@@ -8,6 +8,8 @@ use App\Repository\Contracts\UserRepositoryInterface;
 use App\Services\Contracts\Auth\SocialAuthSerivceInterface;
 use Illuminate\Support\Facades\Cache;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Http\UploadedFile;
+
 
 class SocialAuthService implements SocialAuthSerivceInterface
 {
@@ -19,11 +21,23 @@ class SocialAuthService implements SocialAuthSerivceInterface
 
         if (!$userData)
             return ['status' => false, 'message' => __('message.Temporary key has expired or is invalid.')];
-        $userData['photo'] = file_get_contents($userData['photo']);
-        dd($userData);
-        if ($userData['photo'])
-            $imagePath = ImageHelpers::addImage($userData['photo'], 'profiles');
 
+        if ($userData['photo']) {
+            $contents = file_get_contents($userData['photo']);
+            $tmpPath = storage_path('app/tmp_social_photo.jpg');
+            file_put_contents($tmpPath, $contents);
+
+            $uploadedFile = new UploadedFile(
+                $tmpPath,
+                'social_photo.jpg',
+                'image/jpeg',
+                null,
+                true
+            );
+
+            $imagePath = ImageHelpers::addImage($uploadedFile, 'profiles');
+        }
+        
         $user = $this->userRepo->create([
             'name' => $userData['name'],
             'email' => $userData['email'],
