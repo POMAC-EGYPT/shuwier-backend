@@ -19,7 +19,7 @@ class RegisterStrategy implements SocialModeInterface
     public function handleCallback(SocialProviderInterface $provider): array
     {
         $socialUser = $provider->getUserData();
-
+        dd($socialUser);
         $user = $this->userRepo->findByEmailOrProvider(
             $socialUser['email'] ?? null,
             $socialUser['provider'],
