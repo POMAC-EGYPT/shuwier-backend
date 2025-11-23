@@ -19,7 +19,7 @@ class SocialAuthService implements SocialAuthSerivceInterface
 
         if (!$userData)
             return ['status' => false, 'message' => __('message.Temporary key has expired or is invalid.')];
-
+        dd($userData);
         if ($userData['photo'])
             $imagePath = ImageHelpers::addImage($userData['photo'], 'profiles');
 
