@@ -82,7 +82,7 @@ class SocialAuthController extends Controller
             return Response::api($result['message'], 400, false, 400);
 
         return Response::api(
-            $result['message'],
+            __('message.success'),
             200,
             true,
             200,
