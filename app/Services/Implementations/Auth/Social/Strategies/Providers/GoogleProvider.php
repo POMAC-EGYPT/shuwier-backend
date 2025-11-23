@@ -20,6 +20,7 @@ class GoogleProvider implements SocialProviderInterface
             'providerId' => $user->getId(),
             'name'       => $user->getName(),
             'email'      => $user->getEmail(),
+            'provider'   => 'google',
         ];
     }
 }

@@ -20,6 +20,7 @@ class AppleProvider implements SocialProviderInterface
             'providerId' => $socialUser->getId(),
             'name'       => $socialUser->getName() ?? 'Apple User',
             'email'      => $socialUser->getEmail() ?? $this->generateDummyEmail($socialUser->getId()),
+            'provider'   => 'apple',
         ];
     }
 
