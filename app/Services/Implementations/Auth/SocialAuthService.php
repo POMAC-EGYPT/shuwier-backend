@@ -19,6 +19,8 @@ class SocialAuthService implements SocialAuthSerivceInterface
     {
         $userData = Cache::get($tempKey);
 
+        dd( $userData);
+
         if (!$userData)
             return ['status' => false, 'message' => __('message.Temporary key has expired or is invalid.')];
 
