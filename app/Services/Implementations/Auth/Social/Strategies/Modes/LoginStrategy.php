@@ -24,22 +24,47 @@ class LoginStrategy implements SocialModeInterface
             $socialUser['providerId']
         );
 
-        if (!$user)
-            return ['status' => false, 'error_num' => 404, 'message' => __('message.not_found')];
+        if ($user) {
+            if (!$user->is_active)
+                return ['status' => false, 'error_num' => 403, 'message' => __('message.account_is_blocked')];
 
-        if (!$user->is_active)
-            return ['status' => false, 'error_num' => 403, 'message' => __('message.account_is_blocked')];
+            if (!$user->email_verified_at)
+                return ['status' => false, 'error_num' => 403, 'message' => __('message.email_not_verified')];
 
-        if (!$user->email_verified_at)
-            return ['status' => false, 'error_num' => 403, 'message' => __('message.email_not_verified')];
+            return [
+                'status' => true,
+                'message' => __('message.login_success'),
+                'data' => [
+                    'user'  => $user,
+                    'token' => JWTAuth::fromUser($user),
+                ]
+            ];
+        }
 
-        return [
-            'status' => true,
-            'message' => __('message.login_success'),
-            'data' => [
-                'user'  => $user,
-                'token' => JWTAuth::fromUser($user),
-            ]
-        ];
+        $existingUser = $this->userRepo->findByEmail($socialUser['email']);
+
+        if ($existingUser) {
+            if (!$existingUser->is_active)
+                return ['status' => false, 'error_num' => 403, 'message' => __('message.account_is_blocked')];
+
+            if (!$existingUser->email_verified_at)
+                return ['status' => false, 'error_num' => 403, 'message' => __('message.email_not_verified')];
+
+            $existingUser->update([
+                'provider' => $socialUser['provider'],
+                'provider_id' => $socialUser['providerId'],
+            ]);
+
+            return [
+                'status' => true,
+                'message' => __('message.account_linked_with_social_login'),
+                'data' => [
+                    'user' => $existingUser,
+                    'token' => JWTAuth::fromUser($existingUser),
+                ]
+            ];
+        }
+
+        return ['status' => false, 'error_num' => 404, 'message' => __('message.not_found')];
     }
 }

@@ -154,4 +154,5 @@ return [
     'user_already_exists'                                             => 'المستخدم موجود بالفعل',
     'Account already exists. Please login.'                           => 'المستخدم موجود بالفعل. يرجى تسجيل الدخول.',
     'Temporary key has expired or is invalid.'                        => 'المفتاح المؤقت منتهي الصلاحية أو غير صالح.',
+    'account_linked_with_social_login'                                => 'تم ربط الحساب بتسجيل الدخول الاجتماعي',
 ];
