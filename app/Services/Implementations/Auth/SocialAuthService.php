@@ -19,8 +19,6 @@ class SocialAuthService implements SocialAuthSerivceInterface
     {
         $userData = Cache::get($tempKey);
 
-        dd( $userData);
-
         if (!$userData)
             return ['status' => false, 'message' => __('message.Temporary key has expired or is invalid.')];
 
@@ -39,7 +37,7 @@ class SocialAuthService implements SocialAuthSerivceInterface
 
             $imagePath = ImageHelpers::addImage($uploadedFile, 'profiles');
         }
-        
+
         $user = $this->userRepo->create([
             'name' => $userData['name'],
             'email' => $userData['email'],
