@@ -23,7 +23,7 @@ class LoginStrategy implements SocialModeInterface
             $socialUser['provider'],
             $socialUser['providerId']
         );
-
+        dd($user);
         if (!$user)
             return ['status' => false, 'error_num' => 404, 'message' => __('message.not_found')];
 
