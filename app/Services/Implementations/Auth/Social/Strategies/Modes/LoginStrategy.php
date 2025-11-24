@@ -19,11 +19,6 @@ class LoginStrategy implements SocialModeInterface
     {
         $socialUser = $provider->getUserData();
 
-        $user = $this->userRepo->findByEmail($socialUser['email'] ?? null);
-
-        if ($user)
-            return ['status' => false, 'error_num' => 400, 'message' => __('message.Account already exists. Please login.')];
-
         $user = $this->userRepo->findByProviderAndProviderId(
             $socialUser['provider'],
             $socialUser['providerId']
