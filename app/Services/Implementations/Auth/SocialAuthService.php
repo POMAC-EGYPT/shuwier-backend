@@ -20,21 +20,10 @@ class SocialAuthService implements SocialAuthSerivceInterface
         $userData = Cache::get($tempKey);
 
         if (!$userData)
-            return ['status' => false, 'message' => __('message.Temporary key has expired or is invalid.')];
+            return ['status' => false, 'message' => __(key: 'message.Temporary key has expired or is invalid.')];
 
         if ($userData['photo']) {
-            $contents = file_get_contents($userData['photo']);
-            $tmpPath = storage_path('app/tmp_social_photo.jpg');
-            file_put_contents($tmpPath, $contents);
-
-            $uploadedFile = new UploadedFile(
-                $tmpPath,
-                'social_photo.jpg',
-                'image/jpeg',
-                null,
-                true
-            );
-
+            $uploadedFile = ImageHelpers::createUploadedFileFromUrl($userData['photo']);
             $imagePath = ImageHelpers::addImage($uploadedFile, 'profiles');
         }
 
