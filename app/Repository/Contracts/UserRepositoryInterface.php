@@ -23,7 +23,7 @@ interface UserRepositoryInterface
 
     public function findByUsername(string $username): ?User;
 
-    public function findByProviderAndProviderId(string $provider, int $providerId): ?User;
+    public function findByProviderAndProviderId(string $provider, string $providerId): ?User;
 
     public function findByEmailOrProvider(?string $email, string $provider, string $providerId): ?User;
 
