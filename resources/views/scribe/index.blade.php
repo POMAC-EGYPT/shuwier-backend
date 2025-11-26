@@ -614,7 +614,8 @@ Only users with admin privileges can access this endpoint.</p>
     --header "Accept-Language: en" \
     --data "{
     \"email\": \"admin@admin.com\",
-    \"password\": \"password123\"
+    \"password\": \"password123\",
+    \"remember\": true
 }"
 </code></pre></div>
 
@@ -632,7 +633,8 @@ const headers = {
 
 let body = {
     "email": "admin@admin.com",
-    "password": "password123"
+    "password": "password123",
+    "remember": true
 };
 
 fetch(url, {
@@ -819,6 +821,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Admin password. Example: <code>password123</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>remember</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="POSTapi-admin-auth-login" style="display: none">
+            <input type="radio" name="remember"
+                   value="true"
+                   data-endpoint="POSTapi-admin-auth-login"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-admin-auth-login" style="display: none">
+            <input type="radio" name="remember"
+                   value="false"
+                   data-endpoint="POSTapi-admin-auth-login"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Remember me option to extend token validity. Example: <code>true</code></p>
         </div>
         </form>
 
@@ -1313,7 +1337,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjWg2oc" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeHjfIP" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1504,7 +1528,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpjWg2oc</code></p>
+<p>Category image file (required for parent categories). Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpeHjfIP</code></p>
         </div>
         </form>
 
@@ -1698,7 +1722,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name_en=Design"\
     --form "name_ar=تصميم"\
     --form "parent_id=2"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTYi4Mu" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8xZKkk" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1908,7 +1932,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpTYi4Mu</code></p>
+<p>Optional category image file. If not provided, the existing image will remain unchanged. Send a new image file to update it. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php8xZKkk</code></p>
         </div>
         </form>
 
@@ -4082,7 +4106,7 @@ The response includes pagination metadata for easy navigation.</p>
     --header "Accept-Language: en" \
     --data "{
     \"approval_status\": \"requested\",
-    \"is_active\": \"0\",
+    \"is_active\": \"1\",
     \"name\": \"vmqeopfuudtdsufvyvddq\"
 }"
 </code></pre></div>
@@ -4110,7 +4134,7 @@ const headers = {
 
 let body = {
     "approval_status": "requested",
-    "is_active": "0",
+    "is_active": "1",
     "name": "vmqeopfuudtdsufvyvddq"
 };
 
@@ -4356,10 +4380,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="is_active"                data-endpoint="GETapi-admin-freelancers"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -5257,7 +5281,7 @@ This endpoint supports searching through titles and descriptions in both English
     --header "Accept-Language: en" \
     --data "{
     \"search\": \"consequatur\",
-    \"type\": \"client\",
+    \"type\": \"freelancer\",
     \"per_page\": 45
 }"
 </code></pre></div>
@@ -5284,7 +5308,7 @@ const headers = {
 
 let body = {
     "search": "consequatur",
-    "type": "client",
+    "type": "freelancer",
     "per_page": 45
 };
 
@@ -5490,10 +5514,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="GETapi-admin-how-it-works"
-               value="client"
+               value="freelancer"
                data-component="body">
     <br>
-<p>Example: <code>client</code></p>
+<p>Example: <code>freelancer</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>freelancer</code></li> <li><code>client</code></li></ul>
         </div>
@@ -7381,7 +7405,7 @@ This endpoint allows administrators to add educational and helpful content for p
     --form "title_ar=أفضل ممارسات العمل الحر"\
     --form "description_en=Learn the essential tips for successful freelancing career"\
     --form "description_ar=تعلم النصائح الأساسية لمهنة ناجحة في العمل الحر"\
-    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpNOq3PG" </code></pre></div>
+    --form "image=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOWYqLw" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7609,7 +7633,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpNOq3PG</code></p>
+<p>Image file to illustrate the tip or guide (max 2MB, jpg/png/svg). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpOWYqLw</code></p>
         </div>
         </form>
 
@@ -9047,7 +9071,7 @@ with categories, attachments, and user information.</p>
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"status\": \"active\",
+    \"status\": \"completed\",
     \"per_page\": 73
 }"
 </code></pre></div>
@@ -9072,7 +9096,7 @@ const headers = {
 };
 
 let body = {
-    "status": "active",
+    "status": "completed",
     "per_page": 73
 };
 
@@ -9423,10 +9447,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="GETapi-clients-projects"
-               value="active"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>active</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -11105,7 +11129,7 @@ Must be one of:
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --data "{
-    \"state\": \"register\"
+    \"state\": \"login\"
 }"
 </code></pre></div>
 
@@ -11122,7 +11146,7 @@ const headers = {
 };
 
 let body = {
-    "state": "register"
+    "state": "login"
 };
 
 fetch(url, {
@@ -11257,10 +11281,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="state"                data-endpoint="GETapi-auth--provider--callback"
-               value="register"
+               value="login"
                data-component="body">
     <br>
-<p>Example: <code>register</code></p>
+<p>Example: <code>login</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>login</code></li> <li><code>register</code></li></ul>
         </div>
@@ -11760,7 +11784,7 @@ The uploaded file will be stored and return file information including the file 
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
     --form "type=portfolio"\
-    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php9U8aNZ" </code></pre></div>
+    --form "file=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmfsXof" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -11933,7 +11957,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php9U8aNZ</code></p>
+<p>The file to upload (PDF, JPEG, JPG, PNG, GIF, DOC, DOCX, XLS, XLSX, max 5MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpmfsXof</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -12162,7 +12186,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=15"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLrfSyI" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT7b62y" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -12407,7 +12431,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLrfSyI</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpT7b62y</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -12449,7 +12473,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "subcategory_id=2"\
     --form "attachment_ids[]=20"\
     --form "hashtags[]=react"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiGVLTP" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpPWAImy" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -12722,7 +12746,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpiGVLTP</code></p>
+<p>optional The portfolio cover photo (required for creation, optional for updates). Accepted formats: jpeg, png, jpg, webp. Max size: 5MB Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpPWAImy</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -17467,7 +17491,7 @@ pricing, delivery time, cover photo, attachments, FAQs, and hashtags.</p>
     --form "attachment_ids[]=15"\
     --form "faqs[][question]=amniihfqcoynlazghdtqt"\
     --form "faqs[][answer]=qxbajwbpilpmufinllwlo"\
-    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLN2dtq" </code></pre></div>
+    --form "cover_photo=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phplIfvc6" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -17812,7 +17836,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpLN2dtq</code></p>
+<p>Cover photo for the service (image file, max 2MB). Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phplIfvc6</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hashtags</code></b>&nbsp;&nbsp;
@@ -19110,7 +19134,7 @@ to users about any validation issues with their registration data.</p>
     --form "other_links[]=https://upwork.com/freelancers/ahmed"\
     --form "portfolio_link=https://ahmed-portfolio.com"\
     --form "password_confirmation=Password123!"\
-    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaJjjq6" </code></pre></div>
+    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0n5rHm" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -19432,7 +19456,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpaJjjq6</code></p>
+<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php0n5rHm</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -19475,7 +19499,7 @@ After successful validation, a 4-digit OTP code will be sent to the email for ve
     --form "other_links[]=https://upwork.com/freelancers/ahmed"\
     --form "portfolio_link=https://ahmed-portfolio.com"\
     --form "password_confirmation=Password123!"\
-    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUBRC90" </code></pre></div>
+    --form "professional_document=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6SGt8s" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -19755,7 +19779,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phpUBRC90</code></p>
+<p>Must be a file. Must not be greater than 5120 kilobytes. Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php6SGt8s</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -23025,7 +23049,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --header "Accept-Language: en" \
-    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphCh304" </code></pre></div>
+    --form "document_one=@/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7JS3Fo" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -23190,7 +23214,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/phphCh304</code></p>
+<p>The first verification document. Must be an image (png, jpg, jpeg, webp) or PDF file, max 2MB. Example: Example: <code>/private/var/folders/bh/ymm81xv929z74_28m5_265d40000gn/T/php7JS3Fo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document_two</code></b>&nbsp;&nbsp;

@@ -57,9 +57,21 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         deprecated: false
+      remember:
+        custom: []
+        name: remember
+        description: 'optional Remember me option to extend token validity.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
     cleanBodyParameters:
       email: admin@admin.com
       password: password123
+      remember: true
     fileParameters: []
     responses:
       -

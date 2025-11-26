@@ -14,10 +14,12 @@ use Illuminate\Contracts\Validation\Validator;
  * @param string $email
  * @param string $password
  * @param string $type
+ * @property bool $remember
  *
  * @property string $email
  * @property string $password
  * @property string $type
+ * @property bool $remember
  */
 class LoginRequest extends FormRequest
 {

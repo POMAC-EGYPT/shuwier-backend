@@ -111,7 +111,7 @@ endpoints:
         name: state
         description: ''
         required: true
-        example: register
+        example: login
         type: string
         enumValues:
           - login
@@ -120,7 +120,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      state: register
+      state: login
     fileParameters: []
     responses:
       -

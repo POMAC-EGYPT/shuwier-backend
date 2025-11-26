@@ -35,6 +35,7 @@ class AuthController extends Controller
      * 
      * @bodyParam email string required Admin email address. Example: admin@admin.com
      * @bodyParam password string required Admin password. Example: password123
+     * @bodyParam remember boolean optional Remember me option to extend token validity. Example: true
      * 
      * @response 200 scenario="Login successful" {
      *   "status": true,
@@ -85,15 +86,16 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $response = $this->authAdminService->login($request->email, $request->password);
+        $response = $this->authAdminService->login($request->email, $request->password, $request->remember ?? false);
 
         if (!$response['status']) {
             return Response::api($response['message'], $response['error_num'], false, $response['error_num']);
         }
 
         return Response::api(__('message.login_success'), 200, true, null, [
-            'admin' => BaseResource::make(AdminResource::make($response['data']['admin'])),
-            'token' => $response['data']['token'],
+            'admin'      => BaseResource::make(AdminResource::make($response['data']['admin'])),
+            'token'      => $response['data']['token'],
+            'expires_in' => $response['data']['expires_in'],
         ]);
     }
 

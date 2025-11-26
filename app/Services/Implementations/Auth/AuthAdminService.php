@@ -12,7 +12,7 @@ class AuthAdminService implements AuthAdminServiceInterface
 {
     public function __construct(protected AdminRepositoryInterface $adminRepo) {}
 
-    public function login(string $email, string $password): array
+    public function login(string $email, string $password, bool $remember): array
     {
         $admin = Admin::where('email', $email)->first();
 
@@ -22,11 +22,15 @@ class AuthAdminService implements AuthAdminServiceInterface
         if (!Hash::check($password, $admin->password))
             return ['status' => false, 'error_num' => 400, 'message' => __('message.invalid_password')];
 
+        if ($remember)
+            JWTAuth::factory()->setTTL(config('jwt.remember_ttl'));
+
         $token = JWTAuth::fromUser($admin);
 
         return ['status' => true, 'data' => [
-            'admin' => $admin,
-            'token' => $token,
+            'admin'      => $admin,
+            'token'      => $token,
+            'expires_in' => JWTAuth::factory()->getTTL() * 60,
         ]];
     }
 

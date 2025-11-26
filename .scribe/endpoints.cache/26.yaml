@@ -89,7 +89,7 @@ endpoints:
         name: type
         description: ''
         required: false
-        example: client
+        example: freelancer
         type: string
         enumValues:
           - freelancer
@@ -110,7 +110,7 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       search: consequatur
-      type: client
+      type: freelancer
       per_page: 45
     fileParameters: []
     responses:

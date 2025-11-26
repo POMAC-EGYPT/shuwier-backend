@@ -13,9 +13,11 @@ use Illuminate\Contracts\Validation\Validator;
  * Handles the validation of login requests for admins.
  * @param string $email
  * @param string $password
+ * @property bool $remember
  *
  * @property string $email
  * @property string $password
+ * @property bool $remember
  */
 class LoginRequest extends FormRequest
 {
@@ -47,6 +49,7 @@ class LoginRequest extends FormRequest
                 'exists:admins,email',
             ],
             'password' => 'required|string|min:6',
+            'remember' => 'sometimes|boolean',
         ];
     }
 
@@ -58,11 +61,15 @@ class LoginRequest extends FormRequest
         return [
             'email' => [
                 'description' => 'Admin email address',
-                'example' => 'admin@admin.com',
+                'example'     => 'admin@admin.com',
             ],
             'password' => [
                 'description' => 'Admin password (minimum 6 characters)',
-                'example' => 'password123',
+                'example'     => 'password123',
+            ],
+            'remember' => [
+                'description' => 'Whether to remember the admin for a longer period',
+                'example'     => true,
             ],
         ];
     }
