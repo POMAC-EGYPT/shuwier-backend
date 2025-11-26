@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LoginRequest;
 use App\Http\Resources\AdminResource;
 use App\Http\Resources\BaseResource;
-use App\Models\Admin;
-use App\Models\User;
 use App\Services\Contracts\Auth\AuthAdminServiceInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
@@ -97,5 +95,102 @@ class AuthController extends Controller
             'admin' => BaseResource::make(AdminResource::make($response['data']['admin'])),
             'token' => $response['data']['token'],
         ]);
+    }
+
+    /**
+     * Change Admin Password.
+     * 
+     * This endpoint allows authenticated administrators to change their current password.
+     * The admin must provide their current password for verification before setting a new one.
+     * This is a security measure to ensure only the legitimate admin can change the password.
+     * 
+     * @authenticated
+     * 
+     * @bodyParam current_password string required The admin's current password for verification. Example: oldpassword123
+     * @bodyParam new_password string required The new password to set. Must be at least 8 characters long and contain a mix of letters, numbers, and special characters. Example: newpassword456
+     * @bodyParam new_password_confirmation string required Confirmation of the new password. Must match the new_password field. Example: newpassword456
+     * 
+     * @response 200 scenario="Password changed successfully" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Password changed successfully"
+     * }
+     *
+     * @response 400 scenario="Current password is incorrect" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "Current password is incorrect"
+     * }
+     *
+     * @response 400 scenario="New password validation failed" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The new password must be at least 8 characters."
+     * }
+     *
+     * @response 400 scenario="Password confirmation doesn't match" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The new password confirmation does not match."
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     *
+     * @response 400 scenario="Validation error" {
+     *   "status": false,
+     *   "error_num": 400,
+     *   "message": "The current password field is required."
+     * }
+     */
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required|string',
+            'new_password'     => 'required|string|min:8|confirmed|different:current_password|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
+        ]);
+
+        if ($validator->fails())
+            return Response::api($validator->errors()->first(), 400, false, 400);
+
+        $result = $this->authAdminService->changePassword(
+            $request->current_password,
+            $request->new_password
+        );
+
+        if (!$result['status'])
+            return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
+
+        return Response::api($result['message'], 200, true);
+    }
+
+    /**
+     * Admin Logout.
+     * 
+     * This endpoint logs out the authenticated admin by invalidating their JWT token.
+     * After logout, the token cannot be used for authentication.
+     * 
+     * @authenticated
+     * 
+     * @response 200 scenario="Logout successful" {
+     *   "status": true,
+     *   "error_num": null,
+     *   "message": "Logout successful"
+     * }
+     *
+     * @response 401 scenario="Unauthenticated" {
+     *   "status": false,
+     *   "error_num": 401,
+     *   "message": "Unauthenticated"
+     * }
+     */
+    public function logout()
+    {
+        JWTAuth::invalidate(JWTAuth::getToken());
+
+        return Response::api(__('message.logout_success'), 200, true, null);
     }
 }

@@ -10,6 +10,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class LoginStrategy implements SocialModeInterface
 {
     public function __construct(protected UserRepositoryInterface $userRepo) {}
+    
     public function supports(string $mode): bool
     {
         return $mode === 'login';

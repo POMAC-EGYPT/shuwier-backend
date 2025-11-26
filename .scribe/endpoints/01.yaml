@@ -103,8 +103,22 @@ endpoints:
       provider: google|apple
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      state:
+        custom: []
+        name: state
+        description: ''
+        required: true
+        example: login
+        type: string
+        enumValues:
+          - login
+          - register
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      state: login
     fileParameters: []
     responses:
       -
@@ -116,6 +130,62 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/auth/register/finalize
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      temp_key:
+        custom: []
+        name: temp_key
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      username:
+        custom: []
+        name: username
+        description: 'Must match the regex /^[A-Za-z][A-Za-z0-9_-]*$/u. Must be at least 3 characters. Must not be greater than 30 characters.'
+        required: true
+        example: mqeopfuudtdsufvyvddqa
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      temp_key: consequatur
+      username: mqeopfuudtdsufvyvddqa
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null

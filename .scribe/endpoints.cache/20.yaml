@@ -134,3 +134,202 @@ endpoints:
     controller: null
     method: null
     route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/admin/auth/change-password
+    metadata:
+      custom: []
+      groupName: 'Admin Authentication'
+      groupDescription: |-
+
+        APIs for admin authentication and authorization.
+        These endpoints handle admin login and session management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Change Admin Password.'
+      description: |-
+        This endpoint allows authenticated administrators to change their current password.
+        The admin must provide their current password for verification before setting a new one.
+        This is a security measure to ensure only the legitimate admin can change the password.
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      current_password:
+        custom: []
+        name: current_password
+        description: "The admin's current password for verification."
+        required: true
+        example: oldpassword123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      new_password:
+        custom: []
+        name: new_password
+        description: 'The new password to set. Must be at least 8 characters long and contain a mix of letters, numbers, and special characters.'
+        required: true
+        example: newpassword456
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      new_password_confirmation:
+        custom: []
+        name: new_password_confirmation
+        description: 'Confirmation of the new password. Must match the new_password field.'
+        required: true
+        example: newpassword456
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      current_password: oldpassword123
+      new_password: newpassword456
+      new_password_confirmation: newpassword456
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Password changed successfully"
+          }
+        headers: []
+        description: 'Password changed successfully'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "Current password is incorrect"
+          }
+        headers: []
+        description: 'Current password is incorrect'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The new password must be at least 8 characters."
+          }
+        headers: []
+        description: 'New password validation failed'
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The new password confirmation does not match."
+          }
+        headers: []
+        description: "Password confirmation doesn't match"
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "status": false,
+            "error_num": 400,
+            "message": "The current password field is required."
+          }
+        headers: []
+        description: 'Validation error'
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/admin/auth/logout
+    metadata:
+      custom: []
+      groupName: 'Admin Authentication'
+      groupDescription: |-
+
+        APIs for admin authentication and authorization.
+        These endpoints handle admin login and session management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Admin Logout.'
+      description: |-
+        This endpoint logs out the authenticated admin by invalidating their JWT token.
+        After logout, the token cannot be used for authentication.
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Accept-Language: en
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "status": true,
+            "error_num": null,
+            "message": "Logout successful"
+          }
+        headers: []
+        description: 'Logout successful'
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "status": false,
+            "error_num": 401,
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: Unauthenticated
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
