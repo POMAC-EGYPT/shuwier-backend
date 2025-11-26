@@ -412,8 +412,9 @@ class AuthController extends Controller
                 true,
                 null,
                 [
-                    'user'  => $resource,
-                    'token' => $result['data']['token'],
+                    'user'       => $resource,
+                    'token'      => $result['data']['token'],
+                    'expires_in' => $result['data']['expires_in'],
                 ]
             );
         }
@@ -484,6 +485,7 @@ class AuthController extends Controller
      *
      * @bodyParam email string required User email address. Example: user@example.com
      * @bodyParam password string required User password (minimum 6 characters). Example: password123
+     * @bodyParam remember boolean sometimes Remember me option to extend token validity. Example: true
      *
      * @response 200 {
      *   "status": true,
@@ -532,20 +534,22 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $result = $this->authUserService->login($request->email, $request->password);
+        $result = $this->authUserService->login($request->email, $request->password, $request->remember ?? false);
 
         if (!$result['status'])
             return Response::api($result['message'], $result['error_num'], false, $result['error_num']);
 
         if ($result['data']['user']['type'] == 'freelancer')
             return Response::api($result['message'], 200, true, null, [
-                'user'  => BaseResource::make(FreelancerResource::make($result['data']['user'])),
-                'token' => $result['data']['token'],
+                'user'       => BaseResource::make(FreelancerResource::make($result['data']['user'])),
+                'token'      => $result['data']['token'],
+                'expires_in' => $result['data']['expires_in'],
             ]);
 
         return Response::api($result['message'], 200, true, null, [
-            'user'  => BaseResource::make(ClientResource::make($result['data']['user'])),
-            'token' => $result['data']['token'],
+            'user'       => BaseResource::make(ClientResource::make($result['data']['user'])),
+            'token'      => $result['data']['token'],
+            'expires_in' => $result['data']['expires_in'],
         ]);
     }
 
@@ -890,13 +894,15 @@ class AuthController extends Controller
 
         if ($result['data']['user']['type'] == 'freelancer')
             return Response::api($result['message'], 200, true, null, [
-                'user'  => BaseResource::make(FreelancerResource::make($result['data']['user'])),
-                'token' => $result['data']['token'],
+                'user'       => BaseResource::make(FreelancerResource::make($result['data']['user'])),
+                'token'      => $result['data']['token'],
+                'expires_in' => $result['data']['expires_in'],
             ]);
 
         return Response::api($result['message'], 200, true, null, [
-            'user'  => BaseResource::make(ClientResource::make($result['data']['user'])),
-            'token' => $result['data']['token'],
+            'user'        => BaseResource::make(ClientResource::make($result['data']['user'])),
+            'token'       => $result['data']['token'],
+            'expires_in' => $result['data']['expires_in'],
         ]);
     }
 

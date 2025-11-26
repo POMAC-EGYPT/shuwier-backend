@@ -42,7 +42,7 @@ endpoints:
         name: state
         description: ''
         required: true
-        example: login
+        example: register
         type: string
         enumValues:
           - login
@@ -51,7 +51,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      state: login
+      state: register
     fileParameters: []
     responses:
       -
@@ -109,7 +109,7 @@ endpoints:
         name: state
         description: ''
         required: true
-        example: login
+        example: register
         type: string
         enumValues:
           - login
@@ -118,7 +118,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      state: login
+      state: register
     fileParameters: []
     responses:
       -

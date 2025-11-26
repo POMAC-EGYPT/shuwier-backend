@@ -166,31 +166,4 @@ class AuthController extends Controller
 
         return Response::api($result['message'], 200, true);
     }
-
-    /**
-     * Admin Logout.
-     * 
-     * This endpoint logs out the authenticated admin by invalidating their JWT token.
-     * After logout, the token cannot be used for authentication.
-     * 
-     * @authenticated
-     * 
-     * @response 200 scenario="Logout successful" {
-     *   "status": true,
-     *   "error_num": null,
-     *   "message": "Logout successful"
-     * }
-     *
-     * @response 401 scenario="Unauthenticated" {
-     *   "status": false,
-     *   "error_num": 401,
-     *   "message": "Unauthenticated"
-     * }
-     */
-    public function logout()
-    {
-        JWTAuth::invalidate(JWTAuth::getToken());
-
-        return Response::api(__('message.logout_success'), 200, true, null);
-    }
 }

@@ -122,6 +122,8 @@ return [
 
     'refresh_ttl' => env('JWT_REFRESH_TTL', 20160),
 
+    'remember_ttl' => env('JWT_REMEMBER_TTL', 43200),
+
     /*
     |--------------------------------------------------------------------------
     | JWT hashing algorithm

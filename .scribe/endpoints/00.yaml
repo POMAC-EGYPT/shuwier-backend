@@ -962,9 +962,21 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         deprecated: false
+      remember:
+        custom: []
+        name: remember
+        description: 'sometimes Remember me option to extend token validity.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
     cleanBodyParameters:
       email: user@example.com
       password: password123
+      remember: true
     fileParameters: []
     responses:
       -

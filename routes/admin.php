@@ -15,7 +15,6 @@ use App\Http\Controllers\Admin\UserVerificationController;
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::post('change-password', [AuthController::class, 'changePassword'])->middleware('auth:admin')->name('change-password');
-    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:admin')->name('logout');
 });
 
 Route::apiResources([

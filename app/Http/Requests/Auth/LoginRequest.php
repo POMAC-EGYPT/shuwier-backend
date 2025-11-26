@@ -51,6 +51,7 @@ class LoginRequest extends FormRequest
                 new EmailRule,
             ],
             'password' => 'required|string|min:6',
+            'remember' => 'sometimes|boolean',
         ];
     }
 
@@ -62,15 +63,15 @@ class LoginRequest extends FormRequest
         return [
             'email' => [
                 'description' => 'User email address',
-                'example' => 'user@example.com',
+                'example'     => 'user@example.com',
             ],
             'password' => [
                 'description' => 'User password (minimum 6 characters)',
-                'example' => 'password123',
+                'example'     => 'password123',
             ],
-            'type' => [
-                'description' => 'User type (client or freelancer)',
-                'example' => 'client',
+            'remember' => [
+                'description' => 'Remember me option to extend token validity',
+                'example'     => true,
             ],
         ];
     }

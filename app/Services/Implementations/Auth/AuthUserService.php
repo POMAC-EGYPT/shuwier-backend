@@ -131,8 +131,9 @@ class AuthUserService implements AuthUserServiceInterface
                 'status'  => true,
                 'message' => __('message.user_registered'),
                 'data'    => [
-                    'user'  => $user,
-                    'token' => JWTAuth::fromUser($user),
+                    'user'       => $user,
+                    'token'      => JWTAuth::fromUser($user),
+                    'expires_in' => JWTAuth::factory()->getTTL() * 60,
                 ]
             ];
         } else {
@@ -150,7 +151,7 @@ class AuthUserService implements AuthUserServiceInterface
         return ['status' => true, 'message' => $result['message']];
     }
 
-    public function login(string $email, string $password): array
+    public function login(string $email, string $password, bool $remember): array
     {
         $user = $this->userRepo->findByEmail($email);
 
@@ -166,14 +167,18 @@ class AuthUserService implements AuthUserServiceInterface
         if (!$user->email_verified_at)
             return ['status' => false, 'error_num' => 403, 'message' => __('message.email_not_verified')];
 
+        if ($remember)
+            JWTAuth::factory()->setTTL(config('jwt.remember_ttl'));
+
         $token = JWTAuth::fromUser($user);
 
         return [
             'status' => true,
             'message' => __('message.login_success'),
             'data' => [
-                'user'  => $user,
-                'token' => $token,
+                'user'       => $user,
+                'token'      => $token,
+                'expires_in' => JWTAuth::factory()->getTTL() * 60,
             ]
         ];
     }
@@ -409,8 +414,9 @@ class AuthUserService implements AuthUserServiceInterface
             'status' => true,
             'message' => __('message.token_refreshed'),
             'data' => [
-                'user' => $user,
-                'token' => $token,
+                'user'       => $user,
+                'token'      => $token,
+                'expires_in' => JWTAuth::factory()->getTTL() * 60,
             ]
         ];
     }
