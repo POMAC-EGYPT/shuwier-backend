@@ -38,7 +38,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth:api');
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth.any:api,admin')->name('logout');
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth.any:api,admin')->name('refresh');
-    Route::post('/{provider}/redirect', [SocialAuthController::class, 'redirect'])->middleware('web')->whereIn('provider', ['google', 'apple']);
+    Route::get('/{provider}/redirect', [SocialAuthController::class, 'redirect'])->middleware('web')->whereIn('provider', ['google', 'apple']);
     Route::get('/{provider}/callback', [SocialAuthController::class, 'callback'])->middleware('web')->whereIn('provider', ['google', 'apple']);
     Route::post('/register/finalize', [SocialAuthController::class, 'registerFinalize'])->name('social.register.finalize');
 });
