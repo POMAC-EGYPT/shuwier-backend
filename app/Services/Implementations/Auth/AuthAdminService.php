@@ -27,11 +27,14 @@ class AuthAdminService implements AuthAdminServiceInterface
 
         $token = JWTAuth::fromUser($admin);
 
-        return ['status' => true, 'data' => [
-            'admin'      => $admin,
-            'token'      => $token,
-            'expires_in' => JWTAuth::factory()->getTTL() * 60,
-        ]];
+        return [
+            'status' => true,
+            'data'   => [
+                'admin'      => $admin,
+                'token'      => $token,
+                'expires_in' => JWTAuth::factory()->getTTL() * 60,
+            ]
+        ];
     }
 
     public function changePassword(string $currentPassword, string $newPassword): array

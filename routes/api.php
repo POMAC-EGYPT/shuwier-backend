@@ -22,7 +22,6 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UploadFileController;
 use App\Http\Controllers\PortfolioController as GuestPortfolioController;
 use App\Http\Controllers\TipsAndGuidController;
-use Laravel\Socialite\Socialite;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/check-register', [AuthController::class, 'checkRegisterFields'])->name('check-register');

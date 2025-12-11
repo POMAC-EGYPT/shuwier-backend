@@ -54,9 +54,6 @@ class AuthController extends Controller
      * @bodyParam password string required Password (min 8 chars, must contain uppercase, lowercase, number, and special character). Example: Password123!
      * @bodyParam password_confirmation string required Password confirmation (must match password). Example: Password123!
      * @bodyParam type string required User type. Must be either "freelancer" or "client". Example: freelancer
-     * @bodyParam other_links array sometimes Array of other freelance platform URLs (max 3 links, optional). Example: ["https://upwork.com/freelancers/ahmed"]
-     * @bodyParam other_links.* string URL format for each freelance platform link. Example: https://upwork.com/freelancers/ahmed
-     * @bodyParam portfolio_link string required_if:type,freelancer Portfolio website URL (required for freelancers). Example: https://ahmed-portfolio.com
      * 
      * @response 200 scenario="All fields are valid" {
      *   "status": true,
@@ -123,7 +120,8 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name'                  => [
                 'required',
-                'max:255',
+                'min:3',
+                'max:50',
                 'regex:/^(?:[ء-ي]+(?:\s[ء-ي]+)*)$|^(?:[a-zA-Z]+(?:\s[a-zA-Z]+)*)$/u'
             ],
             'email'                 => [
@@ -134,20 +132,12 @@ class AuthController extends Controller
                 'unique:users',
                 new EmailRule,
             ],
-            'password'              => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
+            'password'              => 'required|string|min:8|confirmed|different:current_password|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/',
             'type'                  => 'required|string|in:freelancer,client',
-            'other_links'           => 'nullable|array|max:3',
-            'other_links.*'         => 'url',
-            'portfolio_link'        => 'required_if:type,freelancer|url',
-            'professional_document' => 'nullable|file|mimes:png,jpg,jpeg,webp,pdf,docx|max:5120',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
-
-        if ($request->has('professional_document') && $request->type == UserType::CLIENT->value)
-            return Response::api(__('message.professional_document_only_freelancer'), 400, false, 400);
-
 
         return Response::api(__('message.success'), 200, true, null);
     }
@@ -206,9 +196,6 @@ class AuthController extends Controller
             'email'                 => $request->email,
             'password'              => $request->password,
             'type'                  => $request->type,
-            'other_links'           => $request->other_links ?? [],
-            'portfolio_link'        => $request->portfolio_link,
-            'professional_document' => $request->professional_document,
         ]);
 
         if (!$result['status'])

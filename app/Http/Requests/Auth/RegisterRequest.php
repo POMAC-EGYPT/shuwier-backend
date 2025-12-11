@@ -58,9 +58,9 @@ class RegisterRequest extends FormRequest
             'username'              => [
                 'required',
                 'min:3',
-                'max:30',
+                'max:20',
                 'string',
-                'regex:/^[A-Za-z][A-Za-z0-9_-]*$/u',
+                'regex:/^[A-Za-z][A-Za-z0-9_]*$/u',
                 'unique:users,username',
             ],
             'email'                 => [
@@ -73,17 +73,13 @@ class RegisterRequest extends FormRequest
             ],
             'password'              => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$٪\^&\*\)\(ـ\+])[A-Za-z\d!@#\$٪\^&\*\)\(ـ\+]{8,}$/u',
             'type'                  => 'required|string|in:freelancer,client',
-            'other_links'           => 'nullable|array|max:3',
-            'other_links.*'         => 'url',
-            'portfolio_link'        => 'required_if:type,freelancer|url',
-            'professional_document' => 'nullable|file|mimes:png,jpg,jpeg,webp,pdf,docx|max:5120',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'username.regex' => 'Your username must begin with a letter and can include numbers and underscores.',
+            'username.regex' => __('message.Username can only contain letters, numbers, and underscores'),
         ];
     }
 
