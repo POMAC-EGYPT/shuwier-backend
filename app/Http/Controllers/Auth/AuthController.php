@@ -11,6 +11,7 @@ use App\Http\Requests\Auth\ResetEmail;
 use App\Http\Requests\Auth\ResetPasswordRequest;
 use App\Http\Requests\Auth\UpdateProfileRequest;
 use App\Http\Requests\Auth\VerifyEmailRequest;
+use App\Http\Resources\AdminResource;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\ClientResource;
 use App\Http\Resources\FreelancerResource;
@@ -885,10 +886,16 @@ class AuthController extends Controller
                 'token'      => $result['data']['token'],
                 'expires_in' => $result['data']['expires_in'],
             ]);
+        elseif ($result['data']['user']['type'] == 'client')
+            return Response::api($result['message'], 200, true, null, [
+                'user'       => BaseResource::make(ClientResource::make($result['data']['user'])),
+                'token'      => $result['data']['token'],
+                'expires_in' => $result['data']['expires_in'],
+            ]);
 
         return Response::api($result['message'], 200, true, null, [
-            'user'        => BaseResource::make(ClientResource::make($result['data']['user'])),
-            'token'       => $result['data']['token'],
+            'user'       => BaseResource::make(AdminResource::make($result['data']['user'])),
+            'token'      => $result['data']['token'],
             'expires_in' => $result['data']['expires_in'],
         ]);
     }

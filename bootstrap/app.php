@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -45,6 +46,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (TooManyRequestsHttpException $e, Request $request) {
             if ($request->is('api/*')) {
                 return Response::api(__('message.too_many_requests'), 429, false, 429);
+            }
+        });
+        $exceptions->render(function (ValidationException $e, Request $request) {
+            if ($request->is('api/*')) {
+                return Response::api($e->validator()->errors()->first(), 400, false, 400);
             }
         });
     })->create();

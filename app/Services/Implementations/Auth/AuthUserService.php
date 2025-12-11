@@ -387,7 +387,7 @@ class AuthUserService implements AuthUserServiceInterface
 
     public function refreshToken(): array
     {
-        $user = auth('api')->user();
+        $user = auth()->user();
 
         $token = JWTAuth::refresh(JWTAuth::getToken());
 

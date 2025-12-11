@@ -227,7 +227,7 @@ class EmailVerificationService implements EmailVerificationServiceInterface
             return [
                 'status' => false,
                 'error_num' => 400,
-                'message' => __('message.cannot_change_email_yet')
+                'message' => __('message.cannot_change_email_yet_still') . ' ' . ($this->maxAttempts - $cached['attempts']) . ' ' . __('message.attempts_remaining')
             ];
         }
 

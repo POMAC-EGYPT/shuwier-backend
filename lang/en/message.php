@@ -155,5 +155,7 @@ return [
     'Account already exists. Please login.'                           => 'Account already exists. Please login.',
     'Temporary key has expired or is invalid.'                        => 'Temporary key has expired or is invalid.',
     'account_linked_with_social_login'                                => 'Account linked with social login',
-    'Username can only contain letters, numbers, and underscores'     => 'Username can only contain letters, numbers, and underscores'
+    'Username can only contain letters, numbers, and underscores'     => 'Username can only contain letters, numbers, and underscores',
+    'attempts_remaining'                                              => 'attempts remaining',
+    'cannot_change_email_yet_still'                                   => 'cannot change email yet still',
 ];
