@@ -25,14 +25,15 @@ class SocialAuthController extends Controller
     public function redirect(string $provider, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'state' => 'required|string|in:login,register'
+            'state' => 'required|string|in:login,register',
+            'type'  => 'required_if:state,register|string|in:freelancer,client',
         ]);
 
         if ($validator->fails())
             return Response::api($validator->errors()->first(), 400, false, 400);
 
         $url = Socialite::driver($provider)
-            ->with(['state' => $request->state])
+            ->with(['state' => $request->state, 'type' => $request->type])
             ->redirect()
             ->getTargetUrl();
 
@@ -63,9 +64,9 @@ class SocialAuthController extends Controller
             'username' => [
                 'required',
                 'min:3',
-                'max:30',
+                'max:20',
                 'string',
-                'regex:/^[A-Za-z][A-Za-z0-9_-]*$/u',
+                'regex:/^[A-Za-z][A-Za-z0-9_]*$/u',
                 'unique:users,username',
             ],
         ]);
