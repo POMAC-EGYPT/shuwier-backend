@@ -389,6 +389,8 @@ class AuthUserService implements AuthUserServiceInterface
     {
         $user = auth()->user();
 
+        JWTAuth::factory()->setTTL(config('jwt.refresh_ttl'));
+
         $token = JWTAuth::refresh(JWTAuth::getToken());
 
         return [
